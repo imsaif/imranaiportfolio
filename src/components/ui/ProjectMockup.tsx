@@ -8,14 +8,12 @@ export const ProjectMockup = ({ project }: ProjectMockupProps) => {
   if (project.slug === 'lessonloom') {
     return (
       <div className="relative aspect-video bg-gradient-to-br from-white to-indigo-100 rounded-lg overflow-hidden shadow-lg">
-        {/* Add an animated gradient overlay for better visibility - using the tailwind animate-gradient class */}
-        <div 
-          className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none z-10 bg-[length:200%_200%] animate-gradient"
+        {/* Add an animated gradient overlay for better visibility */}
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 pointer-events-none z-10 bg-[length:200%_200%]"
+          style={{ animation: 'gradientFlow 2s ease infinite' }}
         ></div>
-        
-        {/* Add subtle animated border for more visibility */}
-        <div className="absolute inset-0 rounded-lg z-0 bg-gradient-to-r from-indigo-200 to-purple-200 bg-[length:200%_200%] animate-gradient"></div>
-        
+
         {/* Dashboard-style mockup */}
         <div className="absolute inset-0 p-4">
           {/* Header */}
@@ -42,8 +40,8 @@ export const ProjectMockup = ({ project }: ProjectMockupProps) => {
             {/* Main Content */}
             <div className="col-span-2 bg-white/90 backdrop-blur-sm rounded-lg shadow-sm p-4">
               <div className="h-full flex flex-col">
-                <div className="w-full h-32 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg mb-4 flex items-center justify-center shadow-md">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-lg shadow-md"></div>
+                <div className="w-full h-32 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg mb-4 flex items-center justify-center shadow-sm">
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-300 to-purple-300 rounded-lg shadow-sm"></div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 flex-1">
                   <div className="bg-white/70 rounded-lg p-3 shadow-sm">
@@ -72,14 +70,12 @@ export const ProjectMockup = ({ project }: ProjectMockupProps) => {
   if (project.slug === 'scheduler') {
     return (
       <div className="relative aspect-video bg-gradient-to-br from-white to-blue-100 rounded-lg overflow-hidden shadow-lg">
-        {/* Add an animated gradient overlay for better visibility - using the tailwind animate-gradient class */}
-        <div 
-          className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none z-10 bg-[length:200%_200%] animate-gradient"
+        {/* Add an animated gradient overlay for better visibility */}
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 pointer-events-none z-10 bg-[length:200%_200%]"
+          style={{ animation: 'gradientFlow 2s ease infinite' }}
         ></div>
-        
-        {/* Add subtle animated border for more visibility */}
-        <div className="absolute inset-0 rounded-lg z-0 bg-gradient-to-r from-blue-200 to-purple-200 bg-[length:200%_200%] animate-gradient"></div>
-        
+
         {/* Calendar-style mockup */}
         <div className="absolute inset-0 p-4">
           {/* Header */}
@@ -100,13 +96,13 @@ export const ProjectMockup = ({ project }: ProjectMockupProps) => {
                 </div>
                 {i % 7 === 3 && (
                   <div className="absolute top-6 left-1 right-1">
-                    <div className="h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded mb-1 shadow-sm"></div>
-                    <div className="h-2 bg-gradient-to-r from-blue-300 to-purple-300 rounded shadow-sm"></div>
+                    <div className="h-2 bg-gradient-to-r from-blue-300 to-purple-300 rounded mb-1 shadow-sm"></div>
+                    <div className="h-2 bg-gradient-to-r from-blue-200 to-purple-200 rounded shadow-sm"></div>
                   </div>
                 )}
                 {i % 7 === 5 && (
                   <div className="absolute top-6 left-1 right-1">
-                    <div className="h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded shadow-sm"></div>
+                    <div className="h-2 bg-gradient-to-r from-blue-300 to-purple-300 rounded shadow-sm"></div>
                   </div>
                 )}
               </div>

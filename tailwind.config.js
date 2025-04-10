@@ -74,7 +74,7 @@ module.exports = {
       },
       animation: {
         blink: 'blink 0.7s step-end infinite',
-        gradient: 'gradientFlow 2s ease infinite',
+        gradient: 'gradientFlow 6s ease infinite',
         'spin-slow': 'slowRotate 3s linear infinite',
         shimmer: 'shimmer 2s infinite',
         'shimmer-once': 'shimmerOnce 1.5s forwards ease-in-out',

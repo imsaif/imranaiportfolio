@@ -74,7 +74,7 @@ const Projects = () => {
 
                     {/* Card content */}
                     <div className="relative bg-white rounded-lg shadow-[0_8px_16px_rgb(0_0_0_/_0.08),_0_1px_2px_rgb(0_0_0_/_0.15)] transition-all duration-500 ease-out transform group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_rgb(0_0_0_/_0.12),_0_1px_3px_rgb(0_0_0_/_0.18)] z-10">
-                      <div className="rounded-lg overflow-hidden z-20">
+                      <div className="rounded-lg overflow-hidden backdrop-blur-sm">
                         <ProjectMockup project={project} />
                       </div>
                     </div>
