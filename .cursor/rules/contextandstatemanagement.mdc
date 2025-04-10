@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+  - Use React Context only for truly global state
+  - Keep context providers focused on specific domains
+  - Implement proper state initialization
+  - Avoid prop drilling with custom hooks
+  - Use local component state for UI-specific state

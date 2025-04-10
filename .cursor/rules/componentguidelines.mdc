@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Make components reusable where possible
+  - Implement responsive design for all components
+  - Use Tailwind CSS for styling
+  - Follow the project's established design system
+  - Separate presentation and logic concerns
+  - Optimize animations for performance

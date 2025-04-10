@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Reference @project_milestones.md for all feature implementations
+  - Reference @documentation.md for component specifications and architecture decisions
+  - Ensure new code aligns with defined milestones
+  - Update documentation when adding new components or features

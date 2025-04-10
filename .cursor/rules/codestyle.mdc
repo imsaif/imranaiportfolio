@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Use consistent indentation (2 spaces)
+  - Follow ESLint and Prettier configurations
+  - Use named exports for components
+  - Follow functional component patterns with hooks
+  - Use destructuring for props and state
+  - Implement proper TypeScript types for all components and functions

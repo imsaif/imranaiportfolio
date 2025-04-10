@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+  - Use Framer Motion for component animations
+  - Use Canvas API for complex animations
+  - Implement reduced motion options for accessibility
+  - Optimize animation performance with proper cleanup
+  - Keep animations subtle and purposeful

@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+  - Use React Server Components where appropriate
+  - Add "use client" directive only when necessary
+  - Implement proper state management with context or hooks
+  - Use memo, useCallback, and useMemo for performance optimization
+  - Implement proper error boundaries
+  - Follow key best practices for lists

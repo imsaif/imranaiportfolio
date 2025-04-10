@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+  - Keep related files together in feature folders
+  - Use consistent naming conventions
+  - Organize imports in a consistent order
+  - Keep files to a reasonable size (< 300 lines)
+  - Use index files for cleaner imports

@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Follow a modular, component-based architecture
+  - Use TypeScript for all code files
+  - Use descriptive variable and function names
+  - Keep functions small and focused on a single responsibility
+  - Add JSDoc comments to all components and functions
+  - Use proper error handling and logging
+  - Follow accessibility best practices (WCAG 2.1 AA)
+  - Optimize for performance and Core Web Vitals
