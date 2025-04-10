@@ -1,0 +1,86 @@
+{
+  "name": "portfolio-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "fix": "npm run format && npm run lint:fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test dev 3000 cypress",
+    "e2e:headless": "start-server-and-test dev 3000 cypress:headless",
+    "lighthouse": "lhci autorun",
+    "lighthouse:mobile": "lhci autorun --collect.settings.formFactor=mobile",
+    "lighthouse:desktop": "lhci autorun --collect.settings.formFactor=desktop",
+    "perf:measure": "node scripts/measure-performance.js",
+    "perf:test": "node scripts/test-performance.js",
+    "perf": "npm run perf:test",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "node scripts/check-for-secrets.js"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ],
+    ".env*": [
+      "node scripts/check-for-secrets.js"
+    ]
+  },
+  "dependencies": {
+    "framer-motion": "^10.16.4",
+    "geist": "^1.2.0",
+    "next": "13.5.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.13.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/jest": "^29.5.14",
+    "@types/jest-axe": "^3.5.9",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/testing-library__jest-dom": "^5.14.9",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "autoprefixer": "^10.4.16",
+    "cypress": "^14.2.1",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.6",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-import-resolver-typescript": "^4.3.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-axe": "^10.0.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^15.5.0",
+    "postcss": "^8.4.31",
+    "prettier": "^3.5.3",
+    "puppeteer": "^22.4.0",
+    "start-server-and-test": "^2.0.11",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5",
+    "web-vitals": "^3.5.2"
+  }
+}

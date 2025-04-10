@@ -1,0 +1,199 @@
+import { NextResponse } from 'next/server';
+
+// Import portfolio context for the AI
+import portfolioData from '../../../data/portfolio-context.json';
+// Import project data to get case study links
+import { projects } from '../../../data/projects';
+
+export async function POST(request: Request) {
+  try {
+    // Check if OpenAI API is enabled
+    const useOpenAI = process.env.NEXT_PUBLIC_USE_AI_API === 'true';
+    const apiKey = process.env.OPENAI_API_KEY;
+    // Get the model from environment variables with a fallback
+    const model = process.env.OPENAI_MODEL || 'gpt-4o';
+    
+    if (!useOpenAI || !apiKey) {
+      return NextResponse.json({ 
+        response: "AI API integration is currently disabled. Using local responses instead." 
+      }, { status: 200 });
+    }
+
+    // Parse request body
+    const { messages } = await request.json();
+    
+    if (!messages || !Array.isArray(messages)) {
+      return NextResponse.json({ 
+        response: "Invalid request format. Please provide a messages array." 
+      }, { status: 400 });
+    }
+
+    // Fix for messages that might be JSON strings instead of objects
+    let processedMessages = messages;
+    try {
+      // Check if any message is a string and try to parse it
+      processedMessages = messages.map(msg => {
+        if (typeof msg === 'string') {
+          try {
+            return JSON.parse(msg);
+          } catch (e) {
+            console.error('Failed to parse string message:', msg);
+            return null;
+          }
+        }
+        return msg;
+      }).filter(Boolean);
+    } catch (error) {
+      console.error('Error pre-processing messages:', error);
+    }
+
+    // Validate message format and ensure they're proper objects
+    let validMessages = [];
+    try {
+      // Filter and validate each message
+      for (const msg of processedMessages) {
+        if (msg && typeof msg === 'object' && typeof msg.role === 'string' && typeof msg.content === 'string') {
+          // Create a fresh object with only the required properties to avoid any unexpected fields
+          validMessages.push({
+            role: msg.role,
+            content: msg.content
+          });
+        } else {
+          console.error('Invalid message format:', JSON.stringify(msg));
+        }
+      }
+    } catch (error) {
+      console.error('Error processing messages:', error);
+    }
+
+    if (validMessages.length === 0) {
+      console.error('No valid messages found in request');
+      return NextResponse.json({ 
+        response: "I couldn't process your message properly. Let me help with information about Imran instead." 
+      }, { status: 200 });
+    }
+
+    // Log the final messages array for debugging
+    console.log('Processed messages:', validMessages.map(m => `${m.role}: ${m.content.substring(0, 20)}...`));
+
+    // Prepare project links
+    const projectLinks = [
+      { name: 'LessonLoom', url: '/projects/lessonloom' },
+      { name: 'Scheduler (Automated Instructional Planner)', url: '/casestudy/scheduler' }
+    ];
+
+    // Create system message content
+    const systemMessageContent = `You are Imran's AI assistant, specifically designed to help visitors learn about his work, skills, and experience.
+    
+    IMPORTANT: Always introduce yourself as "I'm Imran's AI assistant" when appropriate. Never use generic phrases like "I am an AI assistant" or "I'm an AI designed to provide information about Imran." You work exclusively for Imran and are his personal AI.
+    
+    Here is information about Imran to use in your responses:
+    ${JSON.stringify(portfolioData)}
+    
+    Project links to share:
+    ${JSON.stringify(projectLinks)}
+    
+    Note: Imran has two detailed case studies available: "LessonLoom" and "Scheduler (Automated Instructional Planner)".
+    
+    Your task is to be helpful, friendly, and direct in answering questions about Imran's work and experience.
+    Keep responses concise but informative, sharing relevant details about his projects and expertise.
+    Include relevant links when discussing specific projects.
+    Avoid making up information not provided in the context.
+    If asked about something you don't know, simply state you don't have that information.`;
+
+    // Create a complete, properly formatted message array
+    const messageArray = [
+      { 
+        role: 'system', 
+        content: systemMessageContent 
+      },
+      ...validMessages
+    ];
+
+    // Final sanity check to ensure no strings
+    const sanitizedMessages = messageArray.map(msg => {
+      // If somehow a string got through, try to parse it or use a placeholder
+      if (typeof msg === 'string') {
+        try {
+          const parsed = JSON.parse(msg);
+          if (parsed && typeof parsed === 'object' && parsed.role && parsed.content) {
+            return { role: parsed.role, content: parsed.content };
+          }
+        } catch (e) {
+          console.error('Failed to parse message in final check:', msg);
+        }
+        // Return a placeholder if parsing failed
+        return { role: 'user', content: 'Could not process this message' };
+      }
+      // Ensure we always return a plain object with only role and content
+      return { 
+        role: msg.role,
+        content: msg.content
+      };
+    });
+
+    // Prepare API request body
+    let requestBody;
+    try {
+      // Create the payload
+      const payload = {
+        model: model,
+        messages: sanitizedMessages,
+        temperature: 0.7,
+        max_tokens: 750,
+        top_p: 1
+      };
+      
+      // For debugging - log the first few characters of each message
+      console.log('OpenAI Payload Messages:', 
+        payload.messages.map(m => ({ 
+          role: m.role, 
+          content: m.content.substring(0, 30) + '...' 
+        }))
+      );
+      
+      requestBody = JSON.stringify(payload);
+    } catch (error) {
+      console.error('Error serializing request body:', error);
+      return NextResponse.json({ 
+        response: "I'm having trouble formatting my response. Let me help with basic information about Imran's work instead." 
+      }, { status: 200 });
+    }
+
+    // Call OpenAI API
+    console.log('Calling OpenAI API...');
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: requestBody
+    });
+
+    const data = await response.json();
+    
+    if (data.error) {
+      console.error('OpenAI API error:', data.error);
+      
+      // More detailed logging for debugging
+      console.error('Request body first 100 chars:', requestBody.substring(0, 100));
+      console.error('First message type:', typeof sanitizedMessages[0]);
+      
+      return NextResponse.json({ 
+        response: "I'm having trouble with my AI connection right now. I can still answer basic questions about Imran's work based on my available information." 
+      }, { status: 200 });
+    }
+
+    // Return the AI response
+    return NextResponse.json({ 
+      response: data.choices[0].message.content 
+    }, { status: 200 });
+    
+  } catch (error) {
+    console.error('Error in chat API:', error);
+    return NextResponse.json({ 
+      response: "I'm experiencing a technical issue with my AI connection. I can answer general questions about Imran's portfolio and experience using my local knowledge base." 
+    }, { status: 200 });
+  }
+} 

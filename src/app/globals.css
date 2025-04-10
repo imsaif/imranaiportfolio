@@ -1,0 +1,500 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-position-right {
+    background-position: right center;
+  }
+}
+
+:root {
+  /* 
+  * PRIMARY COLOR PALETTE
+  * Organized system of colors with clear naming conventions
+  */
+
+  /* Brand Colors - The foundation of your visual identity */
+  --accent: #6366f1; /* Primary brand color - use for main interactive elements */
+  --accent-light: #c7d2fe; /* Lighter accent - use for backgrounds, highlights */
+  --secondary: #10b981; /* Secondary color - use for success states, alternate CTAs */
+  --tertiary: #f43f5e; /* Tertiary color - use for highlights, important alerts */
+
+  /* Interface Colors - The building blocks of your UI */
+  --background: #f8fafc; /* Main page background */
+  --foreground: #0f172a; /* Primary text color */
+  --muted: #64748b; /* Secondary text, less important information */
+  --border: #e2e8f0; /* Borders, dividers, separators */
+  --subtle-bg: #f1f5f9; /* Subtle backgrounds, hover states */
+  --card-bg: #ffffff; /* Card and component backgrounds */
+  --card-border: #e2e8f0; /* Card borders */
+  --card-shadow: rgba(0, 0, 0, 0.04); /* Card shadows */
+
+  /* Semantic Colors - Communicating meaning */
+  --success: #10b981; /* Success states, positive indicators */
+  --warning: #f59e0b; /* Warnings, attention required */
+  --error: #ef4444; /* Error states, destructive actions */
+  --info: #3b82f6; /* Informational states, help text */
+
+  /* Color shades - For more refined control */
+  --accent-50: #eef2ff;
+  --accent-100: #e0e7ff;
+  --accent-200: #c7d2fe;
+  --accent-300: #a5b4fc;
+  --accent-400: #818cf8;
+  --accent-500: #6366f1;
+  --accent-600: #4f46e5;
+  --accent-700: #4338ca;
+
+  /* Font variables */
+  --font-sans: 'Geist Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Typography refinements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 2.25rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+/* Enhanced spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+.section-padding {
+  padding: 7rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 5rem 0;
+  }
+}
+
+/* Enhanced link styles */
+.link-effect {
+  position: relative;
+  font-weight: 500;
+}
+
+.link-effect:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.link-effect:hover:after {
+  width: 100%;
+}
+
+/* Button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 1.75rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  letter-spacing: 0.01em;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, var(--accent), var(--tertiary));
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, var(--accent-600), var(--tertiary));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.25);
+}
+
+.btn-outline {
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--accent);
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+/* Card styles */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px var(--card-shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px var(--card-shadow);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--tertiary), var(--accent));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  position: relative;
+}
+
+/* Animation for gradient text */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradientFlow 6s ease infinite;
+  background-size: 300% 300%;
+}
+
+/* Typing cursor blink animation */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 0.7s step-end infinite;
+}
+
+/* Text transition for typing effect */
+.text-transition {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Section title underline */
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2.5rem;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  bottom: -12px;
+  left: 0;
+  background: linear-gradient(90deg, var(--accent), var(--tertiary));
+  border-radius: 3px;
+}
+
+/* Subtle background section */
+.subtle-bg {
+  background-color: var(--subtle-bg);
+}
+
+/* Animation utilities */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll down animation */
+@keyframes scrollDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scrollDown {
+  animation: scrollDown 1.5s ease-in-out infinite;
+}
+
+/* Floating animation for AI elements */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* AI particles track effect */
+@keyframes fadeTrack {
+  0% {
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    width: 5px;
+    height: 5px;
+  }
+}
+
+.ai-particle-track {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent-light);
+  pointer-events: none;
+  animation: fadeTrack 2s ease-out forwards;
+  z-index: 0;
+}
+
+/* Responsive animation based on viewport size */
+@media (prefers-reduced-motion) {
+  .animate-float,
+  .animate-gradient,
+  .animate-blink {
+    animation: none;
+  }
+}
+
+/* Subtle pulse animation for AI elements */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(99, 102, 241, 0);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Gradient border animation for AI elements */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.ai-border {
+  position: relative;
+  background-clip: padding-box !important;
+  border: 2px solid transparent !important;
+  z-index: 0;
+}
+
+.ai-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 0.5rem;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--accent), var(--tertiary));
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+.ai-border:hover::before {
+  background-size: 150% 150%;
+  animation-duration: 2s;
+}
+
+/* Add animations for the LessonLoom project image */
+
+/* Animation for slower pulse */
+@keyframes pulse-slower {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-slower {
+  animation: pulse-slower 7s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Animation for subtle pulse */
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(79, 70, 229, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.6);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Animation for growing lines (typing effect) */
+@keyframes line-grow {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+.animate-line-grow {
+  animation: line-grow 1.5s ease-in-out forwards;
+}
+
+.animate-line-grow-delay-1 {
+  animation: line-grow 1.5s ease-in-out 0.5s forwards;
+}
+
+.animate-line-grow-delay-2 {
+  animation: line-grow 1.5s ease-in-out 1s forwards;
+}
+
+.animate-line-grow-delay-3 {
+  animation: line-grow 1.5s ease-in-out 1.5s forwards;
+}
+
+/* Animation for fading in and out elements */
+@keyframes fade-in-out {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-fade-in-out {
+  animation: fade-in-out 3s ease-in-out infinite;
+}
+
+.animate-fade-in-out-delay {
+  animation: fade-in-out 3s ease-in-out 1.5s infinite;
+}
