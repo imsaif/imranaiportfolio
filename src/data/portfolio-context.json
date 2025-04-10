@@ -1,0 +1,153 @@
+{
+  "personal": {
+    "name": "Imran Mohammed",
+    "title": "AI Experience Designer",
+    "summary": "I'm an AI Experience Designer who specializes in creating intuitive, human-centered interfaces for AI-powered products. I focus on making complex AI capabilities accessible and valuable to users through thoughtful design."
+  },
+  
+  "experience": {
+    "years": "5+",
+    "highlights": [
+      "Designed multiple AI-driven user interfaces spanning education, productivity, and data analytics",
+      "Led UX for conversational assistants that maintained 85% user satisfaction",
+      "Collaborated with ML engineers to translate technical capabilities into intuitive user experiences"
+    ],
+    "positions": [
+      {
+        "title": "Senior Product Designer",
+        "company": "AI Innovations",
+        "period": "2020-Present",
+        "responsibilities": [
+          "Lead design for AI-powered education platforms",
+          "Create user research frameworks specific to AI interactions",
+          "Design experiments to validate AI interface effectiveness"
+        ]
+      },
+      {
+        "title": "UX/UI Designer",
+        "company": "TechSolutions Inc",
+        "period": "2018-2020",
+        "responsibilities": [
+          "Designed recommendation systems for content delivery platforms",
+          "Created interfaces for AI-assisted customer service tools",
+          "Conducted usability testing for machine learning features"
+        ]
+      }
+    ]
+  },
+  
+  "skills": {
+    "design": [
+      "UX/UI Design",
+      "Interaction Design",
+      "Visual Design",
+      "Information Architecture",
+      "Wireframing & Prototyping",
+      "User Testing & Research"
+    ],
+    "tools": [
+      "Figma",
+      "Adobe Creative Suite",
+      "Sketch",
+      "Framer",
+      "Webflow",
+      "Principle"
+    ],
+    "technical": [
+      "Design Systems",
+      "Frontend Development (HTML/CSS/JS)",
+      "React",
+      "Basic ML Concepts",
+      "Data Visualization",
+      "Accessibility Standards"
+    ],
+    "methodologies": [
+      "Human-Centered Design",
+      "Design Thinking",
+      "Agile/Scrum",
+      "Rapid Prototyping"
+    ]
+  },
+  
+  "projects": [
+    {
+      "name": "LessonLoom",
+      "description": "AI-powered education platform that personalizes learning experiences based on student progress and learning style",
+      "role": "Lead Designer",
+      "challenges": [
+        "Creating interfaces that adapt to learning progress without overwhelming students",
+        "Designing transparent AI recommendations that teachers could trust and modify",
+        "Balancing automation with appropriate teacher control"
+      ],
+      "outcomes": [
+        "Increased student engagement by 35%",
+        "Reduced lesson planning time by 40%",
+        "Improved learning outcomes for 80% of students"
+      ]
+    },
+    {
+      "name": "Scheduler",
+      "description": "Intelligent scheduling assistant that optimizes meeting times across teams and time zones",
+      "role": "UX Designer",
+      "challenges": [
+        "Creating interfaces that explain AI scheduling decisions",
+        "Balancing automation with user preferences and priorities",
+        "Designing for multi-user scenarios with conflicting constraints"
+      ],
+      "outcomes": [
+        "Reduced meeting scheduling time by 60%",
+        "Improved meeting attendance rates by 25%",
+        "Achieved 92% user satisfaction rating"
+      ]
+    },
+    {
+      "name": "Insight Analytics",
+      "description": "Data visualization tool that makes complex AI insights accessible to non-technical users",
+      "role": "Senior Designer",
+      "challenges": [
+        "Translating complex statistical analyses into intuitive visualizations",
+        "Creating progressive disclosure of AI methodologies",
+        "Designing interfaces that build trust in automated insights"
+      ],
+      "outcomes": [
+        "Increased data-driven decision making by 45%",
+        "Reduced time-to-insight by 70%",
+        "Expanded analytics adoption to non-technical teams"
+      ]
+    }
+  ],
+  
+  "design_philosophy": {
+    "principles": [
+      {
+        "name": "Transparency",
+        "description": "Making AI decisions understandable to users through clear explanations and visual cues"
+      },
+      {
+        "name": "Appropriate Control",
+        "description": "Balancing automation with user agency, allowing intervention when needed"
+      },
+      {
+        "name": "Continuous Learning",
+        "description": "Designing systems that improve with usage and feedback, becoming more personalized over time"
+      },
+      {
+        "name": "Ethical Considerations",
+        "description": "Building responsible AI systems that respect privacy and avoid bias"
+      }
+    ],
+    "approach": "I believe AI should augment human capabilities, not replace them. My design approach focuses on creating experiences where AI works alongside users, enhancing their abilities while respecting their autonomy and privacy.",
+    "differentiator": "What makes my approach unique is my focus on the intersection of human needs and AI capabilities. I design experiences that help users understand and trust AI systems, while ensuring the AI adapts to user preferences over time rather than forcing users to adapt to rigid technological constraints."
+  },
+  
+  "education": {
+    "degree": "Master's in Interaction Design",
+    "institution": "Design Institute",
+    "year": "2018",
+    "certifications": [
+      "AI Product Design (Stanford Online)",
+      "Human-Computer Interaction Specialization (Coursera)",
+      "Data Visualization with D3.js (Udacity)"
+    ]
+  }
+} 
