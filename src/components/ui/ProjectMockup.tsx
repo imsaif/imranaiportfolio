@@ -8,11 +8,8 @@ export const ProjectMockup = ({ project }: ProjectMockupProps) => {
   if (project.slug === 'lessonloom') {
     return (
       <div className="relative aspect-video bg-gradient-to-br from-white to-indigo-100 rounded-lg overflow-hidden shadow-lg">
-        {/* Add an animated gradient overlay for better visibility */}
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 pointer-events-none z-10 bg-[length:200%_200%]"
-          style={{ animation: 'gradientFlow 2s ease infinite' }}
-        ></div>
+        {/* Simple static overlay instead of animated gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/5 pointer-events-none z-10"></div>
 
         {/* Dashboard-style mockup */}
         <div className="absolute inset-0 p-4">
@@ -70,11 +67,8 @@ export const ProjectMockup = ({ project }: ProjectMockupProps) => {
   if (project.slug === 'scheduler') {
     return (
       <div className="relative aspect-video bg-gradient-to-br from-white to-blue-100 rounded-lg overflow-hidden shadow-lg">
-        {/* Add an animated gradient overlay for better visibility */}
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 pointer-events-none z-10 bg-[length:200%_200%]"
-          style={{ animation: 'gradientFlow 2s ease infinite' }}
-        ></div>
+        {/* Simple static overlay instead of animated gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/5 pointer-events-none z-10"></div>
 
         {/* Calendar-style mockup */}
         <div className="absolute inset-0 p-4">
@@ -90,7 +84,7 @@ export const ProjectMockup = ({ project }: ProjectMockupProps) => {
           {/* Calendar Grid */}
           <div className="grid grid-cols-7 gap-2 h-[calc(100%-4rem)] bg-white/90 backdrop-blur-sm rounded-lg p-2 shadow-sm">
             {Array.from({ length: 35 }).map((_, i) => (
-              <div key={i} className="relative bg-white/70 rounded p-1 hover:bg-blue-50/90 transition-colors shadow-sm">
+              <div key={i} className="relative bg-white/70 rounded p-1 shadow-sm">
                 <div className="absolute top-1 left-1 w-4 h-4 text-xs flex items-center justify-center text-gray-600">
                   {i + 1}
                 </div>
