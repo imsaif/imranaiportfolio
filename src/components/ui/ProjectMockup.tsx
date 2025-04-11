@@ -6,10 +6,14 @@ interface ProjectMockupProps {
 
 export const ProjectMockup = ({ project }: ProjectMockupProps) => {
   if (project.slug === 'lessonloom') {
+    // Removed animation variants
+
     return (
+      // Outer container with original gradient and relative positioning
       <div className="relative aspect-video bg-gradient-to-br from-white to-indigo-100 rounded-lg overflow-hidden shadow-lg">
-        {/* Simple static overlay instead of animated gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/5 pointer-events-none z-10"></div>
+        {/* === START: Restored Static Mockup === */}
+        {/* Simple static overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/5 pointer-events-none z-0"></div>
 
         {/* Dashboard-style mockup */}
         <div className="absolute inset-0 p-4">
@@ -60,6 +64,9 @@ export const ProjectMockup = ({ project }: ProjectMockupProps) => {
             </div>
           </div>
         </div>
+        {/* === END: Restored Static Mockup === */}
+
+        {/* Removed Animation Overlay Layer */}
       </div>
     );
   }

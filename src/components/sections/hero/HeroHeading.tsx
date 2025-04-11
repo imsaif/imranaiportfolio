@@ -11,21 +11,6 @@ interface HeroHeadingProps {
   aiTextOptions: string[];
 }
 
-const CURSOR_BLINK_KEYFRAMES = `
-  @keyframes cursorBlink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-`;
-
-const GRADIENT_FLOW_KEYFRAMES = `
-  @keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-`;
-
 const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
   const gradientTextRef = useRef<HTMLSpanElement>(null);
   const [isMounted, setIsMounted] = useState(false);
@@ -72,10 +57,6 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
 
   return (
     <>
-      <style jsx global>{`
-        ${CURSOR_BLINK_KEYFRAMES}
-        ${GRADIENT_FLOW_KEYFRAMES}
-      `}</style>
       <motion.div
         key="heading-content"
         initial={{ opacity: 0 }}
@@ -87,22 +68,16 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
         ref={elementRef}
       >
         <h1
-          className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight tracking-tight transition-all duration-700 ${
+          className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 tracking-tight transition-all duration-700 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
           <div className="block mb-1">
             <span>Creating </span>
             <span
-              className="inline-block"
+              className="inline-block min-w-[270px] min-h-[48px] md:min-w-[320px] md:min-h-[58px]"
               style={{
                 display: 'inline-block',
-                minWidth: '270px',
-                minHeight: '48px',
-                '@media (min-width: 768px)': {
-                  minWidth: '320px',
-                  minHeight: '58px',
-                },
               }}
             >
               <span
@@ -116,7 +91,6 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
                   display: 'inline-block',
                   position: 'relative',
                   animation: 'gradientFlow 4s ease infinite',
-                  lineHeight: '1.2',
                 }}
               >
                 {currentText}
@@ -132,7 +106,7 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
                       backgroundColor: 'var(--accent)',
                       display: 'inline-block',
                       opacity: 0.9,
-                      animation: 'cursorBlink 0.7s step-end infinite',
+                      animation: 'blink 0.7s step-end infinite',
                     }}
                   />
                 )}

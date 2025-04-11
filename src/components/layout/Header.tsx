@@ -7,7 +7,10 @@ import { useChatToggle } from '../../context/ChatToggleProvider';
 import { NavItem } from '../../types';
 import AnimatedLogo from '../AnimatedLogo';
 
-const navItems: NavItem[] = [{ label: 'Work', href: '#work' }];
+const navItems: NavItem[] = [
+  { label: 'Work', href: '/#work' },
+  { label: 'Resume', href: '/resume' },
+];
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,16 +27,26 @@ const Header = () => {
     }
   };
 
-  const handleWorkClick = (e: React.MouseEvent) => {
+  const handleNavLinkClick = (e: React.MouseEvent, href: string) => {
+    const currentPath = window.location.pathname;
+    const isWorkLink = href === '/#work';
+    const isOnHomePage = currentPath === '/';
+
     if (isChatOpen) {
       e.preventDefault();
       toggleChat();
       setTimeout(() => {
-        const workSection = document.getElementById('work');
-        if (workSection) {
-          workSection.scrollIntoView({ behavior: 'smooth' });
+        if (isWorkLink && isOnHomePage) {
+          document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.href = href;
         }
       }, 300);
+    } else {
+      if (isWorkLink && isOnHomePage) {
+        e.preventDefault();
+        document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -99,7 +112,7 @@ const Header = () => {
                 <Link
                   href={item.href}
                   className="link-effect text-foreground transition-all duration-300 hover:bg-gradient-to-r hover:from-accent hover:via-tertiary hover:to-accent hover:bg-[length:200%_auto] hover:bg-clip-text hover:text-transparent relative py-2"
-                  onClick={handleWorkClick}
+                  onClick={e => handleNavLinkClick(e, item.href)}
                 >
                   {item.label}
                 </Link>
@@ -123,7 +136,7 @@ const Header = () => {
                     className="block py-3 px-4 text-foreground hover:bg-subtle-bg rounded-md transition-all duration-300 hover:text-accent"
                     onClick={e => {
                       setMobileMenuOpen(false);
-                      if (isChatOpen) handleWorkClick(e);
+                      handleNavLinkClick(e, item.href);
                     }}
                   >
                     {item.label}

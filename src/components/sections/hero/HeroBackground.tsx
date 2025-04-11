@@ -121,38 +121,11 @@ const HeroBackground = () => {
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Grid lines - only draw on high-power devices
-      if (!isLowPowerDevice) {
-        drawGrid(ctx, canvas.width, canvas.height);
-      }
-
       // Draw the main wave patterns (multiple layers)
       drawWaves(ctx, canvas.width, canvas.height, time, config);
 
       // Continue animation loop
       frameRef.current = requestAnimationFrame(draw);
-    };
-
-    // Draw subtle grid background
-    const drawGrid = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
-      const gridSize = 40;
-      ctx.strokeStyle = 'rgba(199, 210, 254, 0.2)'; // --accent-light with low opacity
-      ctx.lineWidth = 0.5;
-
-      // Draw grid with fewer lines
-      for (let x = 0; x <= width; x += gridSize * 2) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-
-      for (let y = 0; y <= height; y += gridSize * 2) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
-      }
     };
 
     // Draw complex wave patterns
