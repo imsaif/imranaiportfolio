@@ -150,18 +150,24 @@ Observing the User Experience: A Practitioner's Guide to User Research aims to b
     ],
     recommendations: [
       {
+        author: 'Kasia Rzezniczak',
+        title: 'Product Leader | Tech for Good',
+        date: 'April 13, 2025',
+        context: 'Kasia managed Imran directly',
+        text: `I had the pleasure of working with Imran for over two years at NewGlobe, where he was a key member of my team. Imran is an incredibly talented and versatile experience designer — someone who consistently delivers both strategic value and thoughtful, user-first design.
+
+He led the redesign of several core applications, transforming them from outdated legacy tools into intuitive, beautifully crafted products that put users at the center. What sets Imran apart is not just his creative vision, but his ability to balance user needs with business goals — always mindful, always intentional.
+
+Beyond his design work, Imran contributes immense value to the wider organisation. He shares best practices generously, mentors colleagues with empathy, and elevates team culture through his insight and initiative.
+
+He's one of those rare individuals who is both a deep thinker and a reliable doer — a consistent force for innovation, quality, and integrity. I would wholeheartedly recommend Imran to any organisation looking for a smart, skilled, and genuinely collaborative design leader.`,
+      },
+      {
         author: 'Soorya Ramesh',
         title: 'Azure AI, Sr PM @ Microsoft',
         date: 'August 19, 2018',
         context: 'Soorya worked with Imran on the same team',
         text: `Working with Imran Saif has been a pleasure. He comes up with creative and innovative designs that give unprecedented clarity to the product. Imran Saif's work ethic combined with his creativity and attention to detail lead to great user experiences. He is a great team player, he even gave us a lot of insight on UX and the theory behind it. Any team would be lucky to have him drive their product's UX.`,
-      },
-      {
-        author: 'Vignesh G',
-        title: 'Senior BI Analyst at EXL pvt ltd',
-        date: 'August 14, 2018',
-        context: 'Vignesh worked with Imran on the same team',
-        text: `I had the opportunity to work with Imran Saif in the same team. His questioning ability is great, he infact gets to the root of problems to identify what is best for the user. He has been a great resource for me to learn about user experience. Great team member.`,
       },
       {
         author: 'Naveenraj Rajasekaran',

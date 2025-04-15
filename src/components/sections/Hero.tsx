@@ -95,19 +95,19 @@ const Hero = () => {
 
   return (
     <section
-      className="pt-28 pb-24 md:pt-36 md:pb-32 overflow-hidden relative bg-background"
+      className="pt-16 xs:pt-20 sm:pt-28 pb-16 xs:pb-20 sm:pb-24 md:pt-36 md:pb-32 overflow-hidden relative bg-background"
       style={{ position: 'relative', overflowX: 'hidden' }}
     >
       {/* Add the wavy background */}
       <HeroBackground />
 
-      <div className="container mx-auto px-6 md:px-8 relative z-10">
+      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8 relative z-10">
         <div className="max-w-4xl">
           {/* Always show the hero content */}
           <div>
             {!isChatOpen && (
               <span
-                className={`inline-block mb-4 md:mb-6 text-lg font-medium transition-all duration-700 ease-out ${
+                className={`inline-block mb-3 xs:mb-4 md:mb-6 text-base xs:text-lg font-medium transition-all duration-700 ease-out ${
                   isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                 }`}
               >
@@ -117,7 +117,7 @@ const Hero = () => {
 
             {/* Animation container with fixed height to prevent layout shifts */}
             <div
-              className={`relative ${isChatOpen ? 'h-[400px] md:h-[450px]' : 'h-[340px] md:h-[300px]'} w-full overflow-hidden transition-all duration-300`}
+              className={`relative ${isChatOpen ? 'h-[350px] xs:h-[380px] md:h-[450px]' : 'h-[300px] xs:h-[320px] md:h-[300px]'} w-full overflow-hidden transition-all duration-300`}
             >
               <AnimatePresence mode="wait">
                 {!isChatOpen ? (

@@ -8,6 +8,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        'xs': '320px',
+      },
       colors: {
         // Brand colors
         accent: {

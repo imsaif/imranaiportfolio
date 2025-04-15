@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="logoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" /> <!-- Brighter Purple (like --accent) -->
+    <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" /> <!-- Brighter Blue (like --tertiary) -->
+  </linearGradient>
+</defs>
+
+<!-- Vertical Bar 'I' -->
+<rect x="6" y="4" width="4" height="24" rx="2" fill="url(#logoGradient)" />
+
+<!-- Slanted Bars 'M' -->
+<g transform="skewX(-12)">
+  <rect x="16.5" y="4" width="3.5" height="24" rx="1.75" fill="url(#logoGradient)" />
+  <rect x="21" y="4" width="3.5" height="24" rx="1.75" fill="url(#logoGradient)" />
+  <rect x="25.5" y="4" width="3.5" height="24" rx="1.75" fill="url(#logoGradient)" />
+</g>
+</svg> 

@@ -51,22 +51,22 @@ const Process = () => {
       <div className="absolute top-40 right-0 w-64 h-64 rounded-full bg-accent/5 -z-10"></div>
       <div className="absolute bottom-20 left-0 w-96 h-96 rounded-full bg-secondary/5 -z-10"></div>
 
-      <div className="container mx-auto px-6 md:px-8">
+      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
         <SectionTitle
           title="AI Design Methodology"
           subtitle="My specialized approach to designing AI experiences balances technical possibilities with human needs, ensuring AI solutions that are both powerful and intuitive."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xs:gap-12 mt-16 xs:mt-24">
           {frameworks.map((framework, index) => (
             <div key={index} className="relative group">
-              <div className="absolute -top-16 opacity-10 text-6xl md:text-8xl font-bold text-accent">
+              <div className="absolute -top-12 xs:-top-16 opacity-10 text-5xl xs:text-6xl md:text-8xl font-bold text-accent">
                 {framework.number}
               </div>
 
-              <div className="border-t-2 border-accent pt-8 transition-all group-hover:translate-y-[-4px]">
-                <h3 className="text-xl font-bold mb-4">{framework.title}</h3>
-                <p className="text-muted leading-relaxed">{framework.description}</p>
+              <div className="border-t-2 border-accent pt-6 xs:pt-8 transition-all group-hover:translate-y-[-4px]">
+                <h3 className="text-lg xs:text-xl font-bold mb-3 xs:mb-4">{framework.title}</h3>
+                <p className="text-sm xs:text-base text-muted leading-relaxed">{framework.description}</p>
               </div>
 
               {/* Only add this line if it's not the last item */}

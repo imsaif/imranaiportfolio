@@ -48,7 +48,7 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
         transition={{ duration: 0.4, ease: 'easeInOut' }}
         className="absolute top-0 left-0 w-full h-full flex flex-col justify-center"
       >
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight tracking-tight">
+        <h1 className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 leading-tight tracking-tight">
           <span className="inline">Creating experiences with purpose and precision.</span>
         </h1>
       </motion.div>
@@ -68,14 +68,14 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
         ref={elementRef}
       >
         <h1
-          className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 tracking-tight transition-all duration-700 ${
+          className={`text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 tracking-tight transition-all duration-700 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
           <div className="block" style={{ marginBottom: '0px' }}>
             <span>Creating </span>
             <span
-              className="inline-block min-w-[270px] min-h-[60px] md:min-w-[320px] md:min-h-[70px]"
+              className="inline-block min-w-[220px] xs:min-w-[270px] min-h-[50px] xs:min-h-[60px] md:min-w-[320px] md:min-h-[70px]"
               style={{
                 display: 'inline-block',
               }}
@@ -118,7 +118,7 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
         </h1>
 
         <p
-          className={`text-lg md:text-xl text-muted mb-8 max-w-2xl leading-relaxed transition-all duration-700 delay-300 ${
+          className={`text-base xs:text-lg md:text-xl text-muted mb-6 xs:mb-8 max-w-2xl leading-relaxed transition-all duration-700 delay-300 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
