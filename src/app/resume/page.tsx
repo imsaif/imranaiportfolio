@@ -151,7 +151,7 @@ Observing the User Experience: A Practitioner's Guide to User Research aims to b
     recommendations: [
       {
         author: 'Kasia Rzezniczak',
-        title: 'Product Leader | Tech for Good',
+        title: 'Senior Director of Product Management | Product Leader | Tech for Good',
         date: 'April 13, 2025',
         context: 'Kasia managed Imran directly',
         text: `I had the pleasure of working with Imran for over two years at NewGlobe, where he was a key member of my team. Imran is an incredibly talented and versatile experience designer — someone who consistently delivers both strategic value and thoughtful, user-first design.
@@ -353,17 +353,21 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
                <SectionTitle title="Recommendations" icon={<ChatAlt2Icon />} />
                <div className="space-y-8">
                  {resumeData.recommendations.map((rec, index) => (
-                   <blockquote key={index} className="relative pl-10 pr-4 py-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg shadow-sm border-l-4 border-blue-500 dark:border-blue-400 transition duration-200 ease-in-out hover:shadow-md">
+                   <blockquote key={index} className="relative pl-10 pr-4 py-6 bg-gray-50 dark:bg-gray-800/50 rounded-lg shadow-sm border-l-4 border-blue-500 dark:border-blue-400 transition duration-200 ease-in-out hover:shadow-md">
                      <span className="absolute left-2 top-1 text-6xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent opacity-50">
                        "
                      </span>
-                     <p className="mb-3 text-gray-800 dark:text-gray-200 italic z-10 relative">
+                     <p className="mb-5 text-gray-800 dark:text-gray-200 italic z-10 relative leading-relaxed">
                         {rec.text.replace(/^"|"$/g, '')} 
                      </p>
-                     <footer className="text-sm not-italic text-gray-600 dark:text-gray-400 z-10 relative">
-                       <span className="font-semibold text-gray-700 dark:text-gray-300">{rec.author}</span>, {rec.title}
-                       <br/>
-                       <span>{rec.date}, {rec.context}</span>
+                     <footer className="not-italic z-10 relative flex flex-col sm:flex-row sm:items-center gap-2 justify-between">
+                       <div>
+                         <div className="font-bold text-lg text-gray-800 dark:text-gray-100">{rec.author}</div>
+                         <div className="text-sm font-medium text-blue-600 dark:text-blue-400">{rec.title}</div>
+                       </div>
+                       <div className="text-xs bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
+                         {rec.date} · {rec.context}
+                       </div>
                      </footer>
                    </blockquote>
                  ))}

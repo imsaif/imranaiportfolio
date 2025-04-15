@@ -16,7 +16,7 @@ export default function CaseStudyFooter() {
 
   // Set the other case study link and title
   const otherCaseStudyLink = isSchedulerCaseStudy ? '/casestudy/lessonloom' : '/casestudy/scheduler';
-  const otherCaseStudyTitle = isSchedulerCaseStudy ? 'LessonLoom Case Study' : 'AIP Case Study';
+  const otherCaseStudyTitle = isSchedulerCaseStudy ? 'LessonLoom Case Study' : 'EduScheduler Case Study';
 
   return (
     <motion.div

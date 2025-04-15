@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 /**
- * AIPTimetableVisualization - A detailed visualization of the educational scheduling system
+ * EduSchedulerTimetableVisualization - A detailed visualization of the educational scheduling system
  * This component is currently not in use but saved for later implementation
  */
-export default function AIPTimetableVisualization() {
+export default function EduSchedulerTimetableVisualization() {
   return (
     <motion.div
       className="mt-8 aspect-video bg-white rounded-lg overflow-hidden shadow-md relative"

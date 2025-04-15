@@ -79,7 +79,7 @@ export async function POST(request: Request) {
     // Prepare project links
     const projectLinks = [
       { name: 'LessonLoom', url: '/projects/lessonloom' },
-      { name: 'Scheduler (Automated Instructional Planner)', url: '/casestudy/scheduler' }
+      { name: 'EduScheduler: Intelligent Academic Planning System', url: '/casestudy/scheduler' }
     ];
 
     // Create system message content
@@ -93,7 +93,7 @@ export async function POST(request: Request) {
     Project links to share:
     ${JSON.stringify(projectLinks)}
     
-    Note: Imran has two detailed case studies available: "LessonLoom" and "Scheduler (Automated Instructional Planner)".
+    Note: Imran has two detailed case studies available: "LessonLoom" and "EduScheduler: Intelligent Academic Planning System".
     
     Your task is to be helpful, friendly, and direct in answering questions about Imran's work and experience.
     Keep responses concise but informative, sharing relevant details about his projects and expertise.

@@ -135,7 +135,7 @@ export async function POST(request: Request) {
           url: `/projects/${project.slug}`,
         })),
       // Add scheduler case study (which is not in the projects array)
-      { name: 'Scheduler', url: '/casestudy/scheduler' },
+      { name: 'EduScheduler', url: '/casestudy/scheduler' },
     ];
 
     // Create system message content
@@ -149,7 +149,7 @@ export async function POST(request: Request) {
     Project links to share:
     ${JSON.stringify(projectLinks)}
     
-    Note: Imran has two detailed case studies available: "LessonLoom" and "Scheduler (Automated Instructional Planner)".
+    Note: Imran has two detailed case studies available: "LessonLoom" and "EduScheduler: Intelligent Academic Planning System".
     
     Technical Implementation Details:
     - Built with Next.js 13.5 using the App Router and TypeScript

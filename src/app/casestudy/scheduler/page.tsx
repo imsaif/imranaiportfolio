@@ -35,7 +35,7 @@ export default function Page() {
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <CaseStudyHeader level="h1">
-          Automated Instructional Planning: Transforming Educational Scheduling
+          EduScheduler: Intelligent Academic Planning System - Transforming Educational Scheduling
         </CaseStudyHeader>
 
         <motion.div
@@ -45,7 +45,7 @@ export default function Page() {
           className="bg-white p-8 rounded-xl border-l-4 border-blue-400 shadow-sm mb-16"
         >
           <p className="text-lg text-gray-700">
-            The Automated Instructional Planning (AIP) project was developed to solve a critical challenge facing
+            The EduScheduler: Intelligent Academic Planning System (EduScheduler) project was developed to solve a critical challenge facing
             NewGlobe Education: efficiently generating optimized teaching schedules for hundreds of schools across
             multiple global education programs.
           </p>
@@ -2556,7 +2556,7 @@ export default function Page() {
             className="bg-white p-8 rounded-xl shadow-md mb-12"
           >
             <p className="text-gray-800 mb-8">
-              The AIP project provided valuable insights that have informed my approach to complex system design:
+              The EduScheduler project provided valuable insights that have informed my approach to complex system design:
             </p>
 
             {/* Key Challenges */}
@@ -2773,7 +2773,7 @@ export default function Page() {
             className="bg-white p-8 rounded-xl shadow-md mb-12"
           >
             <p className="text-gray-800 mb-8">
-              The Academic Implementation Planner represents a successful transformation of a complex, manual process
+              The EduScheduler: Intelligent Academic Planning System represents a successful transformation of a complex, manual process
               into an intuitive, efficient system that empowers educational administrators to create optimal schedules
               while respecting diverse requirements and constraints.
             </p>
@@ -2941,7 +2941,7 @@ export default function Page() {
               <h3 className="text-blue-600 font-bold text-xl mb-6">Future Directions</h3>
 
               <p className="text-gray-800 mb-6">
-                The success of the AIP system has opened possibilities for expanded functionality in future iterations.
+                The success of the EduScheduler system has opened possibilities for expanded functionality in future iterations.
                 These components are designed to work together as part of a comprehensive learning enablement platform,
                 with the Instructional Planner being just one piece of the larger ecosystem:
               </p>
@@ -3148,7 +3148,7 @@ export default function Page() {
                   <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                 </svg>
                 <blockquote className="text-xl italic text-gray-700 mb-4">
-                  "The AIP system has revolutionized how we approach academic scheduling, saving countless hours while
+                  "The EduScheduler system has revolutionized how we approach academic scheduling, saving countless hours while
                   producing better results. It's become an essential tool in our educational planning process."
                 </blockquote>
                 <div className="flex items-center">

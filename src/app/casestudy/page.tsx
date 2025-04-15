@@ -36,7 +36,7 @@ export default function CaseStudyIndex() {
             backgroundColor: '#f3f4f6',
             borderRadius: '4px'
           }}>
-            Educational Scheduler Project
+            EduScheduler: Intelligent Academic Planning System
           </Link>
         </li>
         <li>
