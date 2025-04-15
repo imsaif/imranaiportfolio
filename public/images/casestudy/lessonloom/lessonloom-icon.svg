@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- Define Gradients -->
+  <defs>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f3ff" />
+      <stop offset="100%" style="stop-color:#fdf2f8" />
+    </linearGradient>
+    
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1" />
+      <stop offset="100%" style="stop-color:#ec4899" />
+    </linearGradient>
+    
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#818cf8" />
+      <stop offset="100%" style="stop-color:#f472b6" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="300" fill="url(#backgroundGradient)" rx="30" ry="30"/>
+  
+  <!-- Decorative Circles -->
+  <circle cx="50" cy="50" r="100" fill="#6366f1" opacity="0.05"/>
+  <circle cx="250" cy="250" r="100" fill="#ec4899" opacity="0.05"/>
+  
+  <!-- Book/Document Base -->
+  <rect x="75" y="75" width="150" height="170" rx="8" ry="8" fill="#ffffff" stroke="url(#headerGradient)" stroke-width="4"/>
+  
+  <!-- Purple Header -->
+  <rect x="75" y="75" width="150" height="40" rx="8" ry="8" fill="url(#headerGradient)"/>
+  <circle cx="205" cy="95" r="5" fill="#ffffff"/>
+  <circle cx="190" cy="95" r="5" fill="#ffffff"/>
+  
+  <!-- Document Lines -->
+  <line x1="95" y1="135" x2="205" y2="135" stroke="#e2e8f0" stroke-width="3"/>
+  <line x1="95" y1="155" x2="170" y2="155" stroke="#e2e8f0" stroke-width="3"/>
+  <line x1="95" y1="175" x2="205" y2="175" stroke="#e2e8f0" stroke-width="3"/>
+  <line x1="95" y1="195" x2="150" y2="195" stroke="#e2e8f0" stroke-width="3"/>
+  <line x1="95" y1="215" x2="180" y2="215" stroke="#e2e8f0" stroke-width="3"/>
+  
+  <!-- Learning Objectives Bullet Points -->
+  <circle cx="105" cy="165" r="4" fill="#6366f1"/>
+  <circle cx="105" cy="185" r="4" fill="#818cf8"/>
+  <circle cx="105" cy="205" r="4" fill="#ec4899"/>
+  
+  <!-- AI Generation Symbol -->
+  <path d="M225,130 C240,115 240,95 225,80 C210,65 190,65 175,80 L200,105 Z" fill="url(#accentGradient)" opacity="0.8"/>
+  <circle cx="200" cy="105" r="10" fill="#ffffff" stroke="#6366f1" stroke-width="2"/>
+</svg> 

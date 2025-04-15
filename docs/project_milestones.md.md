@@ -38,10 +38,11 @@ This portfolio site is built with Next.js and React, focusing on showcasing prof
 - [x] Build Contact section with form functionality
 - [x] Design and implement navigation system
 - [x] Create reusable UI components
+- [x] Add Resume page
 
 ### Phase 3: Case Studies and Advanced Features
-- [ ] Develop detailed case study template
-- [ ] Implement individual case study pages
+- [x] Develop detailed case study template
+- [x] Implement individual case study pages (LessonLoom, Scheduler completed)
 - [ ] Create interactive project showcase components
 - [x] Add animations and transitions using Framer Motion
 - [ ] Implement dark/light mode toggle
@@ -77,9 +78,10 @@ This portfolio site is built with Next.js and React, focusing on showcasing prof
 - **Responsive Layout**: Ensure site works on all devices from mobile to desktop
 - **Animated Components**: Subtle, purposeful animations to enhance UX
 - **Project Showcase**: Filterable gallery of projects with previews
-- **Case Studies**: Detailed analysis of selected projects
+- **Case Studies**: Detailed analysis of selected projects (LessonLoom, Scheduler completed)
 - **Contact Form**: Easy way for visitors to reach out
 - **About Section**: Professional background and skills
+- **Resume Page**: Dedicated page for resume/CV
 - **Blog/Articles**: Optional section for sharing insights (future enhancement)
 
 ### Technical Features

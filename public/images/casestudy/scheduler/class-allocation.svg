@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f0faff"/>
+  
+  <!-- Main Container -->
+  <rect x="80" y="60" width="640" height="480" rx="12" ry="12" fill="#ffffff" stroke="#dddddd" stroke-width="2"/>
+  
+  <!-- Header -->
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0284c7" />
+      <stop offset="100%" style="stop-color:#38bdf8" />
+    </linearGradient>
+  </defs>
+  <rect x="80" y="60" width="640" height="60" rx="12" ry="12" fill="url(#headerGradient)"/>
+  <text x="130" y="100" font-family="Arial" font-size="20" fill="#ffffff">Class Allocation Dashboard</text>
+  
+  <!-- User menu -->
+  <circle cx="690" cy="90" r="6" fill="#ffffff"/>
+  <circle cx="670" cy="90" r="6" fill="#ffffff"/>
+  <circle cx="650" cy="90" r="6" fill="#ffffff"/>
+  
+  <!-- Navigation Tabs -->
+  <rect x="100" y="140" width="120" height="40" rx="6" ry="6" fill="url(#headerGradient)"/>
+  <text x="125" y="165" font-family="Arial" font-size="14" fill="#ffffff">Grade 3</text>
+  
+  <rect x="230" y="140" width="120" height="40" rx="6" ry="6" fill="#f8fafc"/>
+  <text x="255" y="165" font-family="Arial" font-size="14" fill="#64748b">Grade 4</text>
+  
+  <rect x="360" y="140" width="120" height="40" rx="6" ry="6" fill="#f8fafc"/>
+  <text x="385" y="165" font-family="Arial" font-size="14" fill="#64748b">Grade 5</text>
+  
+  <rect x="490" y="140" width="120" height="40" rx="6" ry="6" fill="#f8fafc"/>
+  <text x="515" y="165" font-family="Arial" font-size="14" fill="#64748b">Grade 6</text>
+  
+  <!-- Main Content - Class Grid -->
+  <rect x="100" y="200" width="600" height="320" rx="6" ry="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Header Row -->
+  <rect x="100" y="200" width="600" height="40" rx="6" ry="6" fill="#f0f9ff"/>
+  <text x="130" y="225" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">Class</text>
+  <text x="250" y="225" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">Teacher</text>
+  <text x="400" y="225" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">Subject</text>
+  <text x="520" y="225" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">Schedule</text>
+  <text x="650" y="225" font-family="Arial" font-size="14" font-weight="bold" fill="#334155">Status</text>
+  
+  <!-- Row 1 -->
+  <rect x="100" y="240" width="600" height="50" rx="0" ry="0" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="130" y="270" font-family="Arial" font-size="14" fill="#334155">3A</text>
+  <text x="250" y="270" font-family="Arial" font-size="14" fill="#334155">Mr. Ochieng</text>
+  <text x="400" y="270" font-family="Arial" font-size="14" fill="#334155">Mathematics</text>
+  <text x="520" y="262" font-family="Arial" font-size="12" fill="#64748b">Mon, Wed, Fri</text>
+  <text x="520" y="278" font-family="Arial" font-size="12" fill="#64748b">8:00 - 9:30</text>
+  <rect x="650" y="260" width="40" height="20" rx="10" ry="10" fill="#dcfce7"/>
+  <text x="657" y="274" font-family="Arial" font-size="12" fill="#166534">Done</text>
+  
+  <!-- Row 2 -->
+  <rect x="100" y="290" width="600" height="50" rx="0" ry="0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="130" y="320" font-family="Arial" font-size="14" fill="#334155">3B</text>
+  <text x="250" y="320" font-family="Arial" font-size="14" fill="#334155">Ms. Akinyi</text>
+  <text x="400" y="320" font-family="Arial" font-size="14" fill="#334155">English</text>
+  <text x="520" y="312" font-family="Arial" font-size="12" fill="#64748b">Tue, Thu</text>
+  <text x="520" y="328" font-family="Arial" font-size="12" fill="#64748b">10:00 - 11:30</text>
+  <rect x="650" y="310" width="40" height="20" rx="10" ry="10" fill="#dcfce7"/>
+  <text x="657" y="324" font-family="Arial" font-size="12" fill="#166534">Done</text>
+  
+  <!-- Row 3 -->
+  <rect x="100" y="340" width="600" height="50" rx="0" ry="0" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="130" y="370" font-family="Arial" font-size="14" fill="#334155">3C</text>
+  <text x="250" y="370" font-family="Arial" font-size="14" fill="#334155">Mr. Kimani</text>
+  <text x="400" y="370" font-family="Arial" font-size="14" fill="#334155">Science</text>
+  <text x="520" y="362" font-family="Arial" font-size="12" fill="#64748b">Mon, Wed</text>
+  <text x="520" y="378" font-family="Arial" font-size="12" fill="#64748b">13:00 - 14:30</text>
+  <rect x="650" y="360" width="65" height="20" rx="10" ry="10" fill="#fef9c3"/>
+  <text x="657" y="374" font-family="Arial" font-size="12" fill="#854d0e">Pending</text>
+  
+  <!-- Row 4 -->
+  <rect x="100" y="390" width="600" height="50" rx="0" ry="0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="130" y="420" font-family="Arial" font-size="14" fill="#334155">3D</text>
+  <text x="250" y="420" font-family="Arial" font-size="14" fill="#334155">Ms. Wanjiku</text>
+  <text x="400" y="420" font-family="Arial" font-size="14" fill="#334155">Social Studies</text>
+  <text x="520" y="412" font-family="Arial" font-size="12" fill="#64748b">Tue, Fri</text>
+  <text x="520" y="428" font-family="Arial" font-size="12" fill="#64748b">14:00 - 15:30</text>
+  <rect x="650" y="410" width="40" height="20" rx="10" ry="10" fill="#fee2e2"/>
+  <text x="655" y="424" font-family="Arial" font-size="12" fill="#991b1b">Issue</text>
+  
+  <!-- Row 5 -->
+  <rect x="100" y="440" width="600" height="50" rx="0" ry="0" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="130" y="470" font-family="Arial" font-size="14" fill="#334155">3E</text>
+  <text x="250" y="470" font-family="Arial" font-size="14" fill="#334155">Mrs. Otieno</text>
+  <text x="400" y="470" font-family="Arial" font-size="14" fill="#334155">Art</text>
+  <text x="520" y="462" font-family="Arial" font-size="12" fill="#64748b">Thu</text>
+  <text x="520" y="478" font-family="Arial" font-size="12" fill="#64748b">9:00 - 10:30</text>
+  <rect x="650" y="460" width="65" height="20" rx="10" ry="10" fill="#fef9c3"/>
+  <text x="657" y="474" font-family="Arial" font-size="12" fill="#854d0e">Pending</text>
+  
+  <!-- Action Buttons -->
+  <rect x="560" y="530" width="140" height="40" rx="20" ry="20" fill="url(#headerGradient)"/>
+  <text x="585" y="555" font-family="Arial" font-size="14" fill="#ffffff">Resolve Issues</text>
+  
+  <rect x="400" y="530" width="140" height="40" rx="20" ry="20" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+  <text x="430" y="555" font-family="Arial" font-size="14" fill="#0284c7">Auto Assign</text>
+  
+  <!-- Summary Stats -->
+  <rect x="100" y="530" width="280" height="40" rx="6" ry="6" fill="#f0f9ff"/>
+  <text x="120" y="555" font-family="Arial" font-size="14" fill="#0284c7">Assigned: 15/20 Classes (75%)</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="400" cy="40" r="100" fill="#0284c7" opacity="0.03"/>
+  <circle cx="400" cy="40" r="80" fill="#0284c7" opacity="0.05"/>
+  <circle cx="400" cy="40" r="60" fill="#0284c7" opacity="0.07"/>
+  <circle cx="400" cy="40" r="40" fill="#0284c7" opacity="0.09"/>
+  
+  <circle cx="90" cy="90" r="4" fill="#ffffff"/>
+  <circle cx="105" cy="90" r="4" fill="#ffffff"/>
+  <circle cx="120" cy="90" r="4" fill="#ffffff"/>
+</svg> 

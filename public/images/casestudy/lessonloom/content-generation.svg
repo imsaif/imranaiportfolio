@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f5f7ff"/>
+  
+  <!-- Main Container -->
+  <rect x="100" y="80" width="600" height="440" rx="15" ry="15" fill="#ffffff" stroke="#ddd" stroke-width="2"/>
+  
+  <!-- Header with Gradient -->
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9333ea" />
+      <stop offset="100%" style="stop-color:#d94f9d" />
+    </linearGradient>
+  </defs>
+  <rect x="100" y="80" width="600" height="60" rx="15" ry="15" fill="url(#headerGradient)"/>
+  <text x="140" y="120" font-family="Arial" font-size="20" fill="#ffffff">AI Content Generator</text>
+  
+  <!-- Control Panel -->
+  <rect x="120" y="160" width="560" height="80" rx="8" ry="8" fill="#f8f9fa" stroke="#eee" stroke-width="1"/>
+  
+  <!-- Topic Input Field -->
+  <text x="140" y="190" font-family="Arial" font-size="14" fill="#333333">Topic:</text>
+  <rect x="200" y="175" width="300" height="30" rx="4" ry="4" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <text x="210" y="195" font-family="Arial" font-size="12" fill="#666666">Photosynthesis in Plants</text>
+  
+  <!-- Generate Button with Gradient -->
+  <rect x="520" y="175" width="140" height="30" rx="15" ry="15" fill="url(#headerGradient)"/>
+  <text x="555" y="195" font-family="Arial" font-size="14" fill="#ffffff">Generate</text>
+  
+  <!-- Settings Controls -->
+  <text x="140" y="225" font-family="Arial" font-size="14" fill="#333333">Grade Level:</text>
+  <rect x="230" y="210" width="100" height="25" rx="4" ry="4" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <text x="245" y="227" font-family="Arial" font-size="12" fill="#666666">Grade 7</text>
+  
+  <text x="350" y="225" font-family="Arial" font-size="14" fill="#333333">Region:</text>
+  <rect x="410" y="210" width="90" height="25" rx="4" ry="4" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <text x="425" y="227" font-family="Arial" font-size="12" fill="#666666">East Africa</text>
+  
+  <text x="520" y="225" font-family="Arial" font-size="14" fill="#333333">Type:</text>
+  <rect x="560" y="210" width="100" height="25" rx="4" ry="4" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <text x="575" y="227" font-family="Arial" font-size="12" fill="#666666">Lesson Plan</text>
+  
+  <!-- AI Generated Content Area -->
+  <rect x="120" y="260" width="560" height="240" rx="8" ry="8" fill="#f8f9fa" stroke="#eee" stroke-width="1"/>
+  
+  <!-- Content Sections -->
+  <rect x="140" y="280" width="520" height="40" rx="4" ry="4" fill="#ffffff" stroke="#9333ea" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="155" y="305" font-family="Arial" font-size="14" font-weight="bold" fill="#9333ea">Curriculum Alignment</text>
+  <text x="340" y="305" font-family="Arial" font-size="12" fill="#666666">Science Standards: SC.7.L.15.2, SC.7.L.17.1</text>
+  
+  <rect x="140" y="330" width="520" height="60" rx="4" ry="4" fill="#ffffff" stroke="#4f69ea" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="155" y="350" font-family="Arial" font-size="14" font-weight="bold" fill="#4f69ea">1. Introduction to Photosynthesis</text>
+  <text x="155" y="370" font-family="Arial" font-size="12" fill="#666666">Photosynthesis is the process by which green plants convert sunlight into energy...</text>
+  <text x="155" y="385" font-family="Arial" font-size="12" fill="#666666">In East Africa, plants like maize and coffee are common examples of photosynthesis...</text>
+  
+  <rect x="140" y="400" width="250" height="80" rx="4" ry="4" fill="#ffffff" stroke="#d94f9d" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="155" y="420" font-family="Arial" font-size="14" font-weight="bold" fill="#d94f9d">2. Key Vocabulary</text>
+  <text x="155" y="440" font-family="Arial" font-size="12" fill="#666666">• Chlorophyll: Green pigment that absorbs light</text>
+  <text x="155" y="460" font-family="Arial" font-size="12" fill="#666666">• Carbon dioxide: Gas used in photosynthesis</text>
+  
+  <rect x="410" y="400" width="250" height="80" rx="4" ry="4" fill="#ffffff" stroke="#d94f9d" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="425" y="420" font-family="Arial" font-size="14" font-weight="bold" fill="#d94f9d">3. Cultural Context</text>
+  <text x="425" y="440" font-family="Arial" font-size="12" fill="#666666">• Local farming practices in East Africa</text>
+  <text x="425" y="460" font-family="Arial" font-size="12" fill="#666666">• Connection to regional agriculture</text>
+  
+  <!-- Adaptation Indicators -->
+  <rect x="140" y="490" width="520" height="20" rx="4" ry="4" fill="#ffffff" stroke="#eee" stroke-width="1"/>
+  <text x="155" y="505" font-family="Arial" font-size="12" fill="#666666">Content adapted for: East African context, Grade 7 reading level</text>
+  
+  <!-- AI Processing Animation Elements -->
+  <circle cx="400" cy="225" r="70" fill="#9333ea" opacity="0.05"/>
+  <circle cx="400" cy="225" r="50" fill="#9333ea" opacity="0.07"/>
+  <circle cx="400" cy="225" r="30" fill="#9333ea" opacity="0.09"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="180" cy="120" r="4" fill="#ffffff"/>
+  <circle cx="200" cy="120" r="4" fill="#ffffff"/>
+  <circle cx="220" cy="120" r="4" fill="#ffffff"/>
+  
+  <path d="M650 380 Q670 400 650 420" stroke="#9333ea" stroke-width="2" fill="none"/>
+  <path d="M670 350 Q690 370 670 390" stroke="#4f69ea" stroke-width="2" fill="none"/>
+  <path d="M660 320 Q680 340 660 360" stroke="#d94f9d" stroke-width="2" fill="none"/>
+</svg> 

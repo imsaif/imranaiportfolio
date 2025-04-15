@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa"/>
+  
+  <!-- Main Application Frame -->
+  <rect x="50" y="50" width="700" height="500" rx="10" ry="10" fill="#ffffff" stroke="#ddd" stroke-width="2"/>
+  
+  <!-- Header with LessonLoom Gradient -->
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9333ea" />
+      <stop offset="100%" style="stop-color:#d94f9d" />
+    </linearGradient>
+  </defs>
+  <rect x="50" y="50" width="700" height="50" rx="10" ry="10" fill="url(#headerGradient)"/>
+  <text x="80" y="82" font-family="Arial" font-size="18" fill="#ffffff">Template Editor</text>
+  
+  <!-- Left Panel - Template Components -->
+  <rect x="50" y="100" width="200" height="450" fill="#f9f0ff"/>
+  <text x="70" y="130" font-family="Arial" font-size="16" fill="#9333ea">Educational Components</text>
+  
+  <!-- Component Items with NewGlobe specific elements -->
+  <rect x="70" y="150" width="160" height="40" rx="5" ry="5" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <rect x="80" y="160" width="20" height="20" fill="#9333ea" opacity="0.7"/>
+  <text x="110" y="175" font-family="Arial" font-size="12" fill="#333">Learning Objective</text>
+  
+  <rect x="70" y="200" width="160" height="40" rx="5" ry="5" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <rect x="80" y="210" width="20" height="20" fill="#9333ea" opacity="0.7"/>
+  <text x="110" y="225" font-family="Arial" font-size="12" fill="#333">Content Block</text>
+  
+  <rect x="70" y="250" width="160" height="40" rx="5" ry="5" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <rect x="80" y="260" width="20" height="20" fill="#9333ea" opacity="0.7"/>
+  <text x="110" y="275" font-family="Arial" font-size="12" fill="#333">Assessment Item</text>
+  
+  <rect x="70" y="300" width="160" height="40" rx="5" ry="5" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <rect x="80" y="310" width="20" height="20" fill="#9333ea" opacity="0.7"/>
+  <text x="110" y="325" font-family="Arial" font-size="12" fill="#333">Visual Aid</text>
+  
+  <rect x="70" y="350" width="160" height="40" rx="5" ry="5" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+  <rect x="80" y="360" width="20" height="20" fill="#9333ea" opacity="0.7"/>
+  <text x="110" y="375" font-family="Arial" font-size="12" fill="#333">Cultural Reference</text>
+  
+  <!-- Main Canvas Area -->
+  <rect x="251" y="100" width="499" height="450" fill="#ffffff"/>
+  
+  <!-- Template Title -->
+  <rect x="280" y="120" width="440" height="50" rx="5" ry="5" fill="#f9f0ff" stroke="#ddd" stroke-width="1"/>
+  <text x="300" y="150" font-family="Arial" font-size="18" font-weight="bold" fill="#9333ea">Science Lesson Template</text>
+  
+  <!-- Content Blocks in Template -->
+  <rect x="280" y="190" width="440" height="80" rx="5" ry="5" fill="#f9f0ff" stroke="#9333ea" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="300" y="215" font-family="Arial" font-size="14" font-weight="bold" fill="#9333ea">Learning Objectives</text>
+  <text x="300" y="240" font-family="Arial" font-size="12" fill="#555">• Students will be able to...</text>
+  <text x="300" y="260" font-family="Arial" font-size="12" fill="#555">• Students will understand...</text>
+  
+  <rect x="280" y="290" width="440" height="100" rx="5" ry="5" fill="#f9f0ff" stroke="#4f69ea" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="300" y="315" font-family="Arial" font-size="14" font-weight="bold" fill="#4f69ea">Main Instructional Content</text>
+  <text x="300" y="340" font-family="Arial" font-size="12" fill="#555">1. Introduction to the concept</text>
+  <text x="300" y="360" font-family="Arial" font-size="12" fill="#555">2. Key vocabulary and definitions</text>
+  <text x="300" y="380" font-family="Arial" font-size="12" fill="#555">3. Step-by-step explanation with examples</text>
+  
+  <rect x="280" y="410" width="210" height="120" rx="5" ry="5" fill="#f9f0ff" stroke="#d94f9d" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="300" y="435" font-family="Arial" font-size="14" font-weight="bold" fill="#d94f9d">Assessment</text>
+  <text x="300" y="460" font-family="Arial" font-size="12" fill="#555">• Multiple choice questions</text>
+  <text x="300" y="480" font-family="Arial" font-size="12" fill="#555">• Short answer response</text>
+  <text x="300" y="500" font-family="Arial" font-size="12" fill="#555">• Group activity</text>
+  
+  <rect x="510" y="410" width="210" height="120" rx="5" ry="5" fill="#f9f0ff" stroke="#d94f9d" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="530" y="435" font-family="Arial" font-size="14" font-weight="bold" fill="#4f69ea">Cultural Adaptation</text>
+  <text x="530" y="460" font-family="Arial" font-size="12" fill="#555">• Regional examples</text>
+  <text x="530" y="480" font-family="Arial" font-size="12" fill="#555">• Local context references</text>
+  <text x="530" y="500" font-family="Arial" font-size="12" fill="#555">• Language adaptations</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="670" cy="75" r="12" fill="#ffffff" opacity="0.5"/>
+  <circle cx="700" cy="75" r="12" fill="#ffffff" opacity="0.5"/>
+  <circle cx="471" cy="290" r="20" fill="#9333ea" opacity="0.1"/>
+  <circle cx="580" cy="470" r="30" fill="#d94f9d" opacity="0.1"/>
+  
+  <!-- Save Button with Gradient -->
+  <rect x="600" y="530" width="120" height="35" rx="17.5" ry="17.5" fill="url(#headerGradient)"/>
+  <text x="635" y="552" font-family="Arial" font-size="14" fill="#ffffff" text-anchor="middle">Save Template</text>
+</svg> 

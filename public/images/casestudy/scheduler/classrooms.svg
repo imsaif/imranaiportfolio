@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f5f3ff"/>
+  
+  <!-- Main Container -->
+  <rect x="80" y="60" width="640" height="480" rx="12" ry="12" fill="#ffffff" stroke="#dddddd" stroke-width="2"/>
+  
+  <!-- Header -->
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed" />
+      <stop offset="100%" style="stop-color:#a78bfa" />
+    </linearGradient>
+  </defs>
+  <rect x="80" y="60" width="640" height="60" rx="12" ry="12" fill="url(#headerGradient)"/>
+  <text x="130" y="100" font-family="Arial" font-size="20" fill="#ffffff">Classroom Allocation</text>
+  
+  <!-- User menu -->
+  <circle cx="690" cy="90" r="6" fill="#ffffff"/>
+  <circle cx="670" cy="90" r="6" fill="#ffffff"/>
+  <circle cx="650" cy="90" r="6" fill="#ffffff"/>
+  
+  <!-- Date Navigation -->
+  <rect x="100" y="140" width="600" height="50" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="130" y="172" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Mon</text>
+  <text x="200" y="172" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Tue</text>
+  <text x="270" y="172" font-family="Arial" font-size="14" fill="#7c3aed" font-weight="bold">Wed</text>
+  <text x="340" y="172" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Thu</text>
+  <text x="410" y="172" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Fri</text>
+  <text x="530" y="172" font-family="Arial" font-size="14" fill="#1e293b">May 15-19, 2023</text>
+  
+  <!-- Column Headers -->
+  <rect x="100" y="210" width="90" height="30" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="145" y="230" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Time</text>
+  
+  <rect x="198" y="210" width="90" height="30" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="243" y="230" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Room 1</text>
+  
+  <rect x="296" y="210" width="90" height="30" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="341" y="230" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Room 2</text>
+  
+  <rect x="394" y="210" width="90" height="30" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="439" y="230" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Science Lab</text>
+  
+  <rect x="492" y="210" width="90" height="30" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="537" y="230" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Computer Lab</text>
+  
+  <rect x="590" y="210" width="90" height="30" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="635" y="230" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Library</text>
+  
+  <!-- 8:00 AM Row -->
+  <rect x="100" y="247" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="145" y="277" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">8:00 - 9:00</text>
+  
+  <rect x="198" y="247" width="90" height="50" rx="4" ry="4" fill="#ddd6fe" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="243" y="267" font-family="Arial" font-size="12" fill="#7c3aed" text-anchor="middle" font-weight="bold">Grade 3</text>
+  <text x="243" y="287" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Math - Jane M.</text>
+  
+  <rect x="296" y="247" width="90" height="50" rx="4" ry="4" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1"/>
+  <text x="341" y="267" font-family="Arial" font-size="12" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Grade 4</text>
+  <text x="341" y="287" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">English - Sarah K.</text>
+  
+  <rect x="394" y="247" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="439" y="277" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-style="italic">Available</text>
+  
+  <rect x="492" y="247" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="537" y="277" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-style="italic">Available</text>
+  
+  <rect x="590" y="247" width="90" height="50" rx="4" ry="4" fill="#fecaca" stroke="#fca5a5" stroke-width="1"/>
+  <text x="635" y="267" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="bold">Grade 6</text>
+  <text x="635" y="287" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Research - David O.</text>
+  
+  <!-- 9:10 AM Row -->
+  <rect x="100" y="304" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="145" y="334" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">9:10 - 10:10</text>
+  
+  <rect x="198" y="304" width="90" height="50" rx="4" ry="4" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="243" y="324" font-family="Arial" font-size="12" fill="#d97706" text-anchor="middle" font-weight="bold">Grade 5</text>
+  <text x="243" y="344" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">History - Peter W.</text>
+  
+  <rect x="296" y="304" width="90" height="50" rx="4" ry="4" fill="#ddd6fe" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="341" y="324" font-family="Arial" font-size="12" fill="#7c3aed" text-anchor="middle" font-weight="bold">Grade 3</text>
+  <text x="341" y="344" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">English - Jane M.</text>
+  
+  <rect x="394" y="304" width="90" height="50" rx="4" ry="4" fill="#a7f3d0" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="439" y="324" font-family="Arial" font-size="12" fill="#047857" text-anchor="middle" font-weight="bold">Grade 7</text>
+  <text x="439" y="344" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Science - Michael N.</text>
+  
+  <rect x="492" y="304" width="90" height="50" rx="4" ry="4" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1"/>
+  <text x="537" y="324" font-family="Arial" font-size="12" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Grade 4</text>
+  <text x="537" y="344" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Computer - Sarah K.</text>
+  
+  <rect x="590" y="304" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="635" y="334" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-style="italic">Available</text>
+  
+  <!-- 10:20 AM Row -->
+  <rect x="100" y="361" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="145" y="391" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">10:20 - 11:20</text>
+  
+  <rect x="198" y="361" width="90" height="50" rx="4" ry="4" fill="#a7f3d0" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="243" y="381" font-family="Arial" font-size="12" fill="#047857" text-anchor="middle" font-weight="bold">Grade 7</text>
+  <text x="243" y="401" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Math - Michael N.</text>
+  
+  <rect x="296" y="361" width="90" height="50" rx="4" ry="4" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="341" y="381" font-family="Arial" font-size="12" fill="#d97706" text-anchor="middle" font-weight="bold">Grade 5</text>
+  <text x="341" y="401" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Math - Peter W.</text>
+  
+  <rect x="394" y="361" width="90" height="50" rx="4" ry="4" fill="#fecaca" stroke="#fca5a5" stroke-width="1"/>
+  <text x="439" y="381" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="bold">Grade 6</text>
+  <text x="439" y="401" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Science - David O.</text>
+  
+  <rect x="492" y="361" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="537" y="391" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-style="italic">Available</text>
+  
+  <rect x="590" y="361" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="635" y="391" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-style="italic">Available</text>
+  
+  <!-- 11:30 AM Row -->
+  <rect x="100" y="418" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="145" y="448" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">11:30 - 12:30</text>
+  
+  <rect x="198" y="418" width="90" height="50" rx="4" ry="4" fill="#a7f3d0" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="243" y="438" font-family="Arial" font-size="12" fill="#047857" text-anchor="middle" font-weight="bold">Grade 7</text>
+  <text x="243" y="458" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">English - Michael N.</text>
+  
+  <rect x="296" y="418" width="90" height="50" rx="4" ry="4" fill="#ddd6fe" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="341" y="438" font-family="Arial" font-size="12" fill="#7c3aed" text-anchor="middle" font-weight="bold">Grade 3</text>
+  <text x="341" y="458" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Science - Jane M.</text>
+  
+  <rect x="394" y="418" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="439" y="448" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-style="italic">Available</text>
+  
+  <rect x="492" y="418" width="90" height="50" rx="4" ry="4" fill="#fecaca" stroke="#fca5a5" stroke-width="1"/>
+  <text x="537" y="438" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="bold">Grade 6</text>
+  <text x="537" y="458" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Computer - David O.</text>
+  
+  <rect x="590" y="418" width="90" height="50" rx="4" ry="4" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1"/>
+  <text x="635" y="438" font-family="Arial" font-size="12" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Grade 4</text>
+  <text x="635" y="458" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Research - Sarah K.</text>
+  
+  <!-- 1:30 PM Row -->
+  <rect x="100" y="475" width="90" height="50" rx="4" ry="4" fill="#f8fafc"/>
+  <text x="145" y="505" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">1:30 - 2:30</text>
+  
+  <rect x="198" y="475" width="90" height="50" rx="4" ry="4" fill="#fecaca" stroke="#fca5a5" stroke-width="1"/>
+  <text x="243" y="495" font-family="Arial" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="bold">Grade 6</text>
+  <text x="243" y="515" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Math - David O.</text>
+  
+  <rect x="296" y="475" width="90" height="50" rx="4" ry="4" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1"/>
+  <text x="341" y="495" font-family="Arial" font-size="12" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Grade 4</text>
+  <text x="341" y="515" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Math - Sarah K.</text>
+  
+  <rect x="394" y="475" width="90" height="50" rx="4" ry="4" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="439" y="495" font-family="Arial" font-size="12" fill="#d97706" text-anchor="middle" font-weight="bold">Grade 5</text>
+  <text x="439" y="515" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Science - Peter W.</text>
+  
+  <rect x="492" y="475" width="90" height="50" rx="4" ry="4" fill="#ddd6fe" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="537" y="495" font-family="Arial" font-size="12" fill="#7c3aed" text-anchor="middle" font-weight="bold">Grade 3</text>
+  <text x="537" y="515" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Computer - Jane M.</text>
+  
+  <rect x="590" y="475" width="90" height="50" rx="4" ry="4" fill="#a7f3d0" stroke="#6ee7b7" stroke-width="1"/>
+  <text x="635" y="495" font-family="Arial" font-size="12" fill="#047857" text-anchor="middle" font-weight="bold">Grade 7</text>
+  <text x="635" y="515" font-family="Arial" font-size="10" fill="#6b7280" text-anchor="middle">Research - Michael N.</text>
+  
+  <!-- Legend -->
+  <rect x="100" y="540" width="16" height="16" rx="2" ry="2" fill="#ddd6fe"/>
+  <text x="126" y="554" font-family="Arial" font-size="12" fill="#64748b">Grade 3</text>
+  
+  <rect x="200" y="540" width="16" height="16" rx="2" ry="2" fill="#bfdbfe"/>
+  <text x="226" y="554" font-family="Arial" font-size="12" fill="#64748b">Grade 4</text>
+  
+  <rect x="300" y="540" width="16" height="16" rx="2" ry="2" fill="#fef3c7"/>
+  <text x="326" y="554" font-family="Arial" font-size="12" fill="#64748b">Grade 5</text>
+  
+  <rect x="400" y="540" width="16" height="16" rx="2" ry="2" fill="#fecaca"/>
+  <text x="426" y="554" font-family="Arial" font-size="12" fill="#64748b">Grade 6</text>
+  
+  <rect x="500" y="540" width="16" height="16" rx="2" ry="2" fill="#a7f3d0"/>
+  <text x="526" y="554" font-family="Arial" font-size="12" fill="#64748b">Grade 7</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="30" r="120" fill="#7c3aed" opacity="0.03"/>
+  <circle cx="100" cy="30" r="90" fill="#7c3aed" opacity="0.05"/>
+  <circle cx="100" cy="30" r="60" fill="#7c3aed" opacity="0.07"/>
+  
+  <circle cx="90" cy="90" r="4" fill="#ffffff"/>
+  <circle cx="105" cy="90" r="4" fill="#ffffff"/>
+  <circle cx="120" cy="90" r="4" fill="#ffffff"/>
+</svg> 

@@ -72,10 +72,10 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          <div className="block mb-1">
+          <div className="block" style={{ marginBottom: '0px' }}>
             <span>Creating </span>
             <span
-              className="inline-block min-w-[270px] min-h-[48px] md:min-w-[320px] md:min-h-[58px]"
+              className="inline-block min-w-[270px] min-h-[60px] md:min-w-[320px] md:min-h-[70px]"
               style={{
                 display: 'inline-block',
               }}
@@ -91,6 +91,7 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
                   display: 'inline-block',
                   position: 'relative',
                   animation: 'gradientFlow 4s ease infinite',
+                  paddingBottom: '5px',
                 }}
               >
                 {currentText}

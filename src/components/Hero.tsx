@@ -3,124 +3,18 @@
 // Remove console log
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
+import { WaveBackground } from './WaveBackground'; // Import the new component
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const gradientTextRef = useRef<HTMLSpanElement>(null);
   const [typing, setTyping] = useState(false);
   const [textIndex, setTextIndex] = useState(0);
   const [textOpacity, setTextOpacity] = useState(1);
 
   const aiTextOptions = ['human-centered', 'intuitive', 'intelligent', 'adaptive'];
-
-  // Create wave animation background
-  useEffect(() => {
-    if (typeof window === 'undefined' || !canvasRef.current) return;
-
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let time = 0;
-
-    // Set canvas dimensions
-    const resizeCanvas = () => {
-      const { width, height } = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.scale(dpr, dpr);
-    };
-
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    // Draw waves
-    const draw = () => {
-      const { width, height } = canvas.getBoundingClientRect();
-
-      // Clear canvas
-      ctx.clearRect(0, 0, width, height);
-
-      // Draw waves
-      const drawWave = (
-        amplitude: number,
-        wavelength: number,
-        speed: number,
-        lineWidth: number,
-        color: string,
-        offsetY: number
-      ) => {
-        ctx.beginPath();
-        ctx.lineWidth = lineWidth;
-        ctx.strokeStyle = color;
-
-        for (let x = 0; x < width + 10; x += 3) {
-          // Smaller increment for smoother waves
-          const y = amplitude * Math.sin(x / wavelength + time * speed) + offsetY;
-          if (x === 0) {
-            ctx.moveTo(x, y);
-          } else {
-            ctx.lineTo(x, y);
-          }
-        }
-
-        ctx.stroke();
-      };
-
-      // Primary color (accent - indigo)
-      const primaryColor = 'rgba(99, 102, 241, ';
-      // Secondary color (tertiary - rose/pink)
-      const secondaryColor = 'rgba(244, 63, 94, ';
-
-      // Draw waves at the bottom of the hero section - significantly thicker lines (2px) and very close together (1% apart)
-      drawWave(5, 200, 0.005, 2.0, primaryColor + '0.15)', height * 0.75);
-      drawWave(6, 220, 0.006, 2.0, primaryColor + '0.2)', height * 0.755);
-      drawWave(7, 250, 0.004, 2.0, primaryColor + '0.1)', height * 0.76);
-      drawWave(8, 180, 0.007, 2.0, secondaryColor + '0.1)', height * 0.765);
-      drawWave(6, 190, 0.008, 2.0, secondaryColor + '0.15)', height * 0.77);
-      drawWave(7, 210, 0.005, 2.0, primaryColor + '0.2)', height * 0.775);
-      drawWave(8, 230, 0.006, 2.0, secondaryColor + '0.1)', height * 0.78);
-      drawWave(5, 170, 0.007, 2.0, primaryColor + '0.15)', height * 0.785);
-
-      // Add a few more waves to create denser effect
-      drawWave(6, 210, 0.0045, 2.0, primaryColor + '0.18)', height * 0.79);
-      drawWave(7, 190, 0.0055, 2.0, secondaryColor + '0.12)', height * 0.795);
-      drawWave(8, 230, 0.0065, 2.0, primaryColor + '0.16)', height * 0.8);
-      drawWave(5, 200, 0.0075, 2.0, secondaryColor + '0.14)', height * 0.805);
-
-      // Add small glowing dots
-      for (let i = 0; i < 25; i++) {
-        const x = (Math.sin(time * 0.0005 + i) + 1) * width * 0.5;
-        const y = (Math.cos(time * 0.0008 + i * 2) + 1) * height * 0.5;
-        const radius = 0.8 + Math.sin(time * 0.005 + i) * 0.3;
-
-        // Alternate between accent and tertiary colors
-        const dotColor = i % 2 === 0 ? primaryColor + '0.25)' : secondaryColor + '0.25)';
-
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = dotColor;
-        ctx.fill();
-      }
-
-      // Reduced time increment for slower animation
-      time += 0.2;
-      animationFrameId = requestAnimationFrame(draw);
-    };
-
-    draw();
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
 
   useEffect(() => {
     setIsVisible(true);
@@ -181,8 +75,15 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} className="pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden relative bg-background">
-      {/* Wave background */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }} />
+      {/* Use WaveBackground component for the bottom half with default props */}
+      <WaveBackground
+        className="absolute bottom-0 left-0 w-full h-1/2"
+        style={{ zIndex: 0 }}
+        // No specific props needed, defaults match the previous state:
+        // waveCount = 6
+        // amplitudeRange = [2.5, 4]
+        // offsetYMultiplierRange = [0.1, 0.15]
+      />
 
       <div className="container mx-auto px-6 md:px-8 relative z-10">
         <div className="max-w-4xl">

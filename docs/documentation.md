@@ -260,6 +260,15 @@ model PageView {
 - **Props**:
   - `steps: ProcessStep[]` - Array of process steps
 
+#### Resume (`Resume.tsx`)
+- **Purpose**: Displays professional resume/CV
+- **Features**:
+  - Formatted sections (Experience, Education, Skills)
+  - Downloadable PDF option
+  - Responsive layout
+- **Props**:
+  - `resumeData: ResumeData` - Data object containing resume information
+
 ### Reusable UI Components
 
 #### Container (`Container.tsx`)
@@ -305,10 +314,19 @@ model PageView {
 - **Features**:
   - Project title and summary
   - Key project details
-  - Featured image
+  - Featured image (enhanced with better loading/display)
 - **Props**:
   - `project: Project` - Project data
   - `showNav?: boolean` - Whether to show case study navigation
+
+#### CaseStudyBody (`CaseStudyBody.tsx`)
+- **Purpose**: Main content area for a case study
+- **Features**:
+  - Renders detailed sections (Challenge, Solution, Outcome)
+  - Displays project images and media (enhanced gallery/display)
+  - Integrates technology tags
+- **Props**:
+  - `project: Project` - Project data including details and images
 
 ### Context Providers
 
@@ -385,6 +403,37 @@ interface ContactInfo {
     url: string;
     icon: ReactNode;
   }[];
+}
+```
+
+### ResumeData
+```typescript
+interface ResumeData {
+  contact: {
+    name: string;
+    title: string;
+    email: string;
+    phone?: string;
+    website?: string;
+    location?: string;
+  };
+  summary: string;
+  experience: {
+    company: string;
+    position: string;
+    duration: string;
+    description: string[];
+  }[];
+  education: {
+    institution: string;
+    degree: string;
+    year: string;
+  }[];
+  skills: {
+    category: string;
+    items: string[];
+  }[];
+  pdfUrl?: string; // Optional link to downloadable PDF
 }
 ```
 
@@ -679,6 +728,11 @@ interface ContactInfo {
 
 ## Change Log
 
+### Major Feature Additions & Updates
+- 2024-04-05: Added Resume page (`/resume`)
+- 2024-04-10: Implemented Case Study template and initial pages (`/casestudy/lessonloom`, `/casestudy/scheduler`)
+- 2024-04-12: Enhanced project image display in Case Studies and Project Showcase
+
 ### Major Architecture Decisions
 - 2023-10-15: Migrated to Next.js 13.5 with App Router
 - 2023-11-01: Added Framer Motion for animations
@@ -686,11 +740,4 @@ interface ContactInfo {
 - 2024-01-20: Added analytics tracking system
 - 2024-03-10: Enhanced API endpoints with better validation and documentation
 - 2024-04-08: Added comprehensive environment variable documentation and security practices
-- 2024-04-09: Implemented comprehensive server-side validation for all API endpoints
-
-### API Changes
-- 2023-11-10: Added `/api/contact` endpoint
-- 2023-12-15: Added `/api/projects` endpoints
-- 2024-02-01: Added rate limiting to contact form API
-- 2024-03-15: Added pagination to projects API
-- 2024-04-09: Enhanced validation for all API endpoints 
+- 2024-04-09: Implemented comprehensive server-side validation for all API endpoints 

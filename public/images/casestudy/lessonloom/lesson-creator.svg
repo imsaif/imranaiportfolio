@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f9f9ff"/>
+  
+  <!-- Educational Dashboard Frame -->
+  <rect x="100" y="50" width="600" height="500" rx="20" ry="20" fill="#ffffff" stroke="#9333ea" stroke-width="2"/>
+  
+  <!-- Header Bar with Gradient -->
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9333ea" />
+      <stop offset="100%" style="stop-color:#d94f9d" />
+    </linearGradient>
+  </defs>
+  <rect x="100" y="50" width="600" height="60" rx="20" ry="20" fill="url(#headerGradient)"/>
+  
+  <!-- Header Text -->
+  <text x="150" y="85" font-family="Arial" font-size="24" fill="#ffffff">LessonLoom Creator</text>
+  
+  <!-- Menu Icons -->
+  <circle cx="620" cy="80" r="15" fill="#ffffff" opacity="0.8"/>
+  <circle cx="660" cy="80" r="15" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- Left Sidebar -->
+  <rect x="100" y="110" width="150" height="440" fill="#f8f7fc"/>
+  
+  <!-- Sidebar Menu Items -->
+  <rect x="120" y="150" width="110" height="30" rx="5" ry="5" fill="#9333ea" opacity="0.7"/>
+  <text x="135" y="170" font-family="Arial" font-size="14" fill="#ffffff">Templates</text>
+  
+  <rect x="120" y="200" width="110" height="30" rx="5" ry="5" fill="#e6e6ff"/>
+  <text x="135" y="220" font-family="Arial" font-size="14" fill="#4f69ea">Content</text>
+  
+  <rect x="120" y="250" width="110" height="30" rx="5" ry="5" fill="#e6e6ff"/>
+  <text x="135" y="270" font-family="Arial" font-size="14" fill="#4f69ea">Media</text>
+  
+  <rect x="120" y="300" width="110" height="30" rx="5" ry="5" fill="#e6e6ff"/>
+  <text x="135" y="320" font-family="Arial" font-size="14" fill="#4f69ea">Activities</text>
+  
+  <!-- Main Content Area -->
+  <rect x="270" y="130" width="400" height="80" rx="5" ry="5" fill="#f2f7ff" stroke="#ddd" stroke-width="1"/>
+  <text x="290" y="155" font-family="Arial" font-size="16" font-weight="bold" fill="#333333">Lesson Title</text>
+  <text x="290" y="180" font-family="Arial" font-size="14" fill="#666666">Photosynthesis in Plants - Grade 7</text>
+  
+  <!-- Content Blocks -->
+  <rect x="270" y="230" width="400" height="250" rx="5" ry="5" fill="#f5f5ff" stroke="#ddd" stroke-width="1"/>
+  
+  <!-- Learning Objectives Card -->
+  <rect x="290" y="250" width="360" height="80" rx="5" ry="5" fill="#ffffff" stroke="#9333ea" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="305" y="275" font-family="Arial" font-size="14" font-weight="bold" fill="#9333ea">Learning Objectives</text>
+  <text x="305" y="295" font-family="Arial" font-size="12" fill="#555">• Explain the process of photosynthesis</text>
+  <text x="305" y="315" font-family="Arial" font-size="12" fill="#555">• Identify key components in the process</text>
+  
+  <!-- Curriculum Alignment Card -->
+  <rect x="290" y="345" width="360" height="60" rx="5" ry="5" fill="#ffffff" stroke="#4f69ea" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="305" y="370" font-family="Arial" font-size="14" font-weight="bold" fill="#4f69ea">Curriculum Alignment</text>
+  <text x="305" y="390" font-family="Arial" font-size="12" fill="#555">Science Standards: SC.7.L.15.2, SC.7.L.17.1</text>
+  
+  <!-- Resources Card -->
+  <rect x="290" y="420" width="170" height="45" rx="5" ry="5" fill="#ffffff" stroke="#d94f9d" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="305" y="445" font-family="Arial" font-size="14" font-weight="bold" fill="#d94f9d">Resources</text>
+  <rect x="480" y="420" width="170" height="45" rx="5" ry="5" fill="#ffffff" stroke="#d94f9d" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="495" y="445" font-family="Arial" font-size="14" font-weight="bold" fill="#d94f9d">Assessment</text>
+  
+  <!-- AI Generation Button with Gradient -->
+  <defs>
+    <linearGradient id="buttonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9333ea" />
+      <stop offset="100%" style="stop-color:#d94f9d" />
+    </linearGradient>
+  </defs>
+  <rect x="480" y="490" width="180" height="40" rx="20" ry="20" fill="url(#buttonGradient)"/>
+  <text x="514" y="515" font-family="Arial" font-size="16" fill="#ffffff">Generate Content</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="480" cy="390" r="40" fill="#9333ea" opacity="0.1"/>
+  <circle cx="320" cy="420" r="20" fill="#4f69ea" opacity="0.1"/>
+  <circle cx="550" cy="200" r="30" fill="#d94f9d" opacity="0.1"/>
+</svg> 

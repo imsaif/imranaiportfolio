@@ -117,7 +117,7 @@ const Hero = () => {
 
             {/* Animation container with fixed height to prevent layout shifts */}
             <div
-              className={`relative ${isChatOpen ? 'h-[400px] md:h-[450px]' : 'h-[320px] md:h-[280px]'} w-full overflow-hidden transition-all duration-300`}
+              className={`relative ${isChatOpen ? 'h-[400px] md:h-[450px]' : 'h-[340px] md:h-[300px]'} w-full overflow-hidden transition-all duration-300`}
             >
               <AnimatePresence mode="wait">
                 {!isChatOpen ? (

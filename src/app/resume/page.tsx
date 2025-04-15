@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion'; // Import motion
+import { WaveBackground } from '@/components/WaveBackground'; // Import WaveBackground
 
 // Define SVG Icons
 const iconClass = "h-6 w-6 mr-3 inline-block text-blue-500 dark:text-blue-400";
@@ -231,29 +232,44 @@ Observing the User Experience: A Practitioner's Guide to User Research aims to b
     </div>
   );
 
+  // Use React Fragment as the root element
   return (
-    <div className="container mx-auto px-4 md:px-6 lg:px-8 py-8">
+    <>
        <style jsx global>{`
-          @keyframes gradient-shift {
-            0% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-            100% { background-position: 0% center; }
-          }
-          
-          .animate-gradient-text {
-            animation: gradient-shift 3s ease infinite;
-          }
-        `}</style>
+            @keyframes gradient-shift {
+              0% { background-position: 0% center; }
+              50% { background-position: 100% center; }
+              100% { background-position: 0% center; }
+            }
+            
+            .animate-gradient-text {
+              animation: gradient-shift 4s ease infinite;
+            }
+          `}</style>
 
-      <header className="text-center pt-32 pb-16">
+      {/* Header is now outside the container */}
+      <header className="text-center pt-32 pb-16 relative overflow-hidden">
+        {/* WaveBackground styled similar to Hero section */}
+        <WaveBackground
+           className="absolute inset-0 w-full h-full"
+           style={{ zIndex: 0 }}
+           waveCount={6}
+           amplitudeRange={[6, 10]}
+           wavelengthRange={[150, 220]}
+           speedRange={[0.003, 0.006]}
+           offsetYMultiplierRange={[0.3, 0.5]}
+           alpha={0.25}
+           dotCount={35}
+        />
+        {/* Add container classes directly to H1 to center the text */}
         <motion.h1 
           className="
             text-5xl md:text-6xl font-bold 
             text-transparent bg-clip-text 
-            animate-gradient-text
+            animate-gradient-text relative z-10 container mx-auto px-4 md:px-6 lg:px-8
           "
            style={{
-            backgroundImage: "linear-gradient(90deg, #d94f9d, #9333ea, #d94f9d)",
+            backgroundImage: "linear-gradient(90deg, var(--accent), var(--tertiary), var(--accent))",
             backgroundSize: "200% auto"
           }}
           initial={{ opacity: 0, y: 20 }}
@@ -264,152 +280,154 @@ Observing the User Experience: A Practitioner's Guide to User Research aims to b
         </motion.h1>
       </header>
 
-      {/* This div is now the styled content card, BELOW the header */}
-      {/* Added subtle ring effect */}
-      <div className="max-w-6xl mx-auto p-8 md:p-12 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 rounded-lg shadow-lg mb-16 ring-1 ring-purple-500/30 dark:ring-purple-600/30">
-        
-        {/* About Section */}
-        <section className="mb-12">
-          <SectionTitle title="About" icon={<UserIcon />} />
-          <p className="text-base md:text-lg leading-relaxed whitespace-pre-line">{resumeData.about}</p>
-        </section>
+      {/* Container now only wraps the main resume content card */}
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-8 -mt-16 relative z-10">
+        {/* Resume content card */}
+        <div className="max-w-6xl mx-auto p-8 md:p-12 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 rounded-lg shadow-lg mb-16 ring-1 ring-purple-500/30 dark:ring-purple-600/30">
+            {/* About Section */}
+            <section className="mb-12">
+              <SectionTitle title="About" icon={<UserIcon />} />
+              <p className="text-base md:text-lg leading-relaxed whitespace-pre-line">{resumeData.about}</p>
+            </section>
 
-        {/* Experience/Skills/Education Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Experience Section */}
-          <section className="md:col-span-2">
-            <SectionTitle title="Experience" icon={<BriefcaseIcon />} />
-            <div className="space-y-10">
-              {resumeData.experience.map((job, index) => (
-                <div key={index} className="relative pl-10 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-1 before:bg-gray-300 dark:before:bg-gray-600 last:before:h-[calc(100%-2rem)] first:before:top-5 p-4 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
-                  <div className="absolute left-1 top-2.5 w-5 h-5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full border-4 border-white dark:border-gray-900"></div>
-                  <h3 className="text-xl font-bold text-gray-800 dark:text-white">{job.title}</h3>
-                  <p className="text-base font-medium text-gray-600 dark:text-gray-400">{job.company}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                    {job.duration} | {job.location}
-                  </p>
-                  <p className="text-base mb-3">{job.description}</p>
-                  {renderSkills(job.skills)}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Right Column (Skills and Education) */}
-          <div className="md:col-span-1 space-y-12">
-            {/* Skills Section */}
-            <section>
-               <SectionTitle title="Skills" icon={<SparklesIcon />} />
-               <ul className="flex flex-wrap gap-3">
-                  {resumeData.skills.map((skill, index) => (
-                   <li key={index} className="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-sm font-semibold px-4 py-1.5 rounded-full border border-blue-200 dark:border-blue-700 shadow-sm">
-                     {skill}
-                   </li>
+            {/* Experience/Skills/Education Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+              {/* Experience Section */}
+              <section className="md:col-span-2">
+                <SectionTitle title="Experience" icon={<BriefcaseIcon />} />
+                <div className="space-y-10">
+                  {resumeData.experience.map((job, index) => (
+                    <div key={index} className="relative pl-10 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-1 before:bg-gray-300 dark:before:bg-gray-600 last:before:h-[calc(100%-2rem)] first:before:top-5 p-4 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                      <div className="absolute left-1 top-2.5 w-5 h-5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full border-4 border-white dark:border-gray-900"></div>
+                      <h3 className="text-xl font-bold text-gray-800 dark:text-white">{job.title}</h3>
+                      <p className="text-base font-medium text-gray-600 dark:text-gray-400">{job.company}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                        {job.duration} | {job.location}
+                      </p>
+                      <p className="text-base mb-3">{job.description}</p>
+                      {renderSkills(job.skills)}
+                    </div>
                   ))}
-               </ul>
+                </div>
+              </section>
+
+              {/* Right Column (Education and Skills) */}
+              <div className="md:col-span-1 space-y-12">
+                {/* Education Section (Moved Up) */}
+                <section>
+                  <SectionTitle title="Education" icon={<AcademicCapIcon />} /> 
+                  <div className="space-y-8">
+                    {resumeData.education.map((edu, index) => (
+                      <div key={index} className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700/50 shadow-sm transition duration-200 ease-in-out hover:shadow-md hover:ring-1 hover:ring-purple-200 dark:hover:ring-purple-600/50">
+                        <h3 className="text-xl font-bold text-gray-800 dark:text-white">{edu.institution}</h3>
+                        <p className="text-base font-semibold text-gray-700 dark:text-gray-100">{edu.degree}{edu.field ? `, ${edu.field}` : ''}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{edu.duration}</p>
+                        {renderSkills(edu.skills)}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* Skills Section (Moved Down) */}
+                <section>
+                   <SectionTitle title="Skills" icon={<SparklesIcon />} />
+                   <ul className="flex flex-wrap gap-3">
+                      {resumeData.skills.map((skill, index) => (
+                       <li key={index} className="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 text-sm font-semibold px-4 py-1.5 rounded-full border border-blue-200 dark:border-blue-700 shadow-sm">
+                         {skill}
+                       </li>
+                      ))}
+                   </ul>
+                 </section>
+              </div>
+            </div>
+
+            {/* Recommendations Section */}
+            <section className="mb-12">
+               <SectionTitle title="Recommendations" icon={<ChatAlt2Icon />} />
+               <div className="space-y-8">
+                 {resumeData.recommendations.map((rec, index) => (
+                   <blockquote key={index} className="relative pl-10 pr-4 py-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg shadow-sm border-l-4 border-blue-500 dark:border-blue-400 transition duration-200 ease-in-out hover:shadow-md">
+                     <span className="absolute left-2 top-1 text-6xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent opacity-50">
+                       "
+                     </span>
+                     <p className="mb-3 text-gray-800 dark:text-gray-200 italic z-10 relative">
+                        {rec.text.replace(/^"|"$/g, '')} 
+                     </p>
+                     <footer className="text-sm not-italic text-gray-600 dark:text-gray-400 z-10 relative">
+                       <span className="font-semibold text-gray-700 dark:text-gray-300">{rec.author}</span>, {rec.title}
+                       <br/>
+                       <span>{rec.date}, {rec.context}</span>
+                     </footer>
+                   </blockquote>
+                 ))}
+               </div>
              </section>
 
-            {/* Education Section */}
-            <section>
-              <SectionTitle title="Education" icon={<AcademicCapIcon />} /> 
-              <div className="space-y-8">
-                {resumeData.education.map((edu, index) => (
-                  <div key={index} className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700/50 shadow-sm transition duration-200 ease-in-out hover:shadow-md hover:ring-1 hover:ring-purple-200 dark:hover:ring-purple-600/50">
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-white">{edu.institution}</h3>
-                    <p className="text-base font-semibold text-gray-700 dark:text-gray-100">{edu.degree}{edu.field ? `, ${edu.field}` : ''}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{edu.duration}</p>
-                    {renderSkills(edu.skills)}
+            {/* Publications Section (Stays here) */}
+            <section className="mb-12">
+               <SectionTitle title="Publications" icon={<BookOpenIcon />} />
+               <div className="space-y-6">
+                 {resumeData.publications.map((pub, index) => (
+                   <div key={index} className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition duration-200 ease-in-out hover:shadow-lg hover:border-purple-300 dark:hover:border-purple-600">
+                     <h3 className="text-lg font-bold text-gray-800 dark:text-white">{pub.role}</h3>
+                     <p className="text-base font-medium text-gray-600 dark:text-gray-400 italic">{pub.title} · {pub.date}</p>
+                     <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line">{pub.description}</p>
+                   </div>
+                 ))}
+               </div>
+             </section>
+
+            {/* Honors & Awards Section (Stays here) */}
+            <section className="mb-12"> {/* Added mb-12 for spacing */}
+               <SectionTitle title="Honors & Awards" icon={<StarIcon />} />
+               <div className="space-y-6">
+                 {resumeData.honorsAwards.map((award, index) => (
+                   <div key={index} className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition duration-200 ease-in-out hover:shadow-lg hover:border-purple-300 dark:hover:border-purple-600">
+                     <h3 className="text-lg font-bold text-gray-800 dark:text-white">{award.title}</h3>
+                     <p className="text-sm text-gray-600 dark:text-gray-400">Issued by {award.issuer} · {award.date}</p>
+                     {award.associatedWith && <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">Associated with {award.associatedWith}</p>}
+                     {award.description && <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-snug">{award.description}</p>}
+                   </div>
+                 ))}
+               </div>
+             </section>
+
+            {/* Licenses & Certifications Section (Moved Down) */}
+            <section> {/* Removed mb-12 as it's the last section before button */}
+              <SectionTitle title="Licenses & Certifications" icon={<BadgeCheckIcon />} />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {resumeData.licensesCertifications.map((cert, index) => (
+                  <div key={index} className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700/50 shadow-sm transition duration-200 ease-in-out hover:shadow-md hover:ring-1 hover:ring-purple-200 dark:hover:ring-purple-600/50">
+                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white">{cert.name}</h3>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">Issued by {cert.issuer} · {cert.date}</p>
+                    {cert.id && <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">Credential ID: {cert.id}</p>}
+                    {renderSkills(cert.skills)}
                   </div>
                 ))}
               </div>
             </section>
-          </div>
-        </div>
 
-        {/* Recommendations Section - Pass ChatAlt2Icon */} 
-        <section className="mb-12">
-           <SectionTitle title="Recommendations" icon={<ChatAlt2Icon />} />
-           <div className="space-y-8">
-             {resumeData.recommendations.map((rec, index) => (
-               <blockquote key={index} className="relative pl-10 pr-4 py-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg shadow-sm border-l-4 border-blue-500 dark:border-blue-400 transition duration-200 ease-in-out hover:shadow-md">
-                 <span className="absolute left-2 top-1 text-6xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent opacity-50">
-                   "
-                 </span>
-                 <p className="mb-3 text-gray-800 dark:text-gray-200 italic z-10 relative">
-                    {rec.text.replace(/^"|"$/g, '')} 
-                 </p>
-                 <footer className="text-sm not-italic text-gray-600 dark:text-gray-400 z-10 relative">
-                   <span className="font-semibold text-gray-700 dark:text-gray-300">{rec.author}</span>, {rec.title}
-                   <br/>
-                   <span>{rec.date}, {rec.context}</span>
-                 </footer>
-               </blockquote>
-             ))}
-           </div>
-         </section>
+            {/* Button Section */}
+            <div className="mt-16 text-center">
+              {/* Download Resume Button - Changed to link to Google Drive */}
+              <a
+                href="https://drive.google.com/file/d/1A7xF5l66wZ60o0djbE8kfQBoB2TmSRhr/view?usp=sharing"
+                target="_blank" // Open in new tab
+                rel="noopener noreferrer" // Security best practice
+                className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-accent via-tertiary to-accent hover:from-accent/90 hover:via-tertiary/90 hover:to-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition duration-150 ease-in-out transform hover:scale-105 bg-size-200 bg-pos-0 hover:bg-pos-100"
+              >
+                Download Resume
+                {/* Kept Download Icon */}
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+              </a>
+            </div>
 
-        {/* Licenses & Certifications Section - Pass BadgeCheckIcon */} 
-        <section className="mb-12">
-          <SectionTitle title="Licenses & Certifications" icon={<BadgeCheckIcon />} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {resumeData.licensesCertifications.map((cert, index) => (
-              <div key={index} className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700/50 shadow-sm transition duration-200 ease-in-out hover:shadow-md hover:ring-1 hover:ring-purple-200 dark:hover:ring-purple-600/50">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white">{cert.name}</h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400">Issued by {cert.issuer} · {cert.date}</p>
-                {cert.id && <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">Credential ID: {cert.id}</p>}
-                {renderSkills(cert.skills)}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Publications Section - Pass BookOpenIcon */} 
-        <section className="mb-12">
-           <SectionTitle title="Publications" icon={<BookOpenIcon />} />
-           <div className="space-y-6">
-             {resumeData.publications.map((pub, index) => (
-               <div key={index} className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition duration-200 ease-in-out hover:shadow-lg hover:border-purple-300 dark:hover:border-purple-600">
-                 <h3 className="text-lg font-bold text-gray-800 dark:text-white">{pub.role}</h3>
-                 <p className="text-base font-medium text-gray-600 dark:text-gray-400 italic">{pub.title} · {pub.date}</p>
-                 <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-snug whitespace-pre-line">{pub.description}</p>
-               </div>
-             ))}
-           </div>
-         </section>
-
-        {/* Honors & Awards Section - Pass StarIcon */} 
-        <section>
-           <SectionTitle title="Honors & Awards" icon={<StarIcon />} />
-           <div className="space-y-6">
-             {resumeData.honorsAwards.map((award, index) => (
-               <div key={index} className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition duration-200 ease-in-out hover:shadow-lg hover:border-purple-300 dark:hover:border-purple-600">
-                 <h3 className="text-lg font-bold text-gray-800 dark:text-white">{award.title}</h3>
-                 <p className="text-sm text-gray-600 dark:text-gray-400">Issued by {award.issuer} · {award.date}</p>
-                 {award.associatedWith && <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">Associated with {award.associatedWith}</p>}
-                 {award.description && <p className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-snug">{award.description}</p>}
-               </div>
-             ))}
-           </div>
-         </section>
-
-         {/* Connect Button Section */} 
-         <div className="mt-16 text-center"> 
-           <a
-             href="https://www.linkedin.com/in/imsaif/"
-             target="_blank"
-             rel="noopener noreferrer"
-             className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-150 ease-in-out transform hover:scale-105"
-           >
-             Connect with Me on LinkedIn
-             {/* Optional: Add an icon here if desired */}
-             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-               <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-             </svg>
-           </a>
-         </div>
-
-      </div> 
-    </div>
+        </div> 
+      </div>
+    </>
   );
 };
 

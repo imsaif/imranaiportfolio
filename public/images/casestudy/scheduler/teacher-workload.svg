@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f5f3ff"/>
+  
+  <!-- Main Container -->
+  <rect x="80" y="60" width="640" height="480" rx="12" ry="12" fill="#ffffff" stroke="#dddddd" stroke-width="2"/>
+  
+  <!-- Header -->
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed" />
+      <stop offset="100%" style="stop-color:#a78bfa" />
+    </linearGradient>
+  </defs>
+  <rect x="80" y="60" width="640" height="60" rx="12" ry="12" fill="url(#headerGradient)"/>
+  <text x="130" y="100" font-family="Arial" font-size="20" fill="#ffffff">Teacher Workload Analysis</text>
+  
+  <!-- User menu -->
+  <circle cx="690" cy="90" r="6" fill="#ffffff"/>
+  <circle cx="670" cy="90" r="6" fill="#ffffff"/>
+  <circle cx="650" cy="90" r="6" fill="#ffffff"/>
+  
+  <!-- Filter Section -->
+  <rect x="100" y="140" width="600" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="120" y="165" font-family="Arial" font-size="12" fill="#64748b">Department:</text>
+  <rect x="190" y="148" width="120" height="24" rx="4" ry="4" fill="#ffffff" stroke="#d1d5db" stroke-width="1"/>
+  <text x="200" y="165" font-family="Arial" font-size="12" fill="#1e293b">All Departments</text>
+  <text x="350" y="165" font-family="Arial" font-size="12" fill="#64748b">Grade Level:</text>
+  <rect x="430" y="148" width="120" height="24" rx="4" ry="4" fill="#ffffff" stroke="#d1d5db" stroke-width="1"/>
+  <text x="440" y="165" font-family="Arial" font-size="12" fill="#1e293b">All Grades</text>
+  <text x="590" y="165" font-family="Arial" font-size="12" fill="#7c3aed" font-weight="bold">Filter</text>
+  
+  <!-- Teacher Workload Bars -->
+  <!-- Teacher 1 -->
+  <text x="120" y="210" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Jane Morrison</text>
+  <text x="120" y="225" font-family="Arial" font-size="12" fill="#64748b">Math, Grade 3</text>
+  <rect x="250" y="205" width="400" height="6" rx="3" ry="3" fill="#f3f4f6"/>
+  <rect x="250" y="205" width="310" height="6" rx="3" ry="3" fill="#7c3aed"/>
+  <text x="670" y="210" font-family="Arial" font-size="12" fill="#1e293b" text-anchor="end">22.5 hrs/week</text>
+  
+  <!-- Teacher 2 -->
+  <text x="120" y="255" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Sarah Kendrick</text>
+  <text x="120" y="270" font-family="Arial" font-size="12" fill="#64748b">English, Grade 4</text>
+  <rect x="250" y="250" width="400" height="6" rx="3" ry="3" fill="#f3f4f6"/>
+  <rect x="250" y="250" width="270" height="6" rx="3" ry="3" fill="#818cf8"/>
+  <text x="670" y="255" font-family="Arial" font-size="12" fill="#1e293b" text-anchor="end">19.5 hrs/week</text>
+  
+  <!-- Teacher 3 -->
+  <text x="120" y="300" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Peter Wilson</text>
+  <text x="120" y="315" font-family="Arial" font-size="12" fill="#64748b">History, Grade 5</text>
+  <rect x="250" y="295" width="400" height="6" rx="3" ry="3" fill="#f3f4f6"/>
+  <rect x="250" y="295" width="350" height="6" rx="3" ry="3" fill="#fb923c"/>
+  <text x="670" y="300" font-family="Arial" font-size="12" fill="#1e293b" text-anchor="end">25.0 hrs/week</text>
+  
+  <!-- Teacher 4 -->
+  <text x="120" y="345" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">David Ortiz</text>
+  <text x="120" y="360" font-family="Arial" font-size="12" fill="#64748b">Science, Grade 6</text>
+  <rect x="250" y="340" width="400" height="6" rx="3" ry="3" fill="#f3f4f6"/>
+  <rect x="250" y="340" width="380" height="6" rx="3" ry="3" fill="#ef4444"/>
+  <text x="670" y="345" font-family="Arial" font-size="12" fill="#1e293b" text-anchor="end">27.0 hrs/week</text>
+  
+  <!-- Teacher 5 -->
+  <text x="120" y="390" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Michael Nguyen</text>
+  <text x="120" y="405" font-family="Arial" font-size="12" fill="#64748b">Science, Grade 7</text>
+  <rect x="250" y="385" width="400" height="6" rx="3" ry="3" fill="#f3f4f6"/>
+  <rect x="250" y="385" width="340" height="6" rx="3" ry="3" fill="#10b981"/>
+  <text x="670" y="390" font-family="Arial" font-size="12" fill="#1e293b" text-anchor="end">24.5 hrs/week</text>
+  
+  <!-- Teacher 6 -->
+  <text x="120" y="435" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Emma Rodriguez</text>
+  <text x="120" y="450" font-family="Arial" font-size="12" fill="#64748b">Art, All Grades</text>
+  <rect x="250" y="430" width="400" height="6" rx="3" ry="3" fill="#f3f4f6"/>
+  <rect x="250" y="430" width="220" height="6" rx="3" ry="3" fill="#f472b6"/>
+  <text x="670" y="435" font-family="Arial" font-size="12" fill="#1e293b" text-anchor="end">16.0 hrs/week</text>
+  
+  <!-- Teacher 7 -->
+  <text x="120" y="480" font-family="Arial" font-size="14" fill="#1e293b" font-weight="bold">Robert Chen</text>
+  <text x="120" y="495" font-family="Arial" font-size="12" fill="#64748b">Physical Education, All Grades</text>
+  <rect x="250" y="475" width="400" height="6" rx="3" ry="3" fill="#f3f4f6"/>
+  <rect x="250" y="475" width="280" height="6" rx="3" ry="3" fill="#3b82f6"/>
+  <text x="670" y="480" font-family="Arial" font-size="12" fill="#1e293b" text-anchor="end">20.0 hrs/week</text>
+  
+  <!-- Average Workload Indicator -->
+  <line x1="250" y1="140" x2="250" y2="510" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="350" y1="140" x2="350" y2="510" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="450" y1="140" x2="450" y2="510" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="550" y1="140" x2="550" y2="510" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="650" y1="140" x2="650" y2="510" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+  
+  <line x1="530" y1="140" x2="530" y2="510" stroke="#dc2626" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="530" y="530" font-family="Arial" font-size="10" fill="#dc2626" text-anchor="middle">Maximum Target (25 hrs)</text>
+  
+  <line x1="390" y1="140" x2="390" y2="510" stroke="#2563eb" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="390" y="530" font-family="Arial" font-size="10" fill="#2563eb" text-anchor="middle">Target Average (20 hrs)</text>
+  
+  <!-- Bottom Scale -->
+  <text x="250" y="515" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">0</text>
+  <text x="350" y="515" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">10</text>
+  <text x="450" y="515" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">20</text>
+  <text x="550" y="515" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">30</text>
+  <text x="650" y="515" font-family="Arial" font-size="10" fill="#64748b" text-anchor="middle">40</text>
+  <text x="450" y="540" font-family="Arial" font-size="12" fill="#64748b" text-anchor="middle">Weekly Teaching Hours</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="30" r="120" fill="#7c3aed" opacity="0.03"/>
+  <circle cx="100" cy="30" r="90" fill="#7c3aed" opacity="0.05"/>
+  <circle cx="100" cy="30" r="60" fill="#7c3aed" opacity="0.07"/>
+  
+  <circle cx="90" cy="90" r="4" fill="#ffffff"/>
+  <circle cx="105" cy="90" r="4" fill="#ffffff"/>
+  <circle cx="120" cy="90" r="4" fill="#ffffff"/>
+</svg> 
