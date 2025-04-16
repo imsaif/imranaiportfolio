@@ -26,7 +26,7 @@ import {
   MAX_RATE_WINDOW_MS,
 } from '../../../utils/api/rateLimit';
 import { safeParseInt, processMessages } from '../../../utils/api/security';
-import { checkRedisRateLimit } from '../../../utils/api/redisRateLimit';
+import { checkRedisRateLimit, redisAvailable } from '../../../utils/api/redisRateLimit';
 import { generateUserId } from '../../../utils/api/rateLimit';
 
 /**
@@ -51,6 +51,7 @@ export async function POST(request: Request) {
       apiKeyFirstChars: apiKey ? `${apiKey.substring(0, 8)}...` : 'none',
       model,
       apiUrl,
+      redisAvailable,
     });
 
     // Parse and validate numeric configuration values
@@ -89,11 +90,19 @@ export async function POST(request: Request) {
     // Convert rateWindowMs from ms to seconds for Redis
     const rateWindowSec = Math.ceil(rateWindowMs / 1000);
 
-    // Check rate limit using Redis
-    const redisRateLimitResult = await checkRedisRateLimit(userId, rateLimit, rateWindowSec);
+    // Check rate limit
+    let rateLimitResult;
+    
+    // If Redis is available, use Redis rate limiting, otherwise use in-memory
+    if (redisAvailable) {
+      rateLimitResult = await checkRedisRateLimit(userId, rateLimit, rateWindowSec);
+    } else {
+      log(LogLevel.WARN, 'Redis unavailable, using in-memory rate limiting', { userId });
+      rateLimitResult = checkRateLimit(rateLimit, rateWindowMs, headersList);
+    }
 
-    if (redisRateLimitResult.isLimited) {
-      const minutesUntilReset = Math.ceil((redisRateLimitResult.timeUntilReset || 0) / 60000);
+    if (rateLimitResult.isLimited) {
+      const minutesUntilReset = Math.ceil((rateLimitResult.timeUntilReset || 0) / 60000);
       return NextResponse.json<ChatAPIResponse>(
         {
           response: `I've answered quite a few questions already. Please try again in about ${minutesUntilReset} minute${minutesUntilReset === 1 ? '' : 's'}.`,
@@ -132,17 +141,18 @@ export async function POST(request: Request) {
       userId,
     });
 
-    // Prepare project links - use imported projects where available and add scheduler case study
+    // Define direct links to case studies with full URLs
     const projectLinks: ProjectLink[] = [
-      // Get LessonLoom from projects data
-      ...projects
-        .filter((project: Project) => project.slug === 'lessonloom')
-        .map((project: Project) => ({
-          name: project.title.split(':')[0].trim(),
-          url: `/projects/${project.slug}`,
-        })),
-      // Add scheduler case study (which is not in the projects array)
-      { name: 'EduScheduler', url: '/casestudy/scheduler' },
+      // LessonLoom case study
+      {
+        name: 'LessonLoom',
+        url: 'https://www.imranaidesign.com/casestudy/lessonloom',
+      },
+      // EduScheduler case study
+      {
+        name: 'EduScheduler',
+        url: 'https://www.imranaidesign.com/casestudy/scheduler',
+      },
     ];
 
     // Create system message content
@@ -156,7 +166,23 @@ export async function POST(request: Request) {
     Project links to share:
     ${JSON.stringify(projectLinks)}
     
-    Note: Imran has two detailed case studies available: "LessonLoom" and "EduScheduler: Intelligent Academic Planning System".
+    Note: Imran has two detailed case studies available:
+    1. LessonLoom case study: https://www.imranaidesign.com/casestudy/lessonloom
+    2. EduScheduler case study: https://www.imranaidesign.com/casestudy/scheduler
+
+    When someone asks about case studies or projects, format your response like this:
+
+    Imran has worked on several exciting projects:
+
+    **LessonLoom**
+    An innovative platform that automates the creation of educational materials using AI and templating systems.
+    [View LessonLoom Case Study](https://www.imranaidesign.com/casestudy/lessonloom)
+
+    **EduScheduler**
+    An intelligent academic planning system that generates optimized teaching schedules.
+    [View EduScheduler Case Study](https://www.imranaidesign.com/casestudy/scheduler)
+
+    These projects showcase his expertise in AI design and user experience.
     
     Technical Implementation Details:
     - Built with Next.js 13.5 using the App Router and TypeScript

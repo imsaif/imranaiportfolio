@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion'; // Import motion
-import { WaveBackground } from '@/components/WaveBackground'; // Import WaveBackground
 
 // Define SVG Icons
 const iconClass = "h-6 w-6 mr-3 inline-block text-blue-500 dark:text-blue-400";
@@ -241,12 +240,12 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
   // Use React Fragment as the root element
   return (
     <>
-      {/* Header with Canvas Wave Background below the name only */}
+      {/* Header section */}
       <div className="relative overflow-hidden">
-        <header className="text-center pt-32 pb-16 relative overflow-visible">
+        <header className="text-center pt-20 pb-12 md:pt-32 md:pb-20 relative overflow-visible">
           <motion.h1 
             className="
-              text-5xl md:text-6xl font-bold 
+              text-4xl sm:text-5xl md:text-6xl font-bold 
               text-transparent bg-clip-text 
               animate-gradient-text relative z-10 container mx-auto px-4 md:px-6 lg:px-8
             "
@@ -260,21 +259,10 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
           >
             Imran Mohammed
           </motion.h1>
-          {/* WaveBackground configured for 8 very wobbly, much faster waves, kept below name */}
-          <WaveBackground
-            className="absolute left-0 right-0 bottom-0 w-full h-[120px] pointer-events-none select-none z-0"
-            waveCount={8} // 8 waves
-            amplitudeRange={[10, 20]} // Keep amplitude high
-            wavelengthRange={[100, 180]} // Keep wavelength short
-            speedRange={[0.015, 0.03]} // Keep speed high
-            offsetYMultiplierRange={[0.05, 0.6]} // Keep vertical spacing
-            alpha={0.12} // Keep transparency
-            dotCount={0} // No dots
-          />
         </header>
       </div>
       {/* Container now only wraps the main resume content card */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-8 -mt-16 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-8 mt-1 relative z-10">
         {/* Resume content card */}
         <div className="max-w-6xl mx-auto p-8 md:p-12 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 rounded-lg shadow-lg mb-16 ring-1 ring-purple-500/30 dark:ring-purple-600/30">
             {/* About Section */}

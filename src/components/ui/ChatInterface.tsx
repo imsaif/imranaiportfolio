@@ -7,6 +7,23 @@ import ChatMessageList from './chat/ChatMessageList';
 import ChatSuggestions from './chat/ChatSuggestions';
 import { Message } from '../../types/chat';
 import { initialMessages, generateResponse } from '../../utils';
+import Button from './Button';
+
+// Case study data for easy maintenance
+const caseStudies = [
+  {
+    id: 'lessonloom',
+    title: 'LessonLoom',
+    description: 'An innovative platform that automates the creation of educational materials using AI and templating systems.',
+    url: '/casestudy/lessonloom'
+  },
+  {
+    id: 'eduscheduler',
+    title: 'EduScheduler',
+    description: 'An intelligent academic planning system that generates optimized teaching schedules.',
+    url: '/casestudy/scheduler'
+  }
+];
 
 // Simplified props to just focus on in-page chat
 type ChatInterfaceProps = {
@@ -17,6 +34,7 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showCaseStudyButtons, setShowCaseStudyButtons] = useState(false);
   
   // Define suggested questions that focus on case studies
   const localSuggestedQuestions = [
@@ -49,6 +67,14 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
     // Hide suggestions after first user message
     setShowSuggestions(false);
     
+    // Check if message is asking about case studies or projects
+    const lowerCaseText = text.toLowerCase();
+    const askingAboutCaseStudies = 
+      lowerCaseText.includes('case stud') || 
+      lowerCaseText.includes('projects') || 
+      lowerCaseText.includes('interesting project') ||
+      lowerCaseText.includes('portfolio');
+    
     // Update messages with user's message
     setMessages(prev => [...prev, userMessage]);
     setIsTyping(true);
@@ -70,6 +96,13 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
 
       // Add bot message to chat
       setMessages(prev => [...prev, botMessage]);
+      
+      // Show case study buttons if the question was about case studies
+      if (askingAboutCaseStudies) {
+        setShowCaseStudyButtons(true);
+      } else {
+        setShowCaseStudyButtons(false);
+      }
     } catch (error) {
       console.error('Error generating response:', error);
       
@@ -91,6 +124,45 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
   const handleSuggestionSelect = (question: string) => {
     handleSendMessage(question);
   };
+
+  // Handle case study button click
+  const handleCaseStudySelect = (caseStudyId: string) => {
+    // Find the selected case study
+    const caseStudy = caseStudies.find(cs => cs.id === caseStudyId);
+    if (!caseStudy) return;
+    
+    // Add a message indicating the user is viewing a case study
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      text: `I want to see the ${caseStudy.title} case study`,
+      sender: 'user',
+      timestamp: new Date(),
+    };
+    
+    setMessages(prev => [...prev, userMessage]);
+    
+    // Navigate to the case study URL
+    window.location.href = caseStudy.url;
+  };
+
+  // Case study buttons component
+  const CaseStudyButtons = () => (
+    <div className="mb-4 mt-2">
+      <p className="text-sm text-accent-600 mb-2 font-medium">View case studies:</p>
+      <div className="flex flex-wrap gap-3">
+        {caseStudies.map((caseStudy) => (
+          <Button 
+            key={caseStudy.id}
+            variant="primary"
+            className="text-sm py-2"
+            onClick={() => handleCaseStudySelect(caseStudy.id)}
+          >
+            {caseStudy.title}
+          </Button>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <div
@@ -116,6 +188,10 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
           flexShrink: 0,
         }}
       >
+        {showCaseStudyButtons && (
+          <CaseStudyButtons />
+        )}
+        
         {showSuggestions && messages.length <= 2 && (
           <div className="hidden sm:block">
             <ChatSuggestions suggestions={localSuggestedQuestions} onSelect={handleSuggestionSelect} />
