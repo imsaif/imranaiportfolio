@@ -127,7 +127,7 @@ export const WaveBackground: React.FC<WaveBackgroundProps> = ({
         ctx.fill();
       }
 
-      time += 0.2;
+      time += 0.18;
       animationFrameId = requestAnimationFrame(draw);
     };
 

@@ -26,6 +26,8 @@ import {
   MAX_RATE_WINDOW_MS,
 } from '../../../utils/api/rateLimit';
 import { safeParseInt, processMessages } from '../../../utils/api/security';
+import { checkRedisRateLimit } from '../../../utils/api/redisRateLimit';
+import { generateUserId } from '../../../utils/api/rateLimit';
 
 /**
  * POST handler for the chat API route
@@ -82,11 +84,16 @@ export async function POST(request: Request) {
     // Get request headers for rate limiting
     const headersList = request.headers;
 
-    // Check rate limit
-    const rateLimitResult = checkRateLimit(rateLimit, rateWindowMs, headersList);
+    // Generate userId for rate limiting
+    const userId = generateUserId(headersList);
+    // Convert rateWindowMs from ms to seconds for Redis
+    const rateWindowSec = Math.ceil(rateWindowMs / 1000);
 
-    if (rateLimitResult.isLimited) {
-      const minutesUntilReset = Math.ceil((rateLimitResult.timeUntilReset || 0) / 60000);
+    // Check rate limit using Redis
+    const redisRateLimitResult = await checkRedisRateLimit(userId, rateLimit, rateWindowSec);
+
+    if (redisRateLimitResult.isLimited) {
+      const minutesUntilReset = Math.ceil((redisRateLimitResult.timeUntilReset || 0) / 60000);
       return NextResponse.json<ChatAPIResponse>(
         {
           response: `I've answered quite a few questions already. Please try again in about ${minutesUntilReset} minute${minutesUntilReset === 1 ? '' : 's'}.`,
@@ -111,7 +118,7 @@ export async function POST(request: Request) {
     const validMessages = processMessages(messages);
 
     if (validMessages.length === 0) {
-      log(LogLevel.ERROR, 'No valid messages found in request', { userId: rateLimitResult.userId });
+      log(LogLevel.ERROR, 'No valid messages found in request', { userId });
       return NextResponse.json<ChatAPIResponse>(
         {
           response: "I couldn't process your message properly. Let me help with information about Imran instead.",
@@ -122,7 +129,7 @@ export async function POST(request: Request) {
 
     log(LogLevel.DEBUG, 'Messages processed successfully', {
       count: validMessages.length,
-      userId: rateLimitResult.userId,
+      userId,
     });
 
     // Prepare project links - use imported projects where available and add scheduler case study
@@ -187,7 +194,7 @@ export async function POST(request: Request) {
     if (!apiResult.success || !apiResult.data) {
       log(LogLevel.ERROR, 'API call failed', {
         error: apiResult.error,
-        userId: rateLimitResult.userId,
+        userId,
       });
 
       return NextResponse.json<ChatAPIResponse>(

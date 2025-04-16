@@ -241,51 +241,38 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
   // Use React Fragment as the root element
   return (
     <>
-       <style jsx global>{`
-            @keyframes gradient-shift {
-              0% { background-position: 0% center; }
-              50% { background-position: 100% center; }
-              100% { background-position: 0% center; }
-            }
-            
-            .animate-gradient-text {
-              animation: gradient-shift 4s ease infinite;
-            }
-          `}</style>
-
-      {/* Header is now outside the container */}
-      <header className="text-center pt-32 pb-16 relative overflow-hidden">
-        {/* WaveBackground styled similar to Hero section */}
-        <WaveBackground
-           className="absolute inset-0 w-full h-full"
-           style={{ zIndex: 0 }}
-           waveCount={6}
-           amplitudeRange={[6, 10]}
-           wavelengthRange={[150, 220]}
-           speedRange={[0.003, 0.006]}
-           offsetYMultiplierRange={[0.3, 0.5]}
-           alpha={0.25}
-           dotCount={35}
-        />
-        {/* Add container classes directly to H1 to center the text */}
-        <motion.h1 
-          className="
-            text-5xl md:text-6xl font-bold 
-            text-transparent bg-clip-text 
-            animate-gradient-text relative z-10 container mx-auto px-4 md:px-6 lg:px-8
-          "
-           style={{
-            backgroundImage: "linear-gradient(90deg, var(--accent), var(--tertiary), var(--accent))",
-            backgroundSize: "200% auto"
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Imran Mohammed
-        </motion.h1>
-      </header>
-
+      {/* Header with Canvas Wave Background below the name only */}
+      <div className="relative overflow-hidden">
+        <header className="text-center pt-32 pb-16 relative overflow-visible">
+          <motion.h1 
+            className="
+              text-5xl md:text-6xl font-bold 
+              text-transparent bg-clip-text 
+              animate-gradient-text relative z-10 container mx-auto px-4 md:px-6 lg:px-8
+            "
+            style={{
+              backgroundImage: "linear-gradient(90deg, var(--accent), var(--tertiary), var(--accent))",
+              backgroundSize: "200% auto"
+            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Imran Mohammed
+          </motion.h1>
+          {/* WaveBackground configured for 8 very wobbly, much faster waves, kept below name */}
+          <WaveBackground
+            className="absolute left-0 right-0 bottom-0 w-full h-[120px] pointer-events-none select-none z-0"
+            waveCount={8} // 8 waves
+            amplitudeRange={[10, 20]} // Keep amplitude high
+            wavelengthRange={[100, 180]} // Keep wavelength short
+            speedRange={[0.015, 0.03]} // Keep speed high
+            offsetYMultiplierRange={[0.05, 0.6]} // Keep vertical spacing
+            alpha={0.12} // Keep transparency
+            dotCount={0} // No dots
+          />
+        </header>
+      </div>
       {/* Container now only wraps the main resume content card */}
       <div className="container mx-auto px-4 md:px-6 lg:px-8 py-8 -mt-16 relative z-10">
         {/* Resume content card */}
@@ -420,12 +407,12 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
 
             {/* Button Section */}
             <div className="mt-16 text-center">
-              {/* Download Resume Button - Changed to link to Google Drive */}
+              {/* Download Resume Button - Changed to match standard styling */}
               <a
                 href="https://drive.google.com/file/d/1A7xF5l66wZ60o0djbE8kfQBoB2TmSRhr/view?usp=sharing"
                 target="_blank" // Open in new tab
                 rel="noopener noreferrer" // Security best practice
-                className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-accent via-tertiary to-accent hover:from-accent/90 hover:via-tertiary/90 hover:to-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition duration-150 ease-in-out transform hover:scale-105 bg-size-200 bg-pos-0 hover:bg-pos-100"
+                className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-accent to-tertiary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition duration-150 ease-in-out"
               >
                 Download Resume
                 {/* Kept Download Icon */}

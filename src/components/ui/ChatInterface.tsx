@@ -117,7 +117,9 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
         }}
       >
         {showSuggestions && messages.length <= 2 && (
-          <ChatSuggestions suggestions={localSuggestedQuestions} onSelect={handleSuggestionSelect} />
+          <div className="hidden sm:block">
+            <ChatSuggestions suggestions={localSuggestedQuestions} onSelect={handleSuggestionSelect} />
+          </div>
         )}
         <ChatInput onSendMessage={handleSendMessage} />
       </div>

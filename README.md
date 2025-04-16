@@ -46,6 +46,27 @@ For AI chat functionality (if enabled):
 For database functionality (if using):
 - `DATABASE_URL`: Your database connection string
 
+## Chat API Rate Limiting
+
+The chat API is protected by Redis-backed rate limiting to prevent abuse and ensure fair usage.
+
+- **Current limit:** 10 messages per user per hour
+- **How it works:** Each user is identified by a hash of their IP and User-Agent. The limit is enforced using Redis, so it works across all server instances and survives restarts.
+- **Environment variables:**
+  - `OPENAI_RATE_LIMIT` — Maximum number of chat messages per user per window (default: 20, currently set to 10)
+  - `OPENAI_RATE_WINDOW_MS` — Window size in milliseconds (default: 3600000 for 1 hour)
+  - `REDIS_URL` — Redis connection string (default: `redis://localhost:6379`)
+
+To change the rate limit, update these variables in your `.env.local` or deployment environment.
+
+Example:
+```
+OPENAI_RATE_LIMIT=10
+OPENAI_RATE_WINDOW_MS=3600000
+```
+
+If a user exceeds the limit, they will receive a 429 response and a message indicating when they can try again.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
