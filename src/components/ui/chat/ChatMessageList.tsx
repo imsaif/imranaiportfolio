@@ -24,7 +24,7 @@ const ChatMessageList = ({ messages, isTyping }: ChatMessageListProps) => {
 
   return (
     <div 
-      className="flex flex-col p-4 overflow-y-auto h-full space-y-4"
+      className="flex flex-col p-2 sm:p-4 overflow-y-auto h-full space-y-2 sm:space-y-4"
       style={{
         scrollbarWidth: 'thin', /* Firefox */
         scrollbarColor: 'var(--accent-200) transparent', /* Firefox */
@@ -56,7 +56,7 @@ const ChatMessageList = ({ messages, isTyping }: ChatMessageListProps) => {
           className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
         >
           <div
-            className={`max-w-[85%] px-4 py-3 rounded-lg ${
+            className={`max-w-[90%] sm:max-w-[85%] px-3 sm:px-4 py-2 sm:py-3 rounded-lg ${
               message.sender === 'user'
                 ? 'bg-gradient-to-r from-accent to-tertiary text-white rounded-tr-none'
                 : 'bg-gradient-to-br from-white/90 to-accent-50/50 text-foreground border border-accent-100 rounded-tl-none'

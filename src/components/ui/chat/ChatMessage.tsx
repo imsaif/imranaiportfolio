@@ -27,12 +27,12 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
   return (
     <div
       ref={messageRef}
-      className={`flex ${isBot ? 'justify-start' : 'justify-end'} mb-4 ${className}`}
-      style={{ minHeight: '38px' }} // Minimum height to reduce layout shifts
+      className={`flex ${isBot ? 'justify-start' : 'justify-end'} mb-3 sm:mb-4 ${className}`}
+      style={{ minHeight: '34px' }} // Slightly smaller min height for mobile
     >
       <div
         className={`
-          px-4 py-3 rounded-2xl max-w-[85%] break-words backdrop-blur-sm
+          px-3 sm:px-4 py-2 sm:py-3 rounded-2xl max-w-[90%] sm:max-w-[85%] break-words backdrop-blur-sm
           ${
             isBot
               ? 'bg-gradient-to-br from-gray-50/90 to-white/70 text-foreground border border-white/40'

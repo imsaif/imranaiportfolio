@@ -94,7 +94,7 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
 
   return (
     <div
-      className="flex flex-col h-full relative"
+      className="flex flex-col h-full w-full relative bg-gradient-to-br from-white/70 to-white/40 backdrop-blur-md rounded-lg sm:rounded-xl"
       style={{
         background: 'linear-gradient(145deg, rgba(244, 244, 255, 0.3) 0%, rgba(250, 250, 255, 0.2) 100%)',
         backdropFilter: 'blur(8px)',
@@ -103,7 +103,7 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
       }}
     >
       {/* Messages container with stable dimensions */}
-      <div className="flex-1 overflow-hidden" style={{ minHeight: 0 }}>
+      <div className="flex-1 overflow-hidden min-h-0 px-1 sm:px-4 py-1 sm:py-2">
         {' '}
         {/* minHeight prevents flex container issues */}
         <ChatMessageList messages={messages} isTyping={isTyping} />
@@ -111,10 +111,9 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
 
       {/* Message input with stable height and subtle gradient */}
       <div
-        className="mt-auto px-4 py-4 border-t border-white/20 backdrop-blur-sm"
+        className="mt-auto px-2 sm:px-4 py-2 sm:py-4 border-t border-white/20 backdrop-blur-sm bg-gradient-to-t from-white/70 to-white/40 sticky bottom-0 z-20"
         style={{
           flexShrink: 0,
-          background: 'linear-gradient(to top, rgba(244, 244, 255, 0.5) 0%, rgba(250, 250, 255, 0.3) 100%)',
         }}
       >
         {showSuggestions && messages.length <= 2 && (

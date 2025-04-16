@@ -14,19 +14,34 @@ interface HeroHeadingProps {
 const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
   const gradientTextRef = useRef<HTMLSpanElement>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Force client-side rendering
+  // Force client-side rendering and check mobile status
   useEffect(() => {
     setIsMounted(true);
+    // Check screen size on mount
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Example breakpoint: 768px
+    };
+    checkMobile();
+    // Optional: Add resize listener if needed
+    // window.addEventListener('resize', checkMobile);
+    // return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Set up text cycling for the dynamic text options
-  const { currentText, typing, deleting } = useTextCycling({
-    texts: aiTextOptions,
+  // Set up text cycling for the dynamic text options - ONLY if not mobile
+  const { currentText, typing } = useTextCycling({
+    texts: aiTextOptions && aiTextOptions.length > 0 ? aiTextOptions : [''], // Ensure texts is not empty
     typingSpeed: 2000,
     pauseDuration: 3000,
     charSpeed: 40,
+    // Disable autostart if mobile, let hook handle initial state
+    autoStart: !isMobile,
   });
+
+  // Determine text and cursor visibility based on screen size
+  const displayText = isMobile ? (aiTextOptions[0] || '') : currentText;
+  const showCursor = !isMobile && typing;
 
   // Set up mouse tracking for the gradient effect
   const { elementRef } = useMouseTracking<HTMLDivElement>({
@@ -68,53 +83,49 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
         ref={elementRef}
       >
         <h1
-          className={`text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 tracking-tight transition-all duration-700 ${
+          className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 tracking-tight transition-all duration-700 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          <div className="block" style={{ marginBottom: '0px' }}>
-            <span>Creating </span>
+          Creating{' '}
+          <span
+            className="inline-block align-baseline"
+            style={{}}
+          >
             <span
-              className="inline-block min-w-[220px] xs:min-w-[270px] min-h-[50px] xs:min-h-[60px] md:min-w-[320px] md:min-h-[70px]"
+              ref={gradientTextRef}
               style={{
+                background: 'linear-gradient(135deg, var(--accent), var(--tertiary), var(--accent))',
+                backgroundSize: '300% 300%',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
                 display: 'inline-block',
+                position: 'relative',
+                animation: 'gradientFlow 4s ease infinite',
+                paddingBottom: '5px',
               }}
             >
-              <span
-                ref={gradientTextRef}
-                style={{
-                  background: 'linear-gradient(135deg, var(--accent), var(--tertiary), var(--accent))',
-                  backgroundSize: '300% 300%',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  color: 'transparent',
-                  display: 'inline-block',
-                  position: 'relative',
-                  animation: 'gradientFlow 4s ease infinite',
-                  paddingBottom: '5px',
-                }}
-              >
-                {currentText}
-                {typing && (
-                  <span
-                    style={{
-                      position: 'absolute',
-                      right: '-2px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      height: '60%',
-                      width: '3px',
-                      backgroundColor: 'var(--accent)',
-                      display: 'inline-block',
-                      opacity: 0.9,
-                      animation: 'blink 0.7s step-end infinite',
-                    }}
-                  />
-                )}
-              </span>
+              {displayText}
+              {showCursor && (
+                <span
+                  style={{
+                    position: 'absolute',
+                    right: '-2px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    height: '60%',
+                    width: '3px',
+                    backgroundColor: 'var(--accent)',
+                    display: 'inline-block',
+                    opacity: 0.9,
+                    animation: 'blink 0.7s step-end infinite',
+                  }}
+                />
+              )}
             </span>
-          </div>
-          <div className="block">experiences with purpose and precision.</div>
+          </span>{' '}
+          experiences with purpose and precision.
         </h1>
 
         <p

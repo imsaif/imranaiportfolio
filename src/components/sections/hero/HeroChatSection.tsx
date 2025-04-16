@@ -27,10 +27,9 @@ const HeroChatSection = ({ closeChat }: HeroChatSectionProps) => {
       style={{ zIndex: 100 }}
     >
       <div
-        className="chat-container backdrop-blur-md bg-gradient-to-br from-white/60 to-white/30 rounded-lg h-full flex flex-col overflow-hidden"
+        className="chat-container backdrop-blur-md bg-gradient-to-br from-white/60 to-white/30 rounded-lg sm:rounded-xl h-full w-full max-w-full max-h-full flex flex-col overflow-hidden p-2 sm:p-6"
         style={{
           position: 'relative',
-          padding: '24px',
           boxShadow: '0 8px 32px rgba(31, 38, 135, 0.07)',
           backdropFilter: 'blur(12px)',
         }}

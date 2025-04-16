@@ -24,19 +24,19 @@ const ChatInput = ({ onSendMessage }: ChatInputProps) => {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 w-full">
       <input
         type="text"
         value={inputValue}
         onChange={e => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Type a message..."
-        className="flex-1 py-2 px-4 rounded-full border border-accent-200 focus:outline-none focus:ring-1 focus:ring-accent-300/50 focus:border-accent-200 bg-white/80 text-foreground"
+        className="flex-1 py-2 sm:py-2 px-3 sm:px-4 rounded-full border border-accent-200 focus:outline-none focus:ring-1 focus:ring-accent-300/50 focus:border-accent-200 bg-white/80 text-foreground text-base sm:text-sm"
       />
       <button
         onClick={handleSubmit}
         disabled={!inputValue.trim()}
-        className="p-2 rounded-full bg-gradient-to-r from-accent to-tertiary text-white hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
+        className="p-2 sm:p-2 rounded-full bg-gradient-to-r from-accent to-tertiary text-white hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md text-base sm:text-sm"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path

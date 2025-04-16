@@ -35,7 +35,7 @@ export const projects: Project[] = [
   {
     id: 2,
     slug: 'scheduler',
-    title: 'Automated Instructional Planning System',
+    title: 'EduScheduler: Intelligent Academic Planning System',
     description:
       'An innovative system that automates the generation of optimized teaching schedules for educational institutions',
     fullDescription: `

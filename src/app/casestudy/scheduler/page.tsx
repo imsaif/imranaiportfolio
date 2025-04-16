@@ -35,7 +35,7 @@ export default function Page() {
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <CaseStudyHeader level="h1">
-          EduScheduler: Intelligent Academic Planning System - Transforming Educational Scheduling
+          EduScheduler: Intelligent Academic Planning System
         </CaseStudyHeader>
 
         <motion.div

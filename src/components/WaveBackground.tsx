@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo, useState } from 'react';
 
 // Define Brand Colors (derived from globals.css)
 const COLORS = {
@@ -23,6 +23,18 @@ interface WaveBackgroundProps {
 
 const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
+// Simple hook to detect mobile viewport (sm breakpoint)
+function useIsMobile(breakpoint = 640) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < breakpoint);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [breakpoint]);
+  return isMobile;
+}
+
 export const WaveBackground: React.FC<WaveBackgroundProps> = ({
   className = 'absolute inset-0 w-full h-full',
   style = { zIndex: 0 },
@@ -34,6 +46,8 @@ export const WaveBackground: React.FC<WaveBackgroundProps> = ({
   alpha = 0.15, // Default alpha
   dotCount = 25,
 }) => {
+  const isMobile = useIsMobile();
+  if (isMobile) return null;
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const waveParams = useMemo(() => {

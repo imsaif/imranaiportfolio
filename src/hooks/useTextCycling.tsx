@@ -118,7 +118,6 @@ export const useTextCycling = ({
         next();
       }
     }
-
     return () => clearTimeout(timer);
   }, [status, pauseDuration, charIndex, fullText, charSpeed, next]);
 
@@ -131,3 +130,4 @@ export const useTextCycling = ({
     next,
   };
 };
+
