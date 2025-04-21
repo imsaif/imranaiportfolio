@@ -1,6 +1,8 @@
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 import './globals.css';
 import ClientProviders from '../components/ClientProviders';
@@ -40,6 +42,8 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </ClientProviders>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
