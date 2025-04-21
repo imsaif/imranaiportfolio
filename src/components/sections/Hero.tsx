@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 
 import { useChatToggle } from '../../context/ChatToggleProvider';
 import HeroBackground from './hero/HeroBackground';
@@ -106,13 +107,29 @@ const Hero = () => {
           {/* Always show the hero content */}
           <div>
             {!isChatOpen && (
-              <span
-                className={`inline-block mb-3 xs:mb-4 md:mb-6 text-base xs:text-lg font-medium transition-all duration-700 ease-out ${
-                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                }`}
-              >
-                Hi, I'm Imran 👋 I am
-              </span>
+              <div className="flex items-center gap-3 mb-3 xs:mb-4 md:mb-6">
+                <div 
+                  className="relative w-8 h-8 xs:w-10 xs:h-10 md:w-12 md:h-12 overflow-hidden rounded-full shadow-sm flex-shrink-0 border border-gray-200"
+                  style={{ borderColor: "rgba(75, 75, 75, 0.15)" }}
+                >
+                  <Image 
+                    src="/images/profile/avatar.jpg" 
+                    alt="Imran Mohammed" 
+                    fill
+                    sizes="(max-width: 640px) 32px, (max-width: 768px) 40px, 48px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                
+                <span
+                  className={`text-base xs:text-lg font-medium transition-all duration-700 ease-out ${
+                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                  }`}
+                >
+                  Hi, I'm Imran 👋 I am
+                </span>
+              </div>
             )}
 
             {/* Animation container with fixed height to prevent layout shifts */}

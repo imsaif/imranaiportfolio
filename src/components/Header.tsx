@@ -1,11 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,8 +33,34 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 md:px-8 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold tracking-tight hover:text-accent transition-colors">
-          <span className="gradient-text">Imran Mohammed</span>
+        <Link href="/" className="flex items-center gap-3 hover:text-accent transition-colors group">
+          <motion.div 
+            className="relative w-9 h-9 overflow-hidden rounded-full shadow-sm"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-tr from-accent to-accent/70 rounded-full p-[2px]">
+              <div className="absolute inset-0 rounded-full overflow-hidden bg-background">
+                <Image 
+                  src="/images/profile/avatar.jpg" 
+                  alt="Imran Mohammed" 
+                  fill
+                  sizes="36px"
+                  className={`object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  priority
+                  onLoadingComplete={() => setImageLoaded(true)}
+                />
+                {!imageLoaded && (
+                  <div className="absolute inset-0 flex items-center justify-center text-xs text-accent">
+                    IM
+                  </div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+          <span className="text-xl font-bold tracking-tight gradient-text">Imran Mohammed</span>
         </Link>
 
         {/* Mobile menu button */}

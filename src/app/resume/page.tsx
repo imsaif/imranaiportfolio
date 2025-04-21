@@ -59,7 +59,7 @@ const StarIcon = () => (
 
 const ResumePage = () => {
   const resumeData = {
-    about: `As a product designer at NewGlobe, I apply my skills and knowledge in user experience (UX) and artificial intelligence (AI) to create products that improve the learning outcomes of millions of students around the world. I have over six years of experience in UX design, working on analytical and data visualization products for the healthcare industry at Optum before joining NewGlobe in 2023.
+    about: `As a product designer at NewGlobe, I apply my skills and knowledge in user experience (UX) and artificial intelligence (AI) to create products that improve the learning outcomes of millions of students around the world. I have over eight years of experience in UX design, working on analytical and data visualization products for the healthcare industry at Optum before joining NewGlobe in 2023.
 
 My passion for design stems from my curiosity about how people think and interact with technology. I have a master's degree in psychology and a postgraduate program in visual and user experience design from the Indian Institute of Technology. I follow a user-centric and iterative process that involves understanding the problem, researching existing solutions, brainstorming ideas, prototyping, testing, and improving. I collaborate with developers, product managers, and educators to deliver solutions that are simple, intuitive, and impactful.`,
     experience: [
@@ -259,6 +259,23 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
           >
             Imran Mohammed
           </motion.h1>
+          
+          {/* Featured Testimonial - Added below name */}
+          <motion.div
+            className="max-w-2xl mx-auto mt-6 mb-2 px-4 py-4 bg-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="flex flex-col items-center text-center">
+              <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 italic mb-3 relative">
+                "Imran is an incredibly talented and versatile experience designer — someone who consistently delivers both strategic value and thoughtful, user-first design."
+              </p>
+              <div className="mt-2 flex items-center">
+                <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">— Kasia Rzezniczak, Senior Director of Product Management</span>
+              </div>
+            </div>
+          </motion.div>
         </header>
       </div>
       {/* Container now only wraps the main resume content card */}

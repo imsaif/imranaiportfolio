@@ -216,8 +216,8 @@ p {
 
 /* Animation for gradient text */
 .animate-gradient {
-  animation: gradientFlow 6s ease infinite;
-  background-size: 300% 300%;
+  animation: gradient 3s ease infinite;
+  background-size: 200% 200%;
 }
 
 /* Typing cursor blink animation */
@@ -502,5 +502,17 @@ p {
   }
   50% {
     opacity: 0.3;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

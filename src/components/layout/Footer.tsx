@@ -53,7 +53,7 @@ const Footer = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <a href="mailto:imran@example.com" className="flex items-center justify-center gap-3 btn btn-primary">
+              <a href="mailto:imranrizom@gmail.com" className="flex items-center justify-center gap-3 btn btn-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
