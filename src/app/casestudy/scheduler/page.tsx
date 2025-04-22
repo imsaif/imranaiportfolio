@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
+import InteractivePrototype from './InteractivePrototype';
 
 export default function Page() {
   const fadeIn = {
@@ -67,17 +68,17 @@ export default function Page() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
           >
             <div className="bg-blue-50 p-8 rounded-2xl border-t-4 border-blue-400 shadow-md">
-              <h3 className="text-blue-600 font-bold mb-3">Role</h3>
+              <h3 className="text-gray-800 font-bold mb-3">Role</h3>
               <p className="text-gray-900">Lead Product Designer</p>
             </div>
 
             <div className="bg-purple-50 p-8 rounded-2xl border-t-4 border-purple-400 shadow-md">
-              <h3 className="text-purple-600 font-bold mb-3">Organization</h3>
+              <h3 className="text-gray-800 font-bold mb-3">Organization</h3>
               <p className="text-gray-900">NewGlobe Education</p>
             </div>
 
             <div className="bg-pink-50 p-8 rounded-2xl border-t-4 border-pink-400 shadow-md">
-              <h3 className="text-pink-600 font-bold mb-3">Technologies</h3>
+              <h3 className="text-gray-800 font-bold mb-3">Technologies</h3>
               <p className="text-gray-900">React, Node.js, PostgreSQL, Optimization Algorithms</p>
             </div>
           </motion.div>
@@ -123,26 +124,26 @@ export default function Page() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="bg-blue-50 p-6 rounded-xl">
-                <h3 className="text-blue-600 font-bold mb-2">Scale Challenges</h3>
+                <h3 className="text-gray-800 font-bold mb-2">Scale Challenges</h3>
                 <p className="text-gray-700">
                   Supporting variable numbers of streams per grade while maintaining educational quality.
                 </p>
               </div>
 
               <div className="bg-blue-50 p-6 rounded-xl">
-                <h3 className="text-blue-600 font-bold mb-2">Flexibility Requirements</h3>
+                <h3 className="text-gray-800 font-bold mb-2">Flexibility Requirements</h3>
                 <p className="text-gray-700">
                   Accommodating specialist teaching models, multigrade classrooms, and cross-grade ability grouping.
                 </p>
               </div>
 
               <div className="bg-blue-50 p-6 rounded-xl">
-                <h3 className="text-blue-600 font-bold mb-2">Optimization Needs</h3>
+                <h3 className="text-gray-800 font-bold mb-2">Optimization Needs</h3>
                 <p className="text-gray-700">Maximizing teacher utilization across multiple streams and grades.</p>
               </div>
 
               <div className="bg-blue-50 p-6 rounded-xl">
-                <h3 className="text-blue-600 font-bold mb-2">Resource Constraints</h3>
+                <h3 className="text-gray-800 font-bold mb-2">Resource Constraints</h3>
                 <p className="text-gray-700">Managing limited textbook resources with book-sharing requirements.</p>
               </div>
             </div>
@@ -187,7 +188,7 @@ export default function Page() {
               precise requirements for a solution that would address all user needs.
             </p>
 
-            <h3 className="text-blue-600 font-bold mb-6">Research Methods</h3>
+            <h3 className="text-gray-800 font-bold mb-6">Research Methods</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               <div className="bg-blue-50 p-6 rounded-xl">
@@ -208,7 +209,7 @@ export default function Page() {
                       />
                     </svg>
                   </div>
-                  <h4 className="font-bold text-blue-600">Stakeholder Interviews</h4>
+                  <h4 className="font-bold text-gray-800">Stakeholder Interviews</h4>
                 </div>
                 <ul className="list-disc pl-5 text-gray-700 space-y-2">
                   <li>12 interviews across 3 key stakeholder groups</li>
@@ -236,7 +237,7 @@ export default function Page() {
                       />
                     </svg>
                   </div>
-                  <h4 className="font-bold text-purple-600">Process Shadowing</h4>
+                  <h4 className="font-bold text-gray-800">Process Shadowing</h4>
                 </div>
                 <ul className="list-disc pl-5 text-gray-700 space-y-2">
                   <li>5 full days observing the timetable creation process</li>
@@ -263,7 +264,7 @@ export default function Page() {
                       />
                     </svg>
                   </div>
-                  <h4 className="font-bold text-pink-600">Collaborative Workshops</h4>
+                  <h4 className="font-bold text-gray-800">Collaborative Workshops</h4>
                 </div>
                 <ul className="list-disc pl-5 text-gray-700 space-y-2">
                   <li>Facilitated cross-functional rule identification sessions</li>
@@ -290,7 +291,7 @@ export default function Page() {
                       />
                     </svg>
                   </div>
-                  <h4 className="font-bold text-green-600">Existing System Analysis</h4>
+                  <h4 className="font-bold text-gray-800">Existing System Analysis</h4>
                 </div>
                 <ul className="list-disc pl-5 text-gray-700 space-y-2">
                   <li>Audited the legacy scheduling system</li>
@@ -300,12 +301,12 @@ export default function Page() {
               </div>
             </div>
 
-            <h3 className="text-blue-600 font-bold mb-6">User Personas</h3>
+            <h3 className="text-gray-800 font-bold mb-6">User Personas</h3>
             <p className="text-gray-700 mb-8">Through this research, I developed three key personas:</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="rounded-xl overflow-hidden shadow-md border border-gray-200">
-                <div className="bg-blue-500 py-8 flex justify-center">
+            <div className="grid grid-cols-1 grid-flow-col auto-cols-fr gap-8 overflow-x-auto mb-12">
+              <div className="rounded-xl overflow-hidden shadow-md border border-gray-200 min-w-[300px]">
+                <div className="bg-blue-100 py-8 flex justify-center">
                   <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center">
                     <span className="text-blue-500 font-bold text-xl">AD</span>
                   </div>
@@ -328,8 +329,8 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className="rounded-xl overflow-hidden shadow-md border border-gray-200">
-                <div className="bg-purple-500 py-8 flex justify-center">
+              <div className="rounded-xl overflow-hidden shadow-md border border-gray-200 min-w-[300px]">
+                <div className="bg-purple-100 py-8 flex justify-center">
                   <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center">
                     <span className="text-purple-500 font-bold text-xl">DP</span>
                   </div>
@@ -350,8 +351,8 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className="rounded-xl overflow-hidden shadow-md border border-gray-200">
-                <div className="bg-pink-500 py-8 flex justify-center">
+              <div className="rounded-xl overflow-hidden shadow-md border border-gray-200 min-w-[300px]">
+                <div className="bg-pink-50 py-8 flex justify-center">
                   <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center">
                     <span className="text-pink-500 font-bold text-xl">ST</span>
                   </div>
@@ -373,17 +374,15 @@ export default function Page() {
               </div>
             </div>
 
-            <h3 className="text-blue-600 font-bold mb-6">Key Pain Points Identified</h3>
+            <h3 className="text-gray-800 font-bold mb-6">Key Pain Points Identified</h3>
 
             <div className="overflow-x-auto bg-gray-50 p-6 rounded-xl mb-12">
               <table className="w-full text-left border-collapse border border-gray-200">
                 <thead>
                   <tr>
-                    <th className="py-4 px-6 font-bold text-blue-600 border border-gray-200">PROCESS ISSUES</th>
-                    <th className="py-4 px-6 font-bold text-purple-600 border border-gray-200">
-                      TECHNICAL LIMITATIONS
-                    </th>
-                    <th className="py-4 px-6 font-bold text-pink-600 border border-gray-200">RESOURCE CONSTRAINTS</th>
+                    <th className="py-4 px-6 font-bold text-gray-800 border border-gray-200">PROCESS ISSUES</th>
+                    <th className="py-4 px-6 font-bold text-gray-800 border border-gray-200">TECHNICAL LIMITATIONS</th>
+                    <th className="py-4 px-6 font-bold text-gray-800 border border-gray-200">RESOURCE CONSTRAINTS</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -431,7 +430,7 @@ export default function Page() {
               </table>
             </div>
 
-            <h3 className="text-blue-600 font-bold mb-6">Design Requirements</h3>
+            <h3 className="text-gray-800 font-bold mb-6">Design Requirements</h3>
             <p className="text-gray-700 mb-8">
               Based on this research, I established clear design requirements to guide the solution:
             </p>
@@ -440,10 +439,10 @@ export default function Page() {
               <table className="w-full text-left border-collapse border border-gray-200">
                 <thead>
                   <tr>
-                    <th className="py-4 px-4 font-bold text-blue-600 border border-gray-200">REQUIREMENT CATEGORY</th>
-                    <th className="py-4 px-4 font-bold text-blue-600 border border-gray-200">REQUIREMENT</th>
-                    <th className="py-4 px-4 font-bold text-blue-600 border border-gray-200">DESCRIPTION</th>
-                    <th className="py-4 px-4 font-bold text-blue-600 border border-gray-200">USER NEED ADDRESSED</th>
+                    <th className="py-4 px-4 font-bold text-gray-800 border border-gray-200">REQUIREMENT CATEGORY</th>
+                    <th className="py-4 px-4 font-bold text-gray-800 border border-gray-200">REQUIREMENT</th>
+                    <th className="py-4 px-4 font-bold text-gray-800 border border-gray-200">DESCRIPTION</th>
+                    <th className="py-4 px-4 font-bold text-gray-800 border border-gray-200">USER NEED ADDRESSED</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -516,7 +515,7 @@ export default function Page() {
             transition={{ duration: 0.6 }}
             className="bg-white p-8 rounded-xl shadow-md mb-12"
           >
-            <h3 className="text-blue-600 font-bold text-xl mb-6">1. Information Architecture & Workflow Design</h3>
+            <h3 className="text-gray-800 font-bold text-xl mb-6">1. Information Architecture & Workflow Design</h3>
 
             <div className="bg-blue-50 p-6 rounded-xl mb-6">
               <p className="text-gray-800 mb-6">Based on my research, I developed:</p>
@@ -559,7 +558,7 @@ export default function Page() {
             </p>
 
             {/* User Journey Mapping */}
-            <h3 className="text-blue-600 font-bold text-xl mb-6">2. User Journey Mapping</h3>
+            <h3 className="text-gray-800 font-bold text-xl mb-6">2. User Journey Mapping</h3>
 
             <p className="text-gray-800 mb-6">
               I created detailed journey maps to visualize how users would interact with the system, highlighting key
@@ -653,7 +652,7 @@ export default function Page() {
               {/* Pain Points and Design Opportunities */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div className="bg-red-50 p-6 rounded-xl">
-                  <h5 className="font-bold mb-4 text-red-600">Pain Points</h5>
+                  <h5 className="font-bold mb-4 text-gray-800">Pain Points</h5>
                   <ul className="space-y-4">
                     <li className="flex">
                       <div className="border-l-4 border-red-500 pl-3">
@@ -683,7 +682,7 @@ export default function Page() {
                 </div>
 
                 <div className="bg-green-50 p-6 rounded-xl">
-                  <h5 className="font-bold mb-4 text-green-600">Design Opportunities</h5>
+                  <h5 className="font-bold mb-4 text-gray-800">Design Opportunities</h5>
                   <ul className="space-y-4">
                     <li className="flex">
                       <div className="border-l-4 border-green-500 pl-3">
@@ -728,7 +727,7 @@ export default function Page() {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-xl shadow-md p-8 mb-12"
           >
-            <h3 className="text-blue-600 font-bold text-xl mb-6">3. UI Design and Visualization</h3>
+            <h3 className="text-gray-800 font-bold text-xl mb-6">3. UI Design and Visualization</h3>
 
             <p className="text-gray-700 mb-8">
               I designed intuitive interfaces focused on making complex scheduling data accessible and actionable:
@@ -1011,7 +1010,7 @@ export default function Page() {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-xl shadow-md p-8 mb-12"
           >
-            <h3 className="text-blue-600 font-bold text-xl mb-6">4. User Testing & Iteration</h3>
+            <h3 className="text-gray-800 font-bold text-xl mb-6">4. User Testing & Iteration</h3>
 
             <p className="text-gray-700 mb-8">
               After creating the initial designs, I conducted comprehensive user testing to validate our solution and
@@ -1151,7 +1150,7 @@ export default function Page() {
                   transition={{ duration: 0.4, delay: 0.1 }}
                   className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
                 >
-                  <div className="bg-blue-600 text-white px-6 py-3">
+                  <div className="bg-blue-100 text-gray-900 px-6 py-3">
                     <h5 className="font-medium">Scenario 1: Schedule Generation</h5>
                   </div>
                   <div className="p-6">
@@ -1168,11 +1167,11 @@ export default function Page() {
                       <h6 className="font-medium text-gray-900 mb-2">Key Findings:</h6>
                       <div className="flex items-center mb-2">
                         <span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-                        <p className="text-sm text-gray-700">Users struggled to understand constraint hierarchy</p>
+                        <p className="text-sm text-gray-700 mb-2">Users struggled to understand constraint hierarchy</p>
                       </div>
                       <div className="flex items-center">
                         <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
-                        <p className="text-sm text-gray-700">Auto-suggestions feature was highly valued</p>
+                        <p className="text-sm text-gray-700 mb-2">Auto-suggestions feature was highly valued</p>
                       </div>
                     </div>
                   </div>
@@ -1185,7 +1184,7 @@ export default function Page() {
                   transition={{ duration: 0.4, delay: 0.2 }}
                   className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
                 >
-                  <div className="bg-purple-600 text-white px-6 py-3">
+                  <div className="bg-purple-100 text-gray-900 px-6 py-3">
                     <h5 className="font-medium">Scenario 2: Conflict Resolution</h5>
                   </div>
                   <div className="p-6">
@@ -1200,11 +1199,11 @@ export default function Page() {
                       <h6 className="font-medium text-gray-900 mb-2">Key Findings:</h6>
                       <div className="flex items-center mb-2">
                         <span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-                        <p className="text-sm text-gray-700">Error messaging lacked actionable guidance</p>
+                        <p className="text-sm text-gray-700 mb-2">Error messaging lacked actionable guidance</p>
                       </div>
                       <div className="flex items-center">
                         <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
-                        <p className="text-sm text-gray-700">Conflict summaries were helpful for prioritization</p>
+                        <p className="text-sm text-gray-700 mb-2">Conflict summaries were helpful for prioritization</p>
                       </div>
                     </div>
                   </div>
@@ -1524,7 +1523,7 @@ export default function Page() {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-xl shadow-md p-8 mb-12"
           >
-            <h3 className="text-blue-600 font-bold text-xl mb-6">5. Wireframing & Prototyping</h3>
+            <h3 className="text-gray-800 font-bold text-xl mb-6">5. Wireframing & Prototyping</h3>
 
             <p className="text-gray-700 mb-8">
               After establishing the user requirements and journey maps, I followed a structured design process to
@@ -2540,6 +2539,9 @@ export default function Page() {
           </motion.div>
         </section>
 
+        {/* Interactive Prototype Section */}
+        <InteractivePrototype />
+
         {/* Lessons Learned Section */}
         <section className="mb-20">
           <div className="flex items-center mb-8">
@@ -2561,7 +2563,7 @@ export default function Page() {
 
             {/* Key Challenges */}
             <div className="mb-12">
-              <h3 className="text-blue-600 font-bold text-xl mb-6">Key Challenges</h3>
+              <h3 className="text-gray-900 font-bold text-xl mb-6">Key Challenges</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <motion.div
@@ -2586,7 +2588,7 @@ export default function Page() {
                         />
                       </svg>
                     </div>
-                    <h4 className="font-bold text-blue-600">Complex Constraint Management</h4>
+                    <h4 className="font-bold text-gray-900">Complex Constraint Management</h4>
                   </div>
                   <p className="text-gray-700">
                     Balancing the need for standardization across programs with flexibility for local contexts proved
@@ -2616,7 +2618,7 @@ export default function Page() {
                         />
                       </svg>
                     </div>
-                    <h4 className="font-bold text-purple-600">Stakeholder Alignment</h4>
+                    <h4 className="font-bold text-gray-900">Stakeholder Alignment</h4>
                   </div>
                   <p className="text-gray-700">
                     Coordinating between program administrators, school principals, and teachers required careful
@@ -2642,7 +2644,7 @@ export default function Page() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
-                    <h4 className="font-bold text-pink-600">Performance Optimization</h4>
+                    <h4 className="font-bold text-gray-900">Performance Optimization</h4>
                   </div>
                   <p className="text-gray-700">
                     The complexity of scheduling algorithms required significant optimization to deliver results in a
@@ -2654,7 +2656,7 @@ export default function Page() {
 
             {/* What I Would Do Differently */}
             <div className="mb-12">
-              <h3 className="text-blue-600 font-bold text-xl mb-6">What I Would Do Differently</h3>
+              <h3 className="text-gray-900 font-bold text-xl mb-6">What I Would Do Differently</h3>
 
               <motion.div className="rounded-xl overflow-hidden shadow-md border border-gray-200 mb-8">
                 <div className="bg-gradient-to-r from-blue-500 to-purple-500 py-4 px-6">
@@ -2707,7 +2709,7 @@ export default function Page() {
 
             {/* Design Principles Reinforced */}
             <div className="mb-12">
-              <h3 className="text-blue-600 font-bold text-xl mb-6">Design Principles Reinforced</h3>
+              <h3 className="text-gray-900 font-bold text-xl mb-6">Design Principles Reinforced</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
@@ -2757,7 +2759,6 @@ export default function Page() {
           </motion.div>
         </section>
 
-        {/* Conclusion Section */}
         <section className="mb-20">
           <div className="flex items-center mb-8">
             <CaseStudyHeader level="h2" showGradientLine>
@@ -2773,392 +2774,181 @@ export default function Page() {
             className="bg-white p-8 rounded-xl shadow-md mb-12"
           >
             <p className="text-gray-800 mb-8">
-              The EduScheduler: Intelligent Academic Planning System represents a successful transformation of a complex, manual process
-              into an intuitive, efficient system that empowers educational administrators to create optimal schedules
-              while respecting diverse requirements and constraints.
+              The EduScheduler: Intelligent Academic Planning System represents a successful transformation of a complex, manual process into an intuitive, efficient system that empowers educational administrators to create optimal schedules while respecting diverse requirements and constraints.
             </p>
 
-            {/* Project Achievements */}
-            <div className="mb-12">
-              <h3 className="text-blue-600 font-bold text-xl mb-6">Project Achievements</h3>
-
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-100 mb-8">
-                <p className="text-gray-800 mb-4">
-                  Beyond the measurable metrics of success, this project demonstrated how thoughtful UX design could
-                  tackle challenging optimization problems while keeping humans at the center of the process. The system
-                  balanced automation with manual control, providing powerful tools without removing human judgment and
-                  expertise.
-                </p>
-
-                <p className="text-gray-800">
-                  By focusing on clear information architecture, intuitive workflows, and meaningful visualizations, we
-                  created a system that not only solved the technical challenge of schedule optimization but did so in a
-                  way that was accessible and empowering for all stakeholders.
-                </p>
-              </div>
-
-              <h4 className="text-purple-600 font-bold mb-4">Impact Metrics</h4>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
-                  className="bg-blue-50 p-5 rounded-xl text-center"
-                >
-                  <div className="text-blue-600 text-3xl font-bold mb-2">98%</div>
-                  <p className="text-gray-700 text-sm">Reduction in scheduling errors</p>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
-                  className="bg-purple-50 p-5 rounded-xl text-center"
-                >
-                  <div className="text-purple-600 text-3xl font-bold mb-2">85%</div>
-                  <p className="text-gray-700 text-sm">Time saved in schedule creation</p>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
-                  className="bg-pink-50 p-5 rounded-xl text-center"
-                >
-                  <div className="text-pink-600 text-3xl font-bold mb-2">92%</div>
-                  <p className="text-gray-700 text-sm">Teacher resource optimization</p>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
-                  className="bg-green-50 p-5 rounded-xl text-center"
-                >
-                  <div className="text-green-600 text-3xl font-bold mb-2">12%</div>
-                  <p className="text-gray-700 text-sm">Cost reduction through sharing</p>
-                </motion.div>
-              </div>
-
-              <h4 className="text-purple-600 font-bold mb-4">My Role</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                  <h5 className="font-bold text-gray-900 mb-3">Research & Design</h5>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700">Led user research and requirements gathering</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700">Designed information architecture and user workflows</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700">Created wireframes and interactive prototypes</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                  <h5 className="font-bold text-gray-900 mb-3">Implementation & Support</h5>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-purple-500 flex items-center justify-center mt-1 mr-3">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700">Collaborated with developers on implementation</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-purple-500 flex items-center justify-center mt-1 mr-3">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700">Conducted user testing and iterative refinement</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-purple-500 flex items-center justify-center mt-1 mr-3">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3 text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700">Developed training materials and documentation</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Future Directions */}
-            <div className="mb-12">
-              <h3 className="text-blue-600 font-bold text-xl mb-6">Future Directions</h3>
-
-              <p className="text-gray-800 mb-6">
-                The success of the EduScheduler system has opened possibilities for expanded functionality in future iterations.
-                These components are designed to work together as part of a comprehensive learning enablement platform,
-                with the Instructional Planner being just one piece of the larger ecosystem:
+            <h3 className="text-blue-700 font-bold text-lg mb-4">Project Achievements</h3>
+            <div className="bg-blue-50 p-6 rounded-lg mb-8">
+              <p className="text-gray-700">
+                Beyond the measurable metrics of success, this project demonstrated how thoughtful UX design could tackle challenging optimization problems while keeping humans at the center of the process. The system balanced automation with manual control, providing powerful tools without removing human judgment and expertise.
               </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex bg-white p-5 rounded-xl border border-gray-200 shadow-sm"
-                >
-                  <div className="mr-4 text-blue-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-10 w-10"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-2">Course Library</h4>
-                    <p className="text-gray-700 text-sm">
-                      A central repository for managing all educational content across the platform, including teacher
-                      guides, learning objectives, and course attributes with lesson prioritization capabilities.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex bg-white p-5 rounded-xl border border-gray-200 shadow-sm"
-                >
-                  <div className="mr-4 text-purple-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-10 w-10"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-2">Academic Planning Component</h4>
-                    <p className="text-gray-700 text-sm">
-                      Configure operating schedules, manage non-teaching activities per grade, assign courses to grades
-                      and schools, and support differentiated course levels across schools.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex bg-white p-5 rounded-xl border border-gray-200 shadow-sm"
-                >
-                  <div className="mr-4 text-pink-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-10 w-10"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-2">Teacher Management System</h4>
-                    <p className="text-gray-700 text-sm">
-                      Track teacher specializations and grade-level capabilities, maintain teaching qualification
-                      hierarchies, and support flexible teacher-to-course matching with existing systems integration.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex bg-white p-5 rounded-xl border border-gray-200 shadow-sm"
-                >
-                  <div className="mr-4 text-green-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-10 w-10"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-2">School Management</h4>
-                    <p className="text-gray-700 text-sm">
-                      Track classroom availability and facilities, support school grouping by type and teaching model,
-                      configure operational parameters, and manage school-specific requirements.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex bg-white p-5 rounded-xl border border-gray-200 shadow-sm"
-                >
-                  <div className="mr-4 text-yellow-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-10 w-10"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-2">Integration with Assessment Systems</h4>
-                    <p className="text-gray-700 text-sm">
-                      Assessment scheduling compatibility and integration with Let's Mark for teacher assignments in
-                      assessment marking to create a seamless educational planning workflow.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex bg-white p-5 rounded-xl border border-gray-200 shadow-sm"
-                >
-                  <div className="mr-4 text-indigo-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-10 w-10"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 mb-2">Event-Responsive Scheduling Component</h4>
-                    <p className="text-gray-700 text-sm">
-                      Management of special events and holidays with full integration with the Academic Calendar app for
-                      comprehensive schedule planning and adaptability.
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-
-              <p className="text-gray-700 text-sm italic mt-4">
-                These components are designed to work together as part of a comprehensive learning enablement platform,
-                with the Instructional Planner being just one piece of the larger ecosystem. The vision is for a modular
-                platform where these different components interact to support the entire educational planning and
-                delivery process.
+              <p className="text-gray-700 mt-4">
+                By focusing on clear information architecture, intuitive workflows, and meaningful visualizations, we created a system that not only solved the technical challenge of schedule optimization but did so in a way that was accessible and empowering for all stakeholders.
               </p>
             </div>
 
-            {/* Testimonial */}
-            <motion.div
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.2 }}
-              className="rounded-xl overflow-hidden shadow-md mb-4"
-            >
-              <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2"></div>
-              <div className="bg-gray-50 p-6">
-                <svg className="h-10 w-10 text-blue-400 mb-4" fill="currentColor" viewBox="0 0 32 32">
-                  <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                </svg>
-                <blockquote className="text-xl italic text-gray-700 mb-4">
-                  "The EduScheduler system has revolutionized how we approach academic scheduling, saving countless hours while
-                  producing better results. It's become an essential tool in our educational planning process."
-                </blockquote>
-                <div className="flex items-center">
-                  <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                    <span className="text-blue-500 font-bold">DA</span>
+            <h4 className="font-bold text-gray-900 mb-4 text-xl">Impact Metrics</h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="bg-blue-100 rounded-lg p-4 text-center">
+                <div className="text-3xl font-bold text-blue-700 mb-1">80%</div>
+                <div className="text-sm text-gray-700">Reduction in scheduling errors</div>
+              </div>
+              <div className="bg-purple-100 rounded-lg p-4 text-center">
+                <div className="text-3xl font-bold text-purple-700 mb-1">85%</div>
+                <div className="text-sm text-gray-700">Time saved in schedule creation</div>
+              </div>
+              <div className="bg-pink-100 rounded-lg p-4 text-center">
+                <div className="text-3xl font-bold text-pink-700 mb-1">92%</div>
+                <div className="text-sm text-gray-700">Teacher resource optimization</div>
+              </div>
+              <div className="bg-green-100 rounded-lg p-4 text-center">
+                <div className="text-3xl font-bold text-green-700 mb-1">12%</div>
+                <div className="text-sm text-gray-700">Cost reduction through sharing</div>
+              </div>
+            </div>
+
+            <h4 className="font-bold text-gray-900 mb-4 text-xl">My Role</h4>
+            <p className="text-gray-700 mb-6">As Lead Product Designer, I contributed across the full product lifecycle—from research and ideation to implementation and support.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-400 shadow-sm flex flex-col h-full">
+                <div className="flex items-center mb-4">
+                  <div className="bg-blue-100 rounded-full p-2 mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" /></svg>
                   </div>
-                  <p className="text-gray-600 font-medium">Director of Academic Programs</p>
+                  <h5 className="font-semibold text-gray-900 text-lg">Research & Design</h5>
+                </div>
+                <ul className="space-y-3 mt-2">
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2 mt-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    </span>
+                    <span className="text-gray-800">Led user research and requirements gathering</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2 mt-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    </span>
+                    <span className="text-gray-800">Designed information architecture and user workflows</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2 mt-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    </span>
+                    <span className="text-gray-800">Created wireframes and interactive prototypes</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-purple-50 p-6 rounded-xl border-l-4 border-purple-400 shadow-sm flex flex-col h-full">
+                <div className="flex items-center mb-4">
+                  <div className="bg-purple-100 rounded-full p-2 mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                  </div>
+                  <h5 className="font-semibold text-gray-900 text-lg">Implementation & Support</h5>
+                </div>
+                <ul className="space-y-3 mt-2">
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-2 mt-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    </span>
+                    <span className="text-gray-800">Collaborated with developers on implementation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-2 mt-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    </span>
+                    <span className="text-gray-800">Conducted user testing and iterative refinement</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-2 mt-0.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    </span>
+                    <span className="text-gray-800">Developed training materials and documentation</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h4 className="font-bold text-gray-900 mb-4 text-xl">Future Directions</h4>
+            <p className="text-gray-700 mb-6">
+              The success of the EduScheduler system has opened possibilities for expanded functionality in future iterations. These components are designed to work together as part of a comprehensive learning enablement platform, with the Instructional Planner being just one piece of the larger ecosystem:
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-blue-50 p-4 rounded-lg flex items-start">
+                <span className="bg-blue-100 rounded-full p-2 mr-3 mt-0.5">
+                  {/* Book Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                </span>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">Course Library</h5>
+                  <p className="text-sm text-gray-700">A central repository for managing all educational content across the platform, including teacher guides, learning objectives, and course attributes with lesson prioritization capabilities.</p>
                 </div>
               </div>
-            </motion.div>
+              <div className="bg-purple-50 p-4 rounded-lg flex items-start">
+                <span className="bg-purple-100 rounded-full p-2 mr-3 mt-0.5">
+                  {/* Calendar Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                </span>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">Academic Planning Component</h5>
+                  <p className="text-sm text-gray-700">Configure operating schedules, manage non-teaching activities per grade, assign courses to grades and schools, and support differentiated course levels across schools.</p>
+                </div>
+              </div>
+              <div className="bg-pink-50 p-4 rounded-lg flex items-start">
+                <span className="bg-pink-100 rounded-full p-2 mr-3 mt-0.5">
+                  {/* User Group Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                </span>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">Teacher Management System</h5>
+                  <p className="text-sm text-gray-700">Track teacher specializations and grade-level capabilities, maintain teaching qualification hierarchies, and support flexible teacher-to-course matching with existing systems integration.</p>
+                </div>
+              </div>
+              <div className="bg-green-50 p-4 rounded-lg flex items-start">
+                <span className="bg-green-100 rounded-full p-2 mr-3 mt-0.5">
+                  {/* Building Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2M16 3.13V4a2 2 0 01-2 2H10a2 2 0 01-2-2v-.87M12 12v.01" /></svg>
+                </span>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">School Management</h5>
+                  <p className="text-sm text-gray-700">Track classroom availability and facilities, support school grouping by type and teaching model, configure operational parameters, and manage school-specific requirements.</p>
+                </div>
+              </div>
+              <div className="bg-yellow-50 p-4 rounded-lg flex items-start">
+                <span className="bg-yellow-100 rounded-full p-2 mr-3 mt-0.5">
+                  {/* Clipboard Check Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m-6 8h6a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v11a2 2 0 002 2z" /></svg>
+                </span>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">Integration with Assessment Systems</h5>
+                  <p className="text-sm text-gray-700">Assessment scheduling compatibility and integration with Let's Mark for teacher assignments in assessment marking to create a seamless educational planning workflow.</p>
+                </div>
+              </div>
+              <div className="bg-indigo-50 p-4 rounded-lg flex items-start">
+                <span className="bg-indigo-100 rounded-full p-2 mr-3 mt-0.5">
+                  {/* Clock Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </span>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">Event-Responsive Scheduling Component</h5>
+                  <p className="text-sm text-gray-700">Management of special events and holidays with full integration with the Academic Calendar app for comprehensive schedule planning and adaptability.</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-gray-600 italic mb-8">
+              These components are designed to work together as part of a comprehensive learning enablement platform, with the Instructional Planner being just one piece of the larger ecosystem. The vision is for a modular platform where these different components interact to support the entire educational planning and delivery process.
+            </p>
+            <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-xl flex items-start">
+              <div className="mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17l9-5-9-5v10z" /></svg>
+              </div>
+              <div>
+                <p className="italic text-gray-700 mb-2">
+                  "The EduScheduler system has revolutionized how we approach academic scheduling, saving countless hours while producing better results. It's become an essential tool in our educational planning process."
+                </p>
+                <div className="text-sm text-gray-900 font-semibold">DA</div>
+                <div className="text-xs text-gray-500">Director of Academic Programs</div>
+              </div>
+            </div>
           </motion.div>
         </section>
 

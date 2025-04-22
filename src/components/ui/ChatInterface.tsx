@@ -14,13 +14,13 @@ const caseStudies = [
   {
     id: 'lessonloom',
     title: 'LessonLoom',
-    description: 'An innovative platform that automates the creation of educational materials using AI and templating systems.',
+    description: 'An innovative platform that automates the creation of educational materials using AI and templating systems. Increased student engagement by 35% and reduced lesson planning time by 40%.',
     url: '/casestudy/lessonloom'
   },
   {
     id: 'eduscheduler',
     title: 'EduScheduler',
-    description: 'An intelligent academic planning system that generates optimized teaching schedules.',
+    description: 'An intelligent academic planning system that generates optimized teaching schedules. Reduced scheduling time by 60% and improved meeting attendance by 25%.',
     url: '/casestudy/scheduler'
   }
 ];
@@ -147,17 +147,17 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
 
   // Case study buttons component
   const CaseStudyButtons = () => (
-    <div className="mb-4 mt-2">
+    <div className="mb-4 mt-3">
       <p className="text-sm text-accent-600 mb-2 font-medium">View case studies:</p>
       <div className="flex flex-wrap gap-3">
         {caseStudies.map((caseStudy) => (
           <Button 
             key={caseStudy.id}
             variant="primary"
-            className="text-sm py-2"
+            className="text-sm py-2.5 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
             onClick={() => handleCaseStudySelect(caseStudy.id)}
           >
-            {caseStudy.title}
+            View {caseStudy.title}
           </Button>
         ))}
       </div>

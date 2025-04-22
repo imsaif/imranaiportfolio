@@ -63,7 +63,7 @@ const Footer = () => {
 
           <div className="pt-12 border-t border-border/50">
             <p className="text-sm text-muted">
-              © {new Date().getFullYear()} <span className="text-accent">Imran Mohammed</span> • AI Experience Designer
+              © {new Date().getFullYear()} Imran Mohammed • AI Experience Designer
             </p>
           </div>
         </div>

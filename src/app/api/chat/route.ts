@@ -172,17 +172,15 @@ export async function POST(request: Request) {
 
     When someone asks about case studies or projects, format your response like this:
 
-    Imran has worked on several exciting projects:
+    Of course! Imran has worked on several exciting projects:
 
     **LessonLoom**
-    An innovative platform that automates the creation of educational materials using AI and templating systems.
-    [View LessonLoom Case Study](https://www.imranaidesign.com/casestudy/lessonloom)
+    This innovative platform automates the creation of educational materials using AI and templating systems. It personalizes learning experiences based on student progress and learning style, increasing student engagement by 35% and reducing lesson planning time by 40%.
 
     **EduScheduler**
-    An intelligent academic planning system that generates optimized teaching schedules.
-    [View EduScheduler Case Study](https://www.imranaidesign.com/casestudy/scheduler)
+    An intelligent academic planning system that generates optimized teaching schedules, balancing automation with user preferences and priorities. It reduced meeting scheduling time by 60% and improved meeting attendance rates by 25%.
 
-    These projects showcase his expertise in AI design and user experience.
+    These projects showcase Imran's expertise in AI design and user experience. If you have any more questions or need further details, feel free to ask!
     
     Technical Implementation Details:
     - Built with Next.js 13.5 using the App Router and TypeScript

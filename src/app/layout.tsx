@@ -35,12 +35,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="min-h-screen flex flex-col bg-background text-foreground antialiased">
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
+      </head>
+      <body className="bg-white dark:bg-gray-950 text-black dark:text-white">
         <ClientProviders>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
         </ClientProviders>
         <SpeedInsights />
         <Analytics />

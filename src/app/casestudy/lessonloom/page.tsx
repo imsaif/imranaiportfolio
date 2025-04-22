@@ -100,7 +100,7 @@ export default function Page() {
               {...fadeIn}
               transition={{ delay: 0.1 }}
             >
-              <h3 className="text-purple-800 font-semibold mb-3">Role</h3>
+              <h3 className="text-gray-800 font-semibold mb-3">Role</h3>
               <p className="text-gray-800">Product Designer</p>
             </motion.div>
 
@@ -109,7 +109,7 @@ export default function Page() {
               {...fadeIn}
               transition={{ delay: 0.2 }}
             >
-              <h3 className="text-blue-800 font-semibold mb-3">Organization</h3>
+              <h3 className="text-gray-800 font-semibold mb-3">Organization</h3>
               <p className="text-gray-800">NewGlobe</p>
             </motion.div>
 
@@ -118,7 +118,7 @@ export default function Page() {
               {...fadeIn}
               transition={{ delay: 0.3 }}
             >
-              <h3 className="text-pink-800 font-semibold mb-3">Technologies</h3>
+              <h3 className="text-gray-800 font-semibold mb-3">Technologies</h3>
               <p className="text-gray-800">Vue.js, .NET Core, Python, Azure OpenAI, AWS S3</p>
             </motion.div>
             </div>
@@ -153,7 +153,7 @@ export default function Page() {
                   <div className="h-2.5 w-2.5 rounded-full bg-purple-600"></div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-purple-800 mb-1">Curriculum Alignment</h3>
+                  <h3 className="font-bold text-gray-800 mb-1">Curriculum Alignment</h3>
                   <p className="text-gray-700">Training models to accurately follow educational standards across different regions required developing a comprehensive taxonomy of educational objectives and standards.</p>
                 </div>
             </div>
@@ -163,7 +163,7 @@ export default function Page() {
                   <div className="h-2.5 w-2.5 rounded-full bg-purple-600"></div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-purple-800 mb-1">Content Diversity</h3>
+                  <h3 className="font-bold text-gray-800 mb-1">Content Diversity</h3>
                   <p className="text-gray-700">Generating inclusive materials that represent different cultural contexts and learning styles required careful prompt engineering and diverse training datasets.</p>
             </div>
           </div>
@@ -173,7 +173,7 @@ export default function Page() {
                   <div className="h-2.5 w-2.5 rounded-full bg-purple-600"></div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-purple-800 mb-1">Age-Appropriate Content</h3>
+                  <h3 className="font-bold text-gray-800 mb-1">Age-Appropriate Content</h3>
                   <p className="text-gray-700">Developing filtering systems to ensure all generated content was suitable for the target age group required multiple layers of content safety measures.</p>
                 </div>
             </div>
@@ -183,7 +183,7 @@ export default function Page() {
                   <div className="h-2.5 w-2.5 rounded-full bg-purple-600"></div>
                 </div>
                 <div>
-                  <span className="font-semibold text-purple-800">Localization bottlenecks:</span>
+                  <span className="font-semibold text-gray-800">Localization bottlenecks:</span>
                   <span className="text-gray-800"> Adapting content for different regions created expansion delays</span>
                 </div>
               </div>
@@ -226,8 +226,8 @@ export default function Page() {
               {/* User Interviews Column */}
               <div className="bg-purple-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
-                  <span className="text-xl font-bold text-purple-700 mr-2">1</span>
-                  <span className="text-xl font-semibold text-purple-700">User Interviews</span>
+                  <span className="text-xl font-bold text-gray-800 mr-2">1</span>
+                  <span className="text-xl font-semibold text-gray-800">User Interviews</span>
                 </h4>
                 <ul className="space-y-3">
                   <li className="flex items-start">
@@ -248,8 +248,8 @@ export default function Page() {
               {/* Content Analysis Column */}
               <div className="bg-blue-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
-                  <span className="text-xl font-bold text-blue-700 mr-2">2</span>
-                  <span className="text-xl font-semibold text-blue-700">Content Analysis</span>
+                  <span className="text-xl font-bold text-gray-800 mr-2">2</span>
+                  <span className="text-xl font-semibold text-gray-800">Content Analysis</span>
                 </h4>
                 <ul className="space-y-3">
                   <li className="flex items-start">
@@ -270,8 +270,8 @@ export default function Page() {
               {/* Pain Point Analysis Column */}
               <div className="bg-pink-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
-                  <span className="text-xl font-bold text-pink-700 mr-2">3</span>
-                  <span className="text-xl font-semibold text-pink-700">Pain Point Analysis</span>
+                  <span className="text-xl font-bold text-gray-800 mr-2">3</span>
+                  <span className="text-xl font-semibold text-gray-800">Pain Point Analysis</span>
                 </h4>
                 <ul className="space-y-3">
                   <li className="flex items-start">
@@ -303,8 +303,8 @@ export default function Page() {
               {/* Pedagogical Focus */}
               <div className="bg-purple-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
-                  <span className="text-xl font-bold text-purple-700 mr-2">1</span>
-                  <span className="text-xl font-semibold text-purple-700">Pedagogical Focus</span>
+                  <span className="text-xl font-bold text-gray-800 mr-2">1</span>
+                  <span className="text-xl font-semibold text-gray-800">Pedagogical Focus</span>
                 </h4>
                 <p className="text-gray-800 mb-2">
                   Creators valued pedagogical decisions, not <span className="text-amber-700">formatting</span>
@@ -317,8 +317,8 @@ export default function Page() {
               {/* Mental Templates */}
               <div className="bg-blue-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
-                  <span className="text-xl font-bold text-blue-700 mr-2">2</span>
-                  <span className="text-xl font-semibold text-blue-700">Mental Templates</span>
+                  <span className="text-xl font-bold text-gray-800 mr-2">2</span>
+                  <span className="text-xl font-semibold text-gray-800">Mental Templates</span>
                 </h4>
                 <p className="text-gray-800 mb-2">
                   Templates were mental models, not just documents
@@ -331,8 +331,8 @@ export default function Page() {
               {/* Subject Variations */}
               <div className="bg-pink-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
-                  <span className="text-xl font-bold text-pink-700 mr-2">3</span>
-                  <span className="text-xl font-semibold text-pink-700">Subject Variations</span>
+                  <span className="text-xl font-bold text-gray-800 mr-2">3</span>
+                  <span className="text-xl font-semibold text-gray-800">Subject Variations</span>
                 </h4>
                 <p className="text-gray-800 mb-2">
                   Content needs varied by subject
@@ -347,8 +347,8 @@ export default function Page() {
               {/* Visual Clarity */}
               <div className="bg-purple-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
-                  <span className="text-xl font-bold text-purple-700 mr-2">4</span>
-                  <span className="text-xl font-semibold text-purple-700">Visual Clarity</span>
+                  <span className="text-xl font-bold text-gray-800 mr-2">4</span>
+                  <span className="text-xl font-semibold text-gray-800">Visual Clarity</span>
                 </h4>
                 <p className="text-gray-800 mb-2">
                   Visual clarity was essential
@@ -361,8 +361,8 @@ export default function Page() {
               {/* Trust in Automation */}
               <div className="bg-blue-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
-                  <span className="text-xl font-bold text-blue-700 mr-2">5</span>
-                  <span className="text-xl font-semibold text-blue-700">Trust in Automation</span>
+                  <span className="text-xl font-bold text-gray-800 mr-2">5</span>
+                  <span className="text-xl font-semibold text-gray-800">Trust in Automation</span>
                 </h4>
                 <p className="text-gray-800 mb-2">
                   Trust in automation was fragile
@@ -383,7 +383,7 @@ export default function Page() {
             </p>
 
             <div className="bg-blue-50 p-8 rounded-xl">
-              <h4 className="text-xl font-bold text-indigo-700 mb-4">Design Exploration Methodology</h4>
+              <h4 className="text-xl font-bold text-gray-800 mb-4">Design Exploration Methodology</h4>
               
               <p className="text-gray-800 mb-6">
                 My exploration was guided by several key considerations identified during the research phase:
@@ -397,7 +397,7 @@ export default function Page() {
                     </svg>
                   </div>
                   <div>
-                    <span className="font-semibold text-indigo-700">Balance of control and automation:</span>
+                    <span className="font-semibold text-gray-800">Balance of control and automation:</span>
                     <span className="text-gray-800"> Finding the right mix of automated generation while preserving educator control over pedagogical content</span>
                   </div>
                 </div>
@@ -409,7 +409,7 @@ export default function Page() {
                     </svg>
                   </div>
                   <div>
-                    <span className="font-semibold text-indigo-700">Scalability:</span>
+                    <span className="font-semibold text-gray-800">Scalability:</span>
                     <span className="text-gray-800"> Ensuring the system could accommodate growing content needs across multiple subjects and regions</span>
                   </div>
                 </div>
@@ -421,7 +421,7 @@ export default function Page() {
                     </svg>
                   </div>
                   <div>
-                    <span className="font-semibold text-indigo-700">Familiar mental models:</span>
+                    <span className="font-semibold text-gray-800">Familiar mental models:</span>
                     <span className="text-gray-800"> Using interfaces and workflows that matched how curriculum specialists already thought about content creation</span>
                   </div>
                 </div>
@@ -433,7 +433,7 @@ export default function Page() {
                     </svg>
                   </div>
                   <div>
-                    <span className="font-semibold text-indigo-700">Transparency:</span>
+                    <span className="font-semibold text-gray-800">Transparency:</span>
                     <span className="text-gray-800"> Creating a system where users always understood the relationship between inputs and outputs</span>
                   </div>
                 </div>
@@ -1026,7 +1026,7 @@ export default function Page() {
                       <path fillRule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <h4 className="text-xl font-bold text-purple-700 mb-2 text-center">Content Spreadsheet</h4>
+                  <h4 className="text-xl font-bold text-gray-800 mb-2 text-center">Content Spreadsheet</h4>
                   <p className="text-gray-700 text-center">Curriculum specialists define lesson parameters</p>
                 </div>
 
@@ -1037,7 +1037,7 @@ export default function Page() {
                       <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                     </svg>
                   </div>
-                  <h4 className="text-xl font-bold text-blue-700 mb-2 text-center">Template Library</h4>
+                  <h4 className="text-xl font-bold text-gray-800 mb-2 text-center">Template Library</h4>
                   <p className="text-gray-700 text-center">Instructional designers create templates with syntax</p>
                 </div>
 
@@ -1048,7 +1048,7 @@ export default function Page() {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <h4 className="text-xl font-bold text-pink-700 mb-2 text-center">Generation Interface</h4>
+                  <h4 className="text-xl font-bold text-gray-800 mb-2 text-center">Generation Interface</h4>
                   <p className="text-gray-700 text-center">Users manage process and review generated lessons</p>
                 </div>
               </div>
@@ -1070,7 +1070,7 @@ export default function Page() {
                     </svg>
                   </div>
                 </div>
-                <h4 className="text-xl font-bold text-green-800 mb-3 text-center">Generated Lesson</h4>
+                <h4 className="text-xl font-bold text-gray-800 mb-3 text-center">Generated Lesson</h4>
                 <p className="text-gray-700 text-center mb-8">Complete, formatted teaching materials</p>
                 
                 <div className="grid grid-cols-2 gap-4">
@@ -1968,7 +1968,7 @@ export default function Page() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-bold text-purple-800 mb-1">Curriculum Alignment</h3>
+                  <h3 className="font-bold text-gray-800 mb-1">Curriculum Alignment</h3>
                   <p className="text-gray-700">Training models to accurately follow educational standards across different regions required developing a comprehensive taxonomy of educational objectives and standards.</p>
                 </div>
               </div>
@@ -1980,7 +1980,7 @@ export default function Page() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-bold text-purple-800 mb-1">Content Diversity</h3>
+                  <h3 className="font-bold text-gray-800 mb-1">Content Diversity</h3>
                   <p className="text-gray-700">Generating inclusive materials that represent different cultural contexts and learning styles required careful prompt engineering and diverse training datasets.</p>
                 </div>
               </div>
@@ -1992,7 +1992,7 @@ export default function Page() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-bold text-purple-800 mb-1">Age-Appropriate Content</h3>
+                  <h3 className="font-bold text-gray-800 mb-1">Age-Appropriate Content</h3>
                   <p className="text-gray-700">Developing filtering systems to ensure all generated content was suitable for the target age group required multiple layers of content safety measures.</p>
                 </div>
               </div>
@@ -2026,7 +2026,7 @@ export default function Page() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <div className="text-4xl font-bold text-green-600 mb-2">75%</div>
-                <div className="text-green-800 font-medium">Reduction in lesson prep time</div>
+                <div className="text-gray-800 font-medium">Reduction in lesson prep time</div>
               </motion.div>
 
               <motion.div 
@@ -2035,7 +2035,7 @@ export default function Page() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <div className="text-4xl font-bold text-blue-600 mb-2">85%</div>
-                <div className="text-blue-800 font-medium">Teacher satisfaction rate</div>
+                <div className="text-gray-800 font-medium">Teacher satisfaction rate</div>
               </motion.div>
 
               <motion.div 
@@ -2044,7 +2044,7 @@ export default function Page() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <div className="text-4xl font-bold text-purple-600 mb-2">12,000+</div>
-                <div className="text-purple-800 font-medium">Active users</div>
+                <div className="text-gray-800 font-medium">Active users</div>
               </motion.div>
             </div>
 

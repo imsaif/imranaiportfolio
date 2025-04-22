@@ -39,7 +39,13 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
     // Style project titles more prominently
     formattedContent = formattedContent.replace(
       /\*\*(LessonLoom|EduScheduler)\*\*/g,
-      '<h3 class="text-lg font-bold text-indigo-700 mt-4 mb-2">$1</h3>'
+      '<h3 class="text-xl font-bold text-indigo-700 mt-5 mb-2">$1</h3>'
+    );
+    
+    // Enhance paragraphs after headings for better readability with subtle indentation
+    formattedContent = formattedContent.replace(
+      /(<h3 class="[^>]+">[^<]+<\/h3>)([^<]+)/g,
+      '$1<p class="text-gray-700 mb-4 leading-relaxed">$2</p>'
     );
     
     // Basic markdown link regex - for other links not related to case studies
@@ -91,6 +97,7 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
       }
       .chat-message-content p {
         margin-bottom: 0.75rem;
+        line-height: 1.6;
       }
       .chat-message-content p:last-child {
         margin-bottom: 0;
@@ -105,10 +112,20 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
       .chat-message-content h3 {
         color: #4338ca;
         font-weight: 700;
-        font-size: 1.125rem;
+        font-size: 1.25rem;
         margin-top: 1.5rem;
         margin-bottom: 0.5rem;
         display: block;
+        border-bottom: 1px solid rgba(79, 70, 229, 0.2);
+        padding-bottom: 0.25rem;
+      }
+      .chat-message-content h3 + p {
+        color: #4b5563;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      .chat-message-content h3:first-of-type {
+        margin-top: 0.5rem;
       }
     `;
     document.head.appendChild(style);
