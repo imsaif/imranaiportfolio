@@ -44,7 +44,11 @@
   <circle cx="105" cy="185" r="4" fill="#818cf8"/>
   <circle cx="105" cy="205" r="4" fill="#ec4899"/>
   
-  <!-- AI Generation Symbol -->
-  <path d="M225,130 C240,115 240,95 225,80 C210,65 190,65 175,80 L200,105 Z" fill="url(#accentGradient)" opacity="0.8"/>
-  <circle cx="200" cy="105" r="10" fill="#ffffff" stroke="#6366f1" stroke-width="2"/>
+  <!-- Larger, Compact Sparkles (no wand) -->
+  <!-- Sparkle 1 -->
+  <polygon points="225,80 229,88 238,90 229,92 225,100 221,92 212,90 221,88" fill="#f472b6"/>
+  <!-- Sparkle 2 -->
+  <polygon points="210,65 212,70 218,71 212,72 210,77 208,72 202,71 208,70" fill="#6366f1"/>
+  <!-- Sparkle 3 -->
+  <polygon points="245,100 247,105 253,106 247,107 245,112 243,107 237,106 243,105" fill="#818cf8"/>
 </svg> 

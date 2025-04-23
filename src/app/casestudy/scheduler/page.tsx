@@ -7,6 +7,9 @@ import React from 'react';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 import InteractivePrototype from './InteractivePrototype';
+import UserJourneyMapInteractive from '@/components/case-studies/UserJourneyMapInteractive';
+import InfoArchitectureDiagrams from '@/components/case-studies/InfoArchitectureDiagrams';
+import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
 export default function Page() {
   const fadeIn = {
@@ -40,6 +43,7 @@ export default function Page() {
         </CaseStudyHeader>
 
         <motion.div
+          id="intro-section"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -118,47 +122,54 @@ export default function Page() {
             transition={{ duration: 0.6 }}
             className="bg-white p-8 rounded-xl shadow-md"
           >
-            <p className="text-gray-800 mb-8">
-              NewGlobe's education programs were growing rapidly, with increasingly complex teaching models:
+            <p className="text-gray-700 mb-8">
+              NewGlobe, a global education organization, faced significant obstacles when creating teaching materials across multiple countries:
             </p>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-blue-50 p-6 rounded-xl">
-                <h3 className="text-gray-800 font-bold mb-2">Scale Challenges</h3>
-                <p className="text-gray-700">
-                  Supporting variable numbers of streams per grade while maintaining educational quality.
-                </p>
+              <div className="flex items-start bg-gray-50 rounded-xl p-6 border-l-4 border-blue-200 shadow-sm">
+                <span className="bg-blue-100 text-blue-500 rounded-full p-2 mr-4 flex items-center justify-center">
+                  {/* Clock Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </span>
+                <div>
+                  <div className="font-bold text-gray-900 mb-1">Time-intensive process</div>
+                  <div className="text-gray-800">Content teams spent months developing customized teacher guides</div>
+                </div>
               </div>
-
-              <div className="bg-blue-50 p-6 rounded-xl">
-                <h3 className="text-gray-800 font-bold mb-2">Flexibility Requirements</h3>
-                <p className="text-gray-700">
-                  Accommodating specialist teaching models, multigrade classrooms, and cross-grade ability grouping.
-                </p>
+              <div className="flex items-start bg-gray-50 rounded-xl p-6 border-l-4 border-pink-200 shadow-sm">
+                <span className="bg-pink-100 text-pink-500 rounded-full p-2 mr-4 flex items-center justify-center">
+                  {/* Briefcase Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-7 4h8a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v7a2 2 0 002 2zm2-10V5a2 2 0 114 0v1" /></svg>
+                </span>
+                <div>
+                  <div className="font-bold text-gray-900 mb-1">Resource constraints</div>
+                  <div className="text-gray-800">Skilled curriculum designers were pulled into repetitive formatting tasks</div>
+                </div>
               </div>
-
-              <div className="bg-blue-50 p-6 rounded-xl">
-                <h3 className="text-gray-800 font-bold mb-2">Optimization Needs</h3>
-                <p className="text-gray-700">Maximizing teacher utilization across multiple streams and grades.</p>
+              <div className="flex items-start bg-gray-50 rounded-xl p-6 border-l-4 border-yellow-200 shadow-sm">
+                <span className="bg-yellow-100 text-yellow-500 rounded-full p-2 mr-4 flex items-center justify-center">
+                  {/* Check Badge Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" /></svg>
+                </span>
+                <div>
+                  <div className="font-bold text-gray-900 mb-1">Quality consistency</div>
+                  <div className="text-gray-800">Materials varied based on individual writers' interpretations</div>
+                </div>
               </div>
-
-              <div className="bg-blue-50 p-6 rounded-xl">
-                <h3 className="text-gray-800 font-bold mb-2">Resource Constraints</h3>
-                <p className="text-gray-700">Managing limited textbook resources with book-sharing requirements.</p>
+              <div className="flex items-start bg-gray-50 rounded-xl p-6 border-l-4 border-green-200 shadow-sm">
+                <span className="bg-green-100 text-green-500 rounded-full p-2 mr-4 flex items-center justify-center">
+                  {/* Globe Icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 0c0 4.97 4.03 9 9 9m-9-9C7.03 3 3 7.03 3 12m9-9v18" /></svg>
+                </span>
+                <div>
+                  <div className="font-bold text-gray-900 mb-1">Localization bottlenecks</div>
+                  <div className="text-gray-800">Adapting content for different regions created expansion delays</div>
+                </div>
               </div>
             </div>
-
-            <div className="border-l-4 border-gray-200 pl-6 py-4">
-              <h3 className="text-gray-800 font-bold mb-2">Manual Process Limitations</h3>
-              <p className="text-gray-700 mb-4">
-                The existing manual process required countless hours of work from multiple teams, with different
-                timetables needed for various teaching models. It couldn't account for teacher specializations or
-                optimize resource allocation effectively.
-              </p>
-              <p className="text-blue-600">
-                An automated solution was critical to unlock the next phase of educational growth.
-              </p>
-            </div>
+            <p className="text-gray-700">
+              Content creators needed a solution that would free them from tedious formatting work while maintaining their pedagogical expertise in the process.
+            </p>
           </motion.div>
         </section>
 
@@ -520,6 +531,8 @@ export default function Page() {
             <div className="bg-blue-50 p-6 rounded-xl mb-6">
               <p className="text-gray-800 mb-6">Based on my research, I developed:</p>
 
+              <InfoArchitectureDiagrams />
+
               <ul className="list-none space-y-6">
                 <li>
                   <p>
@@ -565,158 +578,74 @@ export default function Page() {
               emotional states, pain points, and design opportunities at each stage of the process.
             </p>
 
-            <div className="bg-white rounded-xl shadow-md p-8 mb-10">
-              <h4 className="font-bold text-center mb-8 text-gray-900 text-lg">Program Manager Journey Map</h4>
+            <UserJourneyMapInteractive />
 
-              {/* Timeline Steps */}
-              <div className="flex justify-between items-center mb-8">
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold mb-2">
-                    1
-                  </div>
-                  <p className="text-sm text-gray-700 font-medium">Step 1</p>
-                </div>
-                <div className="flex-1 border-t-2 border-blue-200 mx-2"></div>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold mb-2">
-                    2
-                  </div>
-                  <p className="text-sm text-gray-700 font-medium">Step 2</p>
-                </div>
-                <div className="flex-1 border-t-2 border-blue-200 mx-2"></div>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold mb-2">
-                    3
-                  </div>
-                  <p className="text-sm text-gray-700 font-medium">Step 3</p>
-                </div>
-                <div className="flex-1 border-t-2 border-blue-200 mx-2"></div>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold mb-2">
-                    4
-                  </div>
-                  <p className="text-sm text-gray-700 font-medium">Step 4</p>
-                </div>
-                <div className="flex-1 border-t-2 border-blue-200 mx-2"></div>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold mb-2">
-                    5
-                  </div>
-                  <p className="text-sm text-gray-700 font-medium">Step 5</p>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 mb-8">
+              {/* Pain Points Card */}
+              <div className="bg-red-50 p-6 rounded-xl">
+                <h4 className="font-bold mb-4 text-gray-800">Pain Points</h4>
+                <ul className="space-y-4">
+                  <li>
+                    <div className="border-l-4 border-red-500 pl-3">
+                      <p className="text-gray-800 font-medium">Limited visibility</p>
+                      <p className="text-gray-700">into which schools have unique constraints</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="border-l-4 border-red-500 pl-3">
+                      <p className="text-gray-800 font-medium">Long waiting times</p>
+                      <p className="text-gray-700">for plan generation with no progress indicator</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="border-l-4 border-red-500 pl-3">
+                      <p className="text-gray-800 font-medium">Overwhelming error messages</p>
+                      <p className="text-gray-700">with no clear resolution path</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="border-l-4 border-red-500 pl-3">
+                      <p className="text-gray-800 font-medium">Tedious manual adjustments</p>
+                      <p className="text-gray-700">requiring repetitive actions</p>
+                    </div>
+                  </li>
+                </ul>
               </div>
-
-              {/* Key Actions */}
-              <div className="flex justify-between mb-8">
-                <div className="text-center">
-                  <div className="bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium mb-1">
-                    Plan Generation
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium mb-1">
-                    Make Adjustments
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="bg-blue-500 text-white px-3 py-2 rounded-md text-sm font-medium mb-1">
-                    Publish Plan
-                  </div>
-                </div>
+              {/* Design Opportunities Card */}
+              <div className="bg-green-50 p-6 rounded-xl">
+                <h4 className="font-bold mb-4 text-gray-800">Design Opportunities</h4>
+                <ul className="space-y-4">
+                  <li>
+                    <div className="border-l-4 border-green-500 pl-3">
+                      <p className="text-gray-800 font-medium">Create visual constraint indicators</p>
+                      <p className="text-gray-700">for quick school assessment</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="border-l-4 border-green-500 pl-3">
+                      <p className="text-gray-800 font-medium">Implement real-time progress updates</p>
+                      <p className="text-gray-700">with estimated completion times</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="border-l-4 border-green-500 pl-3">
+                      <p className="text-gray-800 font-medium">Design guided resolution workflows</p>
+                      <p className="text-gray-700">for each violation type</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="border-l-4 border-green-500 pl-3">
+                      <p className="text-gray-800 font-medium">Create bulk editing capabilities</p>
+                      <p className="text-gray-700">for common adjustment patterns</p>
+                    </div>
+                  </li>
+                </ul>
               </div>
-
-              {/* Emotional States */}
-              <div className="flex justify-between mb-12 bg-gray-50 py-4 px-2 rounded-lg">
-                <div className="flex flex-col items-center">
-                  <p className="text-2xl mb-1">😐</p>
-                  <p className="text-xs text-center text-gray-600 font-medium">Neutral</p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <p className="text-2xl mb-1">😟</p>
-                  <p className="text-xs text-center text-gray-600 font-medium">Anxious</p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <p className="text-2xl mb-1">😖</p>
-                  <p className="text-xs text-center text-gray-600 font-medium">Frustrated</p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <p className="text-2xl mb-1">🤔</p>
-                  <p className="text-xs text-center text-gray-600 font-medium">Thoughtful</p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <p className="text-2xl mb-1">😊</p>
-                  <p className="text-xs text-center text-gray-600 font-medium">Relieved</p>
-                </div>
-              </div>
-
-              {/* Pain Points and Design Opportunities */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div className="bg-red-50 p-6 rounded-xl">
-                  <h5 className="font-bold mb-4 text-gray-800">Pain Points</h5>
-                  <ul className="space-y-4">
-                    <li className="flex">
-                      <div className="border-l-4 border-red-500 pl-3">
-                        <p className="text-gray-800 font-medium">Limited visibility</p>
-                        <p className="text-gray-700">into which schools have unique constraints</p>
-                      </div>
-                    </li>
-                    <li className="flex">
-                      <div className="border-l-4 border-red-500 pl-3">
-                        <p className="text-gray-800 font-medium">Long waiting times</p>
-                        <p className="text-gray-700">for plan generation with no progress indicator</p>
-                      </div>
-                    </li>
-                    <li className="flex">
-                      <div className="border-l-4 border-red-500 pl-3">
-                        <p className="text-gray-800 font-medium">Overwhelming error messages</p>
-                        <p className="text-gray-700">with no clear resolution path</p>
-                      </div>
-                    </li>
-                    <li className="flex">
-                      <div className="border-l-4 border-red-500 pl-3">
-                        <p className="text-gray-800 font-medium">Tedious manual adjustments</p>
-                        <p className="text-gray-700">requiring repetitive actions</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-green-50 p-6 rounded-xl">
-                  <h5 className="font-bold mb-4 text-gray-800">Design Opportunities</h5>
-                  <ul className="space-y-4">
-                    <li className="flex">
-                      <div className="border-l-4 border-green-500 pl-3">
-                        <p className="text-gray-800 font-medium">Create visual constraint indicators</p>
-                        <p className="text-gray-700">for quick school assessment</p>
-                      </div>
-                    </li>
-                    <li className="flex">
-                      <div className="border-l-4 border-green-500 pl-3">
-                        <p className="text-gray-800 font-medium">Implement real-time progress updates</p>
-                        <p className="text-gray-700">with estimated completion times</p>
-                      </div>
-                    </li>
-                    <li className="flex">
-                      <div className="border-l-4 border-green-500 pl-3">
-                        <p className="text-gray-800 font-medium">Design guided resolution workflows</p>
-                        <p className="text-gray-700">for each violation type</p>
-                      </div>
-                    </li>
-                    <li className="flex">
-                      <div className="border-l-4 border-green-500 pl-3">
-                        <p className="text-gray-800 font-medium">Create bulk editing capabilities</p>
-                        <p className="text-gray-700">for common adjustment patterns</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <p className="text-gray-700">
-                This journey mapping exercise helped identify key emotional pain points and informed the development of
-                targeted solutions to significantly improve the user experience throughout the scheduling process.
-              </p>
             </div>
+
+            <p className="text-gray-700 mb-8">
+              This journey mapping exercise helped identify key emotional pain points and informed the development of targeted solutions to significantly improve the user experience throughout the scheduling process.
+            </p>
           </motion.div>
 
           {/* UI Design and Visualization */}
@@ -2566,9 +2495,7 @@ export default function Page() {
               <h3 className="text-gray-900 font-bold text-xl mb-6">Key Challenges</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
+                <div
                   className="bg-blue-50 p-6 rounded-xl border-t-4 border-blue-400 shadow-sm"
                 >
                   <div className="flex items-center mb-4">
@@ -2594,11 +2521,9 @@ export default function Page() {
                     Balancing the need for standardization across programs with flexibility for local contexts proved
                     more complex than initially anticipated.
                   </p>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
+                <div
                   className="bg-purple-50 p-6 rounded-xl border-t-4 border-purple-400 shadow-sm"
                 >
                   <div className="flex items-center mb-4">
@@ -2624,11 +2549,9 @@ export default function Page() {
                     Coordinating between program administrators, school principals, and teachers required careful
                     communication plans and change management.
                   </p>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
+                <div
                   className="bg-pink-50 p-6 rounded-xl border-t-4 border-pink-400 shadow-sm"
                 >
                   <div className="flex items-center mb-4">
@@ -2650,7 +2573,7 @@ export default function Page() {
                     The complexity of scheduling algorithms required significant optimization to deliver results in a
                     timely manner for larger schools.
                   </p>
-                </motion.div>
+                </div>
               </div>
             </div>
 
@@ -2659,8 +2582,8 @@ export default function Page() {
               <h3 className="text-gray-900 font-bold text-xl mb-6">What I Would Do Differently</h3>
 
               <motion.div className="rounded-xl overflow-hidden shadow-md border border-gray-200 mb-8">
-                <div className="bg-gradient-to-r from-blue-500 to-purple-500 py-4 px-6">
-                  <h4 className="text-white font-bold">Process Improvements</h4>
+                <div className="py-4 px-6 bg-blue-50 rounded-t-xl">
+                  <h4 className="font-bold text-gray-900">Process Improvements</h4>
                 </div>
                 <div className="bg-white p-6">
                   <div className="space-y-4">
@@ -2954,6 +2877,7 @@ export default function Page() {
 
         <CaseStudyFooter />
       </main>
+      <ScrollToTopButton targetId="intro-section" />
     </div>
   );
 }

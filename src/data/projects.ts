@@ -14,25 +14,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 1,
-    slug: 'lessonloom',
-    title: 'LessonLoom: Automated Lesson Generation Platform',
-    description:
-      'An innovative platform that automates the creation of educational materials using AI and templating systems',
-    fullDescription: `
-      As a product designer for LessonLoom, I led the design process for an innovative platform that automates 
-      the creation of educational materials using AI and templating systems. This case study walks through how our 
-      design team approached this complex challenge – from understanding user needs and pain points to crafting an 
-      intuitive interface that empowers educators to create high-quality content at scale.
-    `,
-    technologies: ['Vue.js', '.NET Core', 'Python', 'Azure OpenAI', 'AWS S3'],
-    liveUrl: 'https://lessonloom-demo.vercel.app',
-    githubUrl: 'https://github.com/yourusername/lessonloom',
-    images: ['/images/casestudy/lessonloom/lessonloom-icon.svg', '/images/casestudy/lessonloom/creator.svg', '/images/casestudy/lessonloom/content-view.svg'],
-    featured: true,
-    tagline: 'AI-Powered Education',
-  },
-  {
     id: 2,
     slug: 'scheduler',
     title: 'EduScheduler: Intelligent Academic Planning System',
@@ -56,6 +37,25 @@ export const projects: Project[] = [
     images: ['/images/casestudy/scheduler/scheduler-icon.svg', '/images/casestudy/scheduler/classroom-icon.svg', '/images/casestudy/scheduler/conflict-icon.svg'],
     featured: true,
     tagline: 'Smart Educational Scheduling',
+  },
+  {
+    id: 1,
+    slug: 'lessonloom',
+    title: 'LessonLoom: Automated Lesson Generation Platform',
+    description:
+      'An innovative platform that automates the creation of educational materials using AI and templating systems',
+    fullDescription: `
+      As a product designer for LessonLoom, I led the design process for an innovative platform that automates 
+      the creation of educational materials using AI and templating systems. This case study walks through how our 
+      design team approached this complex challenge – from understanding user needs and pain points to crafting an 
+      intuitive interface that empowers educators to create high-quality content at scale.
+    `,
+    technologies: ['Vue.js', '.NET Core', 'Python', 'Azure OpenAI', 'AWS S3'],
+    liveUrl: 'https://lessonloom-demo.vercel.app',
+    githubUrl: 'https://github.com/yourusername/lessonloom',
+    images: ['/images/casestudy/lessonloom/lessonloom-icon.svg', '/images/casestudy/lessonloom/creator.svg', '/images/casestudy/lessonloom/content-view.svg'],
+    featured: true,
+    tagline: 'AI-Powered Education',
   },
 ];
 

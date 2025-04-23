@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
+import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
 export default function Page() {
   const fadeIn = {
@@ -65,6 +66,7 @@ export default function Page() {
 
         {/* Introduction Section */}
         <motion.div 
+          id="intro-section"
           className="mb-16 border-l-4 border-blue-500 pl-6 py-4 bg-white rounded-lg shadow-sm"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -2065,6 +2067,7 @@ export default function Page() {
 
         <CaseStudyFooter />
       </main>
+      <ScrollToTopButton targetId="intro-section" />
     </div>
   );
 }

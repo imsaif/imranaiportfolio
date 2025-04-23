@@ -99,17 +99,18 @@ export default function InteractivePrototype() {
 
   return (
     <section className="my-12 border-2 border-gray-200 rounded-xl shadow-lg bg-white overflow-hidden">
-      <div className="px-6 py-4 border-b border-gray-100 bg-gray-50 flex items-center justify-between">
+      <div className="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-accent to-tertiary flex items-center justify-between">
         <div>
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900">Try the Interactive Prototype</h3>
-          <p className="text-gray-600 text-sm mt-1">Click through the core scheduling flow as a user would experience it.</p>
+          <h3 className="text-xl md:text-2xl font-bold text-white" id="interactive-prototype-title">Try the Interactive Prototype</h3>
+          <p className="text-white text-sm mt-1" id="interactive-prototype-desc">Click through the core scheduling flow as a user would experience it.</p>
         </div>
         <a
           href="https://www.figma.com/proto/4HVHnoV0n8uEVLf7XkKU1f/AIP---Multiple-schools?page-id=225%3A12437&node-id=54617-3517&viewport=482%2C201%2C0.05&t=dYiIBvYppZoyDru5-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=54617%3A3517"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block px-5 py-2 border border-blue-200 text-blue-700 bg-white text-sm font-semibold rounded hover:bg-blue-50 transition focus:outline-none focus:ring-2 focus:ring-blue-400"
-          aria-label="View in Figma (opens in new tab)"
+          aria-label="View the interactive prototype in Figma (opens in new tab)"
+          aria-labelledby="interactive-prototype-title interactive-prototype-desc"
         >
           View in Figma
         </a>
