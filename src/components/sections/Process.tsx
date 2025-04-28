@@ -76,6 +76,107 @@ const Process = () => {
             </div>
           ))}
         </div>
+
+        {/* AI Experience Design Pattern Guide Section */}
+        <div className="mt-32">
+          <div className="mb-8">
+            <h2 className="section-title text-3xl md:text-4xl font-bold mb-4">
+              Hey, check out my AI Pattern Library!
+            </h2>
+            <p className="text-lg text-muted">
+              I've been collecting practical patterns for AI experience design as a side project and put them all together at <a href="https://www.aiexd.dev/" className="text-accent font-medium" target="_blank" rel="noopener noreferrer">aiex.dev</a>. It's completely free — a resource you can use in your own AI designs. Here's a sneak peek of what you'll find:
+            </p>
+          </div>
+          
+          {/* Pattern Cards Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-6">
+            {/* Contextual Assistance Card */}
+            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow transition-all duration-300">
+              <div className="relative aspect-[4/3] w-full">
+                <div className="absolute inset-0 bg-indigo-50 flex items-center justify-center">
+                  <img 
+                    src="/images/patterns/contextual-assistance.png" 
+                    alt="Contextual Assistance Pattern" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="mb-1">
+                  <h3 className="text-base font-bold text-gray-900">Contextual Assistance</h3>
+                </div>
+                <p className="text-gray-600 text-xs">Provide timely help when users need it, without overwhelming the main task.</p>
+              </div>
+            </div>
+
+            {/* Progressive Disclosure Card */}
+            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow transition-all duration-300">
+              <div className="relative aspect-[4/3] w-full">
+                <div className="absolute inset-0 bg-purple-50 flex items-center justify-center">
+                  <img 
+                    src="/images/patterns/progressive-disclosure.png" 
+                    alt="Progressive Disclosure Pattern" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="mb-1">
+                  <h3 className="text-base font-bold text-gray-900">Progressive Disclosure</h3>
+                </div>
+                <p className="text-gray-600 text-xs">Reveal information gradually to reduce cognitive load for users.</p>
+              </div>
+            </div>
+
+            {/* Human-in-the-Loop Card */}
+            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow transition-all duration-300">
+              <div className="relative aspect-[4/3] w-full">
+                <div className="absolute inset-0 bg-green-50 flex items-center justify-center">
+                  <img 
+                    src="/images/patterns/human-in-the-loop.png" 
+                    alt="Human-in-the-Loop Pattern" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="mb-1">
+                  <h3 className="text-base font-bold text-gray-900">Human-in-the-Loop</h3>
+                </div>
+                <p className="text-gray-600 text-xs">Balance automation with human oversight for critical AI decisions.</p>
+              </div>
+            </div>
+
+            {/* Transparent Feedback Card */}
+            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow transition-all duration-300">
+              <div className="relative aspect-[4/3] w-full">
+                <div className="absolute inset-0 bg-amber-50 flex items-center justify-center">
+                  <img 
+                    src="/images/patterns/transparent-feedback.png" 
+                    alt="Transparent Feedback Pattern" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="mb-1">
+                  <h3 className="text-base font-bold text-gray-900">Transparent Feedback</h3>
+                </div>
+                <p className="text-gray-600 text-xs">Communicate AI capabilities and limitations clearly to build trust.</p>
+              </div>
+            </div>
+          </div>
+
+          <Button
+            href="https://www.aiexd.dev/"
+            variant="primary"
+            className="mt-2 w-full md:w-auto"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explore aiex by Imran
+          </Button>
+        </div>
       </div>
     </section>
   );
