@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { validatePageview, validateCSRFToken } from '../../../../utils/api/validation';
 import { log, LogLevel } from '../../../../utils/api/logging';
 
+// Mark route as dynamic to prevent static generation errors
+export const dynamic = "force-dynamic";
+
 // Define types for the API
 type PageviewData = {
   path: string;

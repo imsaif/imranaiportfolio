@@ -3,6 +3,9 @@ import { validateProjectSlug } from '../../../../utils/api/validation';
 import { log, LogLevel } from '../../../../utils/api/logging';
 import { projects, Project } from '../../../../data/projects';
 
+// Mark route as dynamic to prevent static generation errors
+export const dynamic = "force-dynamic";
+
 // Define the type for API response
 type ProjectAPIResponse = {
   project: Project;

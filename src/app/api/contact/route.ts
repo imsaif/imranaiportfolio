@@ -8,6 +8,9 @@ import {
 } from '../../../utils/api/rateLimit';
 import { safeParseInt } from '../../../utils/api/security';
 
+// Mark route as dynamic to prevent static generation errors
+export const dynamic = "force-dynamic";
+
 // Define types for the API
 type ContactFormData = {
   name: string;

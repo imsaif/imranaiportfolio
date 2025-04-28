@@ -1,3 +1,6 @@
+import fs from 'fs/promises';
+import path from 'path';
+
 // Logging levels
 export enum LogLevel {
   DEBUG = 0,
@@ -88,4 +91,22 @@ export function sanitizeLogData(data: any): any {
   
   // Return primitives as-is
   return data;
+}
+
+/**
+ * Append a chat conversation to the chat log file (JSONL format)
+ * @param logEntry Object containing userId, messages, timestamp, etc.
+ */
+export async function appendChatLog(logEntry: Record<string, any>) {
+  try {
+    const logsDir = path.resolve(process.cwd(), 'logs');
+    const logFile = path.join(logsDir, 'chat-logs.jsonl');
+    // Ensure logs directory exists
+    await fs.mkdir(logsDir, { recursive: true });
+    // Append log entry as a JSON line
+    await fs.appendFile(logFile, JSON.stringify(logEntry) + '\n', 'utf8');
+  } catch (error) {
+    // Log to console if file logging fails
+    console.error('[LOGGING] Failed to append chat log:', error);
+  }
 } 

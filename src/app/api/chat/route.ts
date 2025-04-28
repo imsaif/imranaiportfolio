@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 
+// Mark route as dynamic to prevent static generation errors
+export const dynamic = "force-dynamic";
+
 // Import portfolio context for the AI
 import portfolioData from '../../../data/portfolio-context.json';
 // Import project data to get case study links
@@ -8,7 +11,7 @@ import { projects, Project } from '../../../data/projects';
 import { ChatMessage, ChatAPIResponse, ProjectLink, ChatAPIRequest } from '../../../types/openai';
 
 // Import utility modules
-import { log, LogLevel } from '../../../utils/api/logging';
+import { log, LogLevel, appendChatLog } from '../../../utils/api/logging';
 import {
   callOpenAI,
   DEFAULT_API_URL,
@@ -71,8 +74,10 @@ export async function POST(request: Request) {
       MAX_RATE_WINDOW_MS
     );
 
-    // Check if API is enabled
-    if (!useOpenAI || !apiKey || apiKey === 'your_api_key_here') {
+    // Check if OpenAI API is properly configured
+    const isOpenAIConfigured = useOpenAI && apiKey && apiKey !== 'your_api_key_here';
+    
+    if (!isOpenAIConfigured) {
       console.log('API route: OpenAI API integration disabled or missing API key');
       return NextResponse.json<ChatAPIResponse>(
         {
@@ -81,6 +86,8 @@ export async function POST(request: Request) {
         { status: 200 }
       );
     }
+
+    // At this point we know the OpenAI API integration is active
 
     // Get request headers for rate limiting
     const headersList = request.headers;
@@ -213,6 +220,16 @@ export async function POST(request: Request) {
 
     // Call OpenAI API with our utility function
     const apiResult = await callOpenAI(apiKey, apiUrl, messageArray, model, timeoutMs);
+
+    // Prepare log entry for this conversation
+    const chatLogEntry = {
+      userId,
+      timestamp: new Date().toISOString(),
+      messages: validMessages,
+      aiResponse: apiResult.success && apiResult.data ? apiResult.data.choices[0].message.content : null
+    };
+    // Persist the chat log (do not block response on failure)
+    appendChatLog(chatLogEntry);
 
     // Handle API errors
     if (!apiResult.success || !apiResult.data) {

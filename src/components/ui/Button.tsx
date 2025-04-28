@@ -12,6 +12,8 @@ interface ButtonProps {
   preventScroll?: boolean;
   disabled?: boolean;
   'aria-disabled'?: boolean;
+  target?: string;
+  rel?: string;
 }
 
 const Button = ({
@@ -23,6 +25,8 @@ const Button = ({
   preventScroll = false,
   disabled = false,
   'aria-disabled': ariaDisabled = false,
+  target,
+  rel,
 }: ButtonProps) => {
   // Actually disabled if either disabled or aria-disabled is true
   const isDisabled = disabled || ariaDisabled;
@@ -83,7 +87,13 @@ const Button = ({
   // Return a Link or button based on whether href is provided
   if (href && !isDisabled) {
     return (
-      <Link href={href} className={combinedStyles} onClick={preventScroll ? handleClick : onClick}>
+      <Link 
+        href={href} 
+        className={combinedStyles} 
+        onClick={preventScroll ? handleClick : onClick}
+        target={target}
+        rel={rel}
+      >
         {children}
       </Link>
     );
