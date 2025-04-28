@@ -5,6 +5,9 @@ import { getProjectBySlug } from '@/data/projects';
 
 import ClientProjectPage from './client-page';
 
+// Force dynamic rendering for this page
+export const dynamic = 'force-dynamic';
+
 // Server component for metadata
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const project = getProjectBySlug(params.slug);
@@ -31,8 +34,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  // Pass the slug and serialized project data to the client component
-  return <ClientProjectPage slug={slug} projectData={JSON.stringify(project)} />;
+  // Don't pass props as the client component uses useParams to get the slug
+  return <ClientProjectPage />;
 }
 
 // Simple wrapper components to separate client components from server components

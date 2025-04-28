@@ -84,22 +84,21 @@ const Process = () => {
               Hey, check out my AI Pattern Library!
             </h2>
             <p className="text-lg text-muted">
-              I've been collecting practical patterns for AI experience design as a side project and put them all together at <a href="https://www.aiexd.dev/" className="text-accent font-medium" target="_blank" rel="noopener noreferrer">aiex.dev</a>. It's completely free — a resource you can use in your own AI designs. Here's a sneak peek of what you'll find:
+              I've been collecting practical patterns for AI experience design as a side project and put them all together at <a href="https://www.aiexd.dev/" className="text-accent font-medium" target="_blank" rel="noopener noreferrer">aiexd.dev</a>. It's completely free — a resource you can use in your own AI designs. Here's a sneak peek of what you'll find:
             </p>
           </div>
           
           {/* Pattern Cards Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-6">
             {/* Contextual Assistance Card */}
-            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow transition-all duration-300">
-              <div className="relative aspect-[4/3] w-full">
-                <div className="absolute inset-0 bg-indigo-50 flex items-center justify-center">
-                  <img 
-                    src="/images/patterns/contextual-assistance.png" 
-                    alt="Contextual Assistance Pattern" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
+              <div className="relative aspect-[4/3] w-full overflow-hidden group">
+                <img 
+                  src="/images/patterns/contextual-assistance.png" 
+                  alt="Contextual Assistance Pattern" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/60 to-pink-500/50 group-hover:from-purple-600/70 group-hover:to-pink-500/60 transition-all duration-300"></div>
               </div>
               <div className="p-2">
                 <div className="mb-1">
@@ -110,15 +109,14 @@ const Process = () => {
             </div>
 
             {/* Progressive Disclosure Card */}
-            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow transition-all duration-300">
-              <div className="relative aspect-[4/3] w-full">
-                <div className="absolute inset-0 bg-purple-50 flex items-center justify-center">
-                  <img 
-                    src="/images/patterns/progressive-disclosure.png" 
-                    alt="Progressive Disclosure Pattern" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
+              <div className="relative aspect-[4/3] w-full overflow-hidden group">
+                <img 
+                  src="/images/patterns/progressive-disclosure.png" 
+                  alt="Progressive Disclosure Pattern" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/60 to-purple-500/50 group-hover:from-indigo-600/70 group-hover:to-purple-500/60 transition-all duration-300"></div>
               </div>
               <div className="p-2">
                 <div className="mb-1">
@@ -129,15 +127,14 @@ const Process = () => {
             </div>
 
             {/* Human-in-the-Loop Card */}
-            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow transition-all duration-300">
-              <div className="relative aspect-[4/3] w-full">
-                <div className="absolute inset-0 bg-green-50 flex items-center justify-center">
-                  <img 
-                    src="/images/patterns/human-in-the-loop.png" 
-                    alt="Human-in-the-Loop Pattern" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
+              <div className="relative aspect-[4/3] w-full overflow-hidden group">
+                <img 
+                  src="/images/patterns/human-in-the-loop.png" 
+                  alt="Human-in-the-Loop Pattern" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/60 to-cyan-500/50 group-hover:from-blue-600/70 group-hover:to-cyan-500/60 transition-all duration-300"></div>
               </div>
               <div className="p-2">
                 <div className="mb-1">
@@ -148,15 +145,14 @@ const Process = () => {
             </div>
 
             {/* Transparent Feedback Card */}
-            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow transition-all duration-300">
-              <div className="relative aspect-[4/3] w-full">
-                <div className="absolute inset-0 bg-amber-50 flex items-center justify-center">
-                  <img 
-                    src="/images/patterns/transparent-feedback.png" 
-                    alt="Transparent Feedback Pattern" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+            <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
+              <div className="relative aspect-[4/3] w-full overflow-hidden group">
+                <img 
+                  src="/images/patterns/transparent-feedback.png" 
+                  alt="Transparent Feedback Pattern" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-rose-600/60 to-orange-500/50 group-hover:from-rose-600/70 group-hover:to-orange-500/60 transition-all duration-300"></div>
               </div>
               <div className="p-2">
                 <div className="mb-1">
@@ -174,7 +170,7 @@ const Process = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Explore aiex by Imran
+            Explore aiexd by Imran
           </Button>
         </div>
       </div>
