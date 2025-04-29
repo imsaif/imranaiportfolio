@@ -22,8 +22,8 @@ const HeroBackground = () => {
     targetY: 0.5,
   });
 
-  // Add mouse tracking with smooth transitions
-  const { elementRef } = useMouseTracking<HTMLDivElement>({
+  // Add mouse tracking with smooth transitions, use containerRef
+  const { elementRef: containerRef } = useMouseTracking<HTMLDivElement>({
     onMouseMove: (element, position) => {
       if (!element) return;
 
@@ -46,19 +46,14 @@ const HeroBackground = () => {
     mouseState.current.y += (mouseState.current.targetY - mouseState.current.y) * SMOOTH_FACTOR;
   }, []);
 
+  // Device detection: run only on mount
   useEffect(() => {
-    // Detect if this is a low-power device
-    const checkDeviceCapability = () => {
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      // Use optional chaining and type assertion for deviceMemory
-      const hasLowMemory = !!(navigator as any).deviceMemory && (navigator as any).deviceMemory < 4;
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const hasLowMemory = !!(navigator as any).deviceMemory && (navigator as any).deviceMemory < 4;
+    setIsLowPowerDevice(isMobile || hasLowMemory);
+  }, []);
 
-      // Set low power mode for mobile devices or devices with limited memory
-      setIsLowPowerDevice(isMobile || hasLowMemory);
-    };
-
-    checkDeviceCapability();
-
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -72,6 +67,7 @@ const HeroBackground = () => {
         const dpr = window.devicePixelRatio || 1;
         canvas.width = width * dpr;
         canvas.height = height * dpr;
+        ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform before scaling
         ctx.scale(dpr, dpr);
       }
     };
@@ -121,8 +117,10 @@ const HeroBackground = () => {
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw the main wave patterns (multiple layers)
+      // Draw waves without parallax translation
+      ctx.save();
       drawWaves(ctx, canvas.width, canvas.height, time, config);
+      ctx.restore();
 
       // Continue animation loop
       frameRef.current = requestAnimationFrame(draw);
@@ -261,7 +259,7 @@ const HeroBackground = () => {
   }, [updateMousePosition, isLowPowerDevice]);
 
   return (
-    <div ref={elementRef} className="absolute top-0 left-0 w-full h-full z-0">
+    <div ref={containerRef} className="absolute top-0 left-0 w-full h-full z-0">
       <canvas ref={canvasRef} className="w-full h-full" style={{ pointerEvents: 'none' }} />
     </div>
   );
