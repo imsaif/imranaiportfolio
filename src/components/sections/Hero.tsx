@@ -100,7 +100,7 @@ const Hero = () => {
 
   return (
     <section
-      className="pt-16 xs:pt-20 sm:pt-28 pb-16 xs:pb-20 sm:pb-24 md:pt-36 md:pb-32 overflow-hidden relative bg-background"
+      className="pt-16 xs:pt-20 sm:pt-28 pb-16 xs:pb-20 sm:pb-24 md:pt-36 md:pb-52 overflow-hidden relative bg-background"
       style={{ position: 'relative', overflowX: 'hidden' }}
     >
       {/* Add the wavy background */}

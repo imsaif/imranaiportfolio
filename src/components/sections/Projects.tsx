@@ -1,11 +1,13 @@
 'use client';
 
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import { ProjectMockup } from '../ui/ProjectMockup';
 import { SectionTitle } from '../ui/SectionTitle';
 import { getFeaturedProjects } from '@/data/projects';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 // Get projects at build time
 const projects = getFeaturedProjects();
@@ -36,70 +38,184 @@ const getProjectColor = (id: number) => {
   }
 };
 
-const Projects = () => {
+// StarCursor component
+const StarCursor: React.FC<{ visible: boolean }> = ({ visible }) => {
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    if (!visible) return;
+    const handleMove = (e: MouseEvent) => {
+      setPos({ x: e.clientX, y: e.clientY });
+      setShow(true);
+    };
+    const handleLeave = () => setShow(false);
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseleave', handleLeave);
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mouseleave', handleLeave);
+    };
+  }, [visible]);
+  if (!visible || !show) return null;
   return (
-    <section id="work" className="section-padding">
-      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
+    <svg
+      style={{
+        position: 'fixed',
+        left: pos.x - 16,
+        top: pos.y - 16,
+        width: 32,
+        height: 32,
+        pointerEvents: 'none',
+        zIndex: 10000,
+      }}
+      viewBox="0 0 32 32"
+    >
+      <defs>
+        <linearGradient id="star-gradient" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#6366f1" />
+          <stop offset="100%" stopColor="#f43f5e" />
+        </linearGradient>
+      </defs>
+      <polygon
+        points="16,2 19.2,12.8 30,16 19.2,19.2 16,30 12.8,19.2 2,16 12.8,12.8"
+        fill="url(#star-gradient)"
+        opacity="0.95"
+        style={{ filter: 'drop-shadow(0 0 6px #f43f5e88)' }}
+      />
+    </svg>
+  );
+};
+
+const Projects = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const isDesktop = useMediaQuery('(min-width: 768px)');
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [caseStudyHover, setCaseStudyHover] = useState(Array(projects.length).fill(false));
+  const [cursorActive, setCursorActive] = useState(false);
+
+  // The total scrollable width is (number of projects - 1) * 100vw
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['0.2 0', '1 1'],
+  });
+  // Map scroll progress [0, 1] to horizontal translation [0, -100 * (projects.length - 1)vw]
+  // But start the animation later by adjusting the input range
+  const x = useTransform(
+    scrollYProgress,
+    [0.15, 0.25, 0.75, 0.85], // More gradual start and end with easing in the middle
+    ['0vw', `-${25 * (projects.length - 1)}vw`, `-${75 * (projects.length - 1)}vw`, `-${100 * (projects.length - 1)}vw`]
+  );
+
+  // The height of the section should be (number of projects) * 100vh so the user can scroll through all slides
+  const sectionHeight = `${projects.length * 100}vh`;
+
+  // Effect to track which project is most centered in the viewport
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportCenter = window.innerWidth / 2;
+      let minDistance = Infinity;
+      let closestIdx = 0;
+      projectRefs.current.forEach((ref, idx) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const cardCenter = rect.left + rect.width / 2;
+          const distance = Math.abs(cardCenter - viewportCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIdx = idx;
+          }
+        }
+      });
+      setActiveIndex(closestIdx);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <section
+      id="work"
+      className="relative w-full mt-24 md:mt-32"
+      style={{ height: sectionHeight, position: 'relative', cursor: isDesktop && cursorActive ? 'none' : undefined }}
+      ref={sectionRef}
+      onMouseEnter={() => isDesktop && setCursorActive(true)}
+      onMouseLeave={() => isDesktop && setCursorActive(false)}
+    >
+      {isDesktop && <StarCursor visible={cursorActive} />}
+      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8 pt-4 pb-0 md:pt-6 md:pb-0 bg-background z-10 relative">
         <SectionTitle title="Featured work" />
-
-        <div className="space-y-24 xs:space-y-32 mt-16 xs:mt-24">
-          {projects.map((project, index) => {
-            const projectUrl = `/casestudy/${project.slug}`;
-            const projectColors = getProjectColor(project.id);
-
-            return (
-              <Link
+      </div>
+      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden bg-background relative -mt-6 md:-mt-10">
+        <motion.div className="absolute top-0 left-0 h-full flex w-full" style={{ x }}>
+          <div className="flex h-full w-full" style={{ width: `${projects.length * 100}vw` }}>
+            {projects.map((project, index) => (
+              <div
                 key={project.id}
-                href={projectUrl}
-                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 xs:gap-12 md:gap-16 group cursor-pointer`}
+                className="relative w-screen h-full flex items-center justify-center overflow-hidden px-6 xs:px-8 sm:px-12 md:px-16 lg:px-24 pt-4"
+                ref={el => {
+                  projectRefs.current[index] = el;
+                }}
               >
-                <div className="md:w-1/2 relative p-2 xs:p-4">
-                  {/* Outer glow container */}
-                  <div className="relative">
-                    {/* Default shadow state */}
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-gray-400/20 via-gray-300/20 to-gray-400/20 rounded-lg blur-lg opacity-75"></div>
-
-                    {/* Static hover glow effect - replaced cyan with red */}
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/0 via-fuchsia-500/0 to-red-500/0 rounded-lg blur-xl transition-all duration-500 group-hover:from-purple-500/25 group-hover:via-fuchsia-500/25 group-hover:to-red-500/25 opacity-0 group-hover:opacity-100"></div>
-
-                    {/* Rotating gradient effect - using red instead of pink */}
-                    <div className="absolute -inset-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden">
-                      <div className="absolute inset-0 bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-blue-500/40 via-purple-500/40 to-red-500/40 blur-xl group-hover:animate-spin-slow"></div>
-                    </div>
-
-                    {/* Single-sweep shimmer effect */}
-                    <div className="absolute -inset-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                      <div className="absolute inset-x-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer-once"></div>
-                    </div>
-
-                    {/* Card content */}
-                    <div className="relative bg-white rounded-lg shadow-[0_8px_16px_rgb(0_0_0_/_0.08),_0_1px_2px_rgb(0_0_0_/_0.15)] transition-all duration-500 ease-out transform group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_rgb(0_0_0_/_0.12),_0_1px_3px_rgb(0_0_0_/_0.18)] z-10">
-                      <div className="rounded-lg overflow-hidden backdrop-blur-sm">
-                        <ProjectMockup project={project} />
-                      </div>
+                <Link
+                  href={`/casestudy/${project.slug}`}
+                  className={`w-full h-[95%] flex items-center justify-between relative rounded-xl overflow-hidden transition-transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50${isDesktop ? ' cursor-none' : ''}`}
+                  style={isDesktop ? { cursor: 'none' } : undefined}
+                >
+                  {/* Left side: Project mockup */}
+                  <div className="w-full md:w-1/2 h-full bg-background rounded-lg z-0 flex items-center">
+                    <div className="w-full h-full md:h-4/5 rounded-lg overflow-hidden">
+                      <ProjectMockup
+                        project={project}
+                        onCaseStudyHover={
+                          isDesktop
+                            ? isHovered => {
+                                setCaseStudyHover(prev => {
+                                  const next = [...prev];
+                                  next[index] = isHovered;
+                                  return next;
+                                });
+                              }
+                            : undefined
+                        }
+                        showParticles={isDesktop && caseStudyHover[index]}
+                      />
                     </div>
                   </div>
-                </div>
 
-                <div className="md:w-1/2 flex flex-col justify-center relative">
-                  <span className="absolute -left-8 top-0 text-8xl font-bold text-gray-100 select-none hidden md:block">
-                    0{index + 1}
-                  </span>
-
-                  <div className="relative">
-                    <span className="inline-block mb-1 xs:mb-2 text-sm font-medium text-accent">{project.tagline}</span>
-                    <h3 className="text-xl xs:text-2xl md:text-3xl font-bold mb-3 xs:mb-4 text-foreground">{project.title}</h3>
-                    <p className="text-sm xs:text-base text-muted mb-6 xs:mb-8 leading-relaxed">{project.description}</p>
-
-                    {/* Gradient button on hover */}
-                    <div className="relative inline-flex items-center">
-                      <div className="flex items-center">
-                        <span className="inline-flex font-medium relative z-10 bg-gradient-to-r from-accent to-accent bg-clip-text transition-all duration-300 group-hover:from-purple-500 group-hover:to-red-500 group-hover:text-transparent text-accent">
+                  {/* Right side: Text content */}
+                  <div className="hidden md:flex flex-col items-start justify-center text-left w-full md:w-1/2 h-full pl-0 md:pl-12 z-20">
+                    <div className="w-full flex flex-col items-start">
+                      <span className="inline-block mb-2 text-sm font-medium text-black">{project.tagline}</span>
+                      <h3 className="text-2xl md:text-4xl font-bold mb-4 text-black drop-shadow-lg">{project.title}</h3>
+                      <p className="text-base md:text-lg text-black mb-8 leading-relaxed drop-shadow-lg">
+                        {project.description}
+                      </p>
+                      <span className="inline-flex items-center font-medium">
+                        <span
+                          className={`inline-flex font-medium relative z-10 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent${isDesktop ? ' cursor-none' : ''}`}
+                          onMouseEnter={() =>
+                            setCaseStudyHover(prev => {
+                              const next = [...prev];
+                              next[index] = true;
+                              return next;
+                            })
+                          }
+                          onMouseLeave={() =>
+                            setCaseStudyHover(prev => {
+                              const next = [...prev];
+                              next[index] = false;
+                              return next;
+                            })
+                          }
+                        >
                           View case study
                         </span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 ml-1 transition-all duration-300 text-accent group-hover:translate-x-2 group-hover:text-red-500"
+                          className={`h-5 w-5 ml-1 text-pink-500${isDesktop ? ' cursor-none' : ''}`}
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -109,14 +225,56 @@ const Projects = () => {
                             clipRule="evenodd"
                           />
                         </svg>
-                      </div>
+                      </span>
                     </div>
                   </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+
+                  {/* Mobile: Text below mockup */}
+                  <div className="md:hidden absolute bottom-0 left-0 right-0 flex flex-col items-center justify-end text-center w-full pb-4 z-20 bg-gradient-to-t from-background/90 to-transparent">
+                    <div className="w-full flex flex-col items-center px-2">
+                      <span className="inline-block mb-1 text-sm font-medium text-black">{project.tagline}</span>
+                      <h3 className="text-xl font-bold mb-2 text-black drop-shadow-lg">{project.title}</h3>
+                      <p className="text-sm text-black mb-4 leading-relaxed drop-shadow-lg">{project.description}</p>
+                      <span className="inline-flex items-center font-medium">
+                        <span
+                          className={`inline-flex font-medium relative z-10 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent${isDesktop ? ' cursor-none' : ''}`}
+                          onMouseEnter={() =>
+                            setCaseStudyHover(prev => {
+                              const next = [...prev];
+                              next[index] = true;
+                              return next;
+                            })
+                          }
+                          onMouseLeave={() =>
+                            setCaseStudyHover(prev => {
+                              const next = [...prev];
+                              next[index] = false;
+                              return next;
+                            })
+                          }
+                        >
+                          View case study
+                        </span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`h-5 w-5 ml-1 text-pink-500${isDesktop ? ' cursor-none' : ''}`}
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

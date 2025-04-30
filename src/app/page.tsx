@@ -10,13 +10,13 @@ export default function Home() {
   // Ref for the scroll container (main)
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
-  // Set up scroll tracking for the parallax transition
-  const { scrollY } = useScroll({ container: typeof window !== 'undefined' ? undefined : null });
+  // Set up scroll tracking for the parallax transition - without specifying container
+  const { scrollY } = useScroll();
   // Height of the Hero section (adjust as needed)
   const heroHeight = 600;
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-background">
+    <main ref={containerRef} className="min-h-screen bg-background relative">
       {/* Hero Section with Suspense for better loading */}
       <Suspense fallback={<div className="h-screen" />}>
         <Hero />
