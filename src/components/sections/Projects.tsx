@@ -161,7 +161,7 @@ const Projects = () => {
               >
                 <Link
                   href={`/casestudy/${project.slug}`}
-                  className={`w-full h-[95%] flex items-center justify-between relative rounded-xl overflow-hidden transition-transform hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50${isDesktop ? ' cursor-none' : ''}`}
+                  className={`w-full h-[95%] flex items-center justify-between relative rounded-xl overflow-hidden transition-transform focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50${isDesktop ? ' cursor-none' : ''}`}
                   style={isDesktop ? { cursor: 'none' } : undefined}
                 >
                   {/* Left side: Project mockup */}
@@ -195,7 +195,7 @@ const Projects = () => {
                       </p>
                       <span className="inline-flex items-center font-medium">
                         <span
-                          className={`inline-flex font-medium relative z-10 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent${isDesktop ? ' cursor-none' : ''}`}
+                          className={`inline-flex font-semibold relative z-10 bg-gradient-to-r from-indigo-500 via-pink-600 to-red-600 bg-clip-text text-transparent drop-shadow-sm hover:drop-shadow-md${isDesktop ? ' cursor-none' : ''}`}
                           onMouseEnter={() =>
                             setCaseStudyHover(prev => {
                               const next = [...prev];
@@ -237,7 +237,7 @@ const Projects = () => {
                       <p className="text-sm text-black mb-4 leading-relaxed drop-shadow-lg">{project.description}</p>
                       <span className="inline-flex items-center font-medium">
                         <span
-                          className={`inline-flex font-medium relative z-10 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent${isDesktop ? ' cursor-none' : ''}`}
+                          className={`inline-flex font-semibold relative z-10 bg-gradient-to-r from-indigo-500 via-pink-600 to-red-600 bg-clip-text text-transparent drop-shadow-sm hover:drop-shadow-md${isDesktop ? ' cursor-none' : ''}`}
                           onMouseEnter={() =>
                             setCaseStudyHover(prev => {
                               const next = [...prev];

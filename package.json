@@ -24,6 +24,7 @@
     "perf:measure": "node scripts/measure-performance.js",
     "perf:test": "node scripts/test-performance.js",
     "perf": "npm run perf:test",
+    "backup": "node scripts/create-backup.js",
     "prepare": "husky"
   },
   "lint-staged": {

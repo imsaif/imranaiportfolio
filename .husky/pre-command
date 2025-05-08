@@ -1,0 +1,18 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# List of dangerous commands that require extra confirmation
+DANGEROUS_COMMANDS="rm -rf|rm -r|git clean -f|git reset --hard|git checkout --|find .* -delete"
+
+# Check if the command contains any dangerous patterns
+if echo "$*" | grep -E "$DANGEROUS_COMMANDS" > /dev/null; then
+  echo "⚠️ WARNING: You're about to run a potentially destructive command:"
+  echo "    $*"
+  echo ""
+  echo "Are you sure you want to proceed? (y/N)"
+  read -r response
+  if ! echo "$response" | grep -E "^[Yy]$" > /dev/null; then
+    echo "Operation cancelled."
+    exit 1
+  fi
+fi 

@@ -74,6 +74,10 @@ module.exports = {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(200%)' },
         },
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
       },
       animation: {
         blink: 'blink 0.7s step-end infinite',
@@ -81,6 +85,7 @@ module.exports = {
         'spin-slow': 'slowRotate 3s linear infinite',
         shimmer: 'shimmer 2s infinite',
         'shimmer-once': 'shimmerOnce 1.5s forwards ease-in-out',
+        'fadeIn': 'fadeIn 0.5s ease-in-out forwards',
       },
       typography: {
         DEFAULT: {

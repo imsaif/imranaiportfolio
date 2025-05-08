@@ -40,4 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Backup files
+/backups/
+*.zip
+*.tar.gz
+*.backup
+
 .vercel

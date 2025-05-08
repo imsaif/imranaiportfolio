@@ -32,9 +32,9 @@ function drawStarWithGradient(ctx: CanvasRenderingContext2D, cx: number, cy: num
   grad.addColorStop(0, GRADIENT_COLORS[0]);
   grad.addColorStop(1, GRADIENT_COLORS[1]);
   ctx.fillStyle = grad;
-  ctx.globalAlpha = 0.8;
+  ctx.globalAlpha = 0.9;
   ctx.shadowColor = GRADIENT_COLORS[1];
-  ctx.shadowBlur = 10;
+  ctx.shadowBlur = 15;
   ctx.fill();
   ctx.globalAlpha = 1;
   ctx.shadowBlur = 0;
@@ -65,11 +65,11 @@ export const ParticlesOnHover: React.FC<ParticlesOnHoverProps> = ({ className, s
     const particles = Array.from({ length: NUM_PARTICLES }).map(() => ({
       x: randomBetween(0, width),
       y: randomBetween(0, height),
-      r: randomBetween(4, 7),
-      speed: randomBetween(0.2, 0.7),
+      r: randomBetween(5, 9),
+      speed: randomBetween(0.3, 0.8),
       angle: randomBetween(0, Math.PI * 2),
       drift: randomBetween(-0.2, 0.2),
-      points: 4, // Always 4 points
+      points: 4,
     }));
 
     function draw() {
@@ -94,7 +94,17 @@ export const ParticlesOnHover: React.FC<ParticlesOnHoverProps> = ({ className, s
   if (shouldReduceMotion) return null;
 
   return (
-    <div className={className} style={{ ...style, pointerEvents: 'none', position: 'absolute', inset: 0 }} aria-hidden>
+    <div 
+      className={`${className} animate-fadeIn`} 
+      style={{ 
+        ...style, 
+        pointerEvents: 'none', 
+        position: 'absolute', 
+        inset: 0,
+        zIndex: 20
+      }} 
+      aria-hidden
+    >
       <canvas ref={canvasRef} width={400} height={400} style={{ width: '100%', height: '100%', display: 'block' }} />
     </div>
   );

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import ParticlesOnHover from './ParticlesOnHover';
 import { Project } from '@/data/projects';
+import { useState } from 'react';
 
 interface ProjectMockupProps {
   project: Project;
@@ -9,17 +10,36 @@ interface ProjectMockupProps {
 }
 
 export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: ProjectMockupProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    onCaseStudyHover && onCaseStudyHover(true);
+  };
+  
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    onCaseStudyHover && onCaseStudyHover(false);
+  };
+
   return (
     <div
-      className="relative w-full h-80 md:h-[32rem]"
-      onMouseEnter={() => onCaseStudyHover && onCaseStudyHover(true)}
-      onMouseLeave={() => onCaseStudyHover && onCaseStudyHover(false)}
+      className="relative w-full h-80 md:h-[32rem] transition-all duration-300 ease-in-out"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Overlay particles effect on hover */}
       {showParticles && <ParticlesOnHover />}
-      {/* Display only the main project image */}
-      <div className="absolute inset-0 flex items-center justify-center z-10">
-        <Image src={project.images[0]} alt={project.title} fill className="object-contain p-4" priority />
+      
+      {/* Display the main project image */}
+      <div className="absolute inset-0 flex items-center justify-center z-5">
+        <Image 
+          src={project.images[0]} 
+          alt={project.title} 
+          fill 
+          className="object-cover" 
+          priority 
+        />
       </div>
     </div>
   );
