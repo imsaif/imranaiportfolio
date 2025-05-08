@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import React, { useRef, useState, useEffect } from 'react';
 
-import { useMouseTracking, applyGradientShift } from '../../../hooks/useMouseTracking';
 import { useTextCycling } from '../../../hooks/useTextCycling';
 
 interface HeroHeadingProps {
@@ -43,15 +42,6 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
   const displayText = isMobile ? (aiTextOptions[0] || '') : currentText;
   const showCursor = !isMobile && typing;
 
-  // Set up mouse tracking for the gradient effect
-  const { elementRef } = useMouseTracking<HTMLDivElement>({
-    onMouseMove: (element, position) => {
-      if (gradientTextRef.current) {
-        applyGradientShift(gradientTextRef.current, position);
-      }
-    },
-  });
-
   // If not mounted yet (server-side), render a placeholder
   if (!isMounted) {
     return (
@@ -80,7 +70,6 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
         transition={{ duration: 0.4, ease: 'easeInOut' }}
         className="absolute top-0 left-0 w-full h-full flex flex-col justify-center"
         style={{ willChange: 'opacity' }}
-        ref={elementRef}
       >
         <h1
           className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 tracking-tight transition-all duration-700 ${

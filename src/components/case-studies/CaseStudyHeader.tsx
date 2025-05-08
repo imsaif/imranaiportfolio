@@ -17,7 +17,7 @@ export default function CaseStudyHeader({
   showGradientLine = level === 'h2',
 }: CaseStudyHeaderProps) {
   const baseClasses = {
-    h1: 'text-4xl md:text-5xl font-bold mb-6',
+    h1: 'text-4xl md:text-5xl font-bold mb-6 leading-[1.15] pb-2 overflow-visible',
     h2: 'text-3xl font-bold mb-6',
     h3: 'text-2xl font-semibold mb-4',
   };

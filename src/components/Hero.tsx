@@ -43,36 +43,6 @@ const Hero = () => {
     return () => clearInterval(textInterval);
   }, [typing]);
 
-  // Track mouse movement for subtle AI-like responsiveness
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        setMousePosition({ x, y });
-
-        // Update gradient position based on mouse (subtle neural network-like effect)
-        if (gradientTextRef.current) {
-          // Very subtle gradient shift
-          const gradientShift = `${50 + (x / rect.width) * 3}%, ${50 + (y / rect.height) * 3}%`;
-          gradientTextRef.current.style.backgroundPosition = gradientShift;
-        }
-      }
-    };
-
-    const heroElement = heroRef.current;
-    if (heroElement) {
-      heroElement.addEventListener('mousemove', handleMouseMove);
-    }
-
-    return () => {
-      if (heroElement) {
-        heroElement.removeEventListener('mousemove', handleMouseMove);
-      }
-    };
-  }, []);
-
   return (
     <section ref={heroRef} className="pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden relative bg-background">
       {/* Use WaveBackground component for the bottom half with default props */}

@@ -189,7 +189,20 @@ const Projects = () => {
                   <div className="hidden md:flex flex-col items-start justify-center text-left w-full md:w-1/2 h-full pl-0 md:pl-12 z-20">
                     <div className="w-full flex flex-col items-start">
                       <span className="inline-block mb-2 text-sm font-medium text-black">{project.tagline}</span>
-                      <h3 className="text-2xl md:text-4xl font-bold mb-4 text-black drop-shadow-lg">{project.title}</h3>
+                      {/* Special formatting for EduScheduler and LessonLoom */}
+                      {project.slug === 'scheduler' ? (
+                        <>
+                          <h3 className="text-2xl md:text-4xl font-bold mb-1 text-black drop-shadow-lg">EduScheduler</h3>
+                          <span className="text-lg md:text-2xl font-medium text-gray-700 mb-3 md:mb-4 block">Intelligent Academic Planning System</span>
+                        </>
+                      ) : project.slug === 'lessonloom' ? (
+                        <>
+                          <h3 className="text-2xl md:text-4xl font-bold mb-1 text-black drop-shadow-lg">LessonLoom</h3>
+                          <span className="text-lg md:text-2xl font-medium text-gray-700 mb-3 md:mb-4 block">AI Lesson Generation Platform</span>
+                        </>
+                      ) : (
+                        <h3 className="text-2xl md:text-4xl font-bold mb-4 text-black drop-shadow-lg">{project.title}</h3>
+                      )}
                       <p className="text-base md:text-lg text-black mb-8 leading-relaxed drop-shadow-lg">
                         {project.description}
                       </p>
@@ -233,7 +246,20 @@ const Projects = () => {
                   <div className="md:hidden absolute bottom-0 left-0 right-0 flex flex-col items-center justify-end text-center w-full pb-4 z-20 bg-gradient-to-t from-background/90 to-transparent">
                     <div className="w-full flex flex-col items-center px-2">
                       <span className="inline-block mb-1 text-sm font-medium text-black">{project.tagline}</span>
-                      <h3 className="text-xl font-bold mb-2 text-black drop-shadow-lg">{project.title}</h3>
+                      {/* Special formatting for EduScheduler and LessonLoom */}
+                      {project.slug === 'scheduler' ? (
+                        <>
+                          <h3 className="text-xl font-bold mb-0 text-black drop-shadow-lg">EduScheduler</h3>
+                          <span className="text-base font-medium text-gray-700 mb-2 block">Intelligent Academic Planning System</span>
+                        </>
+                      ) : project.slug === 'lessonloom' ? (
+                        <>
+                          <h3 className="text-xl font-bold mb-0 text-black drop-shadow-lg">LessonLoom</h3>
+                          <span className="text-base font-medium text-gray-700 mb-2 block">AI Lesson Generation Platform</span>
+                        </>
+                      ) : (
+                        <h3 className="text-xl font-bold mb-2 text-black drop-shadow-lg">{project.title}</h3>
+                      )}
                       <p className="text-sm text-black mb-4 leading-relaxed drop-shadow-lg">{project.description}</p>
                       <span className="inline-flex items-center font-medium">
                         <span

@@ -36,6 +36,25 @@ export default function Page() {
         </div>
       </header>
 
+      {/* Full-width hero image section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2 }}
+        className="w-full relative"
+      >
+        <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden">
+          <Image 
+            src="/images/casestudy/lessonloom/lessonloomboard.png" 
+            alt="LessonLoom: Automated Lesson Generation Platform" 
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
+        </div>
+      </motion.div>
+
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Title Section */}
         <motion.h1 
@@ -699,7 +718,7 @@ export default function Page() {
                       <div>
                         <h6 className="font-medium text-gray-700 mb-3">Format Options</h6>
                         <div className="flex items-center">
-                          <input type="checkbox" className="h-4 w-4 text-blue-600 border-gray-300 rounded" checked />
+                          <input type="checkbox" className="h-4 w-4 text-blue-600 border-gray-300 rounded" checked readOnly />
                           <label className="ml-2 text-sm text-gray-700">Worksheet</label>
                         </div>
                       </div>
@@ -1699,7 +1718,7 @@ export default function Page() {
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         <div className="border border-indigo-200 bg-indigo-50 rounded-lg p-4 flex items-center">
-                          <input type="radio" name="tab" id="math" className="h-4 w-4 text-indigo-600" defaultChecked />
+                          <input type="radio" name="tab" id="math" className="h-4 w-4 text-indigo-600" defaultChecked readOnly />
                           <label htmlFor="math" className="ml-2 text-gray-800 font-medium">Grade 3 - Math</label>
                         </div>
                         

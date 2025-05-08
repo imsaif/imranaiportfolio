@@ -37,7 +37,7 @@ export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: Proj
           src={project.images[0]} 
           alt={project.title} 
           fill 
-          className="object-cover" 
+          className="object-cover rounded-xl" 
           priority 
         />
       </div>

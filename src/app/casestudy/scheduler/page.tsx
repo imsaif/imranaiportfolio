@@ -37,6 +37,25 @@ export default function Page() {
         </div>
       </header>
 
+      {/* Full-width hero image section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2 }}
+        className="w-full relative"
+      >
+        <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden">
+          <Image 
+            src="/images/casestudy/scheduler/teacherafri1.png" 
+            alt="EduScheduler: Intelligent Academic Planning System" 
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
+        </div>
+      </motion.div>
+
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <CaseStudyHeader level="h1">
           EduScheduler: Intelligent Academic Planning System

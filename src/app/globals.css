@@ -216,7 +216,7 @@ p {
 
 /* Animation for gradient text */
 .animate-gradient {
-  animation: gradient 3s ease infinite;
+  animation: gradient 6s ease infinite;
   background-size: 200% 200%;
 }
 
