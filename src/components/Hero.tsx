@@ -58,7 +58,7 @@ const Hero = () => {
       <div className="container mx-auto px-6 md:px-8 relative z-10">
         <div className="max-w-4xl">
           <span
-            className={`inline-block text-accent mb-6 text-lg font-medium transition-all duration-700 ease-out ${
+            className={`inline-block text-accent mb-6 text-lg geist font-medium transition-all duration-700 ease-out ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
@@ -66,7 +66,7 @@ const Hero = () => {
           </span>
 
           <h1
-            className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight transition-all duration-700 ease-out delay-150 ${
+            className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl geist font-bold mb-8 leading-tight transition-all duration-700 ease-out delay-150 ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
             }`}
           >
@@ -91,7 +91,7 @@ const Hero = () => {
           </h1>
 
           <p
-            className={`text-lg md:text-xl text-muted mb-12 max-w-2xl leading-relaxed transition-all duration-700 ease-out delay-300 ${
+            className={`text-lg md:text-xl text-muted mb-12 max-w-2xl leading-relaxed geist font-normal transition-all duration-700 ease-out delay-300 ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}
           >
@@ -104,7 +104,7 @@ const Hero = () => {
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
-            <Link href="#work" className="btn btn-primary group">
+            <Link href="#work" className="btn btn-primary group geist font-medium">
               View My Work
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ const Hero = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </Link>
-            <Link href="#contact" className="btn btn-outline group">
+            <Link href="#contact" className="btn btn-outline group geist font-medium">
               Chat with my AI
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -141,18 +141,18 @@ const Hero = () => {
             }`}
           >
             <div className="hover-scale">
-              <p className="font-medium mb-1">Email</p>
-              <a href="mailto:your.email@example.com" className="hover:text-accent transition-colors">
+              <p className="geist font-medium mb-1">Email</p>
+              <a href="mailto:your.email@example.com" className="hover:text-accent transition-colors geist font-normal">
                 your.email@example.com
               </a>
             </div>
             <div className="hover-scale">
-              <p className="font-medium mb-1">Location</p>
-              <span>[Your City], [Country]</span>
+              <p className="geist font-medium mb-1">Location</p>
+              <span className="geist font-normal">[Your City], [Country]</span>
             </div>
             <div className="hover-scale">
-              <p className="font-medium mb-1">Available For</p>
-              <span className="text-accent">AI Design Consulting & Full-time Opportunities</span>
+              <p className="geist font-medium mb-1">Available For</p>
+              <span className="text-accent geist font-normal">AI Design Consulting & Full-time Opportunities</span>
             </div>
           </div>
         </div>
@@ -160,7 +160,7 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center">
-        <span className="text-xs uppercase tracking-wider mb-2 text-muted">Scroll</span>
+        <span className="text-xs uppercase tracking-wider mb-2 text-muted geist font-medium">Scroll</span>
         <div className="w-0.5 h-12 bg-accent/20 relative overflow-hidden">
           <div className="w-full h-1/2 bg-accent absolute top-0 left-0 animate-scrollDown"></div>
         </div>

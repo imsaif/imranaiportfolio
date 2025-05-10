@@ -2488,10 +2488,12 @@ export default function Page() {
         </section>
 
         {/* Interactive Prototype Section */}
-        <InteractivePrototype />
+        <div className="mb-20">
+          <InteractivePrototype />
+        </div>
 
         {/* Lessons Learned Section */}
-        <section className="mb-20">
+        <section className="mb-20 mt-20">
           <div className="flex items-center mb-8">
             <CaseStudyHeader level="h2" showGradientLine>
               Lessons Learned
