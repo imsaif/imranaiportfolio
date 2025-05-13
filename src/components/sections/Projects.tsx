@@ -161,12 +161,12 @@ const Projects = () => {
               >
                 <Link
                   href={`/casestudy/${project.slug}`}
-                  className={`w-full h-[95%] flex items-center justify-between relative rounded-xl overflow-hidden transition-transform focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50${isDesktop ? ' cursor-none' : ''}`}
+                  className={`w-full h-screen flex items-center justify-between relative rounded-xl overflow-hidden transition-transform focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50${isDesktop ? ' cursor-none' : ''}`}
                   style={isDesktop ? { cursor: 'none' } : undefined}
                 >
                   {/* Left side: Project mockup */}
-                  <div className="w-full md:w-1/2 h-full bg-background rounded-lg z-0 flex items-center">
-                    <div className="w-full h-full md:h-4/5 rounded-lg overflow-hidden">
+                  <div className="w-full md:w-1/2 h-screen bg-background rounded-lg z-0 flex items-center">
+                    <div className="w-full h-screen rounded-lg overflow-hidden">
                       <ProjectMockup
                         project={project}
                         onCaseStudyHover={

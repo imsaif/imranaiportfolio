@@ -55,7 +55,7 @@ export default function Page() {
         </div>
       </motion.div>
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
         {/* Title Section */}
         <motion.h1 
           className="text-5xl font-bold text-transparent bg-clip-text animate-gradient-text mb-12"

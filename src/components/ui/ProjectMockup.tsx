@@ -24,7 +24,7 @@ export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: Proj
 
   return (
     <div
-      className="relative w-full h-80 md:h-[32rem] transition-all duration-300 ease-in-out"
+      className="relative w-full h-screen transition-all duration-300 ease-in-out"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

@@ -3,13 +3,70 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 import InteractivePrototype from './InteractivePrototype';
 import UserJourneyMapInteractive from '@/components/case-studies/UserJourneyMapInteractive';
 import InfoArchitectureDiagrams from '@/components/case-studies/InfoArchitectureDiagrams';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
+
+const sections = [
+  { id: "introduction", label: "Introduction" },
+  { id: "overview", label: "Project Overview" },
+  { id: "challenge", label: "Challenge" },
+  { id: "process", label: "User Research" },
+  { id: "design-process", label: "Design Process" },
+  { id: "lessons", label: "Lessons" },
+  { id: "results", label: "Results" },
+];
+
+function FloatingNavBar() {
+  const [active, setActive] = useState(sections[0].id);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      let current = sections[0].id;
+      for (const section of sections) {
+        const el = document.getElementById(section.id);
+        if (el && window.scrollY + 100 >= el.offsetTop) {
+          current = section.id;
+        }
+      }
+      setActive(current);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur shadow">
+      <ul className="flex justify-center space-x-6 py-3">
+        {sections.map((section) => (
+          <li key={section.id} className="relative">
+            <a
+              href={`#${section.id}`}
+              className={`px-3 py-1 font-medium transition-colors ${
+                active === section.id
+                  ? "text-blue-600"
+                  : "text-gray-500 hover:text-blue-500"
+              }`}
+            >
+              {section.label}
+              {active === section.id && (
+                <motion.div
+                  layoutId="underline"
+                  className="absolute left-0 right-0 -bottom-1 h-1 bg-blue-500 rounded"
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                />
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
 
 export default function Page() {
   const fadeIn = {
@@ -37,32 +94,34 @@ export default function Page() {
         </div>
       </header>
 
-      {/* Full-width hero image section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-        className="w-full relative"
-      >
-        <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden">
-          <Image 
-            src="/images/casestudy/scheduler/teacherafri1.png" 
-            alt="EduScheduler: Intelligent Academic Planning System" 
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
-        </div>
-      </motion.div>
+      {/* Hero image in its own container */}
+      <div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+          className="w-full relative"
+        >
+          <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden">
+            <Image 
+              src="/images/casestudy/scheduler/teacherafri1.png" 
+              alt="EduScheduler: Intelligent Academic Planning System" 
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
+          </div>
+        </motion.div>
+      </div>
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
         <CaseStudyHeader level="h1">
           EduScheduler: Intelligent Academic Planning System
         </CaseStudyHeader>
 
         <motion.div
-          id="intro-section"
+          id="introduction"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -76,7 +135,7 @@ export default function Page() {
         </motion.div>
 
         {/* Project Overview Section */}
-        <section className="mb-20">
+        <section id="overview" className="mb-20">
           <div className="flex items-center mb-12">
             <CaseStudyHeader level="h2" showGradientLine>
               Project Overview
@@ -127,7 +186,7 @@ export default function Page() {
         </section>
 
         {/* The Challenge Section */}
-        <section className="mb-20">
+        <section id="challenge" className="mb-20">
           <div className="flex items-center mb-8">
             <CaseStudyHeader level="h2" showGradientLine>
               The Challenge
@@ -193,7 +252,7 @@ export default function Page() {
         </section>
 
         {/* User Research & Problem Definition Section */}
-        <section className="mb-20">
+        <section id="process" className="mb-20">
           <div className="flex items-center mb-8">
             <CaseStudyHeader level="h2" showGradientLine>
               User Research & Problem Definition
@@ -531,7 +590,7 @@ export default function Page() {
         </section>
 
         {/* Design Process Section */}
-        <section className="mb-20">
+        <section id="design-process" className="mb-20">
           <div className="flex items-center mb-8">
             <CaseStudyHeader level="h2" showGradientLine>
               Design Process
@@ -2493,7 +2552,7 @@ export default function Page() {
         </div>
 
         {/* Lessons Learned Section */}
-        <section className="mb-20 mt-20">
+        <section id="lessons" className="mb-20 mt-20">
           <div className="flex items-center mb-8">
             <CaseStudyHeader level="h2" showGradientLine>
               Lessons Learned
@@ -2703,7 +2762,7 @@ export default function Page() {
           </motion.div>
         </section>
 
-        <section className="mb-20">
+        <section id="results" className="mb-20">
           <div className="flex items-center mb-8">
             <CaseStudyHeader level="h2" showGradientLine>
               Conclusion
