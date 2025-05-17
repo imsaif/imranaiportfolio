@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'xs': '320px',
+        xs: '320px',
       },
       colors: {
         // Brand colors
@@ -47,11 +47,9 @@ module.exports = {
         card: 'var(--card-shadow)',
       },
       fontFamily: {
-        sans: ['Geist Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
-        'geist': ['Geist', 'sans-serif'],
-        'geist-mono': ['Geist Mono', 'monospace'],
-        heading: ['Geist Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Satoshi', 'Satoshi Placeholder', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        heading: ['Satoshi', 'Satoshi Placeholder', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         blink: {
@@ -86,7 +84,7 @@ module.exports = {
         'spin-slow': 'slowRotate 3s linear infinite',
         shimmer: 'shimmer 2s infinite',
         'shimmer-once': 'shimmerOnce 1.5s forwards ease-in-out',
-        'fadeIn': 'fadeIn 0.5s ease-in-out forwards',
+        fadeIn: 'fadeIn 0.5s ease-in-out forwards',
       },
       typography: {
         DEFAULT: {

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import React, { useState, useEffect, useCallback } from 'react';
 
 import { useChatToggle } from '../../context/ChatToggleProvider';
-import HeroBackground from './hero/HeroBackground';
 import HeroButtons from './hero/HeroButtons';
 import HeroChatSection from './hero/HeroChatSection';
 import HeroContactInfo from './hero/HeroContactInfo';
@@ -100,12 +99,9 @@ const Hero = () => {
 
   return (
     <section
-      className="pt-16 xs:pt-20 sm:pt-28 pb-16 xs:pb-20 sm:pb-24 md:pt-36 md:pb-52 overflow-hidden relative bg-background"
+      className="pt-6 xs:pt-8 sm:pt-12 pb-4 xs:pb-6 sm:pb-8 md:pb-12 overflow-hidden relative bg-background"
       style={{ position: 'relative', overflowX: 'hidden' }}
     >
-      {/* Add the wavy background */}
-      <HeroBackground />
-
       <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8 relative z-10">
         <div className="max-w-4xl">
           {/* Always show the hero content */}
