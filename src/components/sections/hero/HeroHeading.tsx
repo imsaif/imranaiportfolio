@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import React, { useRef, useState, useEffect } from 'react';
 
 import { useTextCycling } from '../../../hooks/useTextCycling';
@@ -14,6 +14,9 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
   const gradientTextRef = useRef<HTMLSpanElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const morphWords = ['AI enhanced', 'beautifully balanced'];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Force client-side rendering and check mobile status
   useEffect(() => {
@@ -28,6 +31,14 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
     // return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Timed automatic cycling every 5.5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % morphWords.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, []);
+
   // Set up text cycling for the dynamic text options - ONLY if not mobile
   const { currentText, typing } = useTextCycling({
     texts: aiTextOptions && aiTextOptions.length > 0 ? aiTextOptions : [''], // Ensure texts is not empty
@@ -39,7 +50,7 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
   });
 
   // Determine text and cursor visibility based on screen size
-  const displayText = isMobile ? (aiTextOptions[0] || '') : currentText;
+  const displayText = isMobile ? aiTextOptions[0] || '' : currentText;
   const showCursor = !isMobile && typing;
 
   // If not mounted yet (server-side), render a placeholder
@@ -77,42 +88,30 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
           }`}
         >
           Creating{' '}
-          <span
-            className="inline-block align-baseline"
-            style={{}}
-          >
-            <span
-              ref={gradientTextRef}
-              style={{
-                background: 'linear-gradient(135deg, var(--accent), var(--tertiary), var(--accent))',
-                backgroundSize: '300% 300%',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                color: 'transparent',
-                display: 'inline-block',
-                position: 'relative',
-                animation: 'gradientFlow 4s ease infinite',
-                paddingBottom: '5px',
-              }}
-            >
-              {displayText}
-              {showCursor && (
-                <span
-                  style={{
-                    position: 'absolute',
-                    right: '-2px',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    height: '60%',
-                    width: '3px',
-                    backgroundColor: 'var(--accent)',
-                    display: 'inline-block',
-                    opacity: 0.9,
-                    animation: 'blink 0.7s step-end infinite',
-                  }}
-                />
-              )}
-            </span>
+          <span className="inline-block align-baseline relative" style={{ minWidth: 180 }}>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={morphWords[currentIndex]}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
+                className="gradient-text animate-gradient font-semibold"
+                style={{
+                  background: 'linear-gradient(135deg, var(--accent), var(--tertiary), var(--accent))',
+                  backgroundSize: '300% 300%',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  color: 'transparent',
+                  display: 'inline-block',
+                  position: 'relative',
+                  paddingBottom: '5px',
+                }}
+                aria-live="polite"
+              >
+                {morphWords[currentIndex]}
+              </motion.span>
+            </AnimatePresence>
           </span>{' '}
           experiences with purpose and precision.
         </h1>
@@ -122,8 +121,8 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          I'm a Product Designer specialized in AI experience design, creating thoughtful interfaces for intelligent
-          systems that balance automation with human-centered control.
+          Product designer creating intuitive interfaces for intelligent systems—balancing automation with human
+          control.
         </p>
       </motion.div>
     </>

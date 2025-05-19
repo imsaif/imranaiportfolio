@@ -1,3 +1,8 @@
+export interface ProjectStat {
+  label: string;
+  value: string;
+}
+
 export interface Project {
   id: number;
   slug: string;
@@ -10,6 +15,7 @@ export interface Project {
   images: string[];
   featured?: boolean;
   tagline: string;
+  stats?: ProjectStat[];
 }
 
 export const projects: Project[] = [
@@ -41,6 +47,11 @@ export const projects: Project[] = [
     ],
     featured: true,
     tagline: 'UX RESEARCH, PRODUCT DESIGN',
+    stats: [
+      { label: 'Schools Automated', value: '120+' },
+      { label: 'Scheduling Time Saved', value: '85%' },
+      { label: 'User Satisfaction', value: '4.7★' },
+    ],
   },
   {
     id: 1,
@@ -64,6 +75,11 @@ export const projects: Project[] = [
     ],
     featured: true,
     tagline: 'AI DESIGN, AUTOMATION',
+    stats: [
+      { label: 'Lessons Generated', value: '10,000+' },
+      { label: 'Time Saved per Teacher', value: '6h/week' },
+      { label: 'Adoption Rate', value: '92%' },
+    ],
   },
 ];
 

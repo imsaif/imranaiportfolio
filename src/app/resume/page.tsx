@@ -598,29 +598,30 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
 
           {/* Button Section */}
           <div className="mt-16 text-center">
-            {/* Download Resume Button - Changed to match standard styling */}
+            {/* Download Resume Button - Rounded gradient border style */}
             <a
               href="https://drive.google.com/file/d/1GDjAugRkYebtTknQBgkzMyrRtDXddqA_/view"
-              target="_blank" // Open in new tab
-              rel="noopener noreferrer" // Security best practice
-              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-accent to-tertiary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition duration-150 ease-in-out"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block group focus:outline-none"
+              tabIndex={0}
+              aria-label="Download Resume (opens in new tab)"
             >
-              Download Resume
-              {/* Kept Download Icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                />
-              </svg>
+              <span className="inline-flex rounded-xl bg-gradient-to-r from-accent to-tertiary p-[1.5px] transition-all duration-300">
+                <span className="flex items-center justify-center w-full h-full px-8 py-3 bg-white rounded-xl text-black font-bold text-base tracking-wide transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-accent group-hover:to-tertiary group-hover:text-white">
+                  DOWNLOAD CV
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 ml-2 transition-colors duration-300 group-hover:text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 7h5m0 0v5m0-5L10 19" />
+                  </svg>
+                </span>
+              </span>
             </a>
           </div>
         </div>

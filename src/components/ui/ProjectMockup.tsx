@@ -32,12 +32,12 @@ export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: Proj
       {showParticles && <ParticlesOnHover />}
 
       {/* Display the main project image */}
-      <div className="flex justify-center max-w-[600px] max-h-[600px] mx-auto">
+      <div className="flex justify-center max-w-[600px] max-h-[520px] mx-auto">
         <Image
           src={project.images[0]}
           alt={project.title}
           width={600}
-          height={600}
+          height={520}
           sizes="(max-width: 768px) 95vw, 600px"
           className="object-contain rounded-xl bg-white"
           priority

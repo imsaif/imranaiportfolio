@@ -2,3 +2,5 @@
 {"userId":"user_3m1ozr","timestamp":"2025-04-29T16:56:21.215Z","messages":[{"role":"assistant","content":"Hey there! 👋 I'm Imran's AI assistant. What can I help you with today?"},{"role":"user","content":"Can you walk me through Imran's case studies?"},{"role":"user","content":"Can you walk me through Imran's case studies?"}],"aiResponse":null}
 {"userId":"user_3m1ozr","timestamp":"2025-05-09T10:29:53.287Z","messages":[{"role":"user","content":"API connection test"}],"aiResponse":null}
 {"userId":"user_3m1ozr","timestamp":"2025-05-09T10:29:53.605Z","messages":[{"role":"assistant","content":"Hey there! 👋 I'm Imran's AI assistant. What can I help you with today?"},{"role":"user","content":"hi"},{"role":"user","content":"hi"}],"aiResponse":null}
+{"userId":"user_3m1ozr","timestamp":"2025-05-19T09:32:42.233Z","messages":[{"role":"user","content":"API connection test"}],"aiResponse":null}
+{"userId":"user_3m1ozr","timestamp":"2025-05-19T09:32:42.905Z","messages":[{"role":"assistant","content":"Hey there! 👋 I'm Imran's AI assistant. What can I help you with today?"},{"role":"user","content":"sdsds"},{"role":"user","content":"sdsds"}],"aiResponse":null}

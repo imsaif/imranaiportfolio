@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { useRef, RefObject } from 'react';
+import { useRef, RefObject, useState } from 'react';
+import Button from './Button';
+import { CursorFollowButton } from './CursorFollowButton';
 import { ProjectMockup } from './ProjectMockup';
 import { Project } from '@/data/projects';
 
@@ -13,6 +15,11 @@ interface StickyProjectCardProps {
 
 const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, total, containerRef }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [buttonPos, setButtonPos] = useState<{ x: number; y: number } | null>(null);
+
+  const BUTTON_SIZE = 64; // px, should match the button's width/height
+  const BUTTON_RADIUS = BUTTON_SIZE / 2;
 
   // Set up scroll progress for this card
   const { scrollYProgress } = useScroll({
@@ -33,18 +40,69 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
     ]
   );
 
+  // Handler to update button position on mouse move
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+    // Clamp so the button stays fully inside the card
+    x = Math.max(BUTTON_RADIUS, Math.min(rect.width - BUTTON_RADIUS, x));
+    y = Math.max(BUTTON_RADIUS, Math.min(rect.height - BUTTON_RADIUS, y));
+    setButtonPos({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setButtonPos(null);
+  };
+
   return (
     <motion.div
       ref={cardRef}
-      className={`sticky top-[96px] min-h-[400px] ${index !== total - 1 ? 'mb-12' : 'mb-0'} ${index === 0 ? 'mt-0' : 'mt-12'} bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200`}
+      className={`sticky top-[96px] min-h-[520px] ${index !== total - 1 ? 'mb-12' : 'mb-0'} ${index === 0 ? 'mt-0' : 'mt-12'} bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible`}
       style={{ zIndex: 10 + index, scale, boxShadow }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
+      {/* Floating magnetic button that follows the cursor */}
+      {buttonPos && (
+        <motion.div
+          className="absolute z-30"
+          style={{
+            left: buttonPos.x,
+            top: buttonPos.y,
+            transform: 'translate(-50%, -50%)',
+          }}
+          animate={{ left: buttonPos.x, top: buttonPos.y }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        >
+          <Button
+            href={
+              project.slug === 'scheduler' || project.slug === 'lessonloom'
+                ? `/casestudy/${project.slug}`
+                : `/projects/${project.slug}`
+            }
+            variant="outline"
+            className="w-40 h-12 flex items-center justify-center text-base font-semibold"
+          >
+            View Project
+            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Button>
+        </motion.div>
+      )}
       {/* Left side: Project mockup */}
-      <div className="flex items-center justify-center px-8 pb-0 md:pb-0">
+      <div className="flex flex-col items-center justify-center px-8 pb-0 md:pb-0 w-full md:w-auto">
         <ProjectMockup project={project} />
       </div>
       {/* Right side: Text content */}
       <div className="w-full md:w-1/2 flex flex-col items-start justify-center text-left pl-0 md:pl-12 z-20 p-8 pt-0">
+        <span className="mb-4 inline-block uppercase tracking-wide text-xs font-bold text-indigo-700 bg-indigo-50 rounded px-3 py-1">
+          {project.tagline}
+        </span>
         {project.slug === 'scheduler' ? (
           <>
             <h3 className="text-2xl md:text-4xl font-bold mb-1 text-black drop-shadow-lg">EduScheduler</h3>
@@ -57,33 +115,16 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
           <h3 className="text-2xl md:text-4xl font-bold mb-4 text-black drop-shadow-lg">{project.title}</h3>
         )}
         <p className="text-base md:text-lg text-black mb-8 leading-relaxed drop-shadow-lg">{project.description}</p>
-        <Link
-          href={
-            project.slug === 'scheduler' || project.slug === 'lessonloom'
-              ? `/casestudy/${project.slug}`
-              : `/projects/${project.slug}`
-          }
-          className="inline-flex items-center font-medium cursor-pointer group"
-        >
-          <span className="inline-flex font-semibold relative z-10 bg-gradient-to-r from-indigo-500 via-pink-600 to-red-600 bg-clip-text text-transparent drop-shadow-sm group-hover:drop-shadow-md">
-            View case study
-          </span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 ml-1 text-pink-500"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </Link>
-        <span className="mt-8 inline-block uppercase tracking-wide text-xs font-bold text-indigo-700 bg-indigo-50 rounded px-3 py-1">
-          {project.tagline}
-        </span>
+        {project.stats && project.stats.length > 0 && (
+          <div className="flex flex-row gap-8 mt-2 mb-2 justify-start">
+            {project.stats.slice(0, 2).map((stat, idx) => (
+              <div key={idx} className="flex flex-col items-start">
+                <span className="text-xl font-extrabold text-gray-900">{stat.value}</span>
+                <span className="text-xs font-medium text-gray-500 uppercase tracking-wide mt-1">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </motion.div>
   );

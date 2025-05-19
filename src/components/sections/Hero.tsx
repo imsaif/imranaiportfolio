@@ -108,27 +108,26 @@ const Hero = () => {
           <div>
             {!isChatOpen && (
               <div className="flex items-center gap-3 mb-3 xs:mb-4 md:mb-6">
-                <div
-                  className="relative w-8 h-8 xs:w-10 xs:h-10 md:w-12 md:h-12 overflow-hidden rounded-full shadow-sm flex-shrink-0 border border-gray-200"
-                  style={{ borderColor: 'rgba(75, 75, 75, 0.15)' }}
-                >
+                <div className="relative w-10 h-7 xs:w-12 xs:h-8 md:w-14 md:h-9 overflow-hidden rounded-full border border-black/40 shadow-md">
                   <Image
                     src="/images/profile/avatar.jpg"
                     alt="Imran Mohammed"
                     fill
-                    sizes="(max-width: 640px) 32px, (max-width: 768px) 40px, 48px"
+                    sizes="(max-width: 640px) 40px, (max-width: 768px) 48px, 56px"
                     className="object-cover"
                     priority
                   />
                 </div>
 
-                <span
-                  className={`text-base xs:text-lg font-medium transition-all duration-700 ease-out ${
-                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                  }`}
-                >
-                  Hi, I'm Imran 👋 I am
-                </span>
+                <div className="flex flex-col">
+                  <span
+                    className={`text-base xs:text-lg font-medium transition-all duration-700 ease-out ${
+                      isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                    }`}
+                  >
+                    Hi, I'm Imran 👋
+                  </span>
+                </div>
               </div>
             )}
 

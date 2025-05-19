@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 
 import { useChatToggle } from '../../context/ChatToggleProvider';
 import { NavItem } from '../../types';
-import AnimatedLogo from '../AnimatedLogo';
 
 const navItems: NavItem[] = [
   { label: 'Work', href: '/#work' },
@@ -75,10 +74,10 @@ const Header = () => {
       <div className="container mx-auto px-6 md:px-8 flex justify-between items-center">
         <Link
           href="/"
-          className="text-xl font-bold tracking-tight transition-all duration-300"
+          className="text-xl font-bold tracking-tight transition-all duration-300 flex items-center gap-3 items-center"
           onClick={handleLogoClick}
         >
-          <AnimatedLogo />
+          <span className="flex items-center leading-none uppercase font-bold tracking-tight text-black">IMRAN</span>
         </Link>
 
         {/* Mobile menu button */}

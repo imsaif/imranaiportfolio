@@ -130,52 +130,57 @@ const HeroButtons = ({ isVisible, isChatOpen, onChatToggle }: HeroButtonsProps) 
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      {/* Primary button - now with distinctive styling */}
+      {/* Primary button - gradient, bold, shadow */}
       <Button
-        href={isChatOpen ? undefined : '#work'}
         variant="primary"
-        className={`block w-full sm:w-auto text-base sm:text-sm py-3 sm:py-2.5 ${isChatOpen ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
+        className="flex-1 min-w-[180px] text-base sm:text-sm py-3 sm:py-2.5 px-5 sm:px-5 rounded-xl shadow-lg font-semibold group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-offset-2"
         onClick={isChatOpen ? undefined : handleWorkButtonClick}
-        aria-disabled={isChatOpen}
+        disabled={isChatOpen}
+        aria-label="View My Work"
       >
-        View My Work
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 transition-transform group-hover:translate-x-1"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
+        <span className="flex items-center gap-2">
+          View My Work
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </span>
       </Button>
 
-      {/* AI Chat Button */}
-      <button
-        type="button"
-        className="group inline-flex items-center justify-center gap-2 px-5 sm:px-5 py-3 sm:py-2.5 rounded-lg transition-all duration-300 text-base sm:text-sm font-medium cursor-pointer bg-transparent border-2 border-gray-300 text-foreground hover:bg-gray-100 relative flex-grow-0 ai-border bg-background hover:shadow-lg"
+      {/* Secondary button - white, border, shadow */}
+      <Button
+        variant="outline"
+        className="flex-1 min-w-[180px] text-base sm:text-sm py-3 sm:py-2.5 px-5 sm:px-5 rounded-xl shadow-md font-semibold group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-offset-2"
         onClick={handleChatToggle}
+        aria-label={isChatOpen ? 'Close Chat' : 'Chat with my AI'}
       >
-        {isChatOpen ? 'Close Chat' : 'Chat with my AI'}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className={`h-5 w-5 transition-all duration-300 ${isChatOpen ? '' : 'group-hover:scale-110 group-hover:rotate-45'}`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          {isChatOpen ? (
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          ) : (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-            />
-          )}
-        </svg>
-      </button>
+        <span className="flex items-center gap-2">
+          {isChatOpen ? 'Close Chat' : 'Chat with my AI'}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`h-5 w-5 transition-all duration-300 ${isChatOpen ? '' : 'group-hover:scale-110 group-hover:rotate-45'}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            {isChatOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+              />
+            )}
+          </svg>
+        </span>
+      </Button>
     </div>
   );
 };
