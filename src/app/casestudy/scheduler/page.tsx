@@ -74,10 +74,10 @@ export default function Page() {
   };
 
   return (
-    <div className="bg-[#f8f9fe] min-h-screen">
+    <div className="bg-white min-h-screen">
       {/* Header section */}
       <header className="bg-white py-0 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
           {/* Removed: <Link href="/" className="text-purple-600 font-medium text-xl">Imran Mohammed</Link> */}
         </div>
       </header>
@@ -103,7 +103,7 @@ export default function Page() {
         </motion.div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+      <main className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-20 py-12">
         <CaseStudyHeader level="h1">EduScheduler: Intelligent Academic Planning System</CaseStudyHeader>
 
         <motion.div
@@ -114,9 +114,8 @@ export default function Page() {
           className="bg-white p-8 rounded-xl border-l-4 border-blue-400 shadow-sm mb-16"
         >
           <p className="text-lg text-gray-700">
-            The EduScheduler: Intelligent Academic Planning System (EduScheduler) project was developed to solve a
-            critical challenge facing NewGlobe Education: efficiently generating optimized teaching schedules for
-            hundreds of schools across multiple global education programs.
+            EduScheduler was built to help NewGlobe Education quickly generate optimized teaching schedules for hundreds
+            of schools worldwide.
           </p>
         </motion.div>
 
@@ -158,15 +157,9 @@ export default function Page() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="bg-white p-8 rounded-xl shadow-md mb-12"
           >
-            <p className="text-gray-700 mb-4">
-              Prior to this solution, creating timetables was a manual, error-prone process that couldn't effectively
-              support complex teaching models, resulting in inefficient resource allocation and limited flexibility in
-              instructional delivery.
-            </p>
             <p className="text-gray-700">
-              As the product designer on this project, I collaborated closely with our product manager, stakeholders
-              from Academics, Schools, and Technology teams to design an intuitive solution that automated the
-              generation of conflict-free teaching schedules while accommodating program-specific requirements.
+              Before EduScheduler, timetables were created manually—slow, error-prone, and inflexible. As Lead Product
+              Designer, I worked with cross-functional teams to design an automated, adaptable scheduling system.
             </p>
           </motion.div>
         </section>
@@ -187,8 +180,7 @@ export default function Page() {
             className="bg-white p-8 rounded-xl shadow-md"
           >
             <p className="text-gray-700 mb-8">
-              NewGlobe, a global education organization, faced significant obstacles when creating teaching materials
-              across multiple countries:
+              NewGlobe faced major hurdles creating teaching materials for schools in different countries:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="flex items-start bg-gray-50 rounded-xl p-6 border-l-4 border-blue-200 shadow-sm">
@@ -210,8 +202,8 @@ export default function Page() {
                   </svg>
                 </span>
                 <div>
-                  <div className="font-bold text-gray-900 mb-1">Time-intensive process</div>
-                  <div className="text-gray-800">Content teams spent months developing customized teacher guides</div>
+                  <div className="font-bold text-gray-900 mb-1">Time-intensive</div>
+                  <div className="text-gray-800">Manual guide creation took months</div>
                 </div>
               </div>
               <div className="flex items-start bg-gray-50 rounded-xl p-6 border-l-4 border-pink-200 shadow-sm">
@@ -233,10 +225,8 @@ export default function Page() {
                   </svg>
                 </span>
                 <div>
-                  <div className="font-bold text-gray-900 mb-1">Resource constraints</div>
-                  <div className="text-gray-800">
-                    Skilled curriculum designers were pulled into repetitive formatting tasks
-                  </div>
+                  <div className="font-bold text-gray-900 mb-1">Resource drain</div>
+                  <div className="text-gray-800">Experts spent time on repetitive tasks</div>
                 </div>
               </div>
               <div className="flex items-start bg-gray-50 rounded-xl p-6 border-l-4 border-yellow-200 shadow-sm">
@@ -254,8 +244,8 @@ export default function Page() {
                   </svg>
                 </span>
                 <div>
-                  <div className="font-bold text-gray-900 mb-1">Quality consistency</div>
-                  <div className="text-gray-800">Materials varied based on individual writers' interpretations</div>
+                  <div className="font-bold text-gray-900 mb-1">Inconsistent quality</div>
+                  <div className="text-gray-800">Materials varied by writer</div>
                 </div>
               </div>
               <div className="flex items-start bg-gray-50 rounded-xl p-6 border-l-4 border-green-200 shadow-sm">
@@ -277,14 +267,14 @@ export default function Page() {
                   </svg>
                 </span>
                 <div>
-                  <div className="font-bold text-gray-900 mb-1">Localization bottlenecks</div>
-                  <div className="text-gray-800">Adapting content for different regions created expansion delays</div>
+                  <div className="font-bold text-gray-900 mb-1">Localization delays</div>
+                  <div className="text-gray-800">Regional adaptation slowed expansion</div>
                 </div>
               </div>
             </div>
             <p className="text-gray-700">
-              Content creators needed a solution that would free them from tedious formatting work while maintaining
-              their pedagogical expertise in the process.
+              Content creators needed a solution to free them from tedious formatting and let them focus on teaching
+              quality.
             </p>
           </motion.div>
         </section>
@@ -305,14 +295,12 @@ export default function Page() {
             className="bg-white p-8 rounded-xl shadow-md"
           >
             <p className="text-gray-800 mb-6">
-              I conducted extensive user research to understand the pain points and workflows of different stakeholders.
+              I ran in-depth research to understand pain points and workflows for all stakeholders.
             </p>
 
             <p className="text-gray-700 mb-8">
-              The research approach combined interviews with key stakeholders across academic, production, and school
-              teams, on-site observations, collaborative workshops, and thorough analysis of the existing scheduling
-              systems. This multi-method approach allowed me to identify critical bottlenecks in the process and develop
-              precise requirements for a solution that would address all user needs.
+              We used interviews, on-site observation, workshops, and system analysis to find bottlenecks and define
+              solution requirements.
             </p>
 
             <h3 className="text-gray-800 font-bold mb-6">Research Methods</h3>
@@ -339,9 +327,9 @@ export default function Page() {
                   <h4 className="font-bold text-gray-800">Stakeholder Interviews</h4>
                 </div>
                 <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                  <li>12 interviews across 3 key stakeholder groups</li>
-                  <li>Identified goals, frustrations, and workflow challenges</li>
-                  <li>Documented specific scheduling requirements and constraints</li>
+                  <li>12 interviews across 3 groups</li>
+                  <li>Mapped goals and workflow issues</li>
+                  <li>Documented scheduling needs</li>
                 </ul>
               </div>
 
@@ -367,9 +355,9 @@ export default function Page() {
                   <h4 className="font-bold text-gray-800">Process Shadowing</h4>
                 </div>
                 <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                  <li>5 full days observing the timetable creation process</li>
-                  <li>Mapped the end-to-end workflow from planning to publication</li>
-                  <li>Identified bottlenecks and inefficiencies in the current process</li>
+                  <li>5 days observing timetable creation</li>
+                  <li>Mapped end-to-end workflow</li>
+                  <li>Found process bottlenecks</li>
                 </ul>
               </div>
 
@@ -394,9 +382,9 @@ export default function Page() {
                   <h4 className="font-bold text-gray-800">Collaborative Workshops</h4>
                 </div>
                 <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                  <li>Facilitated cross-functional rule identification sessions</li>
-                  <li>Created journey maps with stakeholders to visualize the process</li>
-                  <li>Prioritized requirements through group exercises</li>
+                  <li>Facilitated rule identification sessions</li>
+                  <li>Created journey maps with teams</li>
+                  <li>Prioritized requirements together</li>
                 </ul>
               </div>
 
@@ -418,12 +406,12 @@ export default function Page() {
                       />
                     </svg>
                   </div>
-                  <h4 className="font-bold text-gray-800">Existing System Analysis</h4>
+                  <h4 className="font-bold text-gray-800">System Analysis</h4>
                 </div>
                 <ul className="list-disc pl-5 text-gray-700 space-y-2">
-                  <li>Audited the legacy scheduling system</li>
-                  <li>Reviewed documentation and data flows</li>
-                  <li>Identified technical limitations and opportunities</li>
+                  <li>Audited legacy system</li>
+                  <li>Reviewed docs and data flows</li>
+                  <li>Found technical gaps</li>
                 </ul>
               </div>
             </div>
@@ -514,44 +502,30 @@ export default function Page() {
                 </thead>
                 <tbody>
                   <tr>
+                    <td className="py-3 px-6 text-gray-700 border border-gray-200">Manual creation took 2-3 weeks</td>
                     <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      Manual timetable creation takes 2-3 weeks
+                      System can't handle more than 12 tracks
                     </td>
-                    <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      Current system cannot handle &gt;12 teaching tracks
-                    </td>
-                    <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      Textbook sharing not optimized (12% higher costs)
-                    </td>
+                    <td className="py-3 px-6 text-gray-700 border border-gray-200">No book sharing—12% higher costs</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      Each specialist rotation requires separate configuration
+                      Each specialist rotation set up separately
                     </td>
-                    <td className="py-3 px-6 text-gray-700 border border-gray-200">No way to verify rule compliance</td>
+                    <td className="py-3 px-6 text-gray-700 border border-gray-200">No rule compliance check</td>
+                    <td className="py-3 px-6 text-gray-700 border border-gray-200">Teacher use only 68% of optimal</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-6 text-gray-700 border border-gray-200">Any change restarts the process</td>
+                    <td className="py-3 px-6 text-gray-700 border border-gray-200">23% of schedules have errors</td>
                     <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      Teacher utilization at only 68% of optimal capacity
+                      Specialist teachers double-booked
                     </td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      Changes require restarting entire process
-                    </td>
-                    <td className="py-3 px-6 text-gray-700 border border-gray-200">23% of schedules contain errors</td>
-                    <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      Specialist teachers often double-booked
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      86% of staff time spent on data entry
-                    </td>
-                    <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      Teacher specializations not considered
-                    </td>
-                    <td className="py-3 px-6 text-gray-700 border border-gray-200">
-                      Physical classroom constraints ignored
-                    </td>
+                    <td className="py-3 px-6 text-gray-700 border border-gray-200">86% of staff time on data entry</td>
+                    <td className="py-3 px-6 text-gray-700 border border-gray-200">Teacher specialties ignored</td>
+                    <td className="py-3 px-6 text-gray-700 border border-gray-200">Classroom limits not considered</td>
                   </tr>
                 </tbody>
               </table>
@@ -559,7 +533,7 @@ export default function Page() {
 
             <h3 className="text-gray-800 font-bold mb-6">Design Requirements</h3>
             <p className="text-gray-700 mb-8">
-              Based on this research, I established clear design requirements to guide the solution:
+              Based on this research, I set clear requirements to guide the solution:
             </p>
 
             <div className="overflow-x-auto bg-gray-50 p-6 rounded-xl">
@@ -575,51 +549,31 @@ export default function Page() {
                 <tbody>
                   <tr>
                     <td className="py-3 px-4 text-gray-700 border border-gray-200">Plan Generation & Management</td>
-                    <td className="py-3 px-4 font-medium text-gray-700 border border-gray-200">
-                      Automated Timetable Generation
-                    </td>
+                    <td className="py-3 px-4 font-medium text-gray-700 border border-gray-200">Auto Timetable</td>
                     <td className="py-3 px-4 text-gray-700 border border-gray-200">
-                      System must generate conflict-free timetables based on defined rules and constraints
+                      Create conflict-free timetables from rules
                     </td>
-                    <td className="py-3 px-4 text-gray-700 border border-gray-200">
-                      Digital Production spends 2-3 weeks manually creating timetables
-                    </td>
+                    <td className="py-3 px-4 text-gray-700 border border-gray-200">Manual process took 2-3 weeks</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 text-gray-700 border border-gray-200">Rule Violation Management</td>
-                    <td className="py-3 px-4 font-medium text-gray-700 border border-gray-200">
-                      Violation Categorization
-                    </td>
-                    <td className="py-3 px-4 text-gray-700 border border-gray-200">
-                      Clearly categorize by severity (Hard/Medium/Soft)
-                    </td>
-                    <td className="py-3 px-4 text-gray-700 border border-gray-200">
-                      23% of schedules contain errors when created manually
-                    </td>
+                    <td className="py-3 px-4 font-medium text-gray-700 border border-gray-200">Violation Severity</td>
+                    <td className="py-3 px-4 text-gray-700 border border-gray-200">Mark as Hard/Medium/Soft</td>
+                    <td className="py-3 px-4 text-gray-700 border border-gray-200">23% errors when done manually</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 text-gray-700 border border-gray-200">View Flexibility</td>
-                    <td className="py-3 px-4 font-medium text-gray-700 border border-gray-200">
-                      Multiple Perspectives
-                    </td>
-                    <td className="py-3 px-4 text-gray-700 border border-gray-200">
-                      Support both grade/stream view and teacher view
-                    </td>
-                    <td className="py-3 px-4 text-gray-700 border border-gray-200">
-                      Different stakeholders need different perspectives
-                    </td>
+                    <td className="py-3 px-4 font-medium text-gray-700 border border-gray-200">Multiple Views</td>
+                    <td className="py-3 px-4 text-gray-700 border border-gray-200">Grade/stream and teacher views</td>
+                    <td className="py-3 px-4 text-gray-700 border border-gray-200">Users need different views</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 text-gray-700 border border-gray-200">Resource Optimization</td>
-                    <td className="py-3 px-4 font-medium text-gray-700 border border-gray-200">
-                      Book-Sharing Scheduling
-                    </td>
+                    <td className="py-3 px-4 font-medium text-gray-700 border border-gray-200">Book Sharing</td>
                     <td className="py-3 px-4 text-gray-700 border border-gray-200">
-                      Support constraints for textbook sharing between grades
+                      Allow textbook sharing between grades
                     </td>
-                    <td className="py-3 px-4 text-gray-700 border border-gray-200">
-                      Textbook sharing not optimized, 12% higher procurement costs
-                    </td>
+                    <td className="py-3 px-4 text-gray-700 border border-gray-200">No sharing = 12% higher costs</td>
                   </tr>
                 </tbody>
               </table>
@@ -645,58 +599,48 @@ export default function Page() {
             <h3 className="text-gray-800 font-bold text-xl mb-6">1. Information Architecture & Workflow Design</h3>
 
             <div className="bg-blue-50 p-6 rounded-xl mb-6">
-              <p className="text-gray-800 mb-6">Based on my research, I developed:</p>
+              <p className="text-gray-800 mb-6">
+                Clear structure and workflows were essential for scalable scheduling.
+              </p>
 
               <InfoArchitectureDiagrams />
 
               <ul className="list-none space-y-6">
                 <li>
                   <p>
-                    <span className="text-blue-600 font-bold">A comprehensive information architecture</span> that
-                    organized complex scheduling data into logical hierarchies. This included categorizing elements into
-                    primary domains (programs, schools, grades, teachers, subjects) and establishing clear relationships
-                    between them. The architecture defined how constraints would propagate across different levels and
-                    how resource allocations would be tracked and visualized.
+                    <span className="text-blue-600 font-bold">Information architecture:</span> Defined how programs,
+                    schools, grades, teachers, and subjects connect for easy data flow.
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-blue-600 font-bold">Detailed workflow diagrams</span> mapping the complete
-                    journey for each key user role. These illustrated how academic directors would define program
-                    requirements, how school managers would apply local adaptations, and how production staff would
-                    review and distribute schedules. Each diagram included decision points, validation checks, and
-                    handoff mechanisms to ensure smooth collaboration between teams.
+                    <span className="text-blue-600 font-bold">Workflow diagrams:</span> Mapped each user's steps from
+                    setup to schedule delivery, clarifying roles and handoffs.
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-blue-600 font-bold">Interactive state diagrams</span> showing the complete
-                    lifecycle of schedule generation—from initial configuration through optimization, conflict
-                    resolution, review, approval, and distribution. These diagrams defined each possible schedule state
-                    (draft, optimizing, conflicts detected, ready for review, approved, published) and the valid
-                    transitions between them, ensuring that all stakeholders understood where schedules were in the
-                    process.
+                    <span className="text-blue-600 font-bold">State diagrams:</span> Visualized every stage—draft,
+                    optimizing, conflicts, review, approval, published—so everyone knew the process.
                   </p>
                 </li>
               </ul>
             </div>
 
             <p className="text-gray-700 italic">
-              This foundational work created a shared mental model that guided both development and user training,
-              ensuring the complex system would be intuitive and aligned with actual workflows.
+              This foundation made the system intuitive for both development and user training.
             </p>
 
             {/* User Journey Mapping */}
             <h3 className="text-gray-800 font-bold text-xl mb-6">2. User Journey Mapping</h3>
 
             <p className="text-gray-800 mb-6">
-              I created detailed journey maps to visualize how users would interact with the system, highlighting key
-              emotional states, pain points, and design opportunities at each stage of the process.
+              Mapped real user steps, emotions, and pain points to guide design decisions.
             </p>
 
             <UserJourneyMapInteractive />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 mb-8">
+            <div className="grid grid-cols-1 gap-8 mb-10">
               {/* Pain Points Card */}
               <div className="bg-red-50 p-6 rounded-xl">
                 <h4 className="font-bold mb-4 text-gray-800">Pain Points</h4>
@@ -760,8 +704,7 @@ export default function Page() {
             </div>
 
             <p className="text-gray-700 mb-8">
-              This journey mapping exercise helped identify key emotional pain points and informed the development of
-              targeted solutions to significantly improve the user experience throughout the scheduling process.
+              These insights shaped targeted improvements across the user experience.
             </p>
           </motion.div>
 
@@ -771,7 +714,7 @@ export default function Page() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-xl shadow-md p-8 mb-12"
+            className="mb-12"
           >
             <h3 className="text-gray-800 font-bold text-xl mb-6">3. UI Design and Visualization</h3>
 
@@ -779,13 +722,13 @@ export default function Page() {
               I designed intuitive interfaces focused on making complex scheduling data accessible and actionable:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            <div className="grid grid-cols-1 gap-8 mb-10">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-gradient-to-br from-blue-50 to-gray-50 rounded-xl p-6 shadow-sm border border-blue-100"
+                className="p-0"
               >
                 <h4 className="font-bold mb-4 text-gray-900 flex items-center">
                   <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white mr-3 text-sm">
@@ -848,7 +791,7 @@ export default function Page() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-gradient-to-br from-purple-50 to-gray-50 rounded-xl p-6 shadow-sm border border-purple-100"
+                className="p-0"
               >
                 <h4 className="font-bold mb-4 text-gray-900 flex items-center">
                   <span className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500 text-white mr-3 text-sm">
@@ -858,20 +801,20 @@ export default function Page() {
                 </h4>
 
                 <p className="text-sm font-medium text-gray-700 mb-2">Generation Progress</p>
-                <div className="w-full bg-gray-200 rounded-full h-2.5 mb-1">
+                <div className="w-full bg-gray-200 rounded-full h-4 mb-2">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: '70%' }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.3 }}
-                    className="bg-blue-600 h-2.5 rounded-full"
+                    className="bg-blue-600 h-4 rounded-full"
                   ></motion.div>
                 </div>
                 <p className="text-xs text-gray-600 mb-4">
                   Processing constraints<span className="float-right">70%</span>
                 </p>
 
-                <div className="bg-white rounded-lg p-3 shadow-sm mb-4">
+                <div className="bg-white rounded-lg p-6 shadow-sm mb-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
@@ -905,13 +848,15 @@ export default function Page() {
                   </li>
                 </ul>
               </motion.div>
+            </div>
 
+            <div className="grid grid-cols-1 gap-8 mb-10">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-gradient-to-br from-green-50 to-gray-50 rounded-xl p-6 shadow-sm border border-green-100"
+                className="p-0"
               >
                 <h4 className="font-bold mb-4 text-gray-900 flex items-center">
                   <span className="flex items-center justify-center w-8 h-8 rounded-full bg-green-500 text-white mr-3 text-sm">
@@ -934,7 +879,7 @@ export default function Page() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg p-3 shadow-sm mb-4">
+                <div className="bg-white rounded-lg p-6 shadow-sm mb-4">
                   <div className="grid grid-cols-5 gap-1 text-xs mb-2">
                     <div className="bg-blue-100 p-2 text-center rounded text-blue-800 font-medium">Math</div>
                     <div className="bg-purple-100 p-2 text-center rounded text-purple-800 font-medium">Arts</div>
@@ -1048,519 +993,6 @@ export default function Page() {
             </motion.div>
           </motion.div>
 
-          {/* User Testing & Iteration */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-xl shadow-md p-8 mb-12"
-          >
-            <h3 className="text-gray-800 font-bold text-xl mb-6">4. User Testing & Iteration</h3>
-
-            <p className="text-gray-700 mb-8">
-              After creating the initial designs, I conducted comprehensive user testing to validate our solution and
-              identify opportunities for improvement. My testing strategy combined qualitative and quantitative methods
-              to gather holistic insights.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                className="bg-gradient-to-br from-blue-50 to-gray-50 rounded-xl p-6 shadow-sm border border-blue-100"
-              >
-                <div className="flex items-center mb-4">
-                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white mr-3 text-sm">
-                    1
-                  </span>
-                  <h4 className="font-bold text-gray-900">Usability Testing</h4>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-sm mb-4">
-                  <p className="text-sm text-gray-700 mb-3">
-                    <span className="font-medium text-blue-600">12 educators</span> and{' '}
-                    <span className="font-medium text-blue-600">8 administrators</span> participated in moderated
-                    testing sessions
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start text-sm">
-                      <span className="text-blue-500 mr-2">•</span>
-                      <span className="text-gray-700">Completed key scheduling tasks</span>
-                    </li>
-                    <li className="flex items-start text-sm">
-                      <span className="text-blue-500 mr-2">•</span>
-                      <span className="text-gray-700">Think-aloud protocol</span>
-                    </li>
-                    <li className="flex items-start text-sm">
-                      <span className="text-blue-500 mr-2">•</span>
-                      <span className="text-gray-700">SUS survey (System Usability Scale)</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">Completion Rate</span>
-                  <span className="font-medium text-gray-900">87%</span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="bg-gradient-to-br from-purple-50 to-gray-50 rounded-xl p-6 shadow-sm border border-purple-100"
-              >
-                <div className="flex items-center mb-4">
-                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500 text-white mr-3 text-sm">
-                    2
-                  </span>
-                  <h4 className="font-bold text-gray-900">A/B Testing</h4>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-sm mb-4">
-                  <p className="text-sm text-gray-700 mb-3">
-                    Compared <span className="font-medium text-purple-600">alternative designs</span> for key interfaces
-                    to determine the most effective approach
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start text-sm">
-                      <span className="text-purple-500 mr-2">•</span>
-                      <span className="text-gray-700">List vs. Calendar view for schedules</span>
-                    </li>
-                    <li className="flex items-start text-sm">
-                      <span className="text-purple-500 mr-2">•</span>
-                      <span className="text-gray-700">Rule creation wizard layouts</span>
-                    </li>
-                    <li className="flex items-start text-sm">
-                      <span className="text-purple-500 mr-2">•</span>
-                      <span className="text-gray-700">Violation notification approaches</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">Time on Task</span>
-                  <span className="font-medium text-green-600">-35%</span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.3 }}
-                className="bg-gradient-to-br from-green-50 to-gray-50 rounded-xl p-6 shadow-sm border border-green-100"
-              >
-                <div className="flex items-center mb-4">
-                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-green-500 text-white mr-3 text-sm">
-                    3
-                  </span>
-                  <h4 className="font-bold text-gray-900">Focus Groups</h4>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-sm mb-4">
-                  <p className="text-sm text-gray-700 mb-3">
-                    Conducted <span className="font-medium text-green-600">3 focus groups</span> with school
-                    administrators and ministry officials
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start text-sm">
-                      <span className="text-green-500 mr-2">•</span>
-                      <span className="text-gray-700">Feedback on current workflows</span>
-                    </li>
-                    <li className="flex items-start text-sm">
-                      <span className="text-green-500 mr-2">•</span>
-                      <span className="text-gray-700">Needs assessment for future features</span>
-                    </li>
-                    <li className="flex items-start text-sm">
-                      <span className="text-green-500 mr-2">•</span>
-                      <span className="text-gray-700">Pain point prioritization exercise</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-600">Error Rate</span>
-                  <span className="font-medium text-gray-900">12%</span>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Key Testing Scenarios */}
-            <div className="mb-10">
-              <h4 className="font-bold mb-6 text-gray-900">Key Testing Scenarios</h4>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                  className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
-                >
-                  <div className="bg-blue-100 text-gray-900 px-6 py-3">
-                    <h5 className="font-medium">Scenario 1: Schedule Generation</h5>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-gray-700 mb-4">
-                      Users were asked to generate a timetable for a school with specific requirements:
-                    </p>
-                    <ul className="list-disc pl-5 text-gray-700 space-y-1 mb-4">
-                      <li>Two streams per grade</li>
-                      <li>Specialist teaching for mathematics</li>
-                      <li>Book sharing between Grade 3 and Grade 4</li>
-                    </ul>
-
-                    <div className="border-t border-gray-100 pt-4">
-                      <h6 className="font-medium text-gray-900 mb-2">Key Findings:</h6>
-                      <div className="flex items-center mb-2">
-                        <span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-                        <p className="text-sm text-gray-700 mb-2">Users struggled to understand constraint hierarchy</p>
-                      </div>
-                      <div className="flex items-center">
-                        <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
-                        <p className="text-sm text-gray-700 mb-2">Auto-suggestions feature was highly valued</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
-                  className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
-                >
-                  <div className="bg-purple-100 text-gray-900 px-6 py-3">
-                    <h5 className="font-medium">Scenario 2: Conflict Resolution</h5>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-gray-700 mb-4">Users needed to identify and resolve scheduling conflicts:</p>
-                    <ul className="list-disc pl-5 text-gray-700 space-y-1 mb-4">
-                      <li>Teacher double-booking</li>
-                      <li>Resource allocation conflicts</li>
-                      <li>Rule violations requiring prioritization</li>
-                    </ul>
-
-                    <div className="border-t border-gray-100 pt-4">
-                      <h6 className="font-medium text-gray-900 mb-2">Key Findings:</h6>
-                      <div className="flex items-center mb-2">
-                        <span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-                        <p className="text-sm text-gray-700 mb-2">Error messaging lacked actionable guidance</p>
-                      </div>
-                      <div className="flex items-center">
-                        <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
-                        <p className="text-sm text-gray-700 mb-2">Conflict summaries were helpful for prioritization</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-
-            {/* User Feedback */}
-            <div className="mb-10">
-              <h4 className="font-bold mb-6 text-gray-900">User Feedback</h4>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4 }}
-                  className="bg-blue-50 rounded-xl p-6"
-                >
-                  <div className="flex mb-4">
-                    <div className="mr-4 mt-1">
-                      <span className="inline-block h-8 w-8 rounded-full bg-blue-200 text-blue-600 flex items-center justify-center font-medium">
-                        A
-                      </span>
-                    </div>
-                    <div>
-                      <p className="italic text-gray-700 mb-2">
-                        "The color coding for violations makes it immediately clear where I need to focus. This would
-                        save me hours compared to our current process."
-                      </p>
-                      <p className="text-sm text-gray-600">— Academic Director, Primary Schools</p>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                  className="bg-green-50 rounded-xl p-6"
-                >
-                  <div className="flex mb-4">
-                    <div className="mr-4 mt-1">
-                      <span className="inline-block h-8 w-8 rounded-full bg-green-200 text-green-600 flex items-center justify-center font-medium">
-                        T
-                      </span>
-                    </div>
-                    <div>
-                      <p className="italic text-gray-700 mb-2">
-                        "I was confused by the rule creation wizard at first, but after the redesign, it's much more
-                        intuitive. The step-by-step approach makes complex rules manageable."
-                      </p>
-                      <p className="text-sm text-gray-600">— Timetable Coordinator</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="bg-purple-50 rounded-xl p-6"
-              >
-                <div className="flex mb-4">
-                  <div className="mr-4 mt-1">
-                    <span className="inline-block h-8 w-8 rounded-full bg-purple-200 text-purple-600 flex items-center justify-center font-medium">
-                      P
-                    </span>
-                  </div>
-                  <div>
-                    <p className="italic text-gray-700 mb-2">
-                      "The original design made it difficult to manage multiple schools at once. The batch actions in
-                      the revised interface are a game-changer for our regional coordinators who oversee dozens of
-                      schools."
-                    </p>
-                    <p className="text-sm text-gray-600">— Program Manager, Ministry of Education</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Design Iterations */}
-            <div className="mb-10">
-              <h4 className="font-bold mb-6 text-gray-900">Key Design Iterations</h4>
-
-              <div className="space-y-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4 }}
-                  className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div className="p-6 border-b md:border-b-0 md:border-r border-gray-200">
-                      <h5 className="font-medium text-gray-900 mb-4 flex items-center">
-                        <span className="inline-block px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded mr-2">
-                          Before
-                        </span>
-                        Rule Creation Wizard
-                      </h5>
-                      <div className="bg-gray-100 rounded-md p-4 mb-3">
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm font-medium text-gray-700">All Rule Types</span>
-                            <span className="text-xs text-gray-500">12 options</span>
-                          </div>
-                          <div className="h-4 bg-gray-200 rounded w-full"></div>
-                          <div className="h-4 bg-gray-200 rounded w-full"></div>
-                          <div className="h-4 bg-gray-200 rounded w-full"></div>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-700">
-                        Initial design overwhelmed users with too many options at once, causing confusion and errors.
-                      </p>
-                    </div>
-
-                    <div className="p-6">
-                      <h5 className="font-medium text-gray-900 mb-4 flex items-center">
-                        <span className="inline-block px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded mr-2">
-                          After
-                        </span>
-                        Simplified Step-by-Step Wizard
-                      </h5>
-                      <div className="bg-blue-50 rounded-md p-4 mb-3">
-                        <div className="space-y-3">
-                          <div className="flex items-center text-sm text-blue-600 font-medium">
-                            <span className="inline-block h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs mr-2">
-                              1
-                            </span>
-                            Select Rule Category
-                          </div>
-                          <div className="flex ml-8 space-x-2">
-                            <div className="bg-white py-1 px-3 rounded border border-blue-200 shadow-sm text-xs">
-                              Teacher
-                            </div>
-                            <div className="bg-white py-1 px-3 rounded border border-blue-200 shadow-sm text-xs">
-                              Resource
-                            </div>
-                            <div className="bg-white py-1 px-3 rounded border border-blue-200 shadow-sm text-xs">
-                              Time
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-700">
-                        Redesigned with a guided approach that breaks down complex rule creation into manageable steps,
-                        increasing completion rates by 42%.
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                  className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div className="p-6 border-b md:border-b-0 md:border-r border-gray-200">
-                      <h5 className="font-medium text-gray-900 mb-4 flex items-center">
-                        <span className="inline-block px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded mr-2">
-                          Before
-                        </span>
-                        Error Notifications
-                      </h5>
-                      <div className="bg-red-100 rounded-md p-4 mb-3">
-                        <div className="space-y-2">
-                          <div className="text-sm font-medium text-red-800">Multiple Rule Violations</div>
-                          <p className="text-xs text-red-700">
-                            System detected 7 hard rule violations and 12 soft rule violations in the generated
-                            schedule.
-                          </p>
-                          <div className="flex space-x-2">
-                            <button className="text-xs bg-red-600 text-white px-2 py-1 rounded">View All</button>
-                            <button className="text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">
-                              Dismiss
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-700">
-                        Original error notifications were overwhelming and didn't provide clear resolution paths.
-                      </p>
-                    </div>
-
-                    <div className="p-6">
-                      <h5 className="font-medium text-gray-900 mb-4 flex items-center">
-                        <span className="inline-block px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded mr-2">
-                          After
-                        </span>
-                        Actionable Violation Management
-                      </h5>
-                      <div className="bg-white rounded-md border border-gray-200 shadow-sm overflow-hidden mb-3">
-                        <div className="border-b border-gray-100 px-4 py-2 flex justify-between items-center bg-gray-50">
-                          <span className="text-sm font-medium text-gray-800">Rule Violations</span>
-                          <div className="flex space-x-1">
-                            <span className="inline-block px-2 py-0.5 text-xs bg-red-100 text-red-800 rounded">
-                              Hard (3)
-                            </span>
-                            <span className="inline-block px-2 py-0.5 text-xs bg-amber-100 text-amber-800 rounded">
-                              Soft (5)
-                            </span>
-                          </div>
-                        </div>
-                        <div className="p-3 border-b border-gray-100">
-                          <div className="flex justify-between">
-                            <div className="flex">
-                              <span className="inline-block w-1 bg-red-500 rounded-full mr-2"></span>
-                              <span className="text-xs font-medium text-gray-800">Teacher Double Booking</span>
-                            </div>
-                            <button className="text-xs text-blue-600 font-medium">Fix</button>
-                          </div>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-700">
-                        Redesigned with prioritized, actionable violations and one-click resolution options, reducing
-                        error resolution time by 64%.
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-
-            {/* Results & Outcomes */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-100"
-            >
-              <h4 className="font-bold mb-4 text-gray-900">Testing Outcomes & Impact</h4>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h5 className="font-medium mb-3 text-gray-900">Key Findings</h5>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">✓</span>
-                      <span className="text-gray-700">
-                        Administrators strongly preferred calendar view over list view for schedule visualization
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">✓</span>
-                      <span className="text-gray-700">
-                        Color-coding was essential for quick status recognition and violation categorization
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">✓</span>
-                      <span className="text-gray-700">
-                        Mobile usage was higher than anticipated (36% of users), requiring enhanced mobile views
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-500 mr-2">✓</span>
-                      <span className="text-gray-700">
-                        Users consistently struggled with multi-level rule creation in initial designs
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h5 className="font-medium mb-3 text-gray-900">Key Improvements</h5>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✓</span>
-                      <span className="text-gray-700">
-                        Simplified rule creation wizard with contextual help at each step
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✓</span>
-                      <span className="text-gray-700">
-                        Enhanced mobile calendar view with optimization for touch interactions
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✓</span>
-                      <span className="text-gray-700">
-                        Added bulk action capabilities for common scheduling operations
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✓</span>
-                      <span className="text-gray-700">
-                        Redesigned error visualization with clear, actionable guidance
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <p className="text-gray-700">
-                The iterative testing process was instrumental in refining the interface to better meet user needs. By
-                involving actual educators and administrators throughout the design process, we were able to create a
-                solution that not only automated complex scheduling tasks but did so in a way that felt intuitive and
-                empowering for users with varying levels of technical expertise.
-              </p>
-            </motion.div>
-          </motion.div>
-
           {/* Wireframing & Prototyping */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1670,7 +1102,7 @@ export default function Page() {
                     <h4 className="text-xl font-bold text-gray-900 mb-3">Mid-Fidelity Wireframes</h4>
 
                     <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
+                      <div className="grid grid-cols-1 gap-8 mb-4">
                         <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
                           <h5 className="font-medium text-gray-900 mb-3 flex items-center">
                             <span className="inline-block w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
@@ -1831,7 +1263,7 @@ export default function Page() {
                     <h4 className="text-xl font-bold text-gray-900 mb-3">High-Fidelity Prototypes</h4>
 
                     <div className="bg-gray-50 p-4 md:p-6 rounded-xl border border-gray-200 mb-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4">
+                      <div className="grid grid-cols-1 gap-4 md:gap-6 mb-4">
                         <div className="bg-white p-4 md:p-5 rounded-lg border border-gray-200 shadow-sm overflow-hidden">
                           <h5 className="font-medium text-gray-900 mb-3">Weekly Timetable View</h5>
 
@@ -2426,7 +1858,7 @@ export default function Page() {
                             The high-fidelity prototypes were tested with actual users, revealing critical insights that
                             informed design refinements:
                           </p>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 gap-4">
                             <div>
                               <p className="text-xs font-medium text-gray-900 mb-1">Usability Metrics:</p>
                               <ul className="list-disc pl-4 text-xs text-gray-700 space-y-1">
@@ -2449,7 +1881,7 @@ export default function Page() {
 
                       <div className="bg-white p-4 rounded-lg border border-gray-200 mb-3">
                         <h5 className="text-sm font-medium text-gray-900 mb-2">Design Iterations</h5>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 gap-4">
                           <div>
                             <p className="text-xs font-medium text-pink-500 mb-1">Before Testing</p>
                             <ul className="list-disc pl-4 text-xs text-gray-700 space-y-1">
@@ -2515,7 +1947,7 @@ export default function Page() {
                 components and detailed documentation:
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div className="grid grid-cols-1 gap-6 mb-6">
                 <div className="bg-white p-4 rounded-lg shadow-sm">
                   <h5 className="font-medium text-gray-900 mb-3">Component Library</h5>
                   <div className="space-y-2">
@@ -2614,7 +2046,7 @@ export default function Page() {
             <div className="mb-12">
               <h3 className="text-gray-900 font-bold text-xl mb-6">Key Challenges</h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 gap-6 mb-8">
                 <div className="bg-blue-50 p-6 rounded-xl border-t-4 border-blue-400 shadow-sm">
                   <div className="flex items-center mb-4">
                     <div className="text-blue-600 mr-3">
@@ -2748,7 +2180,7 @@ export default function Page() {
             <div className="mb-12">
               <h3 className="text-gray-900 font-bold text-xl mb-6">Design Principles Reinforced</h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 gap-6 mb-8">
                 <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
                   <div className="absolute top-0 right-0 bg-blue-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
                   <h4 className="font-bold text-gray-900 mb-3">Progressive Disclosure</h4>
@@ -2811,23 +2243,15 @@ export default function Page() {
             className="bg-white p-8 rounded-xl shadow-md mb-12"
           >
             <p className="text-gray-800 mb-8">
-              The EduScheduler: Intelligent Academic Planning System represents a successful transformation of a
-              complex, manual process into an intuitive, efficient system that empowers educational administrators to
-              create optimal schedules while respecting diverse requirements and constraints.
+              EduScheduler transformed a complex manual process into an efficient, intuitive system, empowering
+              administrators to create optimal schedules while meeting diverse needs.
             </p>
 
             <h3 className="text-blue-700 font-bold text-lg mb-4">Project Achievements</h3>
             <div className="bg-blue-50 p-6 rounded-lg mb-8">
               <p className="text-gray-700">
-                Beyond the measurable metrics of success, this project demonstrated how thoughtful UX design could
-                tackle challenging optimization problems while keeping humans at the center of the process. The system
-                balanced automation with manual control, providing powerful tools without removing human judgment and
-                expertise.
-              </p>
-              <p className="text-gray-700 mt-4">
-                By focusing on clear information architecture, intuitive workflows, and meaningful visualizations, we
-                created a system that not only solved the technical challenge of schedule optimization but did so in a
-                way that was accessible and empowering for all stakeholders.
+                Thoughtful UX design enabled automation and control, balancing optimization with human expertise. Clear
+                workflows and visualizations made schedule creation accessible for all stakeholders.
               </p>
             </div>
 
@@ -2835,11 +2259,11 @@ export default function Page() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <div className="bg-blue-100 rounded-lg p-4 text-center">
                 <div className="text-3xl font-bold text-blue-700 mb-1">80%</div>
-                <div className="text-sm text-gray-700">Reduction in scheduling errors</div>
+                <div className="text-sm text-gray-700">Fewer scheduling errors</div>
               </div>
               <div className="bg-purple-100 rounded-lg p-4 text-center">
                 <div className="text-3xl font-bold text-purple-700 mb-1">85%</div>
-                <div className="text-sm text-gray-700">Time saved in schedule creation</div>
+                <div className="text-sm text-gray-700">Time saved</div>
               </div>
               <div className="bg-pink-100 rounded-lg p-4 text-center">
                 <div className="text-3xl font-bold text-pink-700 mb-1">92%</div>
@@ -2847,312 +2271,22 @@ export default function Page() {
               </div>
               <div className="bg-green-100 rounded-lg p-4 text-center">
                 <div className="text-3xl font-bold text-green-700 mb-1">12%</div>
-                <div className="text-sm text-gray-700">Cost reduction through sharing</div>
+                <div className="text-sm text-gray-700">Cost reduction</div>
               </div>
             </div>
 
             <h4 className="font-bold text-gray-900 mb-4 text-xl">My Role</h4>
             <p className="text-gray-700 mb-6">
-              As Lead Product Designer, I contributed across the full product lifecycle—from research and ideation to
-              implementation and support.
+              As Lead Product Designer, I led research, design, and implementation, collaborating across teams and
+              supporting users throughout the product lifecycle.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-400 shadow-sm flex flex-col h-full">
-                <div className="flex items-center mb-4">
-                  <div className="bg-blue-100 rounded-full p-2 mr-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-blue-600"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
-                    </svg>
-                  </div>
-                  <h5 className="font-semibold text-gray-900 text-lg">Research & Design</h5>
-                </div>
-                <ul className="space-y-3 mt-2">
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-0.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <span className="text-gray-800">Led user research and requirements gathering</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-0.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <span className="text-gray-800">Designed information architecture and user workflows</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-0.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <span className="text-gray-800">Created wireframes and interactive prototypes</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-purple-50 p-6 rounded-xl border-l-4 border-purple-400 shadow-sm flex flex-col h-full">
-                <div className="flex items-center mb-4">
-                  <div className="bg-purple-100 rounded-full p-2 mr-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-purple-600"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                      />
-                    </svg>
-                  </div>
-                  <h5 className="font-semibold text-gray-900 text-lg">Implementation & Support</h5>
-                </div>
-                <ul className="space-y-3 mt-2">
-                  <li className="flex items-start">
-                    <span className="text-purple-500 mr-2 mt-0.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <span className="text-gray-800">Collaborated with developers on implementation</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-purple-500 mr-2 mt-0.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <span className="text-gray-800">Conducted user testing and iterative refinement</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-purple-500 mr-2 mt-0.5">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <span className="text-gray-800">Developed training materials and documentation</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
 
             <h4 className="font-bold text-gray-900 mb-4 text-xl">Future Directions</h4>
             <p className="text-gray-700 mb-6">
-              The success of the EduScheduler system has opened possibilities for expanded functionality in future
-              iterations. These components are designed to work together as part of a comprehensive learning enablement
-              platform, with the Instructional Planner being just one piece of the larger ecosystem:
+              EduScheduler lays the foundation for a modular learning platform, with future enhancements planned for
+              content, planning, teacher, and school management.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-blue-50 p-4 rounded-lg flex items-start">
-                <span className="bg-blue-100 rounded-full p-2 mr-3 mt-0.5">
-                  {/* Book Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-blue-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                </span>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">Course Library</h5>
-                  <p className="text-sm text-gray-700">
-                    A central repository for managing all educational content across the platform, including teacher
-                    guides, learning objectives, and course attributes with lesson prioritization capabilities.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-purple-50 p-4 rounded-lg flex items-start">
-                <span className="bg-purple-100 rounded-full p-2 mr-3 mt-0.5">
-                  {/* Calendar Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-purple-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                </span>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">Academic Planning Component</h5>
-                  <p className="text-sm text-gray-700">
-                    Configure operating schedules, manage non-teaching activities per grade, assign courses to grades
-                    and schools, and support differentiated course levels across schools.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-pink-50 p-4 rounded-lg flex items-start">
-                <span className="bg-pink-100 rounded-full p-2 mr-3 mt-0.5">
-                  {/* User Group Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-pink-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </span>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">Teacher Management System</h5>
-                  <p className="text-sm text-gray-700">
-                    Track teacher specializations and grade-level capabilities, maintain teaching qualification
-                    hierarchies, and support flexible teacher-to-course matching with existing systems integration.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-green-50 p-4 rounded-lg flex items-start">
-                <span className="bg-green-100 rounded-full p-2 mr-3 mt-0.5">
-                  {/* Building Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-green-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2M16 3.13V4a2 2 0 01-2 2H10a2 2 0 01-2-2v-.87M12 12v.01"
-                    />
-                  </svg>
-                </span>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">School Management</h5>
-                  <p className="text-sm text-gray-700">
-                    Track classroom availability and facilities, support school grouping by type and teaching model,
-                    configure operational parameters, and manage school-specific requirements.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-yellow-50 p-4 rounded-lg flex items-start">
-                <span className="bg-yellow-100 rounded-full p-2 mr-3 mt-0.5">
-                  {/* Clipboard Check Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-yellow-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m-6 8h6a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v11a2 2 0 002 2z"
-                    />
-                  </svg>
-                </span>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">
-                    Integration with Assessment Systems
-                  </h5>
-                  <p className="text-sm text-gray-700">
-                    Assessment scheduling compatibility and integration with Let's Mark for teacher assignments in
-                    assessment marking to create a seamless educational planning workflow.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-indigo-50 p-4 rounded-lg flex items-start">
-                <span className="bg-indigo-100 rounded-full p-2 mr-3 mt-0.5">
-                  {/* Clock Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-indigo-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </span>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1 flex items-center">
-                    Event-Responsive Scheduling Component
-                  </h5>
-                  <p className="text-sm text-gray-700">
-                    Management of special events and holidays with full integration with the Academic Calendar app for
-                    comprehensive schedule planning and adaptability.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <p className="text-gray-600 italic mb-8">
-              These components are designed to work together as part of a comprehensive learning enablement platform,
-              with the Instructional Planner being just one piece of the larger ecosystem. The vision is for a modular
-              platform where these different components interact to support the entire educational planning and delivery
-              process.
-            </p>
+
             <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-xl flex items-start">
               <div className="mr-4">
                 <svg

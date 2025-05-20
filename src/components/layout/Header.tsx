@@ -79,7 +79,7 @@ const Header = () => {
           className="text-xl font-bold tracking-tight transition-all duration-300 flex items-center gap-3 items-center"
           onClick={handleLogoClick}
         >
-          <span className="flex items-center leading-none uppercase font-bold tracking-tight text-black">IMRAN</span>
+          <span className="flex items-center leading-none uppercase font-bold tracking-tight text-gray-700">IMRAN</span>
         </Link>
 
         {/* Mobile menu button */}

@@ -35,7 +35,7 @@ const Header = () => {
       <div className="container mx-auto px-6 md:px-8 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-3 hover:text-accent transition-colors group">
           <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tight text-black">Imran Mohammed</span>
+            <span className="text-xl font-bold tracking-tight text-gray-500">Imran Mohammed</span>
             <span className="text-sm text-muted">AI Experience Designer</span>
           </div>
         </Link>
