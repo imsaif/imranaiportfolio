@@ -12,6 +12,12 @@ interface ProjectMockupProps {
 export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: ProjectMockupProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  // Debug: log project and image path
+  if (typeof window !== 'undefined') {
+    console.log('ProjectMockup project:', project);
+    console.log('ProjectMockup image path:', project.images && project.images[0]);
+  }
+
   const handleMouseEnter = () => {
     setIsHovered(true);
     onCaseStudyHover && onCaseStudyHover(true);
@@ -32,21 +38,23 @@ export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: Proj
       {showParticles && <ParticlesOnHover />}
 
       {/* Display the main project image */}
-      <div className="flex justify-center max-w-[600px] max-h-[520px] mx-auto">
-        <Image
-          src={project.images[0]}
-          alt={project.title}
-          width={600}
-          height={520}
-          sizes="(max-width: 768px) 95vw, 600px"
-          className="object-contain rounded-xl bg-white"
-          priority
-          quality={80}
-          style={{
-            maxWidth: '100%',
-            maxHeight: '100%',
-          }}
-        />
+      <div className="relative w-full h-full min-h-[260px] md:min-h-[400px] rounded-l-xl overflow-hidden bg-white">
+        {project.images && project.images.length > 0 ? (
+          <Image
+            src={project.images[0]}
+            alt={project.title}
+            width={600}
+            height={360}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover w-full h-full rounded-l-xl"
+            priority
+            quality={80}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500">
+            <span>No image</span>
+          </div>
+        )}
       </div>
     </div>
   );

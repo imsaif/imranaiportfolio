@@ -60,7 +60,7 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
   return (
     <motion.div
       ref={cardRef}
-      className={`sticky top-[96px] min-h-[520px] ${index !== total - 1 ? 'mb-12' : 'mb-0'} ${index === 0 ? 'mt-0' : 'mt-12'} bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible`}
+      className={`sticky-project-card sticky top-[96px] min-h-[400px] ${index !== total - 1 ? 'mb-20' : 'mb-0'} ${index === 0 ? 'mt-0' : 'mt-12'} bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible`}
       style={{ zIndex: 10 + index, scale, boxShadow }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseMove={handleMouseMove}
@@ -95,7 +95,7 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
         </motion.div>
       )}
       {/* Left side: Project mockup */}
-      <div className="flex flex-col items-center justify-center px-8 pb-0 md:pb-0 w-full md:w-auto">
+      <div className="relative w-full md:w-1/2 h-full min-h-[220px] flex items-stretch justify-stretch">
         <ProjectMockup project={project} />
       </div>
       {/* Right side: Text content */}
