@@ -67,7 +67,7 @@ export const UserResearchSection: React.FC = () => {
   ];
 
   // Height: each card is 340px + gap, so set container height accordingly
-  const containerHeight = `${cards.length * 340 + (cards.length - 1) * 24}px`;
+  const containerHeight = `${cards.length * 340 + (cards.length - 1) * 40}px`;
 
   // Manually create refs and hooks for each card
   const cardRef0 = useRef<HTMLDivElement>(null);
@@ -145,7 +145,7 @@ export const UserResearchSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="p-0"
+        className="p-8 border border-gray-200 bg-white rounded-xl"
       >
         <p className="text-gray-800 mb-6">
           I ran in-depth research to understand pain points and workflows for all stakeholders.
@@ -159,7 +159,7 @@ export const UserResearchSection: React.FC = () => {
             {/* Card 0 */}
             <motion.div
               ref={cardRef0}
-              className="sticky top-24 z-[10] border-blue-300 shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px] bg-blue-50"
+              className="sticky top-12 z-[10] border-blue-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px]"
               style={{ scale: scale0, boxShadow: boxShadow0 }}
             >
               <div className="flex items-center mb-3">
@@ -210,7 +210,7 @@ export const UserResearchSection: React.FC = () => {
             {/* Card 1 */}
             <motion.div
               ref={cardRef1}
-              className="sticky top-36 z-[11] border-purple-300 shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px] bg-purple-50"
+              className="sticky top-24 z-[11] border-purple-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px]"
               style={{ scale: scale1, boxShadow: boxShadow1 }}
             >
               <div className="flex items-center mb-3">
@@ -262,7 +262,7 @@ export const UserResearchSection: React.FC = () => {
             {/* Card 2 */}
             <motion.div
               ref={cardRef2}
-              className="sticky top-48 z-[12] border-pink-300 shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px] bg-pink-50"
+              className="sticky top-36 z-[12] border-pink-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px]"
               style={{ scale: scale2, boxShadow: boxShadow2 }}
             >
               <div className="flex items-center mb-3">
@@ -310,10 +310,10 @@ export const UserResearchSection: React.FC = () => {
                 <span>Built consensus and ensured all voices were heard in the design process.</span>
               </div>
             </motion.div>
-            {/* Card 3 */}
+            {/* Card 3 (last, should be sticky and on top) */}
             <motion.div
               ref={cardRef3}
-              className="sticky top-60 z-[13] border-green-300 shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px] bg-green-50"
+              className="sticky top-48 z-[13] border-green-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col w-full h-[340px]"
               style={{ scale: scale3, boxShadow: boxShadow3 }}
             >
               <div className="flex items-center mb-3">

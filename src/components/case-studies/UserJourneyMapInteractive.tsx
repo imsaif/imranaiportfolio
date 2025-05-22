@@ -293,11 +293,18 @@ export default function UserJourneyMapInteractive() {
   return (
     <div className="w-full relative" style={{ height: containerHeight }} ref={outerContainerRef}>
       <div ref={containerRef} className="relative h-full">
+        {/* Sticky Heading and Intro */}
+        <div className="sticky top-0 z-20 bg-white pb-4">
+          <h3 className="text-gray-800 font-bold text-xl mb-2">User Journey Mapping</h3>
+          <p className="text-gray-800 mb-0">
+            Mapped real user steps, emotions, and pain points to guide design decisions.
+          </p>
+        </div>
         {/* Card 0 */}
         <motion.div
           ref={cardRef0}
-          className="sticky top-24 z-[10] w-full max-w-3xl bg-white rounded-2xl p-10 flex flex-col min-h-[220px] md:min-h-[180px] lg:min-h-[160px] transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
-          style={{ scale: scale0, boxShadow: boxShadow0 }}
+          className="sticky top-24 z-[10] w-full max-w-4xl bg-white rounded-2xl p-10 flex flex-col h-[420px] md:h-[380px] lg:h-[320px] border border-gray-200 transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
+          style={{ scale: scale0 }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -308,7 +315,7 @@ export default function UserJourneyMapInteractive() {
             <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl bg-blue-100 text-blue-700">
               1
             </span>
-            <span className="font-bold text-gray-900 text-xl md:text-2xl leading-tight flex-1 min-w-[120px]">
+            <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
               {steps[0].title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
@@ -330,15 +337,15 @@ export default function UserJourneyMapInteractive() {
             {/* Pain Point */}
             {steps[0].painPoint && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-red-700 font-semibold text-base">Pain Point:</span>
-                <span className="text-red-700 text-base leading-snug">{steps[0].painPoint}</span>
+                <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[0].painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
             {steps[0].opportunity && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-green-700 font-semibold text-base">Opportunity:</span>
-                <span className="text-green-700 text-base leading-snug">{steps[0].opportunity}</span>
+                <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[0].opportunity}</span>
               </div>
             )}
             {/* Quote */}
@@ -355,8 +362,8 @@ export default function UserJourneyMapInteractive() {
         {/* Card 1 */}
         <motion.div
           ref={cardRef1}
-          className="sticky top-36 z-[11] w-full max-w-3xl bg-white rounded-2xl p-10 flex flex-col min-h-[220px] md:min-h-[180px] lg:min-h-[160px] transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
-          style={{ scale: scale1, boxShadow: boxShadow1 }}
+          className="sticky top-36 z-[11] w-full max-w-4xl bg-white rounded-2xl p-10 flex flex-col h-[420px] md:h-[380px] lg:h-[320px] border border-gray-200 transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
+          style={{ scale: scale1 }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -367,7 +374,7 @@ export default function UserJourneyMapInteractive() {
             <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl bg-blue-100 text-blue-700">
               2
             </span>
-            <span className="font-bold text-gray-900 text-xl md:text-2xl leading-tight flex-1 min-w-[120px]">
+            <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
               {steps[1].title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
@@ -389,15 +396,15 @@ export default function UserJourneyMapInteractive() {
             {/* Pain Point */}
             {steps[1].painPoint && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-red-700 font-semibold text-base">Pain Point:</span>
-                <span className="text-red-700 text-base leading-snug">{steps[1].painPoint}</span>
+                <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[1].painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
             {steps[1].opportunity && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-green-700 font-semibold text-base">Opportunity:</span>
-                <span className="text-green-700 text-base leading-snug">{steps[1].opportunity}</span>
+                <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[1].opportunity}</span>
               </div>
             )}
             {/* Quote */}
@@ -414,8 +421,8 @@ export default function UserJourneyMapInteractive() {
         {/* Card 2 */}
         <motion.div
           ref={cardRef2}
-          className="sticky top-48 z-[12] w-full max-w-3xl bg-white rounded-2xl p-10 flex flex-col min-h-[220px] md:min-h-[180px] lg:min-h-[160px] transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
-          style={{ scale: scale2, boxShadow: boxShadow2 }}
+          className="sticky top-48 z-[12] w-full max-w-4xl bg-white rounded-2xl p-10 flex flex-col h-[420px] md:h-[380px] lg:h-[320px] border border-gray-200 transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
+          style={{ scale: scale2 }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -426,7 +433,7 @@ export default function UserJourneyMapInteractive() {
             <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl bg-blue-100 text-blue-700">
               3
             </span>
-            <span className="font-bold text-gray-900 text-xl md:text-2xl leading-tight flex-1 min-w-[120px]">
+            <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
               {steps[2].title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
@@ -448,15 +455,15 @@ export default function UserJourneyMapInteractive() {
             {/* Pain Point */}
             {steps[2].painPoint && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-red-700 font-semibold text-base">Pain Point:</span>
-                <span className="text-red-700 text-base leading-snug">{steps[2].painPoint}</span>
+                <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[2].painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
             {steps[2].opportunity && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-green-700 font-semibold text-base">Opportunity:</span>
-                <span className="text-green-700 text-base leading-snug">{steps[2].opportunity}</span>
+                <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[2].opportunity}</span>
               </div>
             )}
             {/* Quote */}
@@ -473,8 +480,8 @@ export default function UserJourneyMapInteractive() {
         {/* Card 3 */}
         <motion.div
           ref={cardRef3}
-          className="sticky top-60 z-[13] w-full max-w-3xl bg-white rounded-2xl p-10 flex flex-col min-h-[220px] md:min-h-[180px] lg:min-h-[160px] transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
-          style={{ scale: scale3, boxShadow: boxShadow3 }}
+          className="sticky top-60 z-[13] w-full max-w-4xl bg-white rounded-2xl p-10 flex flex-col h-[420px] md:h-[380px] lg:h-[320px] border border-gray-200 transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
+          style={{ scale: scale3 }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -485,7 +492,7 @@ export default function UserJourneyMapInteractive() {
             <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl bg-blue-100 text-blue-700">
               4
             </span>
-            <span className="font-bold text-gray-900 text-xl md:text-2xl leading-tight flex-1 min-w-[120px]">
+            <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
               {steps[3].title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
@@ -507,15 +514,15 @@ export default function UserJourneyMapInteractive() {
             {/* Pain Point */}
             {steps[3].painPoint && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-red-700 font-semibold text-base">Pain Point:</span>
-                <span className="text-red-700 text-base leading-snug">{steps[3].painPoint}</span>
+                <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[3].painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
             {steps[3].opportunity && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-green-700 font-semibold text-base">Opportunity:</span>
-                <span className="text-green-700 text-base leading-snug">{steps[3].opportunity}</span>
+                <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[3].opportunity}</span>
               </div>
             )}
             {/* Quote */}
@@ -532,8 +539,8 @@ export default function UserJourneyMapInteractive() {
         {/* Card 4 */}
         <motion.div
           ref={cardRef4}
-          className="sticky top-72 z-[14] w-full max-w-3xl bg-white rounded-2xl p-10 flex flex-col min-h-[220px] md:min-h-[180px] lg:min-h-[160px] transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
-          style={{ scale: scale4, boxShadow: boxShadow4 }}
+          className="sticky top-72 z-[14] w-full max-w-4xl bg-white rounded-2xl p-10 flex flex-col h-[420px] md:h-[380px] lg:h-[320px] border border-gray-200 transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400"
+          style={{ scale: scale4 }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -544,7 +551,7 @@ export default function UserJourneyMapInteractive() {
             <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl bg-blue-100 text-blue-700">
               5
             </span>
-            <span className="font-bold text-gray-900 text-xl md:text-2xl leading-tight flex-1 min-w-[120px]">
+            <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
               {steps[4].title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
@@ -566,15 +573,15 @@ export default function UserJourneyMapInteractive() {
             {/* Pain Point */}
             {steps[4].painPoint && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-red-700 font-semibold text-base">Pain Point:</span>
-                <span className="text-red-700 text-base leading-snug">{steps[4].painPoint}</span>
+                <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[4].painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
             {steps[4].opportunity && (
               <div className="flex flex-row items-baseline gap-2">
-                <span className="text-green-700 font-semibold text-base">Opportunity:</span>
-                <span className="text-green-700 text-base leading-snug">{steps[4].opportunity}</span>
+                <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
+                <span className="text-gray-800 text-base leading-snug">{steps[4].opportunity}</span>
               </div>
             )}
             {/* Quote */}

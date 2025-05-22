@@ -30,7 +30,7 @@ export const ChallengeSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="p-8"
+        className="p-8 border border-gray-200 bg-white rounded-xl"
       >
         <p className="text-gray-700 mb-8">
           NewGlobe faced major hurdles creating teaching materials for schools in different countries:

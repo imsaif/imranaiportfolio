@@ -137,7 +137,7 @@ const UserPersonasSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col gap-8 max-w-5xl mx-auto"
+        className="flex flex-col gap-8 max-w-5xl mx-auto border border-gray-200 bg-white rounded-xl px-8 py-10"
       >
         <p className="text-gray-700 mb-8 max-w-2xl">
           Through this research, I developed three key personas representing the primary users and stakeholders of the

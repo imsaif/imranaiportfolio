@@ -107,21 +107,22 @@ export default function Page() {
         </motion.div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-12">
-        <CaseStudyHeader level="h1">EduScheduler: Intelligent Academic Planning System</CaseStudyHeader>
-        <IntroductionSection />
+      <main className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
+        <IntroductionSection>
+          <CaseStudyHeader level="h1" className="text-center mb-4">
+            EduScheduler: Intelligent Academic Planning System
+          </CaseStudyHeader>
+        </IntroductionSection>
         {/* Vertically stacked sections with sticky dynamic title for four sections */}
         <section className="relative flex flex-row items-start gap-0 mb-20 min-h-[500px]">
           {/* Sticky Title */}
-          <div className="sticky left-0 top-24 h-fit min-w-[220px] w-[220px] max-w-xs flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
+          <div className="sticky left-0 top-24 h-fit min-w-[300px] w-[300px] max-w-md flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
             <AnimatePresence mode="wait">
-              <motion.h2
+              <CaseStudyHeader
+                level="h2"
+                showGradientLine
+                className="flex items-center gap-3 mb-4"
                 key={currentSection}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.35, ease: 'easeInOut' }}
-                className="text-3xl font-bold text-gray-900 mb-4 transition-colors duration-300 flex items-center gap-3"
               >
                 {currentSection === 'overview' && (
                   <>
@@ -250,7 +251,7 @@ export default function Page() {
                     <span>Design Process</span>
                   </>
                 )}
-              </motion.h2>
+              </CaseStudyHeader>
             </AnimatePresence>
           </div>
           {/* Vertically stacked content with increased width */}
@@ -285,9 +286,9 @@ export default function Page() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h3 className="text-gray-800 font-bold text-xl mb-6">Information Architecture & Workflow Design</h3>
-
-                  <div className="mb-6">
+                  {/* Start border box for Information Architecture & Workflow Design */}
+                  <div className="mb-6 border border-gray-300 rounded-xl px-8 py-10 bg-white">
+                    <h3 className="text-gray-800 font-bold text-xl mb-6">Information Architecture & Workflow Design</h3>
                     <p className="text-gray-800 mb-6">
                       Clear structure and workflows were essential for scalable scheduling.
                     </p>
@@ -422,81 +423,77 @@ export default function Page() {
                         <div className="text-gray-600 text-sm text-center">Subjects are taught within each grade.</div>
                       </motion.div>
                     </div>
-                  </div>
 
-                  <p className="text-gray-700 italic">
-                    This foundation made the system intuitive for both development and user training.
-                  </p>
+                    <p className="text-gray-700 italic">
+                      This foundation made the system intuitive for both development and user training.
+                    </p>
+                  </div>
+                  {/* End border box */}
 
                   {/* User Journey Mapping */}
-                  <h3 className="text-gray-800 font-bold text-xl mb-6 mt-10">User Journey Mapping</h3>
-
-                  <p className="text-gray-800 mb-6">
-                    Mapped real user steps, emotions, and pain points to guide design decisions.
-                  </p>
-
-                  <UserJourneyMapInteractive />
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 mt-14">
-                    {/* Pain Points Card */}
-                    <div className="w-full">
-                      <h4 className="font-bold mb-4 text-gray-800">Pain Points</h4>
-                      <ul className="space-y-4">
-                        <li>
-                          <div className="border-l-4 border-red-500 pl-3">
-                            <p className="text-gray-800 font-medium">Limited visibility</p>
-                            <p className="text-gray-700">into which schools have unique constraints</p>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="border-l-4 border-red-500 pl-3">
-                            <p className="text-gray-800 font-medium">Long waiting times</p>
-                            <p className="text-gray-700">for plan generation with no progress indicator</p>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="border-l-4 border-red-500 pl-3">
-                            <p className="text-gray-800 font-medium">Overwhelming error messages</p>
-                            <p className="text-gray-700">with no clear resolution path</p>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="border-l-4 border-red-500 pl-3">
-                            <p className="text-gray-800 font-medium">Tedious manual adjustments</p>
-                            <p className="text-gray-700">requiring repetitive actions</p>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                    {/* Design Opportunities Card */}
-                    <div className="w-full">
-                      <h4 className="font-bold mb-4 text-gray-800">Design Opportunities</h4>
-                      <ul className="space-y-4">
-                        <li>
-                          <div className="border-l-4 border-green-500 pl-3">
-                            <p className="text-gray-800 font-medium">Create visual constraint indicators</p>
-                            <p className="text-gray-700">for quick school assessment</p>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="border-l-4 border-green-500 pl-3">
-                            <p className="text-gray-800 font-medium">Implement real-time progress updates</p>
-                            <p className="text-gray-700">with estimated completion times</p>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="border-l-4 border-green-500 pl-3">
-                            <p className="text-gray-800 font-medium">Design guided resolution workflows</p>
-                            <p className="text-gray-700">for each violation type</p>
-                          </div>
-                        </li>
-                        <li>
-                          <div className="border-l-4 border-green-500 pl-3">
-                            <p className="text-gray-800 font-medium">Create bulk editing capabilities</p>
-                            <p className="text-gray-700">for common adjustment patterns</p>
-                          </div>
-                        </li>
-                      </ul>
+                  <div className="border border-gray-300 rounded-xl px-8 py-10 bg-white mb-10">
+                    <UserJourneyMapInteractive />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 mt-14">
+                      {/* Pain Points Card */}
+                      <div className="w-full">
+                        <h4 className="font-bold mb-4 text-gray-800">Pain Points</h4>
+                        <ul className="space-y-4">
+                          <li>
+                            <div className="border-l-4 border-red-500 pl-3">
+                              <p className="text-gray-800 font-medium">Limited visibility</p>
+                              <p className="text-gray-700">into which schools have unique constraints</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="border-l-4 border-red-500 pl-3">
+                              <p className="text-gray-800 font-medium">Long waiting times</p>
+                              <p className="text-gray-700">for plan generation with no progress indicator</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="border-l-4 border-red-500 pl-3">
+                              <p className="text-gray-800 font-medium">Overwhelming error messages</p>
+                              <p className="text-gray-700">with no clear resolution path</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="border-l-4 border-red-500 pl-3">
+                              <p className="text-gray-800 font-medium">Tedious manual adjustments</p>
+                              <p className="text-gray-700">requiring repetitive actions</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      {/* Design Opportunities Card */}
+                      <div className="w-full">
+                        <h4 className="font-bold mb-4 text-gray-800">Design Opportunities</h4>
+                        <ul className="space-y-4">
+                          <li>
+                            <div className="border-l-4 border-green-500 pl-3">
+                              <p className="text-gray-800 font-medium">Create visual constraint indicators</p>
+                              <p className="text-gray-700">for quick school assessment</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="border-l-4 border-green-500 pl-3">
+                              <p className="text-gray-800 font-medium">Implement real-time progress updates</p>
+                              <p className="text-gray-700">with estimated completion times</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="border-l-4 border-green-500 pl-3">
+                              <p className="text-gray-800 font-medium">Design guided resolution workflows</p>
+                              <p className="text-gray-700">for each violation type</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div className="border-l-4 border-green-500 pl-3">
+                              <p className="text-gray-800 font-medium">Create bulk editing capabilities</p>
+                              <p className="text-gray-700">for common adjustment patterns</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
 
@@ -517,214 +514,203 @@ export default function Page() {
         </div>
 
         {/* Lessons Learned Section */}
-        <section id="lessons" className="mb-20 mt-20">
-          <div className="flex items-center mb-8">
-            <CaseStudyHeader level="h2" showGradientLine>
-              Lessons Learned
-            </CaseStudyHeader>
+        <section
+          id="lessons"
+          className="relative grid grid-cols-1 md:grid-cols-[300px_1fr] gap-0 mb-20 min-h-[500px] mt-20"
+        >
+          {/* Sticky Title */}
+          <div className="sticky left-0 top-24 h-fit min-w-[300px] w-[300px] max-w-md flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
+            <div className="flex items-center mb-8 w-full">
+              <CaseStudyHeader level="h2" showGradientLine className="w-full">
+                Lessons Learned
+              </CaseStudyHeader>
+            </div>
           </div>
+          {/* Content */}
+          <div className="pr-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white p-8 rounded-xl shadow-md mb-12"
+            >
+              <p className="text-gray-800 mb-8">
+                The EduScheduler project provided valuable insights that have informed my approach to complex system
+                design:
+              </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white p-8 rounded-xl shadow-md mb-12"
-          >
-            <p className="text-gray-800 mb-8">
-              The EduScheduler project provided valuable insights that have informed my approach to complex system
-              design:
-            </p>
-
-            {/* Key Challenges */}
-            <div className="mb-12">
-              <h3 className="text-gray-900 font-bold text-xl mb-6">Key Challenges</h3>
-
-              <div className="grid grid-cols-1 gap-6 mb-8">
-                <div className="bg-blue-50 p-6 rounded-xl border-t-4 border-blue-400 shadow-sm">
-                  <div className="flex items-center mb-4">
-                    <div className="text-blue-600 mr-3">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                        />
-                      </svg>
+              {/* Key Challenges */}
+              <div className="mb-12">
+                <h3 className="text-gray-900 font-bold text-xl mb-6">Key Challenges</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 max-w-5xl mx-auto">
+                  <div className="bg-blue-50 p-6 rounded-xl border-t-4 border-blue-400 shadow-sm">
+                    <div className="flex items-center mb-4">
+                      <div className="text-blue-600 mr-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                          />
+                        </svg>
+                      </div>
+                      <h4 className="font-bold text-gray-900">Scheduling Rules & Needs</h4>
                     </div>
-                    <h4 className="font-bold text-gray-900">Complex Constraint Management</h4>
+                    <p className="text-gray-700">
+                      Making schedules work for both shared rules and local needs was difficult.
+                    </p>
                   </div>
-                  <p className="text-gray-700">
-                    Balancing the need for standardization across programs with flexibility for local contexts proved
-                    more complex than initially anticipated.
-                  </p>
-                </div>
-
-                <div className="bg-purple-50 p-6 rounded-xl border-t-4 border-purple-400 shadow-sm">
-                  <div className="flex items-center mb-4">
-                    <div className="text-purple-600 mr-3">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                        />
-                      </svg>
+                  <div className="bg-purple-50 p-6 rounded-xl border-t-4 border-purple-400 shadow-sm">
+                    <div className="flex items-center mb-4">
+                      <div className="text-purple-600 mr-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                          />
+                        </svg>
+                      </div>
+                      <h4 className="font-bold text-gray-900">Stakeholder Alignment</h4>
                     </div>
-                    <h4 className="font-bold text-gray-900">Stakeholder Alignment</h4>
+                    <p className="text-gray-700">Getting everyone on the same page was tough.</p>
                   </div>
-                  <p className="text-gray-700">
-                    Coordinating between program administrators, school principals, and teachers required careful
-                    communication plans and change management.
-                  </p>
-                </div>
-
-                <div className="bg-pink-50 p-6 rounded-xl border-t-4 border-pink-400 shadow-sm">
-                  <div className="flex items-center mb-4">
-                    <div className="text-pink-600 mr-3">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
+                  <div className="bg-pink-50 p-6 rounded-xl border-t-4 border-pink-400 shadow-sm">
+                    <div className="flex items-center mb-4">
+                      <div className="text-pink-600 mr-3">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <h4 className="font-bold text-gray-900">Performance Optimization</h4>
                     </div>
-                    <h4 className="font-bold text-gray-900">Performance Optimization</h4>
+                    <p className="text-gray-700">Making scheduling fast for big schools was hard.</p>
                   </div>
-                  <p className="text-gray-700">
-                    The complexity of scheduling algorithms required significant optimization to deliver results in a
-                    timely manner for larger schools.
-                  </p>
                 </div>
               </div>
-            </div>
-
-            {/* What I Would Do Differently */}
-            <div className="mb-12">
-              <h3 className="text-gray-900 font-bold text-xl mb-6">What I Would Do Differently</h3>
-
-              <motion.div className="rounded-xl overflow-hidden shadow-md border border-gray-200 mb-8">
-                <div className="py-4 px-6 bg-blue-50 rounded-t-xl">
-                  <h4 className="font-bold text-gray-900">Process Improvements</h4>
-                </div>
-                <div className="bg-white p-6">
-                  <div className="space-y-4">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
-                        <span className="text-white text-xs">1</span>
+              {/* What I Would Do Differently */}
+              <div className="mb-12">
+                <h3 className="text-gray-900 font-bold text-xl mb-6">What I Would Do Differently</h3>
+                <motion.div className="rounded-xl overflow-hidden shadow-md border border-gray-200 mb-8">
+                  <div className="py-4 px-6 bg-blue-50 rounded-t-xl">
+                    <h4 className="font-bold text-gray-900">Process Improvements</h4>
+                  </div>
+                  <div className="bg-white p-6">
+                    <div className="space-y-4">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
+                          <span className="text-white text-xs">1</span>
+                        </div>
+                        <div>
+                          <h5 className="font-bold text-gray-900 mb-1">Earlier User Testing</h5>
+                          <p className="text-gray-700">
+                            Involving end users earlier in the process would have identified usability challenges sooner
+                            and improved adoption rates.
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h5 className="font-bold text-gray-900 mb-1">Earlier User Testing</h5>
-                        <p className="text-gray-700">
-                          Involving end users earlier in the process would have identified usability challenges sooner
-                          and improved adoption rates.
-                        </p>
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
+                          <span className="text-white text-xs">2</span>
+                        </div>
+                        <div>
+                          <h5 className="font-bold text-gray-900 mb-1">Incremental Rollout</h5>
+                          <p className="text-gray-700">
+                            A more phased approach to deployment would have allowed for iterative improvements based on
+                            real-world usage.
+                          </p>
+                        </div>
                       </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
-                        <span className="text-white text-xs">2</span>
-                      </div>
-                      <div>
-                        <h5 className="font-bold text-gray-900 mb-1">Incremental Rollout</h5>
-                        <p className="text-gray-700">
-                          A more phased approach to deployment would have allowed for iterative improvements based on
-                          real-world usage.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
-                        <span className="text-white text-xs">3</span>
-                      </div>
-                      <div>
-                        <h5 className="font-bold text-gray-900 mb-1">Enhanced Data Visualization</h5>
-                        <p className="text-gray-700">
-                          More sophisticated data visualization tools would have made it easier for administrators to
-                          identify optimization opportunities.
-                        </p>
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
+                          <span className="text-white text-xs">3</span>
+                        </div>
+                        <div>
+                          <h5 className="font-bold text-gray-900 mb-1">Enhanced Data Visualization</h5>
+                          <p className="text-gray-700">
+                            More sophisticated data visualization tools would have made it easier for administrators to
+                            identify optimization opportunities.
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Design Principles Reinforced */}
-            <div className="mb-12">
-              <h3 className="text-gray-900 font-bold text-xl mb-6">Design Principles Reinforced</h3>
-
-              <div className="grid grid-cols-1 gap-6 mb-8">
-                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
-                  <div className="absolute top-0 right-0 bg-blue-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
-                  <h4 className="font-bold text-gray-900 mb-3">Progressive Disclosure</h4>
-                  <p className="text-gray-700 relative z-10">
-                    Revealing complexity gradually allowed users to navigate the system confidently despite its
-                    sophistication.
-                  </p>
-                </div>
-
-                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
-                  <div className="absolute top-0 right-0 bg-purple-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
-                  <h4 className="font-bold text-gray-900 mb-3">Contextual Assistance</h4>
-                  <p className="text-gray-700 relative z-10">
-                    Providing help and guidance at the point of need significantly reduced training requirements.
-                  </p>
-                </div>
-
-                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
-                  <div className="absolute top-0 right-0 bg-pink-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
-                  <h4 className="font-bold text-gray-900 mb-3">Adaptive Interfaces</h4>
-                  <p className="text-gray-700 relative z-10">
-                    Different user roles required tailored interfaces to focus on their specific needs and
-                    responsibilities.
-                  </p>
+                </motion.div>
+              </div>
+              {/* Design Principles Reinforced */}
+              <div className="mb-12">
+                <h3 className="text-gray-900 font-bold text-xl mb-6">Design Principles Reinforced</h3>
+                <div className="grid grid-cols-1 gap-6 mb-8">
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
+                    <div className="absolute top-0 right-0 bg-blue-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
+                    <h4 className="font-bold text-gray-900 mb-3">Progressive Disclosure</h4>
+                    <p className="text-gray-700 relative z-10">
+                      Revealing complexity gradually allowed users to navigate the system confidently despite its
+                      sophistication.
+                    </p>
+                  </div>
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
+                    <div className="absolute top-0 right-0 bg-purple-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
+                    <h4 className="font-bold text-gray-900 mb-3">Contextual Assistance</h4>
+                    <p className="text-gray-700 relative z-10">
+                      Providing help and guidance at the point of need significantly reduced training requirements.
+                    </p>
+                  </div>
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
+                    <div className="absolute top-0 right-0 bg-pink-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
+                    <h4 className="font-bold text-gray-900 mb-3">Adaptive Interfaces</h4>
+                    <p className="text-gray-700 relative z-10">
+                      Different user roles required tailored interfaces to focus on their specific needs and
+                      responsibilities.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* The Biggest Takeaway */}
-            <div className="mb-4">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-                className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-100"
-              >
-                <h3 className="text-xl font-bold mb-4 text-gray-900">The Biggest Takeaway</h3>
-                <p className="text-gray-700">
-                  The most significant lesson from this project was that even the most complex systems can be made
-                  approachable through thoughtful information architecture and workflow design. By creating clear mental
-                  models and providing appropriate feedback mechanisms, users can successfully navigate and control
-                  highly sophisticated processes.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
+              {/* The Biggest Takeaway */}
+              <div className="mb-4">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                  className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-100"
+                >
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">The Biggest Takeaway</h3>
+                  <p className="text-gray-700">
+                    The most significant lesson from this project was that even the most complex systems can be made
+                    approachable through thoughtful information architecture and workflow design. By creating clear
+                    mental models and providing appropriate feedback mechanisms, users can successfully navigate and
+                    control highly sophisticated processes.
+                  </p>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
         </section>
 
         <section id="results" className="mb-20">
-          <div className="flex items-center mb-8">
-            <CaseStudyHeader level="h2" showGradientLine>
+          <div className="flex items-center mb-8 w-full">
+            <CaseStudyHeader level="h2" showGradientLine className="w-full">
               Conclusion
             </CaseStudyHeader>
           </div>

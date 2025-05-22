@@ -41,9 +41,9 @@ export default function CaseStudyHeader({
 
       {showGradientLine && (
         <motion.div
-          className="h-1 w-24 bg-gradient-to-r from-accent to-tertiary rounded-full mt-2 mb-6"
-          initial={{ width: 0, opacity: 0 }}
-          whileInView={{ width: 96, opacity: 1 }}
+          className="h-0.5 w-full bg-gradient-to-r from-accent to-tertiary rounded-full mt-2 mb-6"
+          initial={{ scaleX: 0, opacity: 0, transformOrigin: 'left' }}
+          whileInView={{ scaleX: 1, opacity: 1, transformOrigin: 'left' }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         />
