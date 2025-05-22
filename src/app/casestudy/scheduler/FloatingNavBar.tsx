@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
  */
 export const sections = [
   { id: 'introduction', label: 'Introduction' },
-  { id: 'overview', label: 'Project Overview' },
+  { id: 'overview', label: 'Overview' },
   { id: 'challenge', label: 'Challenge' },
   { id: 'process', label: 'User Research' },
   { id: 'design-process', label: 'Design Process' },
