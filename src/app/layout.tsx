@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import type { Metadata } from 'next';
 
 import './globals.css';
 import ClientProviders from '../components/ClientProviders';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
+import { SmoothScrollProvider } from '../components/SmoothScrollProvider';
 
 export const metadata: Metadata = {
   title: 'Imran Mohammed | AI Experience Designer',
@@ -38,11 +39,13 @@ export default function RootLayout({
       </head>
       <body className="bg-white dark:bg-gray-950 text-black dark:text-white font-sans">
         <ClientProviders>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
+          <SmoothScrollProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+          </SmoothScrollProvider>
         </ClientProviders>
         <SpeedInsights />
         <Analytics />

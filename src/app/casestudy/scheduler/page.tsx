@@ -14,6 +14,7 @@ import { UserResearchSection } from './sections/UserResearchSection';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 import UserJourneyMapInteractive from '@/components/case-studies/UserJourneyMapInteractive';
+import ProgressBar from '@/components/ui/ProgressBar';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
 // Edit (pencil) icon for Design Process section title with gradient stroke
@@ -36,12 +37,73 @@ const DesignProcessIcon = (
   </svg>
 );
 
+// Lightbulb icon for Lessons Learned section
+const LessonsLearnedIcon = (
+  <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
+    <defs>
+      <linearGradient id="lessons-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#A21CAF" />
+        <stop offset="1" stopColor="#EC4899" />
+      </linearGradient>
+    </defs>
+    <path
+      d="M9 18h6m-3 0v2m-4-2a4 4 0 01-1-2.83V15a7 7 0 1114 0v.17A4 4 0 0116 18H8z"
+      stroke="url(#lessons-gradient)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+    <path d="M12 2v2" stroke="url(#lessons-gradient)" strokeWidth="2" strokeLinecap="round" />
+    <path d="M4.93 4.93l1.41 1.41" stroke="url(#lessons-gradient)" strokeWidth="2" strokeLinecap="round" />
+    <path d="M2 12h2" stroke="url(#lessons-gradient)" strokeWidth="2" strokeLinecap="round" />
+    <path d="M19.07 4.93l-1.41 1.41" stroke="url(#lessons-gradient)" strokeWidth="2" strokeLinecap="round" />
+    <path d="M22 12h-2" stroke="url(#lessons-gradient)" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+// Check-circle icon for Conclusion section
+const ConclusionIcon = (
+  <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
+    <defs>
+      <linearGradient id="conclusion-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#A21CAF" />
+        <stop offset="1" stopColor="#EC4899" />
+      </linearGradient>
+    </defs>
+    <circle cx="12" cy="12" r="9" stroke="url(#conclusion-gradient)" strokeWidth="2" fill="none" />
+    <path
+      d="M9 12l2 2 4-4"
+      stroke="url(#conclusion-gradient)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+  </svg>
+);
+
 export default function Page() {
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 },
   };
+
+  // Scroll progress state
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(progress);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Sticky section title logic with Intersection Observer for four sections
   const [currentSection, setCurrentSection] = useState<
@@ -79,6 +141,7 @@ export default function Page() {
 
   return (
     <div className="bg-white min-h-screen">
+      <ProgressBar progress={scrollProgress} />
       {/* Header section */}
       <header className="bg-white py-0 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
@@ -88,12 +151,7 @@ export default function Page() {
 
       {/* Hero image in its own container */}
       <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-          className="w-full relative"
-        >
+        <div className="w-full relative">
           <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden">
             <Image
               src="/images/casestudy/scheduler/teacherafri1.png"
@@ -104,7 +162,7 @@ export default function Page() {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <main className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
@@ -521,8 +579,9 @@ export default function Page() {
           {/* Sticky Title */}
           <div className="sticky left-0 top-24 h-fit min-w-[300px] w-[300px] max-w-md flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
             <div className="flex items-center mb-8 w-full">
-              <CaseStudyHeader level="h2" showGradientLine className="w-full">
-                Lessons Learned
+              <CaseStudyHeader level="h2" showGradientLine className="flex items-center gap-3 w-full">
+                {LessonsLearnedIcon}
+                <span>Lessons Learned</span>
               </CaseStudyHeader>
             </div>
           </div>
@@ -708,88 +767,94 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="results" className="mb-20">
-          <div className="flex items-center mb-8 w-full">
-            <CaseStudyHeader level="h2" showGradientLine className="w-full">
-              Conclusion
-            </CaseStudyHeader>
+        <section id="results" className="relative grid grid-cols-1 md:grid-cols-[300px_1fr] gap-0 mb-20 min-h-[500px]">
+          {/* Sticky Title */}
+          <div className="sticky left-0 top-24 h-fit min-w-[300px] w-[300px] max-w-md flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
+            <div className="flex items-center mb-8 w-full">
+              <CaseStudyHeader level="h2" showGradientLine className="flex items-center gap-3 w-full">
+                {ConclusionIcon}
+                <span>Conclusion</span>
+              </CaseStudyHeader>
+            </div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white p-8 rounded-xl shadow-md mb-12"
-          >
-            <p className="text-gray-800 mb-8">
-              EduScheduler transformed a complex manual process into an efficient, intuitive system, empowering
-              administrators to create optimal schedules while meeting diverse needs.
-            </p>
-
-            <h3 className="text-blue-700 font-bold text-lg mb-4">Project Achievements</h3>
-            <div className="bg-blue-50 p-6 rounded-lg mb-8">
-              <p className="text-gray-700">
-                Thoughtful UX design enabled automation and control, balancing optimization with human expertise. Clear
-                workflows and visualizations made schedule creation accessible for all stakeholders.
+          {/* Content */}
+          <div className="pr-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white p-8 rounded-xl shadow-md mb-12"
+            >
+              <p className="text-gray-800 mb-8">
+                EduScheduler transformed a complex manual process into an efficient, intuitive system, empowering
+                administrators to create optimal schedules while meeting diverse needs.
               </p>
-            </div>
 
-            <h4 className="font-bold text-gray-900 mb-4 text-xl">Impact Metrics</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              <div className="bg-blue-100 rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold text-blue-700 mb-1">80%</div>
-                <div className="text-sm text-gray-700">Fewer scheduling errors</div>
-              </div>
-              <div className="bg-purple-100 rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold text-purple-700 mb-1">85%</div>
-                <div className="text-sm text-gray-700">Time saved</div>
-              </div>
-              <div className="bg-pink-100 rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold text-pink-700 mb-1">92%</div>
-                <div className="text-sm text-gray-700">Teacher resource optimization</div>
-              </div>
-              <div className="bg-green-100 rounded-lg p-4 text-center">
-                <div className="text-3xl font-bold text-green-700 mb-1">12%</div>
-                <div className="text-sm text-gray-700">Cost reduction</div>
-              </div>
-            </div>
-
-            <h4 className="font-bold text-gray-900 mb-4 text-xl">My Role</h4>
-            <p className="text-gray-700 mb-6">
-              As Lead Product Designer, I led research, design, and implementation, collaborating across teams and
-              supporting users throughout the product lifecycle.
-            </p>
-
-            <h4 className="font-bold text-gray-900 mb-4 text-xl">Future Directions</h4>
-            <p className="text-gray-700 mb-6">
-              EduScheduler lays the foundation for a modular learning platform, with future enhancements planned for
-              content, planning, teacher, and school management.
-            </p>
-
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-xl flex items-start">
-              <div className="mr-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-blue-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17l9-5-9-5v10z" />
-                </svg>
-              </div>
-              <div>
-                <p className="italic text-gray-700 mb-2">
-                  "The EduScheduler system has revolutionized how we approach academic scheduling, saving countless
-                  hours while producing better results. It's become an essential tool in our educational planning
-                  process."
+              <h3 className="text-blue-700 font-bold text-lg mb-4">Project Achievements</h3>
+              <div className="bg-blue-50 p-6 rounded-lg mb-8">
+                <p className="text-gray-700">
+                  Thoughtful UX design enabled automation and control, balancing optimization with human expertise.
+                  Clear workflows and visualizations made schedule creation accessible for all stakeholders.
                 </p>
-                <div className="text-sm text-gray-900 font-semibold">DA</div>
-                <div className="text-xs text-gray-500">Director of Academic Programs</div>
               </div>
-            </div>
-          </motion.div>
+
+              <h4 className="font-bold text-gray-900 mb-4 text-xl">Impact Metrics</h4>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="bg-blue-100 rounded-lg p-4 text-center">
+                  <div className="text-3xl font-bold text-blue-700 mb-1">80%</div>
+                  <div className="text-sm text-gray-700">Fewer scheduling errors</div>
+                </div>
+                <div className="bg-purple-100 rounded-lg p-4 text-center">
+                  <div className="text-3xl font-bold text-purple-700 mb-1">85%</div>
+                  <div className="text-sm text-gray-700">Time saved</div>
+                </div>
+                <div className="bg-pink-100 rounded-lg p-4 text-center">
+                  <div className="text-3xl font-bold text-pink-700 mb-1">92%</div>
+                  <div className="text-sm text-gray-700">Teacher resource optimization</div>
+                </div>
+                <div className="bg-green-100 rounded-lg p-4 text-center">
+                  <div className="text-3xl font-bold text-green-700 mb-1">12%</div>
+                  <div className="text-sm text-gray-700">Cost reduction</div>
+                </div>
+              </div>
+
+              <h4 className="font-bold text-gray-900 mb-4 text-xl">My Role</h4>
+              <p className="text-gray-700 mb-6">
+                As Lead Product Designer, I led research, design, and implementation, collaborating across teams and
+                supporting users throughout the product lifecycle.
+              </p>
+
+              <h4 className="font-bold text-gray-900 mb-4 text-xl">Future Directions</h4>
+              <p className="text-gray-700 mb-6">
+                EduScheduler lays the foundation for a modular learning platform, with future enhancements planned for
+                content, planning, teacher, and school management.
+              </p>
+
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-xl flex items-start">
+                <div className="mr-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8 text-blue-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17l9-5-9-5v10z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="italic text-gray-700 mb-2">
+                    "The EduScheduler system has revolutionized how we approach academic scheduling, saving countless
+                    hours while producing better results. It's become an essential tool in our educational planning
+                    process."
+                  </p>
+                  <div className="text-sm text-gray-900 font-semibold">DA</div>
+                  <div className="text-xs text-gray-500">Director of Academic Programs</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </section>
 
         <CaseStudyFooter />
