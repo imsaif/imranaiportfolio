@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
-import CaseStudyVoiceToggle from '@/components/case-studies/CaseStudyVoiceToggle';
+// import CaseStudyVoiceToggle from '@/components/case-studies/CaseStudyVoiceToggle';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
 export default function Page() {
@@ -2573,8 +2573,8 @@ export default function Page() {
       </main>
       <ScrollToTopButton targetId="intro-section" />
 
-      {/* Voice Chat Toggle */}
-      <CaseStudyVoiceToggle
+      {/* Voice Chat Toggle - Temporarily disabled for build fix */}
+      {/* <CaseStudyVoiceToggle
         caseStudyId="lessonloom"
         caseStudyTitle="LessonLoom: Automated Lesson Generation Platform"
         limits={{
@@ -2582,7 +2582,7 @@ export default function Page() {
           maxDailyConversations: 5, // 5 conversations per day
           premiumCooldownHours: 1, // 1 hour between premium sessions
         }}
-      />
+      /> */}
     </div>
   );
 }

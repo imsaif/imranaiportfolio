@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  hybridAgent,
+  getHybridAgent,
   ConversationMessage,
   ConversationSession,
   ConversationContext,

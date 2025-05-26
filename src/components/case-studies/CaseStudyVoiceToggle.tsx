@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import { ConversationLimits } from '../../services/hybridConversationalAgent';
-import CaseStudyConversationalAgent from './CaseStudyConversationalAgent';
+// import CaseStudyConversationalAgent from './CaseStudyConversationalAgent';
 
 interface CaseStudyVoiceToggleProps {
   caseStudyId: string;
@@ -202,14 +202,14 @@ const CaseStudyVoiceToggle: React.FC<CaseStudyVoiceToggleProps> = ({
         )}
       </AnimatePresence>
 
-      {/* Conversational Agent */}
-      <CaseStudyConversationalAgent
+      {/* Conversational Agent - Temporarily disabled for build fix */}
+      {/* <CaseStudyConversationalAgent
         caseStudyId={caseStudyId}
         caseStudyTitle={caseStudyTitle}
         isVisible={isAgentOpen}
         onClose={handleCloseAgent}
         limits={limits}
-      />
+      /> */}
     </>
   );
 };

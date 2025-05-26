@@ -44,7 +44,7 @@ export interface ConversationSession {
 export class HybridConversationalAgent {
   private currentSession: ConversationSession | null = null;
   private speechRecognition: SpeechRecognition | null = null;
-  private speechSynthesis: SpeechSynthesis;
+  private speechSynthesis: SpeechSynthesis | null = null;
   private isListening = false;
   private defaultLimits: ConversationLimits = {
     maxPremiumMinutes: 3, // 3 minutes of premium voice per session
@@ -53,11 +53,17 @@ export class HybridConversationalAgent {
   };
 
   constructor() {
-    this.speechSynthesis = window.speechSynthesis;
-    this.initializeSpeechRecognition();
+    // Only initialize if we're in the browser
+    if (typeof window !== 'undefined') {
+      this.speechSynthesis = window.speechSynthesis;
+      this.initializeSpeechRecognition();
+    }
   }
 
   private initializeSpeechRecognition(): void {
+    // Only initialize if we're in the browser
+    if (typeof window === 'undefined') return;
+
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (SpeechRecognition) {
@@ -203,7 +209,7 @@ export class HybridConversationalAgent {
    */
   private speakWithBrowserTTS(text: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      if (!('speechSynthesis' in window)) {
+      if (!this.speechSynthesis || typeof window === 'undefined' || !('speechSynthesis' in window)) {
         reject(new Error('Speech synthesis not supported'));
         return;
       }
@@ -368,7 +374,9 @@ export class HybridConversationalAgent {
       this.speechRecognition.stop();
     }
 
-    this.speechSynthesis.cancel();
+    if (this.speechSynthesis) {
+      this.speechSynthesis.cancel();
+    }
 
     const completedSession = this.currentSession;
     this.currentSession = null;
@@ -380,6 +388,7 @@ export class HybridConversationalAgent {
    * Check if speech recognition is supported
    */
   static isSupported(): boolean {
+    if (typeof window === 'undefined') return false;
     return !!(window.SpeechRecognition || window.webkitSpeechRecognition) && 'speechSynthesis' in window;
   }
 
@@ -397,7 +406,9 @@ export class HybridConversationalAgent {
    * Stop current speaking
    */
   stopSpeaking(): void {
-    this.speechSynthesis.cancel();
+    if (this.speechSynthesis) {
+      this.speechSynthesis.cancel();
+    }
   }
 
   /**
@@ -408,5 +419,19 @@ export class HybridConversationalAgent {
   }
 }
 
-// Export singleton instance
-export const hybridAgent = new HybridConversationalAgent();
+// Lazy-loaded singleton instance
+let hybridAgentInstance: HybridConversationalAgent | null = null;
+
+export const getHybridAgent = (): HybridConversationalAgent => {
+  if (!hybridAgentInstance) {
+    hybridAgentInstance = new HybridConversationalAgent();
+  }
+  return hybridAgentInstance;
+};
+
+// For backwards compatibility, create a getter that provides the same interface
+export const hybridAgent = new Proxy({} as HybridConversationalAgent, {
+  get(target, prop) {
+    return getHybridAgent()[prop as keyof HybridConversationalAgent];
+  },
+});
