@@ -649,12 +649,12 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
       exit={{ opacity: 0, y: 20 }}
       className="text-center py-12 max-w-2xl mx-auto"
     >
-      {/* Voice Type Indicator */}
-      <VoiceIndicatorBadge
+      {/* Voice Type Indicator - Removed */}
+      {/* <VoiceIndicatorBadge
         isClonedVoice={isClonedVoiceEnabled && lastUsedClonedVoice}
         isVisible={voiceState === 'speaking' || voiceState === 'processing'}
         state={voiceState}
-      />
+      /> */}
 
       {/* Voice Visualizer */}
       <VoiceVisualizer
