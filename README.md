@@ -46,7 +46,11 @@ For AI chat functionality (if enabled):
 For database functionality (if using):
 - `DATABASE_URL`: Your database connection string
 
-## Chat API Rate Limiting
+## API Rate Limiting
+
+This project implements comprehensive rate limiting to prevent abuse and control costs for both chat and voice interactions.
+
+### Chat API Rate Limiting
 
 The chat API is protected by Redis-backed rate limiting to prevent abuse and ensure fair usage.
 
@@ -57,15 +61,57 @@ The chat API is protected by Redis-backed rate limiting to prevent abuse and ens
   - `OPENAI_RATE_WINDOW_MS` — Window size in milliseconds (default: 3600000 for 1 hour)
   - `REDIS_URL` — Redis connection string (default: `redis://localhost:6379`)
 
-To change the rate limit, update these variables in your `.env.local` or deployment environment.
+### Voice Bot Rate Limiting
 
-Example:
-```
-OPENAI_RATE_LIMIT=10
-OPENAI_RATE_WINDOW_MS=3600000
+The voice bot includes comprehensive rate limiting to control costs for ElevenLabs voice cloning and prevent abuse:
+
+- **Session Limits:** Max 3 conversations, 10 messages per conversation, 500 characters per message
+- **Time Limits:** 3-second cooldown between messages, hourly character limits
+- **Daily Limits:** Max $5.00 cost per day, 20 minutes of cloned voice per day
+- **Smart Degradation:** Falls back to free browser TTS when cloned voice limits are reached
+
+**Configuration Presets:**
+```bash
+# Choose your environment preset
+NEXT_PUBLIC_VOICE_RATE_LIMIT_PRESET=production  # Conservative limits
+NEXT_PUBLIC_VOICE_RATE_LIMIT_PRESET=development # Generous for testing
+NEXT_PUBLIC_VOICE_RATE_LIMIT_PRESET=demo        # Very restrictive
+
+# Or customize individual limits
+NEXT_PUBLIC_VOICE_MAX_COST_PER_DAY=5.00
+NEXT_PUBLIC_VOICE_MAX_CHARACTERS_PER_SESSION=3000
+# ... see docs/VOICE_RATE_LIMITING_SETUP.md for all options
 ```
 
-If a user exceeds the limit, they will receive a 429 response and a message indicating when they can try again.
+**Features:**
+- ✅ Real-time usage monitoring
+- ✅ Cost estimation and tracking
+- ✅ Graceful fallback to free TTS
+- ✅ User-friendly error messages
+- ✅ Session-based tracking (privacy-respecting)
+
+For detailed configuration options, see `docs/voice-rate-limiting-guide.md`.
+
+To change the rate limits, update these variables in your `.env.local` or deployment environment.
+
+## Documentation
+
+This project includes comprehensive documentation for all features:
+
+### Core Documentation
+- **[Features Overview](docs/FEATURES.md)** - Complete feature list and capabilities
+- **[Project Milestones](docs/project_milestones.md.md)** - Development progress and roadmap
+- **[Technical Documentation](docs/documentation.md)** - Architecture and component specs
+
+### Voice & AI Features
+- **[Voice Cloning Setup](docs/voice-cloning-setup.md)** - ElevenLabs integration guide
+- **[Voice Mode Implementation](docs/voice-mode-implementation.md)** - Technical implementation details
+- **[Voice Rate Limiting Guide](docs/voice-rate-limiting-guide.md)** - Comprehensive rate limiting documentation
+- **[Voice Rate Limiting Setup](docs/VOICE_RATE_LIMITING_SETUP.md)** - Quick setup guide
+
+### API & Integration
+- **[Chat API Guide](src/docs/ai-chat-guide.md)** - AI chat integration details
+- **[Hybrid Conversational Agent](docs/hybrid-conversational-agent-guide.md)** - Advanced voice/chat features
 
 ## Learn More
 

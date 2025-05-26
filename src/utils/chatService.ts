@@ -6,7 +6,7 @@ import { Message } from '../types/chat';
 export const initialMessages: Message[] = [
   {
     id: '1',
-    text: "Hey there! 👋 I'm Imran's AI assistant. What can I help you with today?",
+    text: "Hey there! 👋 I'm Imran. What can I help you with today?",
     sender: 'bot',
     timestamp: new Date(),
   },
@@ -25,9 +25,13 @@ console.log('Using OpenAI API:', useOpenAI);
 function generateLocalResponse(text: string): string {
   // Convert to lowercase for easier matching
   const query = text.toLowerCase();
-  
+
   // Check for case study related queries
-  if (query.includes('lessonloom') || query.includes('lesson loom') || (query.includes('lesson') && query.includes('case study'))) {
+  if (
+    query.includes('lessonloom') ||
+    query.includes('lesson loom') ||
+    (query.includes('lesson') && query.includes('case study'))
+  ) {
     return `**LessonLoom**
 An innovative platform that automates the creation of educational materials using AI and templating systems.
 
@@ -37,8 +41,12 @@ Click the LessonLoom button below to view the complete case study.
 
 Would you like to see another case study?`;
   }
-  
-  if (query.includes('eduscheduler') || query.includes('edu scheduler') || (query.includes('scheduler') && query.includes('case study'))) {
+
+  if (
+    query.includes('eduscheduler') ||
+    query.includes('edu scheduler') ||
+    (query.includes('scheduler') && query.includes('case study'))
+  ) {
     return `**EduScheduler**
 An intelligent academic planning system that generates optimized teaching schedules.
 
@@ -48,10 +56,15 @@ Click the EduScheduler button below to view the complete case study.
 
 Would you like to see another case study?`;
   }
-  
+
   // Generic response about case studies if both are mentioned
-  if (query.includes('case stud') || query.includes('case-stud') || query.includes('casestud') || 
-      query.includes('project') || (query.includes('most') && query.includes('interesting'))) {
+  if (
+    query.includes('case stud') ||
+    query.includes('case-stud') ||
+    query.includes('casestud') ||
+    query.includes('project') ||
+    (query.includes('most') && query.includes('interesting'))
+  ) {
     return `Here are Imran's most interesting projects:
 
 **LessonLoom**
@@ -62,11 +75,11 @@ An intelligent academic planning system that generates optimized teaching schedu
 
 You can explore these case studies in detail by clicking the buttons below. Each case study showcases Imran's expertise in AI design and user experience.`;
   }
-  
-  // Generic fallback
-  return `I'm having trouble connecting to my AI services right now. I'm Imran's AI assistant and can tell you about his design experience and projects once the connection is restored.
 
-In the meantime, you can explore his case studies using the buttons below:
+  // Generic fallback
+  return `I'm having trouble connecting right now. I can tell you about my design experience and projects once the connection is restored.
+
+In the meantime, you can explore my case studies using the buttons below:
 
 **LessonLoom**
 An innovative platform that automates the creation of educational materials using AI and templating systems.
@@ -78,7 +91,7 @@ An intelligent academic planning system that generates optimized teaching schedu
 /**
  * Check if the OpenAI API key is valid and API is accessible
  */
-async function checkAPIStatus(): Promise<{valid: boolean; message: string}> {
+async function checkAPIStatus(): Promise<{ valid: boolean; message: string }> {
   try {
     // Create a very simple request to test the API
     const testMessages = [
@@ -95,14 +108,14 @@ async function checkAPIStatus(): Promise<{valid: boolean; message: string}> {
       },
       body: JSON.stringify({ messages: testMessages }),
     });
-    
+
     // Check response status
     if (!response.ok) {
       const error = await response.text();
       console.error('API status check failed:', response.status, error);
       return { valid: false, message: `API error: ${response.status}` };
     }
-    
+
     const data = await response.json();
     return { valid: true, message: 'API connection successful' };
   } catch (error) {
@@ -167,14 +180,14 @@ async function callAPI(text: string, chatHistory: Message[] = []): Promise<strin
  * Suggested questions to help users get started
  */
 export const suggestedQuestions = [
-  "What's Imran's background in AI design?",
-  'How does Imran approach design projects?',
-  'What tools does Imran use most?',
-  "Can you show me Imran's best projects?",
-  'How does he handle AI/ML design challenges?',
-  'What was his toughest project?',
-  'What makes his design approach different?',
-  'Tell me more about his case studies',
+  "What's your background in AI design?",
+  'How do you approach design projects?',
+  'What tools do you use most?',
+  'Can you show me your best projects?',
+  'How do you handle AI/ML design challenges?',
+  'What was your toughest project?',
+  'What makes your design approach different?',
+  'Tell me more about your case studies',
 ];
 
 // Track API status to avoid repeated failure checks

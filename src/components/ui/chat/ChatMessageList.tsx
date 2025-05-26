@@ -23,11 +23,11 @@ const ChatMessageList = ({ messages, isTyping }: ChatMessageListProps) => {
   }, [messages, isTyping]);
 
   return (
-    <div 
+    <div
       className="flex flex-col p-2 sm:p-4 overflow-y-auto h-full space-y-2 sm:space-y-4"
       style={{
-        scrollbarWidth: 'thin', /* Firefox */
-        scrollbarColor: 'var(--accent-200) transparent', /* Firefox */
+        scrollbarWidth: 'thin' /* Firefox */,
+        scrollbarColor: 'var(--accent-200) transparent' /* Firefox */,
       }}
     >
       {/* Custom scrollbar styling for WebKit browsers */}
@@ -55,29 +55,27 @@ const ChatMessageList = ({ messages, isTyping }: ChatMessageListProps) => {
           transition={{ duration: 0.3 }}
           className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
         >
-          <div
-            className={`max-w-[90%] sm:max-w-[85%] px-3 sm:px-4 py-2 sm:py-3 rounded-lg ${
-              message.sender === 'user'
-                ? 'bg-gradient-to-r from-accent to-tertiary text-white rounded-tr-none'
-                : 'bg-gradient-to-br from-white/90 to-accent-50/50 text-foreground border border-accent-100 rounded-tl-none'
-            }`}
-          >
-            <div className="text-sm">{message.text}</div>
-          </div>
+          {message.sender === 'user' ? (
+            <div className="max-w-[90%] sm:max-w-[85%] bg-gradient-to-r from-accent to-tertiary p-[2px] rounded-lg rounded-tr-none">
+              <div className="px-3 sm:px-4 py-2 sm:py-3 rounded-lg rounded-tr-none bg-white text-foreground">
+                <div className="text-sm">{message.text}</div>
+              </div>
+            </div>
+          ) : (
+            <div className="max-w-[90%] sm:max-w-[85%] px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-gradient-to-br from-white/90 to-accent-50/50 text-foreground border border-accent-100 rounded-tl-none">
+              <div className="text-sm">{message.text}</div>
+            </div>
+          )}
         </motion.div>
       ))}
 
       {/* Typing indicator */}
       {isTyping && (
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex justify-start"
-        >
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-start">
           <div className="max-w-[85%] px-4 py-3 rounded-lg bg-gradient-to-br from-white/90 to-accent-50/50 text-foreground border border-accent-100 rounded-tl-none">
             <div className="flex space-x-2 items-center">
-              <span className="text-xs text-accent-600">Thinking...</span>
-              <motion.div 
+              <span className="text-xs text-accent-600">Imran is typing...</span>
+              <motion.div
                 className="flex space-x-1"
                 animate={{ opacity: [0.4, 1, 0.4] }}
                 transition={{ duration: 1.5, repeat: Infinity }}

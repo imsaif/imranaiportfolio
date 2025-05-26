@@ -60,6 +60,19 @@ CREATE TABLE contact_submissions (
   notes TEXT
 );
 
+-- Voice bot usage tracking (optional - for analytics)
+CREATE TABLE voice_usage_logs (
+  id SERIAL PRIMARY KEY,
+  session_id VARCHAR(100) NOT NULL,
+  user_id_hash VARCHAR(64), -- Privacy-respecting user identifier
+  interaction_type VARCHAR(20) NOT NULL, -- 'user_message', 'bot_response'
+  character_count INTEGER NOT NULL,
+  used_cloned_voice BOOLEAN DEFAULT false,
+  estimated_cost DECIMAL(10,6) DEFAULT 0,
+  rate_limit_hit VARCHAR(50), -- Which limit was hit, if any
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 // Prisma schema equivalent
 model ContactSubmission {
   id        Int      @id @default(autoincrement())

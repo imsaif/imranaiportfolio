@@ -10,8 +10,8 @@ interface ChatSuggestionsProps {
 const ChatSuggestions = ({ suggestions, onSelect }: ChatSuggestionsProps) => {
   return (
     <div className="mb-2 mt-1">
-      <p className="text-xs text-accent-600 mb-2 font-medium">Suggested questions:</p>
-      <div className="flex flex-wrap gap-1 sm:gap-2">
+      <p className="text-xs text-accent-600 mb-2 font-medium text-left">Suggested questions:</p>
+      <div className="flex flex-wrap gap-1 sm:gap-2 justify-start">
         {suggestions.map((question, index) => (
           <button
             key={index}

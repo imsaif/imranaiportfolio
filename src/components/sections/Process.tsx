@@ -61,6 +61,7 @@ const Process = () => {
   const isHovered = useRef(false);
   const [setWidth, setSetWidth] = useState(0);
   const speed = 0.5; // px per frame (further reduced speed for a more subtle scroll)
+  const [isInViewport, setIsInViewport] = useState(false);
 
   useEffect(() => {
     const updateSetWidth = () => {
@@ -75,10 +76,30 @@ const Process = () => {
     return () => window.removeEventListener('resize', updateSetWidth);
   }, [frameworks.length]);
 
+  // Check if element is in viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInViewport(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (rowRef.current) {
+      observer.observe(rowRef.current);
+    }
+
+    return () => {
+      if (rowRef.current) {
+        observer.unobserve(rowRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     let frameId: number;
     const animate = () => {
-      if (!isHovered.current && setWidth > 0) {
+      if (!isHovered.current && setWidth > 0 && isInViewport) {
         setScrollX(prev => {
           const next = prev + speed;
           return next >= setWidth ? 0 : next;
@@ -88,7 +109,12 @@ const Process = () => {
     };
     frameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frameId);
-  }, [setWidth]);
+  }, [setWidth, isInViewport]);
+
+  // Reset scroll position when component mounts
+  useEffect(() => {
+    setScrollX(0);
+  }, []);
 
   // Pause scroll on hover for accessibility
   useEffect(() => {

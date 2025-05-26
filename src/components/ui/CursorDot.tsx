@@ -21,6 +21,7 @@ export type CursorDotProps = {
  * A magnetic dot that follows the user's cursor, styled with brand colors.
  * Uses Framer Motion for smooth animation and respects reduced motion settings.
  * Accessible: supports reduced motion and hides on keyboard navigation.
+ * Automatically hides on mobile/touch devices where cursor following is not relevant.
  *
  * @param {CursorDotProps} props
  */
@@ -28,7 +29,22 @@ export const CursorDot = ({ hidden = false, size = 20, className = '' }: CursorD
   const dotRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isKeyboard, setIsKeyboard] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+
+  // Check if device is mobile/touch device
+  useEffect(() => {
+    const checkMobile = () => {
+      // Check for touch support and small screens
+      const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth < 768; // md breakpoint
+      setIsMobile(hasTouch || isSmallScreen);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Motion values for position
   const mouseX = useMotionValue(0);
@@ -40,7 +56,7 @@ export const CursorDot = ({ hidden = false, size = 20, className = '' }: CursorD
 
   // Mouse move handler
   useEffect(() => {
-    if (hidden || shouldReduceMotion) return;
+    if (hidden || shouldReduceMotion || isMobile) return;
     const handleMouseMove = (e: MouseEvent) => {
       // Hide if over a link, button, role=button, tabindex=0, or .sticky-project-card
       const target = e.target as HTMLElement | null;
@@ -57,7 +73,7 @@ export const CursorDot = ({ hidden = false, size = 20, className = '' }: CursorD
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [hidden, shouldReduceMotion, size, mouseX, mouseY]);
+  }, [hidden, shouldReduceMotion, size, mouseX, mouseY, isMobile]);
 
   // Accessibility: Hide dot on keyboard navigation
   useEffect(() => {
@@ -84,8 +100,8 @@ export const CursorDot = ({ hidden = false, size = 20, className = '' }: CursorD
     };
   }, []);
 
-  // Hide if reduced motion
-  if (hidden || shouldReduceMotion) return null;
+  // Hide if reduced motion or mobile
+  if (hidden || shouldReduceMotion || isMobile) return null;
 
   return (
     <motion.div

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 // Mark route as dynamic to prevent static generation errors
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 // Import portfolio context for the AI
 import portfolioData from '../../../data/portfolio-context.json';
@@ -27,10 +27,10 @@ import {
   MAX_RATE_LIMIT,
   MIN_RATE_WINDOW_MS,
   MAX_RATE_WINDOW_MS,
+  generateUserId,
 } from '../../../utils/api/rateLimit';
-import { safeParseInt, processMessages } from '../../../utils/api/security';
 import { checkRedisRateLimit, redisAvailable } from '../../../utils/api/redisRateLimit';
-import { generateUserId } from '../../../utils/api/rateLimit';
+import { safeParseInt, processMessages } from '../../../utils/api/security';
 
 /**
  * POST handler for the chat API route
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
 
     // Check if OpenAI API is properly configured
     const isOpenAIConfigured = useOpenAI && apiKey && apiKey !== 'your_api_key_here';
-    
+
     if (!isOpenAIConfigured) {
       console.log('API route: OpenAI API integration disabled or missing API key');
       return NextResponse.json<ChatAPIResponse>(
@@ -99,7 +99,7 @@ export async function POST(request: Request) {
 
     // Check rate limit
     let rateLimitResult;
-    
+
     // If Redis is available, use Redis rate limiting, otherwise use in-memory
     if (redisAvailable) {
       rateLimitResult = await checkRedisRateLimit(userId, rateLimit, rateWindowSec);
@@ -163,9 +163,9 @@ export async function POST(request: Request) {
     ];
 
     // Create system message content
-    const systemMessageContent = `You are Imran's AI assistant, specifically designed to help visitors learn about his work, skills, and experience.
+    const systemMessageContent = `You are Imran, responding directly to visitors about your work, skills, and experience.
     
-    IMPORTANT: Always introduce yourself as "I'm Imran's AI assistant" when appropriate. Never use generic phrases like "I am an AI assistant" or "I'm an AI designed to provide information about Imran." You work exclusively for Imran and are his personal AI.
+    IMPORTANT: Always respond as Imran himself. Use "I" when talking about your work and experience. Never refer to yourself as an AI assistant or mention that you're AI. Speak naturally as if you're Imran having a conversation.
     
     Here is information about Imran to use in your responses:
     ${JSON.stringify(portfolioData)}
@@ -179,7 +179,7 @@ export async function POST(request: Request) {
 
     When someone asks about case studies or projects, format your response like this:
 
-    Of course! Imran has worked on several exciting projects:
+    Of course! I've worked on several exciting projects:
 
     **LessonLoom**
     This innovative platform automates the creation of educational materials using AI and templating systems. It personalizes learning experiences based on student progress and learning style, increasing student engagement by 35% and reducing lesson planning time by 40%.
@@ -187,7 +187,7 @@ export async function POST(request: Request) {
     **EduScheduler**
     An intelligent academic planning system that generates optimized teaching schedules, balancing automation with user preferences and priorities. It reduced meeting scheduling time by 60% and improved meeting attendance rates by 25%.
 
-    These projects showcase Imran's expertise in AI design and user experience. If you have any more questions or need further details, feel free to ask!
+    These projects showcase my expertise in AI design and user experience. If you have any more questions or need further details, feel free to ask!
     
     Technical Implementation Details:
     - Built with Next.js 13.5 using the App Router and TypeScript
@@ -208,9 +208,9 @@ export async function POST(request: Request) {
       * Secure API key management using environment variables
       * Fallback to local responses when API is unavailable
     
-    Your task is to be helpful, friendly, and direct in answering questions about Imran's work and experience.
-    When asked about technical details, provide specific information about how the chat interface was built.
-    Keep responses concise but informative, sharing relevant details about his projects and expertise.
+    Your task is to be helpful, friendly, and direct in answering questions about your work and experience.
+    When asked about technical details, provide specific information about how you built things like the chat interface.
+    Keep responses concise but informative, sharing relevant details about your projects and expertise.
     Include relevant links when discussing specific projects.
     Avoid making up information not provided in the context.
     If asked about something you don't know, simply state you don't have that information.`;
@@ -226,7 +226,7 @@ export async function POST(request: Request) {
       userId,
       timestamp: new Date().toISOString(),
       messages: validMessages,
-      aiResponse: apiResult.success && apiResult.data ? apiResult.data.choices[0].message.content : null
+      aiResponse: apiResult.success && apiResult.data ? apiResult.data.choices[0].message.content : null,
     };
     // Persist the chat log (do not block response on failure)
     appendChatLog(chatLogEntry);

@@ -62,9 +62,9 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.4, ease: 'easeInOut' }}
-        className="absolute top-0 left-0 w-full h-full flex flex-col justify-center"
+        className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center"
       >
-        <h1 className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 leading-tight tracking-tight">
+        <h1 className="text-3xl xs:text-4xl md:text-4xl lg:text-5xl font-bold mb-8 xs:mb-10 md:mb-8 leading-tight tracking-tight">
           <span className="inline">Creating experiences with purpose and precision.</span>
         </h1>
       </motion.div>
@@ -79,16 +79,16 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.4, ease: 'easeInOut' }}
-        className="absolute top-0 left-0 w-full h-full flex flex-col justify-center"
+        className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center"
         style={{ willChange: 'opacity' }}
       >
         <h1
-          className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 tracking-tight transition-all duration-700 ${
+          className={`text-3xl xs:text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 xs:mb-10 md:mb-8 tracking-tight leading-tight transition-all duration-700 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
           Creating{' '}
-          <span className="inline-block align-baseline relative" style={{ minWidth: 180 }}>
+          <span className="inline-block align-baseline relative" style={{ minWidth: '240px' }}>
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={morphWords[currentIndex]}
@@ -117,7 +117,7 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
         </h1>
 
         <p
-          className={`text-base xs:text-lg md:text-xl text-muted mb-6 xs:mb-8 max-w-2xl leading-relaxed transition-all duration-700 delay-300 ${
+          className={`text-xl xs:text-2xl md:text-xl text-muted mb-10 xs:mb-12 md:mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-700 delay-300 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >

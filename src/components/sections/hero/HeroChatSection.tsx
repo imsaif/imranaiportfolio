@@ -18,31 +18,71 @@ const HeroChatSection = ({ closeChat }: HeroChatSectionProps) => {
   }, 200);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="absolute top-0 left-0 w-full h-full"
-      style={{ zIndex: 100 }}
-    >
-      <div
-        className="chat-container backdrop-blur-md bg-gradient-to-br from-white/60 to-white/30 rounded-lg sm:rounded-xl h-full w-full max-w-full max-h-full flex flex-col overflow-hidden p-2 sm:p-6"
-        style={{
-          position: 'relative',
-          boxShadow: '0 8px 32px rgba(31, 38, 135, 0.07)',
-          backdropFilter: 'blur(12px)',
-        }}
-      >
-        {isReady && <ChatInterface closeChat={closeChat} />}
+    <>
+      {/* Mobile full-screen overlay */}
+      <div className="fixed inset-0 z-[9999] sm:hidden">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="h-full w-full flex flex-col p-4"
+        >
+          <div
+            className="chat-container-mobile backdrop-blur-md bg-gradient-to-br from-white/95 to-white/85 h-full w-full max-w-full max-h-full flex flex-col overflow-hidden p-6 rounded-2xl"
+            style={{
+              boxShadow: '0 8px 32px rgba(31, 38, 135, 0.1)',
+              backdropFilter: 'blur(12px)',
+            }}
+          >
+            {isReady && <ChatInterface closeChat={closeChat} />}
+          </div>
+        </motion.div>
+      </div>
 
-        {/* Gradient border styles - matching the "Chat with my AI" button */}
+      {/* Desktop contained version */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="hidden sm:block absolute top-0 left-0 w-full h-full"
+      >
+        <div
+          className="chat-container backdrop-blur-md bg-gradient-to-br from-white/60 to-white/30 h-full w-full max-w-full max-h-full flex flex-col overflow-hidden p-6 rounded-lg rounded-xl"
+          style={{
+            boxShadow: '0 8px 32px rgba(31, 38, 135, 0.07)',
+            backdropFilter: 'blur(12px)',
+          }}
+        >
+          {isReady && <ChatInterface closeChat={closeChat} />}
+        </div>
+
+        {/* Gradient border styles for desktop */}
         <style jsx>{`
           .chat-container::before {
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--accent), var(--tertiary));
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+            -webkit-mask:
+              linear-gradient(#fff 0 0) content-box,
+              linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 10;
+            pointer-events: none;
+          }
+
+          .chat-container-mobile::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
             padding: 2px;
             background: linear-gradient(45deg, var(--accent), var(--tertiary));
             background-size: 200% 200%;
@@ -56,8 +96,8 @@ const HeroChatSection = ({ closeChat }: HeroChatSectionProps) => {
             pointer-events: none;
           }
         `}</style>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

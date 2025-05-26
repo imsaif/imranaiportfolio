@@ -43,8 +43,11 @@ This portfolio site is built with Next.js and React, focusing on showcasing prof
 ### Phase 3: Case Studies and Advanced Features
 - [x] Develop detailed case study template
 - [x] Implement individual case study pages (LessonLoom, Scheduler completed)
-- [ ] Create interactive project showcase components
+- [x] Create interactive project showcase components
 - [x] Add animations and transitions using Framer Motion
+- [x] Implement AI-powered chat interface with rate limiting
+- [x] Implement voice assistant with ElevenLabs voice cloning
+- [x] Add comprehensive voice bot rate limiting system
 - [ ] Implement dark/light mode toggle
 - [ ] Add filtering capabilities for projects
 
@@ -79,6 +82,9 @@ This portfolio site is built with Next.js and React, focusing on showcasing prof
 - **Animated Components**: Subtle, purposeful animations to enhance UX
 - **Project Showcase**: Filterable gallery of projects with previews
 - **Case Studies**: Detailed analysis of selected projects (LessonLoom, Scheduler completed)
+- **AI Chat Interface**: Interactive chat about projects and experience with rate limiting
+- **Voice Assistant**: Voice-enabled interaction with ElevenLabs voice cloning integration
+- **Rate Limiting System**: Comprehensive cost control for API usage and abuse prevention
 - **Contact Form**: Easy way for visitors to reach out
 - **About Section**: Professional background and skills
 - **Resume Page**: Dedicated page for resume/CV
@@ -87,10 +93,13 @@ This portfolio site is built with Next.js and React, focusing on showcasing prof
 ### Technical Features
 - **Server Components**: Utilize Next.js 13+ server components for performance
 - **Image Optimization**: Next.js image optimization for faster loading
-- **API Routes**: For contact form and any dynamic content
+- **API Routes**: For contact form, AI chat, and dynamic content with Redis rate limiting
+- **Voice Integration**: Web Speech API with ElevenLabs voice cloning
+- **Cost Control**: Multi-layer rate limiting to prevent API abuse and control costs
 - **TypeScript**: Type safety throughout the codebase
 - **Responsive Images**: Different image sizes for different devices
 - **Performance Monitoring**: Tools to track Core Web Vitals
+- **Real-time Usage Tracking**: Monitor API usage and costs in real-time
 
 ## Maintenance Plan
 - Regular dependency updates (monthly)

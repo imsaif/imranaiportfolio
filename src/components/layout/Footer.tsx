@@ -41,23 +41,28 @@ const Footer = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <a href="mailto:imranrizom@gmail.com" className="flex items-center justify-center gap-3 btn btn-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              <div className="inline-flex rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 p-[1.5px] hover:from-purple-700 hover:via-pink-600 hover:to-blue-700 transition-all duration-300 w-fit">
+                <a
+                  href="mailto:imranrizom@gmail.com"
+                  className="flex items-center justify-center gap-3 px-6 py-2.5 bg-white text-gray-700 rounded-xl whitespace-nowrap"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Email Me
-              </a>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Email Me
+                </a>
+              </div>
             </motion.div>
           </div>
 
