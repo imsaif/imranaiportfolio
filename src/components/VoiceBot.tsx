@@ -315,12 +315,39 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
 
   // Check browser support for Speech Recognition
   useEffect(() => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    setIsSupported(!!SpeechRecognition);
+    // Check if we're in a browser environment first
+    if (typeof window === 'undefined') {
+      setIsSupported(false);
+      return;
+    }
 
-    if (SpeechRecognition) {
-      recognitionRef.current = new SpeechRecognition();
-      setupSpeechRecognition();
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    // More robust support detection
+    const isSupported = !!(
+      SpeechRecognition &&
+      'speechSynthesis' in window &&
+      (window.location.protocol === 'https:' || window.location.hostname === 'localhost')
+    );
+
+    console.log('Speech Recognition API check:', {
+      SpeechRecognition: !!SpeechRecognition,
+      speechSynthesis: 'speechSynthesis' in window,
+      protocol: window.location.protocol,
+      hostname: window.location.hostname,
+      isSupported,
+    });
+
+    setIsSupported(isSupported);
+
+    if (SpeechRecognition && isSupported) {
+      try {
+        recognitionRef.current = new SpeechRecognition();
+        setupSpeechRecognition();
+      } catch (error) {
+        console.error('Error initializing Speech Recognition:', error);
+        setIsSupported(false);
+      }
     }
 
     return () => {
@@ -392,9 +419,9 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
       // Record the usage
       voiceBotRateLimiter.recordUsage(welcomeMessage, isClonedVoiceEnabled);
     } else if (isActive && !isSupported) {
-      const errorMsg = "Sorry, voice recognition isn't supported in your browser. Please try using Chrome or Safari.";
-      setErrorMessage(errorMsg);
-      setVoiceState('error');
+      // Don't show error immediately - let user try to interact first
+      // The error will be shown in startListening if it truly doesn't work
+      console.log('Speech Recognition not initially supported, but will try on user interaction');
     }
   }, [isActive, isSupported, isClonedVoiceEnabled]);
 
@@ -580,10 +607,32 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
     }
   };
 
-  const startListening = () => {
-    if (!recognitionRef.current || !isSupported) {
-      setErrorMessage('Voice recognition not available in your browser.');
-      return;
+  const startListening = async () => {
+    // If initial support check failed, try to re-initialize
+    if (!isSupported || !recognitionRef.current) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (!SpeechRecognition) {
+        setErrorMessage('Voice recognition not available in your browser. Please use Chrome or Safari.');
+        return;
+      }
+
+      try {
+        // Try to request microphone permission first
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+
+        // Initialize Speech Recognition after permission granted
+        recognitionRef.current = new SpeechRecognition();
+        setupSpeechRecognition();
+        setIsSupported(true);
+        setErrorMessage(''); // Clear any previous error
+
+        console.log('✅ Speech Recognition initialized after user interaction');
+      } catch (permissionError) {
+        console.error('Microphone permission denied:', permissionError);
+        setErrorMessage('Microphone access denied. Please allow microphone access to use voice features.');
+        return;
+      }
     }
 
     if (voiceState === 'speaking') {
