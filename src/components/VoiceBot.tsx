@@ -303,7 +303,7 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentMessage, setCurrentMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [isSupported, setIsSupported] = useState<boolean>(false);
+  const [isSupported, setIsSupported] = useState<boolean>(true); // Assume supported initially, check on interaction
   const [isClonedVoiceEnabled, setIsClonedVoiceEnabled] = useState<boolean>(false);
   const [lastUsedClonedVoice, setLastUsedClonedVoice] = useState<boolean>(false);
   const [preloadedResponses, setPreloadedResponses] = useState<Map<string, string>>(new Map());
@@ -317,37 +317,31 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
   useEffect(() => {
     // Check if we're in a browser environment first
     if (typeof window === 'undefined') {
-      setIsSupported(false);
       return;
     }
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    // More robust support detection
-    const isSupported = !!(
-      SpeechRecognition &&
-      'speechSynthesis' in window &&
-      (window.location.protocol === 'https:' || window.location.hostname === 'localhost')
-    );
 
     console.log('Speech Recognition API check:', {
       SpeechRecognition: !!SpeechRecognition,
       speechSynthesis: 'speechSynthesis' in window,
       protocol: window.location.protocol,
       hostname: window.location.hostname,
-      isSupported,
+      hasUserMedia: !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia),
     });
 
-    setIsSupported(isSupported);
-
-    if (SpeechRecognition && isSupported) {
+    // Try to initialize if basic APIs are available
+    if (SpeechRecognition && 'speechSynthesis' in window) {
       try {
         recognitionRef.current = new SpeechRecognition();
         setupSpeechRecognition();
+        console.log('✅ Speech Recognition pre-initialized successfully');
       } catch (error) {
-        console.error('Error initializing Speech Recognition:', error);
-        setIsSupported(false);
+        console.log('⚠️ Speech Recognition pre-initialization failed, will try on user interaction:', error);
+        // Don't set unsupported here, we'll try again on user interaction
       }
+    } else {
+      console.log('⚠️ Speech Recognition APIs not detected, will check again on user interaction');
     }
 
     return () => {
@@ -665,7 +659,8 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
 
   if (!isActive) return null;
 
-  if (!isSupported) {
+  // Only show error screen if we've explicitly determined it's not supported
+  if (!isSupported && errorMessage.includes('not available in your browser')) {
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
