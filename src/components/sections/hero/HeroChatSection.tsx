@@ -19,26 +19,25 @@ const HeroChatSection = ({ closeChat }: HeroChatSectionProps) => {
 
   return (
     <>
-      {/* Mobile full-screen overlay */}
-      <div className="fixed inset-0 z-[9999] sm:hidden">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="h-full w-full flex flex-col p-4"
+      {/* Mobile contained version - fits within Hero container */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="sm:hidden absolute top-0 left-0 w-full h-full"
+      >
+        <div
+          className="chat-container-mobile backdrop-blur-md bg-gradient-to-br from-white/95 to-white/85 h-full w-full flex flex-col overflow-hidden p-4 rounded-xl"
+          style={{
+            boxShadow: '0 8px 32px rgba(31, 38, 135, 0.1)',
+            backdropFilter: 'blur(12px)',
+            maxHeight: '100%', // Ensure it fits within parent container
+          }}
         >
-          <div
-            className="chat-container-mobile backdrop-blur-md bg-gradient-to-br from-white/95 to-white/85 h-full w-full max-w-full max-h-full flex flex-col overflow-hidden p-6 rounded-2xl"
-            style={{
-              boxShadow: '0 8px 32px rgba(31, 38, 135, 0.1)',
-              backdropFilter: 'blur(12px)',
-            }}
-          >
-            {isReady && <ChatInterface closeChat={closeChat} />}
-          </div>
-        </motion.div>
-      </div>
+          {isReady && <ChatInterface closeChat={closeChat} />}
+        </div>
+      </motion.div>
 
       {/* Desktop contained version */}
       <motion.div

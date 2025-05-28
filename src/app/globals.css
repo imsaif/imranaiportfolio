@@ -226,22 +226,46 @@ p {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 475px) {
   .container {
     padding: 0 1.5rem;
   }
 }
 
-.section-padding {
-  padding: 7rem 0;
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2.5rem;
+  }
+}
+
+.section-padding {
+  padding: 3rem 0;
+}
+
+@media (min-width: 475px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+}
+
+@media (min-width: 768px) {
   .section-padding {
     padding: 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 7rem 0;
   }
 }
 
@@ -631,6 +655,108 @@ p {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* Mobile-specific optimizations */
+.mobile-optimized {
+  /* Better touch targets */
+  min-height: 44px;
+  /* Prevent text selection on touch */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Touch-friendly button styles */
+@media (hover: none) and (pointer: coarse) {
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 1rem 2rem;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  /* Larger tap targets for mobile */
+  a,
+  button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Mobile typography improvements */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.25rem;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+/* Hero section mobile-specific improvements */
+@media (max-width: 475px) {
+  /* Small mobile devices - minimal adjustments */
+  .hero-mobile-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  /* Portrait mobile - ensure good spacing */
+  .hero-container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+/* Mobile chat interface optimizations */
+@media (max-width: 640px) {
+  .chat-container-mobile {
+    /* Ensure chat fits within Hero container */
+    max-height: 320px !important;
+    padding: 0.75rem !important;
+  }
+
+  /* Compact chat messages on very small screens */
+  .chat-message-mobile {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  * {
+    max-width: 100%;
   }
 }
 

@@ -2,27 +2,29 @@
 
 import { useState, useEffect } from 'react';
 
-import ChatInput from './chat/ChatInput';
-import ChatMessageList from './chat/ChatMessageList';
-import ChatSuggestions from './chat/ChatSuggestions';
 import { Message } from '../../types/chat';
 import { initialMessages, generateResponse } from '../../utils';
 import Button from './Button';
+import ChatInput from './chat/ChatInput';
+import ChatMessageList from './chat/ChatMessageList';
+import ChatSuggestions from './chat/ChatSuggestions';
 
 // Case study data for easy maintenance
 const caseStudies = [
   {
     id: 'lessonloom',
     title: 'LessonLoom',
-    description: 'An innovative platform that automates the creation of educational materials using AI and templating systems. Increased student engagement by 35% and reduced lesson planning time by 40%.',
-    url: '/casestudy/lessonloom'
+    description:
+      'An innovative platform that automates the creation of educational materials using AI and templating systems. Increased student engagement by 35% and reduced lesson planning time by 40%.',
+    url: '/casestudy/lessonloom',
   },
   {
     id: 'eduscheduler',
     title: 'EduScheduler',
-    description: 'An intelligent academic planning system that generates optimized teaching schedules. Reduced scheduling time by 60% and improved meeting attendance by 25%.',
-    url: '/casestudy/scheduler'
-  }
+    description:
+      'An intelligent academic planning system that generates optimized teaching schedules. Reduced scheduling time by 60% and improved meeting attendance by 25%.',
+    url: '/casestudy/scheduler',
+  },
 ];
 
 // Simplified props to just focus on in-page chat
@@ -35,11 +37,11 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
   const [isTyping, setIsTyping] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [showCaseStudyButtons, setShowCaseStudyButtons] = useState(false);
-  
+
   // Define suggested questions that focus on case studies
   const localSuggestedQuestions = [
-    "Can you walk me through Imran's case studies?",
-    "What are his most interesting projects?"
+    'Can you walk me through your case studies?',
+    'What are his most interesting projects?',
   ];
 
   // Initialize with welcome messages
@@ -66,26 +68,26 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
 
     // Hide suggestions after first user message
     setShowSuggestions(false);
-    
+
     // Check if message is asking about case studies or projects
     const lowerCaseText = text.toLowerCase();
-    const askingAboutCaseStudies = 
-      lowerCaseText.includes('case stud') || 
-      lowerCaseText.includes('projects') || 
+    const askingAboutCaseStudies =
+      lowerCaseText.includes('case stud') ||
+      lowerCaseText.includes('projects') ||
       lowerCaseText.includes('interesting project') ||
       lowerCaseText.includes('portfolio');
-    
+
     // Update messages with user's message
     setMessages(prev => [...prev, userMessage]);
     setIsTyping(true);
 
     // Get current messages for context
     const currentMessages = [...messages, userMessage];
-    
+
     try {
       // Get response from the AI (now async)
       const responseText = await generateResponse(text, currentMessages);
-      
+
       // Create bot message with response
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -96,7 +98,7 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
 
       // Add bot message to chat
       setMessages(prev => [...prev, botMessage]);
-      
+
       // Show case study buttons if the question was about case studies
       if (askingAboutCaseStudies) {
         setShowCaseStudyButtons(true);
@@ -105,7 +107,7 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
       }
     } catch (error) {
       console.error('Error generating response:', error);
-      
+
       // Add error message if response generation fails
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -113,7 +115,7 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
         sender: 'bot',
         timestamp: new Date(),
       };
-      
+
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsTyping(false);
@@ -130,7 +132,7 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
     // Find the selected case study
     const caseStudy = caseStudies.find(cs => cs.id === caseStudyId);
     if (!caseStudy) return;
-    
+
     // Add a message indicating the user is viewing a case study
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -138,9 +140,9 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
       sender: 'user',
       timestamp: new Date(),
     };
-    
+
     setMessages(prev => [...prev, userMessage]);
-    
+
     // Navigate to the case study URL
     window.location.href = caseStudy.url;
   };
@@ -148,13 +150,12 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
   // Case study buttons component
   const CaseStudyButtons = () => (
     <div className="mb-4 mt-3">
-      <p className="text-sm text-accent-600 mb-2 font-medium">View case studies:</p>
       <div className="flex flex-wrap gap-3">
-        {caseStudies.map((caseStudy) => (
-          <Button 
+        {caseStudies.map(caseStudy => (
+          <Button
             key={caseStudy.id}
-            variant="primary"
-            className="text-sm py-2.5 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            variant="secondary"
+            className="text-sm py-2.5 px-4"
             onClick={() => handleCaseStudySelect(caseStudy.id)}
           >
             View {caseStudy.title}
@@ -175,7 +176,7 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
       }}
     >
       {/* Messages container with stable dimensions */}
-      <div className="flex-1 overflow-hidden min-h-0 px-1 sm:px-4 py-1 sm:py-2">
+      <div className="flex-1 overflow-hidden min-h-0 px-2 sm:px-4 py-1 sm:py-2">
         {' '}
         {/* minHeight prevents flex container issues */}
         <ChatMessageList messages={messages} isTyping={isTyping} />
@@ -183,15 +184,13 @@ const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
 
       {/* Message input with stable height and subtle gradient */}
       <div
-        className="mt-auto px-2 sm:px-4 py-2 sm:py-4 border-t border-white/20 backdrop-blur-sm bg-gradient-to-t from-white/70 to-white/40 sticky bottom-0 z-20"
+        className="mt-auto px-2 sm:px-4 py-3 sm:py-4 border-t border-white/20 backdrop-blur-sm bg-gradient-to-t from-white/70 to-white/40 sticky bottom-0 z-20"
         style={{
           flexShrink: 0,
         }}
       >
-        {showCaseStudyButtons && (
-          <CaseStudyButtons />
-        )}
-        
+        {showCaseStudyButtons && <CaseStudyButtons />}
+
         {showSuggestions && messages.length <= 2 && (
           <div className="hidden sm:block">
             <ChatSuggestions suggestions={localSuggestedQuestions} onSelect={handleSuggestionSelect} />

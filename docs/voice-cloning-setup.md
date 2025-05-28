@@ -67,8 +67,8 @@ Add these variables to your `.env.local` file:
 
 ```bash
 # ElevenLabs Voice Cloning Configuration
-NEXT_PUBLIC_ELEVENLABS_API_KEY=your_actual_api_key_here
-NEXT_PUBLIC_ELEVENLABS_VOICE_ID=your_actual_voice_id_here
+NEXT_PUBLIC_ELEVENLABS_API_KEY=sk_4b78f4bb9e31e71f54dd6a3284c33df2aa77fb4d713d78d5
+NEXT_PUBLIC_ELEVENLABS_VOICE_ID=3VhXx4qDZgzyG9nOyUIf
 ```
 
 **Important:** Replace the placeholder values with your actual API key and Voice ID.

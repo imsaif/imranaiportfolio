@@ -63,12 +63,18 @@ type VoiceState = 'idle' | 'listening' | 'processing' | 'speaking' | 'error';
 
 // Common responses to preload for instant playback
 const COMMON_RESPONSES = [
-  'Hi, this is Imran. I can hear and respond to your voice! What would you like to know about my work?',
+  'Hi, this is Imran. I can hear and respond to your voice! What can I help you with today?',
   "Thanks for visiting my portfolio! I'm here to answer any questions about my projects and experience.",
   "I'd be happy to tell you about my work. What specifically interests you?",
-  "Let me tell you about my projects. I've worked on some exciting AI and educational technology solutions.",
   "I'm having trouble processing that. Could you try again?",
   "That's a great question! Let me provide you with some details.",
+  "I'm sorry, I didn't catch that. Could you please repeat?",
+  "I'm currently working on a new project. What would you like to know about it?",
+  "I'm here to help with any questions you have. What's on your mind?",
+  "I'm currently working on a new project. What would you like to know about it?",
+  "I'm here to help with any questions you have. What's on your mind?",
+  "I'm currently working on a new project. What would you like to know about it?",
+  "I'm here to help with any questions you have. What's on your mind?",
 ];
 
 // Professional Voice Visualizer with animated bars

@@ -124,17 +124,17 @@ const Header = () => {
 
         {/* Mobile navigation */}
         <div
-          className={`md:hidden absolute top-full left-0 right-0 bg-white border-b border-border py-6 shadow-md transition-all duration-300 z-50 ${
+          className={`md:hidden absolute top-full left-0 right-0 bg-white border-b border-border py-4 shadow-lg transition-all duration-300 z-50 ${
             mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
           }`}
         >
-          <nav className="container mx-auto px-6">
-            <ul className="flex flex-col gap-6" style={{ color: 'black', fontSize: 32 }}>
+          <nav className="container mx-auto px-4">
+            <ul className="flex flex-col gap-4">
               {navItems.map(item => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="block py-3 px-4 text-foreground hover:bg-subtle-bg rounded-md transition-all duration-300 hover:text-accent"
+                    className="block py-3 px-4 text-foreground hover:bg-subtle-bg rounded-md transition-all duration-300 hover:text-accent text-lg font-medium"
                     onClick={e => {
                       setMobileMenuOpen(false);
                       handleNavLinkClick(e, item.href);

@@ -77,56 +77,6 @@ const ChatTransition = ({ onComplete }: ChatTransitionProps) => {
             transition={{ duration: 0.4 }}
             className="flex flex-col items-center"
           >
-            {/* Star icon with gradient and pulsing animation */}
-            <div className="relative mb-4">
-              <motion.div
-                animate={{
-                  boxShadow: ['0 0 0 0 rgba(99, 102, 241, 0)', '0 0 0 15px rgba(99, 102, 241, 0)'],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: 'loop',
-                }}
-                className="rounded-full"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-16 w-16"
-                  viewBox="0 0 60 60"
-                  fill="none"
-                  style={
-                    {
-                      // No glow
-                    }
-                  }
-                >
-                  <defs>
-                    <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#6366f1" />
-                      <stop offset="50%" stopColor="#a855f7" />
-                      <stop offset="100%" stopColor="#f43f5e" />
-                    </linearGradient>
-                  </defs>
-                  {/* Large sparkle - center left */}
-                  <path d="M20 10 Q22 25 35 30 Q22 35 20 50 Q18 35 5 30 Q18 25 20 10 Z" fill="url(#starGradient)" />
-                  {/* Medium sparkle - top right */}
-                  <path
-                    d="M45 18 Q46 25 54 28 Q46 31 45 38 Q44 31 36 28 Q44 25 45 18 Z"
-                    fill="url(#starGradient)"
-                    opacity="0.7"
-                  />
-                  {/* Small sparkle - bottom right */}
-                  <path
-                    d="M38 42 Q38.8 45.5 44 48 Q38.8 49.5 38 54 Q37.2 49.5 32 48 Q37.2 45.5 38 42 Z"
-                    fill="url(#starGradient)"
-                    opacity="0.5"
-                  />
-                </svg>
-              </motion.div>
-            </div>
-
             {/* Text label */}
             <motion.p
               className="text-lg font-medium text-foreground"

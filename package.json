@@ -21,6 +21,7 @@
     "lighthouse": "lhci autorun",
     "lighthouse:mobile": "lhci autorun --collect.settings.formFactor=mobile",
     "lighthouse:desktop": "lhci autorun --collect.settings.formFactor=desktop",
+    "test:mobile": "node scripts/test-mobile-responsiveness.js",
     "perf:measure": "node scripts/measure-performance.js",
     "perf:test": "node scripts/test-performance.js",
     "perf": "npm run perf:test",

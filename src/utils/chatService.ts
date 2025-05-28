@@ -33,9 +33,9 @@ function generateLocalResponse(text: string): string {
     (query.includes('lesson') && query.includes('case study'))
   ) {
     return `**LessonLoom**
-An innovative platform that automates the creation of educational materials using AI and templating systems.
+An innovative platform I designed that automates the creation of educational materials using AI and templating systems.
 
-LessonLoom helps educators create high-quality learning resources in a fraction of the time it would normally take, using AI-driven content generation and intelligent templating.
+I built LessonLoom to help educators create high-quality learning resources in a fraction of the time it would normally take, using AI-driven content generation and intelligent templating.
 
 Click the LessonLoom button below to view the complete case study.
 
@@ -48,9 +48,9 @@ Would you like to see another case study?`;
     (query.includes('scheduler') && query.includes('case study'))
   ) {
     return `**EduScheduler**
-An intelligent academic planning system that generates optimized teaching schedules.
+An intelligent academic planning system I designed that generates optimized teaching schedules.
 
-EduScheduler uses advanced algorithms to create optimal teaching schedules while considering instructor preferences, room availability, and curriculum requirements.
+I created EduScheduler using advanced algorithms to create optimal teaching schedules while considering instructor preferences, room availability, and curriculum requirements.
 
 Click the EduScheduler button below to view the complete case study.
 
@@ -65,15 +65,15 @@ Would you like to see another case study?`;
     query.includes('project') ||
     (query.includes('most') && query.includes('interesting'))
   ) {
-    return `Here are Imran's most interesting projects:
+    return `Here are my most interesting projects:
 
 **LessonLoom**
-An innovative platform that automates the creation of educational materials using AI and templating systems.
+An innovative platform I designed that automates the creation of educational materials using AI and templating systems.
 
 **EduScheduler**
-An intelligent academic planning system that generates optimized teaching schedules.
+An intelligent academic planning system I created that generates optimized teaching schedules.
 
-You can explore these case studies in detail by clicking the buttons below. Each case study showcases Imran's expertise in AI design and user experience.`;
+You can explore these case studies in detail by clicking the buttons below. Each case study showcases my expertise in AI design and user experience.`;
   }
 
   // Generic fallback
@@ -82,10 +82,10 @@ You can explore these case studies in detail by clicking the buttons below. Each
 In the meantime, you can explore my case studies using the buttons below:
 
 **LessonLoom**
-An innovative platform that automates the creation of educational materials using AI and templating systems.
+An innovative platform I designed that automates the creation of educational materials using AI and templating systems.
 
 **EduScheduler**
-An intelligent academic planning system that generates optimized teaching schedules.`;
+An intelligent academic planning system I created that generates optimized teaching schedules.`;
 }
 
 /**
@@ -181,11 +181,6 @@ async function callAPI(text: string, chatHistory: Message[] = []): Promise<strin
  */
 export const suggestedQuestions = [
   "What's your background in AI design?",
-  'How do you approach design projects?',
-  'What tools do you use most?',
-  'Can you show me your best projects?',
-  'How do you handle AI/ML design challenges?',
-  'What was your toughest project?',
   'What makes your design approach different?',
   'Tell me more about your case studies',
 ];

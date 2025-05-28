@@ -1,9 +1,7 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import React from 'react';
-import VoiceBot from '../VoiceBot';
-import ChatInterface from './ChatInterface';
 
 export type Mode = 'portfolio' | 'chat' | 'voice';
 
@@ -29,7 +27,7 @@ const modes: { id: Mode; label: string; icon: React.ReactNode }[] = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-9 h-9 xs:w-10 xs:h-10 sm:w-6 sm:h-6"
+        className="w-6 h-6 xs:w-5 xs:h-5 sm:w-5 sm:h-5"
       >
         <rect width="18" height="18" x="3" y="3" rx="2" />
         <path d="M3 9h18" />
@@ -51,7 +49,7 @@ const modes: { id: Mode; label: string; icon: React.ReactNode }[] = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-9 h-9 xs:w-10 xs:h-10 sm:w-6 sm:h-6"
+        className="w-6 h-6 xs:w-5 xs:h-5 sm:w-5 sm:h-5"
       >
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
@@ -71,7 +69,7 @@ const modes: { id: Mode; label: string; icon: React.ReactNode }[] = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-9 h-9 xs:w-10 xs:h-10 sm:w-6 sm:h-6"
+        className="w-6 h-6 xs:w-5 xs:h-5 sm:w-5 sm:h-5"
       >
         <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
         <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
@@ -97,7 +95,7 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-9 h-9 xs:w-10 xs:h-10 sm:w-6 sm:h-6"
+        className="w-6 h-6 xs:w-5 xs:h-5 sm:w-5 sm:h-5"
       >
         <path d="m18 6-12 12" />
         <path d="m6 6 12 12" />
@@ -113,7 +111,7 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-9 h-9 xs:w-10 xs:h-10 sm:w-6 sm:h-6"
+        className="w-6 h-6 xs:w-5 xs:h-5 sm:w-5 sm:h-5"
       >
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
@@ -142,7 +140,7 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
             <button
               key={mode.id}
               onClick={() => onModeChange(mode.id)}
-              className={`relative flex items-center gap-3 px-10 py-5 xs:px-12 xs:py-6 sm:px-6 sm:py-3 text-lg xs:text-xl sm:text-sm font-medium transition-colors rounded-full ${
+              className={`relative flex items-center gap-2 px-6 py-4 xs:px-5 xs:py-3 sm:px-6 sm:py-3 text-sm xs:text-base sm:text-sm font-medium transition-colors rounded-full ${
                 currentMode === mode.id ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
               }`}
               aria-label={`Switch to ${mode.label} mode`}

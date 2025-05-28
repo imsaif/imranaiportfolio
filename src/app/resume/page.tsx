@@ -600,7 +600,7 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
           <div className="mt-16 text-center">
             {/* Download Resume Button - Rounded gradient border style */}
             <a
-              href="https://drive.google.com/file/d/1GDjAugRkYebtTknQBgkzMyrRtDXddqA_/view"
+              href="https://drive.google.com/file/d/1dn0zJB2FjcgdidSu9Yd-k4vyPUVNX00T/view"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block group focus:outline-none"

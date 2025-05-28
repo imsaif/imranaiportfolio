@@ -119,10 +119,10 @@ const Hero = () => {
 
   return (
     <section
-      className="pt-6 xs:pt-8 sm:pt-12 pb-4 xs:pb-6 sm:pb-8 md:pb-12 overflow-hidden relative bg-background flex items-center justify-center min-h-[80vh]"
+      className="pt-6 xs:pt-8 sm:pt-8 md:pt-12 pb-6 xs:pb-8 sm:pb-8 md:pb-12 overflow-hidden relative bg-background flex items-center justify-center min-h-[90vh] xs:min-h-[85vh] md:min-h-[80vh]"
       style={{ position: 'relative', overflowX: 'hidden' }}
     >
-      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8 relative z-10">
+      <div className="container mx-auto px-6 xs:px-6 sm:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Always show the hero content */}
           <div className="flex flex-col items-center text-center">
@@ -156,7 +156,7 @@ const Hero = () => {
             <div
               className={`relative ${
                 isChatOpen || currentMode === 'voice'
-                  ? 'h-[350px] xs:h-[380px] md:h-[450px]'
+                  ? 'h-[320px] xs:h-[350px] md:h-[450px]'
                   : 'h-[300px] xs:h-[320px] md:h-[300px]'
               } w-full overflow-hidden transition-all duration-300 flex items-center justify-center`}
             >
@@ -174,7 +174,7 @@ const Hero = () => {
             </div>
 
             {/* Mode Toggle */}
-            <div className="mt-8 flex justify-center">
+            <div className="mt-4 xs:mt-6 sm:mt-8 flex justify-center">
               <ModeToggle currentMode={currentMode} onModeChange={handleModeChange} isVisible={isVisible} />
             </div>
 

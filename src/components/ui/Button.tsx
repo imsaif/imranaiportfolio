@@ -41,7 +41,7 @@ const Button = ({
   } else if (variant === 'outline') {
     innerBase += ' bg-white text-black';
   } else if (variant === 'secondary') {
-    innerBase = innerBase + ' bg-accent/10 text-accent';
+    innerBase = innerBase.replace('bg-white', 'bg-background') + ' text-foreground hover:bg-accent/5';
   } else if (variant === 'ghost') {
     innerBase = innerBase + ' bg-transparent text-foreground';
   }
