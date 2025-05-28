@@ -88,7 +88,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="work" className="relative w-full mt-2 pt-4" ref={sectionRef}>
+    <section id="work" className="relative w-full mt-0 pt-2 md:mt-2 md:pt-4" ref={sectionRef}>
       <div className="container mx-auto max-w-4xl px-4">
         <div ref={sectionRef} className="relative overflow-visible">
           {projects.map((project, idx) => (

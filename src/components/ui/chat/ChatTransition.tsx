@@ -78,14 +78,7 @@ const ChatTransition = ({ onComplete }: ChatTransitionProps) => {
             className="flex flex-col items-center"
           >
             {/* Text label */}
-            <motion.p
-              className="text-lg font-medium text-foreground"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              Imran is typing...
-            </motion.p>
+            <p className="text-lg font-medium text-foreground">Imran is typing...</p>
 
             {/* Gradient dots animation */}
             <div className="flex space-x-2 mt-2">

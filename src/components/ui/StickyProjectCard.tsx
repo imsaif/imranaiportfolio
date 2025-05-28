@@ -99,7 +99,7 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
         <ProjectMockup project={project} />
       </div>
       {/* Right side: Text content */}
-      <div className="w-full md:w-1/2 flex flex-col items-start justify-center text-left pl-0 md:pl-12 z-20 p-8 pt-0">
+      <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left pl-0 md:pl-12 z-20 p-8 pt-0">
         <span className="mb-4 inline-block uppercase tracking-wide text-xs font-bold text-indigo-700 bg-indigo-50 rounded px-3 py-1">
           {project.tagline}
         </span>
@@ -116,9 +116,9 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
         )}
         <p className="text-base md:text-lg text-black mb-8 leading-relaxed drop-shadow-lg">{project.description}</p>
         {project.stats && project.stats.length > 0 && (
-          <div className="flex flex-row gap-8 mt-2 mb-2 justify-start">
+          <div className="flex flex-row gap-8 mt-2 mb-2 justify-center md:justify-start">
             {project.stats.slice(0, 2).map((stat, idx) => (
-              <div key={idx} className="flex flex-col items-start">
+              <div key={idx} className="flex flex-col items-center md:items-start">
                 <span className="text-xl font-extrabold text-gray-900">{stat.value}</span>
                 <span className="text-xs font-medium text-gray-500 uppercase tracking-wide mt-1">{stat.label}</span>
               </div>

@@ -30,7 +30,7 @@ export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: Proj
 
   return (
     <div
-      className="relative transition-all duration-300 ease-in-out"
+      className="relative transition-all duration-300 ease-in-out w-full flex-1"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -38,7 +38,7 @@ export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: Proj
       {showParticles && <ParticlesOnHover />}
 
       {/* Display the main project image */}
-      <div className="relative w-full h-full min-h-[260px] md:min-h-[400px] rounded-l-xl overflow-hidden bg-white">
+      <div className="relative w-full h-full min-h-[260px] md:min-h-[400px] rounded-t-xl md:rounded-l-xl md:rounded-tr-none overflow-hidden bg-white">
         {project.images && project.images.length > 0 ? (
           <Image
             src={project.images[0]}
@@ -46,7 +46,7 @@ export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: Proj
             width={600}
             height={360}
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover w-full h-full rounded-l-xl"
+            className="object-cover w-full h-full rounded-t-xl md:rounded-l-xl md:rounded-tr-none"
             priority
             quality={80}
           />

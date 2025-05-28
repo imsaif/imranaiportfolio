@@ -119,15 +119,15 @@ const Hero = () => {
 
   return (
     <section
-      className="pt-6 xs:pt-8 sm:pt-8 md:pt-12 pb-6 xs:pb-8 sm:pb-8 md:pb-12 overflow-hidden relative bg-background flex items-center justify-center min-h-[90vh] xs:min-h-[85vh] md:min-h-[80vh]"
+      className="pt-6 xs:pt-8 sm:pt-8 md:pt-12 pb-2 xs:pb-4 sm:pb-8 md:pb-12 overflow-hidden relative bg-background flex items-center justify-center min-h-[90vh] xs:min-h-[85vh] md:min-h-[80vh]"
       style={{ position: 'relative', overflowX: 'hidden' }}
     >
       <div className="container mx-auto px-6 xs:px-6 sm:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Always show the hero content */}
           <div className="flex flex-col items-center text-center">
-            {/* Hide avatar and greeting in voice mode */}
-            {!isChatOpen && currentMode !== 'voice' && (
+            {/* Hide avatar and greeting in voice mode and during transitions */}
+            {!isChatOpen && !isTransitioning && currentMode !== 'voice' && (
               <div className="flex items-center justify-center gap-3 mb-3 xs:mb-4 md:mb-6">
                 <div className="relative w-10 h-7 xs:w-12 xs:h-8 md:w-14 md:h-9 overflow-hidden rounded-full border border-black/40 shadow-md">
                   <Image
