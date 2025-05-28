@@ -37,6 +37,30 @@
 - **Accessibility:** Screen reader compatible, keyboard navigation, visual indicators for hearing-impaired users.
 - **Error Handling:** Graceful fallbacks for unsupported browsers, permission issues, network problems, and rate limit scenarios.
 
+### Case Study Voice Reader (EduScheduler)
+- **Location:** EduScheduler case study page (src/app/casestudy/scheduler/page.tsx)
+- **Purpose:** Provides audio narration of the case study with synchronized autoscroll functionality.
+- **Components:**
+  - VoiceControlBar (src/components/case-studies/VoiceControlBar.tsx): Modern UI with play/pause controls, progress bar, timing display
+  - CaseStudyVoiceService (src/services/caseStudyVoiceService.ts): Manages audio playback and section tracking
+  - Voice Script Data (src/data/caseStudyVoiceScript.ts): Structured script with timestamps and section mappings
+  - VoiceTimestampDebugger (src/components/case-studies/VoiceTimestampDebugger.tsx): Development tool for fine-tuning
+- **Audio Implementation:** Uses pre-generated MP3 file (/public/audio/case-study/eduscheduler-complete.mp3) for optimal performance
+- **Section Tracking:** 10 distinct sections with precise timestamps:
+  - Introduction (0:00-0:10) → Overview section
+  - Problem (0:10-0:30) → Challenge section  
+  - Research (0:30-0:37) → User Research section
+  - User Personas (0:37-0:57) → User Personas section
+  - Solution (0:57-1:13) → Design Process section
+  - Approach (1:13-1:25) → Design Process section
+  - Impact (1:25-1:36) → Conclusion section
+  - Quote (1:36-1:47) → Conclusion section
+  - Lessons (1:47-1:59) → Lessons section
+  - Conclusion (1:59-2:10) → Conclusion section
+- **Autoscroll:** Smooth scrolling to relevant page sections based on audio timestamp with 100px header offset
+- **Interactive Controls:** Play/pause, seeking, progress tracking, section indicators, cost monitoring
+- **Performance:** Optimized with proper cleanup, error handling, and accessibility considerations
+
 ### Chat Interface
 - **Location:** Hero section mode toggle (src/components/ui/ChatInterface.tsx)
 - **Purpose:** Interactive chat interface for conversations about Imran's work and projects.

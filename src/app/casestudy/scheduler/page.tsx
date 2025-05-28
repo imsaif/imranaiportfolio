@@ -14,8 +14,11 @@ import { UserResearchSection } from './sections/UserResearchSection';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 import UserJourneyMapInteractive from '@/components/case-studies/UserJourneyMapInteractive';
+import VoiceControlBar from '@/components/case-studies/VoiceControlBar';
 import ProgressBar from '@/components/ui/ProgressBar';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
+import { scriptMetrics } from '@/data/caseStudyVoiceScript';
+import { caseStudyVoiceService } from '@/services/caseStudyVoiceService';
 
 // Edit (pencil) icon for Design Process section title with gradient stroke
 const DesignProcessIcon = (
@@ -92,6 +95,109 @@ export default function Page() {
 
   // Scroll progress state
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Voice control state
+  const [isVoicePlaying, setIsVoicePlaying] = useState(false);
+  const [voiceProgress, setVoiceProgress] = useState(0);
+  const [currentVoiceSection, setCurrentVoiceSection] = useState('');
+  const [charactersUsed, setCharactersUsed] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [totalDuration, setTotalDuration] = useState(0);
+  const charactersLimit = scriptMetrics.totalCharacters; // Use actual script total
+  const estimatedCost = charactersUsed * 0.0003; // ElevenLabs pricing
+
+  // Voice control handlers
+  const handleVoicePlay = async () => {
+    try {
+      const state = caseStudyVoiceService.getState();
+
+      // If paused, resume from current position
+      if (state.isPaused) {
+        await caseStudyVoiceService.resume();
+        setIsVoicePlaying(true);
+        return;
+      }
+
+      // Otherwise start fresh
+      setIsVoicePlaying(true);
+      setCurrentVoiceSection('Opening');
+
+      await caseStudyVoiceService.playScript({
+        onProgress: progress => {
+          setVoiceProgress(progress);
+        },
+        onSectionChange: (sectionKey, sectionName) => {
+          setCurrentVoiceSection(sectionName);
+        },
+        onCharacterUsage: charactersUsed => {
+          setCharactersUsed(charactersUsed);
+        },
+        onError: error => {
+          console.error('Voice playback error:', error);
+          setIsVoicePlaying(false);
+          setCurrentVoiceSection('Error: ' + error);
+        },
+        onComplete: () => {
+          setIsVoicePlaying(false);
+          setVoiceProgress(100);
+          setCurrentVoiceSection('Completed');
+        },
+      });
+    } catch (error) {
+      console.error('Failed to start voice playback:', error);
+      setIsVoicePlaying(false);
+      setCurrentVoiceSection('Failed to start');
+    }
+  };
+
+  const handleVoicePause = () => {
+    const state = caseStudyVoiceService.getState();
+
+    if (state.isPlaying) {
+      caseStudyVoiceService.pause();
+      setIsVoicePlaying(false);
+    } else if (state.isPaused) {
+      caseStudyVoiceService.resume();
+      setIsVoicePlaying(true);
+    } else {
+      caseStudyVoiceService.stop();
+      setIsVoicePlaying(false);
+      setVoiceProgress(0);
+      setCurrentVoiceSection('');
+      setCharactersUsed(0);
+    }
+  };
+
+  // Audio control handlers
+  const handleSeek = (time: number) => {
+    caseStudyVoiceService.seekToTime(time);
+  };
+
+  // Cleanup voice service on component unmount
+  useEffect(() => {
+    return () => {
+      caseStudyVoiceService.stop();
+    };
+  }, []);
+
+  // Update timing information while playing
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+
+    if (isVoicePlaying) {
+      interval = setInterval(() => {
+        const state = caseStudyVoiceService.getState();
+        setCurrentTime(state.currentTime);
+        setTotalDuration(state.totalDuration);
+      }, 100); // Update every 100ms for smooth display
+    }
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [isVoicePlaying]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -170,6 +276,19 @@ export default function Page() {
           <CaseStudyHeader level="h1" className="text-center mb-4">
             EduScheduler: Intelligent Academic Planning System
           </CaseStudyHeader>
+          <VoiceControlBar
+            isPlaying={isVoicePlaying}
+            onPlay={handleVoicePlay}
+            onPause={handleVoicePause}
+            onSeek={handleSeek}
+            progress={voiceProgress}
+            currentSection={currentVoiceSection}
+            estimatedCost={estimatedCost}
+            charactersUsed={charactersUsed}
+            charactersLimit={charactersLimit}
+            currentTime={currentTime}
+            totalDuration={totalDuration}
+          />
         </IntroductionSection>
         {/* Vertically stacked sections with sticky dynamic title for four sections */}
         <section className="relative flex flex-row items-start gap-0 mb-20 min-h-[500px]">
@@ -780,6 +899,7 @@ export default function Page() {
           {/* Content */}
           <div className="pr-4">
             <motion.div
+              id="conclusion"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
