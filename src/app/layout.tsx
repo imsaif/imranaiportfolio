@@ -3,6 +3,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 
 import './globals.css';
+import Hotjar from '../components/analytics/Hotjar';
 import ClientProviders from '../components/ClientProviders';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Imran Mohammed' }],
   viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#6366f1',
+  themeColor: '#7075e0',
 };
 
 export default function RootLayout({
@@ -49,6 +50,7 @@ export default function RootLayout({
         </ClientProviders>
         <SpeedInsights />
         <Analytics />
+        <Hotjar />
       </body>
     </html>
   );
