@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import React, { useState, useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 // Placeholder data for journey steps
@@ -50,8 +50,6 @@ const steps = [
     quote: '"It felt great to finally see a green check!"',
   },
 ];
-
-const AUTO_SCROLL_INTERVAL = 4000; // 4 seconds
 
 // Add icon components at the top of the file
 const EditIcon = (
@@ -128,26 +126,12 @@ const EmotionIcons: Record<string, JSX.Element> = {
   ),
 };
 
-const PainPointIcon = (
-  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="inline-block" aria-hidden="true">
-    <path d="M12 3L2 21h20L12 3z" stroke="#111" strokeWidth="2" fill="none" />
-    <circle cx="12" cy="16" r="1" fill="#111" />
-    <path d="M12 8v5" stroke="#111" strokeWidth="2" />
-  </svg>
-);
-
-const OpportunityIcon = (
-  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="inline-block" aria-hidden="true">
-    <path
-      d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-      stroke="#111"
-      strokeWidth="2"
-    />
-    <circle cx="12" cy="12" r="5" stroke="#111" strokeWidth="2" fill="none" />
-  </svg>
-);
-
 export default function UserJourneyMapInteractive() {
+  // Ensure we have all required steps
+  if (!steps || steps.length < 5) {
+    return <div>Journey steps not available</div>;
+  }
+
   const shouldReduceMotion = useReducedMotion();
   const { ref: inViewRef, inView } = useInView({ threshold: 0.2 });
   const hasInteracted = useRef(false); // Track if user has interacted
@@ -203,92 +187,45 @@ export default function UserJourneyMapInteractive() {
   const scale3 = useTransform(scrollYProgress3, [0, 0.5, 1], [0.96, 1, 0.96]);
   const scale4 = useTransform(scrollYProgress4, [0, 0.5, 1], [0.96, 1, 0.96]);
 
-  const boxShadow0 = useTransform(
-    scrollYProgress0,
-    [0, 0.5, 1],
-    [
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-      '0 6px 18px rgba(99,102,241,0.10), 0 2px 8px rgba(0,0,0,0.08)',
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-    ]
-  );
-  const boxShadow1 = useTransform(
-    scrollYProgress1,
-    [0, 0.5, 1],
-    [
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-      '0 6px 18px rgba(99,102,241,0.10), 0 2px 8px rgba(0,0,0,0.08)',
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-    ]
-  );
-  const boxShadow2 = useTransform(
-    scrollYProgress2,
-    [0, 0.5, 1],
-    [
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-      '0 6px 18px rgba(99,102,241,0.10), 0 2px 8px rgba(0,0,0,0.08)',
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-    ]
-  );
-  const boxShadow3 = useTransform(
-    scrollYProgress3,
-    [0, 0.5, 1],
-    [
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-      '0 6px 18px rgba(99,102,241,0.10), 0 2px 8px rgba(0,0,0,0.08)',
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-    ]
-  );
-  const boxShadow4 = useTransform(
-    scrollYProgress4,
-    [0, 0.5, 1],
-    [
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-      '0 6px 18px rgba(99,102,241,0.10), 0 2px 8px rgba(0,0,0,0.08)',
-      '0 2px 8px rgba(99,102,241,0.04), 0 1px 4px rgba(0,0,0,0.04)',
-    ]
-  );
-  // --- END FIX ---
-
   // Auto-scroll logic (remains disabled on mount)
-  useEffect(() => {
-    if (shouldReduceMotion || !inView) return;
-    return () => {};
-  }, [shouldReduceMotion, inView]);
+  // useEffect(() => {
+  //   if (shouldReduceMotion || !inView) return;
+  //   return () => {};
+  // }, [shouldReduceMotion, inView]);
 
   // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') {
-        hasInteracted.current = true;
-        // Scroll logic would be here if needed
-      }
-      if (e.key === 'ArrowLeft') {
-        hasInteracted.current = true;
-        // Scroll logic would be here if needed
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  // useEffect(() => {
+  //   const handleKeyDown = (e: KeyboardEvent) => {
+  //     if (e.key === 'ArrowRight') {
+  //       hasInteracted.current = true;
+  //       // Scroll logic would be here if needed
+  //     }
+  //     if (e.key === 'ArrowLeft') {
+  //       hasInteracted.current = true;
+  //       // Scroll logic would be here if needed
+  //     }
+  //   };
+  //   window.addEventListener('keydown', handleKeyDown);
+  //   return () => window.removeEventListener('keydown', handleKeyDown);
+  // }, []);
 
   // Reset auto-scroll on user interaction
-  const resetAutoScroll = () => {
-    // Reset logic would be here if needed
-  };
+  // const resetAutoScroll = () => {
+  //   // Reset logic would be here if needed
+  // };
 
   // Pause auto-scroll on hover/focus
-  const handlePause = () => {
-    // Pause logic would be here if needed
-  };
-  const handleResume = () => {
-    // Resume logic would be here if needed
-  };
+  // const handlePause = () => {
+  //   // Pause logic would be here if needed
+  // };
+  // const handleResume = () => {
+  //   // Resume logic would be here if needed
+  // };
 
   // Mark as interacted on click, mouse enter, or focus
-  const handleUserInteraction = () => {
-    hasInteracted.current = true;
-  };
+  // const handleUserInteraction = () => {
+  //   hasInteracted.current = true;
+  // };
 
   return (
     <div className="w-full relative" style={{ height: containerHeight }} ref={outerContainerRef}>

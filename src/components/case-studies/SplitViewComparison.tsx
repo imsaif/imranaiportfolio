@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 
 interface Hotspot {
   id: string;
