@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import React, { useState, useRef, useEffect } from 'react';
-import { getSectionOrder, formatSectionName } from '@/data/caseStudyVoiceScript';
+import { formatSectionName, getSectionOrder } from '@/data/caseStudyVoiceScript';
 import { caseStudyVoiceService } from '@/services/caseStudyVoiceService';
+import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * Voice Timestamp Debugger
@@ -20,7 +20,6 @@ export default function VoiceTimestampDebugger() {
   const [customSections, setCustomSections] = useState<
     Array<{ key: string; name: string; start: number; end: number }>
   >([]);
-  const [isEditingCustom, setIsEditingCustom] = useState(false);
 
   // Get current timestamps from service
   const timestamps = caseStudyVoiceService.getSectionTimestamps();
@@ -122,11 +121,7 @@ export default function VoiceTimestampDebugger() {
     }
   };
 
-  const handleSeek = (time: number) => {
-    if (!audioRef.current) return;
-    audioRef.current.currentTime = time;
-    setCurrentTime(time);
-  };
+
 
   const seekToSection = (sectionKey: string) => {
     const timestamp = timestamps[sectionKey];
@@ -271,9 +266,9 @@ ${customSections
               >
                 <div className="font-medium">{formatSectionName(sectionKey)}</div>
                 <div className="text-gray-600">
-                  {formatTime(timestamp.start)} - {formatTime(timestamp.end)}
-                  <span className="ml-2">({timestamp.characters} chars)</span>
-                  <span className="ml-2 text-purple-600">→ {timestamp.elementId}</span>
+                  {timestamp ? `${formatTime(timestamp.start)} - ${formatTime(timestamp.end)}` : 'No timestamp'}
+                  <span className="ml-2">({timestamp?.characters || 0} chars)</span>
+                  <span className="ml-2 text-purple-600">→ {timestamp?.elementId || 'unknown'}</span>
                 </div>
               </div>
             );

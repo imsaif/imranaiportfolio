@@ -68,9 +68,14 @@
 
 ### Voice Assistant
 - **`VoiceBot.tsx`**: Main voice assistant component
+  - **Recent Updates (December 2024)**: Fixed syntax errors, removed unused VoiceIndicatorBadge component, improved parameter handling
+  - **Props**: `{ isActive: boolean }` (simplified from previous version)
+  - **State Management**: Manages voice state, messages, error handling, and speech recognition
+  - **Features**: Speech recognition, AI responses, voice synthesis, rate limiting
 - **`VoiceUsageMonitor.tsx`**: Voice usage tracking
 - **`services/voiceBotRateLimit.ts`**: Rate limiting logic
 - **`services/voiceCloning.ts`**: ElevenLabs integration
+  - **Recent Updates (December 2024)**: Added missing `cloneVoice` function export for compatibility
 
 ### Chat System
 - **`context/ChatContext.tsx`**: Chat state management
@@ -245,4 +250,4 @@ interface ComponentProps {
 4. **Document**: Update component documentation
 5. **Review**: Check for breaking changes
 
-This component reference should help Cursor understand the project's component architecture and relationships. 
+This component reference should help Cursor understand the project's component architecture and relationships.

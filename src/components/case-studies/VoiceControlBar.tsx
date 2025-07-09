@@ -27,8 +27,6 @@ export default function VoiceControlBar({
   onSeek,
   progress,
   currentSection,
-  charactersUsed,
-  charactersLimit,
   currentTime = 0,
   totalDuration = 0,
 }: VoiceControlBarProps) {
@@ -86,6 +84,7 @@ export default function VoiceControlBar({
         document.removeEventListener('mouseup', handleMouseUp);
       };
     }
+    return undefined;
   }, [isDragging]);
 
   // Voice icon with gradient

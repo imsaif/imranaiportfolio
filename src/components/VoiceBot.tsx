@@ -222,33 +222,6 @@ const MicrophoneIcon: React.FC<{
   );
 };
 
-// Voice type indicator badge
-const VoiceIndicatorBadge: React.FC<{
-  isClonedVoice: boolean;
-  isVisible: boolean;
-  state: VoiceState;
-}> = ({ isClonedVoice, isVisible, state }) => {
-  if (!isVisible) return null;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      className={`px-4 py-2 rounded-full text-sm font-medium backdrop-blur-md border mb-4 ${
-        isClonedVoice
-          ? 'bg-rose-500/20 text-rose-700 border-rose-400/30'
-          : 'bg-indigo-500/20 text-indigo-700 border-indigo-400/30'
-      }`}
-    >
-      <div className="flex items-center gap-2">
-        <div className={`w-2 h-2 rounded-full animate-pulse ${isClonedVoice ? 'bg-rose-500' : 'bg-indigo-500'}`} />
-        <span>{isClonedVoice ? "Imran's Voice" : 'AI Voice'}</span>
-      </div>
-    </motion.div>
-  );
-};
-
 // Status text with enhanced styling
 const StatusDisplay: React.FC<{
   state: VoiceState;
@@ -304,7 +277,7 @@ const StatusDisplay: React.FC<{
   );
 };
 
-const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
+const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
   const [voiceState, setVoiceState] = useState<VoiceState>('idle');
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentMessage, setCurrentMessage] = useState<string>('');
@@ -696,12 +669,7 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
       exit={{ opacity: 0, y: 20 }}
       className="text-center py-12 max-w-2xl mx-auto"
     >
-      {/* Voice Type Indicator - Removed */}
-      {/* <VoiceIndicatorBadge
-        isClonedVoice={isClonedVoiceEnabled && lastUsedClonedVoice}
-        isVisible={voiceState === 'speaking' || voiceState === 'processing'}
-        state={voiceState}
-      /> */}
+
 
       {/* Voice Visualizer */}
       <VoiceVisualizer

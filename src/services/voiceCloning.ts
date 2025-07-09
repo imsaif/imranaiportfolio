@@ -161,6 +161,38 @@ export const synthesizeWithClonedVoice = async (
 };
 
 /**
+ * Simple voice cloning function for compatibility
+ * Synthesizes text and plays it immediately
+ */
+export const cloneVoice = async (text: string): Promise<VoiceCloneResponse> => {
+  try {
+    // Synthesize the voice
+    const result = await synthesizeWithClonedVoice(text);
+
+    if (result.success && result.audioUrl) {
+      // Play the audio immediately
+      const audio = new Audio(result.audioUrl);
+      await audio.play();
+
+      // Clean up the blob URL after playing
+      audio.onended = () => {
+        URL.revokeObjectURL(result.audioUrl!);
+      };
+
+      return { success: true, fallbackUsed: false };
+    } else {
+      return result;
+    }
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      fallbackUsed: true,
+    };
+  }
+};
+
+/**
  * Play synthesized audio from cloned voice
  */
 export const playClonedVoiceAudio = async (

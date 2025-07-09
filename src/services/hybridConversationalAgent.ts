@@ -5,7 +5,20 @@
  */
 
 import { generateResponse } from '../utils/chatService';
-import { playClonedVoiceAudio, isVoiceCloningEnabled } from './voiceCloning';
+import { cloneVoice, isVoiceCloningEnabled } from './voiceCloning';
+
+// Extended SpeechRecognition event interfaces
+interface CustomSpeechRecognitionEvent extends Event {
+  results: SpeechRecognitionResultList;
+  resultIndex: number;
+}
+
+interface CustomSpeechRecognitionErrorEvent extends Event {
+  error: string;
+  message?: string;
+}
+
+// SpeechRecognition types are already declared in VoiceBot.tsx
 
 export interface ConversationContext {
   caseStudyId: string;
@@ -43,7 +56,7 @@ export interface ConversationSession {
 
 export class HybridConversationalAgent {
   private currentSession: ConversationSession | null = null;
-  private speechRecognition: SpeechRecognition | null = null;
+  private speechRecognition: any = null;
   private speechSynthesis: SpeechSynthesis | null = null;
   private isListening = false;
   private defaultLimits: ConversationLimits = {
@@ -64,7 +77,7 @@ export class HybridConversationalAgent {
     // Only initialize if we're in the browser
     if (typeof window === 'undefined') return;
 
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
     if (SpeechRecognition) {
       this.speechRecognition = new SpeechRecognition();
@@ -125,8 +138,16 @@ export class HybridConversationalAgent {
       const userInput = await this.listenForSpeech();
       this.addMessage(userInput, 'user');
 
+      // Convert ConversationMessage[] to Message[] format for generateResponse
+      const chatMessages = this.currentSession.messages.map(msg => ({
+        id: msg.id,
+        text: msg.text,
+        sender: msg.sender === 'assistant' ? 'bot' as const : msg.sender,
+        timestamp: msg.timestamp,
+      }));
+
       // Generate AI response
-      const response = await generateResponse(userInput, this.currentSession.messages);
+      const response = await generateResponse(userInput, chatMessages);
 
       // Determine if we should use premium voice
       const sessionLimits = { ...this.defaultLimits, ...limits };
@@ -163,13 +184,17 @@ export class HybridConversationalAgent {
 
       this.isListening = true;
 
-      this.speechRecognition.onresult = event => {
-        const transcript = event.results[0][0].transcript;
+      this.speechRecognition.onresult = (event: CustomSpeechRecognitionEvent) => {
+        const transcript = event.results[0]?.[0]?.transcript;
         this.isListening = false;
-        resolve(transcript);
+        if (transcript) {
+          resolve(transcript);
+        } else {
+          reject(new Error('No transcript available'));
+        }
       };
 
-      this.speechRecognition.onerror = event => {
+      this.speechRecognition.onerror = (event: CustomSpeechRecognitionErrorEvent) => {
         this.isListening = false;
         reject(new Error(`Speech recognition error: ${event.error}`));
       };
@@ -188,7 +213,7 @@ export class HybridConversationalAgent {
   private async speakMessage(text: string, usePremium: boolean): Promise<void> {
     if (usePremium && isVoiceCloningEnabled()) {
       try {
-        const result = await playClonedVoiceAudio(text);
+        const result = await cloneVoice(text);
         if (result.success) {
           // Estimate cost (approximate)
           const estimatedCost = this.estimateTTSCost(text);
@@ -337,7 +362,7 @@ export class HybridConversationalAgent {
         "Hi there! I'm Imran, and I'm thrilled you're exploring my case studies. These projects represent some of my most impactful UX design work. What would you like to discuss?",
     };
 
-    return welcomeMessages[caseStudyId] || welcomeMessages['default'];
+    return (caseStudyId && welcomeMessages[caseStudyId]) || welcomeMessages.default;
   }
 
   /**
@@ -431,7 +456,7 @@ export const getHybridAgent = (): HybridConversationalAgent => {
 
 // For backwards compatibility, create a getter that provides the same interface
 export const hybridAgent = new Proxy({} as HybridConversationalAgent, {
-  get(target, prop) {
+  get(_target, prop) {
     return getHybridAgent()[prop as keyof HybridConversationalAgent];
   },
 });

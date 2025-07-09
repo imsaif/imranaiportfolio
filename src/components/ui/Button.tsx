@@ -75,15 +75,23 @@ const Button = ({
 
   // Return a Link or button based on whether href is provided
   if (href && !isDisabled) {
+    const linkProps: any = {
+      href,
+      className: "w-full h-full",
+      target,
+      rel,
+    };
+
+    // Only add onClick if it's defined
+    if (preventScroll) {
+      linkProps.onClick = handleClick as React.MouseEventHandler<HTMLAnchorElement>;
+    } else if (onClick) {
+      linkProps.onClick = onClick as React.MouseEventHandler<HTMLAnchorElement>;
+    }
+
     return (
       <span className={outerBase}>
-        <Link
-          href={href}
-          className="w-full h-full"
-          onClick={preventScroll ? handleClick : (onClick || undefined)}
-          target={target}
-          rel={rel}
-        >
+        <Link {...linkProps}>
           {content}
         </Link>
       </span>

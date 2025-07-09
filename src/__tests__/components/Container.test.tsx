@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
-import Container from '../../components/layout/Container';
+import { Container } from '../../components/layout/Container';
 
 // Add jest-axe custom matcher
 expect.extend(toHaveNoViolations);

@@ -1,6 +1,7 @@
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { log, LogLevel } from '../../../../utils/api/logging';
-import { validatePageview, validateCSRFToken } from '../../../../utils/api/validation';
+import { validateCSRFToken, validatePageview } from '../../../../utils/api/validation';
 
 // Mark route as dynamic to prevent static generation errors
 export const dynamic = "force-dynamic";
@@ -23,7 +24,8 @@ export async function POST(request: Request) {
   try {
     // Validate CSRF token from headers to prevent CSRF attacks
     const csrfToken = request.headers.get('X-CSRF-Token');
-    const expectedToken = request.cookies.get('csrf_token')?.value;
+    const cookieStore = cookies();
+    const expectedToken = cookieStore.get('csrf_token')?.value;
 
     // Skip CSRF validation in development
     if (process.env.NODE_ENV !== 'development') {
@@ -71,8 +73,8 @@ export async function POST(request: Request) {
 
     // Get IP address for analytics (hashed to protect privacy)
     const forwardedFor = request.headers.get('x-forwarded-for');
-    const ip = forwardedFor ? forwardedFor.split(',')[0] : 'unknown';
-    const ipHash = await hashIPAddress(ip);
+    const ip = forwardedFor ? forwardedFor.split(',')[0] : '127.0.0.1';
+    const ipHash = await hashIPAddress(ip || 'unknown');
 
     // Get user agent for analytics
     const userAgent = request.headers.get('user-agent') || 'unknown';
@@ -88,8 +90,9 @@ export async function POST(request: Request) {
 
     // Log the pageview - in a real implementation, this would be saved to a database
     log(LogLevel.INFO, 'Page view recorded', {
-      path: pageviewData.path,
-      hasReferrer: !!pageviewData.referrer
+      path: analyticsData.path,
+      hasReferrer: !!analyticsData.referrer,
+      userAgent: analyticsData.userAgent.substring(0, 50) // Log truncated user agent
     });
 
     // TODO: Implement actual analytics storage

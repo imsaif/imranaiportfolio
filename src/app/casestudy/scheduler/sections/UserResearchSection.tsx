@@ -1,7 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import React, { useRef } from 'react';
-import UserPersonasSection from './UserPersonasSectionNEW';
-import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 
 /**
  * Card data type for research steps

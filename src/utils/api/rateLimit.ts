@@ -40,9 +40,10 @@ export function cleanupRateLimitStore() {
     const entriesToRemove = rateLimitStore.size - MAX_RATE_LIMIT_ENTRIES;
 
     // Remove the oldest entries
-    for (let i = 0; i < entriesToRemove; i++) {
-      if (entries[i]) {
-        rateLimitStore.delete(entries[i][0]);
+    for (let i = 0; i < entriesToRemove && i < entries.length; i++) {
+      const entry = entries[i];
+      if (entry) {
+        rateLimitStore.delete(entry[0]);
       }
     }
   }

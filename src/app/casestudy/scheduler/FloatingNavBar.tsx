@@ -16,11 +16,11 @@ export const sections = [
 ];
 
 export const FloatingNavBar: React.FC = () => {
-  const [active, setActive] = useState<string>(sections[0].id);
+  const [active, setActive] = useState<string>(sections[0]?.id || '');
 
   useEffect(() => {
     const handleScroll = () => {
-      let current = sections[0].id;
+      let current = sections[0]?.id || '';
       for (const section of sections) {
         const el = document.getElementById(section.id);
         if (el && window.scrollY + 100 >= el.offsetTop) {

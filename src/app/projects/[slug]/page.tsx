@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import ClientProjectPage from './client-page';
 import { getProjectBySlug } from '@/data/projects';
+import ClientProjectPage from './client-page';
 
 
 // Force dynamic rendering for this page
@@ -38,18 +38,4 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   return <ClientProjectPage />;
 }
 
-// Simple wrapper components to separate client components from server components
-function LessonLoomWrapper() {
-  return (
-    <div data-client-component-placeholder="lessonloom">{/* LessonLoomContent will be rendered by the client */}</div>
-  );
-}
 
-function ProjectWrapper({ project }: { project: any }) {
-  return (
-    <div data-client-component-placeholder="project" data-project={JSON.stringify(project)}>
-      {/* ProjectContent will be rendered by the client */}
-      {/* This div acts as a placeholder that will be hydrated */}
-    </div>
-  );
-}

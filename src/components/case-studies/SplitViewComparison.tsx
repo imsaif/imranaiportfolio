@@ -36,7 +36,7 @@ export default function SplitViewComparison({
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
-    const x = e.touches[0].clientX - rect.left;
+    const x = (e.touches[0]?.clientX || 0) - rect.left;
     const percentage = (x / rect.width) * 100;
     setSliderPosition(Math.min(Math.max(percentage, 0), 100));
   };

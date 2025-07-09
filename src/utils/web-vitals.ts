@@ -1,4 +1,4 @@
-import { ReportHandler, onCLS, onFID, onLCP, onFCP, onTTFB } from 'web-vitals';
+import { ReportHandler, onCLS, onFCP, onFID, onLCP, onTTFB } from 'web-vitals';
 
 /**
  * Analytics function to send web vitals to your analytics service
@@ -103,13 +103,12 @@ export async function measureAnimationPerformance(animationCallback: () => void)
     avgFps: number;
   }>((resolve) => {
     let startTime: number;
-    let framesStart: number;
     const frameTimestamps: number[] = [];
 
     // Start measuring
     requestAnimationFrame(() => {
       startTime = performance.now();
-      framesStart = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
         // Clear existing entries
         performance.clearMarks();
         performance.clearMeasures();
@@ -172,7 +171,7 @@ export function monitorFrameRate(duration = 5000) {
       frameTimes.push(delta);
       lastFrameTime = timestamp;
 
-      if (performance.now() - frameTimes[0] < duration) {
+      if (frameTimes.length > 0 && performance.now() - (frameTimes[0] || 0) < duration) {
         rafId = requestAnimationFrame(frameCallback);
       } else {
         // Calculate metrics

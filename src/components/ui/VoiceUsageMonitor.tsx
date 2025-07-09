@@ -1,8 +1,8 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
-import { voiceBotRateLimiter, VoiceUsageStats, VoiceRateLimits } from '../services/voiceBotRateLimit';
+import { voiceBotRateLimiter, VoiceRateLimits, VoiceUsageStats } from '../../services/voiceBotRateLimit';
 
 interface VoiceUsageMonitorProps {
   isVisible: boolean;
@@ -35,19 +35,14 @@ const VoiceUsageMonitor: React.FC<VoiceUsageMonitorProps> = ({ isVisible, onClos
 
       return () => clearInterval(interval);
     }
+    // Return cleanup function even when not visible (no-op)
+    return () => {};
   }, [isVisible]);
 
   if (!isVisible || !limits) return null;
 
   const getUsagePercentage = (current: number, max: number) => {
     return Math.min((current / max) * 100, 100);
-  };
-
-  const getUsageColor = (percentage: number) => {
-    if (percentage >= 90) return 'text-red-600 bg-red-100 border-red-300';
-    if (percentage >= 75) return 'text-orange-600 bg-orange-100 border-orange-300';
-    if (percentage >= 50) return 'text-yellow-600 bg-yellow-100 border-yellow-300';
-    return 'text-green-600 bg-green-100 border-green-300';
   };
 
   const formatCost = (cost: number) => {

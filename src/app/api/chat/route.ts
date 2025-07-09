@@ -224,7 +224,7 @@ export async function POST(request: Request) {
       userId,
       timestamp: new Date().toISOString(),
       messages: validMessages,
-      aiResponse: apiResult.success && apiResult.data ? apiResult.data.choices[0].message.content : null,
+      aiResponse: apiResult.success && apiResult.data && apiResult.data.choices?.[0]?.message?.content ? apiResult.data.choices[0].message.content : null,
     };
     // Persist the chat log (do not block response on failure)
     appendChatLog(chatLogEntry);
@@ -248,7 +248,7 @@ export async function POST(request: Request) {
     // Return the AI response
     return NextResponse.json<ChatAPIResponse>(
       {
-        response: apiResult.data.choices[0].message.content,
+        response: apiResult.data.choices?.[0]?.message?.content || 'I apologize, but I received an empty response. Please try asking again.',
       },
       { status: 200 }
     );

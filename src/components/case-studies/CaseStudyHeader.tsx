@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 
 interface CaseStudyHeaderProps {
   children: ReactNode;
@@ -22,12 +22,20 @@ export default function CaseStudyHeader({
     h3: 'text-2xl font-semibold mb-4',
   };
 
-  const HeaderTag = level as keyof JSX.IntrinsicElements;
-
   const gradientClass =
     level === 'h1'
       ? 'bg-gradient-to-r from-accent to-tertiary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient'
       : '';
+
+  const HeaderComponent = ({ className: headerClassName, children: headerChildren }: { className: string; children: ReactNode }) => {
+    if (level === 'h1') {
+      return <h1 className={headerClassName}>{headerChildren}</h1>;
+    } else if (level === 'h2') {
+      return <h2 className={headerClassName}>{headerChildren}</h2>;
+    } else {
+      return <h3 className={headerClassName}>{headerChildren}</h3>;
+    }
+  };
 
   return (
     <motion.div
@@ -37,7 +45,9 @@ export default function CaseStudyHeader({
       transition={{ duration: 0.5 }}
       className="relative"
     >
-      <HeaderTag className={`${baseClasses[level]} ${gradientClass} ${className}`}>{children}</HeaderTag>
+      <HeaderComponent className={`${baseClasses[level]} ${gradientClass} ${className}`}>
+        {children}
+      </HeaderComponent>
 
       {showGradientLine && (
         <motion.div

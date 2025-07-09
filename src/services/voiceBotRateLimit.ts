@@ -409,7 +409,8 @@ class VoiceBotRateLimiter {
 
     // Sum up daily usage across all users
     for (const [key, stats] of this.dailyData.entries()) {
-      if (key.includes(dayKey.split('_')[1])) {
+      const dayPart = dayKey.split('_')[1];
+      if (dayPart && key.includes(dayPart)) {
         // Match today's date
         totalCharactersToday += stats.totalCharacters;
         totalCostToday += stats.estimatedCost;

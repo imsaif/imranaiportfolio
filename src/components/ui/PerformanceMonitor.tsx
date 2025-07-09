@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { monitorFrameRate, getNavigationTiming } from '../../utils/web-vitals';
+import { useEffect, useState } from 'react';
+import { getNavigationTiming, monitorFrameRate } from '../../utils/web-vitals';
 
 interface PerformanceMetrics {
   fps?: {
@@ -110,7 +110,7 @@ export function PerformanceMonitor({
     let lcpTime = 0;
     const lcpEntries = performance.getEntriesByType('largest-contentful-paint');
     if (lcpEntries.length > 0) {
-      lcpTime = lcpEntries[lcpEntries.length - 1].startTime;
+      lcpTime = lcpEntries[lcpEntries.length - 1]?.startTime || 0;
     }
 
     // Get CLS if available
@@ -122,7 +122,7 @@ export function PerformanceMonitor({
 
     // Update metrics
     setMetrics({
-      fps: frameMetrics ? {
+      fps: frameMetrics && typeof frameMetrics === 'object' && 'avgFps' in frameMetrics ? {
         avg: frameMetrics.avgFps,
         min: frameMetrics.minFps,
         max: frameMetrics.maxFps,
@@ -136,7 +136,7 @@ export function PerformanceMonitor({
         cls: clsValue,
         totalLoad: navTiming?.totalPageLoad || 0,
       },
-      memory: memoryMetrics,
+      memory: memoryMetrics || undefined,
     });
   };
 

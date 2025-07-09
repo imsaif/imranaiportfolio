@@ -116,7 +116,7 @@ async function checkAPIStatus(): Promise<{ valid: boolean; message: string }> {
       return { valid: false, message: `API error: ${response.status}` };
     }
 
-    const data = await response.json();
+    await response.json(); // Consume the response
     return { valid: true, message: 'API connection successful' };
   } catch (error) {
     console.error('API status check error:', error);

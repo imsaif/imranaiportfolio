@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import React, { useState } from 'react';
-import SplitViewComparison from './SplitViewComparison';
 import { DesignComparison } from '@/data/scheduler-comparison';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import SplitViewComparison from './SplitViewComparison';
 
 interface DesignComparisonsProps {
   comparisons: DesignComparison[];
@@ -9,6 +9,18 @@ interface DesignComparisonsProps {
 
 export default function DesignComparisons({ comparisons }: DesignComparisonsProps) {
   const [activeComparison, setActiveComparison] = useState(0);
+
+  // Guard clause for empty comparisons
+  if (!comparisons || comparisons.length === 0) {
+    return <div className="text-gray-500">No comparisons available.</div>;
+  }
+
+  const currentComparison = comparisons[activeComparison];
+
+  // Guard clause for invalid active comparison index
+  if (!currentComparison) {
+    return <div className="text-gray-500">Selected comparison not found.</div>;
+  }
 
   return (
     <div className="space-y-8">
@@ -29,7 +41,7 @@ export default function DesignComparisons({ comparisons }: DesignComparisonsProp
       </div>
 
       <motion.div
-        key={comparisons[activeComparison].id}
+        key={currentComparison.id}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -37,17 +49,17 @@ export default function DesignComparisons({ comparisons }: DesignComparisonsProp
       >
         <div className="bg-white p-6 rounded-xl shadow-sm">
           <h3 className="text-xl font-bold text-gray-900 mb-2">
-            {comparisons[activeComparison].title}
+            {currentComparison.title}
           </h3>
           <p className="text-gray-700">
-            {comparisons[activeComparison].description}
+            {currentComparison.description}
           </p>
         </div>
 
         <SplitViewComparison
-          wireframeImage={comparisons[activeComparison].wireframeImage}
-          finalImage={comparisons[activeComparison].finalImage}
-          hotspots={comparisons[activeComparison].hotspots}
+          wireframeImage={currentComparison.wireframeImage}
+          finalImage={currentComparison.finalImage}
+          hotspots={currentComparison.hotspots}
         />
       </motion.div>
     </div>

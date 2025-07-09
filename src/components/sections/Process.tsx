@@ -70,7 +70,7 @@ const Process = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInViewport(entry.isIntersecting);
+        setIsInViewport(entry?.isIntersecting || false);
       },
       { threshold: 0.1 }
     );

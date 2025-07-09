@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import React from 'react';
-import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 
 /**
  * Project Overview section for the EduScheduler case study.

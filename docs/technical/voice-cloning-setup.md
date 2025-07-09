@@ -4,6 +4,12 @@
 
 This guide will help you set up ElevenLabs voice cloning integration so that your portfolio's voice assistant speaks in your actual voice! This creates an incredibly personal and memorable experience for visitors.
 
+### **Recent Updates (December 2024)**
+- **Enhanced Compatibility**: Added missing `cloneVoice` function export for hybrid conversational agent
+- **Improved Error Handling**: Better fallback mechanisms and error recovery
+- **Code Quality**: Resolved TypeScript errors and improved type safety
+- **Simplified API**: Streamlined function exports for easier integration
+
 ## 📋 Prerequisites
 
 - ElevenLabs account (free tier available)
@@ -290,4 +296,4 @@ If you encounter issues:
 4. Review the troubleshooting section above
 5. Consider the ElevenLabs documentation for advanced features
 
-**Remember:** The voice cloning feature gracefully falls back to standard TTS, so your voice assistant will always work even if there are configuration issues. 
+**Remember:** The voice cloning feature gracefully falls back to standard TTS, so your voice assistant will always work even if there are configuration issues.

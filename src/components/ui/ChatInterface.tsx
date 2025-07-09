@@ -27,12 +27,11 @@ const caseStudies = [
   },
 ];
 
-// Simplified props to just focus on in-page chat
 interface ChatInterfaceProps {
-  // closeChat prop removed since it's not being used
+  closeChat?: (e?: React.MouseEvent) => void;
 }
 
-const ChatInterface = () => {
+const ChatInterface = ({}: ChatInterfaceProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);

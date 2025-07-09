@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 /**
  * Configuration options for the text cycling animation
@@ -49,7 +49,6 @@ export type TextCyclingStatus = 'typing' | 'deleting' | 'pausing';
  */
 export const useTextCycling = ({
   texts,
-  typingSpeed = 1500,
   pauseDuration = 3000,
   autoStart = true,
   charSpeed = 40,
@@ -59,8 +58,8 @@ export const useTextCycling = ({
 
   const [index, setIndex] = useState<number>(0);
   const [currentText, setCurrentText] = useState<string>('');
-  const [fullText, setFullText] = useState<string>(validTexts[0]);
-  const [textOpacity, setTextOpacity] = useState<number>(1);
+  const [fullText, setFullText] = useState<string>(validTexts[0] || '');
+  const [textOpacity] = useState<number>(1);
   const [status, setStatus] = useState<TextCyclingStatus>(autoStart ? 'typing' : 'pausing');
   const [charIndex, setCharIndex] = useState<number>(0);
 
@@ -68,7 +67,7 @@ export const useTextCycling = ({
   const next = useCallback((): void => {
     const nextIndex = (index + 1) % validTexts.length;
     setIndex(nextIndex);
-    setFullText(validTexts[nextIndex]);
+    setFullText(validTexts[nextIndex] || '');
     setCharIndex(0);
     setCurrentText(''); // Clear text before starting to type the new word
     setStatus('typing'); // Immediately start typing - no gap

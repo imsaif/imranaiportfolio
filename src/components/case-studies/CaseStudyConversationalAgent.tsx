@@ -1,14 +1,14 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import React, { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 import {
-  getHybridAgent,
-  ConversationMessage,
-  ConversationSession,
-  ConversationContext,
-  ConversationLimits,
-  HybridConversationalAgent,
+    ConversationContext,
+    ConversationLimits,
+    ConversationMessage,
+    ConversationSession,
+    getHybridAgent,
+    HybridConversationalAgent,
 } from '../../services/hybridConversationalAgent';
 
 interface CaseStudyConversationalAgentProps {
@@ -39,6 +39,7 @@ const CaseStudyConversationalAgent: React.FC<CaseStudyConversationalAgentProps> 
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const hybridAgent = getHybridAgent();
 
   // Check browser support on mount
   useEffect(() => {

@@ -22,9 +22,7 @@ export const SmoothScrollProvider = ({ children }: SmoothScrollProviderProps) =>
     const lenis = new Lenis({
       duration: 1.2, // Increase for more inertia
       easing: (t: number) => 1 - Math.pow(1 - t, 3), // Custom cubic easing
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smoothTouch: false,
+
     });
 
     lenisRef.current = lenis;

@@ -1,4 +1,4 @@
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -132,16 +132,17 @@ export default function UserJourneyMapInteractive() {
     return <div>Journey steps not available</div>;
   }
 
-  const shouldReduceMotion = useReducedMotion();
-  const { ref: inViewRef, inView } = useInView({ threshold: 0.2 });
-  const hasInteracted = useRef(false); // Track if user has interacted
+  // After guard clause, we can safely type assert that steps has at least 5 elements
+  const safeSteps = steps as typeof steps & { length: 5 };
+
+  const { ref: inViewRef } = useInView({ threshold: 0.2 });
 
   // Overlay effect setup
   const containerRef = useRef<HTMLDivElement>(null);
   // Height: each card is 340px + gap, so set container height accordingly
   const cardHeight = 340;
   const cardGap = 24;
-  const containerHeight = `${steps.length * cardHeight + (steps.length - 1) * cardGap}px`;
+  const containerHeight = `${safeSteps.length * cardHeight + (safeSteps.length - 1) * cardGap}px`;
 
   // Combine refs for the main div
   const outerContainerRef = (node: HTMLDivElement) => {
@@ -187,46 +188,6 @@ export default function UserJourneyMapInteractive() {
   const scale3 = useTransform(scrollYProgress3, [0, 0.5, 1], [0.96, 1, 0.96]);
   const scale4 = useTransform(scrollYProgress4, [0, 0.5, 1], [0.96, 1, 0.96]);
 
-  // Auto-scroll logic (remains disabled on mount)
-  // useEffect(() => {
-  //   if (shouldReduceMotion || !inView) return;
-  //   return () => {};
-  // }, [shouldReduceMotion, inView]);
-
-  // Keyboard navigation
-  // useEffect(() => {
-  //   const handleKeyDown = (e: KeyboardEvent) => {
-  //     if (e.key === 'ArrowRight') {
-  //       hasInteracted.current = true;
-  //       // Scroll logic would be here if needed
-  //     }
-  //     if (e.key === 'ArrowLeft') {
-  //       hasInteracted.current = true;
-  //       // Scroll logic would be here if needed
-  //     }
-  //   };
-  //   window.addEventListener('keydown', handleKeyDown);
-  //   return () => window.removeEventListener('keydown', handleKeyDown);
-  // }, []);
-
-  // Reset auto-scroll on user interaction
-  // const resetAutoScroll = () => {
-  //   // Reset logic would be here if needed
-  // };
-
-  // Pause auto-scroll on hover/focus
-  // const handlePause = () => {
-  //   // Pause logic would be here if needed
-  // };
-  // const handleResume = () => {
-  //   // Resume logic would be here if needed
-  // };
-
-  // Mark as interacted on click, mouse enter, or focus
-  // const handleUserInteraction = () => {
-  //   hasInteracted.current = true;
-  // };
-
   return (
     <div className="w-full relative" style={{ height: containerHeight }} ref={outerContainerRef}>
       <div ref={containerRef} className="relative h-full">
@@ -253,15 +214,15 @@ export default function UserJourneyMapInteractive() {
               1
             </span>
             <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
-              {steps[0].title}
+              {safeSteps[0]!.title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
-              {RoleIcons[steps[0].role.name]}
-              <span className="text-gray-700 font-medium text-sm">{steps[0].role.name}</span>
+              {RoleIcons[safeSteps[0]!.role.name]}
+              <span className="text-gray-700 font-medium text-sm">{safeSteps[0]!.role.name}</span>
             </div>
             <div className="flex items-center gap-2 bg-blue-50 rounded px-3 py-1">
-              {EmotionIcons[steps[0].emotion.label]}
-              <span className="text-blue-700 font-medium text-sm">{steps[0].emotion.label}</span>
+              {EmotionIcons[safeSteps[0]!.emotion.label]}
+              <span className="text-blue-700 font-medium text-sm">{safeSteps[0]!.emotion.label}</span>
             </div>
           </div>
           {/* Main Content Hierarchy */}
@@ -269,29 +230,29 @@ export default function UserJourneyMapInteractive() {
             {/* Action */}
             <div className="flex flex-row items-baseline gap-2">
               <span className="text-gray-700 font-semibold text-base">Action:</span>
-              <span className="text-gray-800 text-base leading-snug">{steps[0].action}</span>
+              <span className="text-gray-800 text-base leading-snug">{safeSteps[0]!.action}</span>
             </div>
             {/* Pain Point */}
-            {steps[0].painPoint && (
+            {safeSteps[0]!.painPoint && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[0].painPoint}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[0]!.painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
-            {steps[0].opportunity && (
+            {safeSteps[0]!.opportunity && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[0].opportunity}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[0]!.opportunity}</span>
               </div>
             )}
             {/* Quote */}
-            {steps[0].quote && (
+            {safeSteps[0]!.quote && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-blue-700 font-semibold text-base flex items-center gap-1">
                   <span className="text-lg">""</span>User Quote:
                 </span>
-                <span className="italic text-blue-900 text-base leading-snug">{steps[0].quote}</span>
+                <span className="italic text-blue-900 text-base leading-snug">{safeSteps[0]!.quote}</span>
               </div>
             )}
           </div>
@@ -312,15 +273,15 @@ export default function UserJourneyMapInteractive() {
               2
             </span>
             <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
-              {steps[1].title}
+              {safeSteps[1]!.title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
-              {RoleIcons[steps[1].role.name]}
-              <span className="text-gray-700 font-medium text-sm">{steps[1].role.name}</span>
+              {RoleIcons[safeSteps[1]!.role.name]}
+              <span className="text-gray-700 font-medium text-sm">{safeSteps[1]!.role.name}</span>
             </div>
             <div className="flex items-center gap-2 bg-blue-50 rounded px-3 py-1">
-              {EmotionIcons[steps[1].emotion.label]}
-              <span className="text-blue-700 font-medium text-sm">{steps[1].emotion.label}</span>
+              {EmotionIcons[safeSteps[1]!.emotion.label]}
+              <span className="text-blue-700 font-medium text-sm">{safeSteps[1]!.emotion.label}</span>
             </div>
           </div>
           {/* Main Content Hierarchy */}
@@ -328,29 +289,29 @@ export default function UserJourneyMapInteractive() {
             {/* Action */}
             <div className="flex flex-row items-baseline gap-2">
               <span className="text-gray-700 font-semibold text-base">Action:</span>
-              <span className="text-gray-800 text-base leading-snug">{steps[1].action}</span>
+              <span className="text-gray-800 text-base leading-snug">{safeSteps[1]!.action}</span>
             </div>
             {/* Pain Point */}
-            {steps[1].painPoint && (
+            {safeSteps[1]!.painPoint && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[1].painPoint}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[1]!.painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
-            {steps[1].opportunity && (
+            {safeSteps[1]!.opportunity && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[1].opportunity}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[1]!.opportunity}</span>
               </div>
             )}
             {/* Quote */}
-            {steps[1].quote && (
+            {safeSteps[1]!.quote && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-blue-700 font-semibold text-base flex items-center gap-1">
                   <span className="text-lg">""</span>User Quote:
                 </span>
-                <span className="italic text-blue-900 text-base leading-snug">{steps[1].quote}</span>
+                <span className="italic text-blue-900 text-base leading-snug">{safeSteps[1]!.quote}</span>
               </div>
             )}
           </div>
@@ -371,15 +332,15 @@ export default function UserJourneyMapInteractive() {
               3
             </span>
             <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
-              {steps[2].title}
+              {safeSteps[2]!.title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
-              {RoleIcons[steps[2].role.name]}
-              <span className="text-gray-700 font-medium text-sm">{steps[2].role.name}</span>
+              {RoleIcons[safeSteps[2]!.role.name]}
+              <span className="text-gray-700 font-medium text-sm">{safeSteps[2]!.role.name}</span>
             </div>
             <div className="flex items-center gap-2 bg-blue-50 rounded px-3 py-1">
-              {EmotionIcons[steps[2].emotion.label]}
-              <span className="text-blue-700 font-medium text-sm">{steps[2].emotion.label}</span>
+              {EmotionIcons[safeSteps[2]!.emotion.label]}
+              <span className="text-blue-700 font-medium text-sm">{safeSteps[2]!.emotion.label}</span>
             </div>
           </div>
           {/* Main Content Hierarchy */}
@@ -387,29 +348,29 @@ export default function UserJourneyMapInteractive() {
             {/* Action */}
             <div className="flex flex-row items-baseline gap-2">
               <span className="text-gray-700 font-semibold text-base">Action:</span>
-              <span className="text-gray-800 text-base leading-snug">{steps[2].action}</span>
+              <span className="text-gray-800 text-base leading-snug">{safeSteps[2]!.action}</span>
             </div>
             {/* Pain Point */}
-            {steps[2].painPoint && (
+            {safeSteps[2]!.painPoint && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[2].painPoint}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[2]!.painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
-            {steps[2].opportunity && (
+            {safeSteps[2]!.opportunity && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[2].opportunity}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[2]!.opportunity}</span>
               </div>
             )}
             {/* Quote */}
-            {steps[2].quote && (
+            {safeSteps[2]!.quote && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-blue-700 font-semibold text-base flex items-center gap-1">
                   <span className="text-lg">""</span>User Quote:
                 </span>
-                <span className="italic text-blue-900 text-base leading-snug">{steps[2].quote}</span>
+                <span className="italic text-blue-900 text-base leading-snug">{safeSteps[2]!.quote}</span>
               </div>
             )}
           </div>
@@ -430,15 +391,15 @@ export default function UserJourneyMapInteractive() {
               4
             </span>
             <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
-              {steps[3].title}
+              {safeSteps[3]!.title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
-              {RoleIcons[steps[3].role.name]}
-              <span className="text-gray-700 font-medium text-sm">{steps[3].role.name}</span>
+              {RoleIcons[safeSteps[3]!.role.name]}
+              <span className="text-gray-700 font-medium text-sm">{safeSteps[3]!.role.name}</span>
             </div>
             <div className="flex items-center gap-2 bg-blue-50 rounded px-3 py-1">
-              {EmotionIcons[steps[3].emotion.label]}
-              <span className="text-blue-700 font-medium text-sm">{steps[3].emotion.label}</span>
+              {EmotionIcons[safeSteps[3]!.emotion.label]}
+              <span className="text-blue-700 font-medium text-sm">{safeSteps[3]!.emotion.label}</span>
             </div>
           </div>
           {/* Main Content Hierarchy */}
@@ -446,29 +407,29 @@ export default function UserJourneyMapInteractive() {
             {/* Action */}
             <div className="flex flex-row items-baseline gap-2">
               <span className="text-gray-700 font-semibold text-base">Action:</span>
-              <span className="text-gray-800 text-base leading-snug">{steps[3].action}</span>
+              <span className="text-gray-800 text-base leading-snug">{safeSteps[3]!.action}</span>
             </div>
             {/* Pain Point */}
-            {steps[3].painPoint && (
+            {safeSteps[3]!.painPoint && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[3].painPoint}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[3]!.painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
-            {steps[3].opportunity && (
+            {safeSteps[3]!.opportunity && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[3].opportunity}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[3]!.opportunity}</span>
               </div>
             )}
             {/* Quote */}
-            {steps[3].quote && (
+            {safeSteps[3]!.quote && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-blue-700 font-semibold text-base flex items-center gap-1">
                   <span className="text-lg">""</span>User Quote:
                 </span>
-                <span className="italic text-blue-900 text-base leading-snug">{steps[3].quote}</span>
+                <span className="italic text-blue-900 text-base leading-snug">{safeSteps[3]!.quote}</span>
               </div>
             )}
           </div>
@@ -489,15 +450,15 @@ export default function UserJourneyMapInteractive() {
               5
             </span>
             <span className="font-bold text-gray-900 text-base md:text-lg leading-tight flex-1 min-w-[120px]">
-              {steps[4].title}
+              {safeSteps[4]!.title}
             </span>
             <div className="flex items-center gap-2 bg-gray-50 rounded px-3 py-1">
-              {RoleIcons[steps[4].role.name]}
-              <span className="text-gray-700 font-medium text-sm">{steps[4].role.name}</span>
+              {RoleIcons[safeSteps[4]!.role.name]}
+              <span className="text-gray-700 font-medium text-sm">{safeSteps[4]!.role.name}</span>
             </div>
             <div className="flex items-center gap-2 bg-blue-50 rounded px-3 py-1">
-              {EmotionIcons[steps[4].emotion.label]}
-              <span className="text-blue-700 font-medium text-sm">{steps[4].emotion.label}</span>
+              {EmotionIcons[safeSteps[4]!.emotion.label]}
+              <span className="text-blue-700 font-medium text-sm">{safeSteps[4]!.emotion.label}</span>
             </div>
           </div>
           {/* Main Content Hierarchy */}
@@ -505,29 +466,29 @@ export default function UserJourneyMapInteractive() {
             {/* Action */}
             <div className="flex flex-row items-baseline gap-2">
               <span className="text-gray-700 font-semibold text-base">Action:</span>
-              <span className="text-gray-800 text-base leading-snug">{steps[4].action}</span>
+              <span className="text-gray-800 text-base leading-snug">{safeSteps[4]!.action}</span>
             </div>
             {/* Pain Point */}
-            {steps[4].painPoint && (
+            {safeSteps[4]!.painPoint && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Pain Point:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[4].painPoint}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[4]!.painPoint}</span>
               </div>
             )}
             {/* Opportunity */}
-            {steps[4].opportunity && (
+            {safeSteps[4]!.opportunity && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-gray-800 font-semibold text-base">Opportunity:</span>
-                <span className="text-gray-800 text-base leading-snug">{steps[4].opportunity}</span>
+                <span className="text-gray-800 text-base leading-snug">{safeSteps[4]!.opportunity}</span>
               </div>
             )}
             {/* Quote */}
-            {steps[4].quote && (
+            {safeSteps[4]!.quote && (
               <div className="flex flex-row items-baseline gap-2">
                 <span className="text-blue-700 font-semibold text-base flex items-center gap-1">
                   <span className="text-lg">""</span>User Quote:
                 </span>
-                <span className="italic text-blue-900 text-base leading-snug">{steps[4].quote}</span>
+                <span className="italic text-blue-900 text-base leading-snug">{safeSteps[4]!.quote}</span>
               </div>
             )}
           </div>

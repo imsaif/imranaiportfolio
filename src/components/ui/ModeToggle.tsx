@@ -120,10 +120,10 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
 
   // Create dynamic modes array
   const dynamicModes = [
-    modes[0], // Portfolio
+    modes.find(m => m.id === 'portfolio'), // Portfolio
     getChatMode(), // Chat/Close
-    modes[2], // Voice
-  ];
+    modes.find(m => m.id === 'voice'), // Voice
+  ].filter(Boolean); // Remove any undefined values
 
   return (
     <>

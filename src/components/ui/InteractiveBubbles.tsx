@@ -75,7 +75,7 @@ const InteractiveBubbles = ({ containerId }: InteractiveBubblesProps) => {
           size: Math.random() * 10 + 10, // Larger: 10-20px
           speedX: (Math.random() - 0.5) * 0.5,
           speedY: (Math.random() - 0.5) * 0.5,
-          color: colors[Math.floor(Math.random() * colors.length)],
+          color: colors[Math.floor(Math.random() * colors.length)] || 'rgba(255, 0, 0, 0.7)',
         });
       }
 
