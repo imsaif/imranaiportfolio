@@ -2,59 +2,11 @@
 
 import React from 'react';
 
-type Journey = {
-  period: string;
-  title: string;
-  description: string;
-};
 
-type Inspiration = {
-  icon: string;
-  title: string;
-  description: string;
-};
-
-const journeyItems: Journey[] = [
-  {
-    period: '2018 - 2020',
-    title: 'Early Career',
-    description:
-      'Started my career working in creative and digital agencies, collaborating with talented teams to refine my skills and deliver impactful projects.',
-  },
-  {
-    period: '2020 - 2022',
-    title: 'Senior Developer',
-    description:
-      'Transitioned into more senior development roles, focusing on end-to-end product development for startups and enterprise brands.',
-  },
-  {
-    period: '2022 - Present',
-    title: 'Lead Developer',
-    description:
-      'Currently leading development teams, working closely with stakeholders and designers to deliver user-focused solutions that drive growth.',
-  },
-];
-
-const inspirations: Inspiration[] = [
-  {
-    icon: '📚',
-    title: 'Atomic Design by Brad Frost',
-    description:
-      'This methodology for creating design systems has profoundly influenced how I approach component-based development and design consistency.',
-  },
-  {
-    icon: '🎧',
-    title: 'Syntax Podcast',
-    description:
-      "Wes Bos and Scott Tolinski's podcast keeps me updated on web development trends and has been instrumental in my continuous learning journey.",
-  },
-  {
-    icon: '🏃‍♂️',
-    title: 'Morning Runs',
-    description:
-      'My daily runs are when I do my best thinking. Many of my most creative solutions have come during these quiet moments of reflection.',
-  },
-];
+interface Skill {
+  name: string;
+  level: number;
+}
 
 // Skill component
 const Skill = ({ icon, name }: { icon: React.ReactNode; name: string }) => {

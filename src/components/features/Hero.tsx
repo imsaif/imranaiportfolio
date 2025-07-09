@@ -3,11 +3,12 @@
 // Remove console log
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { useChatToggle } from '../../context/ChatToggleProvider';
 import { WaveBackground } from '../WaveBackground'; // Import the new component
 
 const Hero = () => {
+  const { isChatOpen, toggleChat } = useChatToggle();
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
   const gradientTextRef = useRef<HTMLSpanElement>(null);
   const [typing, setTyping] = useState(false);

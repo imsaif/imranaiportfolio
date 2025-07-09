@@ -43,10 +43,6 @@ export const unlockScrolling = () => {
   }
 };
 
-interface HeroProps {
-  opacity?: any;
-}
-
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentMode, setCurrentMode] = useState<Mode>('portfolio');
