@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { validateProjectQuery } from '../../../utils/api/validation';
-import { log, LogLevel } from '../../../utils/api/logging';
 import { projects, Project } from '../../../data/projects';
+import { log, LogLevel } from '../../../utils/api/logging';
+import { validateProjectQuery } from '../../../utils/api/validation';
 
 // Mark route as dynamic to prevent static generation errors
 export const dynamic = "force-dynamic";
@@ -23,69 +23,73 @@ export async function GET(request: Request) {
     // Get URL to extract query parameters
     const url = new URL(request.url);
     const queryParams = Object.fromEntries(url.searchParams.entries());
-    
+
     // Log incoming request
-    log(LogLevel.DEBUG, 'Projects API request received', { 
+    log(LogLevel.DEBUG, 'Projects API request received', {
       queryParams
     });
-    
+
     // Validate query parameters
     const validation = validateProjectQuery(queryParams);
-    
+
     if (!validation.valid) {
-      log(LogLevel.WARN, 'Invalid project query parameters', { 
-        errors: validation.errors 
+      log(LogLevel.WARN, 'Invalid project query parameters', {
+        errors: validation.errors
       });
-      
+
       return NextResponse.json({
         error: 'Invalid query parameters',
         details: validation.errors
       }, { status: 400 });
     }
-    
+
     // Extract validated parameters with defaults
-    const { 
-      category, 
+    const {
+      category,
       featured,
       limit = 10,
       page = 1
     } = validation.params;
-    
+
     // Filter projects based on query parameters
     let filteredProjects = [...projects];
-    
+
+    // Note: Project interface doesn't currently have a category field
+    // TODO: Add category field to Project interface or use tagline for filtering
     if (category) {
-      filteredProjects = filteredProjects.filter(
-        (project) => project.category === category
-      );
+      // Temporarily disabled until Project interface is updated with category field
+      // filteredProjects = filteredProjects.filter(
+      //   (project) => project.category === category
+      // );
+      console.warn('Category filtering not implemented: Project interface missing category field');
     }
-    
+
     if (featured !== undefined) {
       filteredProjects = filteredProjects.filter(
         (project) => project.featured === featured
       );
     }
-    
+
     // Get total count before pagination
     const total = filteredProjects.length;
-    
+
     // Calculate pagination
     const pageSize = limit;
     const totalPages = Math.ceil(total / pageSize);
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-    
+
     // Apply pagination
     const paginatedProjects = filteredProjects.slice(startIndex, endIndex);
-    
+
     // Log successful response
-    log(LogLevel.INFO, 'Projects API request successful', { 
+    log(LogLevel.INFO, 'Projects API request successful', {
       totalProjects: total,
       returnedProjects: paginatedProjects.length,
       page,
       totalPages
     });
-    
+
     // Return the response
     return NextResponse.json<ProjectsAPIResponse>({
       projects: paginatedProjects,
@@ -94,15 +98,15 @@ export async function GET(request: Request) {
       pageSize,
       totalPages
     }, { status: 200 });
-    
+
   } catch (error) {
     // Log any unhandled errors
     log(LogLevel.ERROR, 'Unhandled error in projects API', {
       error: error instanceof Error ? error.message : String(error)
     });
-    
+
     return NextResponse.json({
       error: 'Internal server error'
     }, { status: 500 });
   }
-} 
+}

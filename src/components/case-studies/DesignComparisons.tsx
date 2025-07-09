@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 import SplitViewComparison from './SplitViewComparison';
 import { DesignComparison } from '@/data/scheduler-comparison';
 
@@ -52,4 +52,4 @@ export default function DesignComparisons({ comparisons }: DesignComparisonsProp
       </motion.div>
     </div>
   );
-} 
+}

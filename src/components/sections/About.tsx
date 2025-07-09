@@ -10,7 +10,7 @@ const About = () => {
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-4xl mx-auto">
           <SectionTitle>About Me</SectionTitle>
-          
+
           <div className="bg-white p-8 rounded-xl shadow-sm mb-8">
             <p className="text-lg text-muted leading-relaxed mb-4">
               I'm a developer and designer focused on creating intuitive, accessible, and impactful digital experiences.

@@ -134,7 +134,7 @@ const HeroButtons = ({ isVisible, isChatOpen, onChatToggle }: HeroButtonsProps) 
       <Button
         variant="primary"
         className="flex-1 min-w-[180px] text-base sm:text-sm py-3 sm:py-2.5 px-5 sm:px-5 rounded-xl shadow-lg font-semibold group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-offset-2"
-        onClick={isChatOpen ? undefined : handleWorkButtonClick}
+        onClick={isChatOpen ? () => {} : handleWorkButtonClick}
         disabled={isChatOpen}
         aria-label="View My Work"
       >

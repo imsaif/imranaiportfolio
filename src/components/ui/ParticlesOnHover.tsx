@@ -94,15 +94,15 @@ export const ParticlesOnHover: React.FC<ParticlesOnHoverProps> = ({ className, s
   if (shouldReduceMotion) return null;
 
   return (
-    <div 
-      className={`${className} animate-fadeIn`} 
-      style={{ 
-        ...style, 
-        pointerEvents: 'none', 
-        position: 'absolute', 
+    <div
+      className={`${className} animate-fadeIn`}
+      style={{
+        ...style,
+        pointerEvents: 'none',
+        position: 'absolute',
         inset: 0,
         zIndex: 20
-      }} 
+      }}
       aria-hidden
     >
       <canvas ref={canvasRef} width={400} height={400} style={{ width: '100%', height: '100%', display: 'block' }} />

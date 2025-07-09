@@ -1,10 +1,8 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
-import { useRef, RefObject, useState } from 'react';
-import Button from './Button';
-import { CursorFollowButton } from './CursorFollowButton';
-import { ProjectMockup } from './ProjectMockup';
 import { Project } from '@/data/projects';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { RefObject, useRef, useState } from 'react';
+import Button from './Button';
+import { ProjectMockup } from './ProjectMockup';
 
 interface StickyProjectCardProps {
   project: Project;
@@ -15,7 +13,6 @@ interface StickyProjectCardProps {
 
 const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, total, containerRef }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
   const [buttonPos, setButtonPos] = useState<{ x: number; y: number } | null>(null);
 
   const BUTTON_SIZE = 64; // px, should match the button's width/height
@@ -53,7 +50,6 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
     setButtonPos(null);
   };
 
@@ -62,7 +58,6 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
       ref={cardRef}
       className={`sticky-project-card sticky top-[96px] min-h-[400px] ${index !== total - 1 ? 'mb-20' : 'mb-0'} ${index === 0 ? 'mt-0' : 'mt-12'} bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible`}
       style={{ zIndex: 10 + index, scale, boxShadow }}
-      onMouseEnter={() => setIsHovered(true)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -105,22 +100,22 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
         </span>
         {project.slug === 'scheduler' ? (
           <>
-            <h3 className="text-2xl md:text-4xl font-bold mb-1 text-black drop-shadow-lg">EduScheduler</h3>
+            <h3 className="text-2xl md:text-4xl font-bold mb-1 text-foreground">EduScheduler</h3>
           </>
         ) : project.slug === 'lessonloom' ? (
           <>
-            <h3 className="text-2xl md:text-4xl font-bold mb-1 text-black drop-shadow-lg">LessonLoom</h3>
+            <h3 className="text-2xl md:text-4xl font-bold mb-1 text-foreground">LessonLoom</h3>
           </>
         ) : (
-          <h3 className="text-2xl md:text-4xl font-bold mb-4 text-black drop-shadow-lg">{project.title}</h3>
+          <h3 className="text-2xl md:text-4xl font-bold mb-4 text-foreground">{project.title}</h3>
         )}
-        <p className="text-base md:text-lg text-black mb-8 leading-relaxed drop-shadow-lg">{project.description}</p>
+        <p className="text-base md:text-lg text-muted mb-8 leading-relaxed">{project.description}</p>
         {project.stats && project.stats.length > 0 && (
           <div className="flex flex-row gap-8 mt-2 mb-2 justify-center md:justify-start">
             {project.stats.slice(0, 2).map((stat, idx) => (
               <div key={idx} className="flex flex-col items-center md:items-start">
-                <span className="text-xl font-extrabold text-gray-900">{stat.value}</span>
-                <span className="text-xs font-medium text-gray-500 uppercase tracking-wide mt-1">{stat.label}</span>
+                <span className="text-xl font-extrabold text-foreground">{stat.value}</span>
+                <span className="text-xs font-medium text-muted uppercase tracking-wide mt-1">{stat.label}</span>
               </div>
             ))}
           </div>

@@ -126,7 +126,7 @@
 }
 
 :root {
-  /* 
+  /*
   * PRIMARY COLOR PALETTE
   * Organized system of colors with clear naming conventions
   */
@@ -139,8 +139,8 @@
 
   /* Interface Colors - The building blocks of your UI */
   --background: #ffffff; /* Main page background */
-  --foreground: #0f172a; /* Primary text color */
-  --muted: #64748b; /* Secondary text, less important information */
+  --foreground: #1a1a1a; /* Primary text color - lighter black */
+  --muted: #6b7280; /* Secondary text, descriptions, subtitles */
   --border: #e2e8f0; /* Borders, dividers, separators */
   --subtle-bg: #f1f5f9; /* Subtle backgrounds, hover states */
   --card-bg: #ffffff; /* Card and component backgrounds */
@@ -164,14 +164,15 @@
   --accent-700: #4338ca;
 
   /* Font variables */
-  --font-sans: 'Satoshi', 'Satoshi Placeholder', sans-serif;
+  --font-sans: 'Satoshi', 'Satoshi Placeholder', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-heading: 'Satoshi', 'Satoshi Placeholder', sans-serif;
+  --font-heading: 'Satoshi', 'Satoshi Placeholder', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-heading: var(--font-heading);
@@ -208,12 +209,14 @@ h1 {
 
 h2 {
   font-size: 2.25rem;
+  font-weight: 600;
   letter-spacing: -0.02em;
   margin-bottom: 1.75rem;
 }
 
 h3 {
   font-size: 1.5rem;
+  font-weight: 500;
   letter-spacing: -0.015em;
   margin-bottom: 1rem;
 }

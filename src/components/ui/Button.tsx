@@ -80,7 +80,7 @@ const Button = ({
         <Link
           href={href}
           className="w-full h-full"
-          onClick={preventScroll ? handleClick : onClick}
+          onClick={preventScroll ? handleClick : (onClick || undefined)}
           target={target}
           rel={rel}
         >

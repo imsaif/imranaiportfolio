@@ -1,13 +1,13 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { voiceBotRateLimiter, RateLimitResult } from '../services/voiceBotRateLimit';
+import { motion } from 'framer-motion';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { voiceBotRateLimiter } from '../services/voiceBotRateLimit';
 import {
-  playClonedVoiceAudio,
-  isVoiceCloningEnabled,
-  preloadCommonResponses,
-  cleanupAudioUrls,
+    cleanupAudioUrls,
+    isVoiceCloningEnabled,
+    playClonedVoiceAudio,
+    preloadCommonResponses,
 } from '../services/voiceCloning';
 import { generateResponse } from '../utils/chatService';
 import { createTestCommand } from '../utils/voiceTestUtils';
@@ -312,9 +312,7 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
   const [isSupported, setIsSupported] = useState<boolean>(true); // Assume supported initially, check on interaction
   const [isClonedVoiceEnabled, setIsClonedVoiceEnabled] = useState<boolean>(false);
   const [lastUsedClonedVoice, setLastUsedClonedVoice] = useState<boolean>(false);
-  const [preloadedResponses, setPreloadedResponses] = useState<Map<string, string>>(new Map());
-  const [rateLimitStatus, setRateLimitStatus] = useState<RateLimitResult | null>(null);
-  const [isConversationStarted, setIsConversationStarted] = useState<boolean>(false);
+
 
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const preloadedUrlsRef = useRef<string[]>([]);
@@ -369,7 +367,6 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
         console.log('Voice cloning enabled! Preloading common responses...');
         try {
           const preloaded = await preloadCommonResponses(COMMON_RESPONSES);
-          setPreloadedResponses(preloaded);
           preloadedUrlsRef.current = Array.from(preloaded.values());
         } catch (error) {
           console.error('Error preloading responses:', error);
@@ -398,7 +395,7 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
         return;
       }
 
-      setIsConversationStarted(true);
+
 
       const welcomeMessage = isClonedVoiceEnabled
         ? 'Hi, this is Imran speaking! I can hear and respond to you. What would you like to know about my work?'

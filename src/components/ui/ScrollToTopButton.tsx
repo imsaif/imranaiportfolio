@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState, useCallback, useRef } from 'react';
 
 interface ScrollToTopButtonProps {
   /**
@@ -72,4 +72,4 @@ export default function ScrollToTopButton({ targetId }: ScrollToTopButtonProps) 
       )}
     </AnimatePresence>
   );
-} 
+}

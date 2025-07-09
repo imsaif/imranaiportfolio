@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import React, { useState, useRef, useEffect } from 'react';
 
 interface Hotspot {
   id: string;
@@ -121,4 +121,4 @@ export default function SplitViewComparison({
       </div>
     </div>
   );
-} 
+}

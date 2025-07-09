@@ -1,9 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import React from 'react';
 
-import Button from '../ui/Button';
 import { SectionTitle } from '../ui/SectionTitle';
 
 type Service = {

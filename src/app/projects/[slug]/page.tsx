@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import ClientProjectPage from './client-page';
 import { getProjectBySlug } from '@/data/projects';
 
-import ClientProjectPage from './client-page';
 
 // Force dynamic rendering for this page
 export const dynamic = 'force-dynamic';

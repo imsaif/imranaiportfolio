@@ -1,9 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import React, { useRef, useEffect, useState } from 'react';
-import Button from '../ui/Button';
-import { SparklesIcon, LightBulbIcon, BeakerIcon, ShieldCheckIcon, RefreshCwIcon } from '../ui/ProcessIcons';
+import { useEffect, useRef, useState } from 'react';
 
 import { SectionTitle } from '../ui/SectionTitle';
 
@@ -12,14 +10,6 @@ type Framework = {
   description: string;
   number: string;
 };
-
-const icons = [
-  <LightBulbIcon key="1" className="w-8 h-8 text-accent" />,
-  <BeakerIcon key="2" className="w-8 h-8 text-secondary" />,
-  <SparklesIcon key="3" className="w-8 h-8 text-tertiary" />,
-  <ShieldCheckIcon key="4" className="w-8 h-8 text-accent" />,
-  <RefreshCwIcon key="5" className="w-8 h-8 text-secondary" />,
-];
 
 const cardVariants = {
   initial: { opacity: 0, y: 30 },
@@ -181,7 +171,7 @@ const Process = () => {
                 </span>
                 {/* Card content */}
                 <div className="relative z-10">
-                  <h3 className="text-xl font-bold mb-2 text-foreground">{framework.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">{framework.title}</h3>
                   <p className="text-muted text-base leading-relaxed mb-1">{framework.description}</p>
                 </div>
               </motion.div>

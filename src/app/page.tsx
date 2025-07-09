@@ -1,5 +1,5 @@
 'use client';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { useReducedMotion, useScroll } from 'framer-motion';
 import { Suspense, useRef } from 'react';
 
 import Hero from '@/components/sections/Hero';

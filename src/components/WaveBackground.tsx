@@ -142,4 +142,4 @@ export const WaveBackground: React.FC<WaveBackgroundProps> = ({
   return <canvas ref={canvasRef} className={className} style={style} />;
 };
 
-export default WaveBackground; 
+export default WaveBackground;

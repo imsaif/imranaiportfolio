@@ -2,12 +2,12 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 
-import './globals.css';
 import Hotjar from '../components/analytics/Hotjar';
 import ClientProviders from '../components/ClientProviders';
+import { SmoothScrollProvider } from '../components/core/SmoothScrollProvider';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
-import { SmoothScrollProvider } from '../components/SmoothScrollProvider';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Imran Mohammed | AI Experience Designer',
@@ -38,7 +38,7 @@ export default function RootLayout({
         <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
       </head>
-      <body className="bg-white dark:bg-gray-950 text-black dark:text-white font-sans">
+      <body className="bg-white dark:bg-gray-950 text-foreground dark:text-white font-sans">
         <ClientProviders>
           <SmoothScrollProvider>
             <div className="flex flex-col min-h-screen">

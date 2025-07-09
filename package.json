@@ -11,9 +11,12 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "fix": "npm run format && npm run lint:fix",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage --watchAll=false",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test dev 3000 cypress",
@@ -26,7 +29,12 @@
     "perf:test": "node scripts/test-performance.js",
     "perf": "npm run perf:test",
     "backup": "node scripts/create-backup.js",
-    "prepare": "husky"
+    "prepare": "husky",
+    "quality": "npm run type-check && npm run lint && npm run format:check && npm run test:ci",
+    "dev:quality": "concurrently \"npm run dev\" \"npm run type-check:watch\"",
+    "preview": "npm run build && npm run start",
+    "fix:typescript": "node scripts/fix-typescript-errors.js",
+    "fix:errors": "npm run fix:typescript && npm run type-check"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -78,6 +86,7 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "autoprefixer": "^10.4.16",
+    "concurrently": "^9.2.0",
     "cypress": "^14.2.1",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",

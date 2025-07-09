@@ -139,14 +139,14 @@ export async function checkRedisRateLimit(
   // Fall back to in-memory rate limiting if Redis is unavailable
   if (!redisAvailable || !redis) {
     log(LogLevel.DEBUG, 'Using in-memory rate limiting fallback', { userId });
-    
+
     // Convert seconds to milliseconds for in-memory rate limiting
     const windowMs = windowSec * 1000;
-    
+
     // Use headers object that contains the userId for in-memory rate limiting
     const mockHeaders = new Headers();
     mockHeaders.set('x-user-id', userId);
-    
+
     const result = checkRateLimit(limit, windowMs, mockHeaders);
     return {
       isLimited: result.isLimited,
@@ -193,20 +193,20 @@ export async function checkRedisRateLimit(
 
     return { isLimited: false };
   } catch (error) {
-    log(LogLevel.ERROR, 'Redis rate limiting error, using fallback', { 
+    log(LogLevel.ERROR, 'Redis rate limiting error, using fallback', {
       error: error instanceof Error ? error.message : String(error),
-      userId 
+      userId
     });
-    
+
     // Fall back to in-memory rate limiting on Redis error
     const windowMs = windowSec * 1000;
     const mockHeaders = new Headers();
     mockHeaders.set('x-user-id', userId);
-    
+
     const result = checkRateLimit(limit, windowMs, mockHeaders);
     return {
       isLimited: result.isLimited,
       timeUntilReset: result.timeUntilReset
     };
   }
-} 
+}
