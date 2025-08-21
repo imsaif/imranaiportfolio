@@ -7,7 +7,7 @@ interface ParticlesOnHoverProps {
 
 const NUM_PARTICLES = 8;
 // Use only brand colors for gradient
-const GRADIENT_COLORS = ['#6366f1', '#f43f5e'];
+const GRADIENT_COLORS = ['#7075e0', '#e0637c'];
 
 function randomBetween(a: number, b: number) {
   return a + Math.random() * (b - a);

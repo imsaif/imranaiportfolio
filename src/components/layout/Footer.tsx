@@ -77,7 +77,7 @@ const Footer = () => {
                 <h4 className="text-lg font-medium mb-6">Connect</h4>
                 <div className="flex gap-12">
                   <motion.a
-                    href="https://github.com/reportkaro/imranaiportfolio"
+                    href="https://github.com/imsaif"
                     className="group transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"

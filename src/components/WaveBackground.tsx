@@ -4,9 +4,9 @@ import { useEffect, useRef, useMemo, useState } from 'react';
 
 // Define Brand Colors (derived from globals.css)
 const COLORS = {
-  accent: { r: 99, g: 102, b: 241 }, // #6366f1
-  secondary: { r: 16, g: 185, b: 129 }, // #10b981
-  tertiary: { r: 244, g: 63, b: 94 }, // #f43f5e
+  accent: { r: 112, g: 117, b: 224 }, // #7075e0
+  secondary: { r: 60, g: 160, b: 112 }, // #3ca070
+  tertiary: { r: 224, g: 99, b: 124 }, // #e0637c
 };
 
 interface WaveBackgroundProps {

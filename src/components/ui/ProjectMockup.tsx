@@ -12,12 +12,6 @@ interface ProjectMockupProps {
 export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: ProjectMockupProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Debug: log project and image path
-  if (typeof window !== 'undefined') {
-    console.log('ProjectMockup project:', project);
-    console.log('ProjectMockup image path:', project.images && project.images[0]);
-  }
-
   const handleMouseEnter = () => {
     setIsHovered(true);
     onCaseStudyHover && onCaseStudyHover(true);

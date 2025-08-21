@@ -132,10 +132,10 @@
   */
 
   /* Brand Colors - The foundation of your visual identity */
-  --accent: #6366f1; /* Primary brand color - use for main interactive elements */
-  --accent-light: #c7d2fe; /* Lighter accent - use for backgrounds, highlights */
-  --secondary: #10b981; /* Secondary color - use for success states, alternate CTAs */
-  --tertiary: #f43f5e; /* Tertiary color - use for highlights, important alerts */
+  --accent: #7075e0; /* Primary brand color - use for main interactive elements */
+  --accent-light: #c4c7f7; /* Lighter accent - use for backgrounds, highlights */
+  --secondary: #3ca070; /* Secondary color - use for success states, alternate CTAs */
+  --tertiary: #e0637c; /* Tertiary color - use for highlights, important alerts */
 
   /* Interface Colors - The building blocks of your UI */
   --background: #ffffff; /* Main page background */
@@ -148,20 +148,20 @@
   --card-shadow: rgba(0, 0, 0, 0.04); /* Card shadows */
 
   /* Semantic Colors - Communicating meaning */
-  --success: #10b981; /* Success states, positive indicators */
+  --success: #3ca070; /* Success states, positive indicators */
   --warning: #f59e0b; /* Warnings, attention required */
   --error: #ef4444; /* Error states, destructive actions */
   --info: #3b82f6; /* Informational states, help text */
 
   /* Color shades - For more refined control */
-  --accent-50: #eef2ff;
-  --accent-100: #e0e7ff;
-  --accent-200: #c7d2fe;
-  --accent-300: #a5b4fc;
-  --accent-400: #818cf8;
-  --accent-500: #6366f1;
-  --accent-600: #4f46e5;
-  --accent-700: #4338ca;
+  --accent-50: #f0f1fe;
+  --accent-100: #e2e4fd;
+  --accent-200: #c4c7f7;
+  --accent-300: #a6abf1;
+  --accent-400: #888ceb;
+  --accent-500: #7075e0;
+  --accent-600: #5f64d1;
+  --accent-700: #4e53c2;
 
   /* Font variables */
   --font-sans: 'Satoshi', 'Satoshi Placeholder', sans-serif;

@@ -94,8 +94,8 @@ const WaveSeparator = () => {
 
       // Create gradient
       const gradient = ctx.createLinearGradient(0, 0, width, 0);
-      gradient.addColorStop(0, '#6366f1'); // accent color
-      gradient.addColorStop(1, '#f43f5e'); // tertiary color
+      gradient.addColorStop(0, '#7075e0'); // accent color
+      gradient.addColorStop(1, '#e0637c'); // tertiary color
 
       ctx.strokeStyle = gradient;
       ctx.lineWidth = 1.5;

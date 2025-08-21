@@ -36,7 +36,7 @@ export default function Image() {
           }}
         >
           <h1 style={{ fontSize: 60, margin: 0 }}>Imran Mohammed</h1>
-          <h2 style={{ fontSize: 30, margin: 0, color: '#6366f1' }}>
+          <h2 style={{ fontSize: 30, margin: 0, color: '#7075e0' }}>
             AI Experience Designer
           </h2>
         </div>

@@ -1,35 +1,35 @@
 'use client';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { Suspense, useRef } from 'react';
+import { useReducedMotion } from 'framer-motion';
+import { Suspense, useRef, lazy } from 'react';
 
 import Hero from '@/components/sections/Hero';
-import Process from '@/components/sections/Process';
-import Projects from '@/components/sections/Projects';
-import { CursorDot } from '@/components/ui';
+
+// Lazy load non-critical components for better LCP
+const Process = lazy(() => import('@/components/sections/Process'));
+const Projects = lazy(() => import('@/components/sections/Projects'));
+const CursorDot = lazy(() => import('@/components/ui').then(module => ({ default: module.CursorDot })));
 
 export default function Home() {
   // Ref for the scroll container (main)
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
-  // Set up scroll tracking for the parallax transition - without specifying container
-  const { scrollY } = useScroll();
-  // Height of the Hero section (adjust as needed)
-  const heroHeight = 600;
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-background relative">
-      <CursorDot size={14} />
-      {/* Hero Section with Suspense for better loading */}
-      <Suspense fallback={<div className="h-screen" />}>
-        <Hero />
+    <main ref={containerRef} className="min-h-screen bg-background relative" style={{ position: 'relative' }}>
+      {/* Load CursorDot after hero for better LCP */}
+      <Suspense fallback={null}>
+        <CursorDot size={14} />
       </Suspense>
+      
+      {/* Hero Section - prioritized for LCP */}
+      <Hero />
 
-      {/* Projects Section appears statically */}
-      <Suspense fallback={<div className="h-96" />}>
+      {/* Lazy load below-the-fold sections */}
+      <Suspense fallback={<div className="h-96 bg-background" />}>
         <Projects />
       </Suspense>
 
-      <Suspense fallback={<div className="h-96" />}>
+      <Suspense fallback={<div className="h-96 bg-background" />}>
         <Process />
       </Suspense>
     </main>

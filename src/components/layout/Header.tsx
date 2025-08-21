@@ -65,8 +65,6 @@ const Header = () => {
     };
   }, []);
 
-  console.log('mobileMenuOpen:', mobileMenuOpen);
-
   return (
     <header
       className={`w-full transition-all duration-300 ${

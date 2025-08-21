@@ -166,14 +166,14 @@ const MicrophoneIcon: React.FC<{
       style={{
         background:
           state === 'listening'
-            ? 'linear-gradient(135deg, #6366f1, #f43f5e, #6366f1)'
+            ? 'linear-gradient(135deg, #7075e0, #e0637c, #7075e0)'
             : state === 'speaking' && isClonedVoice
-              ? 'linear-gradient(135deg, #4f46e5, #f43f5e, #6366f1)'
+              ? 'linear-gradient(135deg, #5f64d1, #e0637c, #7075e0)'
               : state === 'processing'
-                ? 'linear-gradient(135deg, #f59e0b, #f43f5e, #6366f1)'
+                ? 'linear-gradient(135deg, #5f64d1, #e0637c, #7075e0)'
                 : isClonedVoice
-                  ? 'linear-gradient(135deg, #4f46e5, #f43f5e, #6366f1)'
-                  : 'linear-gradient(135deg, #6366f1, #f43f5e, #6366f1)',
+                  ? 'linear-gradient(135deg, #5f64d1, #e0637c, #7075e0)'
+                  : 'linear-gradient(135deg, #7075e0, #e0637c, #7075e0)',
       }}
       whileHover={{ scale: disabled ? 1 : 1.05 }}
       whileTap={{ scale: disabled ? 1 : 0.95 }}

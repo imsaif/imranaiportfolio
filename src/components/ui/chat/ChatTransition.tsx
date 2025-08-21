@@ -87,7 +87,7 @@ const ChatTransition = ({ onComplete }: ChatTransitionProps) => {
                   key={dot}
                   className="h-2 w-2 rounded-full"
                   style={{
-                    background: 'linear-gradient(135deg, #6366f1, #f43f5e)',
+                    background: 'linear-gradient(135deg, #7075e0, #e0637c)',
                   }}
                   animate={{
                     opacity: [0.3, 1, 0.3],

@@ -4,12 +4,15 @@ import type { Metadata } from 'next';
 
 import './globals.css';
 import Hotjar from '../components/analytics/Hotjar';
+import PerformanceMonitor from '../components/analytics/PerformanceMonitor';
+import ProductionPerformanceTest from '../components/analytics/ProductionPerformanceTest';
 import ClientProviders from '../components/ClientProviders';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import { SmoothScrollProvider } from '../components/SmoothScrollProvider';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://your-domain.com' : 'http://localhost:3000'),
   title: 'Imran Mohammed | AI Experience Designer',
   description:
     'Product designer specializing in creating human-centered AI experiences that balance technical innovation with usability and ethics.',
@@ -37,6 +40,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
+        {/* Preload critical resources for better LCP */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="bg-white dark:bg-gray-950 text-black dark:text-white font-sans">
         <ClientProviders>
@@ -51,6 +58,8 @@ export default function RootLayout({
         <SpeedInsights />
         <Analytics />
         <Hotjar />
+        <PerformanceMonitor />
+        <ProductionPerformanceTest />
       </body>
     </html>
   );
