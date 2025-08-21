@@ -1,35 +1,35 @@
 'use client';
-import { Suspense, useRef } from 'react';
+import { useRef } from 'react';
+import dynamic from 'next/dynamic';
 
 import Hero from '@/components/sections/Hero';
 
 // Lazy load non-critical components for better LCP
-const Process = lazy(() => import('@/components/sections/Process'));
-const Projects = lazy(() => import('@/components/sections/Projects'));
-const CursorDot = lazy(() => import('@/components/ui').then(module => ({ default: module.CursorDot })));
+const Process = dynamic(() => import('@/components/sections/Process'), {
+  loading: () => <div className="h-96 bg-background" />
+});
+const Projects = dynamic(() => import('@/components/sections/Projects'), {
+  loading: () => <div className="h-96 bg-background" />
+});
+const CursorDot = dynamic(() => import('@/components/ui').then(module => ({ default: module.CursorDot })), {
+  ssr: false
+});
 
 export default function Home() {
   // Ref for the scroll container (main)
   const containerRef = useRef<HTMLDivElement>(null);
 
-  return (
+    return (
     <main ref={containerRef} className="min-h-screen bg-background relative" style={{ position: 'relative' }}>
       {/* Load CursorDot after hero for better LCP */}
-      <Suspense fallback={null}>
-        <CursorDot size={14} />
-      </Suspense>
-
+      <CursorDot size={14} />
+      
       {/* Hero Section - prioritized for LCP */}
       <Hero />
 
       {/* Lazy load below-the-fold sections */}
-      <Suspense fallback={<div className="h-96 bg-background" />}>
-        <Projects />
-      </Suspense>
-
-      <Suspense fallback={<div className="h-96 bg-background" />}>
-        <Process />
-      </Suspense>
+      <Projects />
+      <Process />
     </main>
   );
 }
