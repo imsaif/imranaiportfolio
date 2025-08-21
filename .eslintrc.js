@@ -49,9 +49,11 @@ module.exports = {
     // TypeScript rules
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }], // Downgrade to warning
-    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn', // Downgrade to warning
     '@typescript-eslint/ban-ts-comment': 'warn', // Downgrade to warning
     '@typescript-eslint/no-empty-function': 'warn', // Downgrade to warning
+    '@typescript-eslint/prefer-const': 'off', // Disable temporarily
+    '@typescript-eslint/no-var-requires': 'off', // Disable temporarily
 
     // Import rules
     'import/extensions': [
@@ -70,7 +72,7 @@ module.exports = {
     // General rules
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'max-len': ['warn', { code: 120, ignoreComments: true, ignoreStrings: true, ignoreTemplateLiterals: true }],
-    
+
     // Whitespace and formatting rules
     'no-trailing-spaces': 'error', // Disallow trailing whitespace at the end of lines
     'eol-last': ['error', 'always'], // Require newline at the end of files

@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { monitorFrameRate, getNavigationTiming } from '../../utils/web-vitals';
+import { useEffect, useState } from 'react';
+import { getNavigationTiming, monitorFrameRate } from '../../utils/web-vitals';
 
 interface PerformanceMetrics {
   fps?: {
@@ -44,51 +44,51 @@ export function PerformanceMonitor({
   const [isVisible, setIsVisible] = useState(initiallyVisible);
   const [isMonitoring, setIsMonitoring] = useState(false);
   const [metrics, setMetrics] = useState<PerformanceMetrics>({});
-  
+
   // Start monitoring
   useEffect(() => {
     if (!isVisible) return;
-    
+
     let intervalId: NodeJS.Timeout;
-    
+
     const startMonitoring = () => {
       setIsMonitoring(true);
-      
+
       // Initial metrics collection
       collectMetrics();
-      
+
       // Setup interval for continuous monitoring
       intervalId = setInterval(() => {
         collectMetrics();
       }, monitoringInterval);
     };
-    
+
     const stopMonitoring = () => {
       setIsMonitoring(false);
       if (intervalId) {
         clearInterval(intervalId);
       }
     };
-    
+
     // Start monitoring when component becomes visible
     startMonitoring();
-    
+
     // Cleanup
     return () => {
       stopMonitoring();
     };
   }, [isVisible, monitoringInterval]);
-  
+
   // Collect performance metrics
   const collectMetrics = async () => {
     if (typeof window === 'undefined') return;
-    
+
     // Get frame rate metrics
     const frameMetrics = await monitorFrameRate(1000);
-    
+
     // Get navigation timing
     const navTiming = getNavigationTiming();
-    
+
     // Get memory usage if available
     let memoryMetrics = null;
     if ((performance as any).memory) {
@@ -100,29 +100,29 @@ export function PerformanceMonitor({
         usagePercentage: (memory.usedJSHeapSize / memory.jsHeapSizeLimit) * 100,
       };
     }
-    
+
     // Get paint metrics
     const paintEntries = performance.getEntriesByType('paint');
     const fcpEntry = paintEntries.find(entry => entry.name === 'first-contentful-paint');
     const fcpTime = fcpEntry ? fcpEntry.startTime : 0;
-    
+
     // Get LCP if available
     let lcpTime = 0;
     const lcpEntries = performance.getEntriesByType('largest-contentful-paint');
     if (lcpEntries.length > 0) {
-      lcpTime = lcpEntries[lcpEntries.length - 1].startTime;
+      lcpTime = lcpEntries[lcpEntries.length - 1]?.startTime || 0;
     }
-    
+
     // Get CLS if available
     let clsValue = 0;
     const layoutShiftEntries = performance.getEntriesByType('layout-shift');
     for (const entry of layoutShiftEntries) {
       clsValue += (entry as any).value;
     }
-    
+
     // Update metrics
     setMetrics({
-      fps: frameMetrics ? {
+      fps: frameMetrics && typeof frameMetrics === 'object' && 'avgFps' in frameMetrics ? {
         avg: frameMetrics.avgFps,
         min: frameMetrics.minFps,
         max: frameMetrics.maxFps,
@@ -136,20 +136,20 @@ export function PerformanceMonitor({
         cls: clsValue,
         totalLoad: navTiming?.totalPageLoad || 0,
       },
-      memory: memoryMetrics,
+      memory: memoryMetrics || undefined,
     });
   };
-  
+
   // Toggle visibility
   const toggleVisibility = () => {
     setIsVisible(prev => !prev);
   };
-  
+
   // If not visible and no controls, render nothing
   if (!isVisible && !showControls) {
     return null;
   }
-  
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {showControls && (
@@ -161,11 +161,11 @@ export function PerformanceMonitor({
           {isVisible ? "Hide Metrics" : "Show Metrics"}
         </button>
       )}
-      
+
       {isVisible && (
         <div className="bg-black/80 text-white p-4 rounded-lg shadow-lg w-80 max-h-96 overflow-auto font-mono text-xs">
           <h3 className="text-lg font-semibold mb-3 text-accent">Performance Metrics</h3>
-          
+
           {isMonitoring ? (
             <>
               {/* FPS Metrics */}
@@ -177,17 +177,17 @@ export function PerformanceMonitor({
                     <span className={metrics.fps.avg < 50 ? 'text-red-400' : 'text-green-400'}>
                       {metrics.fps.avg.toFixed(1)} FPS
                     </span>
-                    
+
                     <span>Min:</span>
                     <span className={metrics.fps.min < 30 ? 'text-red-400' : 'text-yellow-400'}>
                       {metrics.fps.min.toFixed(1)} FPS
                     </span>
-                    
+
                     <span>Max:</span>
                     <span className="text-green-400">
                       {metrics.fps.max.toFixed(1)} FPS
                     </span>
-                    
+
                     <span>Jank Frames:</span>
                     <span className={metrics.fps.jank > 5 ? 'text-red-400' : 'text-green-400'}>
                       {metrics.fps.jank} ({metrics.fps.jankPercentage.toFixed(1)}%)
@@ -195,7 +195,7 @@ export function PerformanceMonitor({
                   </div>
                 </div>
               )}
-              
+
               {/* Web Vitals */}
               {metrics.navigation && (
                 <div className="mb-4">
@@ -205,22 +205,22 @@ export function PerformanceMonitor({
                     <span className={metrics.navigation.ttfb > 500 ? 'text-red-400' : 'text-green-400'}>
                       {metrics.navigation.ttfb.toFixed(0)} ms
                     </span>
-                    
+
                     <span>FCP:</span>
                     <span className={metrics.navigation.fcp > 2000 ? 'text-red-400' : 'text-green-400'}>
                       {metrics.navigation.fcp.toFixed(0)} ms
                     </span>
-                    
+
                     <span>LCP:</span>
                     <span className={metrics.navigation.lcp > 2500 ? 'text-red-400' : 'text-green-400'}>
                       {metrics.navigation.lcp.toFixed(0)} ms
                     </span>
-                    
+
                     <span>CLS:</span>
                     <span className={metrics.navigation.cls > 0.1 ? 'text-red-400' : 'text-green-400'}>
                       {metrics.navigation.cls.toFixed(3)}
                     </span>
-                    
+
                     <span>Total Load:</span>
                     <span className={metrics.navigation.totalLoad > 3000 ? 'text-red-400' : 'text-green-400'}>
                       {metrics.navigation.totalLoad.toFixed(0)} ms
@@ -228,7 +228,7 @@ export function PerformanceMonitor({
                   </div>
                 </div>
               )}
-              
+
               {/* Memory Usage */}
               {metrics.memory && (
                 <div className="mb-2">
@@ -238,17 +238,17 @@ export function PerformanceMonitor({
                     <span className={metrics.memory.usagePercentage > 80 ? 'text-red-400' : 'text-green-400'}>
                       {(metrics.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1)} MB
                     </span>
-                    
+
                     <span>Total:</span>
                     <span>
                       {(metrics.memory.totalJSHeapSize / (1024 * 1024)).toFixed(1)} MB
                     </span>
-                    
+
                     <span>Limit:</span>
                     <span>
                       {(metrics.memory.jsHeapSizeLimit / (1024 * 1024)).toFixed(1)} MB
                     </span>
-                    
+
                     <span>Usage:</span>
                     <span className={metrics.memory.usagePercentage > 80 ? 'text-red-400' : 'text-green-400'}>
                       {metrics.memory.usagePercentage.toFixed(1)}%
@@ -256,7 +256,7 @@ export function PerformanceMonitor({
                   </div>
                 </div>
               )}
-              
+
               <div className="text-center text-xs opacity-80 mt-3">
                 <span>Refreshed every {monitoringInterval / 1000}s</span>
               </div>
@@ -270,4 +270,4 @@ export function PerformanceMonitor({
       )}
     </div>
   );
-} 
+}

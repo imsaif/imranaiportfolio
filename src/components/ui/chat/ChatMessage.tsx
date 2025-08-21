@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { useEffect, useRef } from 'react';
 
 import { Message } from '../../../types/chat';
 
@@ -29,43 +28,43 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
   const createMarkup = (content: string) => {
     // Enhanced link detection with case study-specific styling
     const caseStudyLinkRegex = /\[View ([^\]]+) Case Study\]\(([^)]+)\)/g;
-    
+
     // Replace case study links with specially styled buttons
     let formattedContent = content.replace(
-      caseStudyLinkRegex, 
+      caseStudyLinkRegex,
       '<a href="$2" class="block px-4 py-2.5 my-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-md hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-medium text-center w-full sm:w-auto" target="_self" rel="noopener noreferrer">View $1 Case Study</a>'
     );
-    
+
     // Style project titles more prominently
     formattedContent = formattedContent.replace(
       /\*\*(LessonLoom|EduScheduler)\*\*/g,
       '<h3 class="text-xl font-bold text-indigo-700 mt-5 mb-2">$1</h3>'
     );
-    
+
     // Enhance paragraphs after headings for better readability with subtle indentation
     formattedContent = formattedContent.replace(
       /(<h3 class="[^>]+">[^<]+<\/h3>)([^<]+)/g,
       '$1<p class="text-gray-700 mb-4 leading-relaxed">$2</p>'
     );
-    
+
     // Basic markdown link regex - for other links not related to case studies
     const regularLinkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-    
+
     // Replace regular markdown links with styled button HTML
     formattedContent = formattedContent.replace(
-      regularLinkRegex, 
+      regularLinkRegex,
       '<a href="$2" class="inline-block px-4 py-2 mt-2 mb-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors shadow-sm font-medium" target="_blank" rel="noopener noreferrer">$1</a>'
     );
-    
+
     // Format lists better
     formattedContent = formattedContent.replace(/- /g, '• ');
-    
+
     // Add proper styling to bold text that isn't already styled as a heading
     formattedContent = formattedContent.replace(/\*\*([^*]+)\*\*/g, '<strong class="text-indigo-700 font-semibold block mt-3 mb-1">$1</strong>');
-    
+
     // Convert line breaks to proper HTML with more spacing between paragraphs
     formattedContent = formattedContent.replace(/\n\n/g, '</p><p class="mt-3">').replace(/\n/g, '<br/>');
-    
+
     // Wrap in a paragraph tag to ensure proper styling
     return { __html: `<p>${formattedContent}</p>` };
   };
@@ -161,7 +160,7 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
         {/* Use ReactMarkdown for bot messages, plain text for user */}
         {isBot ? (
           // Use dangerouslySetInnerHTML for bot messages to ensure links work
-          <div 
+          <div
             dangerouslySetInnerHTML={createMarkup(message.text)}
             className="chat-message-content"
           />

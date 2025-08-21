@@ -1,16 +1,5 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useEffect, useState, useRef } from 'react';
-import { FloatingNavBar, sections } from './FloatingNavBar';
-import InteractivePrototype from './InteractivePrototype';
-import { ChallengeSection } from './sections/ChallengeSection';
-import { IntroductionSection } from './sections/IntroductionSection';
-import { ProjectOverviewSection } from './sections/ProjectOverviewSection';
-import UserPersonasSection from './sections/UserPersonasSectionNEW';
-import { UserResearchSection } from './sections/UserResearchSection';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 import UserJourneyMapInteractive from '@/components/case-studies/UserJourneyMapInteractive';
@@ -19,6 +8,15 @@ import ProgressBar from '@/components/ui/ProgressBar';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 import { scriptMetrics } from '@/data/caseStudyVoiceScript';
 import { caseStudyVoiceService } from '@/services/caseStudyVoiceService';
+import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import InteractivePrototype from './InteractivePrototype';
+import { ChallengeSection } from './sections/ChallengeSection';
+import { IntroductionSection } from './sections/IntroductionSection';
+import { ProjectOverviewSection } from './sections/ProjectOverviewSection';
+import UserPersonasSection from './sections/UserPersonasSectionNEW';
+import { UserResearchSection } from './sections/UserResearchSection';
 
 // Edit (pencil) icon for Design Process section title with gradient stroke
 const DesignProcessIcon = (
@@ -87,11 +85,7 @@ const ConclusionIcon = (
 );
 
 export default function Page() {
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  };
+
 
   // Scroll progress state
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -126,7 +120,7 @@ export default function Page() {
         onProgress: progress => {
           setVoiceProgress(progress);
         },
-        onSectionChange: (sectionKey, sectionName) => {
+        onSectionChange: (_, sectionName) => {
           setCurrentVoiceSection(sectionName);
         },
         onCharacterUsage: charactersUsed => {
@@ -223,7 +217,7 @@ export default function Page() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const overviewTop = overviewRef.current?.getBoundingClientRect().top ?? 0;
+
       const challengeTop = challengeRef.current?.getBoundingClientRect().top ?? 0;
       const userResearchTop = userResearchRef.current?.getBoundingClientRect().top ?? 0;
       const userPersonasTop = userPersonasRef.current?.getBoundingClientRect().top ?? 0;
@@ -283,7 +277,7 @@ export default function Page() {
             onSeek={handleSeek}
             progress={voiceProgress}
             currentSection={currentVoiceSection}
-            estimatedCost={estimatedCost}
+
             charactersUsed={charactersUsed}
             charactersLimit={charactersLimit}
             currentTime={currentTime}

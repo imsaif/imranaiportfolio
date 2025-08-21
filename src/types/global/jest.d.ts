@@ -31,4 +31,4 @@ declare global {
 }
 
 // This is needed to make the file a module
-export {}; 
+export {};

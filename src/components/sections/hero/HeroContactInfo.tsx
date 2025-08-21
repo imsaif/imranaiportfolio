@@ -1,12 +1,10 @@
 'use client';
 
-import React from 'react';
-
 interface HeroContactInfoProps {
   isVisible: boolean;
 }
 
-const HeroContactInfo = ({ isVisible }: HeroContactInfoProps) => {
+const HeroContactInfo = ({}: HeroContactInfoProps) => {
   return null;
 };
 

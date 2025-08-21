@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface ParticlesOnHoverProps {
   className?: string;
@@ -29,11 +29,11 @@ function drawStarWithGradient(ctx: CanvasRenderingContext2D, cx: number, cy: num
   ctx.closePath();
   // Create a gradient for the star
   const grad = ctx.createLinearGradient(-outerRadius, 0, outerRadius, 0);
-  grad.addColorStop(0, GRADIENT_COLORS[0]);
-  grad.addColorStop(1, GRADIENT_COLORS[1]);
+  grad.addColorStop(0, GRADIENT_COLORS[0] || '#6366f1');
+  grad.addColorStop(1, GRADIENT_COLORS[1] || '#f43f5e');
   ctx.fillStyle = grad;
   ctx.globalAlpha = 0.9;
-  ctx.shadowColor = GRADIENT_COLORS[1];
+  ctx.shadowColor = GRADIENT_COLORS[1] || '#f43f5e';
   ctx.shadowBlur = 15;
   ctx.fill();
   ctx.globalAlpha = 1;
@@ -73,6 +73,7 @@ export const ParticlesOnHover: React.FC<ParticlesOnHoverProps> = ({ className, s
     }));
 
     function draw() {
+      if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
       for (const p of particles) {
         drawStarWithGradient(ctx, p.x, p.y, p.r, p.points);
@@ -94,15 +95,15 @@ export const ParticlesOnHover: React.FC<ParticlesOnHoverProps> = ({ className, s
   if (shouldReduceMotion) return null;
 
   return (
-    <div 
-      className={`${className} animate-fadeIn`} 
-      style={{ 
-        ...style, 
-        pointerEvents: 'none', 
-        position: 'absolute', 
+    <div
+      className={`${className} animate-fadeIn`}
+      style={{
+        ...style,
+        pointerEvents: 'none',
+        position: 'absolute',
         inset: 0,
         zIndex: 20
-      }} 
+      }}
       aria-hidden
     >
       <canvas ref={canvasRef} width={400} height={400} style={{ width: '100%', height: '100%', display: 'block' }} />

@@ -5,32 +5,30 @@ export const dynamic = 'force-dynamic';
 
 // Import portfolio context for the AI
 import portfolioData from '../../../data/portfolio-context.json';
-// Import project data to get case study links
-import { projects, Project } from '../../../data/projects';
 // Import TypeScript types
-import { ChatMessage, ChatAPIResponse, ProjectLink, ChatAPIRequest } from '../../../types/openai';
+import { ChatAPIRequest, ChatAPIResponse, ChatMessage, ProjectLink } from '../../../types/openai';
 
 // Import utility modules
-import { log, LogLevel, appendChatLog } from '../../../utils/api/logging';
+import { appendChatLog, log, LogLevel } from '../../../utils/api/logging';
 import {
-  callOpenAI,
-  DEFAULT_API_URL,
-  DEFAULT_TIMEOUT_MS,
-  MIN_TIMEOUT_MS,
-  MAX_TIMEOUT_MS,
+    callOpenAI,
+    DEFAULT_API_URL,
+    DEFAULT_TIMEOUT_MS,
+    MAX_TIMEOUT_MS,
+    MIN_TIMEOUT_MS,
 } from '../../../utils/api/openai';
 import {
-  checkRateLimit,
-  DEFAULT_RATE_LIMIT,
-  DEFAULT_RATE_WINDOW_MS,
-  MIN_RATE_LIMIT,
-  MAX_RATE_LIMIT,
-  MIN_RATE_WINDOW_MS,
-  MAX_RATE_WINDOW_MS,
-  generateUserId,
+    checkRateLimit,
+    DEFAULT_RATE_LIMIT,
+    DEFAULT_RATE_WINDOW_MS,
+    generateUserId,
+    MAX_RATE_LIMIT,
+    MAX_RATE_WINDOW_MS,
+    MIN_RATE_LIMIT,
+    MIN_RATE_WINDOW_MS,
 } from '../../../utils/api/rateLimit';
 import { checkRedisRateLimit, redisAvailable } from '../../../utils/api/redisRateLimit';
-import { safeParseInt, processMessages } from '../../../utils/api/security';
+import { processMessages, safeParseInt } from '../../../utils/api/security';
 
 /**
  * POST handler for the chat API route
@@ -164,15 +162,15 @@ export async function POST(request: Request) {
 
     // Create system message content
     const systemMessageContent = `You are Imran, responding directly to visitors about your work, skills, and experience.
-    
+
     IMPORTANT: Always respond as Imran himself. Use "I" when talking about your work and experience. Never refer to yourself as an AI assistant or mention that you're AI. Speak naturally as if you're Imran having a conversation.
-    
+
     Here is information about Imran to use in your responses:
     ${JSON.stringify(portfolioData)}
-    
+
     Project links to share:
     ${JSON.stringify(projectLinks)}
-    
+
     Note: Imran has two detailed case studies available:
     1. LessonLoom case study: https://www.imranaidesign.com/casestudy/lessonloom
     2. EduScheduler case study: https://www.imranaidesign.com/casestudy/scheduler
@@ -188,7 +186,7 @@ export async function POST(request: Request) {
     An intelligent academic planning system that generates optimized teaching schedules, balancing automation with user preferences and priorities. It reduced meeting scheduling time by 60% and improved meeting attendance rates by 25%.
 
     These projects showcase my expertise in AI design and user experience. If you have any more questions or need further details, feel free to ask!
-    
+
     Technical Implementation Details:
     - Built with Next.js 13.5 using the App Router and TypeScript
     - Uses React Server Components with client-side interactivity
@@ -207,7 +205,7 @@ export async function POST(request: Request) {
       * OpenAI GPT-3.5 Turbo for natural language processing
       * Secure API key management using environment variables
       * Fallback to local responses when API is unavailable
-    
+
     Your task is to be helpful, friendly, and direct in answering questions about your work and experience.
     When asked about technical details, provide specific information about how you built things like the chat interface.
     Keep responses concise but informative, sharing relevant details about your projects and expertise.
@@ -226,7 +224,7 @@ export async function POST(request: Request) {
       userId,
       timestamp: new Date().toISOString(),
       messages: validMessages,
-      aiResponse: apiResult.success && apiResult.data ? apiResult.data.choices[0].message.content : null,
+      aiResponse: apiResult.success && apiResult.data && apiResult.data.choices?.[0]?.message?.content ? apiResult.data.choices[0].message.content : null,
     };
     // Persist the chat log (do not block response on failure)
     appendChatLog(chatLogEntry);
@@ -250,7 +248,7 @@ export async function POST(request: Request) {
     // Return the AI response
     return NextResponse.json<ChatAPIResponse>(
       {
-        response: apiResult.data.choices[0].message.content,
+        response: apiResult.data.choices?.[0]?.message?.content || 'I apologize, but I received an empty response. Please try asking again.',
       },
       { status: 200 }
     );

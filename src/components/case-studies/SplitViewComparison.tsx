@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import React, { useRef, useState } from 'react';
 
 interface Hotspot {
   id: string;
@@ -36,7 +36,7 @@ export default function SplitViewComparison({
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
-    const x = e.touches[0].clientX - rect.left;
+    const x = (e.touches[0]?.clientX || 0) - rect.left;
     const percentage = (x / rect.width) * 100;
     setSliderPosition(Math.min(Math.max(percentage, 0), 100));
   };
@@ -121,4 +121,4 @@ export default function SplitViewComparison({
       </div>
     </div>
   );
-} 
+}

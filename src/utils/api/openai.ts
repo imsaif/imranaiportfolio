@@ -1,5 +1,5 @@
-import { log, LogLevel } from './logging';
 import { ChatMessage, OpenAIRequestPayload, OpenAIResponse } from '../../types/openai';
+import { log, LogLevel } from './logging';
 
 // API configuration constants
 export const DEFAULT_API_URL = 'https://api.openai.com/v1/chat/completions';
@@ -43,7 +43,7 @@ export async function callOpenAI(
       max_tokens: 750,
       top_p: 1
     };
-    
+
     // For debugging - log the prepared request
     log(LogLevel.DEBUG, 'OpenAI request prepared', {
       url: apiUrl,
@@ -51,7 +51,7 @@ export async function callOpenAI(
       messageCount: messages.length,
       timeoutMs
     });
-    
+
     // Call OpenAI API with configurable URL and timeout
     const response = await fetch(apiUrl, {
       method: 'POST',
@@ -65,16 +65,16 @@ export async function callOpenAI(
 
     // Clear the timeout since the request completed
     clearTimeout(timeoutId);
-    
+
     // Handle non-200 responses
     if (!response.ok) {
       const errorText = await response.text();
-      log(LogLevel.ERROR, 'API returned error status', { 
-        status: response.status, 
+      log(LogLevel.ERROR, 'API returned error status', {
+        status: response.status,
         statusText: response.statusText,
         error: errorText
       });
-      
+
       return {
         success: false,
         error: `API error: ${response.status} ${response.statusText}`
@@ -83,15 +83,15 @@ export async function callOpenAI(
 
     // Parse the response
     const data = await response.json() as OpenAIResponse;
-    
+
     // Check for API-reported errors
     if (data.error) {
-      log(LogLevel.ERROR, 'API reported error', { 
+      log(LogLevel.ERROR, 'API reported error', {
         errorType: data.error.type,
         errorMessage: data.error.message,
         errorCode: data.error.code
       });
-      
+
       return {
         success: false,
         error: data.error.message
@@ -99,7 +99,7 @@ export async function callOpenAI(
     }
 
     // Log successful response at INFO level
-    log(LogLevel.INFO, 'Received successful API response', { 
+    log(LogLevel.INFO, 'Received successful API response', {
       model: data.model,
       promptTokens: data?.usage?.prompt_tokens,
       completionTokens: data?.usage?.completion_tokens,
@@ -113,7 +113,7 @@ export async function callOpenAI(
   } catch (error: any) {
     // Clear the timeout to prevent memory leaks
     clearTimeout(timeoutId);
-    
+
     // Handle timeout vs other errors
     if (error.name === 'AbortError') {
       log(LogLevel.ERROR, 'API request timed out', { timeoutMs });
@@ -122,16 +122,16 @@ export async function callOpenAI(
         error: `Request timed out after ${timeoutMs}ms`
       };
     }
-    
+
     // Handle other fetch errors
-    log(LogLevel.ERROR, 'Error in API request', { 
+    log(LogLevel.ERROR, 'Error in API request', {
       errorName: error.name,
       errorMessage: error.message
     });
-    
+
     return {
       success: false,
       error: error.message || 'Unknown error during API call'
     };
   }
-} 
+}

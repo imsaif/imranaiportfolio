@@ -54,7 +54,22 @@ export const AnimatedHeading = ({ level = 2, align = 'left', className = '', chi
     },
   };
 
-  const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
+  const HeadingComponent = ({ className: headingClassName, children: headingChildren }: { className: string; children: React.ReactNode }) => {
+    const props = { className: headingClassName, tabIndex: -1 as const };
+
+    switch (level) {
+      case 1:
+        return <h1 {...props}>{headingChildren}</h1>;
+      case 2:
+        return <h2 {...props}>{headingChildren}</h2>;
+      case 3:
+        return <h3 {...props}>{headingChildren}</h3>;
+      case 4:
+        return <h4 {...props}>{headingChildren}</h4>;
+      default:
+        return <h2 {...props}>{headingChildren}</h2>;
+    }
+  };
 
   return (
     <div className={`mb-12 ${alignClasses[align]} ${className}`.trim()}>
@@ -65,9 +80,9 @@ export const AnimatedHeading = ({ level = 2, align = 'left', className = '', chi
         variants={textVariants}
         style={{ display: 'inline-block', position: 'relative' }}
       >
-        <HeadingTag className={`inline-block ${headingSizes[level]} relative`} tabIndex={-1}>
+        <HeadingComponent className={`inline-block ${headingSizes[level]} relative`}>
           {children}
-        </HeadingTag>
+        </HeadingComponent>
         {/* Underline */}
         <motion.span
           className="block h-1 bg-gradient-to-r from-accent to-tertiary rounded-full mt-2 origin-left"

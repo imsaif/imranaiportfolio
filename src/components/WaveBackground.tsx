@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 // Define Brand Colors (derived from globals.css)
 const COLORS = {
@@ -95,7 +95,7 @@ export const WaveBackground: React.FC<WaveBackgroundProps> = ({
 
       // Draw waves based on memoized parameters
       waveParams.forEach(param => {
-        const color = COLORS[param.colorKey];
+        const color = param.colorKey ? COLORS[param.colorKey] : COLORS.accent;
         const rgbaColor = `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`;
 
         ctx.beginPath();
@@ -142,4 +142,4 @@ export const WaveBackground: React.FC<WaveBackgroundProps> = ({
   return <canvas ref={canvasRef} className={className} style={style} />;
 };
 
-export default WaveBackground; 
+export default WaveBackground;

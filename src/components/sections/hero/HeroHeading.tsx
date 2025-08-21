@@ -1,34 +1,21 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import React, { useRef, useState, useEffect } from 'react';
-
-import { useTextCycling } from '../../../hooks/useTextCycling';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 interface HeroHeadingProps {
   isVisible: boolean;
   aiTextOptions: string[];
 }
 
-const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
-  const gradientTextRef = useRef<HTMLSpanElement>(null);
+const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
   const [isMounted, setIsMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const morphWords = ['AI enhanced', 'beautifully balanced'];
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Force client-side rendering and check mobile status
+  // Force client-side rendering
   useEffect(() => {
     setIsMounted(true);
-    // Check screen size on mount
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // Example breakpoint: 768px
-    };
-    checkMobile();
-    // Optional: Add resize listener if needed
-    // window.addEventListener('resize', checkMobile);
-    // return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Timed automatic cycling every 5.5 seconds
@@ -38,20 +25,6 @@ const HeroHeading = ({ isVisible, aiTextOptions }: HeroHeadingProps) => {
     }, 5500);
     return () => clearInterval(interval);
   }, []);
-
-  // Set up text cycling for the dynamic text options - ONLY if not mobile
-  const { currentText, typing } = useTextCycling({
-    texts: aiTextOptions && aiTextOptions.length > 0 ? aiTextOptions : [''], // Ensure texts is not empty
-    typingSpeed: 2000,
-    pauseDuration: 3000,
-    charSpeed: 40,
-    // Disable autostart if mobile, let hook handle initial state
-    autoStart: !isMobile,
-  });
-
-  // Determine text and cursor visibility based on screen size
-  const displayText = isMobile ? aiTextOptions[0] || '' : currentText;
-  const showCursor = !isMobile && typing;
 
   // If not mounted yet (server-side), render a placeholder
   if (!isMounted) {

@@ -1,10 +1,9 @@
 'use client';
 
+import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
+import { useState } from 'react';
 // import CaseStudyVoiceToggle from '@/components/case-studies/CaseStudyVoiceToggle';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 

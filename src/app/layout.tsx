@@ -2,14 +2,14 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 
-import './globals.css';
 import Hotjar from '../components/analytics/Hotjar';
 import PerformanceMonitor from '../components/analytics/PerformanceMonitor';
 import ProductionPerformanceTest from '../components/analytics/ProductionPerformanceTest';
 import ClientProviders from '../components/ClientProviders';
+import { SmoothScrollProvider } from '../components/core/SmoothScrollProvider';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
-import { SmoothScrollProvider } from '../components/SmoothScrollProvider';
+import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://your-domain.com' : 'http://localhost:3000'),
@@ -45,7 +45,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="bg-white dark:bg-gray-950 text-black dark:text-white font-sans">
+      <body className="bg-white dark:bg-gray-950 text-foreground dark:text-white font-sans">
         <ClientProviders>
           <SmoothScrollProvider>
             <div className="flex flex-col min-h-screen">

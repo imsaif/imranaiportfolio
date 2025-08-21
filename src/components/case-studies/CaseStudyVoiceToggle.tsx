@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { ConversationLimits } from '../../services/hybridConversationalAgent';
 // import CaseStudyConversationalAgent from './CaseStudyConversationalAgent';
@@ -15,15 +15,8 @@ interface CaseStudyVoiceToggleProps {
 }
 
 const CaseStudyVoiceToggle: React.FC<CaseStudyVoiceToggleProps> = ({
-  caseStudyId,
-  caseStudyTitle,
   className = '',
   position = 'bottom-right',
-  limits = {
-    maxPremiumMinutes: 3, // 3 minutes premium per session (~$0.50 max cost)
-    maxDailyConversations: 5, // 5 conversations per day
-    premiumCooldownHours: 1, // 1 hour between premium sessions
-  },
   disabled = false,
 }) => {
   const [isAgentOpen, setIsAgentOpen] = useState(false);

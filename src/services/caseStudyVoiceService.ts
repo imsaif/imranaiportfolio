@@ -3,12 +3,6 @@
  * Handles voice playback using a single pre-generated audio file with timestamp-based section tracking
  */
 
-import {
-  eduSchedulerVoiceScript,
-  getSectionOrder,
-  formatSectionName,
-  type VoiceScriptSection,
-} from '../data/caseStudyVoiceScript';
 
 export interface VoicePlaybackCallbacks {
   onProgress: (progress: number) => void;
@@ -245,7 +239,7 @@ export class CaseStudyVoiceService {
       this.lastSectionKey = newSectionKey;
 
       // Update UI
-      this.callbacks?.onSectionChange(newSectionKey, formatSectionName(newSectionKey));
+      this.callbacks?.onSectionChange(newSectionKey, this.sectionTimestamps[newSectionKey]?.elementId || newSectionKey);
 
       // Trigger autoscroll to the current section
       this.scrollToSection(newSectionKey);
@@ -288,7 +282,7 @@ export class CaseStudyVoiceService {
         behavior: 'smooth',
       });
 
-      console.log(`Auto-scrolled to section: ${formatSectionName(sectionKey)} (${elementId})`);
+      console.log(`Auto-scrolled to section: ${sectionKey} (${elementId})`);
     } else {
       console.warn(`Element with ID '${elementId}' not found for section '${sectionKey}'`);
     }
@@ -301,7 +295,7 @@ export class CaseStudyVoiceService {
     const timestamp = this.sectionTimestamps[sectionKey];
     if (timestamp) {
       // Calculate cumulative characters used up to current section
-      const sectionOrder = getSectionOrder();
+      const sectionOrder = Object.keys(this.sectionTimestamps);
       const currentIndex = sectionOrder.indexOf(sectionKey);
 
       this.totalCharactersUsed = sectionOrder.slice(0, currentIndex + 1).reduce((total, key) => {

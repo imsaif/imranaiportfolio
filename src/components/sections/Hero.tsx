@@ -2,13 +2,12 @@
 
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import React, { useState, useEffect, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useChatToggle } from '../../context/ChatToggleProvider';
 import ChatTransition from '../ui/chat/ChatTransition';
 import ModeToggle, { Mode } from '../ui/ModeToggle';
 import VoiceBot from '../VoiceBot';
-import HeroButtons from './hero/HeroButtons';
 import HeroChatSection from './hero/HeroChatSection';
 import HeroContactInfo from './hero/HeroContactInfo';
 import HeroHeading from './hero/HeroHeading';
@@ -43,10 +42,6 @@ export const unlockScrolling = () => {
     // console.log('Manual unlock completed'); // Removed for performance
   }
 };
-
-interface HeroProps {
-  opacity?: any;
-}
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);

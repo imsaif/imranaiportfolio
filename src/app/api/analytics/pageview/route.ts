@@ -1,6 +1,7 @@
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import { validatePageview, validateCSRFToken } from '../../../../utils/api/validation';
 import { log, LogLevel } from '../../../../utils/api/logging';
+import { validateCSRFToken, validatePageview } from '../../../../utils/api/validation';
 
 // Mark route as dynamic to prevent static generation errors
 export const dynamic = "force-dynamic";
@@ -23,8 +24,9 @@ export async function POST(request: Request) {
   try {
     // Validate CSRF token from headers to prevent CSRF attacks
     const csrfToken = request.headers.get('X-CSRF-Token');
-    const expectedToken = request.cookies.get('csrf_token')?.value;
-    
+    const cookieStore = cookies();
+    const expectedToken = cookieStore.get('csrf_token')?.value;
+
     // Skip CSRF validation in development
     if (process.env.NODE_ENV !== 'development') {
       if (!validateCSRFToken(csrfToken || '', expectedToken || '')) {
@@ -32,14 +34,14 @@ export async function POST(request: Request) {
           token: csrfToken ? 'present' : 'missing',
           expectedToken: expectedToken ? 'present' : 'missing'
         });
-        
+
         return NextResponse.json<PageviewAPIResponse>({
           success: false,
           error: 'Invalid CSRF token'
         }, { status: 403 });
       }
     }
-    
+
     // Parse request body with error handling
     let pageviewData: PageviewData;
     try {
@@ -48,35 +50,35 @@ export async function POST(request: Request) {
       log(LogLevel.ERROR, 'Failed to parse analytics request body', {
         error: error instanceof Error ? error.message : String(error)
       });
-      
+
       return NextResponse.json<PageviewAPIResponse>({
         success: false,
         error: 'Invalid request format'
       }, { status: 400 });
     }
-    
+
     // Validate the pageview data
     const validation = validatePageview(pageviewData);
-    
+
     if (!validation.valid) {
-      log(LogLevel.WARN, 'Invalid pageview data', { 
-        errors: validation.errors 
+      log(LogLevel.WARN, 'Invalid pageview data', {
+        errors: validation.errors
       });
-      
+
       return NextResponse.json<PageviewAPIResponse>({
         success: false,
         error: 'Validation failed'
       }, { status: 400 });
     }
-    
+
     // Get IP address for analytics (hashed to protect privacy)
     const forwardedFor = request.headers.get('x-forwarded-for');
-    const ip = forwardedFor ? forwardedFor.split(',')[0] : 'unknown';
-    const ipHash = await hashIPAddress(ip);
-    
+    const ip = forwardedFor ? forwardedFor.split(',')[0] : '127.0.0.1';
+    const ipHash = await hashIPAddress(ip || 'unknown');
+
     // Get user agent for analytics
     const userAgent = request.headers.get('user-agent') || 'unknown';
-    
+
     // Prepare the data for saving
     const analyticsData = {
       path: pageviewData.path,
@@ -85,27 +87,28 @@ export async function POST(request: Request) {
       userAgent,
       viewDate: new Date()
     };
-    
+
     // Log the pageview - in a real implementation, this would be saved to a database
     log(LogLevel.INFO, 'Page view recorded', {
-      path: pageviewData.path,
-      hasReferrer: !!pageviewData.referrer
+      path: analyticsData.path,
+      hasReferrer: !!analyticsData.referrer,
+      userAgent: analyticsData.userAgent.substring(0, 50) // Log truncated user agent
     });
-    
+
     // TODO: Implement actual analytics storage
     // Example:
     // await savePageView(analyticsData);
-    
+
     return NextResponse.json<PageviewAPIResponse>({
       success: true
     }, { status: 200 });
-    
+
   } catch (error) {
     // Log any unhandled errors
     log(LogLevel.ERROR, 'Unhandled error in analytics API', {
       error: error instanceof Error ? error.message : String(error)
     });
-    
+
     return NextResponse.json<PageviewAPIResponse>({
       success: false,
       error: 'Internal server error'
@@ -134,4 +137,4 @@ async function hashIPAddress(ip: string): Promise<string> {
     });
     return 'hash_error';
   }
-} 
+}

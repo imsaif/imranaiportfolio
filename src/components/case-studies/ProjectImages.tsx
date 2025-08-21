@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 export default function ProjectImages({ images, title }: { images: string[]; title: string }) {
-  if (!images || images.length === 0) return null;
+  if (!images || images.length === 0 || !images[0]) return null;
 
   return (
     <div className="mb-8 overflow-hidden rounded-lg">

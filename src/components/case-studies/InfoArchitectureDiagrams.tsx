@@ -1,5 +1,5 @@
+import { motion } from 'framer-motion';
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 // Inline SVG icons for each node type (dark gray, larger)
 const NodeIcon = ({ type }: { type: string }) => {
@@ -208,4 +208,4 @@ const InfoArchitectureDiagrams: React.FC = () => {
   );
 };
 
-export default InfoArchitectureDiagrams; 
+export default InfoArchitectureDiagrams;

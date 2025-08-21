@@ -8,6 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        muted: 'var(--muted)',
+        accent: 'var(--accent)',
+        secondary: 'var(--secondary)',
+        tertiary: 'var(--tertiary)',
+      },
+      fontFamily: {
+        sans: ['Satoshi', 'Satoshi Placeholder', 'system-ui', 'sans-serif'],
+        heading: ['Satoshi', 'Satoshi Placeholder', 'system-ui', 'sans-serif'],
+      },
       screens: {
         xs: '475px',
         sm: '640px',

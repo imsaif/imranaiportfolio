@@ -111,7 +111,7 @@ const Contact = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-gray-700 hover:text-accent transition-colors"
+                      className="h-6 w-6 text-muted hover:text-accent transition-colors"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -126,7 +126,7 @@ const Contact = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-gray-700 hover:text-accent transition-colors"
+                      className="h-6 w-6 text-muted hover:text-accent transition-colors"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -141,7 +141,7 @@ const Contact = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-gray-700 hover:text-accent transition-colors"
+                      className="h-6 w-6 text-muted hover:text-accent transition-colors"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >

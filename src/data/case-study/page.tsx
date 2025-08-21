@@ -1,12 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import React from 'react';
-import { motion } from 'framer-motion';
 
 import CaseStudyNav from '@/components/case-studies/CaseStudyNav';
-import CaseStudyHeader from '@/components/CaseStudyHeader';
-import { Container } from '@/components/Container';
 
 export default function CaseStudy() {
   return (

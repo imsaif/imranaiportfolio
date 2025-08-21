@@ -1,0 +1,197 @@
+# Cursor Memory Bank - Portfolio Site Project
+
+## Project Overview
+This is a Next.js 13+ portfolio site for Imran Mohammed, an AI Experience Designer, featuring:
+- Modern web architecture with App Router
+- TypeScript for type safety
+- Tailwind CSS for styling
+- Framer Motion for animations
+- Voice assistant with AI integration
+- Interactive case studies
+- Responsive design with mobile-first approach
+
+## Key Architecture Decisions
+
+### Technology Stack
+- **Framework**: Next.js 13+ with App Router
+- **Language**: TypeScript for all components and utilities
+- **Styling**: Tailwind CSS with utility-first approach
+- **Animations**: Framer Motion with accessibility considerations
+- **State Management**: React Context for global state, local state for UI
+- **Testing**: Jest for unit tests, Cypress for E2E testing
+
+### Project Structure
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── api/               # API routes
+│   ├── casestudy/         # Case study pages
+│   ├── projects/          # Project pages
+│   └── globals.css        # Global styles
+├── components/            # Reusable components
+│   ├── ui/               # Base UI components
+│   ├── sections/         # Page sections
+│   └── case-studies/     # Case study specific components
+├── context/              # React Context providers
+├── hooks/                # Custom React hooks
+├── services/             # Business logic services
+├── types/                # TypeScript type definitions
+├── utils/                # Utility functions
+└── data/                 # Static data and content
+```
+
+### Component Organization
+- **UI Components**: Reusable buttons, cards, inputs (src/components/ui/)
+- **Layout Components**: Headers, footers, containers
+- **Page Components**: Specific to individual pages
+- **Section Components**: Hero, About, Projects, Contact sections
+- **Case Study Components**: Specialized for case study pages
+
+### Coding Standards
+
+#### TypeScript
+- Use TypeScript for all components and functions
+- Define proper interfaces and types
+- Use named exports for components
+- Implement proper error handling
+
+#### React Patterns
+- Use functional components with hooks
+- Implement proper cleanup in useEffect
+- Use destructuring for props and state
+- Follow React best practices for lists (key prop)
+
+#### Styling
+- Use Tailwind CSS utility classes
+- Follow mobile-first responsive design
+- Use CSS variables for brand colors (--accent, --secondary, --tertiary)
+- Implement proper accessibility (WCAG 2.1 AA)
+
+#### Performance
+- Use React.memo, useCallback, useMemo for optimization
+- Implement proper error boundaries
+- Optimize animations with Framer Motion
+- Use React Server Components where appropriate
+
+#### File Organization
+- Keep related files together in feature folders
+- Use consistent naming conventions
+- Organize imports in consistent order
+- Keep files under 300 lines
+- Use index files for cleaner imports
+
+## Key Features
+
+### Voice Mode Assistant
+- **Location**: src/components/VoiceBot.tsx
+- **Purpose**: AI-powered voice assistant for portfolio interactions
+- **Features**: Speech recognition, AI responses, voice cloning, rate limiting
+- **Rate Limits**: 3 conversations per session, $5 daily cost limit
+
+### Chat Interface
+- **Location**: src/components/ui/ChatInterface.tsx
+- **Purpose**: Interactive chat about projects and experience
+- **Features**: Suggested questions, case study buttons, typing indicators
+
+### Case Study Voice Reader
+- **Location**: src/app/casestudy/scheduler/page.tsx
+- **Purpose**: Audio narration with synchronized autoscroll
+- **Components**: VoiceControlBar, CaseStudyVoiceService, VoiceTimestampDebugger
+
+### CursorDot (Magnetic Cursor)
+- **Location**: src/components/ui/CursorDot.tsx
+- **Purpose**: Interactive magnetic cursor following
+- **Features**: Framer Motion animations, accessibility support, performance optimized
+
+## Database Schema
+
+### Contact Submissions
+```typescript
+interface ContactSubmission {
+  id: number;
+  name: string;
+  email: string;
+  subject?: string;
+  message: string;
+  createdAt: Date;
+  status: 'unread' | 'read' | 'replied';
+  notes?: string;
+}
+```
+
+### Projects
+```typescript
+interface Project {
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  category: string;
+  completedDate: Date;
+  featured: boolean;
+  url?: string;
+  githubUrl?: string;
+  images: ProjectImage[];
+  technologies: ProjectTechnology[];
+  details?: ProjectDetail;
+}
+```
+
+## Development Guidelines
+
+### Adding New Features
+1. Follow the established component structure
+2. Use TypeScript for all new code
+3. Implement proper error handling
+4. Add tests for new functionality
+5. Update documentation in portfolio-site.md
+6. Follow accessibility best practices
+
+### Animation Guidelines
+- Use Framer Motion for all animations
+- Implement reduced motion support
+- Keep animations subtle and purposeful
+- Optimize for performance
+- Clean up event listeners properly
+
+### State Management
+- Use React Context only for truly global state
+- Keep context providers focused on specific domains
+- Use local component state for UI-specific state
+- Avoid prop drilling with custom hooks
+
+### Testing Strategy
+- Unit tests with Jest for components and utilities
+- E2E tests with Cypress for user flows
+- Test accessibility features
+- Test responsive design
+- Test voice and chat functionality
+
+## Environment Variables
+- `NEXT_PUBLIC_USE_AI_API`: Controls AI API usage
+- Voice rate limiting configuration in development
+- OpenAI API integration settings
+
+## Performance Considerations
+- Optimize Core Web Vitals
+- Use React Server Components where appropriate
+- Implement proper image optimization
+- Monitor and optimize bundle size
+- Use proper caching strategies
+
+## Accessibility Requirements
+- WCAG 2.1 AA compliance
+- Screen reader compatibility
+- Keyboard navigation support
+- Color contrast requirements
+- Reduced motion support
+- Voice control compatibility
+
+## Deployment
+- Vercel deployment configuration
+- Environment variable management
+- Performance monitoring setup
+- Error tracking implementation
+
+Remember: Always read portfolio-site.md before writing any code and update it after adding major features or completing milestones. 

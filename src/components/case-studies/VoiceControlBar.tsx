@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface VoiceControlBarProps {
   isPlaying: boolean;
@@ -10,7 +10,6 @@ interface VoiceControlBarProps {
   onSeek?: (time: number) => void;
   progress: number;
   currentSection: string;
-  estimatedCost: number;
   charactersUsed: number;
   charactersLimit: number;
   currentTime?: number;
@@ -28,13 +27,10 @@ export default function VoiceControlBar({
   onSeek,
   progress,
   currentSection,
-  estimatedCost,
-  charactersUsed,
-  charactersLimit,
   currentTime = 0,
   totalDuration = 0,
 }: VoiceControlBarProps) {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
   const [dragProgress, setDragProgress] = useState(0);
   const progressBarRef = useRef<HTMLDivElement>(null);
@@ -88,6 +84,7 @@ export default function VoiceControlBar({
         document.removeEventListener('mouseup', handleMouseUp);
       };
     }
+    return undefined;
   }, [isDragging]);
 
   // Voice icon with gradient
@@ -127,8 +124,6 @@ export default function VoiceControlBar({
     </svg>
   );
 
-  // Calculate usage percentage
-  const usagePercentage = (charactersUsed / charactersLimit) * 100;
   const displayProgress = isDragging ? dragProgress : progress;
 
   return (

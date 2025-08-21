@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Message } from '../../types/chat';
-import { initialMessages, generateResponse } from '../../utils';
+import { generateResponse, initialMessages } from '../../utils';
 import Button from './Button';
 import ChatInput from './chat/ChatInput';
 import ChatMessageList from './chat/ChatMessageList';
@@ -27,12 +27,11 @@ const caseStudies = [
   },
 ];
 
-// Simplified props to just focus on in-page chat
-type ChatInterfaceProps = {
-  closeChat?: () => void;
-};
+interface ChatInterfaceProps {
+  closeChat?: (e?: React.MouseEvent) => void;
+}
 
-const ChatInterface = ({ closeChat }: ChatInterfaceProps) => {
+const ChatInterface = ({}: ChatInterfaceProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);

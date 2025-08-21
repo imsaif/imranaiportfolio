@@ -1,6 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import React from 'react';
-import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 
 /**
  * Challenge section for the EduScheduler case study.

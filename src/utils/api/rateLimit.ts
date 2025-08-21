@@ -23,26 +23,27 @@ export const rateLimitStore = new Map<string, RateLimitEntry>();
  */
 export function cleanupRateLimitStore() {
   const now = Date.now();
-  
+
   // First, remove expired entries
   for (const [key, entry] of rateLimitStore.entries()) {
     if (entry.resetAt < now) {
       rateLimitStore.delete(key);
     }
   }
-  
+
   // If we're still over the maximum size, remove oldest entries based on lastAccessed
   if (rateLimitStore.size > MAX_RATE_LIMIT_ENTRIES) {
     const entries = Array.from(rateLimitStore.entries())
       .sort((a, b) => a[1].lastAccessed - b[1].lastAccessed);
-    
+
     // Calculate how many entries to remove to get below the limit
     const entriesToRemove = rateLimitStore.size - MAX_RATE_LIMIT_ENTRIES;
-    
+
     // Remove the oldest entries
-    for (let i = 0; i < entriesToRemove; i++) {
-      if (entries[i]) {
-        rateLimitStore.delete(entries[i][0]);
+    for (let i = 0; i < entriesToRemove && i < entries.length; i++) {
+      const entry = entries[i];
+      if (entry) {
+        rateLimitStore.delete(entry[0]);
       }
     }
   }
@@ -55,15 +56,15 @@ export function cleanupRateLimitStore() {
  */
 export function generateUserId(headersList: Headers): string {
   // Extract potential identifiers from headers
-  const ip = headersList.get('x-forwarded-for') || 
-             headersList.get('x-real-ip') || 
+  const ip = headersList.get('x-forwarded-for') ||
+             headersList.get('x-real-ip') ||
              'unknown';
   const ua = headersList.get('user-agent') || 'unknown';
-  
+
   // Create a fingerprint using a combination of factors
   // In production, consider using a more sophisticated fingerprinting library
   const fingerprint = `${ip}-${ua.substring(0, 50)}`;
-  
+
   // Hash the fingerprint for privacy and to prevent using manipulated values directly
   let hash = 0;
   for (let i = 0; i < fingerprint.length; i++) {
@@ -71,7 +72,7 @@ export function generateUserId(headersList: Headers): string {
     hash = ((hash << 5) - hash) + char;
     hash |= 0; // Convert to 32bit integer
   }
-  
+
   return `user_${Math.abs(hash).toString(36)}`;
 }
 
@@ -83,72 +84,72 @@ export function generateUserId(headersList: Headers): string {
  * @returns Object containing isLimited flag and reset time info
  */
 export function checkRateLimit(
-  limit: number, 
-  windowMs: number, 
+  limit: number,
+  windowMs: number,
   headersList: Headers
-): { 
-  isLimited: boolean; 
+): {
+  isLimited: boolean;
   timeUntilReset?: number;
   userId: string;
 } {
   // Clean up expired rate limit entries
   cleanupRateLimitStore();
-  
+
   // Get user identifier for rate limiting
   const userId = generateUserId(headersList);
-  
+
   // Check rate limit
   const now = Date.now();
   const userRateLimit = rateLimitStore.get(userId);
-  
+
   // No previous requests from this user
   if (!userRateLimit) {
     // First request from this user
-    rateLimitStore.set(userId, { 
-      count: 1, 
+    rateLimitStore.set(userId, {
+      count: 1,
       resetAt: now + windowMs,
-      lastAccessed: now 
+      lastAccessed: now
     });
-    
+
     return { isLimited: false, userId };
   }
-  
+
   // Reset counter if window has passed
   if (userRateLimit.resetAt < now) {
-    rateLimitStore.set(userId, { 
-      count: 1, 
+    rateLimitStore.set(userId, {
+      count: 1,
       resetAt: now + windowMs,
-      lastAccessed: now 
+      lastAccessed: now
     });
-    
+
     return { isLimited: false, userId };
   }
-  
+
   // Check if user has exceeded their rate limit
   if (userRateLimit.count >= limit) {
     const timeUntilReset = userRateLimit.resetAt - now;
-    
+
     // Update last accessed time even when rate limited
     userRateLimit.lastAccessed = now;
     rateLimitStore.set(userId, userRateLimit);
-    
-    log(LogLevel.WARN, `Rate limit exceeded for user ${userId}`, { 
-      limit, 
-      requestCount: userRateLimit.count, 
+
+    log(LogLevel.WARN, `Rate limit exceeded for user ${userId}`, {
+      limit,
+      requestCount: userRateLimit.count,
       timeUntilReset
     });
-    
-    return { 
-      isLimited: true, 
+
+    return {
+      isLimited: true,
       timeUntilReset,
       userId
     };
   }
-  
+
   // Increment the counter and update last accessed time
   userRateLimit.count += 1;
   userRateLimit.lastAccessed = now;
   rateLimitStore.set(userId, userRateLimit);
-  
+
   return { isLimited: false, userId };
-} 
+}

@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
 
 import { ArrowLeft } from '@/components/Icons';
 
@@ -12,7 +11,6 @@ export default function CaseStudyFooter() {
 
   // Determine which case study is being viewed
   const isSchedulerCaseStudy = pathname?.includes('/scheduler');
-  const isLessonLoomCaseStudy = pathname?.includes('/lessonloom');
 
   // Set the other case study link and title
   const otherCaseStudyLink = isSchedulerCaseStudy ? '/casestudy/lessonloom' : '/casestudy/scheduler';

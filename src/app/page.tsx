@@ -1,6 +1,5 @@
 'use client';
-import { useReducedMotion } from 'framer-motion';
-import { Suspense, useRef, lazy } from 'react';
+import { Suspense, useRef } from 'react';
 
 import Hero from '@/components/sections/Hero';
 
@@ -12,7 +11,6 @@ const CursorDot = lazy(() => import('@/components/ui').then(module => ({ default
 export default function Home() {
   // Ref for the scroll container (main)
   const containerRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
 
   return (
     <main ref={containerRef} className="min-h-screen bg-background relative" style={{ position: 'relative' }}>
@@ -20,7 +18,7 @@ export default function Home() {
       <Suspense fallback={null}>
         <CursorDot size={14} />
       </Suspense>
-      
+
       {/* Hero Section - prioritized for LCP */}
       <Hero />
 

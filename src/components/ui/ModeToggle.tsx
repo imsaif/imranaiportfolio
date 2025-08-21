@@ -120,22 +120,19 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
 
   // Create dynamic modes array
   const dynamicModes = [
-    modes[0], // Portfolio
+    modes.find(m => m.id === 'portfolio'), // Portfolio
     getChatMode(), // Chat/Close
-    modes[2], // Voice
-  ];
+    modes.find(m => m.id === 'voice'), // Voice
+  ].filter(Boolean); // Remove any undefined values
 
   return (
     <>
       <div
-        className={`relative flex items-center justify-center p-[1px] rounded-full transition-all duration-500 ${
+        className={`relative flex items-center justify-center p-[2px] rounded-full transition-all duration-500 border border-border/30 bg-background/50 backdrop-blur-sm shadow-lg ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent via-tertiary to-accent animate-gradient-rotate" />
-        <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-accent/40 via-tertiary/40 to-accent/40 blur-xl animate-gradient-rotate" />
-        <div className="absolute -inset-6 rounded-full bg-gradient-to-r from-accent/20 via-tertiary/20 to-accent/20 blur-2xl animate-gradient-rotate" />
-        <div className="relative flex items-center justify-center w-full h-full bg-background rounded-full">
+        <div className="relative flex items-center justify-center w-full h-full bg-background rounded-full border border-border/20">
           {dynamicModes.map(mode => (
             <button
               key={mode.id}

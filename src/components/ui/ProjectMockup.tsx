@@ -1,39 +1,30 @@
 import Image from 'next/image';
-import { useState } from 'react';
-import ParticlesOnHover from './ParticlesOnHover';
-import { Project } from '@/data/projects';
+import React from 'react';
+
+import { Project } from '../../data/projects';
 
 interface ProjectMockupProps {
   project: Project;
-  onCaseStudyHover?: (hovered: boolean) => void;
-  showParticles?: boolean;
+  className?: string;
 }
 
-export const ProjectMockup = ({ project, onCaseStudyHover, showParticles }: ProjectMockupProps) => {
-  const [isHovered, setIsHovered] = useState(false);
+export const ProjectMockup: React.FC<ProjectMockupProps> = ({ project, className = '' }) => {
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    onCaseStudyHover && onCaseStudyHover(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    onCaseStudyHover && onCaseStudyHover(false);
-  };
+  // const handleMouseLeave = () => {
+  //   // setIsHovered(false);
+  //   // onCaseStudyHover && onCaseStudyHover(false);
+  // };
 
   return (
     <div
-      className="relative transition-all duration-300 ease-in-out w-full flex-1"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      className={`relative transition-all duration-300 ease-in-out w-full flex-1 ${className}`}
     >
       {/* Overlay particles effect on hover */}
-      {showParticles && <ParticlesOnHover />}
+      {/* showParticles && <ParticlesOnHover /> */}
 
       {/* Display the main project image */}
       <div className="relative w-full h-full min-h-[260px] md:min-h-[400px] rounded-t-xl md:rounded-l-xl md:rounded-tr-none overflow-hidden bg-white">
-        {project.images && project.images.length > 0 ? (
+        {project.images && project.images.length > 0 && project.images[0] ? (
           <Image
             src={project.images[0]}
             alt={project.title}

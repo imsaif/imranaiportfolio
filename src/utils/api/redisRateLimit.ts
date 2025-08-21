@@ -2,14 +2,14 @@ import Redis from 'ioredis';
 import { log, LogLevel } from './logging';
 
 // In-memory rate limiting for fallback when Redis isn't available
-import { RateLimitEntry, checkRateLimit, DEFAULT_RATE_LIMIT, DEFAULT_RATE_WINDOW_MS } from './rateLimit';
+import { checkRateLimit } from './rateLimit';
 
 /**
  * Redis client instance, using REDIS_URL from environment variables.
  * Connection is reused across hot reloads in development.
  * Uses a fallback when Redis isn't available.
  */
-const globalForRedis = global as unknown as { redis?: Redis; redisAvailable?: boolean };
+const globalForRedis = global as unknown as { redis?: Redis | null; redisAvailable?: boolean };
 
 // Try to create Redis client, with error handling
 let redisInstance: Redis | null = null;
@@ -55,7 +55,7 @@ if (isAvailable) {
             globalForRedis.redisAvailable = false;
              // Clean up the potentially problematic global instance on error
              if (globalForRedis.redis === redisInstance) {
-                 globalForRedis.redis = undefined;
+                 globalForRedis.redis = null;
                  redisInstance = null; // Ensure local variable is also null
              }
         });
@@ -65,7 +65,7 @@ if (isAvailable) {
             globalForRedis.redisAvailable = false;
              // Clean up the potentially problematic global instance on close
              if (globalForRedis.redis === redisInstance) {
-                 globalForRedis.redis = undefined;
+                 globalForRedis.redis = null;
                  redisInstance = null; // Ensure local variable is also null
              }
         });
@@ -75,13 +75,13 @@ if (isAvailable) {
         // Reuse existing global instance
         redisInstance = globalForRedis.redis;
         // Update availability based on reused instance status IF it's not connecting/closed
-        if (redisInstance.status !== 'connecting' && redisInstance.status !== 'reconnecting' && redisInstance.status !== 'end') {
+        if (redisInstance && redisInstance.status !== 'connecting' && redisInstance.status !== 'reconnecting' && redisInstance.status !== 'end') {
              globalForRedis.redisAvailable = redisInstance.status === 'ready' || redisInstance.status === 'connect';
         } else {
              // If reused instance is in a transient or closed state, mark unavailable
              globalForRedis.redisAvailable = false;
         }
-        log(LogLevel.INFO, `Reusing existing Redis client instance (status: ${redisInstance.status}). Availability set to ${globalForRedis.redisAvailable}`);
+        log(LogLevel.INFO, `Reusing existing Redis client instance (status: ${redisInstance?.status}). Availability set to ${globalForRedis.redisAvailable}`);
     }
 
   } catch (error) {
@@ -92,7 +92,7 @@ if (isAvailable) {
     globalForRedis.redisAvailable = false;
     redisInstance = null;
     if (globalForRedis.redis) {
-        globalForRedis.redis = undefined; // Clean up global
+        globalForRedis.redis = null; // Clean up global
     }
   }
 } else {
@@ -105,7 +105,7 @@ if (isAvailable) {
   globalForRedis.redisAvailable = false;
   redisInstance = null;
   if (globalForRedis.redis) {
-      globalForRedis.redis = undefined; // Clean up global
+      globalForRedis.redis = null; // Clean up global
   }
 }
 
@@ -118,7 +118,7 @@ export const redisAvailable = globalForRedis.redisAvailable || false;
  */
 export type RedisRateLimitResult = {
   isLimited: boolean;
-  timeUntilReset?: number;
+  timeUntilReset: number;
 };
 
 /**
@@ -139,18 +139,18 @@ export async function checkRedisRateLimit(
   // Fall back to in-memory rate limiting if Redis is unavailable
   if (!redisAvailable || !redis) {
     log(LogLevel.DEBUG, 'Using in-memory rate limiting fallback', { userId });
-    
+
     // Convert seconds to milliseconds for in-memory rate limiting
     const windowMs = windowSec * 1000;
-    
+
     // Use headers object that contains the userId for in-memory rate limiting
     const mockHeaders = new Headers();
     mockHeaders.set('x-user-id', userId);
-    
+
     const result = checkRateLimit(limit, windowMs, mockHeaders);
     return {
       isLimited: result.isLimited,
-      timeUntilReset: result.timeUntilReset
+      timeUntilReset: result.timeUntilReset || 0
     };
   }
 
@@ -167,21 +167,28 @@ export async function checkRedisRateLimit(
 
     if (!execResult || execResult.length < 2) {
       // If Redis is unavailable or result is malformed, fail safe: limit user
-      return { isLimited: true };
+      return { isLimited: true, timeUntilReset: 0 };
     }
 
-    const [incrErr, current] = execResult[0];
-    const [ttlErr, expire] = execResult[1];
+    const incrResult = execResult[0];
+    const ttlResult = execResult[1];
+
+    if (!incrResult || !ttlResult || !Array.isArray(incrResult) || !Array.isArray(ttlResult)) {
+      return { isLimited: true, timeUntilReset: 0 };
+    }
+
+    const [incrErr, current] = incrResult;
+    const [ttlErr, expire] = ttlResult;
 
     if (incrErr || ttlErr || typeof current !== 'number' || typeof expire !== 'number') {
       // If Redis errors, fail safe: limit user
-      return { isLimited: true };
+      return { isLimited: true, timeUntilReset: 0 };
     }
 
     // If first request, set expiry
     if (current === 1) {
       await redis.expire(key, ttl);
-      return { isLimited: false };
+      return { isLimited: false, timeUntilReset: 0 };
     }
 
     // If over the limit
@@ -191,22 +198,22 @@ export async function checkRedisRateLimit(
       return { isLimited: true, timeUntilReset: timeUntilReset * 1000 };
     }
 
-    return { isLimited: false };
+    return { isLimited: false, timeUntilReset: 0 };
   } catch (error) {
-    log(LogLevel.ERROR, 'Redis rate limiting error, using fallback', { 
+    log(LogLevel.ERROR, 'Redis rate limiting error, using fallback', {
       error: error instanceof Error ? error.message : String(error),
-      userId 
+      userId
     });
-    
+
     // Fall back to in-memory rate limiting on Redis error
     const windowMs = windowSec * 1000;
     const mockHeaders = new Headers();
     mockHeaders.set('x-user-id', userId);
-    
+
     const result = checkRateLimit(limit, windowMs, mockHeaders);
     return {
       isLimited: result.isLimited,
-      timeUntilReset: result.timeUntilReset
+      timeUntilReset: result.timeUntilReset || 0
     };
   }
-} 
+}
