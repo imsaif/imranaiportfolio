@@ -184,13 +184,13 @@ const HeroBackground = () => {
       // Draw each wave group
       waveGroups.forEach(group => {
         // Process fewer waves on low-power devices
-        const effectiveCount = group.count;
+        const effectiveCount = group.count ?? 0;
 
         for (let i = 0; i < effectiveCount; i++) {
           // Skip every other wave on low power devices
           if (isLowPowerDevice && i % 2 !== 0) continue;
 
-          const progress = i / (effectiveCount - 1);
+          const progress = effectiveCount > 1 ? i / (effectiveCount - 1) : 0;
           const offsetY = group.startY + (group.endY - group.startY) * progress;
 
           ctx.beginPath();
@@ -232,7 +232,7 @@ const HeroBackground = () => {
           ctx.stroke();
 
           // Add gradient fill below some waves - skip on low power devices
-          if (!isLowPowerDevice && i % 5 === 0 && i < group.count / 2) {
+          if (!isLowPowerDevice && i % 5 === 0 && i < (group.count ?? 0) / 2) {
             const fillGradient = ctx.createLinearGradient(0, offsetY, width, offsetY);
             fillGradient.addColorStop(0, 'rgba(99, 102, 241, 0.03)'); // --accent
             fillGradient.addColorStop(0.5, 'rgba(244, 63, 94, 0.04)'); // --tertiary

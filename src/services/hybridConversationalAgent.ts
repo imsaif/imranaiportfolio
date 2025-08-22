@@ -362,7 +362,7 @@ export class HybridConversationalAgent {
         "Hi there! I'm Imran, and I'm thrilled you're exploring my case studies. These projects represent some of my most impactful UX design work. What would you like to discuss?",
     };
 
-    return (caseStudyId && welcomeMessages[caseStudyId as keyof typeof welcomeMessages]) || welcomeMessages.default;
+    return (caseStudyId ? welcomeMessages[caseStudyId as keyof typeof welcomeMessages] : undefined) || welcomeMessages.default;
   }
 
   /**

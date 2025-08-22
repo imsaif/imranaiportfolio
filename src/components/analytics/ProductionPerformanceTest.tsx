@@ -39,7 +39,7 @@ const ProductionPerformanceTest = () => {
 
     setIsVisible(showPerf);
 
-    if (!showPerf || typeof window === 'undefined') return undefined;
+    if (!showPerf || typeof window === 'undefined') return;
 
     // Manual TTFB measurement
     const measureTTFB = () => {
@@ -63,12 +63,13 @@ const ProductionPerformanceTest = () => {
         const lcpEntries = performance.getEntriesByType('largest-contentful-paint');
         if (lcpEntries.length > 0) {
           const lcp = lcpEntries[lcpEntries.length - 1]?.startTime;
+          if (lcp === undefined) return;
           const rating = lcp <= 2500 ? 'good' : lcp <= 4000 ? 'needs-improvement' : 'poor';
 
           console.log('LCP found via Performance Timeline:', lcp);
           setMetrics(prev => ({
             ...prev,
-            lcp: Math.round(lcp),
+            lcp: Math.round(lcp!),
             rating: { ...prev.rating, lcp: rating }
           }));
           return;

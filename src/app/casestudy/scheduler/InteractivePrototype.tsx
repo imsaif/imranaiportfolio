@@ -394,14 +394,14 @@ const InteractivePrototype: React.FC = () => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const shouldReduceMotion = useReducedMotion();
 
-  // Interactive conflict state
-  const [selectedConflict, setSelectedConflict] = useState<{
-    row: number;
-    col: number;
-    subject: string;
-    teacher: string;
-    conflictType?: string | undefined;
-  } | null>(null);
+  // Interactive conflict state - removed unused variable
+  // const [selectedConflict, setSelectedConflict] = useState<{
+  //   row: number;
+  //   col: number;
+  //   subject: string;
+  //   teacher: string;
+  //   conflictType?: string | undefined;
+  // } | null>(null);
 
   // Add new state variables - commented out unused variables
   // const [selectedGrade, setSelectedGrade] = useState<string | null>(null);
@@ -607,7 +607,7 @@ const InteractivePrototype: React.FC = () => {
   const days = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
 
   // Add new handlers
-  const handleGradeSelect = (gradeId: string) => {
+  const handleGradeSelect = (_gradeId: string) => {
     // setSelectedGrade(gradeId); // Commented out since selectedGrade state is unused
     setStep(STEP.PLAN_GENERATION);
   };
@@ -681,7 +681,7 @@ const InteractivePrototype: React.FC = () => {
               if (cIdx === fromCol) {
                 return fromRow === toRow && fromCol === toCol
                   ? slot
-                  : { ...targetSlot, conflict: false };
+                  : targetSlot ? { ...targetSlot, conflict: false } : { subject: '', teacher: '', color: '', conflict: false };
               }
               return slot;
             }),
@@ -692,7 +692,7 @@ const InteractivePrototype: React.FC = () => {
             ...row,
             slots: row.slots.map((slot, cIdx) => {
               if (cIdx === toCol) {
-                return { ...subjectToMove, conflict: false };
+                return subjectToMove ? { ...subjectToMove, conflict: false } : { subject: '', teacher: '', color: '', conflict: false };
               }
               return slot;
             }),
@@ -1244,7 +1244,8 @@ const InteractivePrototype: React.FC = () => {
                                       aria-label={slot.conflict ? `View conflict: ${slot.subject}` : undefined}
                                       onClick={() => {
                                         if (slot.conflict) {
-                                          setSelectedConflict({
+                                          // Handle conflict selection - removed setSelectedConflict since it's unused
+                                          console.log('Conflict selected:', {
                                             row: rowIdx,
                                             col: colIdx,
                                             subject: slot.subject,
@@ -1266,7 +1267,8 @@ const InteractivePrototype: React.FC = () => {
                                       }}
                                       onKeyDown={e => {
                                         if (slot.conflict && (e.key === 'Enter' || e.key === ' ')) {
-                                          setSelectedConflict({
+                                          // Handle conflict selection - removed setSelectedConflict since it's unused
+                                          console.log('Conflict selected:', {
                                             row: rowIdx,
                                             col: colIdx,
                                             subject: slot.subject,

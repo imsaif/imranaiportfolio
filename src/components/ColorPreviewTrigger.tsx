@@ -4,7 +4,7 @@ import { useState } from 'react';
 // import ColorPreview from './ColorPreview'; // Component doesn't exist
 
 const ColorPreviewTrigger = () => {
-  const [showPreview, setShowPreview] = useState(false);
+  const [_showPreview, setShowPreview] = useState(false);
 
   return (
     <>

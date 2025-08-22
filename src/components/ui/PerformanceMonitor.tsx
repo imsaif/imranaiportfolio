@@ -121,14 +121,7 @@ export function PerformanceMonitor({
     }
 
     // Update metrics
-    setMetrics({
-      fps: frameMetrics && typeof frameMetrics === 'object' && 'avgFps' in frameMetrics ? {
-        avg: (frameMetrics as any).avgFps,
-        min: (frameMetrics as any).minFps,
-        max: (frameMetrics as any).maxFps,
-        jank: (frameMetrics as any).jankyFrames,
-        jankPercentage: (frameMetrics as any).jankyPercentage,
-      } : undefined,
+    const metricsUpdate: PerformanceMetrics = {
       navigation: {
         ttfb: navTiming?.ttfb || 0,
         fcp: fcpTime,
@@ -136,8 +129,23 @@ export function PerformanceMonitor({
         cls: clsValue,
         totalLoad: navTiming?.totalPageLoad || 0,
       },
-      memory: memoryMetrics || undefined,
-    });
+    };
+
+    if (frameMetrics && typeof frameMetrics === 'object' && 'avgFps' in frameMetrics) {
+      metricsUpdate.fps = {
+        avg: (frameMetrics as any).avgFps,
+        min: (frameMetrics as any).minFps,
+        max: (frameMetrics as any).maxFps,
+        jank: (frameMetrics as any).jankyFrames,
+        jankPercentage: (frameMetrics as any).jankyPercentage,
+      };
+    }
+
+    if (memoryMetrics) {
+      metricsUpdate.memory = memoryMetrics;
+    }
+
+    setMetrics(metricsUpdate);
   };
 
   // Toggle visibility

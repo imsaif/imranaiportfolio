@@ -140,7 +140,14 @@ export const testVoiceQuality = async (): Promise<{
     'I specialize in designing intuitive interfaces that solve real-world problems. My work focuses on educational technology, where I combine user-centered design with cutting-edge AI capabilities to create experiences that are both powerful and accessible.', // Long
   ];
 
-  const tests = [];
+  const tests: Array<{
+    text: string;
+    length: number;
+    success: boolean;
+    duration: number;
+    cost: number;
+    error?: string;
+  }> = [];
 
   for (const text of testTexts) {
     const startTime = Date.now();
@@ -170,7 +177,7 @@ export const testVoiceQuality = async (): Promise<{
         success: false,
         duration: Date.now() - startTime,
         cost: estimateCost(text),
-        error: error instanceof Error ? error.message : 'Unknown error',
+        ...(error instanceof Error ? { error: error.message } : { error: 'Unknown error' }),
       });
     }
   }
