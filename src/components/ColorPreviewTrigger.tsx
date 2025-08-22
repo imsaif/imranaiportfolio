@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import ColorPreview from './ColorPreview';
+import { useState } from 'react';
+// import ColorPreview from './ColorPreview'; // Component doesn't exist
 
 const ColorPreviewTrigger = () => {
   const [showPreview, setShowPreview] = useState(false);
@@ -19,18 +19,18 @@ const ColorPreviewTrigger = () => {
         🎨 Preview Colors
       </button>
 
-      {/* Color preview modal */}
-      {showPreview && (
+      {/* Color preview modal - commented out until ColorPreview component is created */}
+      {/* {showPreview && (
         <div id="color-preview">
           <ColorPreview />
-          <div 
-            className="fixed inset-0 z-[9998]" 
+          <div
+            className="fixed inset-0 z-[9998]"
             onClick={() => setShowPreview(false)}
           />
         </div>
-      )}
+      )} */}
     </>
   );
 };
 
-export default ColorPreviewTrigger; 
+export default ColorPreviewTrigger;

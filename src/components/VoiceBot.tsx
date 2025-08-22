@@ -413,7 +413,14 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
     };
 
     recognition.onresult = async (event: SpeechRecognitionEvent) => {
-      const transcript = event.results[0][0].transcript;
+      const transcript = event.results?.[0]?.[0]?.transcript;
+
+      if (!transcript) {
+        setErrorMessage('No speech was detected');
+        setVoiceState('idle');
+        return;
+      }
+
       setVoiceState('processing');
       setCurrentMessage('');
 

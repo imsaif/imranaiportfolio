@@ -2,11 +2,11 @@
 
 import { useEffect } from 'react';
 
-interface Metric {
-  name: string;
-  value: number;
-  rating: 'good' | 'needs-improvement' | 'poor';
-}
+// interface Metric {
+//   name: string;
+//   value: number;
+//   rating: 'good' | 'needs-improvement' | 'poor';
+// }
 
 const PerformanceMonitor = () => {
   useEffect(() => {
@@ -17,14 +17,14 @@ const PerformanceMonitor = () => {
 
     const observer = new PerformanceObserver((list) => {
       const entries = list.getEntries();
-      
+
       entries.forEach((entry) => {
         if (entry.entryType === 'largest-contentful-paint') {
           const lcp = entry.startTime;
           const rating = lcp <= 2500 ? 'good' : lcp <= 4000 ? 'needs-improvement' : 'poor';
-          
+
           console.log(`🎯 LCP: ${Math.round(lcp)}ms (${rating})`);
-          
+
           // Optional: Send to analytics
           if (typeof window !== 'undefined' && (window as any).gtag) {
             (window as any).gtag('event', 'web_vitals', {
@@ -35,18 +35,18 @@ const PerformanceMonitor = () => {
             });
           }
         }
-        
+
         if (entry.entryType === 'first-input') {
-          const fid = entry.processingStart - entry.startTime;
+          const fid = (entry as any).processingStart - entry.startTime;
           const rating = fid <= 100 ? 'good' : fid <= 300 ? 'needs-improvement' : 'poor';
-          
+
           console.log(`⚡ FID: ${Math.round(fid)}ms (${rating})`);
         }
-        
+
         if (entry.entryType === 'layout-shift' && !(entry as any).hadRecentInput) {
           const cls = (entry as any).value;
           const rating = cls <= 0.1 ? 'good' : cls <= 0.25 ? 'needs-improvement' : 'poor';
-          
+
           console.log(`📐 CLS: ${cls.toFixed(3)} (${rating})`);
         }
       });
@@ -71,4 +71,4 @@ const PerformanceMonitor = () => {
   return null;
 };
 
-export default PerformanceMonitor; 
+export default PerformanceMonitor;

@@ -1,7 +1,7 @@
-import { FocusTrap } from 'focus-trap-react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import React, { useState, useRef, useEffect } from 'react';
 import Button from '@/components/ui/Button';
+import { FocusTrap } from 'focus-trap-react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Step Enum
 const STEP = {
@@ -400,11 +400,11 @@ const InteractivePrototype: React.FC = () => {
     col: number;
     subject: string;
     teacher: string;
-    conflictType?: string;
+    conflictType?: string | undefined;
   } | null>(null);
 
-  // Add new state variables
-  const [selectedGrade, setSelectedGrade] = useState<string | null>(null);
+  // Add new state variables - commented out unused variables
+  // const [selectedGrade, setSelectedGrade] = useState<string | null>(null);
   const [grades] = useState([
     {
       id: '1',
@@ -426,15 +426,16 @@ const InteractivePrototype: React.FC = () => {
     },
   ]);
 
-  const [timeSlots] = useState([
-    { id: '1', time: '8 AM', duration: 1, isBreak: false },
-    { id: '2', time: '9 AM', duration: 1, isBreak: false },
-    { id: '3', time: '10 AM', duration: 1, isBreak: false },
-    { id: '4', time: '11 AM', duration: 1, isBreak: false },
-    { id: '5', time: '12 PM', duration: 1, isBreak: true },
-    { id: '6', time: '1 PM', duration: 1, isBreak: false },
-    { id: '7', time: '2 PM', duration: 1, isBreak: false },
-  ]);
+  // Commented out unused timeSlots variable
+  // const [timeSlots] = useState([
+  //   { id: '1', time: '8 AM', duration: 1, isBreak: false },
+  //   { id: '2', time: '9 AM', duration: 1, isBreak: false },
+  //   { id: '3', time: '10 AM', duration: 1, isBreak: false },
+  //   { id: '4', time: '11 AM', duration: 1, isBreak: false },
+  //   { id: '5', time: '12 PM', duration: 1, isBreak: true },
+  //   { id: '6', time: '1 PM', duration: 1, isBreak: false },
+  //   { id: '7', time: '2 PM', duration: 1, isBreak: false },
+  // ]);
 
   // Add state for status filter
   const [statusFilter, setStatusFilter] = useState<'All' | 'Published' | 'Draft' | 'No Plan'>('All');
@@ -607,20 +608,21 @@ const InteractivePrototype: React.FC = () => {
 
   // Add new handlers
   const handleGradeSelect = (gradeId: string) => {
-    setSelectedGrade(gradeId);
+    // setSelectedGrade(gradeId); // Commented out since selectedGrade state is unused
     setStep(STEP.PLAN_GENERATION);
   };
 
-  const handleConflictResolve = (conflictType: string, resolution: string) => {
-    // Update timetable data based on resolution
-    if (conflictType === 'double-booking') {
-      // Logic to handle double booking resolution
-      setSelectedConflict(null);
-    } else if (conflictType === 'gap') {
-      // Logic to handle gap resolution
-      setSelectedConflict(null);
-    }
-  };
+  // Commented out unused function
+  // const handleConflictResolve = (conflictType: string, resolution: string) => {
+  //   // Update timetable data based on resolution
+  //   if (conflictType === 'double-booking') {
+  //     // Logic to handle double booking resolution
+  //     setSelectedConflict(null);
+  //   } else if (conflictType === 'gap') {
+  //     // Logic to handle gap resolution
+  //     setSelectedConflict(null);
+  //   }
+  // };
 
   // Add state for sidepanel action and input
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
@@ -629,9 +631,9 @@ const InteractivePrototype: React.FC = () => {
     col: number;
     subject: string;
     teacher: string;
-    conflictType?: string;
-    time?: string;
-    day?: string;
+    conflictType?: string | undefined;
+    time?: string | undefined;
+    day?: string | undefined;
   } | null>(null);
 
   const [sidePanelAction, setSidePanelAction] = useState<string | null>(null);
@@ -657,7 +659,7 @@ const InteractivePrototype: React.FC = () => {
               ...slot,
               teacher: newTeacher,
               conflict: false,
-              conflictType: undefined,
+              // Remove conflictType when conflict is false
             };
           }),
         };
@@ -669,8 +671,8 @@ const InteractivePrototype: React.FC = () => {
   // Handler to move subject to another slot
   const handleMoveSubject = (fromRow: number, fromCol: number, toRow: number, toCol: number) => {
     setTimetableData(prev => {
-      const subjectToMove = prev[fromRow].slots[fromCol];
-      const targetSlot = prev[toRow].slots[toCol];
+      const subjectToMove = prev[fromRow]?.slots[fromCol];
+      const targetSlot = prev[toRow]?.slots[toCol];
       return prev.map((row, rIdx) => {
         if (rIdx === fromRow) {
           return {
@@ -679,7 +681,7 @@ const InteractivePrototype: React.FC = () => {
               if (cIdx === fromCol) {
                 return fromRow === toRow && fromCol === toCol
                   ? slot
-                  : { ...targetSlot, conflict: false, conflictType: undefined };
+                  : { ...targetSlot, conflict: false };
               }
               return slot;
             }),
@@ -690,7 +692,7 @@ const InteractivePrototype: React.FC = () => {
             ...row,
             slots: row.slots.map((slot, cIdx) => {
               if (cIdx === toCol) {
-                return { ...subjectToMove, conflict: false, conflictType: undefined };
+                return { ...subjectToMove, conflict: false };
               }
               return slot;
             }),
@@ -714,7 +716,6 @@ const InteractivePrototype: React.FC = () => {
             return {
               ...slot,
               conflict: false,
-              conflictType: undefined,
             };
           }),
         };
@@ -833,7 +834,7 @@ const InteractivePrototype: React.FC = () => {
                   {/* Schools List */}
                   <div className="divide-y divide-gray-200 flex-1 schools-list overflow-y-auto">
                     {currentSchools.length > 0 ? (
-                      currentSchools.map((school, index) => (
+                      currentSchools.map((school, _index) => (
                         <label
                           key={school.name}
                           className={`p-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer`}
@@ -1206,7 +1207,7 @@ const InteractivePrototype: React.FC = () => {
                             <th className="w-16 p-1.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50">
                               Time
                             </th>
-                            {days.map((day, dayIdx) => (
+                            {days.map((day, _dayIdx) => (
                               <th
                                 key={day}
                                 className="p-1.5 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 min-w-[120px] max-w-[120px] w-[120px]"

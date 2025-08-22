@@ -98,7 +98,7 @@ export default function Page() {
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
   const charactersLimit = scriptMetrics.totalCharacters; // Use actual script total
-  const estimatedCost = charactersUsed * 0.0003; // ElevenLabs pricing
+  // const estimatedCost = charactersUsed * 0.0003; // ElevenLabs pricing - unused variable
 
   // Voice control handlers
   const handleVoicePlay = async () => {

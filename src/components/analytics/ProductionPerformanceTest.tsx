@@ -23,7 +23,7 @@ const ProductionPerformanceTest = () => {
     ttfb: null,
     rating: {
       lcp: 'unknown',
-      fid: 'unknown', 
+      fid: 'unknown',
       cls: 'unknown',
       ttfb: 'unknown'
     }
@@ -33,13 +33,13 @@ const ProductionPerformanceTest = () => {
 
   useEffect(() => {
     // Show in development or when ?perf=true
-    const showPerf = 
-      process.env.NODE_ENV === 'development' || 
+    const showPerf =
+      process.env.NODE_ENV === 'development' ||
       (typeof window !== 'undefined' && window.location.search.includes('perf=true'));
-    
+
     setIsVisible(showPerf);
 
-    if (!showPerf || typeof window === 'undefined') return;
+    if (!showPerf || typeof window === 'undefined') return undefined;
 
     // Manual TTFB measurement
     const measureTTFB = () => {
@@ -47,7 +47,7 @@ const ProductionPerformanceTest = () => {
       if (navigation) {
         const ttfb = navigation.responseStart - navigation.requestStart;
         const rating = ttfb <= 800 ? 'good' : ttfb <= 1800 ? 'needs-improvement' : 'poor';
-        
+
         setMetrics(prev => ({
           ...prev,
           ttfb: Math.round(ttfb),
@@ -62,9 +62,9 @@ const ProductionPerformanceTest = () => {
         // Method 1: Performance Timeline API
         const lcpEntries = performance.getEntriesByType('largest-contentful-paint');
         if (lcpEntries.length > 0) {
-          const lcp = lcpEntries[lcpEntries.length - 1].startTime;
+          const lcp = lcpEntries[lcpEntries.length - 1]?.startTime;
           const rating = lcp <= 2500 ? 'good' : lcp <= 4000 ? 'needs-improvement' : 'poor';
-          
+
           console.log('LCP found via Performance Timeline:', lcp);
           setMetrics(prev => ({
             ...prev,
@@ -78,12 +78,12 @@ const ProductionPerformanceTest = () => {
         const hero = document.querySelector('section'); // Hero section
         const images = document.querySelectorAll('img');
         const textElements = document.querySelectorAll('h1, h2, p');
-        
+
         if (hero || images.length > 0 || textElements.length > 0) {
           // Estimate LCP based on when images/text are loaded
           const loadTime = performance.now();
           const rating = loadTime <= 2500 ? 'good' : loadTime <= 4000 ? 'needs-improvement' : 'poor';
-          
+
           console.log('LCP estimated via DOM method:', loadTime);
           setMetrics(prev => ({
             ...prev,
@@ -106,9 +106,9 @@ const ProductionPerformanceTest = () => {
             clsValue += entry.value;
           }
         });
-        
+
         const rating = clsValue <= 0.1 ? 'good' : clsValue <= 0.25 ? 'needs-improvement' : 'poor';
-        
+
         setMetrics(prev => ({
           ...prev,
           cls: Number(clsValue.toFixed(3)),
@@ -137,36 +137,36 @@ const ProductionPerformanceTest = () => {
     if ('PerformanceObserver' in window) {
       const observer = new PerformanceObserver((list) => {
         const entries = list.getEntries();
-        
+
         entries.forEach((entry) => {
           console.log('Performance entry:', entry.entryType, entry);
-          
+
           if (entry.entryType === 'largest-contentful-paint') {
             const lcp = entry.startTime;
             const rating = lcp <= 2500 ? 'good' : lcp <= 4000 ? 'needs-improvement' : 'poor';
-            
+
             setMetrics(prev => ({
               ...prev,
               lcp: Math.round(lcp),
               rating: { ...prev.rating, lcp: rating }
             }));
           }
-          
+
           if (entry.entryType === 'first-input') {
-            const fid = entry.processingStart - entry.startTime;
+            const fid = (entry as any).processingStart - entry.startTime;
             const rating = fid <= 100 ? 'good' : fid <= 300 ? 'needs-improvement' : 'poor';
-            
+
             setMetrics(prev => ({
               ...prev,
               fid: Math.round(fid),
               rating: { ...prev.rating, fid: rating }
             }));
           }
-          
+
           if (entry.entryType === 'layout-shift' && !(entry as any).hadRecentInput) {
             const cls = (entry as any).value;
             const rating = cls <= 0.1 ? 'good' : cls <= 0.25 ? 'needs-improvement' : 'poor';
-            
+
             setMetrics(prev => ({
               ...prev,
               cls: Number(cls.toFixed(3)),
@@ -221,7 +221,7 @@ const ProductionPerformanceTest = () => {
   return (
     <div className="fixed top-4 right-4 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg p-4 shadow-lg text-xs font-mono z-50 min-w-[200px]">
       <div className="font-bold mb-2 text-center">🎯 Core Web Vitals</div>
-      
+
       <div className="space-y-1">
         <div className="flex justify-between">
           <span>LCP:</span>
@@ -229,21 +229,21 @@ const ProductionPerformanceTest = () => {
             {metrics.lcp ? `${metrics.lcp}ms` : '⏳'} ({metrics.rating.lcp})
           </span>
         </div>
-        
+
         <div className="flex justify-between">
           <span>FID:</span>
           <span className={getRatingColor(metrics.rating.fid)}>
             {metrics.fid ? `${metrics.fid}ms` : '👆 Click me'} ({metrics.rating.fid})
           </span>
         </div>
-        
+
         <div className="flex justify-between">
           <span>CLS:</span>
           <span className={getRatingColor(metrics.rating.cls)}>
             {metrics.cls !== null ? metrics.cls : '📐'} ({metrics.rating.cls})
           </span>
         </div>
-        
+
         <div className="flex justify-between">
           <span>TTFB:</span>
           <span className={getRatingColor(metrics.rating.ttfb)}>
@@ -251,7 +251,7 @@ const ProductionPerformanceTest = () => {
           </span>
         </div>
       </div>
-      
+
       <div className="mt-2 pt-2 border-t border-gray-200 text-[10px] text-gray-500 text-center">
         Refresh page to re-measure
       </div>
@@ -259,4 +259,4 @@ const ProductionPerformanceTest = () => {
   );
 };
 
-export default ProductionPerformanceTest; 
+export default ProductionPerformanceTest;

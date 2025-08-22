@@ -7,7 +7,7 @@ export { default as CaseStudyNav } from './CaseStudyNav';
 export { default as CaseStudyVoiceToggle } from './CaseStudyVoiceToggle';
 export { default as DesignComparisons } from './DesignComparisons';
 export { default as GenerationWorkflow } from './GenerationWorkflow';
-export * from './Icons';
+// export * from './Icons'; // Commented out to avoid conflicts with main Icons module
 export { default as InfoArchitectureDiagrams } from './InfoArchitectureDiagrams';
 export { default as LessonLoom } from './LessonLoom';
 export { default as ProjectContent } from './ProjectContent';

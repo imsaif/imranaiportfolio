@@ -123,11 +123,11 @@ export function PerformanceMonitor({
     // Update metrics
     setMetrics({
       fps: frameMetrics && typeof frameMetrics === 'object' && 'avgFps' in frameMetrics ? {
-        avg: frameMetrics.avgFps,
-        min: frameMetrics.minFps,
-        max: frameMetrics.maxFps,
-        jank: frameMetrics.jankyFrames,
-        jankPercentage: frameMetrics.jankyPercentage,
+        avg: (frameMetrics as any).avgFps,
+        min: (frameMetrics as any).minFps,
+        max: (frameMetrics as any).maxFps,
+        jank: (frameMetrics as any).jankyFrames,
+        jankPercentage: (frameMetrics as any).jankyPercentage,
       } : undefined,
       navigation: {
         ttfb: navTiming?.ttfb || 0,

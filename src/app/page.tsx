@@ -1,6 +1,6 @@
 'use client';
-import { useRef } from 'react';
 import dynamic from 'next/dynamic';
+import { useRef } from 'react';
 
 import Hero from '@/components/sections/Hero';
 
@@ -23,7 +23,7 @@ export default function Home() {
     <main ref={containerRef} className="min-h-screen bg-background relative" style={{ position: 'relative' }}>
       {/* Load CursorDot after hero for better LCP */}
       <CursorDot size={14} />
-      
+
       {/* Hero Section - prioritized for LCP */}
       <Hero />
 
