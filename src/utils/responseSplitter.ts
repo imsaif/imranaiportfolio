@@ -12,7 +12,7 @@ interface SplitResponse {
  * Split a response into chunks that fit within the character limit
  * Tries to split at natural break points (sentences, paragraphs)
  */
-export const splitResponse = (response: string, maxChars: number = 500): SplitResponse => {
+export const splitResponse = (response: string, maxChars = 500): SplitResponse => {
   // If response is already within limit, return as single chunk
   if (response.length <= maxChars) {
     return {
@@ -77,7 +77,7 @@ export const formatChunk = (chunk: string, index: number, total: number): string
 /**
  * Process a response and split it if necessary
  */
-export const processResponse = (response: string, maxChars: number = 500): string[] => {
+export const processResponse = (response: string, maxChars = 500): string[] => {
   const { chunks, totalChunks } = splitResponse(response, maxChars);
   return chunks.map((chunk, index) => formatChunk(chunk, index, totalChunks));
-}; 
+};
