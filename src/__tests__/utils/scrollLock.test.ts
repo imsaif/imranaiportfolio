@@ -1,7 +1,7 @@
 import { toggleScrollLock } from '../../utils/scrollLock';
 
 // Mock the entire scrollLock module to avoid JSDOM issues
-jest.mock('../utils/scrollLock', () => ({
+jest.mock('../../utils/scrollLock', () => ({
   toggleScrollLock: jest.fn((lock: boolean) => {
     if (typeof document === 'undefined') return;
 

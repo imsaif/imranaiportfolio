@@ -4,15 +4,10 @@ import { render, screen } from '@testing-library/react';
 
 import Header from '../../components/layout/Header';
 
-// Mock AnimatedLogo component
-jest.mock('../components/AnimatedLogo', () => {
-  return function MockAnimatedLogo() {
-    return <div data-testid="animated-logo"></div>;
-  };
-});
+// AnimatedLogo is no longer used in Header component
 
 // Mock useChatToggle hook
-jest.mock('../hooks/useChatToggle', () => ({
+jest.mock('../../hooks/useChatToggle', () => ({
   useChatToggle: () => ({
     isChatOpen: false,
     toggleChat: jest.fn(),
@@ -31,8 +26,8 @@ describe('Header Component', () => {
   it('renders correctly', () => {
     render(<Header />);
 
-    // Check if logo component is present
-    expect(screen.getByTestId('animated-logo')).toBeInTheDocument();
+    // Check if logo/brand text is present
+    expect(screen.getByText('IMRAN')).toBeInTheDocument();
 
     // Check if navigation links are present using more specific queries
     const desktopNav = document.querySelector('.hidden.md\\:block');
