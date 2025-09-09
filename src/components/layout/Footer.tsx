@@ -59,6 +59,15 @@ const Footer = () => {
               LinkedIn
             </a>
             <a
+              href="https://medium.com/@imsaif"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Medium"
+              className="hover:text-accent transition-colors text-base"
+            >
+              Medium
+            </a>
+            <a
               href="https://x.com/misaifs"
                     target="_blank"
                     rel="noopener noreferrer"
