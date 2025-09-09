@@ -94,8 +94,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          Product designer creating intuitive interfaces for intelligent systems—balancing automation with human
-          control.
+          Senior product designer who codes intuitive AI experiences—leading teams to balance automation with human control.
         </p>
       </motion.div>
     </>

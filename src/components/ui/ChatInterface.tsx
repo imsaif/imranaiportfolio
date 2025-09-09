@@ -196,6 +196,10 @@ const ChatInterface = ({}: ChatInterfaceProps) => {
           </div>
         )}
         <ChatInput onSendMessage={handleSendMessage} />
+        {/* Technical indicator */}
+        <div className="text-center mt-2">
+          <span className="text-xs text-gray-500/80">Built with React & OpenAI API</span>
+        </div>
       </div>
     </div>
   );

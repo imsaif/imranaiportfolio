@@ -16,6 +16,9 @@ const About = () => {
               I'm a developer and designer focused on creating intuitive, accessible, and impactful digital experiences.
               With expertise in modern web technologies, I build solutions that balance technical excellence with user needs.
             </p>
+            <p className="text-muted leading-relaxed mb-4">
+              I don't just design—I build. This portfolio's AI chat and voice features? I coded them myself using React, OpenAI's API, and ElevenLabs voice cloning.
+            </p>
             <p className="text-muted leading-relaxed">
               My approach combines technical knowledge with design thinking to deliver products that not only work flawlessly but also delight users.
             </p>

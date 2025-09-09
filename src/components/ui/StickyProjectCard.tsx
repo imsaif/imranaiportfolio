@@ -109,7 +109,22 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
         ) : (
           <h3 className="text-2xl md:text-4xl font-bold mb-4 text-foreground">{project.title}</h3>
         )}
-        <p className="text-base md:text-lg text-muted mb-8 leading-relaxed">{project.description}</p>
+        <p className="text-base md:text-lg text-muted mb-6 leading-relaxed">{project.description}</p>
+        
+        {/* Tech stack badges */}
+        {project.technologies && project.technologies.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
+            {project.technologies.map((tech, idx) => (
+              <span
+                key={idx}
+                className="text-xs font-medium px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+        
         {project.stats && project.stats.length > 0 && (
           <div className="flex flex-row gap-8 mt-2 mb-2 justify-center md:justify-start">
             {project.stats.slice(0, 2).map((stat, idx) => (

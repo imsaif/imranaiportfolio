@@ -163,7 +163,7 @@ export const testVoiceQuality = async (): Promise<{
         success: result.success,
         duration,
         cost,
-        error: result.error,
+        ...(result.error ? { error: result.error } : {}),
       });
 
       // Clean up audio URL

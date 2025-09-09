@@ -3,8 +3,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 
 import Hotjar from '../components/analytics/Hotjar';
-import PerformanceMonitor from '../components/analytics/PerformanceMonitor';
-import ProductionPerformanceTest from '../components/analytics/ProductionPerformanceTest';
 import ClientProviders from '../components/ClientProviders';
 import { SmoothScrollProvider } from '../components/core/SmoothScrollProvider';
 import Footer from '../components/layout/Footer';
@@ -58,8 +56,6 @@ export default function RootLayout({
         <SpeedInsights />
         <Analytics />
         <Hotjar />
-        <PerformanceMonitor />
-        <ProductionPerformanceTest />
       </body>
     </html>
   );

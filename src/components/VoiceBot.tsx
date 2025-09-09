@@ -733,6 +733,11 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
           </motion.button>
         )}
       </div>
+      
+      {/* Technical indicator */}
+      <div className="text-center mt-4">
+        <span className="text-xs text-gray-500/80">Built with Web Speech API & ElevenLabs</span>
+      </div>
     </motion.div>
   );
 };
