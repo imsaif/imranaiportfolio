@@ -2,6 +2,12 @@
 
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
+import EnglishTeacherGuide from '@/components/case-studies/EnglishTeacherGuide';
+import ScienceTeacherGuide from '@/components/case-studies/ScienceTeacherGuide';
+import SocialStudiesTeacherGuide from '@/components/case-studies/SocialStudiesTeacherGuide';
+import TabletMockup from '@/components/case-studies/TabletMockup';
+import TeacherGuideContent from '@/components/case-studies/TeacherGuideContent';
+import TeacherScheduleView from '@/components/case-studies/TeacherScheduleView';
 import UserJourneyMapInteractive from '@/components/case-studies/UserJourneyMapInteractive';
 import VoiceControlBar from '@/components/case-studies/VoiceControlBar';
 import ProgressBar from '@/components/ui/ProgressBar';
@@ -86,6 +92,9 @@ const ConclusionIcon = (
 
 export default function Page() {
 
+  // Teacher Guide flow state
+  const [currentView, setCurrentView] = useState<'schedule' | 'guide'>('schedule');
+  const [selectedSubject, setSelectedSubject] = useState<string>('Mathematics');
 
   // Scroll progress state
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -683,6 +692,202 @@ export default function Page() {
         <div className="mb-20">
           <InteractivePrototype />
         </div>
+
+        {/* Teacher Guide Flow Section */}
+        <section className="relative grid grid-cols-1 md:grid-cols-[300px_1fr] gap-0 mb-20 min-h-[500px]">
+          {/* Sticky Title */}
+          <div className="sticky left-0 top-24 h-fit min-w-[300px] w-[300px] max-w-md flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
+            <div className="flex items-center mb-8 w-full">
+              <CaseStudyHeader level="h2" showGradientLine className="flex items-center gap-3 w-full">
+                <svg className="w-7 h-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span>Teacher Guide Flow</span>
+              </CaseStudyHeader>
+            </div>
+          </div>
+          
+          {/* Content */}
+          <div className="pr-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white p-8 rounded-xl shadow-md mb-12"
+            >
+              {/* Section Introduction */}
+              <div className="mb-8">
+                <p className="text-gray-800 text-lg mb-6 leading-relaxed">
+                  Teachers start by viewing their daily schedule and can click on any lesson to instantly access the detailed teaching guide for that subject.
+                </p>
+                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                  <p className="text-blue-800 font-medium">
+                    <span className="font-bold">Interactive Flow:</span> Click any subject in the schedule below to see how the teacher guide appears instantly.
+                  </p>
+                </div>
+              </div>
+
+              {/* Instructions Above Tablet */}
+              <div className="mb-6 text-center">
+                {currentView === 'schedule' && (
+                  <p className="text-gray-600 text-lg">
+                    <span className="font-semibold">Try it:</span> Click on any lesson in the schedule below to view the teacher guide
+                  </p>
+                )}
+                {currentView === 'guide' && (
+                  <div>
+                    <p className="text-gray-600 mb-4 text-lg">
+                      Currently viewing: <span className="font-semibold text-blue-600">{selectedSubject} Lesson Guide</span>
+                    </p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      <span className="text-sm text-gray-500 mr-2">Try other subjects:</span>
+                      {['Mathematics', 'English', 'Science', 'Social Studies'].map((subject) => (
+                        <button
+                          key={subject}
+                          onClick={() => setSelectedSubject(subject)}
+                          className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+                            selectedSubject === subject
+                              ? 'bg-blue-600 text-white'
+                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          }`}
+                        >
+                          {subject}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Tablet with Flow Content Inside */}
+              <div className="flex justify-center">
+                <div style={{ height: '650px' }}>
+                  <TabletMockup>
+                    <AnimatePresence mode="wait">
+                      {currentView === 'schedule' && (
+                        <motion.div
+                          key="schedule"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                          transition={{ duration: 0.3 }}
+                          className="w-full h-full overflow-hidden"
+                        >
+                          <TeacherScheduleView 
+                            onSubjectClick={(subject) => {
+                              setSelectedSubject(subject);
+                              setCurrentView('guide');
+                            }}
+                          />
+                        </motion.div>
+                      )}
+                      
+                      {currentView === 'guide' && (
+                        <motion.div
+                          key="guide"
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 20 }}
+                          transition={{ duration: 0.3 }}
+                          className="w-full h-full relative overflow-hidden"
+                        >
+
+                          {/* Guide Content */}
+                          {selectedSubject === 'Mathematics' && <TeacherGuideContent onBack={() => setCurrentView('schedule')} />}
+                          {selectedSubject === 'English' && <EnglishTeacherGuide onBack={() => setCurrentView('schedule')} />}
+                          {selectedSubject === 'Science' && <ScienceTeacherGuide onBack={() => setCurrentView('schedule')} />}
+                          {selectedSubject === 'Social Studies' && <SocialStudiesTeacherGuide onBack={() => setCurrentView('schedule')} />}
+                          {selectedSubject === 'Reading Time' && <EnglishTeacherGuide onBack={() => setCurrentView('schedule')} />}
+                          {selectedSubject === 'Art Class' && <EnglishTeacherGuide onBack={() => setCurrentView('schedule')} />}
+                          {selectedSubject === 'Physical Education' && <ScienceTeacherGuide onBack={() => setCurrentView('schedule')} />}
+                          {selectedSubject === 'Music Class' && <SocialStudiesTeacherGuide onBack={() => setCurrentView('schedule')} />}
+                          {selectedSubject === 'Study Hall' && <TeacherGuideContent onBack={() => setCurrentView('schedule')} />}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </TabletMockup>
+                </div>
+              </div>
+
+              {/* Backend Sync Explanation Section */}
+              <div className="mt-20 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 border border-blue-200">
+                <div className="text-center mb-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center justify-center">
+                    <svg className="w-6 h-6 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    Smart Backend Integration
+                  </h3>
+                  <p className="text-gray-700">
+                    Timetables automatically sync with lesson content in real-time
+                  </p>
+                </div>
+
+                <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-6">
+                  
+                  {/* Step 1 */}
+                  <div className="flex-1 text-center bg-white rounded-lg p-4 shadow-sm">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-lg font-bold text-blue-600">1</span>
+                    </div>
+                    <h5 className="font-semibold text-gray-900 mb-1">Generate</h5>
+                    <p className="text-xs text-gray-600">AI creates optimized timetables</p>
+                  </div>
+
+                  {/* Arrow */}
+                  <div className="hidden md:block">
+                    <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="flex-1 text-center bg-white rounded-lg p-4 shadow-sm">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-lg font-bold text-green-600">2</span>
+                    </div>
+                    <h5 className="font-semibold text-gray-900 mb-1">Map</h5>
+                    <p className="text-xs text-gray-600">Links lessons to content</p>
+                  </div>
+
+                  {/* Arrow */}
+                  <div className="hidden md:block">
+                    <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="flex-1 text-center bg-white rounded-lg p-4 shadow-sm">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-lg font-bold text-purple-600">3</span>
+                    </div>
+                    <h5 className="font-semibold text-gray-900 mb-1">Sync</h5>
+                    <p className="text-xs text-gray-600">Updates in real-time</p>
+                  </div>
+
+                </div>
+
+                {/* Key Stats */}
+                <div className="mt-6 grid grid-cols-3 gap-4 text-center">
+                  <div className="bg-white rounded-lg p-3">
+                    <div className="text-lg font-bold text-blue-600">1000+</div>
+                    <div className="text-xs text-gray-600">Schedule combinations/sec</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-3">
+                    <div className="text-lg font-bold text-green-600">500+</div>
+                    <div className="text-xs text-gray-600">Lesson templates</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-3">
+                    <div className="text-lg font-bold text-purple-600">200ms</div>
+                    <div className="text-xs text-gray-600">Update speed</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
         {/* Lessons Learned Section */}
         <section
