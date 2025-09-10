@@ -7,13 +7,26 @@ const Footer = () => {
     <footer className="section-padding border-t border-border">
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 gradient-text inline-block">
+          <div className="mb-8 p-6 rounded-xl border border-accent/20 bg-gradient-to-r from-accent/10 to-tertiary/10">
+            <p className="text-lg font-medium text-foreground mb-2">
+              🚀 Currently Building
+            </p>
+            <a 
+              href="https://www.aiuxdesign.guide/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xl font-semibold gradient-text hover:opacity-80 transition-opacity inline-block"
+            >
+              AI UX Design Guide →
+            </a>
+            <p className="text-sm text-muted mt-2">
+              A comprehensive resource for designing human-centered AI experiences
+            </p>
+          </div>
+
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 gradient-text block pb-2">
             Looking to enhance your AI experience?
           </h2>
-
-          <p className="text-lg text-muted mb-8 max-w-2xl mx-auto">
-            Let's craft intuitive interfaces for your AI systems that empower users with the right balance of automation and control.
-          </p>
 
           <div className="flex justify-center mb-20">
             <Link
