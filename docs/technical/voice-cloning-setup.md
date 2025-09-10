@@ -1,26 +1,34 @@
-# ElevenLabs Voice Cloning Setup Guide
+# Three-Tier Voice System Setup Guide
 
 ## 🎯 Overview
 
-This guide will help you set up ElevenLabs voice cloning integration so that your portfolio's voice assistant speaks in your actual voice! This creates an incredibly personal and memorable experience for visitors.
+This guide will help you set up a robust three-tier voice system for your portfolio's voice assistant:
 
-### **Recent Updates (December 2024)**
-- **Enhanced Compatibility**: Added missing `cloneVoice` function export for hybrid conversational agent
-- **Improved Error Handling**: Better fallback mechanisms and error recovery
-- **Code Quality**: Resolved TypeScript errors and improved type safety
-- **Simplified API**: Streamlined function exports for easier integration
+1. **Primary**: Fish Audio (voice cloning with your actual voice - free tier)
+2. **Secondary**: OpenAI TTS (high-quality fallback voice)  
+3. **Tertiary**: Browser TTS (always-available fallback)
+
+This creates an incredibly personal and memorable experience for visitors while ensuring your voice bot always works!
+
+### **Recent Updates (September 2025)**
+- **Three-Tier Voice System**: Replaced ElevenLabs with Fish Audio + OpenAI TTS + Browser TTS
+- **Enhanced Reliability**: Multiple fallback options ensure voice always works
+- **Cost Optimization**: Fish Audio free tier (10,000 chars/month) + affordable OpenAI TTS fallback
+- **Improved Error Handling**: Seamless transitions between voice providers
+- **Better UX**: Users get best available voice automatically
 
 ## 📋 Prerequisites
 
-- ElevenLabs account (free tier available)
-- ~10-15 minutes of high-quality voice recordings
+- Fish Audio account (free tier available)
+- OpenAI account with API access (for TTS fallback)
+- ~15-30 seconds of high-quality voice recording (much less than ElevenLabs!)
 - Access to your portfolio's environment variables
 
 ## 🚀 Step-by-Step Setup
 
-### Step 1: Create ElevenLabs Account
+### Step 1: Create Fish Audio Account
 
-1. Go to [ElevenLabs](https://elevenlabs.io)
+1. Go to [Fish Audio](https://fish.audio)
 2. Sign up for a free account (includes 10,000 characters per month)
 3. Navigate to your **Profile** → **API Keys**
 4. Generate a new API key and save it securely
@@ -29,7 +37,7 @@ This guide will help you set up ElevenLabs voice cloning integration so that you
 
 **Recording Requirements:**
 - **Quality**: Clear, noise-free audio
-- **Duration**: 10-15 minutes minimum
+- **Duration**: 15-30 seconds minimum (much shorter than ElevenLabs!)
 - **Content**: Natural speech, varied sentences
 - **Format**: MP3, WAV, or M4A
 - **Environment**: Quiet room, good microphone

@@ -9,8 +9,18 @@ import {
     playClonedVoiceAudio,
     preloadCommonResponses,
 } from '../services/voiceCloning';
+import {
+    initializeVapi,
+    isVapiEnabled,
+    startVapiCall,
+    stopVapiCall,
+    isCallActive,
+    setupVapiEventHandlers,
+    cleanupVapi,
+} from '../services/vapiService';
 import { generateResponse } from '../utils/chatService';
 import { createTestCommand } from '../utils/voiceTestUtils';
+import { createImranTestCommands } from '../utils/testImranAssistant';
 
 // TypeScript declarations for Speech Recognition API
 interface SpeechRecognitionEvent extends Event {
@@ -61,20 +71,18 @@ interface VoiceBotProps {
 
 type VoiceState = 'idle' | 'listening' | 'processing' | 'speaking' | 'error';
 
-// Common responses to preload for instant playback
+// Common responses to preload for instant playback - Product Designer focused
 const COMMON_RESPONSES = [
-  'Hi, this is Imran. I can hear and respond to your voice! What can I help you with today?',
-  "Thanks for visiting my portfolio! I'm here to answer any questions about my projects and experience.",
-  "I'd be happy to tell you about my work. What specifically interests you?",
+  'Hi my name is Imran, I\'m a senior product designer. I can listen and respond to your voice. What would you like to know about my work',
+  "Thanks for visiting my portfolio! I specialize in AI applications and product development. What interests you most?",
+  "I'd be happy to discuss my design process and AI product experience. What specifically would you like to explore?",
   "I'm having trouble processing that. Could you try again?",
-  "That's a great question! Let me provide you with some details.",
-  "I'm sorry, I didn't catch that. Could you please repeat?",
-  "I'm currently working on a new project. What would you like to know about it?",
-  "I'm here to help with any questions you have. What's on your mind?",
-  "I'm currently working on a new project. What would you like to know about it?",
-  "I'm here to help with any questions you have. What's on your mind?",
-  "I'm currently working on a new project. What would you like to know about it?",
-  "I'm here to help with any questions you have. What's on your mind?",
+  "That's an excellent question about product design! Let me share my insights.",
+  "I didn't catch that clearly. Could you please repeat your question?",
+  "I'm passionate about AI application development. What aspect would you like to explore?",
+  "As a senior product designer, I can share insights on design processes, AI products, and best practices. What's your focus?",
+  "I love discussing user experience and product strategy. What would you like to know?",
+  "My experience spans AI applications, design systems, and product development. What interests you?",
 ];
 
 // Professional Voice Visualizer with animated bars
@@ -94,7 +102,7 @@ const VoiceVisualizer: React.FC<{
     const interval = setInterval(() => {
       if (state === 'listening' || state === 'speaking') {
         // Generate dynamic audio levels that simulate real voice activity
-        const newLevels = audioLevels.map((_, index) => {
+        setAudioLevels(prevLevels => prevLevels.map((_, index) => {
           const baseHeight = 0.1;
           const randomFactor = Math.random() * 0.9;
           const wavePattern = Math.sin((Date.now() + index * 100) / 200) * 0.3;
@@ -104,21 +112,19 @@ const VoiceVisualizer: React.FC<{
             baseHeight,
             (randomFactor + wavePattern + centerBoost * 0.3) * (state === 'speaking' ? 0.8 : 0.6)
           );
-        });
-        setAudioLevels(newLevels);
+        }));
       } else if (state === 'processing') {
         // Gentle pulsing animation for processing
         const pulsePattern = Math.sin(Date.now() / 300) * 0.5 + 0.5;
-        const newLevels = audioLevels.map((_, index) => {
+        setAudioLevels(prevLevels => prevLevels.map((_, index) => {
           const centerDistance = Math.abs(index - 10);
           return (0.2 + pulsePattern * 0.3) * (1 - centerDistance / 15);
-        });
-        setAudioLevels(newLevels);
+        }));
       }
     }, 80); // 80ms for smooth animation
 
     return () => clearInterval(interval);
-  }, [isActive, state, audioLevels]);
+  }, [isActive, state]); // Removed audioLevels from dependencies
 
   return (
     <div className="flex items-end justify-center gap-1 h-20 px-4 mb-6">
@@ -229,12 +235,46 @@ const StatusDisplay: React.FC<{
   currentMessage: string;
   messages: Message[];
   isClonedVoice: boolean;
-}> = ({ state, errorMessage, currentMessage, messages, isClonedVoice }) => {
+  isVapiMode?: boolean;
+  vapiCallActive?: boolean;
+}> = ({ state, errorMessage, currentMessage, messages, isClonedVoice, isVapiMode = false, vapiCallActive = false }) => {
   const getStatusText = () => {
     if (errorMessage) return errorMessage;
-    if (currentMessage) return currentMessage;
+    if (currentMessage) {
+      console.log('🔍 Using currentMessage:', currentMessage);
+      return currentMessage;
+    }
 
     const latestMessage = messages[messages.length - 1];
+
+    if (isVapiMode) {
+      if (vapiCallActive) {
+        switch (state) {
+          case 'listening':
+            return 'Imran is listening - speak naturally!';
+          case 'processing':
+            return 'Imran is thinking about your question...';
+          case 'speaking':
+            return 'Imran is speaking - listen closely!';
+          case 'idle':
+            return 'Connected! Imran is ready - say something';
+          default:
+            return 'Voice conversation active with Imran';
+        }
+      } else {
+        // Vapi mode but call not active - could be connecting or ended
+        switch (state) {
+          case 'processing':
+            return 'Imran is picking up the call...';
+          case 'error':
+            return errorMessage || 'Connection failed - try clicking microphone';
+          case 'idle':
+            return 'Voice conversation ended. Click microphone to call again.';
+          default:
+            return 'Ready to call Imran - click microphone';
+        }
+      }
+    }
 
     switch (state) {
       case 'listening':
@@ -251,6 +291,28 @@ const StatusDisplay: React.FC<{
   };
 
   const getStatusColor = () => {
+    if (isVapiMode) {
+      if (vapiCallActive) {
+        switch (state) {
+          case 'listening':
+            return 'text-green-600 dark:text-green-400'; // Green for active listening
+          case 'processing':
+            return 'text-purple-600 dark:text-purple-400'; // Purple for thinking
+          case 'speaking':
+            return 'text-indigo-600 dark:text-indigo-400'; // Indigo for speaking
+          case 'idle':
+            return 'text-emerald-600 dark:text-emerald-400'; // Emerald for ready state
+          default:
+            return 'text-indigo-600 dark:text-indigo-400';
+        }
+      } else {
+        // Connecting state colors
+        return state === 'error' 
+          ? 'text-red-600 dark:text-red-400'
+          : 'text-amber-600 dark:text-amber-400'; // Amber for connecting
+      }
+    } // Fixed: Added closing brace for isVapiMode condition
+
     switch (state) {
       case 'listening':
         return 'text-blue-600 dark:text-blue-400';
@@ -263,7 +325,7 @@ const StatusDisplay: React.FC<{
       default:
         return 'text-muted-foreground';
     }
-  };
+  }; // Fixed: Added closing brace for getStatusColor function
 
   return (
     <motion.div
@@ -285,6 +347,9 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
   const [isSupported, setIsSupported] = useState<boolean>(true); // Assume supported initially, check on interaction
   const [isClonedVoiceEnabled, setIsClonedVoiceEnabled] = useState<boolean>(false);
   const [lastUsedClonedVoice, setLastUsedClonedVoice] = useState<boolean>(false);
+  const [isVapiMode, setIsVapiMode] = useState<boolean>(false);
+  const [vapiCallActive, setVapiCallActive] = useState<boolean>(false);
+  const [callManuallyStopped, setCallManuallyStopped] = useState<boolean>(false);
 
 
   const recognitionRef = useRef<SpeechRecognition | null>(null);
@@ -330,13 +395,64 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
     };
   }, []);
 
-  // Check if voice cloning is enabled and preload responses
+  // Check voice services and initialize Vapi.ai
   useEffect(() => {
-    const checkVoiceCloning = async () => {
-      const enabled = isVoiceCloningEnabled();
-      setIsClonedVoiceEnabled(enabled);
+    const initializeVoiceServices = async () => {
+      const voiceCloningEnabled = isVoiceCloningEnabled();
+      setIsClonedVoiceEnabled(voiceCloningEnabled);
 
-      if (enabled) {
+      // Check if Vapi.ai is available
+      const vapiAvailable = isVapiEnabled();
+      setIsVapiMode(vapiAvailable);
+
+      if (vapiAvailable) {
+        console.log('🎵 Vapi.ai is available! Initializing...');
+        initializeVapi();
+        
+        // Set up Vapi event handlers
+        setupVapiEventHandlers({
+          onCallStart: () => {
+            setVapiCallActive(true);
+            setVoiceState('speaking');
+            console.log('🎤 Vapi call started');
+          },
+          onCallEnd: () => {
+            setVapiCallActive(false);
+            setVoiceState('idle');
+            setCurrentMessage(''); // Clear any connection messages
+            console.log('📞 Vapi call ended - cleared currentMessage');
+          },
+          onSpeechStart: () => {
+            setVoiceState('listening');
+            console.log('👂 User speaking detected');
+          },
+          onSpeechEnd: () => {
+            setVoiceState('processing');
+            console.log('🤐 User stopped speaking');
+          },
+          onMessage: (message) => {
+            console.log('💬 Vapi message:', message);
+            if (message.type === 'transcript' && message.transcript) {
+              addMessage(message.transcript, 'user');
+            }
+            if (message.type === 'function-call-result' || message.role === 'assistant') {
+              const content = message.content || message.text;
+              if (content) {
+                addMessage(content, 'bot');
+              }
+            }
+          },
+          onError: (error) => {
+            console.error('❌ Vapi error:', error);
+            setErrorMessage('Voice service error. Falling back to text-to-speech.');
+            setVoiceState('error');
+            setTimeout(() => {
+              setErrorMessage('');
+              setVoiceState('idle');
+            }, 3000);
+          }
+        });
+      } else if (voiceCloningEnabled) {
         console.log('Voice cloning enabled! Preloading common responses...');
         try {
           const preloaded = await preloadCommonResponses(COMMON_RESPONSES);
@@ -347,17 +463,33 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
       }
     };
 
-    checkVoiceCloning();
+    initializeVoiceServices();
 
     // Enable voice testing commands in development
     if (process.env.NODE_ENV === 'development') {
       createTestCommand();
+      createImranTestCommands();
     }
+
+    // Cleanup on unmount
+    return () => {
+      cleanupVapi();
+    };
   }, []);
 
-  // Initialize voice bot with welcome message and start conversation tracking
+  // Auto-start voice conversation when voice mode is activated
   useEffect(() => {
-    if (isActive && messages.length === 0 && isSupported) {
+    console.log('🎯 Voice activation check:', { isActive, messagesLength: messages.length, isVapiMode, callManuallyStopped });
+    
+    // Reset manually stopped flag when voice mode is reactivated
+    if (isActive && messages.length === 0 && callManuallyStopped) {
+      console.log('🔄 Voice mode reactivated - resetting manually stopped flag');
+      setCallManuallyStopped(false);
+      return; // Don't start call immediately, wait for next useEffect cycle
+    }
+    
+    if (isActive && messages.length === 0 && !callManuallyStopped) {
+      console.log('✅ Starting voice conversation...');
       // Start a new conversation session
       const canStartConversation = voiceBotRateLimiter.startNewConversation();
 
@@ -368,32 +500,38 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
         return;
       }
 
+      // Check Vapi.ai availability directly instead of relying on state timing
+      const vapiCurrentlyEnabled = isVapiEnabled();
+      
+      console.log('🔍 Voice mode decision:', {
+        isVapiMode,
+        isVapiEnabledCheck: vapiCurrentlyEnabled,
+        isClonedVoiceEnabled,
+        condition: vapiCurrentlyEnabled
+      });
 
+      if (vapiCurrentlyEnabled) {
+        // Auto-start Vapi.ai call immediately for seamless experience
+        console.log('🎤 Auto-starting Vapi.ai call for immediate conversation');
+        startVapiCallAutomatically();
+      } else {
+        // Fallback: Use traditional welcome message with TTS (only if Vapi is not available)
+        const welcomeMessage = isClonedVoiceEnabled
+          ? 'Hi, this is Imran speaking! I can hear and respond to you. What would you like to know about my work?'
+          : 'Hi, this is Imran. I can hear and respond to your voice! What would you like to know about my work?';
 
-      const welcomeMessage = isClonedVoiceEnabled
-        ? 'Hi, this is Imran speaking! I can hear and respond to you. What would you like to know about my work?'
-        : 'Hi, this is Imran. I can hear and respond to your voice! What would you like to know about my work?';
-
-      // Check rate limit for welcome message
-      const rateLimitCheck = voiceBotRateLimiter.checkRateLimit(welcomeMessage, isClonedVoiceEnabled);
-
-      if (!rateLimitCheck.allowed) {
-        setErrorMessage(rateLimitCheck.reason || 'Rate limit exceeded');
-        setVoiceState('error');
-        return;
+        const rateLimitCheck = voiceBotRateLimiter.checkRateLimit(welcomeMessage, false);
+        if (rateLimitCheck.allowed) {
+          addMessage(welcomeMessage, 'bot');
+          speakMessage(welcomeMessage, false);
+          voiceBotRateLimiter.recordUsage(welcomeMessage, false);
+        } else {
+          setErrorMessage(rateLimitCheck.reason || 'Rate limit exceeded');
+          setVoiceState('error');
+        }
       }
-
-      addMessage(welcomeMessage, 'bot');
-      speakMessage(welcomeMessage);
-
-      // Record the usage
-      voiceBotRateLimiter.recordUsage(welcomeMessage, isClonedVoiceEnabled);
-    } else if (isActive && !isSupported) {
-      // Don't show error immediately - let user try to interact first
-      // The error will be shown in startListening if it truly doesn't work
-      console.log('Speech Recognition not initially supported, but will try on user interaction');
     }
-  }, [isActive, isSupported, isClonedVoiceEnabled]);
+  }, [isActive, isVapiMode, callManuallyStopped]);
 
   const setupSpeechRecognition = useCallback(() => {
     if (!recognitionRef.current) return;
@@ -585,6 +723,42 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
   };
 
   const startListening = async () => {
+    // If Vapi.ai is available, use Vapi call instead of speech recognition
+    if (isVapiMode && isVapiEnabled()) {
+      if (vapiCallActive) {
+        // Stop current Vapi call
+        await stopVapiCall();
+        setVapiCallActive(false);
+        setVoiceState('idle');
+        return;
+      }
+
+      try {
+        setVoiceState('processing');
+        setCallManuallyStopped(false); // Reset the flag when manually starting
+        const result = await startVapiCall();
+
+        if (result.success) {
+          setVapiCallActive(true);
+          setVoiceState('listening');
+          console.log('🎤 Vapi call started successfully');
+        } else {
+          setErrorMessage(result.error || 'Failed to start voice call');
+          setVoiceState('error');
+          setTimeout(() => {
+            setErrorMessage('');
+            setVoiceState('idle');
+          }, 3000);
+        }
+      } catch (error) {
+        console.error('Error starting Vapi call:', error);
+        setErrorMessage('Could not start voice call. Please try again.');
+        setVoiceState('error');
+      }
+      return;
+    }
+
+    // Fallback to traditional speech recognition
     // If initial support check failed, try to re-initialize
     if (!isSupported || !recognitionRef.current) {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -625,18 +799,78 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
     }
   };
 
-  const stopListening = () => {
-    if (recognitionRef.current) {
+  const stopListening = async () => {
+    if (isVapiMode && vapiCallActive) {
+      // Stop Vapi call
+      await stopVapiCall();
+      setVapiCallActive(false);
+    } else if (recognitionRef.current) {
+      // Stop speech recognition
       recognitionRef.current.stop();
     }
     setVoiceState('idle');
     setCurrentMessage('');
   };
 
-  const stopSpeaking = () => {
-    if ('speechSynthesis' in window) {
+  const stopSpeaking = async () => {
+    if (vapiCallActive) {
+      // Stop Vapi call
+      await stopVapiCall();
+      setVapiCallActive(false);
+      setVoiceState('idle');
+      setCurrentMessage(''); // Clear any connection messages
+      setCallManuallyStopped(true); // Prevent auto-restart
+      console.log('🛑 Stopped Vapi call - cleared currentMessage, set manually stopped flag');
+    } else if ('speechSynthesis' in window) {
+      // Stop regular TTS
       window.speechSynthesis.cancel();
       setVoiceState('idle');
+    }
+  };
+
+  // Auto-start Vapi.ai call when voice mode is activated
+  const startVapiCallAutomatically = async () => {
+    try {
+      setVoiceState('processing');
+      setCurrentMessage('Imran is picking up the call...');
+      
+      const result = await startVapiCall();
+      
+      if (result.success) {
+        setVapiCallActive(true);
+        setVoiceState('speaking'); // Vapi will handle the greeting
+        setCurrentMessage('');
+        console.log('🎤 Auto-started Vapi call successfully - Imran will greet you!');
+        
+        // Set up auto-stop timeout (2 minutes)
+        setTimeout(async () => {
+          if (vapiCallActive) {
+            console.log('⏰ Auto-stopping Vapi call after 2 minutes');
+            await stopVapiCall();
+            setVapiCallActive(false);
+            setVoiceState('idle');
+            addMessage('Voice session ended after 2 minutes. Click the microphone to start again.', 'bot');
+          }
+        }, 120000); // 2 minutes
+      } else {
+        console.error('❌ Failed to auto-start Vapi call:', result.error);
+        setErrorMessage('Failed to connect to Imran. Please try clicking the microphone.');
+        setVoiceState('idle');
+        
+        // Fallback to traditional mode
+        const fallbackMessage = 'Unable to start voice call automatically. Click the microphone to try again.';
+        addMessage(fallbackMessage, 'bot');
+        speakMessage(fallbackMessage, false);
+      }
+    } catch (error) {
+      console.error('❌ Error auto-starting Vapi call:', error);
+      setErrorMessage('Connection error. Please try clicking the microphone.');
+      setVoiceState('idle');
+      
+      // Fallback message
+      const errorMessage = 'Voice connection failed. Click the microphone to try again.';
+      addMessage(errorMessage, 'bot');
+      speakMessage(errorMessage, false);
     }
   };
 
@@ -676,8 +910,6 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
       exit={{ opacity: 0, y: 20 }}
       className="text-center py-12 max-w-2xl mx-auto"
     >
-
-
       {/* Voice Visualizer */}
       <VoiceVisualizer
         isActive={voiceState !== 'idle' && voiceState !== 'error'}
@@ -689,8 +921,8 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
       <div className="flex justify-center">
         <MicrophoneIcon
           state={voiceState}
-          isClonedVoice={isClonedVoiceEnabled}
-          onClick={voiceState === 'listening' ? stopListening : startListening}
+          isClonedVoice={isVapiMode || isClonedVoiceEnabled}
+          onClick={vapiCallActive ? stopListening : startListening}
           disabled={voiceState === 'processing' || voiceState === 'error'}
         />
       </div>
@@ -702,12 +934,14 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
         currentMessage={currentMessage}
         messages={messages}
         isClonedVoice={isClonedVoiceEnabled}
+        isVapiMode={isVapiMode}
+        vapiCallActive={vapiCallActive}
       />
 
       {/* Control Buttons */}
       <div className="flex justify-center gap-4">
-        {/* Stop Speaking Button */}
-        {voiceState === 'speaking' && (
+        {/* Stop Speaking/End Conversation Button */}
+        {(voiceState === 'speaking' || vapiCallActive) && (
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -729,14 +963,19 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
               <line x1="23" y1="9" x2="17" y2="15" />
               <line x1="17" y1="9" x2="23" y2="15" />
             </svg>
-            Stop Speaking
+{vapiCallActive ? 'End Conversation' : 'Stop Speaking'}
           </motion.button>
         )}
       </div>
       
       {/* Technical indicator */}
       <div className="text-center mt-4">
-        <span className="text-xs text-gray-500/80">Built with Web Speech API & ElevenLabs</span>
+        <span className="text-xs text-gray-500/80">
+          {isVapiMode 
+            ? 'Built using Vapi.ai with Imran\'s voice assistant'
+            : 'Built with Web Speech API & Two-Tier Voice System'
+          }
+        </span>
       </div>
     </motion.div>
   );

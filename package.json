@@ -53,8 +53,11 @@
     "@lottiefiles/dotlottie-react": "^0.13.5",
     "@studio-freight/lenis": "^1.0.42",
     "@types/ioredis": "^4.28.10",
+    "@vapi-ai/web": "^2.3.10",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
+    "bufferutil": "^4.0.9",
+    "fish-audio-sdk": "^2025.6.8",
     "focus-trap-react": "^11.0.3",
     "framer-motion": "^10.16.4",
     "geist": "^1.2.0",
@@ -64,7 +67,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
-    "react-markdown": "^10.1.0"
+    "react-markdown": "^10.1.0",
+    "utf-8-validate": "^5.0.10"
   },
   "devDependencies": {
     "@lhci/cli": "^0.13.0",

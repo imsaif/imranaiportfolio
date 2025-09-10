@@ -1,6 +1,9 @@
 /**
  * Voice Bot Rate Limiting Service
- * Prevents API abuse and controls costs for ElevenLabs and chat interactions
+ * Prevents API abuse and controls costs for three-tier voice system:
+ * 1. Fish Audio (voice cloning - free tier)
+ * 2. OpenAI TTS (high quality fallback)
+ * 3. Browser TTS (always available fallback)
  */
 
 export interface VoiceUsageStats {
@@ -120,12 +123,42 @@ class VoiceBotRateLimiter {
   }
 
   /**
-   * Estimate cost based on character count
+   * Estimate cost based on character count and three-tier voice system
    */
   private estimateCost(characters: number, useClonedVoice = true): number {
-    if (!useClonedVoice) return 0;
-    const costPerChar = 0.0003; // ElevenLabs approximate pricing
-    return characters * costPerChar;
+    if (!useClonedVoice) return 0; // Browser TTS is free
+    
+    // Check if Fish Audio would be used (free tier)
+    if (typeof window !== 'undefined') {
+      try {
+        const fishAudioUsed = parseInt(localStorage.getItem('fish_audio_monthly_usage') || '0');
+        const fishAudioLimit = 10000; // Fish Audio free tier limit
+        
+        if (fishAudioUsed + characters <= fishAudioLimit) {
+          // Update Fish Audio usage tracking
+          localStorage.setItem('fish_audio_monthly_usage', (fishAudioUsed + characters).toString());
+          return 0; // Fish Audio free tier
+        } else {
+          // Would fall back to OpenAI TTS after Fish Audio limit
+          const overage = characters - (fishAudioLimit - fishAudioUsed);
+          const costPer1kChars = 0.015; // OpenAI TTS pricing
+          return Math.max(0, overage / 1000) * costPer1kChars;
+        }
+      } catch (error) {
+        // If we can't check localStorage, assume free tier available for first 10k chars
+        return characters <= 10000 ? 0 : ((characters - 10000) / 1000) * 0.015;
+      }
+    }
+    
+    // Server-side: estimate based on assumption that Fish Audio free tier might be used
+    if (characters <= 10000) {
+      return 0; // Assume Fish Audio free tier
+    } else {
+      // Overage goes to OpenAI TTS
+      const overage = characters - 10000;
+      const costPer1kChars = 0.015;
+      return (overage / 1000) * costPer1kChars;
+    }
   }
 
   /**

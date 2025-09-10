@@ -196,12 +196,17 @@ utterance.pitch = 1;     // Normal pitch
 utterance.volume = 0.8;  // Comfortable volume
 ```
 
-### **Rate Limiting Configuration:**
+### **Vapi.ai Configuration:**
 ```bash
-# Environment preset (recommended)
-NEXT_PUBLIC_VOICE_RATE_LIMIT_PRESET=production
+# Vapi.ai API Configuration (Primary Voice System)
+NEXT_PUBLIC_VAPI_API_KEY=your_vapi_api_key_here
+NEXT_PUBLIC_VAPI_ASSISTANT_ID=your_assistant_id_here
 
-# Custom limits (optional)
+# OpenAI Configuration (Fallback)
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Rate Limiting
+NEXT_PUBLIC_VOICE_RATE_LIMIT_PRESET=production
 NEXT_PUBLIC_VOICE_MAX_CONVERSATIONS_PER_SESSION=3
 NEXT_PUBLIC_VOICE_MAX_COST_PER_DAY=5.00
 NEXT_PUBLIC_VOICE_MAX_CHARACTERS_PER_SESSION=3000
@@ -209,18 +214,40 @@ NEXT_PUBLIC_VOICE_MAX_CHARACTERS_PER_SESSION=3000
 
 See `docs/voice-rate-limiting-guide.md` for complete configuration options.
 
+## Vapi.ai Integration Benefits
+
+### **What's New with Vapi.ai:**
+- ✅ **Real-time Conversations**: Bi-directional streaming voice chat
+- ✅ **Professional Voice Quality**: Human-like speech synthesis
+- ✅ **Advanced AI Models**: GPT-powered conversational intelligence
+- ✅ **Reduced Latency**: Faster response times than traditional TTS
+- ✅ **Natural Interruptions**: Users can interrupt AI mid-sentence
+- ✅ **Context Awareness**: Better conversation flow and memory
+
+## Three-Tier Voice Architecture
+
+```
+┌────────────────────┐
+│ Primary: Vapi.ai      │ ← Advanced conversational AI
+├────────────────────┤
+│ Secondary: OpenAI TTS │ ← High-quality synthesis
+├────────────────────┤
+│ Tertiary: Browser TTS │ ← Universal fallback
+└────────────────────┘
+```
+
 ## Future Enhancement Opportunities
 
-1. **Voice Selection**: Allow users to choose different AI voices
-2. **Language Support**: Multi-language voice recognition and synthesis
-3. **Conversation History**: Persistent voice conversation logs
-4. **Voice Commands**: Special commands for navigation (e.g., "show projects")
-5. **Audio Recording**: Save and replay conversation audio
-6. **Emotion Detection**: Analyze voice tone for better responses
-7. **Wake Word**: "Hey Imran" activation phrase
-8. **Background Listening**: Continuous listening mode
-9. **Voice Training**: Personalized speech recognition accuracy
-10. **Audio Visualization**: Real-time frequency analysis display
+1. **Voice Customization**: Custom voice cloning with Vapi.ai
+2. **Multi-language Support**: International voice conversations
+3. **Voice Analytics**: Conversation insights and performance metrics
+4. **Advanced Functions**: Voice-controlled portfolio navigation
+5. **Emotion Recognition**: Sentiment analysis during conversations
+6. **Wake Word Detection**: "Hey Imran" activation phrase
+7. **Voice Shortcuts**: Quick commands for common queries
+8. **Call Recording**: Save conversation transcripts and audio
+9. **A/B Testing**: Compare different voice personalities
+10. **Integration APIs**: Connect with CRM and analytics tools
 
 ## Development Notes
 
@@ -237,4 +264,4 @@ See `docs/voice-rate-limiting-guide.md` for complete configuration options.
 - Speech recognition happens in real-time
 - Full user control over microphone access
 
-The voice mode implementation provides a solid foundation for voice-based interaction while maintaining the same high-quality AI responses available in chat mode. The enhanced user experience with visual feedback and comprehensive error handling makes it accessible and reliable for users across different browsers and devices.
+The upgraded voice mode implementation with Vapi.ai provides a cutting-edge conversational AI experience that surpasses traditional text-to-speech systems. With real-time streaming, professional voice quality, and intelligent fallbacks, users enjoy natural voice interactions that feel like talking to a real person. The three-tier architecture ensures reliability while the Vapi.ai integration delivers the future of voice AI interactions.

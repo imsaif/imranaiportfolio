@@ -1,7 +1,11 @@
 /**
- * ElevenLabs Voice Cloning Service
- * Provides voice synthesis using Imran's cloned voice
+ * Three-Tier Voice Synthesis Service
+ * 1. Primary: Vapi.ai (advanced voice AI)
+ * 2. Secondary: OpenAI TTS 
+ * 3. Tertiary: Browser TTS
  */
+
+import { synthesizeWithVapi, isVapiEnabled } from './vapiService';
 
 export interface VoiceSettings {
   stability: number;
@@ -16,6 +20,7 @@ export interface VoiceCloneResponse {
   audioBlob?: Blob;
   error?: string;
   fallbackUsed?: boolean;
+  providerUsed?: 'vapi-ai' | 'openai-tts' | 'browser-tts';
 }
 
 export interface VoiceCloneConfig {
@@ -24,134 +29,92 @@ export interface VoiceCloneConfig {
   settings: VoiceSettings;
 }
 
-// Default configuration for Imran's voice
+// Vapi.ai Configuration
+const VAPI_CONFIG = {
+  apiKey: process.env.NEXT_PUBLIC_VAPI_API_KEY || '',
+  assistantId: process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID || '',
+  baseUrl: 'https://api.vapi.ai',
+};
+
+// OpenAI Configuration
+const OPENAI_CONFIG = {
+  apiKey: process.env.OPENAI_API_KEY || '',
+  baseUrl: 'https://api.openai.com/v1',
+  model: 'tts-1',
+  voice: 'nova', // Natural, friendly voice
+};
+
+// Default configuration for Imran's Product Designer Assistant
 const DEFAULT_CONFIG: VoiceCloneConfig = {
-  voiceId: process.env.NEXT_PUBLIC_ELEVENLABS_VOICE_ID || '',
-  modelId: 'eleven_monolingual_v1', // High quality model
+  voiceId: 'Rohan', // Vapi voice ID for Imran's assistant
+  modelId: 'vapi-product-designer',
   settings: {
-    stability: 0.5, // Balance between consistency and expressiveness
-    similarity_boost: 0.75, // How similar to original voice (higher = more similar)
-    style: 0.3, // Amount of style to apply
-    use_speaker_boost: true, // Enhance speaker characteristics
+    stability: 0.7, // More stable for professional tone
+    similarity_boost: 0.8,
+    style: 0.4, // Slightly more expressive for design discussions
+    use_speaker_boost: true,
   },
 };
 
-// API endpoints
-const ELEVENLABS_BASE_URL = 'https://api.elevenlabs.io/v1';
-const TTS_ENDPOINT = (voiceId: string) => `${ELEVENLABS_BASE_URL}/text-to-speech/${voiceId}`;
-
 /**
- * Check if ElevenLabs integration is properly configured
+ * Check if high-quality voice synthesis is properly configured
  */
 export const isVoiceCloningEnabled = (): boolean => {
-  const apiKey = process.env.NEXT_PUBLIC_ELEVENLABS_API_KEY;
-  const voiceId = process.env.NEXT_PUBLIC_ELEVENLABS_VOICE_ID;
-
-  return !!(apiKey && voiceId && apiKey !== 'your_elevenlabs_api_key_here');
+  const vapiEnabled = isVapiEnabled();
+  const openAIEnabled = !!(OPENAI_CONFIG.apiKey && OPENAI_CONFIG.apiKey !== 'your_openai_api_key_here');
+  
+  console.log('Voice synthesis status:', {
+    vapiAI: vapiEnabled ? 'Available (conversations only)' : 'Not configured',
+    openAI: openAIEnabled ? 'Available (TTS)' : 'Not configured',
+    browserTTS: 'speechSynthesis' in window ? 'Available' : 'Not supported'
+  });
+  
+  // Consider voice cloning "enabled" if either Vapi.ai or OpenAI is available
+  // Vapi.ai provides full conversation experience (preferred)
+  // OpenAI TTS provides high-quality fallback synthesis
+  return vapiEnabled || openAIEnabled;
 };
 
 /**
- * Get available voices from ElevenLabs (for setup/testing)
+ * Synthesize text using Vapi.ai (Primary) - Advanced Voice AI
  */
-export const getAvailableVoices = async (): Promise<any[]> => {
-  const apiKey = process.env.NEXT_PUBLIC_ELEVENLABS_API_KEY;
-
-  if (!apiKey) {
-    throw new Error('ElevenLabs API key not configured');
-  }
-
-  try {
-    const response = await fetch(`${ELEVENLABS_BASE_URL}/voices`, {
-      headers: {
-        'xi-api-key': apiKey,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch voices: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.voices || [];
-  } catch (error) {
-    console.error('Error fetching voices:', error);
-    throw error;
-  }
-};
-
-/**
- * Synthesize text using Imran's cloned voice
- */
-export const synthesizeWithClonedVoice = async (
-  text: string,
-  config: Partial<VoiceCloneConfig> = {}
-): Promise<VoiceCloneResponse> => {
-  const apiKey = process.env.NEXT_PUBLIC_ELEVENLABS_API_KEY;
-
-  // Check if voice cloning is enabled
-  if (!isVoiceCloningEnabled()) {
+const synthesizeWithVapiAI = async (text: string): Promise<VoiceCloneResponse> => {
+  if (!isVapiEnabled()) {
     return {
       success: false,
-      error: 'Voice cloning not configured',
+      error: 'Vapi.ai not configured',
       fallbackUsed: true,
     };
   }
 
-  // Merge with default config
-  const finalConfig = {
-    ...DEFAULT_CONFIG,
-    ...config,
-    settings: {
-      ...DEFAULT_CONFIG.settings,
-      ...config.settings,
-    },
-  };
-
   try {
-    console.log('Synthesizing with cloned voice:', text.substring(0, 50) + '...');
-
+    console.log('🎵 Attempting Vapi.ai synthesis:', text.substring(0, 50) + '...');
+    
     const startTime = Date.now();
-
-    const response = await fetch(TTS_ENDPOINT(finalConfig.voiceId), {
-      method: 'POST',
-      headers: {
-        Accept: 'audio/mpeg',
-        'xi-api-key': apiKey!,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        text: text,
-        model_id: finalConfig.modelId,
-        voice_settings: finalConfig.settings,
-      }),
-    });
-
-    const duration = Date.now() - startTime;
-    console.log(`Voice synthesis completed in ${duration}ms`);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('ElevenLabs API error:', response.status, errorText);
-
+    
+    // Use Vapi service for synthesis
+    const result = await synthesizeWithVapi(text);
+    
+    if (!result.success) {
       return {
         success: false,
-        error: `API error: ${response.status}`,
+        error: result.error || 'Vapi.ai synthesis failed',
         fallbackUsed: true,
       };
     }
-
-    const audioBlob = await response.blob();
-    const audioUrl = URL.createObjectURL(audioBlob);
+    
+    const duration = Date.now() - startTime;
+    console.log(`🎵 Vapi.ai synthesis completed in ${duration}ms`);
 
     return {
       success: true,
-      audioUrl,
-      audioBlob,
+      audioUrl: result.audioUrl,
+      audioBlob: result.audioBlob,
       fallbackUsed: false,
+      providerUsed: 'vapi-ai',
     };
   } catch (error) {
-    console.error('Error in voice synthesis:', error);
-
+    console.error('Vapi.ai synthesis error:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -161,8 +124,187 @@ export const synthesizeWithClonedVoice = async (
 };
 
 /**
+ * Synthesize text using OpenAI TTS (Secondary)
+ */
+const synthesizeWithOpenAI = async (text: string): Promise<VoiceCloneResponse> => {
+  if (!OPENAI_CONFIG.apiKey) {
+    return {
+      success: false,
+      error: 'OpenAI not configured',
+      fallbackUsed: true,
+    };
+  }
+
+  try {
+    console.log('🤖 Attempting OpenAI TTS synthesis:', text.substring(0, 50) + '...');
+    
+    const startTime = Date.now();
+    
+    const response = await fetch(`${OPENAI_CONFIG.baseUrl}/audio/speech`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENAI_CONFIG.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: OPENAI_CONFIG.model,
+        input: text,
+        voice: OPENAI_CONFIG.voice,
+        response_format: 'mp3',
+        speed: 1.0,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('OpenAI TTS API error:', response.status, errorText);
+      return {
+        success: false,
+        error: `OpenAI TTS API error: ${response.status}`,
+        fallbackUsed: true,
+      };
+    }
+
+    const audioBlob = await response.blob();
+    const audioUrl = URL.createObjectURL(audioBlob);
+    
+    const duration = Date.now() - startTime;
+    console.log(`🤖 OpenAI TTS synthesis completed in ${duration}ms`);
+
+    return {
+      success: true,
+      audioUrl,
+      audioBlob,
+      fallbackUsed: false,
+      providerUsed: 'openai-tts',
+    };
+  } catch (error) {
+    console.error('OpenAI TTS synthesis error:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      fallbackUsed: true,
+    };
+  }
+};
+
+/**
+ * Two-tier synthesis with automatic fallback - OpenAI TTS Primary
+ * Note: Vapi.ai is not used for standalone TTS (it's for full conversations)
+ */
+export const synthesizeWithClonedVoice = async (
+  text: string,
+  config: Partial<VoiceCloneConfig> = {}
+): Promise<VoiceCloneResponse> => {
+  console.log('🗺️ Note: Using OpenAI TTS for synthesis (Vapi.ai is for live conversations)');
+  
+  // Try OpenAI TTS first (Primary - High Quality, Reliable)
+  const openAIResult = await synthesizeWithOpenAI(text);
+  if (openAIResult.success) {
+    return openAIResult;
+  }
+
+  console.log('🤖 OpenAI TTS failed, will use Browser TTS...');
+
+  // Browser TTS will be handled in playClonedVoiceAudio
+  return {
+    success: false,
+    error: 'Voice synthesis services failed, falling back to browser TTS',
+    fallbackUsed: true,
+    providerUsed: 'browser-tts',
+  };
+};
+
+/**
+ * Play synthesized audio with three-tier fallback
+ */
+export const playClonedVoiceAudio = async (
+  text: string,
+  onStart?: () => void,
+  onEnd?: () => void,
+  onError?: (error: string) => void
+): Promise<{ success: boolean; usedClonedVoice: boolean }> => {
+  try {
+    onStart?.();
+
+    // Try Fish Audio and OpenAI TTS
+    const result = await synthesizeWithClonedVoice(text);
+
+    if (result.success && result.audioUrl) {
+      // Play the synthesized audio
+      const audio = new Audio(result.audioUrl);
+
+      audio.onended = () => {
+        // Clean up the blob URL
+        URL.revokeObjectURL(result.audioUrl!);
+        onEnd?.();
+      };
+
+      audio.onerror = () => {
+        URL.revokeObjectURL(result.audioUrl!);
+        onError?.('Failed to play synthesized audio');
+      };
+
+      await audio.play();
+
+      const isHighQualityVoice = result.providerUsed === 'vapi-ai' || result.providerUsed === 'openai-tts';
+      const voiceType = result.providerUsed === 'vapi-ai' ? ' (Imran\'s voice - Rohan)' : 
+                       result.providerUsed === 'openai-tts' ? ' (high-quality AI voice)' : '';
+      console.log(`✅ Used ${result.providerUsed}${voiceType}`);
+
+      return { success: true, usedClonedVoice: isHighQualityVoice };
+    } else {
+      // Fallback to standard browser TTS (Tertiary)
+      console.log('📢 Falling back to browser TTS');
+      return await playBrowserTTS(text, onEnd, onError);
+    }
+  } catch (error) {
+    console.error('Error in voice synthesis:', error);
+    onError?.(error instanceof Error ? error.message : 'Unknown error');
+
+    // Fallback to browser TTS
+    return await playBrowserTTS(text, onEnd, onError);
+  }
+};
+
+/**
+ * Browser TTS fallback (Tertiary)
+ */
+const playBrowserTTS = async (
+  text: string,
+  onEnd?: () => void,
+  onError?: (error: string) => void
+): Promise<{ success: boolean; usedClonedVoice: boolean }> => {
+  return new Promise(resolve => {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      // Configure for better quality
+      utterance.rate = 0.9;
+      utterance.pitch = 1;
+      utterance.volume = 0.8;
+
+      utterance.onend = () => {
+        onEnd?.();
+        console.log('📢 Used browser TTS');
+        resolve({ success: true, usedClonedVoice: false });
+      };
+
+      utterance.onerror = event => {
+        onError?.(`Browser TTS error: ${event.error}`);
+        resolve({ success: false, usedClonedVoice: false });
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } else {
+      onError?.('Speech synthesis not supported');
+      resolve({ success: false, usedClonedVoice: false });
+    }
+  });
+};
+
+/**
  * Simple voice cloning function for compatibility
- * Synthesizes text and plays it immediately
  */
 export const cloneVoice = async (text: string): Promise<VoiceCloneResponse> => {
   try {
@@ -179,7 +321,11 @@ export const cloneVoice = async (text: string): Promise<VoiceCloneResponse> => {
         URL.revokeObjectURL(result.audioUrl!);
       };
 
-      return { success: true, fallbackUsed: false };
+      return { 
+        success: true, 
+        fallbackUsed: false,
+        providerUsed: result.providerUsed 
+      };
     } else {
       return result;
     }
@@ -193,85 +339,13 @@ export const cloneVoice = async (text: string): Promise<VoiceCloneResponse> => {
 };
 
 /**
- * Play synthesized audio from cloned voice
+ * Get available voices (for setup/testing)
  */
-export const playClonedVoiceAudio = async (
-  text: string,
-  onStart?: () => void,
-  onEnd?: () => void,
-  onError?: (error: string) => void
-): Promise<{ success: boolean; usedClonedVoice: boolean }> => {
-  try {
-    onStart?.();
-
-    // Try to synthesize with cloned voice
-    const result = await synthesizeWithClonedVoice(text);
-
-    if (result.success && result.audioUrl) {
-      // Play the cloned voice audio
-      const audio = new Audio(result.audioUrl);
-
-      audio.onended = () => {
-        // Clean up the blob URL
-        URL.revokeObjectURL(result.audioUrl!);
-        onEnd?.();
-      };
-
-      audio.onerror = () => {
-        URL.revokeObjectURL(result.audioUrl!);
-        onError?.('Failed to play cloned voice audio');
-      };
-
-      await audio.play();
-
-      return { success: true, usedClonedVoice: true };
-    } else {
-      // Fallback to standard speech synthesis
-      console.log('Falling back to standard TTS:', result.error);
-      return await playStandardTTS(text, onEnd, onError);
-    }
-  } catch (error) {
-    console.error('Error playing cloned voice:', error);
-    onError?.(error instanceof Error ? error.message : 'Unknown error');
-
-    // Fallback to standard TTS
-    return await playStandardTTS(text, onEnd, onError);
-  }
-};
-
-/**
- * Fallback to standard browser TTS
- */
-const playStandardTTS = async (
-  text: string,
-  onEnd?: () => void,
-  onError?: (error: string) => void
-): Promise<{ success: boolean; usedClonedVoice: boolean }> => {
-  return new Promise(resolve => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-
-      // Configure for better quality
-      utterance.rate = 0.9;
-      utterance.pitch = 1;
-      utterance.volume = 0.8;
-
-      utterance.onend = () => {
-        onEnd?.();
-        resolve({ success: true, usedClonedVoice: false });
-      };
-
-      utterance.onerror = event => {
-        onError?.(`Standard TTS error: ${event.error}`);
-        resolve({ success: false, usedClonedVoice: false });
-      };
-
-      window.speechSynthesis.speak(utterance);
-    } else {
-      onError?.('Speech synthesis not supported');
-      resolve({ success: false, usedClonedVoice: false });
-    }
-  });
+export const getAvailableVoices = async (): Promise<any[]> => {
+  // For Fish Audio, this would require their specific API endpoint
+  // For now, return empty array as this is mainly used for setup
+  console.log('Voice listing not implemented for Fish Audio');
+  return [];
 };
 
 /**
@@ -285,14 +359,14 @@ export const preloadCommonResponses = async (responses: string[]): Promise<Map<s
     return cache;
   }
 
-  console.log('Preloading common responses with cloned voice...');
+  console.log('Preloading common responses...');
 
   for (const text of responses) {
     try {
       const result = await synthesizeWithClonedVoice(text);
       if (result.success && result.audioUrl) {
         cache.set(text, result.audioUrl);
-        console.log(`Preloaded: "${text.substring(0, 30)}..."`);
+        console.log(`Preloaded: "${text.substring(0, 30)}..." with ${result.providerUsed}`);
       }
     } catch (error) {
       console.warn(`Failed to preload: "${text.substring(0, 30)}..."`, error);
@@ -322,10 +396,19 @@ export const getCharacterCount = (text: string): number => {
 };
 
 /**
- * Estimate cost for text synthesis (ElevenLabs pricing)
+ * Estimate cost for text synthesis
  */
 export const estimateCost = (text: string): number => {
   const charCount = getCharacterCount(text);
-  const costPerChar = 0.0003; // Approximate cost per character
-  return charCount * costPerChar;
+  
+  // Vapi.ai: Pay per minute of usage
+  // OpenAI TTS: ~$0.015 per 1000 characters
+  // Browser TTS: Free
+  
+  // Estimate based on typical speech rate (~150 words per minute)
+  const wordsCount = charCount / 5; // Average 5 characters per word
+  const estimatedMinutes = wordsCount / 150;
+  
+  // Vapi.ai pricing (example: $0.10 per minute)
+  return estimatedMinutes * 0.10;
 };
