@@ -7,21 +7,41 @@ const Footer = () => {
     <footer className="section-padding border-t border-border">
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8 p-6 rounded-xl border border-accent/20 bg-gradient-to-r from-accent/10 to-tertiary/10">
-            <p className="text-lg font-medium text-foreground mb-2">
+          <div className="mb-12 p-6 rounded-xl border border-accent/20 bg-gradient-to-r from-accent/10 to-tertiary/10">
+            <p className="text-lg font-medium text-foreground mb-8">
               🚀 Currently Building
             </p>
-            <a 
-              href="https://www.aiuxdesign.guide/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-xl font-semibold gradient-text hover:opacity-80 transition-opacity inline-block"
-            >
-              AI UX Design Guide →
-            </a>
-            <p className="text-sm text-muted mt-2">
-              A comprehensive resource for designing human-centered AI experiences
-            </p>
+            <div className="space-y-4">
+              <div className="text-center">
+                <a 
+                  href="https://www.aiuxdesign.guide/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-xl font-semibold gradient-text hover:opacity-80 transition-opacity inline-block"
+                >
+                  AI UX Design Guide →
+                </a>
+                <p className="text-sm text-muted mt-1">
+                  A comprehensive resource for designing human-centered AI experiences
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <span className="text-muted">•</span>
+              </div>
+              <div className="text-center">
+                <a 
+                  href="https://www.designwithclaude.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-xl font-semibold gradient-text hover:opacity-80 transition-opacity inline-block"
+                >
+                  DesignwithClaude →
+                </a>
+                <p className="text-sm text-muted mt-1">
+                  AI-powered design agents for collaborative creative workflows
+                </p>
+              </div>
+            </div>
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-8 gradient-text block pb-2">
@@ -79,15 +99,6 @@ const Footer = () => {
               className="hover:text-accent transition-colors text-base"
             >
               Medium
-            </a>
-            <a
-              href="https://x.com/misaifs"
-                    target="_blank"
-                    rel="noopener noreferrer"
-              aria-label="X (Twitter)"
-              className="hover:text-accent transition-colors text-base"
-            >
-              X
             </a>
                 </div>
 
