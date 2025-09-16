@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Smart Receipt Capture - Optum Bank</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <button class="back-button" id="backButton">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <h1 class="header-title" id="headerTitle">HSA Reimbursement</h1>
+                <button class="help-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9.09 9A3 3 0 0112 6c1.657 0 3 1.343 3 3 0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Dashboard Screen -->
+            <div class="screen dashboard-screen active" id="dashboardScreen">
+                <div class="account-balance">
+                    <h2>$1,671.65</h2>
+                    <p>Available to spend</p>
+                    <span class="balance-info">Total balance: $821.65</span>
+                </div>
+
+                <div class="quick-actions">
+                    <div class="action-grid">
+                        <button class="action-button" id="reimbursementBtn">
+                            <div class="action-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span>Reimburse<br>yourself</span>
+                        </button>
+                        <button class="action-button">
+                            <div class="action-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <span>Payment<br>cards</span>
+                        </button>
+                        <button class="action-button">
+                            <div class="action-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="2"/>
+                                    <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <span>Saved<br>documents</span>
+                        </button>
+                        <button class="action-button">
+                            <div class="action-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <span>Bank<br>accounts</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="account-section">
+                    <h3>Your accounts</h3>
+                    <div class="account-card hsa-card">
+                        <div class="account-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="4" width="18" height="16" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="account-info">
+                            <h4>HSA</h4>
+                            <p>UnitedHealth Group</p>
+                        </div>
+                        <div class="account-balance-amount">$821.65</div>
+                        <svg class="chevron-right" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Recent transactions</h3>
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>Walgreens Pharmacy</h4>
+                            <p>Apr 14, 2025</p>
+                        </div>
+                        <div class="transaction-amount">$76.76</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <h4>ACH Reimbursement</h4>
+                            <p>Apr 1, 2025</p>
+                        </div>
+                        <div class="transaction-amount credit">-$10.06</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receipt Capture Screen -->
+            <div class="screen capture-screen" id="captureScreen">
+                <div class="capture-header">
+                    <p>Take a photo of your medical receipt or upload from gallery</p>
+                </div>
+
+                <div class="capture-area">
+                    <div class="camera-preview" id="cameraPreview">
+                        <div class="camera-overlay">
+                            <div class="receipt-frame">
+                                <div class="corner corner-tl"></div>
+                                <div class="corner corner-tr"></div>
+                                <div class="corner corner-bl"></div>
+                                <div class="corner corner-br"></div>
+                            </div>
+                            <p class="capture-hint">Position receipt within the frame</p>
+                        </div>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="capture-tips">
+                    <h3>Tips for best results:</h3>
+                    <ul>
+                        <li>Ensure good lighting</li>
+                        <li>Keep receipt flat and straight</li>
+                        <li>Include all text and amounts</li>
+                        <li>Avoid shadows and glare</li>
+                    </ul>
+                </div>
+
+                <div class="capture-actions">
+                    <button class="btn-secondary" id="uploadBtn">Upload from Gallery</button>
+                    <button class="btn-primary" id="cameraBtn">Take Photo</button>
+                </div>
+            </div>
+
+            <!-- Receipt Preview Screen -->
+            <div class="screen preview-screen" id="previewScreen">
+                <div class="preview-header">
+                    <p>Verify the image quality and readability</p>
+                </div>
+
+                <div class="receipt-preview" id="receiptPreview">
+                    <img id="previewImage" alt="Receipt preview">
+                    <div class="quality-indicator" id="qualityIndicator">
+                        <span class="quality-label">Image Quality:</span>
+                        <span class="quality-status good">Good</span>
+                    </div>
+                </div>
+
+                <div class="detected-info" id="detectedInfo">
+                    <h3>Detected Information</h3>
+                    <div class="info-item">
+                        <label>Vendor:</label>
+                        <span>Walgreens Pharmacy</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Date:</label>
+                        <span>Sep 16, 2025</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Amount:</label>
+                        <span>$24.99</span>
+                    </div>
+                </div>
+
+                <div class="preview-actions">
+                    <button class="btn-secondary" id="retakeBtn">Retake Photo</button>
+                    <button class="btn-primary" id="continueBtn">Continue</button>
+                </div>
+            </div>
+
+            <!-- Form Screen -->
+            <div class="screen form-screen" id="formScreen">
+                <div class="form-header">
+                    <p>Complete the information for your reimbursement</p>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+
+                <form class="expense-form" id="expenseForm">
+                    <div class="form-group">
+                        <label for="category">Expense Category</label>
+                        <select id="category" required>
+                            <option value="">Select category</option>
+                            <option value="pharmacy" selected>Pharmacy/Prescription</option>
+                            <option value="medical">Medical Care</option>
+                            <option value="dental">Dental</option>
+                            <option value="vision">Vision</option>
+                        </select>
+                        <div class="help-text">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 16v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Prescription medications are HSA eligible
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" value="24.99" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date of Service</label>
+                        <input type="date" id="date" value="2025-09-16" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="provider">Healthcare Provider</label>
+                        <input type="text" id="provider" value="Walgreens Pharmacy" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description (Optional)</label>
+                        <textarea id="description" placeholder="Brief description of the expense"></textarea>
+                    </div>
+                </form>
+
+                <div class="form-actions">
+                    <button class="btn-secondary" id="saveBtn">Save Draft</button>
+                    <button class="btn-primary" id="submitBtn">Submit for Reimbursement</button>
+                </div>
+            </div>
+
+            <!-- Status Screen -->
+            <div class="screen status-screen" id="statusScreen">
+                <div class="status-header">
+                    <p>Track your reimbursement request</p>
+                </div>
+
+                <div class="submission-card">
+                    <div class="submission-header">
+                        <div class="submission-info">
+                            <h3>Walgreens Pharmacy</h3>
+                            <p>Submitted Sep 16, 2025</p>
+                        </div>
+                        <div class="submission-amount">$24.99</div>
+                    </div>
+
+                    <div class="status-timeline">
+                        <div class="status-step completed">
+                            <div class="step-indicator"></div>
+                            <div class="step-content">
+                                <h4>Submitted</h4>
+                                <p>Sep 16, 2025 at 2:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="status-step completed">
+                            <div class="step-indicator"></div>
+                            <div class="step-content">
+                                <h4>Document Review</h4>
+                                <p>Receipt verified and processed</p>
+                            </div>
+                        </div>
+                        <div class="status-step active">
+                            <div class="step-indicator"></div>
+                            <div class="step-content">
+                                <h4>HSA Eligibility Check</h4>
+                                <p>Verifying expense qualifies for HSA (1-2 days)</p>
+                            </div>
+                        </div>
+                        <div class="status-step">
+                            <div class="step-indicator"></div>
+                            <div class="step-content">
+                                <h4>Reimbursement</h4>
+                                <p>Funds transferred to your account</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="status-actions">
+                    <button class="btn-secondary">View Receipt</button>
+                    <button class="btn-secondary">Contact Support</button>
+                </div>
+
+                <div class="recent-submissions">
+                    <h3>Recent Submissions</h3>
+                    <div class="submission-list">
+                        <div class="submission-item">
+                            <div class="item-info">
+                                <h4>Dr. Smith Office</h4>
+                                <p>Approved • Sep 10, 2025</p>
+                            </div>
+                            <div class="item-amount">$150.00</div>
+                        </div>
+                        <div class="submission-item">
+                            <div class="item-info">
+                                <h4>CVS Pharmacy</h4>
+                                <p>Processing • Sep 8, 2025</p>
+                            </div>
+                            <div class="item-amount">$32.50</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-screen="dashboard">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" data-screen="status">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span>Status</span>
+            </button>
+            <button class="nav-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                    <path d="M19.4 15A7.5 7.5 0 1115 4.6" stroke="currentColor" stroke-width="2"/>
+                    <path d="M21 12h-9m0 0l3-3m-3 3l3 3" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span>Settings</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

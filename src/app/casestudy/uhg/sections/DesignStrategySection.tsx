@@ -61,6 +61,116 @@ export function DesignStrategySection() {
       <div className="mb-16">
         <h3 className="text-gray-800 font-bold text-2xl mb-8">Smart Receipt Capture Solution</h3>
 
+        {/* Interactive Prototype Section */}
+        <div className="mb-8">
+          <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-300 rounded-xl p-8 mb-8">
+            <div className="flex items-center mb-4">
+              <span className="text-3xl mr-3">🚀</span>
+              <h4 className="font-bold text-orange-800 text-xl">Interactive Mobile Prototype</h4>
+            </div>
+            <p className="text-gray-800 mb-6 leading-relaxed">
+              Experience the redesigned Smart Receipt Capture solution through this fully functional prototype
+              that demonstrates how we transformed the <strong>98.9% abandonment rate</strong> into a streamlined,
+              user-friendly experience.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div>
+                <h5 className="font-semibold text-orange-700 mb-3">This Interactive Prototype Showcases:</h5>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-center">
+                    <span className="text-orange-500 mr-2">•</span>
+                    <span><strong>Guided Receipt Capture:</strong> Real-time camera interface with visual frame overlay</span>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-orange-500 mr-2">•</span>
+                    <span><strong>Smart Form Assistance:</strong> Intelligent categorization and pre-populated fields</span>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-orange-500 mr-2">•</span>
+                    <span><strong>Transparent Status Tracking:</strong> Live timeline showing each approval step</span>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-orange-500 mr-2">•</span>
+                    <span><strong>Optum Bank Design System:</strong> Authentic branding and mobile-first interface</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 className="font-semibold text-orange-700 mb-3">Try the Complete User Journey:</h5>
+                <ol className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-start">
+                    <span className="bg-orange-100 text-orange-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</span>
+                    <span>Start at the HSA Dashboard ($1,671.65 available balance)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-orange-100 text-orange-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</span>
+                    <span>Tap "Reimburse yourself" to begin</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-orange-100 text-orange-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</span>
+                    <span>Capture receipt with guided camera interface</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-orange-100 text-orange-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">4</span>
+                    <span>Review with automatic quality validation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-orange-100 text-orange-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">5</span>
+                    <span>Complete smart form with detected information</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="bg-orange-100 text-orange-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold mr-3 mt-0.5">6</span>
+                    <span>Submit and track real-time approval status</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            {/* Embedded Interactive Prototype */}
+            <div className="mt-8">
+              <div className="flex justify-center">
+                <div className="relative bg-gray-900 rounded-[2.5rem] p-4 shadow-2xl" style={{ width: '375px' }}>
+                  {/* Phone frame */}
+                  <div className="absolute top-[50%] left-0 w-1 h-12 bg-gray-800 rounded-r-lg -translate-y-1/2"></div>
+                  <div className="absolute top-[30%] right-0 w-1 h-8 bg-gray-800 rounded-l-lg -translate-y-1/2"></div>
+                  <div className="absolute top-[40%] right-0 w-1 h-8 bg-gray-800 rounded-l-lg -translate-y-1/2"></div>
+
+                  {/* Screen */}
+                  <div className="relative bg-black rounded-[2rem] overflow-hidden" style={{ height: '812px' }}>
+                    {/* Notch */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-gray-900 rounded-b-3xl z-10"></div>
+
+                    {/* Iframe */}
+                    <iframe
+                      src="/mockups/uhg/smart-receipt-capture/index.html"
+                      className="w-full h-full border-0"
+                      title="Smart Receipt Capture Prototype"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-center text-sm text-gray-600 mt-4 italic">
+                *Interactive prototype - Click and interact with the interface above*
+              </p>
+
+              <div className="text-center mt-4">
+                <a
+                  href="/mockups/uhg/smart-receipt-capture/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange-600 hover:text-orange-700 text-sm font-medium underline"
+                >
+                  Open prototype in new window →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="mb-8">
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8">
             <p className="text-gray-800 mb-4">

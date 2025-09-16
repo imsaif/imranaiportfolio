@@ -272,7 +272,28 @@ Rather than creating a single redesigned flow, I developed an adaptive system ph
 
 *[Reference: Section 10 in design mockups - "Design System Components" showing UI elements, Optum brand color palette (Primary Orange #FF6900, Text Gray, Success Green, Error Red), typography scale, and interaction patterns for consistent cross-platform experience]*
 
-#### Smart Receipt Capture
+#### Smart Receipt Capture Solution
+
+**Interactive Mobile Prototype**: Experience the redesigned Smart Receipt Capture solution through this fully functional prototype that demonstrates how we transformed the 98.9% abandonment rate into a streamlined, user-friendly experience.
+
+[🚀 **Launch Interactive Prototype**](/mockups/uhg/smart-receipt-capture/index.html)
+*Best viewed on mobile device or using browser's mobile simulator (375-428px)*
+
+This interactive prototype showcases:
+- **Guided Receipt Capture**: Real-time camera interface with visual frame overlay
+- **Smart Form Assistance**: Intelligent categorization and pre-populated fields
+- **Transparent Status Tracking**: Live timeline showing each approval step
+- **Optum Bank Design System**: Authentic branding and mobile-first interface
+
+**Try the Complete User Journey:**
+1. Start at the HSA Dashboard ($1,671.65 available balance)
+2. Tap "Reimburse yourself" to begin
+3. Capture receipt with guided camera interface
+4. Review with automatic quality validation
+5. Complete smart form with detected information
+6. Submit and track real-time approval status
+
+---
 
 **The Challenge**: Users struggled with photo quality, file formats, and upload failures.
 
