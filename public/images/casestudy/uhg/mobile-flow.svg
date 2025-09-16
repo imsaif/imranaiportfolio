@@ -1,0 +1,29 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#FFF5F0"/>
+  <rect x="50" y="50" width="300" height="200" fill="#FF6900" fill-opacity="0.1" stroke="#FF6900" stroke-width="2" rx="12"/>
+  <rect x="100" y="100" width="80" height="120" fill="white" stroke="#FF6900" stroke-width="2" rx="8"/>
+  <rect x="110" y="110" width="60" height="8" fill="#FF6900" rx="4"/>
+  <rect x="110" y="125" width="40" height="6" fill="#E55A00" rx="3"/>
+  <rect x="110" y="140" width="50" height="6" fill="#E55A00" rx="3"/>
+  <rect x="110" y="155" width="35" height="6" fill="#E55A00" rx="3"/>
+  <rect x="110" y="180" width="60" height="20" fill="#FF6900" rx="10"/>
+
+  <rect x="220" y="100" width="80" height="120" fill="white" stroke="#FF6900" stroke-width="2" rx="8"/>
+  <rect x="230" y="110" width="60" height="8" fill="#FF6900" rx="4"/>
+  <rect x="230" y="125" width="40" height="6" fill="#E55A00" rx="3"/>
+  <rect x="230" y="140" width="50" height="6" fill="#E55A00" rx="3"/>
+  <rect x="230" y="155" width="35" height="6" fill="#E55A00" rx="3"/>
+  <rect x="230" y="180" width="60" height="20" fill="#FF6900" rx="10"/>
+
+  <path d="M185 160 L210 160" stroke="#FF6900" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF6900" />
+    </marker>
+  </defs>
+
+  <text x="200" y="40" text-anchor="middle" fill="#333" font-family="Arial" font-size="14" font-weight="bold">Mobile User Flow</text>
+  <text x="140" y="270" text-anchor="middle" fill="#666" font-family="Arial" font-size="12">Before</text>
+  <text x="260" y="270" text-anchor="middle" fill="#666" font-family="Arial" font-size="12">After</text>
+</svg>

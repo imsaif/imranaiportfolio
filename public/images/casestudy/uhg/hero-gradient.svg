@@ -1,0 +1,30 @@
+<!-- This is a placeholder - in production you would replace with an actual image -->
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6900;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#E55A00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D32F2F;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="600" fill="url(#heroGradient)"/>
+
+  <!-- Healthcare icons pattern -->
+  <g opacity="0.1">
+    <circle cx="200" cy="150" r="30" fill="white"/>
+    <path d="M200 130 L200 170 M180 150 L220 150" stroke="#FF6900" stroke-width="4" stroke-linecap="round"/>
+
+    <circle cx="800" cy="450" r="25" fill="white"/>
+    <path d="M800 435 L800 465 M785 450 L815 450" stroke="#FF6900" stroke-width="3" stroke-linecap="round"/>
+
+    <circle cx="1000" cy="200" r="20" fill="white"/>
+    <path d="M1000 190 L1000 210 M990 200 L1010 200" stroke="#FF6900" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Central content -->
+  <rect x="400" y="250" width="400" height="100" fill="rgba(255,255,255,0.9)" rx="12"/>
+  <text x="600" y="285" text-anchor="middle" fill="#333" font-family="Arial, sans-serif" font-size="24" font-weight="bold">UnitedHealth Group</text>
+  <text x="600" y="315" text-anchor="middle" fill="#666" font-family="Arial, sans-serif" font-size="18">HSA Reimbursement Redesign</text>
+  <text x="600" y="335" text-anchor="middle" fill="#999" font-family="Arial, sans-serif" font-size="14">3.2M Users • 98.9% → 76% Success Rate</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg width="500" height="300" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="300" fill="#F0F8FF"/>
+  <rect x="25" y="50" width="450" height="200" fill="white" stroke="#FF6900" stroke-width="2" rx="8"/>
+
+  <!-- Header -->
+  <rect x="35" y="60" width="430" height="30" fill="#FF6900" fill-opacity="0.1" rx="4"/>
+  <text x="250" y="78" text-anchor="middle" fill="#FF6900" font-family="Arial" font-size="12" font-weight="bold">UHG HSA Reimbursement Dashboard</text>
+
+  <!-- Left panel -->
+  <rect x="45" y="100" width="150" height="130" fill="#F8F8F8" stroke="#DDD" rx="4"/>
+  <text x="120" y="120" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">Upload Receipt</text>
+  <rect x="55" y="130" width="130" height="60" fill="white" stroke="#FF6900" stroke-dasharray="5,5" rx="4"/>
+  <text x="120" y="165" text-anchor="middle" fill="#666" font-family="Arial" font-size="9">Drag & Drop</text>
+  <rect x="80" y="200" width="80" height="20" fill="#FF6900" rx="10"/>
+  <text x="120" y="213" text-anchor="middle" fill="white" font-family="Arial" font-size="8" font-weight="bold">Upload</text>
+
+  <!-- Right panel -->
+  <rect x="205" y="100" width="250" height="130" fill="#F8F8F8" stroke="#DDD" rx="4"/>
+  <text x="330" y="120" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">Smart Form Assistant</text>
+
+  <!-- Form fields -->
+  <rect x="215" y="130" width="100" height="15" fill="white" stroke="#CCC" rx="2"/>
+  <text x="220" y="142" fill="#999" font-family="Arial" font-size="8">Provider Name</text>
+
+  <rect x="325" y="130" width="120" height="15" fill="white" stroke="#CCC" rx="2"/>
+  <text x="330" y="142" fill="#999" font-family="Arial" font-size="8">Date of Service</text>
+
+  <rect x="215" y="155" width="100" height="15" fill="white" stroke="#CCC" rx="2"/>
+  <text x="220" y="167" fill="#999" font-family="Arial" font-size="8">Amount</text>
+
+  <rect x="325" y="155" width="120" height="15" fill="#E8F5E8" stroke="#00A651" rx="2"/>
+  <text x="330" y="167" fill="#00A651" font-family="Arial" font-size="8">✓ Auto-detected</text>
+
+  <rect x="215" y="180" width="230" height="30" fill="#FFF8F0" stroke="#FF6900" rx="4"/>
+  <text x="330" y="195" text-anchor="middle" fill="#FF6900" font-family="Arial" font-size="8" font-weight="bold">💡 HSA Eligible: Office Visit</text>
+  <text x="330" y="205" text-anchor="middle" fill="#666" font-family="Arial" font-size="7">Regular doctor visits are HSA eligible</text>
+
+  <text x="250" y="30" text-anchor="middle" fill="#333" font-family="Arial" font-size="14" font-weight="bold">Desktop Interface Design</text>
+</svg>

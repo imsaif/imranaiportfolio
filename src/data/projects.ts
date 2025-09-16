@@ -20,6 +20,42 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 3,
+    slug: 'uhg',
+    title: 'UHG: HSA Reimbursement',
+    description: 'Redesigned healthcare financial platform serving 450K users',
+    fullDescription: `
+      As Lead UX Designer at UnitedHealth Group, I spearheaded the redesign of the HSA reimbursement
+      system serving 450,000 users. The existing system had significant usability issues with a 1.1% task
+      completion rate, causing substantial customer service overhead and user frustration. Through comprehensive
+      research, cross-functional collaboration, and systematic design improvements, we enhanced the user experience
+      while maintaining strict healthcare financial compliance requirements.
+
+      Key Achievements:
+      - Improved task completion from 1.1% to 23%
+      - Reduced customer service calls by 28%
+      - Achieved measurable business impact through reduced support costs
+      - Enhanced mobile completion rate from 0.3% to 15%
+      - Established design patterns for regulated healthcare experiences
+    `,
+    technologies: ['React', 'Node.js', 'Healthcare APIs', 'OCR Processing', 'HIPAA Compliance'],
+    liveUrl: 'https://optumbank.com',
+    githubUrl: '#',
+    images: [
+      '/images/casestudy/uhg/hero-gradient.svg',
+      '/images/casestudy/uhg/mobile-flow.svg',
+      '/images/casestudy/uhg/desktop-interface.svg',
+      '/images/casestudy/uhg/user-journey.svg',
+    ],
+    featured: true,
+    tagline: 'ENTERPRISE UX, HEALTHCARE FINTECH',
+    stats: [
+      { label: 'Task Completion', value: '23% ↑' },
+      { label: 'Support Calls', value: '28% ↓' },
+      { label: 'User Satisfaction', value: '3.8★' },
+    ],
+  },
+  {
     id: 2,
     slug: 'scheduler',
     title: 'EduScheduler: Intelligent Academic Planning System',
@@ -95,15 +131,3 @@ export function getAllProjects(): Project[] {
   return projects;
 }
 
-export const featuredProjects = [
-  // ... existing projects
-  {
-    id: 'your-case-study-id', // usually a string or number
-    title: 'Your Case Study Title',
-    description: 'A short description of your case study',
-    slug: 'your-case-study-slug', // This will be used in the URL
-    tagline: 'UX Design / AI / Whatever tags apply',
-    image: '/images/projects/your-case-study-image.jpg', // Add this image to your public folder
-    // Any other properties the existing projects have
-  },
-];

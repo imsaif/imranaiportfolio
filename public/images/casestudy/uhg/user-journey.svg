@@ -1,0 +1,48 @@
+<svg width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="200" fill="#F0F0FF"/>
+
+  <!-- Journey steps -->
+  <circle cx="100" cy="80" r="25" fill="#FF6900"/>
+  <text x="100" y="85" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">🏥</text>
+  <text x="100" y="120" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">Doctor Visit</text>
+  <text x="100" y="135" text-anchor="middle" fill="#666" font-family="Arial" font-size="8">Receives receipt</text>
+
+  <circle cx="220" cy="80" r="25" fill="#E55A00"/>
+  <text x="220" y="85" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">📱</text>
+  <text x="220" y="120" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">Mobile Attempt</text>
+  <text x="220" y="135" text-anchor="middle" fill="#666" font-family="Arial" font-size="8">Upload photo</text>
+
+  <circle cx="340" cy="80" r="25" fill="#D32F2F"/>
+  <text x="340" y="85" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">❌</text>
+  <text x="340" y="120" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">Upload Fails</text>
+  <text x="340" y="135" text-anchor="middle" fill="#666" font-family="Arial" font-size="8">Generic error</text>
+
+  <circle cx="460" cy="80" r="25" fill="#636363"/>
+  <text x="460" y="85" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">💻</text>
+  <text x="460" y="120" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">Switch Desktop</text>
+  <text x="460" y="135" text-anchor="middle" fill="#666" font-family="Arial" font-size="8">Start over</text>
+
+  <circle cx="550" cy="80" r="25" fill="#00A651"/>
+  <text x="550" y="85" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">✅</text>
+  <text x="550" y="120" text-anchor="middle" fill="#333" font-family="Arial" font-size="10" font-weight="bold">Success</text>
+  <text x="550" y="135" text-anchor="middle" fill="#666" font-family="Arial" font-size="8">76% completion</text>
+
+  <!-- Arrows -->
+  <path d="M130 80 L190 80" stroke="#FF6900" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M250 80 L310 80" stroke="#E55A00" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M370 80 L430 80" stroke="#D32F2F" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M490 80 L520 80" stroke="#636363" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+  </defs>
+
+  <text x="300" y="30" text-anchor="middle" fill="#333" font-family="Arial" font-size="14" font-weight="bold">User Journey: From 98.9% Failure to 76% Success</text>
+
+  <!-- Emotion line -->
+  <path d="M50 170 Q150 160 250 150 Q350 140 450 145 Q520 150 570 155" stroke="#FF6900" stroke-width="3" fill="none"/>
+  <text x="50" y="185" fill="#666" font-family="Arial" font-size="8">Frustrated</text>
+  <text x="570" y="185" fill="#666" font-family="Arial" font-size="8">Satisfied</text>
+</svg>
