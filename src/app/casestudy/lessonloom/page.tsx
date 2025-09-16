@@ -3,7 +3,7 @@
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 // import CaseStudyVoiceToggle from '@/components/case-studies/CaseStudyVoiceToggle';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
@@ -16,6 +16,132 @@ export default function Page() {
 
   // In the Generation Workflow section, modify to add interactivity
   const [currentStep, setCurrentStep] = useState(1);
+
+  // AI Interface State
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [selectedSpreadsheet, setSelectedSpreadsheet] = useState(null);
+  const [chatMessages, setChatMessages] = useState([
+    {
+      type: 'ai',
+      content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
+    }
+  ]);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generationComplete, setGenerationComplete] = useState(false);
+
+  // Refs for scrolling
+  const chatContainerRef = useRef(null);
+
+  // Auto-scroll chat to bottom when new messages are added
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [chatMessages, isGenerating]);
+
+  // Drag and Drop Handlers
+  const [isDragOver, setIsDragOver] = useState(false);
+
+  const handleDragStart = (e, item, type) => {
+    e.dataTransfer.setData('application/json', JSON.stringify({ item, type }));
+    e.dataTransfer.effectAllowed = 'copy';
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragOver(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    const data = JSON.parse(e.dataTransfer.getData('application/json'));
+    const { item, type } = data;
+
+    if (type === 'template') {
+      setSelectedTemplate(item);
+      setChatMessages(prev => [...prev,
+        {
+          type: 'ai',
+          content: `Great! I've added the ${item.name} template. Now drag a spreadsheet to provide content data.`
+        }
+      ]);
+    } else if (type === 'spreadsheet') {
+      setSelectedSpreadsheet(item);
+      setChatMessages(prev => [...prev,
+        {
+          type: 'ai',
+          content: `Perfect! I now have both a template (${selectedTemplate?.name || 'Template'}) and content spreadsheet (${item.name}). You can generate your lessons now!`
+        }
+      ]);
+    }
+  };
+
+  const handleGenerate = () => {
+    setIsGenerating(true);
+    setChatMessages(prev => [...prev,
+      {
+        type: 'ai',
+        content: 'Generating lessons... This may take a few moments.'
+      }
+    ]);
+
+    // Simulate generation process
+    setTimeout(() => {
+      setIsGenerating(false);
+      setGenerationComplete(true);
+      setChatMessages(prev => [...prev,
+        {
+          type: 'ai',
+          content: `🎉 Success! Generated 25 lessons using ${selectedTemplate?.name} template and ${selectedSpreadsheet?.name} data. Ready for download!`
+        }
+      ]);
+    }, 3000);
+  };
+
+
+  // Template and spreadsheet data
+  const templates = [
+    { id: 1, name: 'Mathematics Template', emoji: '📄', description: 'Grade 3 • Fractions & Decimals' },
+    { id: 2, name: 'Science Template', emoji: '🧪', description: 'Grade 5 • Lab Experiments' },
+    { id: 3, name: 'Language Template', emoji: '📝', description: 'Grade 4 • Reading Comprehension' },
+    { id: 4, name: 'History Template', emoji: '🏛️', description: 'Grade 6 • World History' },
+    { id: 5, name: 'Art Template', emoji: '🎨', description: 'Grade K-2 • Creative Arts' },
+    { id: 6, name: 'Music Template', emoji: '🎵', description: 'Grade 3-5 • Music Theory' },
+    { id: 7, name: 'PE Template', emoji: '⚽', description: 'Grade K-8 • Physical Education' },
+    { id: 8, name: 'Geography Template', emoji: '🗺️', description: 'Grade 4-6 • World Geography' },
+    { id: 9, name: 'Biology Template', emoji: '🧬', description: 'Grade 7-8 • Life Sciences' },
+    { id: 10, name: 'Chemistry Template', emoji: '⚗️', description: 'Grade 9-10 • Basic Chemistry' },
+    { id: 11, name: 'Physics Template', emoji: '⚡', description: 'Grade 9-10 • Physics Fundamentals' },
+    { id: 12, name: 'Social Studies Template', emoji: '🌍', description: 'Grade 3-6 • Community & World' }
+  ];
+
+  const spreadsheets = [
+    { id: 1, name: 'Q1 Math Content', emoji: '📊', description: 'Grade 3 • 25 lessons' },
+    { id: 2, name: 'Science Units', emoji: '📊', description: 'Grade 5 • 30 lessons' },
+    { id: 3, name: 'Language Arts', emoji: '📊', description: 'Grade 4 • 45 lessons' },
+    { id: 4, name: 'Q2 Math Content', emoji: '📊', description: 'Grade 3 • 28 lessons' },
+    { id: 5, name: 'History Curriculum', emoji: '📊', description: 'Grade 6 • 20 lessons' },
+    { id: 6, name: 'Art Projects', emoji: '📊', description: 'Grade K-2 • 15 projects' },
+    { id: 7, name: 'Music Lessons', emoji: '📊', description: 'Grade 3-5 • 12 lessons' },
+    { id: 8, name: 'PE Activities', emoji: '📊', description: 'Grade K-8 • 40 activities' },
+    { id: 9, name: 'Geography Units', emoji: '📊', description: 'Grade 4-6 • 18 lessons' },
+    { id: 10, name: 'Q3 Math Content', emoji: '📊', description: 'Grade 3 • 30 lessons' },
+    { id: 11, name: 'Q4 Math Content', emoji: '📊', description: 'Grade 3 • 24 lessons' },
+    { id: 12, name: 'Biology Lab Content', emoji: '📊', description: 'Grade 7-8 • 16 experiments' },
+    { id: 13, name: 'Chemistry Lab Content', emoji: '📊', description: 'Grade 9-10 • 22 experiments' },
+    { id: 14, name: 'Physics Problem Sets', emoji: '📊', description: 'Grade 9-10 • 35 problems' },
+    { id: 15, name: 'Social Studies Projects', emoji: '📊', description: 'Grade 3-6 • 12 projects' }
+  ];
 
   return (
     <div className="bg-[#f8f9fe] min-h-screen">
@@ -2436,17 +2562,28 @@ export default function Page() {
                 </div>
 
                 {/* Two Column Layout */}
-                <div className="bg-white flex" style={{ height: '600px' }}>
+                <div className="bg-white flex" style={{ height: '650px' }}>
                   {/* Left Sidebar - Templates & Spreadsheets Library */}
                   <div className="w-[35%] border-r border-gray-200 flex flex-col" id="library-sidebar">
                     {/* Library Header */}
-                    <div className="p-4 border-b border-gray-200">
+                    <div className="p-4 border-b border-gray-200 flex-shrink-0">
                       <h3 className="font-semibold text-gray-800">Library</h3>
                       <p className="text-xs text-gray-500 mt-1">Drag items to the chat to build your lesson plan</p>
                     </div>
 
                     {/* Scrollable Library Content */}
-                    <div className="flex-1 overflow-y-auto p-4 space-y-6">
+                    <div
+                      className="overflow-y-scroll p-4 space-y-6 relative"
+                      style={{
+                        height: '520px',
+                        scrollbarWidth: 'thin',
+                        scrollbarColor: '#d1d5db #f3f4f6'
+                      }}
+                    >
+                      {/* Top scroll shadow */}
+                      <div className="absolute top-0 left-0 right-0 h-6 bg-gradient-to-b from-white to-transparent pointer-events-none z-10"></div>
+                      {/* Bottom scroll shadow */}
+                      <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-white to-transparent pointer-events-none z-10"></div>
                       {/* Templates Section */}
                       <div>
                         <div className="flex items-center mb-3">
@@ -2458,50 +2595,27 @@ export default function Page() {
 
                         <div className="space-y-2">
                           {/* Template Cards */}
-                          <div className="template-card bg-purple-50 border border-purple-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
-                            <div className="flex items-center justify-between mb-1">
-                              <div className="flex items-center">
-                                <div className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center mr-2">
-                                  <span className="text-white text-xs">📄</span>
+                          {templates.map(template => (
+                            <div
+                              key={template.id}
+                              className={`template-card bg-purple-50 border border-purple-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedTemplate?.id === template.id ? 'ring-2 ring-purple-400' : ''}`}
+                              draggable="true"
+                              onDragStart={(e) => handleDragStart(e, template, 'template')}
+                            >
+                              <div className="flex items-center justify-between mb-1">
+                                <div className="flex items-center">
+                                  <div className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center mr-2">
+                                    <span className="text-white text-xs">{template.emoji}</span>
+                                  </div>
+                                  <span className="text-sm font-medium text-gray-800">{template.name}</span>
                                 </div>
-                                <span className="text-sm font-medium text-gray-800">Mathematics Template</span>
+                                <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                </svg>
                               </div>
-                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                              </svg>
+                              <p className="text-xs text-gray-600">{template.description}</p>
                             </div>
-                            <p className="text-xs text-gray-600">Grade 3 • Fractions & Decimals</p>
-                          </div>
-
-                          <div className="template-card bg-blue-50 border border-blue-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
-                            <div className="flex items-center justify-between mb-1">
-                              <div className="flex items-center">
-                                <div className="w-6 h-6 bg-blue-500 rounded flex items-center justify-center mr-2">
-                                  <span className="text-white text-xs">🧪</span>
-                                </div>
-                                <span className="text-sm font-medium text-gray-800">Science Template</span>
-                              </div>
-                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                              </svg>
-                            </div>
-                            <p className="text-xs text-gray-600">Grade 5 • Lab Experiments</p>
-                          </div>
-
-                          <div className="template-card bg-green-50 border border-green-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
-                            <div className="flex items-center justify-between mb-1">
-                              <div className="flex items-center">
-                                <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center mr-2">
-                                  <span className="text-white text-xs">📝</span>
-                                </div>
-                                <span className="text-sm font-medium text-gray-800">Language Template</span>
-                              </div>
-                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                              </svg>
-                            </div>
-                            <p className="text-xs text-gray-600">Grade 4 • Reading Comprehension</p>
-                          </div>
+                          ))}
                         </div>
                       </div>
 
@@ -2516,50 +2630,27 @@ export default function Page() {
 
                         <div className="space-y-2">
                           {/* Spreadsheet Cards */}
-                          <div className="template-card bg-orange-50 border border-orange-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
-                            <div className="flex items-center justify-between mb-1">
-                              <div className="flex items-center">
-                                <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center mr-2">
-                                  <span className="text-white text-xs">📊</span>
+                          {spreadsheets.map(spreadsheet => (
+                            <div
+                              key={spreadsheet.id}
+                              className={`template-card bg-green-50 border border-green-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedSpreadsheet?.id === spreadsheet.id ? 'ring-2 ring-green-400' : ''}`}
+                              draggable="true"
+                              onDragStart={(e) => handleDragStart(e, spreadsheet, 'spreadsheet')}
+                            >
+                              <div className="flex items-center justify-between mb-1">
+                                <div className="flex items-center">
+                                  <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center mr-2">
+                                    <span className="text-white text-xs">{spreadsheet.emoji}</span>
+                                  </div>
+                                  <span className="text-sm font-medium text-gray-800">{spreadsheet.name}</span>
                                 </div>
-                                <span className="text-sm font-medium text-gray-800">Q1 Math Content</span>
+                                <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                </svg>
                               </div>
-                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                              </svg>
+                              <p className="text-xs text-gray-600">{spreadsheet.description}</p>
                             </div>
-                            <p className="text-xs text-gray-600">Grade 3 • 25 lessons</p>
-                          </div>
-
-                          <div className="template-card bg-teal-50 border border-teal-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
-                            <div className="flex items-center justify-between mb-1">
-                              <div className="flex items-center">
-                                <div className="w-6 h-6 bg-teal-500 rounded flex items-center justify-center mr-2">
-                                  <span className="text-white text-xs">📊</span>
-                                </div>
-                                <span className="text-sm font-medium text-gray-800">Science Units</span>
-                              </div>
-                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                              </svg>
-                            </div>
-                            <p className="text-xs text-gray-600">Grade 5 • 30 lessons</p>
-                          </div>
-
-                          <div className="template-card bg-pink-50 border border-pink-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
-                            <div className="flex items-center justify-between mb-1">
-                              <div className="flex items-center">
-                                <div className="w-6 h-6 bg-pink-500 rounded flex items-center justify-center mr-2">
-                                  <span className="text-white text-xs">📊</span>
-                                </div>
-                                <span className="text-sm font-medium text-gray-800">Language Arts</span>
-                              </div>
-                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                              </svg>
-                            </div>
-                            <p className="text-xs text-gray-600">Grade 4 • 45 lessons</p>
-                          </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -2568,78 +2659,157 @@ export default function Page() {
                   {/* Right Side - Chat Interface */}
                   <div className="flex-1 flex flex-col">
                     {/* Chat Messages Area */}
-                    <div className="flex-1 p-6 overflow-y-auto space-y-4" id="chat-area">
-                      {/* AI Welcome Message */}
-                      <div className="flex items-start space-x-3">
-                        <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                          </svg>
+                    <div
+                      ref={chatContainerRef}
+                      className="flex-1 p-6 overflow-y-auto space-y-4 scroll-smooth"
+                      id="chat-area"
+                      style={{ scrollBehavior: 'smooth' }}
+                    >
+                      {/* Render Chat Messages */}
+                      {chatMessages.map((message, index) => (
+                        <div key={index} className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-3 max-w-md">
+                            <p className="text-sm text-gray-800">
+                              {message.content}
+                            </p>
+                          </div>
                         </div>
-                        <div className="bg-gray-50 rounded-lg p-3 max-w-md">
-                          <p className="text-sm text-gray-800">
-                            Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.
+                      ))}
+
+                      {/* Loading Animation during generation */}
+                      {isGenerating && (
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg className="w-4 h-4 text-white animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-3 max-w-md">
+                            <div className="flex items-center space-x-2">
+                              <div className="flex space-x-1">
+                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+                              </div>
+                              <span className="text-sm text-gray-600">Processing...</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Drop Zone in Chat */}
+                      <div className="flex justify-center my-6">
+                        <div
+                          id="chat-drop-zone"
+                          className={`border-2 border-dashed rounded-lg p-8 w-full max-w-md text-center transition-all ${
+                            isDragOver
+                              ? 'border-purple-500 bg-purple-50 scale-105'
+                              : 'border-gray-300 hover:border-purple-400'
+                          }`}
+                          onDragOver={handleDragOver}
+                          onDragLeave={handleDragLeave}
+                          onDrop={handleDrop}
+                        >
+                          <svg className={`mx-auto h-8 w-8 mb-2 transition-colors ${isDragOver ? 'text-purple-600' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                          </svg>
+                          <p className={`text-sm transition-colors ${isDragOver ? 'text-purple-700 font-medium' : 'text-gray-600'}`}>
+                            {isDragOver ? 'Release to add item' : 'Drop templates or spreadsheets here'}
+                          </p>
+                          <p className={`text-xs transition-colors ${isDragOver ? 'text-purple-500' : 'text-gray-400'}`}>
+                            {isDragOver ? 'Adding to your lesson plan...' : 'Start by adding at least one template'}
                           </p>
                         </div>
                       </div>
 
-                      {/* Drop Zone in Chat */}
-                      <div className="flex justify-center my-6">
-                        <div id="chat-drop-zone" className="border-2 border-dashed border-gray-300 rounded-lg p-8 w-full max-w-md text-center hover:border-purple-400 transition-colors">
-                          <svg className="mx-auto h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                          </svg>
-                          <p className="text-sm text-gray-600">Drop templates or spreadsheets here</p>
-                          <p className="text-xs text-gray-400">Start by adding at least one template</p>
-                        </div>
-                      </div>
+                      {/* Selected Items Display */}
+                      {(selectedTemplate || selectedSpreadsheet) && (
+                        <div className="space-y-3">
+                          {/* Selected Template */}
+                          {selectedTemplate && (
+                            <div className="bg-white border border-gray-200 rounded-lg p-3 mb-2">
+                              <div className="flex items-center">
+                                <div className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">{selectedTemplate.emoji}</span>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Selected: {selectedTemplate.name}</span>
+                              </div>
+                            </div>
+                          )}
 
-                      {/* Added Items (Hidden initially) */}
-                      <div id="added-items" className="hidden space-y-3">
-                        {/* Template added */}
-                        <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          {/* Selected Spreadsheet */}
+                          {selectedSpreadsheet && (
+                            <div className="bg-white border border-gray-200 rounded-lg p-3 mb-2">
+                              <div className="flex items-center">
+                                <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">{selectedSpreadsheet.emoji}</span>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Selected: {selectedSpreadsheet.name}</span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Success State Display */}
+                      {generationComplete && (
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                          <div className="flex items-start space-x-3">
+                            <svg className="w-6 h-6 text-green-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                          </div>
-                          <div className="bg-gray-50 rounded-lg p-3 max-w-md">
-                            <p className="text-sm text-gray-800 mb-2">Great! I've added the Mathematics Template.</p>
-                            <div className="bg-purple-100 border border-purple-200 rounded p-2 flex items-center">
-                              <span className="text-purple-800 text-xs">📄 Mathematics Template - Grade 3</span>
+                            <div>
+                              <h4 className="font-semibold text-green-800 mb-2">Lessons Generated Successfully!</h4>
+                              <div className="space-y-2 mb-4">
+                                <div className="bg-white border border-green-200 rounded p-3">
+                                  <div className="flex justify-between items-center">
+                                    <span className="text-sm font-medium">Mathematics Lesson Pack</span>
+                                    <button className="bg-green-600 text-white text-xs px-3 py-1 rounded hover:bg-green-700">Download</button>
+                                  </div>
+                                  <p className="text-xs text-gray-600 mt-1">25 lessons • PDF Format • 2.4 MB</p>
+                                </div>
+                              </div>
+                              <button
+                                onClick={() => {
+                                  setSelectedTemplate(null);
+                                  setSelectedSpreadsheet(null);
+                                  setGenerationComplete(false);
+                                  setChatMessages([{
+                                    type: 'ai',
+                                    content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
+                                  }]);
+                                }}
+                                className="text-green-700 text-sm font-medium hover:underline"
+                              >
+                                Start New Generation →
+                              </button>
                             </div>
-                            <p className="text-xs text-gray-600 mt-2">Now add a content spreadsheet to continue.</p>
                           </div>
                         </div>
-
-                        {/* Spreadsheet added */}
-                        <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                          </div>
-                          <div className="bg-gray-50 rounded-lg p-3 max-w-md">
-                            <p className="text-sm text-gray-800 mb-2">Perfect! I found 25 lessons in your spreadsheet.</p>
-                            <div className="bg-orange-100 border border-orange-200 rounded p-2 flex items-center mb-2">
-                              <span className="text-orange-800 text-xs">📊 Q1 Math Content - 25 lessons</span>
-                            </div>
-                            <p className="text-xs text-gray-600">You can add more items or click Generate to continue.</p>
-                          </div>
-                        </div>
-                      </div>
+                      )}
                     </div>
 
                     {/* Generate Button Area */}
                     <div className="border-t border-gray-200 p-4">
                       <button
-                        id="generate-button"
-                        className="w-full bg-gray-300 text-gray-500 py-2 px-4 rounded-lg font-medium cursor-not-allowed transition-all"
-                        disabled
+                        onClick={handleGenerate}
+                        className={`w-full py-2 px-4 rounded-lg font-medium transition-all ${
+                          selectedTemplate && selectedSpreadsheet && !isGenerating && !generationComplete
+                            ? 'bg-purple-600 text-white hover:bg-purple-700 cursor-pointer'
+                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                        }`}
+                        disabled={!selectedTemplate || !selectedSpreadsheet || isGenerating || generationComplete}
                       >
-                        Generate Lessons
+                        {isGenerating ? 'Generating...' : generationComplete ? 'Generation Complete' : 'Generate Lessons'}
                       </button>
-                      <p className="text-xs text-gray-400 text-center mt-2">Add at least one template and one spreadsheet</p>
+                      <p className="text-xs text-gray-400 text-center mt-2">
+                        {selectedTemplate && selectedSpreadsheet ? 'Ready to generate!' : 'Add at least one template and one spreadsheet'}
+                      </p>
                     </div>
                   </div>
                 </div>
