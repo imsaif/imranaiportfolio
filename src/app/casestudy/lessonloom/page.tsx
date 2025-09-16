@@ -2406,6 +2406,443 @@ export default function Page() {
           </div>
         </motion.section>
 
+        {/* AI-Powered Generation Interface Section */}
+        <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.4 }}>
+          <div className="bg-white p-8 rounded-xl shadow">
+            {/* AI-Powered Generation Interface */}
+            <div className="mb-8">
+              <h4 className="text-xl font-bold text-gray-800 mb-4">3. AI-Powered Generation Interface</h4>
+              <p className="text-gray-700 mb-6">
+                We designed an AI-native interface that streamlines content generation while maintaining
+                educator control over the creative process. This tool represents the evolution from manual
+                workflows to intelligent, context-aware content creation.
+              </p>
+
+              {/* Two-Column AI Interface with Templates Library */}
+              <div className="border border-gray-200 rounded-xl overflow-hidden transition-shadow duration-300 hover:shadow-lg mb-6 relative">
+                {/* Browser Header */}
+                <div className="bg-gray-50 p-3 border-b border-gray-200 flex items-center">
+                  <div className="flex space-x-2 mr-3">
+                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                  </div>
+                  <span className="text-gray-700 font-medium">LessonLoom AI Generation Studio</span>
+                  <div className="ml-auto">
+                    <button className="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full hover:bg-purple-200 transition-colors">
+                      Start Tour
+                    </button>
+                  </div>
+                </div>
+
+                {/* Two Column Layout */}
+                <div className="bg-white flex" style={{ height: '600px' }}>
+                  {/* Left Sidebar - Templates & Spreadsheets Library */}
+                  <div className="w-[35%] border-r border-gray-200 flex flex-col" id="library-sidebar">
+                    {/* Library Header */}
+                    <div className="p-4 border-b border-gray-200">
+                      <h3 className="font-semibold text-gray-800">Library</h3>
+                      <p className="text-xs text-gray-500 mt-1">Drag items to the chat to build your lesson plan</p>
+                    </div>
+
+                    {/* Scrollable Library Content */}
+                    <div className="flex-1 overflow-y-auto p-4 space-y-6">
+                      {/* Templates Section */}
+                      <div>
+                        <div className="flex items-center mb-3">
+                          <svg className="w-4 h-4 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                          <h4 className="text-sm font-semibold text-gray-800">Templates</h4>
+                        </div>
+
+                        <div className="space-y-2">
+                          {/* Template Cards */}
+                          <div className="template-card bg-purple-50 border border-purple-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
+                            <div className="flex items-center justify-between mb-1">
+                              <div className="flex items-center">
+                                <div className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">📄</span>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Mathematics Template</span>
+                              </div>
+                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                              </svg>
+                            </div>
+                            <p className="text-xs text-gray-600">Grade 3 • Fractions & Decimals</p>
+                          </div>
+
+                          <div className="template-card bg-blue-50 border border-blue-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
+                            <div className="flex items-center justify-between mb-1">
+                              <div className="flex items-center">
+                                <div className="w-6 h-6 bg-blue-500 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">🧪</span>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Science Template</span>
+                              </div>
+                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                              </svg>
+                            </div>
+                            <p className="text-xs text-gray-600">Grade 5 • Lab Experiments</p>
+                          </div>
+
+                          <div className="template-card bg-green-50 border border-green-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
+                            <div className="flex items-center justify-between mb-1">
+                              <div className="flex items-center">
+                                <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">📝</span>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Language Template</span>
+                              </div>
+                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                              </svg>
+                            </div>
+                            <p className="text-xs text-gray-600">Grade 4 • Reading Comprehension</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Spreadsheets Section */}
+                      <div>
+                        <div className="flex items-center mb-3">
+                          <svg className="w-4 h-4 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                          </svg>
+                          <h4 className="text-sm font-semibold text-gray-800">Content Spreadsheets</h4>
+                        </div>
+
+                        <div className="space-y-2">
+                          {/* Spreadsheet Cards */}
+                          <div className="template-card bg-orange-50 border border-orange-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
+                            <div className="flex items-center justify-between mb-1">
+                              <div className="flex items-center">
+                                <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">📊</span>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Q1 Math Content</span>
+                              </div>
+                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                              </svg>
+                            </div>
+                            <p className="text-xs text-gray-600">Grade 3 • 25 lessons</p>
+                          </div>
+
+                          <div className="template-card bg-teal-50 border border-teal-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
+                            <div className="flex items-center justify-between mb-1">
+                              <div className="flex items-center">
+                                <div className="w-6 h-6 bg-teal-500 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">📊</span>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Science Units</span>
+                              </div>
+                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                              </svg>
+                            </div>
+                            <p className="text-xs text-gray-600">Grade 5 • 30 lessons</p>
+                          </div>
+
+                          <div className="template-card bg-pink-50 border border-pink-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group">
+                            <div className="flex items-center justify-between mb-1">
+                              <div className="flex items-center">
+                                <div className="w-6 h-6 bg-pink-500 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">📊</span>
+                                </div>
+                                <span className="text-sm font-medium text-gray-800">Language Arts</span>
+                              </div>
+                              <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                              </svg>
+                            </div>
+                            <p className="text-xs text-gray-600">Grade 4 • 45 lessons</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Chat Interface */}
+                  <div className="flex-1 flex flex-col">
+                    {/* Chat Messages Area */}
+                    <div className="flex-1 p-6 overflow-y-auto space-y-4" id="chat-area">
+                      {/* AI Welcome Message */}
+                      <div className="flex items-start space-x-3">
+                        <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        </div>
+                        <div className="bg-gray-50 rounded-lg p-3 max-w-md">
+                          <p className="text-sm text-gray-800">
+                            Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Drop Zone in Chat */}
+                      <div className="flex justify-center my-6">
+                        <div id="chat-drop-zone" className="border-2 border-dashed border-gray-300 rounded-lg p-8 w-full max-w-md text-center hover:border-purple-400 transition-colors">
+                          <svg className="mx-auto h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                          </svg>
+                          <p className="text-sm text-gray-600">Drop templates or spreadsheets here</p>
+                          <p className="text-xs text-gray-400">Start by adding at least one template</p>
+                        </div>
+                      </div>
+
+                      {/* Added Items (Hidden initially) */}
+                      <div id="added-items" className="hidden space-y-3">
+                        {/* Template added */}
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-3 max-w-md">
+                            <p className="text-sm text-gray-800 mb-2">Great! I've added the Mathematics Template.</p>
+                            <div className="bg-purple-100 border border-purple-200 rounded p-2 flex items-center">
+                              <span className="text-purple-800 text-xs">📄 Mathematics Template - Grade 3</span>
+                            </div>
+                            <p className="text-xs text-gray-600 mt-2">Now add a content spreadsheet to continue.</p>
+                          </div>
+                        </div>
+
+                        {/* Spreadsheet added */}
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-3 max-w-md">
+                            <p className="text-sm text-gray-800 mb-2">Perfect! I found 25 lessons in your spreadsheet.</p>
+                            <div className="bg-orange-100 border border-orange-200 rounded p-2 flex items-center mb-2">
+                              <span className="text-orange-800 text-xs">📊 Q1 Math Content - 25 lessons</span>
+                            </div>
+                            <p className="text-xs text-gray-600">You can add more items or click Generate to continue.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Generate Button Area */}
+                    <div className="border-t border-gray-200 p-4">
+                      <button
+                        id="generate-button"
+                        className="w-full bg-gray-300 text-gray-500 py-2 px-4 rounded-lg font-medium cursor-not-allowed transition-all"
+                        disabled
+                      >
+                        Generate Lessons
+                      </button>
+                      <p className="text-xs text-gray-400 text-center mt-2">Add at least one template and one spreadsheet</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Product Tour Overlay (Hidden by default) */}
+                <div id="tour-overlay" className="absolute inset-0 bg-black bg-opacity-50 hidden z-10">
+
+                  {/* Tour Step 1: Library Overview */}
+                  <div id="tour-step-1" className="absolute top-20 left-8 bg-white rounded-lg p-4 shadow-xl max-w-sm z-20">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                      </div>
+                      <button className="text-gray-400 hover:text-gray-600 text-sm">Skip Tour</button>
+                    </div>
+                    <h3 className="font-semibold text-gray-800 mb-2">Browse the Library</h3>
+                    <p className="text-sm text-gray-600 mb-4">Start by exploring templates and spreadsheets in the left panel. Each card shows the grade level and content type.</p>
+                    <div className="flex justify-end">
+                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                    </div>
+                  </div>
+
+                  {/* Tour Step 2: Templates */}
+                  <div id="tour-step-2" className="absolute top-32 left-8 bg-white rounded-lg p-4 shadow-xl max-w-sm z-20 hidden">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                      </div>
+                      <button className="text-gray-400 hover:text-gray-600 text-sm">Skip Tour</button>
+                    </div>
+                    <h3 className="font-semibold text-gray-800 mb-2">Select Templates</h3>
+                    <p className="text-sm text-gray-600 mb-4">Templates define the structure and format of your lessons. Choose one that matches your subject and grade level.</p>
+                    <div className="flex justify-between">
+                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
+                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                    </div>
+                  </div>
+
+                  {/* Tour Step 3: Spreadsheets */}
+                  <div id="tour-step-3" className="absolute bottom-40 left-8 bg-white rounded-lg p-4 shadow-xl max-w-sm z-20 hidden">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                      </div>
+                      <button className="text-gray-400 hover:text-gray-600 text-sm">Skip Tour</button>
+                    </div>
+                    <h3 className="font-semibold text-gray-800 mb-2">Choose Content</h3>
+                    <p className="text-sm text-gray-600 mb-4">Spreadsheets contain your curriculum content. Select one with the lessons you want to generate.</p>
+                    <div className="flex justify-between">
+                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
+                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                    </div>
+                  </div>
+
+                  {/* Tour Step 4: Drag to Chat */}
+                  <div id="tour-step-4" className="absolute top-1/2 right-1/3 transform -translate-y-1/2 bg-white rounded-lg p-4 shadow-xl max-w-sm z-20 hidden">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                      </div>
+                      <button className="text-gray-400 hover:text-gray-600 text-sm">Skip Tour</button>
+                    </div>
+                    <h3 className="font-semibold text-gray-800 mb-2">Drag to Drop Zone</h3>
+                    <p className="text-sm text-gray-600 mb-4">Drag items from the library to the drop zone in the chat. The AI will confirm each addition and guide you.</p>
+                    <div className="flex justify-between">
+                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
+                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                    </div>
+                  </div>
+
+                  {/* Tour Step 5: AI Guidance */}
+                  <div id="tour-step-5" className="absolute top-24 right-8 bg-white rounded-lg p-4 shadow-xl max-w-sm z-20 hidden">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                      </div>
+                      <button className="text-gray-400 hover:text-gray-600 text-sm">Skip Tour</button>
+                    </div>
+                    <h3 className="font-semibold text-gray-800 mb-2">AI Chat Assistance</h3>
+                    <p className="text-sm text-gray-600 mb-4">The AI assistant guides you through each step, confirming your selections and providing helpful feedback.</p>
+                    <div className="flex justify-between">
+                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
+                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                    </div>
+                  </div>
+
+                  {/* Tour Step 6: Generate Button */}
+                  <div id="tour-step-6" className="absolute bottom-24 right-8 bg-white rounded-lg p-4 shadow-xl max-w-sm z-20 hidden">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                      </div>
+                      <button className="text-gray-400 hover:text-gray-600 text-sm">Skip Tour</button>
+                    </div>
+                    <h3 className="font-semibold text-gray-800 mb-2">Generate Lessons</h3>
+                    <p className="text-sm text-gray-600 mb-4">Once you've added at least one template and spreadsheet, the Generate button activates. Click to start creating your lessons!</p>
+                    <div className="flex justify-between">
+                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
+                      <button className="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700">Finish Tour</button>
+                    </div>
+                  </div>
+
+                  {/* Highlight Areas for Tour */}
+                  <div id="tour-highlight-1" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ top: '60px', left: '20px', width: '35%', height: '80%' }}></div>
+                  <div id="tour-highlight-2" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ top: '120px', left: '20px', width: '35%', height: '200px' }}></div>
+                  <div id="tour-highlight-3" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ bottom: '180px', left: '20px', width: '35%', height: '200px' }}></div>
+                  <div id="tour-highlight-4" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ top: '200px', left: '35%', right: '20px', height: '200px' }}></div>
+                  <div id="tour-highlight-5" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ top: '100px', left: '35%', right: '20px', bottom: '120px' }}></div>
+                  <div id="tour-highlight-6" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ bottom: '20px', left: '35%', right: '20px', height: '100px' }}></div>
+                </div>
+              </div>
+
+              {/* Key Features Explanation */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <div className="bg-purple-50 p-6 rounded-xl border border-purple-200">
+                  <h5 className="font-bold text-purple-800 mb-4">Conversational AI Interface</h5>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-start">
+                      <div className="text-purple-500 mr-2 mt-1">•</div>
+                      <span>Natural language guidance through the entire process</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="text-purple-500 mr-2 mt-1">•</div>
+                      <span>Drag-and-drop file upload with intelligent content analysis</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="text-purple-500 mr-2 mt-1">•</div>
+                      <span>Interactive lesson selection with real-time feedback</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
+                  <h5 className="font-bold text-blue-800 mb-4">Guided User Experience</h5>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-start">
+                      <div className="text-blue-500 mr-2 mt-1">•</div>
+                      <span>Step-by-step product tour with visual highlights</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="text-blue-500 mr-2 mt-1">•</div>
+                      <span>Real-time progress tracking with stop/start controls</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="text-blue-500 mr-2 mt-1">•</div>
+                      <span>Clear summary and download options upon completion</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Product Tour Benefits */}
+              <div className="mt-8 bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200">
+                <h5 className="font-bold text-gray-800 mb-4 flex items-center">
+                  <svg className="w-5 h-5 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  Interactive Product Tour
+                </h5>
+                <p className="text-sm text-gray-700 mb-4">
+                  The guided tour reduces the learning curve by 75% compared to traditional documentation approaches.
+                  Users can explore each feature hands-on while receiving contextual explanations.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-purple-700 border border-purple-200">5-Step Walkthrough</span>
+                  <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-blue-700 border border-blue-200">Visual Highlights</span>
+                  <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-green-700 border border-green-200">Skip Option Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
         {/* Technical Challenges Section */}
         <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.5 }}>
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Technical Challenges</h2>
