@@ -22,8 +22,8 @@ export const projects: Project[] = [
   {
     id: 3,
     slug: 'uhg',
-    title: 'UHG: HSA Reimbursement',
-    description: 'Redesigned healthcare financial platform serving 450K users',
+    title: 'Optum Bank',
+    description: 'Redesigned HSA reimbursement healthcare financial platform serving 450K users',
     fullDescription: `
       As Lead UX Designer at UnitedHealth Group, I spearheaded the redesign of the HSA reimbursement
       system serving 450,000 users. The existing system had significant usability issues with a 1.1% task
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     liveUrl: 'https://optumbank.com',
     githubUrl: '#',
     images: [
-      '/images/casestudy/uhg/hero-gradient.svg',
+      '/images/casestudy/uhg/uhg-hospital-bank.png',
       '/images/casestudy/uhg/mobile-flow.svg',
       '/images/casestudy/uhg/desktop-interface.svg',
       '/images/casestudy/uhg/user-journey.svg',

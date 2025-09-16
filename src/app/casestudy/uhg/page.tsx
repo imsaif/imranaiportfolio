@@ -1,6 +1,7 @@
 'use client';
 
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
+import Image from 'next/image';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 import ProgressBar from '@/components/ui/ProgressBar';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
@@ -155,14 +156,14 @@ export default function UHGCaseStudyPage() {
       {/* Hero image */}
       <div>
         <div className="w-full relative">
-          <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden bg-gradient-to-br from-orange-500 via-red-500 to-pink-600">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center text-white">
-                <div className="text-6xl mb-4">🏥</div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">UnitedHealth Group</h1>
-                <p className="text-xl md:text-2xl opacity-90">HSA Reimbursement Redesign</p>
-              </div>
-            </div>
+          <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden">
+            <Image
+              src="/images/casestudy/uhg/uhg-hospital-bank.png"
+              alt="UnitedHealth Group: HSA Reimbursement Redesign"
+              fill
+              className="object-cover"
+              priority
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
           </div>
         </div>
@@ -172,7 +173,7 @@ export default function UHGCaseStudyPage() {
         {/* Introduction Section */}
         <div className="text-center mb-12">
           <CaseStudyHeader level="h1" className="text-center mb-4">
-            UnitedHealth Group: HSA Reimbursement Process Redesign
+            Optum Bank: HSA Reimbursement Process Redesign
           </CaseStudyHeader>
           <p className="text-xl text-gray-600 mb-6">
             Solving Multi-User, Multi-System Healthcare Financial Experience

@@ -56,7 +56,7 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
   return (
     <motion.div
       ref={cardRef}
-      className={`sticky-project-card sticky top-[96px] min-h-[400px] ${index !== total - 1 ? 'mb-20' : 'mb-0'} ${index === 0 ? 'mt-0' : 'mt-12'} bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible`}
+      className={`sticky-project-card sticky top-[96px] min-h-[400px] mb-8 mt-0 bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible`}
       style={{ zIndex: 10 + index, scale, boxShadow }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
