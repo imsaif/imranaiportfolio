@@ -7,39 +7,53 @@ const Footer = () => {
     <footer className="section-padding border-t border-border">
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-12 p-6 rounded-xl border border-accent/20 bg-gradient-to-r from-accent/10 to-tertiary/10">
-            <p className="text-lg font-medium text-foreground mb-8">
-              🚀 Currently Building
-            </p>
-            <div className="space-y-4">
-              <div className="text-center">
-                <a 
-                  href="https://www.aiuxdesign.guide/" 
-                  target="_blank" 
+          <div className="mb-16 rounded-xl bg-black border border-gray-700 min-h-[380px] shadow-[0_0_35px_rgba(112,117,224,0.4),0_0_70px_rgba(224,99,124,0.3)]">
+            {/* Terminal Content */}
+            <div className="p-8">
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-baseline">
+                  <span className="gradient-text font-mono text-sm mr-2 animate-blink">{'>'}</span>
+                  <p className="text-sm font-mono gradient-text uppercase tracking-wider whitespace-nowrap">
+                    Currently Building
+                  </p>
+                </div>
+                <a
+                  href="https://github.com/imsaif"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xl font-semibold gradient-text hover:opacity-80 transition-opacity inline-block"
+                  className="border border-gray-600 hover:border-accent/50 px-4 py-1 rounded-lg text-xs font-mono text-gray-300 hover:text-white transition-all duration-200 flex items-center gap-1 flex-shrink-0 whitespace-nowrap"
                 >
-                  AI UX Design Guide →
+                  GitHub →
                 </a>
-                <p className="text-sm text-muted mt-1">
-                  A comprehensive resource for designing human-centered AI experiences
-                </p>
               </div>
-              <div className="flex justify-center">
-                <span className="text-muted">•</span>
-              </div>
-              <div className="text-center">
-                <a 
-                  href="https://www.designwithclaude.com/" 
-                  target="_blank" 
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a
+                  href="https://github.com/imsaif/aiex"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xl font-semibold gradient-text hover:opacity-80 transition-opacity inline-block"
+                  className="group block py-10 px-8 rounded-lg border border-gray-600 hover:border-accent/50 bg-gray-900/50 hover:bg-gray-800/70 transition-all duration-200 min-h-[160px]"
                 >
-                  DesignwithClaude →
+                  <h3 className="text-lg font-semibold text-white mb-3 group-hover:gradient-text transition-all duration-200">
+                    AI UX Design Guide
+                  </h3>
+                  <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors">
+                    Comprehensive resource for human-centered AI experiences
+                  </p>
                 </a>
-                <p className="text-sm text-muted mt-1">
-                  AI-powered design agents for collaborative creative workflows
-                </p>
+                <a
+                  href="https://github.com/imsaif/design-with-claude"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block py-10 px-8 rounded-lg border border-gray-600 hover:border-tertiary/50 bg-gray-900/50 hover:bg-gray-800/70 transition-all duration-200 min-h-[160px]"
+                >
+                  <h3 className="text-lg font-semibold text-white mb-3 group-hover:gradient-text transition-all duration-200">
+                    DesignwithClaude
+                  </h3>
+                  <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors">
+                    Specialized AI agents + CLI tool for design challenges, powered by Claude
+                  </p>
+                </a>
               </div>
             </div>
           </div>
