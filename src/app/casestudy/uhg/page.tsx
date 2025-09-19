@@ -18,8 +18,8 @@ const OverviewIcon = (
   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
     <defs>
       <linearGradient id="overview-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#FF6900" />
-        <stop offset="1" stopColor="#E55A00" />
+        <stop stopColor="#6366F1" />
+        <stop offset="1" stopColor="#8B5CF6" />
       </linearGradient>
     </defs>
     <path
@@ -38,8 +38,8 @@ const ResearchIcon = (
   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
     <defs>
       <linearGradient id="research-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#FF6900" />
-        <stop offset="1" stopColor="#E55A00" />
+        <stop stopColor="#6366F1" />
+        <stop offset="1" stopColor="#8B5CF6" />
       </linearGradient>
     </defs>
     <circle cx="11" cy="11" r="8" stroke="url(#research-gradient)" strokeWidth="2" fill="none" />
@@ -52,8 +52,8 @@ const DesignIcon = (
   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
     <defs>
       <linearGradient id="design-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#FF6900" />
-        <stop offset="1" stopColor="#E55A00" />
+        <stop stopColor="#6366F1" />
+        <stop offset="1" stopColor="#8B5CF6" />
       </linearGradient>
     </defs>
     <path
@@ -72,8 +72,8 @@ const TechnicalIcon = (
   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
     <defs>
       <linearGradient id="technical-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#FF6900" />
-        <stop offset="1" stopColor="#E55A00" />
+        <stop stopColor="#6366F1" />
+        <stop offset="1" stopColor="#8B5CF6" />
       </linearGradient>
     </defs>
     <rect x="4" y="4" width="16" height="12" rx="2" stroke="url(#technical-gradient)" strokeWidth="2" fill="none" />
@@ -87,8 +87,8 @@ const ResultsIcon = (
   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
     <defs>
       <linearGradient id="results-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#FF6900" />
-        <stop offset="1" stopColor="#E55A00" />
+        <stop stopColor="#6366F1" />
+        <stop offset="1" stopColor="#8B5CF6" />
       </linearGradient>
     </defs>
     <path d="M3 13l4 4L17 7" stroke="url(#results-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -171,27 +171,16 @@ export default function UHGCaseStudyPage() {
 
       <main className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
         {/* Introduction Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <CaseStudyHeader level="h1" className="text-center mb-4">
-            Optum Bank: HSA Reimbursement Process Redesign
+            Optum Bank: HSA Reimbursement Redesign
           </CaseStudyHeader>
-          <p className="text-xl text-gray-600 mb-6">
-            Solving Multi-User, Multi-System Healthcare Financial Experience
+          <p className="text-xl text-gray-600 mb-8">
+            Intelligent Healthcare Financial Experience
           </p>
-          <div className="flex flex-wrap justify-center gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-orange-600">1.1% → 23%</div>
-              <div className="text-sm text-gray-600">Task Completion Rate</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-orange-600">28%</div>
-              <div className="text-sm text-gray-600">Reduction in Support Calls</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-orange-600">450K</div>
-              <div className="text-sm text-gray-600">Users Affected</div>
-            </div>
-          </div>
+          <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            A complete redesign of the HSA reimbursement system that transformed a 98.9% abandonment rate into a streamlined experience for 450,000 users.
+          </p>
         </div>
 
         {/* Main content sections with sticky navigation */}
@@ -246,25 +235,25 @@ export default function UHGCaseStudyPage() {
                 <ProjectOverviewSection />
               </div>
 
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
 
               <div ref={researchRef} id="research">
                 <ResearchDiscoverySection />
               </div>
 
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
 
               <div ref={designRef} id="design">
                 <DesignStrategySection />
               </div>
 
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
 
               <div ref={technicalRef} id="technical">
                 <TechnicalImplementationSection />
               </div>
 
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
 
               <div ref={resultsRef} id="results">
                 <ResultsImpactSection />

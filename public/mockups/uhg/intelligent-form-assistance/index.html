@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Intelligent Form Assistance - Optum Bank</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <button class="back-button" id="backButton">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <h1 class="header-title" id="headerTitle">Form Assistance</h1>
+                <button class="help-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9.09 9A3 3 0 0112 6c1.657 0 3 1.343 3 3 0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Screen 1: Receipt Upload -->
+            <div class="screen receipt-upload-screen active" id="receiptUploadScreen">
+                <div class="receipt-preview">
+                    <div class="receipt-image">
+                        <div style="width: 100%; max-width: 280px; height: 320px; margin: 0 auto; background: white; border: 2px solid #e2e8f0; border-radius: 10px; padding: 18px; font-family: 'Courier New', monospace; font-size: 14px; color: #333; box-shadow: 0 3px 6px rgba(0,0,0,0.12);">
+                            <div style="text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 12px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">
+                                Dr. Smith Family Practice
+                            </div>
+                            <div style="text-align: center; font-size: 12px; color: #666; margin-bottom: 14px; line-height: 1.3;">
+                                123 Main Street<br>
+                                Anytown, CA 12345<br>
+                                Tax ID: 12-3456789
+                            </div>
+                            <div style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 12px 0; margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span>Date:</span>
+                                    <span>09/15/2024</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span>Time:</span>
+                                    <span>2:30 PM</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span>Patient:</span>
+                                    <span>John Doe</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>Service:</span>
+                                    <span>Office Visit</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 14px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                    <span>Consultation:</span>
+                                    <span>$150.00</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #333; padding-top: 8px; display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
+                                <span>Amount Due:</span>
+                                <span style="color: #003d7a;">$150.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="receipt-info">
+                        <h3>Receipt Ready for Processing</h3>
+                        <p>Dr. Smith Family Practice - Office Visit</p>
+                        <div class="amount">$150.00</div>
+                    </div>
+                </div>
+
+                <div class="action-section">
+                    <button class="process-button" id="processReceiptBtn">
+                        Process Receipt with OCR
+                    </button>
+                    <p class="hint-text">Our system will extract information automatically</p>
+                </div>
+            </div>
+
+            <!-- Screen 2: OCR Processing -->
+            <div class="screen ocr-processing-screen" id="ocrProcessingScreen">
+                <div class="processing-container">
+                    <div class="receipt-scanner">
+                        <div class="receipt-image processing">
+                            <div style="width: 100%; max-width: 280px; height: 320px; margin: 0 auto; background: white; border: 2px solid #e2e8f0; border-radius: 10px; padding: 18px; font-family: 'Courier New', monospace; font-size: 14px; color: #333; box-shadow: 0 3px 6px rgba(0,0,0,0.12);">
+                            <div style="text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 12px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">
+                                Dr. Smith Family Practice
+                            </div>
+                            <div style="text-align: center; font-size: 12px; color: #666; margin-bottom: 14px; line-height: 1.3;">
+                                123 Main Street<br>
+                                Anytown, CA 12345<br>
+                                Tax ID: 12-3456789
+                            </div>
+                            <div style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 12px 0; margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span>Date:</span>
+                                    <span>09/15/2024</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span>Time:</span>
+                                    <span>2:30 PM</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span>Patient:</span>
+                                    <span>John Doe</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>Service:</span>
+                                    <span>Office Visit</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 14px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                    <span>Consultation:</span>
+                                    <span>$150.00</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #333; padding-top: 8px; display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
+                                <span>Amount Due:</span>
+                                <span style="color: #003d7a;">$150.00</span>
+                            </div>
+                        </div>
+                            <div class="scan-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="processing-status">
+                        <h3>Scanning Receipt...</h3>
+                        <div class="extraction-progress">
+                            <div class="progress-item completed" id="progressProvider">
+                                <span class="check">✓</span> Provider name detected
+                            </div>
+                            <div class="progress-item completed" id="progressDate">
+                                <span class="check">✓</span> Date extracted
+                            </div>
+                            <div class="progress-item active" id="progressAmount">
+                                <span class="spinner"></span> Extracting amount...
+                            </div>
+                            <div class="progress-item" id="progressCategory">
+                                <span class="dot"></span> Analyzing service type...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 3: Smart Form Population -->
+            <div class="screen form-population-screen" id="formPopulationScreen">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h3>Reimbursement Form</h3>
+                        <div class="auto-fill-badge">✨ Auto-filled from receipt</div>
+                    </div>
+
+                    <form class="smart-form">
+                        <div class="form-section">
+                            <h4>Provider Information</h4>
+
+                            <div class="form-group auto-filled">
+                                <label for="providerName">Provider Name</label>
+                                <input type="text" id="providerName" value="Dr. Smith Family Practice">
+                                <span class="auto-fill-indicator">Auto-detected</span>
+                            </div>
+
+                            <div class="form-group auto-filled">
+                                <label for="taxId">Tax ID</label>
+                                <input type="text" id="taxId" value="12-3456789">
+                                <span class="auto-fill-indicator">Found on receipt</span>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Visit Details</h4>
+
+                            <div class="form-group auto-filled">
+                                <label for="visitDate">Date of Service</label>
+                                <input type="date" id="visitDate" value="2024-09-15">
+                                <span class="auto-fill-indicator">Extracted</span>
+                            </div>
+
+                            <div class="form-group auto-filled">
+                                <label for="amount">Amount</label>
+                                <input type="text" id="amount" value="$150.00">
+                                <span class="auto-fill-indicator">From receipt</span>
+                            </div>
+
+                            <div class="form-group suggested">
+                                <label for="category">Expense Category</label>
+                                <div class="category-selector">
+                                    <select id="category">
+                                        <option value="office-visit" selected>Office Visit ✓ Recommended</option>
+                                        <option value="preventive">Preventive Care</option>
+                                        <option value="specialist">Specialist Visit</option>
+                                    </select>
+                                    <div class="suggestion-confidence">
+                                        <span class="suggestion-reason">Based on provider type</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="continue-section">
+                            <button type="button" class="continue-button" id="reviewFormBtn">
+                                Review Form
+                                <span class="arrow">→</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Screen 4: Category Intelligence -->
+            <div class="screen category-screen" id="categoryScreen">
+                <div class="category-container">
+                    <div class="category-header">
+                        <h3>Smart Category Selection</h3>
+                        <p>Based on "Dr. Smith Family Practice"</p>
+                    </div>
+
+                    <div class="category-options">
+                        <div class="category-option recommended selected">
+                            <div class="option-header">
+                                <span class="option-icon">✅</span>
+                                <div class="option-info">
+                                    <h4>Office Visit</h4>
+                                </div>
+                                <span class="selection-indicator">●</span>
+                            </div>
+                            <div class="option-explanation">
+                                <p><strong>Why this matches:</strong> Provider name indicates general family practice</p>
+                                <p><strong>HSA Eligible:</strong> Regular doctor visits are fully covered</p>
+                            </div>
+                        </div>
+
+                        <div class="category-option">
+                            <div class="option-header">
+                                <span class="option-icon">🔄</span>
+                                <div class="option-info">
+                                    <h4>Preventive Care</h4>
+                                </div>
+                                <span class="selection-indicator">○</span>
+                            </div>
+                            <div class="option-explanation">
+                                <p>Choose this if it was a routine checkup or physical exam</p>
+                            </div>
+                        </div>
+
+                        <div class="category-option">
+                            <div class="option-header">
+                                <span class="option-icon">👩‍⚕️</span>
+                                <div class="option-info">
+                                    <h4>Specialist Visit</h4>
+                                </div>
+                                <span class="selection-indicator">○</span>
+                            </div>
+                            <div class="option-explanation">
+                                <p>Select if Dr. Smith is a specialist in a specific medical field</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="eligibility-info">
+                        <div class="info-box">
+                            <h5>💡 HSA Eligibility Guide</h5>
+                            <ul>
+                                <li>✓ Doctor visits and consultations</li>
+                                <li>✓ Preventive care and screenings</li>
+                                <li>✓ Prescription medications</li>
+                                <li>✓ Medical procedures and treatments</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button class="continue-button" id="continueWithCategoryBtn">
+                        Continue
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Screen 5: Plain Language Help -->
+            <div class="screen help-screen" id="helpScreen">
+                <div class="help-container">
+                    <div class="help-header">
+                        <h3>Form Completion with Help</h3>
+                        <p>Tap any term for plain language explanation</p>
+                    </div>
+
+                    <form class="help-form">
+                        <div class="form-group">
+                            <label for="description">
+                                Service Description
+                                <button type="button" class="help-tooltip" data-tooltip="Describe what the doctor did during your visit">?</button>
+                            </label>
+                            <input type="text" id="description" placeholder="Office visit consultation">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cptCode">
+                                CPT Code
+                                <button type="button" class="help-tooltip active" data-tooltip="A billing code doctors use - we'll handle this automatically">?</button>
+                            </label>
+                            <input type="text" id="cptCode" value="99213" readonly>
+                            <div class="tooltip-content show">
+                                <p><strong>CPT Code</strong></p>
+                                <p>A billing code doctors use to describe services. Don't worry - we automatically match these for HSA eligibility.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deductible">
+                                Applied to Deductible
+                                <button type="button" class="help-tooltip" data-tooltip="Amount you pay before insurance starts covering costs">?</button>
+                            </label>
+                            <select id="deductible">
+                                <option value="yes">Yes - $150.00</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patientName">Patient Name</label>
+                            <input type="text" id="patientName" value="John Doe">
+                        </div>
+
+                        <div class="validation-status">
+                            <div class="validation-item valid">
+                                <span class="check">✓</span> Provider information complete
+                            </div>
+                            <div class="validation-item valid">
+                                <span class="check">✓</span> Amount and date verified
+                            </div>
+                            <div class="validation-item valid">
+                                <span class="check">✓</span> HSA eligibility confirmed
+                            </div>
+                            <div class="validation-item warning">
+                                <span class="warning">!</span> Add your signature to complete
+                            </div>
+                        </div>
+
+                        <button type="button" class="continue-button" id="finalizeFormBtn">
+                            Add Signature & Submit
+                            <span class="arrow">→</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Screen 6: Smart Validation -->
+            <div class="screen validation-screen" id="validationScreen">
+                <div class="validation-container">
+                    <div class="success-header">
+                        <div class="success-icon">
+                            <div class="check-circle">
+                                <svg class="checkmark" viewBox="0 0 52 52">
+                                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Form Successfully Submitted!</h3>
+                        <p>Your reimbursement request is being processed</p>
+                    </div>
+
+                    <div class="submission-summary">
+                        <h4>Submission Summary</h4>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <span class="label">Provider:</span>
+                                <span class="value">Dr. Smith Family Practice</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">Date:</span>
+                                <span class="value">September 15, 2024</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">Amount:</span>
+                                <span class="value">$150.00</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">Category:</span>
+                                <span class="value">Office Visit</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">Status:</span>
+                                <span class="value status-processing">Processing (1-2 business days)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="progress-tracker">
+                        <h5>Next Steps</h5>
+                        <div class="progress-steps">
+                            <div class="step completed">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Form submitted</span>
+                            </div>
+                            <div class="step active">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Verifying eligibility</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Processing payment</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="secondary-button" id="trackStatusBtn">Track Status</button>
+                        <button class="primary-button" id="newSubmissionBtn">Submit Another</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Progress Indicator -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -8,111 +8,94 @@ export function ProjectOverviewSection() {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      {/* Challenge Statement */}
-      <div className="mb-8">
-        <div className="bg-gray-50 border-l-4 border-gray-400 p-6 rounded-xl mb-8">
-          <h4 className="font-bold text-gray-800 mb-3 text-xl">🚨 The Challenge</h4>
-          <p className="text-gray-800 text-lg leading-relaxed">
-            HSA reimbursement system serving <strong>450K users</strong> had fundamental usability and technical
-            issues causing <strong className="text-red-600">98.9% task abandonment</strong> and significant business impact.
-          </p>
-        </div>
-      </div>
-
-      {/* Role and Context */}
-      <div className="mb-12">
-        <div className="bg-gray-50 p-6 rounded-xl">
-          <p className="text-gray-800 leading-relaxed">
-            As <strong>Lead UX Designer</strong>, I led a <strong>6-month redesign</strong> working with
-            engineering, product, and compliance teams. The primary constraint was maintaining
-            healthcare financial regulations while dramatically improving user experience.
-          </p>
-        </div>
-      </div>
-
-      {/* Business Context */}
-      <div className="mb-12">
-        <h3 className="text-gray-800 font-bold text-xl mb-6">Business Context</h3>
-        <p className="text-gray-800 mb-8 leading-relaxed">
-          UnitedHealth Group's Optum Bank HSA platform processes <strong>$450M annually</strong> in health
-          savings account transactions. The reimbursement feature—where users submit medical receipts
-          for approval—was failing dramatically.
-        </p>
-
-        {/* Current State Analysis */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8">
-          <h4 className="font-bold text-gray-900 mb-6">Current State Analysis: The Failing System</h4>
-
-          <div className="mb-6">
-            <h5 className="font-semibold text-gray-800 mb-3">Key Issues Identified in Current Design:</h5>
-            <ul className="space-y-2 text-sm text-gray-700">
-              <li>• Form fields scattered across multiple screens without clear progress indication</li>
-              <li>• Upload interface provided no guidance on photo quality or file requirements</li>
-              <li>• Error messages were generic ("Upload failed") with no recovery guidance</li>
-              <li>• Status updates were buried in account dashboards with unclear timelines</li>
-              <li>• Mobile and desktop experiences were inconsistent, causing confusion for cross-device users</li>
-            </ul>
+      {/* Overview Section */}
+      <div className="mb-20">
+        <div className="flex flex-col md:flex-row gap-10 items-stretch">
+          {/* Left column - Role, Organization, Technologies */}
+          <div className="bg-white rounded-xl p-6 space-y-3 md:w-1/3 w-full border border-gray-200">
+            <div className="border border-gray-200 rounded-lg p-3 bg-white">
+              <div className="text-xs text-gray-500">Role</div>
+              <div className="text-base font-semibold text-gray-900">Lead UX Designer</div>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-3 bg-white">
+              <div className="text-xs text-gray-500">Organization</div>
+              <div className="text-base font-semibold text-gray-900">Major Healthcare Provider</div>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-3 bg-white">
+              <div className="text-xs text-gray-500">Technologies</div>
+              <div className="text-base font-semibold text-gray-900">React Native, Node.js, AWS OCR, PostgreSQL</div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Right column - Context */}
+          <div className="flex-1 bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-sm p-8 flex items-center border border-gray-200">
+            <p className="text-gray-700 text-lg">
+              Before the redesign, users struggled with a complex reimbursement process that was manual, error-prone, and inflexible.
+              As Lead UX Designer, I worked with cross-functional teams to design an automated, intelligent system that reduced abandonment by 75% and support calls by 52%.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Gradient divider */}
+      <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
+
+      {/* Problem Statement */}
+      <div className="mb-12">
+        <div className="bg-gray-50 border-l-4 border-gray-400 p-8 rounded-xl">
+          <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+            🚨 The Challenge
+          </h4>
+          <p className="text-gray-800 text-lg leading-relaxed mb-4">
+            The HSA platform processes <strong>$450M annually</strong>, but the reimbursement feature was failing with a <strong className="text-slate-700">98.9% abandonment rate</strong>—only 1 in 90 users completed submissions.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
             <div>
-              <h5 className="font-semibold text-gray-800 mb-3">📊 Quantitative Evidence</h5>
-              <ul className="space-y-2 text-sm text-gray-700">
-                <li>• <strong>98.9%</strong> of users abandoned the process</li>
-                <li>• <strong>18 minutes</strong> average completion time</li>
-                <li>• <strong>22%</strong> of customer service calls were reimbursement-related</li>
-                <li>• Only <strong>1 in 90</strong> users who started actually completed it</li>
+              <p className="font-medium text-gray-700 mb-2">Key Problems:</p>
+              <ul className="text-gray-600 space-y-1">
+                <li>• Scattered forms across multiple screens</li>
+                <li>• Generic error messages with no guidance</li>
+                <li>• Inconsistent mobile/desktop experiences</li>
               </ul>
             </div>
-
             <div>
-              <h5 className="font-semibold text-gray-800 mb-3">💬 Qualitative Insights</h5>
-              <div className="space-y-2 text-sm text-gray-700 italic">
-                <p>"I gave up after the third time it lost my receipt"</p>
-                <p>"I don't understand why my doctor visit isn't covered"</p>
-                <p>"The app crashed when I tried to upload the photo"</p>
-                <p>"I never know if my reimbursement was approved or denied"</p>
-              </div>
+              <p className="font-medium text-gray-700 mb-2">User Impact:</p>
+              <ul className="text-gray-600 space-y-1">
+                <li>• 18-minute average completion time</li>
+                <li>• 22% of support calls were reimbursement-related</li>
+                <li>• "I gave up after it lost my receipt again"</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Why Complex */}
+      {/* Gradient divider */}
+      <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
+
+      {/* Complexity & Constraints */}
       <div className="mb-12">
-        <h3 className="text-gray-800 font-bold text-xl mb-6">Why This Problem Was Complex</h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-            <h4 className="font-bold text-gray-800 mb-4">User & Technical Challenges</h4>
-            <ul className="space-y-2 text-sm text-gray-700">
-              <li>• Four distinct user types with conflicting needs</li>
-              <li>• File uploads across 3 different backend systems</li>
-              <li>• OCR processing with variable receipt formats</li>
-              <li>• Mobile network failures causing frequent abandonment</li>
-            </ul>
+        <h3 className="text-gray-800 font-bold text-xl mb-6">Complexity & Constraints</h3>
+        <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-base">
+            <div>
+              <h4 className="font-semibold text-gray-800 mb-3">👥 Multi-User Challenge</h4>
+              <p className="text-gray-600">Four distinct user types with conflicting needs—from digital natives to assisted users</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-800 mb-3">⚙️ Technical Constraints</h4>
+              <p className="text-gray-600">Legacy systems, OCR processing, and mobile network reliability issues</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-800 mb-3">📋 Regulatory Requirements</h4>
+              <p className="text-gray-600">IRS compliance, HIPAA restrictions, and mandatory audit trails</p>
+            </div>
           </div>
-
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-            <h4 className="font-bold text-gray-800 mb-4">Regulatory Constraints</h4>
-            <ul className="space-y-2 text-sm text-gray-700">
-              <li>• IRS compliance requirements for all submissions</li>
-              <li>• HIPAA data handling restrictions</li>
-              <li>• State tax law variations affecting 40% of users</li>
-              <li>• Mandatory audit trails for every user action</li>
-            </ul>
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <p className="text-gray-700 text-base">
+              <strong>Cross-device reality:</strong> 67% started on mobile, 38% switched to desktop after failures—revealing device choice was context-dependent.
+            </p>
           </div>
-        </div>
-      </div>
-
-      {/* Cross-Device Reality */}
-      <div className="mb-8">
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
-          <h4 className="font-bold text-gray-800 mb-3">📱💻 Cross-Device Usage Pattern</h4>
-          <p className="text-gray-800 text-sm leading-relaxed">
-            <strong>67% started on mobile, 38% switched to desktop after failures</strong>—revealing
-            device choice was context-dependent, requiring connected experiences across platforms.
-          </p>
         </div>
       </div>
     </motion.div>
