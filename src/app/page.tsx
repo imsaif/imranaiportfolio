@@ -11,6 +11,9 @@ const Process = dynamic(() => import('@/components/sections/Process'), {
 const Projects = dynamic(() => import('@/components/sections/Projects'), {
   loading: () => <div className="h-96 bg-background" />
 });
+const CredibilityIndicators = dynamic(() => import('@/components/sections/CredibilityIndicators'), {
+  loading: () => <div className="h-96 bg-background" />
+});
 const CursorDot = dynamic(() => import('@/components/ui').then(module => ({ default: module.CursorDot })), {
   ssr: false
 });
@@ -30,6 +33,7 @@ export default function Home() {
       {/* Lazy load below-the-fold sections */}
       <Projects />
       <Process />
+      <CredibilityIndicators />
     </main>
   );
 }

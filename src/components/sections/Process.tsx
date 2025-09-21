@@ -19,28 +19,28 @@ const cardVariants = {
 const Process = () => {
   const frameworks: Framework[] = [
     {
-      title: 'Research & Problem Definition',
-      description: 'Explore user needs and define the problem to ensure AI addresses real challenges.',
+      title: 'Discover',
+      description: 'Deep dive into the problem space through research and analysis to understand user needs, business goals, and technical constraints.',
       number: '1',
     },
     {
-      title: 'AI Capability Mapping',
-      description: 'Work with experts to map AI strengths and limits, focusing on user value.',
+      title: 'Define',
+      description: 'Translate insights into actionable strategy, establishing clear principles, priorities, and requirements that guide design decisions.',
       number: '2',
     },
     {
-      title: 'Experience Prototyping',
-      description: 'Build and test interactive prototypes to show how AI will work in practice.',
+      title: 'Design',
+      description: 'Create solutions through iterative exploration, from initial concepts to detailed interfaces, balancing user needs with technical feasibility.',
       number: '3',
     },
     {
-      title: 'Ethical Evaluation',
-      description: 'Review for bias, fairness, and accessibility to ensure responsible AI.',
+      title: 'Deliver',
+      description: 'Partner with engineering to ensure quality implementation, maintaining design integrity while adapting to technical realities.',
       number: '4',
     },
     {
-      title: 'Iterative Testing',
-      description: 'Test with real users, gather feedback, and refine the experience.',
+      title: 'Measure',
+      description: 'Analyze real-world usage to validate decisions, identify opportunities, and drive continuous improvement through data-informed iteration.',
       number: '5',
     },
   ];
@@ -125,13 +125,13 @@ const Process = () => {
   }, []);
 
   return (
-    <section className="section-padding relative overflow-hidden">
+    <section className="py-32 md:py-40 lg:py-48 relative overflow-hidden">
       {/* Decorative element */}
       <div className="absolute top-40 right-0 w-64 h-64 rounded-full bg-accent/5 -z-10"></div>
       <div className="absolute bottom-20 left-0 w-96 h-96 rounded-full bg-secondary/5 -z-10"></div>
 
       <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
-        <SectionTitle title="AI Design Methodology" subtitle="A clear, user-focused process for effective AI design." />
+        <SectionTitle title="Product Design Process" subtitle="A battle-tested framework refined through 8+ years of enterprise design." />
       </div>
 
       {/* Full-width cards row with transform-based scroll */}

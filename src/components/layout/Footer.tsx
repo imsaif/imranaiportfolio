@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="section-padding border-t border-border">
+    <footer className="pt-16 md:pt-20 lg:pt-24 pb-16 md:pb-20 lg:pb-24 border-t border-border mt-8 md:mt-12 lg:mt-16">
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-16 rounded-xl bg-black border border-gray-700 min-h-[380px] shadow-[0_0_35px_rgba(112,117,224,0.4),0_0_70px_rgba(224,99,124,0.3)]">
