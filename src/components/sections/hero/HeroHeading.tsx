@@ -10,7 +10,7 @@ interface HeroHeadingProps {
 
 const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
   const [isMounted, setIsMounted] = useState(false);
-  const morphWords = ['AI enhanced', 'beautifully balanced'];
+  const morphWords = ['AI-powered', 'human-first'];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Force client-side rendering
@@ -38,7 +38,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
         className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center"
       >
         <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 leading-tight tracking-tight">
-          <span className="inline">Creating experiences with purpose and precision.</span>
+          <span className="inline">Designing AI-powered experiences</span>
         </h1>
       </motion.div>
     );
@@ -60,7 +60,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          Creating{' '}
+          Designing{' '}
           <span className="inline-block align-baseline relative" style={{ minWidth: 'auto' }}>
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -71,7 +71,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
                 className="gradient-text animate-gradient font-semibold"
                 style={{
-                  background: 'linear-gradient(135deg, var(--accent), var(--tertiary), var(--accent))',
+                  background: 'linear-gradient(135deg, var(--accent), var(--tertiary))',
                   backgroundSize: '300% 300%',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -86,7 +86,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
               </motion.span>
             </AnimatePresence>
           </span>{' '}
-          experiences with purpose and precision.
+          experiences
         </h1>
 
         <p
@@ -94,7 +94,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          Senior product designer who builds intuitive AI experiences—leading teams to balance automation and human control.
+          Senior product designer leading teams to craft the future of AI
         </p>
       </motion.div>
     </>

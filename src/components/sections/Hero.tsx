@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useChatToggle } from '../../context/ChatToggleProvider';
 import ChatTransition from '../ui/chat/ChatTransition';
 import ModeToggle, { Mode } from '../ui/ModeToggle';
+import VoiceButton from '../ui/VoiceButton';
 import VoiceBot from '../VoiceBot';
 import HeroChatSection from './hero/HeroChatSection';
 import HeroContactInfo from './hero/HeroContactInfo';
@@ -47,6 +48,7 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentMode, setCurrentMode] = useState<Mode>('portfolio');
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isVoiceActive, setIsVoiceActive] = useState(false);
   const { isChatOpen, toggleChat } = useChatToggle();
 
   // Animation enter effect
@@ -69,10 +71,27 @@ const Hero = () => {
     toggleChat();
   };
 
+  // Handle voice button click
+  const handleVoiceToggle = () => {
+    setIsVoiceActive(!isVoiceActive);
+    // Close chat if open when activating voice
+    if (!isVoiceActive && isChatOpen) {
+      toggleChat();
+      setCurrentMode('portfolio');
+    }
+  };
+
+  // Handle voice conversation end - return to portfolio mode
+  const handleVoiceEnd = () => {
+    setIsVoiceActive(false);
+    setCurrentMode('portfolio');
+    console.log('Voice conversation ended, returning to portfolio mode');
+  };
+
   // Apply scroll locking directly to body and html
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      if (isChatOpen || currentMode === 'voice') {
+      if (isChatOpen || isVoiceActive) {
         // Store current scroll position
         document.body.style.top = `-${window.scrollY}px`;
         // Apply lock
@@ -107,7 +126,7 @@ const Hero = () => {
         window.scrollTo(0, scrollY);
       }
     }
-  }, [isChatOpen, currentMode]);
+  }, [isChatOpen, isVoiceActive]);
 
   // Text options for the animated heading
   const aiTextOptions = ['AI-enhanced', 'brilliantly-biased', 'beautifully-balanced', 'future-fluent'];
@@ -122,7 +141,7 @@ const Hero = () => {
           {/* Always show the hero content */}
           <div className="flex flex-col items-center text-center">
             {/* Hide avatar and greeting in voice mode and during transitions */}
-            {!isChatOpen && !isTransitioning && currentMode !== 'voice' && (
+            {!isChatOpen && !isTransitioning && !isVoiceActive && (
               <div className="flex items-center justify-center gap-3 mb-3 xs:mb-4 md:mb-6">
                 <div className="relative w-10 h-7 xs:w-12 xs:h-8 md:w-14 md:h-9 overflow-hidden rounded-full border border-black/40 shadow-md">
                   <Image
@@ -153,7 +172,7 @@ const Hero = () => {
             {/* Animation container with fixed height to prevent layout shifts */}
             <div
               className={`relative ${
-                isChatOpen || currentMode === 'voice'
+                isChatOpen || isVoiceActive
                   ? 'h-[320px] xs:h-[350px] md:h-[450px]'
                   : 'h-[300px] xs:h-[320px] md:h-[300px]'
               } w-full overflow-hidden transition-all duration-300 flex items-center justify-center`}
@@ -163,18 +182,29 @@ const Hero = () => {
                   <ChatTransition onComplete={handleTransitionComplete} />
                 ) : currentMode === 'chat' && isChatOpen ? (
                   <HeroChatSection closeChat={toggleChat} />
-                ) : currentMode === 'voice' ? (
-                  <VoiceBot isActive={true} closeVoice={() => setCurrentMode('portfolio')} />
+                ) : isVoiceActive ? (
+                  <VoiceBot isActive={true} closeVoice={handleVoiceEnd} />
                 ) : (
                   <HeroHeading isVisible={isVisible} aiTextOptions={aiTextOptions} />
                 )}
               </AnimatePresence>
             </div>
 
-            {/* Mode Toggle */}
-            <div className="mt-4 xs:mt-6 sm:mt-8 flex justify-center">
-              <ModeToggle currentMode={currentMode} onModeChange={handleModeChange} isVisible={isVisible} />
-            </div>
+            {/* Mode Toggle - Hide during voice calls */}
+            {!isVoiceActive && (
+              <div className="mt-1 xs:mt-2 sm:mt-3 flex justify-center">
+                <ModeToggle currentMode={currentMode} onModeChange={handleModeChange} isVisible={isVisible} />
+              </div>
+            )}
+
+            {/* Voice Button - Show unless voice mode is active */}
+            {!isVoiceActive && (
+              <VoiceButton
+                isVisible={isVisible}
+                isActive={isVoiceActive}
+                onClick={handleVoiceToggle}
+              />
+            )}
 
             {/* Original buttons - temporarily hidden but kept for future use
             {!isChatOpen && (

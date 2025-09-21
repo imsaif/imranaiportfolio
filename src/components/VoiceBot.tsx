@@ -339,7 +339,7 @@ const StatusDisplay: React.FC<{
   );
 };
 
-const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
+const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
   const [voiceState, setVoiceState] = useState<VoiceState>('idle');
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentMessage, setCurrentMessage] = useState<string>('');
@@ -826,6 +826,11 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
       window.speechSynthesis.cancel();
       setVoiceState('idle');
     }
+
+    // Close voice mode and return to portfolio
+    if (closeVoice) {
+      closeVoice();
+    }
   };
 
   // Auto-start Vapi.ai call when voice mode is activated
@@ -850,6 +855,11 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive }) => {
             setVapiCallActive(false);
             setVoiceState('idle');
             addMessage('Voice session ended after 2 minutes. Click the microphone to start again.', 'bot');
+
+            // Close voice mode and return to portfolio after timeout
+            if (closeVoice) {
+              setTimeout(closeVoice, 1000); // Small delay to show the message briefly
+            }
           }
         }, 120000); // 2 minutes
       } else {
