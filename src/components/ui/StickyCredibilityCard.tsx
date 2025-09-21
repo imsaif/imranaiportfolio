@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdMenuBook, MdStar, MdTrendingUp, MdWork, MdPsychology } from 'react-icons/md';
 
 interface CredibilityCardContent {
   id: string;
@@ -21,42 +22,39 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
       case 'testimonial':
         return (
           <div className={baseCardClass}>
-            <div className="flex items-start gap-3 mb-4">
-              <div className="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0"></div>
-              <div>
-                <h4 className="font-semibold text-gray-900">{card.content.name}</h4>
-                <p className="text-sm text-gray-600">{card.content.title}</p>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-20 h-20 bg-white rounded-xl border border-gray-100 flex items-center justify-center flex-shrink-0 p-4">
                 {card.content.company === 'Optum' ? (
-                  <div className="mt-1">
-                    <img
-                      src="/images/logos/optum-logo.png"
-                      alt="Optum"
-                      width={60}
-                      height={20}
-                      className="object-contain"
-                    />
-                  </div>
+                  <img
+                    src="/images/logos/optum-logo.png"
+                    alt="Optum"
+                    className="object-contain w-full h-full"
+                  />
                 ) : card.content.company === 'Google' ? (
-                  <div className="mt-1">
-                    <img
-                      src="/images/logos/google-logo.png"
-                      alt="Google"
-                      width={60}
-                      height={20}
-                      className="object-contain"
-                    />
-                  </div>
+                  <img
+                    src="/images/logos/google-logo.png"
+                    alt="Google"
+                    className="object-contain w-full h-full"
+                  />
                 ) : (
-                  <p className="text-sm font-medium text-accent">{card.content.company}</p>
+                  <div className="w-full h-full bg-accent/10 rounded-lg flex items-center justify-center">
+                    <span className="text-accent font-semibold text-xs">{card.content.company.charAt(0)}</span>
+                  </div>
                 )}
               </div>
+              <div className="flex-1 flex flex-col justify-center">
+                <h4 className="font-semibold text-gray-900 text-lg">{card.content.name}</h4>
+                <p className="text-base text-gray-600">{card.content.title}</p>
+              </div>
             </div>
-            <div className="flex mb-3">
-              {[...Array(card.content.rating)].map((_, i) => (
-                <span key={i} className="text-yellow-400">⭐</span>
-              ))}
+            <div className="border-t border-gray-100 pt-6 mt-6">
+              <div className="flex mb-3">
+                {[...Array(card.content.rating)].map((_, i) => (
+                  <span key={i} className="text-yellow-400">⭐</span>
+                ))}
+              </div>
+              <p className="text-gray-700 text-base leading-relaxed">"{card.content.quote}"</p>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">"{card.content.quote}"</p>
           </div>
         );
 
@@ -64,18 +62,31 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-6 h-6 border-2 border-accent rounded flex items-center justify-center">
-                <div className="w-2 h-3 bg-accent rounded-sm"></div>
+              <div className="w-20 h-20 bg-white rounded-xl border border-gray-100 flex items-center justify-center flex-shrink-0 p-4">
+                <MdMenuBook className="w-8 h-8 text-gray-600" />
               </div>
-              <h4 className="font-semibold text-gray-900">{card.content.title}</h4>
+              <div className="flex-1 flex flex-col justify-center">
+                <h4 className="font-semibold text-gray-900 text-lg">{card.content.title}</h4>
+              </div>
             </div>
-            <div className="space-y-4">
-              {card.content.books.map((book: any, index: number) => (
+            <div className="border-t border-gray-100 pt-6 mt-6">
+              <div className="space-y-4">
+                {card.content.books.map((book: any, index: number) => (
                 <div key={index} className="border-l-4 border-accent pl-4">
-                  <h5 className="font-medium text-gray-900 mb-1">"{book.title}"</h5>
-                  <p className="text-sm text-gray-600">{book.subtitle}</p>
+                  <a
+                    href={book.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block group"
+                  >
+                    <h5 className="font-semibold text-gray-900 mb-2 text-lg group-hover:text-accent transition-colors cursor-pointer">
+                      "{book.title}"
+                    </h5>
+                  </a>
+                  <p className="text-base text-gray-600 leading-relaxed">{book.subtitle}</p>
                 </div>
               ))}
+              </div>
             </div>
           </div>
         );
@@ -84,19 +95,23 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-6 h-6 border-2 border-accent rounded-full flex items-center justify-center">
-                <div className="w-2 h-2 bg-accent rounded-full"></div>
+              <div className="w-20 h-20 bg-white rounded-xl border border-gray-100 flex items-center justify-center flex-shrink-0 p-4">
+                <MdStar className="w-8 h-8 text-gray-600" />
               </div>
-              <h4 className="font-semibold text-gray-900">{card.content.title}</h4>
+              <div className="flex-1 flex flex-col justify-center">
+                <h4 className="font-semibold text-gray-900 text-lg">{card.content.title}</h4>
+              </div>
             </div>
-            <ul className="space-y-3">
-              {card.content.achievements.map((achievement: string, index: number) => (
+            <div className="border-t border-gray-100 pt-6 mt-6">
+              <ul className="space-y-3">
+                {card.content.achievements.map((achievement: string, index: number) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="text-accent mt-1">•</span>
-                  <span className="text-gray-700 text-sm">{achievement}</span>
+                  <span className="text-gray-700 text-base font-medium leading-relaxed">{achievement}</span>
                 </li>
               ))}
-            </ul>
+              </ul>
+            </div>
           </div>
         );
 
@@ -134,23 +149,23 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-6 h-6 border-2 border-accent rounded flex items-center justify-center">
-                <div className="flex gap-0.5">
-                  <div className="w-1 h-3 bg-accent rounded-sm"></div>
-                  <div className="w-1 h-2 bg-accent rounded-sm mt-1"></div>
-                  <div className="w-1 h-4 bg-accent rounded-sm"></div>
-                </div>
+              <div className="w-20 h-20 bg-white rounded-xl border border-gray-100 flex items-center justify-center flex-shrink-0 p-4">
+                <MdTrendingUp className="w-8 h-8 text-gray-600" />
               </div>
-              <h4 className="font-semibold text-gray-900">{card.content.title}</h4>
+              <div className="flex-1 flex flex-col justify-center">
+                <h4 className="font-semibold text-gray-900 text-lg">{card.content.title}</h4>
+              </div>
             </div>
-            <ul className="space-y-3">
-              {card.content.metrics.map((metric: string, index: number) => (
+            <div className="border-t border-gray-100 pt-6 mt-6">
+              <ul className="space-y-3">
+                {card.content.metrics.map((metric: string, index: number) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="text-accent mt-1">•</span>
-                  <span className="text-gray-700 text-sm font-medium">{metric}</span>
+                  <span className="text-gray-700 text-base font-medium leading-relaxed">{metric}</span>
                 </li>
               ))}
-            </ul>
+              </ul>
+            </div>
           </div>
         );
 
@@ -158,21 +173,23 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-6 h-6 border-2 border-accent rounded flex items-center justify-center">
-                <div className="w-2 h-2 bg-accent rounded-full relative">
-                  <div className="absolute -top-0.5 -right-0.5 w-1 h-1 bg-accent rounded-full"></div>
-                </div>
+              <div className="w-20 h-20 bg-white rounded-xl border border-gray-100 flex items-center justify-center flex-shrink-0 p-4">
+                <MdWork className="w-8 h-8 text-gray-600" />
               </div>
-              <h4 className="font-semibold text-gray-900">{card.content.title}</h4>
+              <div className="flex-1 flex flex-col justify-center">
+                <h4 className="font-semibold text-gray-900 text-lg">{card.content.title}</h4>
+              </div>
             </div>
-            <ul className="space-y-3">
-              {card.content.projects.map((project: string, index: number) => (
+            <div className="border-t border-gray-100 pt-6 mt-6">
+              <ul className="space-y-3">
+                {card.content.projects.map((project: string, index: number) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="text-accent mt-1">•</span>
-                  <span className="text-gray-700 text-sm">{project}</span>
+                  <span className="text-gray-700 text-base font-medium leading-relaxed">{project}</span>
                 </li>
               ))}
-            </ul>
+              </ul>
+            </div>
           </div>
         );
 
@@ -180,21 +197,23 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-6 h-6 border-2 border-accent rounded-full flex items-center justify-center">
-                <div className="w-1.5 h-1.5 bg-accent rounded-full relative">
-                  <div className="absolute -top-1 -left-1 w-3 h-3 border border-accent rounded-full opacity-50"></div>
-                </div>
+              <div className="w-20 h-20 bg-white rounded-xl border border-gray-100 flex items-center justify-center flex-shrink-0 p-4">
+                <MdPsychology className="w-8 h-8 text-gray-600" />
               </div>
-              <h4 className="font-semibold text-gray-900">{card.content.title}</h4>
+              <div className="flex-1 flex flex-col justify-center">
+                <h4 className="font-semibold text-gray-900 text-lg">{card.content.title}</h4>
+              </div>
             </div>
-            <ul className="space-y-3">
-              {card.content.skills.map((skill: string, index: number) => (
-                <li key={index} className="flex items-start gap-2">
-                  <span className="text-accent mt-1">•</span>
-                  <span className="text-gray-700 text-sm">{skill}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="border-t border-gray-100 pt-6 mt-6">
+              <ul className="space-y-3">
+                {card.content.skills.map((skill: string, index: number) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-accent mt-1">•</span>
+                    <span className="text-gray-700 text-base font-medium leading-relaxed">{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         );
 

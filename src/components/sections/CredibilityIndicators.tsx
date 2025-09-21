@@ -46,10 +46,18 @@ const CredibilityIndicators = () => {
       id: 'books',
       type: 'books',
       content: {
-        title: 'Contributing Author',
+        title: 'Contributor',
         books: [
-          { title: 'Observing User Experience', subtitle: 'A practical guide to user research methods' },
-          { title: 'Beyond Vibe Coding', subtitle: 'Engineering meets design thinking' }
+          {
+            title: 'Observing User Experience',
+            subtitle: 'A practical guide to user research methods',
+            link: 'https://shop.elsevier.com/books/observing-the-user-experience/goodman/978-0-12-384869-7'
+          },
+          {
+            title: 'Beyond Vibe Coding',
+            subtitle: 'Engineering meets design thinking',
+            link: 'https://www.oreilly.com/library/view/beyond-vibe-coding/9798341634749/'
+          }
         ]
       }
     },
@@ -63,15 +71,6 @@ const CredibilityIndicators = () => {
           '$2M+ measurable business impact',
           'Pioneered AI-first methodologies'
         ]
-      }
-    },
-    {
-      id: 'companies',
-      type: 'companies',
-      content: {
-        title: 'Trusted By',
-        companies: ['Google', 'Optum', 'NewGlobe'],
-        industries: ['Healthcare', 'Education', 'Tech']
       }
     },
     {
@@ -92,8 +91,8 @@ const CredibilityIndicators = () => {
       content: {
         title: 'Notable Projects',
         projects: [
-          'Optum Health Portal Redesign',
-          'Google AI Ethics Framework',
+          'Google News Quality Design',
+          'UHG Healthcare Analytics Platform',
           'NewGlobe Learning Platform'
         ]
       }
@@ -116,22 +115,11 @@ const CredibilityIndicators = () => {
 
 
   return (
-    <section className="pt-16 md:pt-20 lg:pt-24 pb-32 md:pb-40 lg:pb-48 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-20 lg:pb-24 bg-background">
+      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Left Side - Sticky Sidebar */}
           <div className="lg:w-2/5 lg:sticky lg:top-32 lg:h-fit space-y-8">
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium"
-            >
-              <span className="w-2 h-2 bg-accent rounded-full"></span>
-              Proven Track Record
-            </motion.div>
-
             {/* Headline */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -140,7 +128,7 @@ const CredibilityIndicators = () => {
               transition={{ delay: 0.1 }}
             >
               <h2 className="section-title text-3xl md:text-4xl font-bold text-foreground mb-6 tracking-tight leading-tight">
-                Building Trust Through Results
+                Proven Impact
               </h2>
               <p className="text-lg text-muted leading-relaxed">
                 From reducing abandonment rates to pioneering AI experiences
@@ -148,24 +136,18 @@ const CredibilityIndicators = () => {
             </motion.div>
 
             {/* Metrics Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-6"
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4">
               {metrics.map((metric, index) => (
-                <div key={index} className="text-center sm:text-left">
+                <div key={index} className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg text-center">
                   <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
                     {metric.number}
                   </div>
-                  <div className="text-sm text-muted">
+                  <div className="text-base text-muted font-medium">
                     {metric.label}
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* Right Side - Stacking Cards */}
@@ -179,7 +161,7 @@ const CredibilityIndicators = () => {
               />
             ))}
             {/* Spacer to give room for last card to stack properly */}
-            <div className="h-96"></div>
+            <div className="h-24"></div>
           </div>
         </div>
       </div>
