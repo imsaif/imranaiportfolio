@@ -1,0 +1,181 @@
+{
+  "caseStudy": {
+    "title": "Optum Bank: HSA Reimbursement Redesign",
+    "subtitle": "Transformed a 98.9% abandonment rate into a streamlined experience for 450,000 users",
+    "organization": "Major Healthcare Provider",
+    "role": "Lead UX Designer",
+    "technologies": ["React Native", "Node.js", "AWS OCR", "PostgreSQL"],
+    "keyMetrics": {
+      "platformValue": "$450M annually",
+      "userBase": "450,000 users",
+      "originalAbandonmentRate": "98.9%",
+      "finalCompletionRate": "23%",
+      "improvementPercentage": "75% reduction in abandonment",
+      "timeReduction": "18 minutes to 12 minutes",
+      "supportCallReduction": "52%",
+      "mobileImprovement": "0.3% to 15%"
+    }
+  },
+  "sections": {
+    "overview": {
+      "id": "overview",
+      "title": "Project Overview",
+      "keyPoints": [
+        "The HSA platform processes $450M annually but had a 98.9% abandonment rate",
+        "Only 1 in 90 users completed reimbursement submissions",
+        "Average completion time was 18 minutes",
+        "22% of support calls were reimbursement-related",
+        "Users complained: 'I gave up after it lost my receipt again'"
+      ],
+      "challenges": [
+        "Scattered forms across multiple screens",
+        "Generic error messages with no guidance",
+        "Inconsistent mobile/desktop experiences",
+        "Four distinct user types with conflicting needs",
+        "Legacy systems and OCR processing constraints",
+        "Regulatory requirements and compliance needs"
+      ],
+      "context": "Before my redesign, users struggled with a complex reimbursement process that was manual, error-prone, and inflexible. As Lead UX Designer, I worked with cross-functional teams to design an automated, intelligent system that transformed the user experience."
+    },
+    "research": {
+      "id": "research",
+      "title": "Research & Discovery",
+      "duration": "7-week research phase",
+      "constraints": "Healthcare privacy restrictions prevented traditional usability testing",
+      "methods": {
+        "dataAnalysis": [
+          "6 months of analytics data identifying 12 drop-off points",
+          "800+ customer service transcripts categorized by issue type",
+          "Technical system mapping across 3 backend systems",
+          "Heuristic evaluation using healthcare UX principles"
+        ],
+        "userResearch": [
+          "12 internal stakeholder interviews",
+          "Process mapping sessions with customer service representatives",
+          "Analysis of recorded support call patterns",
+          "Cross-functional workshops with product, engineering, and compliance teams"
+        ]
+      },
+      "keyInsights": {
+        "mentalModelMismatch": "Users thought of expenses by event ('my dentist visit') while system organized by tax category ('preventive care')",
+        "userTypes": {
+          "digitalNatives": {
+            "percentage": "32%",
+            "description": "Expected instant mobile experience",
+            "behavior": "Abandoned after first failure, expected app-like experience"
+          },
+          "traditionalPlanners": {
+            "percentage": "41%",
+            "description": "Preferred desktop with detailed forms",
+            "behavior": "Wanted documentation and thorough review process"
+          },
+          "assistedUsers": {
+            "percentage": "18%",
+            "description": "Required customer service help",
+            "behavior": "Needed simplified workflows and guided assistance"
+          },
+          "mobilePrimary": {
+            "percentage": "9%",
+            "description": "Used mobile exclusively",
+            "behavior": "Needed touch-optimized interface"
+          }
+        }
+      }
+    },
+    "design": {
+      "id": "design",
+      "title": "Design Strategy",
+      "approach": "Multi-path solutions to serve diverse user needs",
+      "keyStrategies": [
+        "Reframed compliance requirements as trust-building opportunities",
+        "Created fundamentally different approaches for different user types",
+        "Used constraints to drive innovation",
+        "Implemented progressive disclosure for complex workflows"
+      ],
+      "solutions": {
+        "smartCapture": "OCR technology to automatically extract receipt data",
+        "progressiveWorkflow": "Multi-step process with clear progress indicators",
+        "contextualHelp": "Just-in-time guidance based on user actions",
+        "mobileOptimization": "Touch-first interface for mobile users",
+        "errorPrevention": "Proactive validation and clear error messaging"
+      }
+    },
+    "technical": {
+      "id": "technical",
+      "title": "Technical Implementation",
+      "architecture": [
+        "React Native for cross-platform mobile experience",
+        "Node.js backend for API services",
+        "AWS OCR for automated receipt processing",
+        "PostgreSQL for data storage and audit trails"
+      ],
+      "integrations": [
+        "Legacy healthcare systems",
+        "Compliance and audit systems",
+        "Customer service platforms",
+        "Payment processing systems"
+      ],
+      "features": [
+        "Automated receipt capture and data extraction",
+        "Real-time validation and error handling",
+        "Progressive form completion",
+        "Mobile-optimized interface",
+        "Comprehensive audit trails"
+      ]
+    },
+    "results": {
+      "id": "results",
+      "title": "Results & Impact",
+      "userExperienceImprovements": {
+        "taskCompletion": "23% (from 1.1%)",
+        "avgCompletionTime": "12 minutes (from 18 minutes)",
+        "mobileCompletion": "15% (from 0.3%)"
+      },
+      "businessImpact": {
+        "operationalEfficiency": "Automated workflows dramatically reduced manual processing and support burden",
+        "customerSatisfaction": "Improved self-service capabilities led to higher platform engagement",
+        "scalability": "System now handles increased transaction volume without additional support resources",
+        "compliance": "Enhanced documentation and audit trails improved regulatory adherence"
+      },
+      "keyLearnings": [
+        "Regulation as Feature: Reframed compliance requirements as trust-building opportunities",
+        "Multi-Path Solutions: Diverse user needs required fundamentally different approaches",
+        "Constraints Drive Innovation: Privacy and regulatory limitations led to creative research methods",
+        "Mobile-First Impact: Mobile optimization had disproportionate impact on overall success"
+      ]
+    }
+  },
+  "navigationMap": {
+    "problem": ["overview"],
+    "challenge": ["overview"],
+    "abandonment": ["overview"],
+    "research": ["research"],
+    "discovery": ["research"],
+    "insights": ["research"],
+    "users": ["research"],
+    "design": ["design"],
+    "strategy": ["design"],
+    "solution": ["design"],
+    "technical": ["technical"],
+    "implementation": ["technical"],
+    "technology": ["technical"],
+    "results": ["results"],
+    "impact": ["results"],
+    "metrics": ["results"],
+    "improvements": ["results"],
+    "learnings": ["results"],
+    "completion": ["results"],
+    "mobile": ["research", "design", "results"],
+    "OCR": ["design", "technical"],
+    "compliance": ["overview", "design", "results"]
+  },
+  "commonQuestions": {
+    "What was the main problem?": "When I joined this project, the HSA reimbursement feature had a devastating 98.9% abandonment rate - only 1 in 90 users could complete their submissions! Users were struggling with scattered forms, generic error messages, and inconsistent experiences across devices.",
+    "How did you research this?": "I had to get creative due to healthcare privacy restrictions. I conducted a 7-week research phase, analyzing 6 months of analytics data and over 800 customer service transcripts, plus stakeholder interviews and process mapping sessions with the support team.",
+    "What were the key insights?": "My biggest 'aha moment' was discovering this massive mental model mismatch - users thought about expenses by event like 'my dentist visit' while our system organized by tax category like 'preventive care'. I also identified four very distinct user types with completely different needs.",
+    "What was your design approach?": "I realized I needed fundamentally different approaches for different user types. I implemented multi-path solutions, reframed compliance requirements as trust-building opportunities, and used constraints to drive innovation. My strategy focused on progressive disclosure for complex workflows.",
+    "What technology did you use?": "I chose React Native for cross-platform mobile experience, Node.js for the backend, AWS OCR for automated receipt processing, and PostgreSQL for data storage with comprehensive audit trails. The OCR was key to eliminating manual data entry.",
+    "What were the results?": "I'm really proud of what we achieved! Task completion went from 1.1% to 23% - that's a 75% reduction in abandonment. I cut completion time from 18 to 12 minutes, improved mobile completion from 0.3% to 15%, and we reduced support calls by 52%.",
+    "What did you learn?": "This project taught me to treat regulation as a feature rather than constraint, that diverse user needs require fundamentally different approaches, that constraints can drive innovation, and that mobile optimization had disproportionate impact on overall success."
+  }
+}
