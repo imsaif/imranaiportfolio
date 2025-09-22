@@ -166,9 +166,10 @@ export default function UHGCaseStudyPage() {
   // UHG Vapi assistant state
   const [isVapiActive, setIsVapiActive] = useState(false);
   const [vapiStatus, setVapiStatus] = useState<'idle' | 'connecting' | 'active' | 'error'>('idle');
-  const [isOpeningStatement, setIsOpeningStatement] = useState(true);
+  const [conversationPhase, setConversationPhase] = useState<'opening' | 'introduction' | 'active'>('opening');
+  const [messageCount, setMessageCount] = useState(0);
   const [showFloatingVoiceBar, setShowFloatingVoiceBar] = useState(false);
-  const openingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const conversationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const introSectionRef = useRef<HTMLDivElement>(null);
 
   const overviewRef = useRef<HTMLDivElement>(null);
@@ -227,11 +228,13 @@ export default function UHGCaseStudyPage() {
       console.log('📞 UHG Vapi call ended');
       setVapiStatus('idle');
       setIsVapiActive(false);
+      setConversationPhase('opening');
+      setMessageCount(0);
 
-      // Clear opening statement timeout on call end
-      if (openingTimeoutRef.current) {
-        clearTimeout(openingTimeoutRef.current);
-        openingTimeoutRef.current = null;
+      // Clear conversation timeout on call end
+      if (conversationTimeoutRef.current) {
+        clearTimeout(conversationTimeoutRef.current);
+        conversationTimeoutRef.current = null;
       }
     },
     onSpeechStart: () => {
@@ -267,6 +270,7 @@ export default function UHGCaseStudyPage() {
       const messageText = message.transcript || message.content || message.text || '';
       if (messageText) {
         console.log('📝 Processing message text for keywords:', messageText);
+        setMessageCount(prev => prev + 1);
         handleKeywordBasedScroll(messageText);
       }
     },
@@ -335,44 +339,60 @@ export default function UHGCaseStudyPage() {
     }
   };
 
-  // Fallback: Handle keyword-based scrolling when function calls aren't working
+  // Enhanced keyword-based scrolling with contextual awareness
   const handleKeywordBasedScroll = (text: string) => {
     if (!text) return;
 
     const lowerText = text.toLowerCase();
-    console.log('🔍 Checking keywords in:', lowerText);
+    console.log('🔍 Checking keywords in:', lowerText, 'Phase:', conversationPhase, 'Messages:', messageCount);
 
-    // Skip scrolling during opening statement
-    if (isOpeningStatement) {
-      console.log('📢 Opening statement mode active, checking message:', lowerText);
+    // Update conversation phase based on content and message count
+    updateConversationPhase(lowerText);
 
-      // Check if this looks like an opening statement (contains greeting/intro words)
-      const openingPhrases = [
-        'hello', 'hi', 'welcome', 'hey there', 'good morning', 'good afternoon', 'good evening',
-        'i\'m imran', 'my name', 'this is imran', 'imran mohammed', 'imran here',
-        'walkthrough', 'case study introduction', 'introduce', 'introduction',
-        'would you like', 'do you want', 'interested in', 'tell me about',
-        'full walkthrough', 'specific info', 'specific information',
-        'ask me', 'feel free', 'happy to', 'glad to'
+    // Skip scrolling during opening/introduction phases unless explicit discussion request
+    if (conversationPhase === 'opening' || conversationPhase === 'introduction') {
+      console.log(`📢 ${conversationPhase} phase active - checking for explicit discussion request`);
+
+      // Check for explicit discussion requests about specific topics
+      const explicitDiscussionRequests = [
+        'tell me about', 'explain', 'show me', 'walk me through',
+        'how did you', 'what was your', 'dive into', 'talk about',
+        'discuss', 'go over', 'cover', 'explore', 'look at'
       ];
 
-      const isActuallyOpening = openingPhrases.some(phrase => lowerText.includes(phrase));
-      console.log('📋 Opening phrases found:', isActuallyOpening);
+      // Check for section-specific requests
+      const sectionRequests = [
+        'design', 'research', 'technical', 'prototype', 'results', 'implementation',
+        'discovery', 'strategy', 'approach', 'process', 'methodology', 'solution'
+      ];
 
-      if (isActuallyOpening) {
-        console.log('✋ Confirmed opening statement - skipping scroll');
-        return; // Skip scrolling for opening statement
+      const hasExplicitRequest = explicitDiscussionRequests.some(request => lowerText.includes(request));
+      const hasSectionRequest = sectionRequests.some(section => lowerText.includes(section));
+
+      // Allow scrolling if it's an explicit request OR if user specifically asks about a section
+      const shouldAllowScroll = hasExplicitRequest || (hasSectionRequest && (
+        lowerText.includes('?') || // Questions about sections
+        lowerText.includes('tell me') ||
+        lowerText.includes('show me') ||
+        lowerText.includes('explain') ||
+        lowerText.includes('about the') ||
+        lowerText.includes('the ' + sectionRequests.find(s => lowerText.includes(s)))
+      ));
+
+      if (!shouldAllowScroll) {
+        console.log(`✋ ${conversationPhase} phase - no explicit discussion request found, skipping scroll`);
+        return;
       } else {
-        // This is not the opening statement anymore, enable scrolling for future messages
-        console.log('🔄 Not opening statement anymore - enabling scroll for future messages');
-        setIsOpeningStatement(false);
-
-        // Clear the timeout since we've detected the end of opening statement
-        if (openingTimeoutRef.current) {
-          clearTimeout(openingTimeoutRef.current);
-          openingTimeoutRef.current = null;
-        }
+        console.log(`🎯 ${conversationPhase} phase - explicit discussion request detected, allowing scroll`);
+        // Transition to active phase since user made explicit request
+        setConversationPhase('active');
       }
+    }
+
+    // Only scroll when we detect actual topic discussion
+    if (!shouldTriggerScroll(lowerText)) {
+      console.log('⏸️ Message does not indicate topic discussion - skipping scroll');
+      return;
     }
 
     // Define keyword mappings to sections
@@ -387,29 +407,91 @@ export default function UHGCaseStudyPage() {
     // Check which section keywords appear in the text
     for (const [section, keywords] of Object.entries(keywordMappings)) {
       if (keywords.some(keyword => lowerText.includes(keyword))) {
-        console.log(`🎯 Detected ${section} keywords, scrolling to section`);
+        console.log(`🎯 Detected ${section} keywords with discussion context, scrolling to section`);
         scrollHandlers.scrollToSection(section);
         break; // Only scroll to the first matching section
       }
     }
   };
 
+  // Update conversation phase based on content and context
+  const updateConversationPhase = (lowerText: string) => {
+    // Transition from opening to introduction (be more conservative)
+    if (conversationPhase === 'opening' && messageCount >= 3) {
+      const introIndicators = [
+        'let me walk you through', 'i\'ll show you', 'overview of the sections',
+        'what would you like to know', 'specific area you\'re interested'
+      ];
+
+      if (introIndicators.some(indicator => lowerText.includes(indicator))) {
+        console.log('🔄 Transitioning to introduction phase');
+        setConversationPhase('introduction');
+        return;
+      }
+    }
+
+    // Only transition to active with very explicit requests (handled above in main function)
+    // Remove automatic transitions based on message patterns
+
+    // Auto-transition to active only after many messages or explicit timeout
+    if (conversationPhase !== 'active' && messageCount >= 8) {
+      console.log('🔄 Auto-transitioning to active phase after', messageCount, 'messages');
+      setConversationPhase('active');
+    }
+  };
+
+  // Determine if a message should trigger scrolling based on context
+  const shouldTriggerScroll = (lowerText: string): boolean => {
+    // Always allow scrolling in active phase
+    if (conversationPhase === 'active') {
+      return true;
+    }
+
+    // Check for discussion indicators
+    const discussionIndicators = [
+      'tell me about', 'explain', 'how did you', 'what was', 'why did',
+      'diving into', 'exploring', 'let\'s look at', 'focusing on',
+      'show me', 'walk me through', 'talk about', 'discuss'
+    ];
+
+    const hasDiscussionIndicator = discussionIndicators.some(indicator => lowerText.includes(indicator));
+
+    // Check for question patterns with section keywords
+    const questionPatterns = ['?', 'how', 'what', 'why', 'when', 'where', 'which', 'who'];
+    const sectionKeywords = ['design', 'research', 'technical', 'prototype', 'results', 'implementation'];
+
+    const hasQuestionWithSection = questionPatterns.some(pattern => lowerText.includes(pattern)) &&
+                                   sectionKeywords.some(keyword => lowerText.includes(keyword));
+
+    // Avoid scrolling for future tense or overview mentions
+    const futureIndicators = [
+      'will discuss', 'we\'ll explore', 'later', 'next', 'upcoming',
+      'available sections', 'you can ask', 'feel free to', 'sections include',
+      'covers', 'includes', 'features'
+    ];
+
+    const hasFutureIndicator = futureIndicators.some(indicator => lowerText.includes(indicator));
+
+    return (hasDiscussionIndicator || hasQuestionWithSection) && !hasFutureIndicator;
+  };
+
   // Initialize UHG Vapi when play button is clicked
   const handleVapiStart = async () => {
     try {
       setVapiStatus('connecting');
-      setIsOpeningStatement(true); // Reset for new conversation
+      setConversationPhase('opening'); // Reset for new conversation
+      setMessageCount(0);
 
       // Clear any existing timeout
-      if (openingTimeoutRef.current) {
-        clearTimeout(openingTimeoutRef.current);
+      if (conversationTimeoutRef.current) {
+        clearTimeout(conversationTimeoutRef.current);
       }
 
-      // Set timeout to disable opening statement mode after 15 seconds
-      openingTimeoutRef.current = setTimeout(() => {
-        console.log('⏰ Opening statement timeout - enabling scroll for all messages');
-        setIsOpeningStatement(false);
-      }, 15000); // 15 seconds
+      // Set timeout to auto-transition to active phase after 30 seconds
+      conversationTimeoutRef.current = setTimeout(() => {
+        console.log('⏰ Conversation timeout - transitioning to active phase');
+        setConversationPhase('active');
+      }, 30000); // 30 seconds
 
       // Check microphone permission first
       try {

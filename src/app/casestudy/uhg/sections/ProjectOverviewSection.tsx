@@ -20,7 +20,7 @@ export function ProjectOverviewSection() {
             </div>
             <div className="border border-gray-200 rounded-lg p-3 bg-white">
               <div className="text-xs text-gray-500">Organization</div>
-              <div className="text-base font-semibold text-gray-900">Major Healthcare Provider</div>
+              <div className="text-base font-semibold text-gray-900">United Health Group/Optum Bank</div>
             </div>
             <div className="border border-gray-200 rounded-lg p-3 bg-white">
               <div className="text-xs text-gray-500">Technologies</div>

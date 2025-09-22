@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import {
   MdPalette, MdSecurity, MdLanguage, MdPolicy, MdRocket, MdBuild,
-  MdLightbulb, MdSearch, MdLink, MdCloud, MdSpeed, MdArrowForward,
+  MdLightbulb, MdLink, MdCloud, MdSpeed, MdArrowForward,
   MdAutoAwesome, MdInsights, MdPhoneIphone, MdCamera, MdTouchApp,
   MdOfflinePin, MdDesktopMac, MdCloudUpload, MdViewSidebar, MdHistory,
   MdPersonPin, MdSync, MdCheckCircle, MdCloudSync, MdDeviceHub,
