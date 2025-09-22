@@ -14,12 +14,11 @@ interface StickyCredibilityCardProps {
 }
 
 const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, index }) => {
-
   const renderCardContent = () => {
     const baseCardClass = "w-full bg-white rounded-xl border border-gray-100 p-6 shadow-lg";
 
     switch (card.type) {
-      case 'testimonial':
+      case 'testimonial': {
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
@@ -57,8 +56,9 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
             </div>
           </div>
         );
+      }
 
-      case 'books':
+      case 'books': {
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
@@ -72,26 +72,27 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
             <div className="border-t border-gray-100 pt-6 mt-6">
               <div className="space-y-4">
                 {card.content.books.map((book: any, index: number) => (
-                <div key={index} className="border-l-4 border-accent pl-4">
-                  <a
-                    href={book.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block group"
-                  >
-                    <h5 className="font-semibold text-gray-900 mb-2 text-lg group-hover:text-accent transition-colors cursor-pointer">
-                      "{book.title}"
-                    </h5>
-                  </a>
-                  <p className="text-base text-gray-600 leading-relaxed">{book.subtitle}</p>
-                </div>
-              ))}
+                  <div key={index} className="border-l-4 border-accent pl-4">
+                    <a
+                      href={book.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block group"
+                    >
+                      <h5 className="font-semibold text-gray-900 mb-2 text-lg group-hover:text-accent transition-colors cursor-pointer">
+                        "{book.title}"
+                      </h5>
+                    </a>
+                    <p className="text-base text-gray-600 leading-relaxed">{book.subtitle}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         );
+      }
 
-      case 'achievement':
+      case 'achievement': {
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
@@ -105,17 +106,18 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
             <div className="border-t border-gray-100 pt-6 mt-6">
               <ul className="space-y-3">
                 {card.content.achievements.map((achievement: string, index: number) => (
-                <li key={index} className="flex items-start gap-2">
-                  <span className="text-accent mt-1">•</span>
-                  <span className="text-gray-700 text-base font-medium leading-relaxed">{achievement}</span>
-                </li>
-              ))}
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-accent mt-1">•</span>
+                    <span className="text-gray-700 text-base font-medium leading-relaxed">{achievement}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         );
+      }
 
-      case 'companies':
+      case 'companies': {
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
@@ -144,8 +146,9 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
             </div>
           </div>
         );
+      }
 
-      case 'impact':
+      case 'impact': {
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
@@ -159,17 +162,18 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
             <div className="border-t border-gray-100 pt-6 mt-6">
               <ul className="space-y-3">
                 {card.content.metrics.map((metric: string, index: number) => (
-                <li key={index} className="flex items-start gap-2">
-                  <span className="text-accent mt-1">•</span>
-                  <span className="text-gray-700 text-base font-medium leading-relaxed">{metric}</span>
-                </li>
-              ))}
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-accent mt-1">•</span>
+                    <span className="text-gray-700 text-base font-medium leading-relaxed">{metric}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         );
+      }
 
-      case 'work':
+      case 'work': {
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
@@ -183,17 +187,18 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
             <div className="border-t border-gray-100 pt-6 mt-6">
               <ul className="space-y-3">
                 {card.content.projects.map((project: string, index: number) => (
-                <li key={index} className="flex items-start gap-2">
-                  <span className="text-accent mt-1">•</span>
-                  <span className="text-gray-700 text-base font-medium leading-relaxed">{project}</span>
-                </li>
-              ))}
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-accent mt-1">•</span>
+                    <span className="text-gray-700 text-base font-medium leading-relaxed">{project}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         );
+      }
 
-      case 'skills':
+      case 'skills': {
         return (
           <div className={baseCardClass}>
             <div className="flex items-center gap-3 mb-4">
@@ -216,6 +221,7 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
             </div>
           </div>
         );
+      }
 
       default:
         return null;

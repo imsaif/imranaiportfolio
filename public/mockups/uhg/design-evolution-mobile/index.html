@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Mobile Design Evolution - UHG HSA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="evolution-container">
+
+        <!-- Main Content Layout -->
+        <div class="main-content">
+            <!-- Version Selector -->
+            <div class="version-selector">
+                <h3 style="margin-bottom: 16px; color: var(--optum-gray-dark); font-size: 18px;">Design Versions</h3>
+                <button class="version-btn active" data-version="existing">
+                    <span class="version-label">Existing - Complex Form</span>
+                    <span class="version-desc">8+ form fields, overwhelming layout</span>
+                    <span class="abandonment-rate">98.9% abandonment rate</span>
+                </button>
+                <button class="version-btn" data-version="v2">
+                    <span class="version-label">V2 - Simplified</span>
+                    <span class="version-desc">Reduced fields, better spacing</span>
+                    <span class="abandonment-rate">85% abandonment rate</span>
+                </button>
+                <button class="version-btn" data-version="v3">
+                    <span class="version-label">V3 - Smart Flow</span>
+                    <span class="version-desc">3-step guided process</span>
+                    <span class="abandonment-rate">24% abandonment rate</span>
+                </button>
+            </div>
+
+            <!-- Phone Frame -->
+        <div class="phone-frame">
+            <!-- Phone Physical Features -->
+            <div class="phone-notch"></div>
+            <div class="phone-speaker"></div>
+            <div class="phone-camera"></div>
+
+            <div class="phone-screen">
+                <!-- Existing: Complex Form -->
+                <div class="prototype-version active" id="existing">
+                    <div class="mock-header">
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <div class="battery"></div>
+                        </div>
+                        <div class="nav-bar">
+                            <button class="back-btn">←</button>
+                            <h2>HSA Reimbursement</h2>
+                            <button class="help-btn">?</button>
+                        </div>
+                    </div>
+
+                    <div class="form-content">
+                        <div class="form-section">
+                            <label class="form-label">Provider Name *</label>
+                            <input type="text" class="form-input" placeholder="Enter healthcare provider">
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Service Date *</label>
+                            <input type="date" class="form-input">
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Amount *</label>
+                            <input type="number" class="form-input" placeholder="$0.00">
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Service Type *</label>
+                            <select class="form-input">
+                                <option>Select service type</option>
+                                <option>ICD-10-CM Z00.00</option>
+                                <option>CPT 99213</option>
+                                <option>HCPCS G0008</option>
+                            </select>
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Diagnosis Code</label>
+                            <input type="text" class="form-input" placeholder="ICD-10 code">
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Provider Tax ID *</label>
+                            <input type="text" class="form-input" placeholder="XX-XXXXXXX">
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Receipt Upload *</label>
+                            <div class="upload-area basic">
+                                <span>Tap to upload</span>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Additional Notes</label>
+                            <textarea class="form-input" rows="3" placeholder="Any additional information"></textarea>
+                        </div>
+
+                        <button class="submit-btn" onclick="showError()">Submit for Review</button>
+                    </div>
+
+                    <!-- Error Modal -->
+                    <div class="error-modal" id="errorModal">
+                        <div class="error-content">
+                            <h3>Upload Failed</h3>
+                            <p>Please try again.</p>
+                            <button onclick="hideError()">OK</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- V2: Simplified Form -->
+                <div class="prototype-version" id="v2">
+                    <div class="mock-header">
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <div class="battery"></div>
+                        </div>
+                        <div class="nav-bar">
+                            <button class="back-btn">←</button>
+                            <h2>HSA Reimbursement</h2>
+                            <button class="help-btn">?</button>
+                        </div>
+                    </div>
+
+                    <div class="form-content">
+                        <div class="form-section">
+                            <label class="form-label">Healthcare Provider</label>
+                            <input type="text" class="form-input" placeholder="Dr. Smith Family Practice">
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Visit Date</label>
+                            <input type="date" class="form-input">
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Amount Paid</label>
+                            <input type="number" class="form-input" placeholder="$125.00">
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Type of Visit</label>
+                            <select class="form-input">
+                                <option>Office Visit</option>
+                                <option>Preventive Care</option>
+                                <option>Emergency Care</option>
+                                <option>Prescription</option>
+                            </select>
+                        </div>
+
+                        <div class="form-section">
+                            <label class="form-label">Upload Receipt</label>
+                            <div class="upload-area improved">
+                                <div class="upload-icon">📷</div>
+                                <span>Take Photo or Upload</span>
+                                <small>JPG, PNG up to 5MB</small>
+                            </div>
+                        </div>
+
+                        <button class="submit-btn improved">Submit Reimbursement</button>
+                    </div>
+                </div>
+
+                <!-- V3: Smart 3-Step Flow -->
+                <div class="prototype-version" id="v3">
+                    <div class="mock-header">
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <div class="battery"></div>
+                        </div>
+                        <div class="nav-bar">
+                            <button class="back-btn">←</button>
+                            <h2>HSA Reimbursement</h2>
+                            <button class="help-btn">?</button>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-step active">
+                            <div class="step-circle">1</div>
+                            <span>Capture</span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-circle">2</div>
+                            <span>Review</span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-circle">3</div>
+                            <span>Submit</span>
+                        </div>
+                    </div>
+
+                    <div class="smart-content" id="step1">
+                        <div class="step-header">
+                            <h3>Step 1: Capture Receipt</h3>
+                            <p>Position your receipt within the frame</p>
+                        </div>
+
+                        <div class="camera-interface">
+                            <div class="camera-frame">
+                                <div class="frame-corners"></div>
+                                <div class="frame-guide">
+                                    <span>Align receipt here</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="capture-tips">
+                            <div class="tip">
+                                <span class="tip-icon">💡</span>
+                                <span>Ensure all text is clearly visible</span>
+                            </div>
+                        </div>
+
+                        <button class="smart-btn" onclick="nextStep(2)">
+                            <span>Capture Receipt</span>
+                        </button>
+                    </div>
+
+                    <div class="smart-content" id="step2" style="display: none;">
+                        <div class="step-header">
+                            <h3>Step 2: Smart Detection</h3>
+                            <p>We've automatically detected your receipt details</p>
+                        </div>
+
+                        <div class="detected-info">
+                            <div class="detection-item">
+                                <label>Provider</label>
+                                <div class="detected-value">Dr. Smith Family Practice ✓</div>
+                            </div>
+                            <div class="detection-item">
+                                <label>Amount</label>
+                                <div class="detected-value">$125.00 ✓</div>
+                            </div>
+                            <div class="detection-item">
+                                <label>Date</label>
+                                <div class="detected-value">March 15, 2024 ✓</div>
+                            </div>
+                            <div class="detection-item">
+                                <label>Category</label>
+                                <div class="smart-suggestion">
+                                    <span>Office Visit</span>
+                                    <small>Based on provider type</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="eligibility-check">
+                            <div class="check-result success">
+                                <span class="check-icon">✅</span>
+                                <div>
+                                    <strong>HSA Eligible</strong>
+                                    <p>Office visits are covered by your HSA</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="smart-btn" onclick="nextStep(3)">Continue to Review</button>
+                    </div>
+
+                    <div class="smart-content" id="step3" style="display: none;">
+                        <div class="step-header">
+                            <h3>Step 3: Final Review</h3>
+                            <p>Confirm details and submit</p>
+                        </div>
+
+                        <div class="review-summary">
+                            <div class="summary-item">
+                                <span class="label">Provider:</span>
+                                <span class="value">Dr. Smith Family Practice</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">Amount:</span>
+                                <span class="value">$125.00</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">Category:</span>
+                                <span class="value">Office Visit</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">Expected Processing:</span>
+                                <span class="value">1-2 business days</span>
+                            </div>
+                        </div>
+
+                        <button class="smart-btn success" onclick="showSuccess()">Submit for Reimbursement</button>
+                    </div>
+
+                    <!-- Success Modal -->
+                    <div class="success-modal" id="successModal">
+                        <div class="success-content">
+                            <div class="success-icon">✅</div>
+                            <h3>Reimbursement Submitted!</h3>
+                            <p>You'll receive updates via email and push notifications</p>
+                            <button onclick="hideSuccess()">Done</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Button -->
+            <div class="phone-home-button"></div>
+        </div>
+        </div>
+
+        <!-- Metrics Display -->
+        <div class="metrics-display">
+            <div class="metric-item">
+                <span class="metric-label">Completion Rate:</span>
+                <span class="metric-value" id="completionRate">1.1%</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">Avg. Time:</span>
+                <span class="metric-value" id="avgTime">18 minutes</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">User Satisfaction:</span>
+                <span class="metric-value" id="satisfaction">2.1/5</span>
+            </div>
+        </div>
+
+        <!-- Key Improvements -->
+        <div class="improvements-list" id="improvementsList">
+            <h3>Problems in Existing Design:</h3>
+            <ul>
+                <li>8+ complex form fields overwhelm users</li>
+                <li>Medical codes confuse non-experts</li>
+                <li>Generic error messages provide no guidance</li>
+                <li>No visual feedback during upload</li>
+                <li>Users abandon after first failure</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

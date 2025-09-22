@@ -142,7 +142,7 @@ export const setupUHGVapiEventHandlers = (handlers: {
 
   // Function call handling for scroll functions
   if (handlers.onFunctionCall) {
-    uhgVapiInstance.on('function-call', (functionCall) => {
+    uhgVapiInstance.on('function-call' as any, (functionCall: any) => {
       console.log('🔧 Function call received:', functionCall);
       handlers.onFunctionCall?.(functionCall);
     });
@@ -169,7 +169,7 @@ export const sendFunctionResult = async (
   }
 
   try {
-    await uhgVapiInstance.send({
+    await (uhgVapiInstance as any).send({
       type: 'function-call-result',
       functionCallId,
       result,

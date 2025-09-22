@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Device Desktop Experience - UHG HSA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="evolution-container">
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Version Tabs -->
+            <div class="version-tabs">
+                <button class="tab-btn active" data-version="existing">
+                    <span class="tab-label">Existing - Fragmented Experience</span>
+                    <span class="tab-desc">No cross-device continuity, isolated workflow</span>
+                </button>
+                <button class="tab-btn" data-version="v3">
+                    <span class="tab-label">V3 - Integrated Cross-Device</span>
+                    <span class="tab-desc">Seamless mobile handoff, smart assistance</span>
+                </button>
+            </div>
+
+            <!-- Desktop Browser Frame -->
+        <div class="browser-frame">
+            <div class="browser-header">
+                <div class="browser-controls">
+                    <span class="control red"></span>
+                    <span class="control yellow"></span>
+                    <span class="control green"></span>
+                </div>
+                <div class="address-bar">
+                    <span>https://optumbank.com/hsa/reimbursement</span>
+                </div>
+            </div>
+
+            <div class="browser-content">
+                <!-- Existing: Traditional Multi-Column Form -->
+                <div class="desktop-version active" id="desktop-existing">
+                    <div class="page-header">
+                        <nav class="breadcrumb">
+                            <span>HSA Dashboard</span> > <span>Claims & Reimbursement</span> > <span>New Claim</span>
+                        </nav>
+                        <h1>Submit New Reimbursement Claim</h1>
+                        <p>Complete the form below to submit your reimbursement request</p>
+                    </div>
+
+                    <div class="form-layout multi-column">
+                        <div class="left-column">
+                            <div class="form-section">
+                                <h3>Receipt Upload</h3>
+                                <div class="upload-area basic">
+                                    <div class="upload-placeholder">
+                                        <span>📄</span>
+                                        <p>Click to upload receipt</p>
+                                        <small>PDF, JPG, PNG</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>Provider Information</h3>
+                                <div class="form-fields">
+                                    <div class="field-group">
+                                        <label>Provider Name *</label>
+                                        <input type="text" placeholder="Enter provider name">
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Provider Type *</label>
+                                        <select>
+                                            <option>Select type</option>
+                                            <option>Hospital</option>
+                                            <option>Physician</option>
+                                            <option>Pharmacy</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="right-column">
+                            <div class="form-section">
+                                <h3>Expense Details</h3>
+                                <div class="form-fields">
+                                    <div class="field-group">
+                                        <label>Service Date *</label>
+                                        <input type="date">
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Total Amount *</label>
+                                        <input type="number" step="0.01" placeholder="0.00">
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Expense Category *</label>
+                                        <select>
+                                            <option>Select category</option>
+                                            <option>Medical</option>
+                                            <option>Dental</option>
+                                            <option>Vision</option>
+                                            <option>Prescription</option>
+                                        </select>
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Description</label>
+                                        <textarea placeholder="Additional details..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button class="btn secondary">Save Draft</button>
+                                    <button class="btn primary">Submit Request</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Error overlay for existing version -->
+                        <div class="error-overlay" id="desktop-error" style="display: none;">
+                            <div class="error-content">
+                                <h3>⚠️ Submission Failed</h3>
+                                <p>Please check the following:</p>
+                                <ul>
+                                    <li>All required fields are filled</li>
+                                    <li>Receipt image is clear and readable</li>
+                                    <li>Amount matches receipt total</li>
+                                </ul>
+                                <button onclick="hideDesktopError()">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- V3: Smart Progressive Design -->
+                <div class="desktop-version" id="desktop-v3">
+                    <div class="page-header">
+                        <nav class="breadcrumb">
+                            <span>HSA Dashboard</span> > <span>Quick Reimbursement</span>
+                        </nav>
+                        <h1>Smart Assistant</h1>
+                        <p>Your intelligent reimbursement companion</p>
+                    </div>
+
+                    <div class="smart-layout">
+                        <div class="main-content">
+                            <!-- Mobile Continuation Section -->
+                            <div class="smart-section active" id="mobile-continuation">
+                                <div class="mobile-continuation-alert">
+                                    <div class="alert-icon">📱</div>
+                                    <div class="alert-content">
+                                        <h3>Continue from mobile?</h3>
+                                        <p>Receipt uploaded 5 minutes ago</p>
+
+                                        <div class="receipt-preview-card">
+                                            <div class="receipt-thumbnail">
+                                                <div class="receipt-image">📄</div>
+                                            </div>
+                                            <div class="receipt-info">
+                                                <div class="receipt-details">
+                                                    <span class="provider-name">Dr. Smith</span>
+                                                    <span class="amount-date">$125.00 - Mar 15</span>
+                                                    <div class="upload-meta">
+                                                        <span class="device-indicator">📱 iPhone</span>
+                                                        <span class="timestamp">5 min ago</span>
+                                                    </div>
+                                                </div>
+                                                <div class="progress-indicator">
+                                                    <span class="progress-bar">
+                                                        <span class="progress-fill" style="width: 90%"></span>
+                                                    </span>
+                                                    <span class="progress-text">90% done</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="continuation-actions">
+                                            <button class="btn primary" onclick="continueFromMobile()">
+                                                📱→💻 Continue
+                                            </button>
+                                            <button class="btn secondary" onclick="startNewUpload()">
+                                                📁 New Upload
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Smart Upload Section -->
+                            <div class="smart-section" id="smart-upload">
+                                <div class="section-header">
+                                    <h2>📱 Upload Receipt</h2>
+                                    <p>Smart scanner extracts info automatically</p>
+                                </div>
+
+                                <!-- Recent Uploads -->
+                                <div class="recent-uploads">
+                                    <h3>Recent (24hrs)</h3>
+                                    <div class="recent-uploads-list">
+                                        <div class="recent-upload-item">
+                                            <span class="device-indicator">📱</span>
+                                            <span class="upload-info">Dr. Smith - $125.00</span>
+                                            <span class="upload-time">5m ago</span>
+                                            <button class="btn-link" onclick="loadRecentUpload()">Use</button>
+                                        </div>
+                                        <div class="recent-upload-item">
+                                            <span class="device-indicator">💻</span>
+                                            <span class="upload-info">CVS - $24.99</span>
+                                            <span class="upload-time">2h ago</span>
+                                            <button class="btn-link" onclick="loadRecentUpload()">Use</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="upload-divider">
+                                    <span>OR</span>
+                                </div>
+
+                                <div class="smart-upload-area">
+                                    <div class="upload-preview">
+                                        <div class="preview-placeholder">
+                                            <div class="scan-animation">🔍</div>
+                                            <p>Drop receipt for smart scan</p>
+                                        </div>
+                                    </div>
+                                    <div class="upload-options">
+                                        <button class="upload-btn primary">
+                                            <span>📁</span>
+                                            Choose File
+                                        </button>
+                                        <button class="upload-btn secondary">
+                                            <span>📧</span>
+                                            Email Receipt
+                                        </button>
+                                        <button class="upload-btn secondary" onclick="showSmartForm()">
+                                            <span>✏️</span>
+                                            Enter Manually
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Smart Form Section -->
+                            <div class="smart-section" id="smart-form">
+                                <div class="section-header">
+                                    <h2>🤖 Smart Form</h2>
+                                    <p>AI-assisted completion with validation</p>
+                                </div>
+
+                                <div class="smart-form-container">
+                                    <div class="form-preview">
+                                        <div class="receipt-preview">
+                                            <div class="receipt-header">
+                                                <span class="receipt-title">📄 Dr. Smith Receipt</span>
+                                                <span class="ocr-status">✅ Scanned</span>
+                                            </div>
+                                            <div class="receipt-content">
+                                                <div class="extracted-data">
+                                                    <div class="data-item">
+                                                        <span class="label">Provider:</span>
+                                                        <span class="value">Dr. Smith Family Practice</span>
+                                                    </div>
+                                                    <div class="data-item">
+                                                        <span class="label">Date:</span>
+                                                        <span class="value">March 15, 2024</span>
+                                                    </div>
+                                                    <div class="data-item">
+                                                        <span class="label">Amount:</span>
+                                                        <span class="value">$125.00</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-fields-smart">
+                                        <div class="field-group smart">
+                                            <label>Provider Name</label>
+                                            <input type="text" value="Dr. Smith Family Practice" class="auto-filled">
+                                            <span class="field-status">✅ Auto-filled</span>
+                                        </div>
+
+                                        <div class="field-group smart">
+                                            <label>Service Date</label>
+                                            <input type="date" value="2024-03-15" class="auto-filled">
+                                            <span class="field-status">✅ Auto-filled</span>
+                                        </div>
+
+                                        <div class="field-group smart">
+                                            <label>Amount</label>
+                                            <input type="number" value="125.00" class="auto-filled">
+                                            <span class="field-status">✅ Auto-filled</span>
+                                        </div>
+
+                                        <div class="field-group smart-suggestion">
+                                            <label>Category</label>
+                                            <select class="suggested">
+                                                <option selected>Office Visit (Suggested)</option>
+                                                <option>Preventive Care</option>
+                                                <option>Emergency</option>
+                                                <option>Other</option>
+                                            </select>
+                                            <span class="field-status">🤖 AI Suggested</span>
+                                        </div>
+
+                                        <div class="eligibility-check">
+                                            <div class="eligibility-result positive">
+                                                <span class="eligibility-icon">✅</span>
+                                                <div class="eligibility-info">
+                                                    <strong>HSA Eligible</strong>
+                                                    <p>Office visits are qualified medical expenses</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="smart-actions">
+                                            <button class="btn secondary">💾 Save Draft</button>
+                                            <button class="btn primary">🚀 Submit (2 sec)</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Smart Sidebar -->
+                        <div class="smart-sidebar">
+                            <div class="help-panel">
+                                <h3>💡 Smart Tips</h3>
+                                <div class="tip-item">
+                                    <span class="tip-icon">📱</span>
+                                    <p>Started on mobile? We saved your progress!</p>
+                                </div>
+                                <div class="tip-item">
+                                    <span class="tip-icon">🔍</span>
+                                    <p>Our AI extracted key details from your receipt</p>
+                                </div>
+                                <div class="tip-item">
+                                    <span class="tip-icon">⚡</span>
+                                    <p>This submission will take ~2 seconds</p>
+                                </div>
+                            </div>
+
+                            <div class="progress-tracker">
+                                <h3>📊 Progress</h3>
+                                <div class="progress-item completed">
+                                    <span class="step-number">1</span>
+                                    <span class="step-name">Receipt Upload</span>
+                                    <span class="step-status">✅</span>
+                                </div>
+                                <div class="progress-item completed">
+                                    <span class="step-number">2</span>
+                                    <span class="step-name">Data Extraction</span>
+                                    <span class="step-status">✅</span>
+                                </div>
+                                <div class="progress-item active">
+                                    <span class="step-number">3</span>
+                                    <span class="step-name">Review & Submit</span>
+                                    <span class="step-status">🔄</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metrics Comparison -->
+        <div class="metrics-comparison">
+            <div class="metric-card">
+                <h3>Cross-Device Completion</h3>
+                <div class="metric-values">
+                    <div class="metric-value v1">
+                        <span class="version">Existing</span>
+                        <span class="value bad">12%</span>
+                    </div>
+                    <div class="metric-value v3">
+                        <span class="version">V3</span>
+                        <span class="value good">78%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Device Handoff Success</h3>
+                <div class="metric-values">
+                    <div class="metric-value v1">
+                        <span class="version">Existing</span>
+                        <span class="value bad">23%</span>
+                    </div>
+                    <div class="metric-value v3">
+                        <span class="version">V3</span>
+                        <span class="value good">89%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>User Satisfaction</h3>
+                <div class="metric-values">
+                    <div class="metric-value v1">
+                        <span class="version">Existing</span>
+                        <span class="value bad">2.8/5</span>
+                    </div>
+                    <div class="metric-value v3">
+                        <span class="version">V3</span>
+                        <span class="value good">4.8/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

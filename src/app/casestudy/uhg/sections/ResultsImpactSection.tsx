@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { MdTrendingUp, MdPolicy, MdAltRoute, MdSettings, MdLocalHospital, MdPhoneAndroid } from 'react-icons/md';
 
 export function ResultsImpactSection() {
   return (
@@ -52,14 +53,20 @@ export function ResultsImpactSection() {
           </div>
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-8">
-            <h4 className="font-bold text-gray-800 mb-3">📈 Scalability</h4>
+            <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+              <MdTrendingUp className="text-green-500" size={20} />
+              Scalability
+            </h4>
             <p className="text-gray-700 text-base leading-relaxed">
               The redesigned system now handles increased transaction volume without requiring additional support resources.
             </p>
           </div>
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-8">
-            <h4 className="font-bold text-gray-800 mb-3">📋 Compliance</h4>
+            <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+              <MdPolicy className="text-blue-500" size={20} />
+              Compliance
+            </h4>
             <p className="text-gray-700 text-base leading-relaxed">
               Enhanced documentation and audit trails improved regulatory adherence and reduced compliance risks.
             </p>
@@ -74,19 +81,31 @@ export function ResultsImpactSection() {
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-8">
           <div className="space-y-4 text-base">
             <div>
-              <strong className="text-gray-900">🏥 Regulation as Feature:</strong>
+              <strong className="text-gray-900 flex items-center gap-1">
+                <MdLocalHospital className="text-green-500" size={16} />
+                Regulation as Feature:
+              </strong>
               <span className="text-gray-700 ml-2">Reframed compliance requirements as trust-building opportunities</span>
             </div>
             <div>
-              <strong className="text-gray-900">🛤️ Multi-Path Solutions:</strong>
+              <strong className="text-gray-900 flex items-center gap-1">
+                <MdAltRoute className="text-blue-500" size={16} />
+                Multi-Path Solutions:
+              </strong>
               <span className="text-gray-700 ml-2">Diverse user needs required fundamentally different approaches</span>
             </div>
             <div>
-              <strong className="text-gray-900">⚙️ Constraints Drive Innovation:</strong>
+              <strong className="text-gray-900 flex items-center gap-1">
+                <MdSettings className="text-orange-500" size={16} />
+                Constraints Drive Innovation:
+              </strong>
               <span className="text-gray-700 ml-2">Technical limitations forced creative solutions that improved performance</span>
             </div>
             <div>
-              <strong className="text-gray-900">📱 System-Level Design:</strong>
+              <strong className="text-gray-900 flex items-center gap-1">
+                <MdPhoneAndroid className="text-blue-500" size={16} />
+                System-Level Design:
+              </strong>
               <span className="text-gray-700 ml-2">Cross-device completion required experience orchestration, not just screen optimization</span>
             </div>
           </div>

@@ -180,10 +180,12 @@ export function getAvailableSections(): ScrollResponse {
     name: getSectionDisplayName(id)
   }));
 
+  const currentSection = getCurrentSection().currentSection || 'overview';
+
   return {
     success: true,
     message: `Available sections: ${sections.map(s => s.name).join(', ')}`,
-    currentSection: getCurrentSection().currentSection
+    currentSection
   };
 }
 

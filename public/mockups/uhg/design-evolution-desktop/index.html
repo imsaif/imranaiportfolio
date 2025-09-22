@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Design Evolution - UHG HSA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="evolution-container">
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Version Tabs -->
+            <div class="version-tabs">
+                <button class="tab-btn active" data-version="existing">
+                    <span class="tab-label">Existing - Traditional Form</span>
+                    <span class="tab-desc">Multi-column layout, separate upload area</span>
+                </button>
+                <button class="tab-btn" data-version="v2">
+                    <span class="tab-label">V2 - Integrated Design</span>
+                    <span class="tab-desc">Drag-drop first, reduced complexity</span>
+                </button>
+                <button class="tab-btn" data-version="v3">
+                    <span class="tab-label">V3 - Smart Progressive</span>
+                    <span class="tab-desc">Intelligent assistance, contextual help</span>
+                </button>
+            </div>
+
+            <!-- Desktop Browser Frame -->
+        <div class="browser-frame">
+            <div class="browser-header">
+                <div class="browser-controls">
+                    <span class="control red"></span>
+                    <span class="control yellow"></span>
+                    <span class="control green"></span>
+                </div>
+                <div class="address-bar">
+                    <span>https://optumbank.com/hsa/reimbursement</span>
+                </div>
+            </div>
+
+            <div class="browser-content">
+                <!-- Existing: Traditional Multi-Column Form -->
+                <div class="desktop-version active" id="desktop-existing">
+                    <div class="page-header">
+                        <nav class="breadcrumb">
+                            <span>HSA Dashboard</span> > <span>Claims & Reimbursement</span> > <span>New Claim</span>
+                        </nav>
+                        <h1>Submit New Reimbursement Claim</h1>
+                    </div>
+
+                    <div class="form-layout traditional">
+                        <div class="form-column left">
+                            <div class="form-section">
+                                <h3>Claim Information</h3>
+                                <div class="field-group">
+                                    <label>Provider *</label>
+                                    <input type="text" placeholder="Provider name">
+                                </div>
+                                <div class="field-group">
+                                    <label>Tax ID *</label>
+                                    <input type="text" placeholder="XX-XXXXXXX">
+                                </div>
+                                <div class="field-group">
+                                    <label>Date *</label>
+                                    <input type="date">
+                                </div>
+                                <div class="field-group">
+                                    <label>Service *</label>
+                                    <select>
+                                        <option>Select type</option>
+                                        <option>Office visit</option>
+                                        <option>Preventive care</option>
+                                        <option>Emergency care</option>
+                                    </select>
+                                </div>
+                                <div class="field-group">
+                                    <label>Amount *</label>
+                                    <input type="number" placeholder="$0.00">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-column right">
+                            <div class="form-section">
+                                <h3>Document Upload</h3>
+                                <div class="upload-section basic">
+                                    <div class="upload-area">
+                                        <p>Drag files here or browse</p>
+                                        <small>PDF, JPG, PNG (Max: 10MB)</small>
+                                    </div>
+                                    <div class="upload-requirements">
+                                        <h4>Required:</h4>
+                                        <ul>
+                                            <li>Receipt or bill</li>
+                                            <li>Insurance EOB (if applicable)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>Additional Information</h3>
+                                <div class="field-group">
+                                    <label>Notes</label>
+                                    <textarea placeholder="Additional details"></textarea>
+                                </div>
+                                <div class="field-group">
+                                    <label>
+                                        <input type="checkbox" required>
+                                        Qualified medical expense
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn secondary">Save as Draft</button>
+                        <button class="btn primary" onclick="showDesktopError()">Submit Claim</button>
+                    </div>
+
+                    <!-- Error Modal -->
+                    <div class="modal-overlay" id="desktopErrorModal">
+                        <div class="modal-content error">
+                            <h3>Submission Failed</h3>
+                            <p>There was an error processing your request. Please check your information and try again.</p>
+                            <div class="modal-actions">
+                                <button onclick="hideDesktopError()">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- V2: Integrated Drag-Drop Design -->
+                <div class="desktop-version" id="desktop-v2">
+                    <div class="page-header">
+                        <nav class="breadcrumb">
+                            <span>HSA Dashboard</span> > <span>Reimbursement</span>
+                        </nav>
+                        <h1>Get Reimbursed</h1>
+                        <p>Upload receipt or enter details manually</p>
+                    </div>
+
+                    <div class="form-layout integrated">
+                        <div class="upload-first-section">
+                            <div class="drag-drop-zone">
+                                <div class="drop-icon">📄</div>
+                                <h3>Drop receipt here</h3>
+                                <p>or <a href="#" class="upload-link">browse files</a></p>
+                                <div class="file-types">PDF, JPG, PNG (5MB max)</div>
+                            </div>
+                        </div>
+
+                        <div class="divider">
+                            <span>OR</span>
+                        </div>
+
+                        <div class="manual-form-section">
+                            <h3>Enter Manually</h3>
+                            <div class="form-grid">
+                                <div class="field-group">
+                                    <label>Provider</label>
+                                    <input type="text" placeholder="Dr. Smith">
+                                </div>
+                                <div class="field-group">
+                                    <label>Date</label>
+                                    <input type="date">
+                                </div>
+                                <div class="field-group">
+                                    <label>Amount</label>
+                                    <input type="number" placeholder="$125.00">
+                                </div>
+                                <div class="field-group">
+                                    <label>Type</label>
+                                    <select>
+                                        <option>Office Visit</option>
+                                        <option>Preventive</option>
+                                        <option>Emergency</option>
+                                        <option>Prescription</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn secondary">Save for Later</button>
+                                <button class="btn primary">Submit Reimbursement</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- V3: Smart Progressive Design -->
+                <div class="desktop-version" id="desktop-v3">
+                    <div class="page-header">
+                        <nav class="breadcrumb">
+                            <span>HSA Dashboard</span> > <span>Quick Reimbursement</span>
+                        </nav>
+                        <h1>Smart Assistant</h1>
+                        <p>Guided process with auto-fill</p>
+                    </div>
+
+                    <div class="smart-layout">
+                        <div class="main-content">
+                            <!-- Mobile Continuation Section -->
+                            <div class="smart-section active" id="mobile-continuation">
+                                <div class="mobile-continuation-alert">
+                                    <div class="alert-icon">📱</div>
+                                    <div class="alert-content">
+                                        <h3>Continue from mobile?</h3>
+                                        <p>Receipt uploaded 5 minutes ago</p>
+
+                                        <div class="receipt-preview-card">
+                                            <div class="receipt-thumbnail">
+                                                <div class="receipt-image">📄</div>
+                                            </div>
+                                            <div class="receipt-info">
+                                                <div class="receipt-details">
+                                                    <span class="provider-name">Dr. Smith</span>
+                                                    <span class="amount-date">$125.00 - Mar 15</span>
+                                                    <div class="upload-meta">
+                                                        <span class="device-indicator">📱 iPhone</span>
+                                                        <span class="timestamp">5 min ago</span>
+                                                    </div>
+                                                </div>
+                                                <div class="progress-indicator">
+                                                    <span class="progress-bar">
+                                                        <span class="progress-fill" style="width: 90%"></span>
+                                                    </span>
+                                                    <span class="progress-text">90% done</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="continuation-actions">
+                                            <button class="btn primary" onclick="continueFromMobile()">
+                                                📱→💻 Continue
+                                            </button>
+                                            <button class="btn secondary" onclick="startNewUpload()">
+                                                📁 New Upload
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Smart Upload Section -->
+                            <div class="smart-section" id="smart-upload">
+                                <div class="section-header">
+                                    <h2>📱 Upload Receipt</h2>
+                                    <p>Smart scanner extracts info automatically</p>
+                                </div>
+
+                                <!-- Recent Uploads -->
+                                <div class="recent-uploads">
+                                    <h3>Recent (24hrs)</h3>
+                                    <div class="recent-uploads-list">
+                                        <div class="recent-upload-item">
+                                            <span class="device-indicator">📱</span>
+                                            <span class="upload-info">Dr. Smith - $125.00</span>
+                                            <span class="upload-time">5m ago</span>
+                                            <button class="btn-link" onclick="loadRecentUpload()">Use</button>
+                                        </div>
+                                        <div class="recent-upload-item">
+                                            <span class="device-indicator">💻</span>
+                                            <span class="upload-info">CVS - $24.99</span>
+                                            <span class="upload-time">2h ago</span>
+                                            <button class="btn-link" onclick="loadRecentUpload()">Use</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="upload-divider">
+                                    <span>OR</span>
+                                </div>
+
+                                <div class="smart-upload-area">
+                                    <div class="upload-preview">
+                                        <div class="preview-placeholder">
+                                            <div class="scan-animation">🔍</div>
+                                            <p>Drop receipt for smart scan</p>
+                                        </div>
+                                    </div>
+                                    <div class="upload-options">
+                                        <button class="upload-btn primary">
+                                            <span>📁</span>
+                                            Choose File
+                                        </button>
+                                        <button class="upload-btn secondary">
+                                            <span>📧</span>
+                                            Email Receipt
+                                        </button>
+                                        <button class="upload-btn secondary" onclick="showSmartForm()">
+                                            <span>✏️</span>
+                                            Enter Manually
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Smart Form Section -->
+                            <div class="smart-section" id="smart-form">
+                                <div class="section-header">
+                                    <h2>🤖 Smart Results</h2>
+                                    <p>Auto-filled from receipt</p>
+                                </div>
+
+                                <div class="detected-fields">
+                                    <div class="detection-card">
+                                        <div class="field-header">
+                                            <label>Provider</label>
+                                            <span class="confidence-badge high">✓ High Confidence</span>
+                                        </div>
+                                        <div class="field-value">Dr. Smith</div>
+                                        <div class="field-suggestion">
+                                            <span class="suggestion-icon">💡</span>
+                                            Primary care - HSA eligible
+                                        </div>
+                                    </div>
+
+                                    <div class="detection-card">
+                                        <div class="field-header">
+                                            <label>Amount</label>
+                                            <span class="confidence-badge high">✓ Detected</span>
+                                        </div>
+                                        <div class="field-value">$125.00</div>
+                                    </div>
+
+                                    <div class="detection-card">
+                                        <div class="field-header">
+                                            <label>Date</label>
+                                            <span class="confidence-badge high">✓ Detected</span>
+                                        </div>
+                                        <div class="field-value">Mar 15, 2024</div>
+                                    </div>
+
+                                    <div class="detection-card">
+                                        <div class="field-header">
+                                            <label>Category</label>
+                                            <span class="confidence-badge high">✓ Detected</span>
+                                        </div>
+                                        <div class="field-value">
+                                            <select class="smart-select">
+                                                <option selected>Office Visit - Primary Care</option>
+                                                <option>Preventive Care</option>
+                                                <option>Specialist Consultation</option>
+                                            </select>
+                                        </div>
+                                        <div class="field-suggestion">
+                                            <span class="suggestion-icon">ℹ️</span>
+                                            Based on provider type
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="eligibility-check">
+                                    <div class="check-header">
+                                        <span class="check-icon success">✅</span>
+                                        <div>
+                                            <h3>HSA Eligible</h3>
+                                            <p>This expense qualifies for HSA reimbursement</p>
+                                        </div>
+                                    </div>
+                                    <div class="check-details">
+                                        <ul>
+                                            <li>✓ Qualified medical expense</li>
+                                            <li>✓ Meets IRS requirements</li>
+                                            <li>✓ Within current tax year</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button class="btn secondary" onclick="backToUpload()">← Back to Upload</button>
+                                    <button class="btn primary" onclick="showReview()">Review & Submit →</button>
+                                </div>
+                            </div>
+
+                            <!-- Review Section -->
+                            <div class="smart-section" id="smart-review">
+                                <div class="section-header">
+                                    <h2>📋 Final Review</h2>
+                                    <p>Please confirm your reimbursement details</p>
+                                </div>
+
+                                <div class="review-summary">
+                                    <div class="summary-card">
+                                        <h3>Reimbursement Summary</h3>
+                                        <div class="summary-grid">
+                                            <div class="summary-item">
+                                                <span class="label">Provider:</span>
+                                                <span class="value">Dr. Smith Family Practice</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="label">Service:</span>
+                                                <span class="value">Office Visit - Primary Care</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="label">Date:</span>
+                                                <span class="value">March 15, 2024</span>
+                                            </div>
+                                            <div class="summary-item total">
+                                                <span class="label">Reimbursement Amount:</span>
+                                                <span class="value">$125.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="processing-info">
+                                        <h4>What happens next?</h4>
+                                        <div class="timeline">
+                                            <div class="timeline-item">
+                                                <span class="timeline-icon">📝</span>
+                                                <div>
+                                                    <strong>Review</strong>
+                                                    <p>Your claim will be reviewed within 24 hours</p>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <span class="timeline-icon">✅</span>
+                                                <div>
+                                                    <strong>Approval</strong>
+                                                    <p>If approved, you'll receive an email confirmation</p>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <span class="timeline-icon">💳</span>
+                                                <div>
+                                                    <strong>Reimbursement</strong>
+                                                    <p>Funds will be available in 1-2 business days</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button class="btn secondary" onclick="backToForm()">← Edit Details</button>
+                                    <button class="btn primary success" onclick="showSuccess()">Submit Reimbursement</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar Help -->
+                        <div class="help-sidebar">
+                            <div class="help-card">
+                                <h3>💡 Tips</h3>
+                                <ul>
+                                    <li>Take clear photos of receipts</li>
+                                    <li>Include all pages of multi-page documents</li>
+                                    <li>Keep originals for your records</li>
+                                </ul>
+                            </div>
+
+                            <div class="help-card">
+                                <h3>📞 Need Help?</h3>
+                                <p>Our support team is available 24/7</p>
+                                <button class="help-btn">Live Chat</button>
+                                <button class="help-btn">Call Support</button>
+                            </div>
+
+                            <div class="help-card">
+                                <h3>📊 Your HSA</h3>
+                                <div class="balance-info">
+                                    <div class="balance-item">
+                                        <span>Available Balance</span>
+                                        <strong>$1,671.65</strong>
+                                    </div>
+                                    <div class="balance-item">
+                                        <span>Pending Claims</span>
+                                        <strong>$324.50</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success Modal -->
+                    <div class="modal-overlay" id="desktopSuccessModal">
+                        <div class="modal-content success">
+                            <div class="success-animation">✅</div>
+                            <h3>Reimbursement Submitted Successfully!</h3>
+                            <p>Your claim has been submitted and you'll receive updates via email.</p>
+                            <div class="next-steps">
+                                <h4>Next Steps:</h4>
+                                <ul>
+                                    <li>Check your email for confirmation</li>
+                                    <li>Track progress in your dashboard</li>
+                                    <li>Expect processing within 1-2 business days</li>
+                                </ul>
+                            </div>
+                            <div class="modal-actions">
+                                <button onclick="hideSuccess()">View Dashboard</button>
+                                <button class="secondary" onclick="submitAnother()">Submit Another</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Metrics Comparison -->
+        <div class="metrics-comparison">
+            <div class="metric-card">
+                <h3>Completion Rate</h3>
+                <div class="metric-values">
+                    <div class="metric-value v1">
+                        <span class="version">V1</span>
+                        <span class="value bad">12%</span>
+                    </div>
+                    <div class="metric-value v2">
+                        <span class="version">V2</span>
+                        <span class="value okay">45%</span>
+                    </div>
+                    <div class="metric-value v3">
+                        <span class="version">V3</span>
+                        <span class="value good">78%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Average Time</h3>
+                <div class="metric-values">
+                    <div class="metric-value v1">
+                        <span class="version">V1</span>
+                        <span class="value bad">15 min</span>
+                    </div>
+                    <div class="metric-value v2">
+                        <span class="version">V2</span>
+                        <span class="value okay">8 min</span>
+                    </div>
+                    <div class="metric-value v3">
+                        <span class="version">V3</span>
+                        <span class="value good">5 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>User Satisfaction</h3>
+                <div class="metric-values">
+                    <div class="metric-value v1">
+                        <span class="version">V1</span>
+                        <span class="value bad">2.8/5</span>
+                    </div>
+                    <div class="metric-value v2">
+                        <span class="version">V2</span>
+                        <span class="value okay">3.5/5</span>
+                    </div>
+                    <div class="metric-value v3">
+                        <span class="version">V3</span>
+                        <span class="value good">4.3/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { MdSearch, MdBarChart, MdGroups, MdSettings, MdAssessment, MdPhoneAndroid } from 'react-icons/md';
 
 export function ResearchDiscoverySection() {
   return (
@@ -10,7 +11,10 @@ export function ResearchDiscoverySection() {
     >
       <div className="mb-20">
         <div className="bg-gray-50 border-l-4 border-gray-400 p-8 rounded-xl mb-8">
-          <h4 className="font-bold text-gray-800 mb-3 text-lg">🔍 Research Strategy</h4>
+          <h4 className="font-bold text-gray-800 mb-3 text-lg flex items-center gap-2">
+            <MdSearch className="text-blue-500" size={24} />
+            Research Strategy
+          </h4>
           <p className="text-gray-800 leading-relaxed">
             I needed to understand both user behavior and system constraints without being able to conduct
             traditional usability testing due to <strong>healthcare privacy restrictions</strong>. This required
@@ -25,7 +29,10 @@ export function ResearchDiscoverySection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
-            <h4 className="font-bold text-gray-900 mb-4 text-lg">📊 Data Analysis</h4>
+            <h4 className="font-bold text-gray-900 mb-4 text-lg flex items-center gap-2">
+              <MdBarChart className="text-green-500" size={20} />
+              Data Analysis
+            </h4>
             <ul className="text-base text-gray-800 space-y-2">
               <li>• 6 months of analytics data identifying 12 drop-off points</li>
               <li>• 800+ customer service transcripts categorized by issue type</li>
@@ -35,7 +42,10 @@ export function ResearchDiscoverySection() {
           </div>
 
           <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
-            <h4 className="font-bold text-gray-900 mb-4 text-lg">👥 User Research</h4>
+            <h4 className="font-bold text-gray-900 mb-4 text-lg flex items-center gap-2">
+              <MdGroups className="text-blue-500" size={20} />
+              User Research
+            </h4>
             <ul className="text-base text-gray-800 space-y-2">
               <li>• 12 internal stakeholder interviews to understand user workflows and pain points</li>
               <li>• Process mapping sessions with customer service representatives</li>
@@ -58,7 +68,10 @@ export function ResearchDiscoverySection() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6">
                 <h5 className="font-bold text-red-900 mb-4 flex items-center gap-2">
-                  <span className="text-2xl">⚙️</span> System Logic
+                  <span className="flex items-center gap-2">
+                    <MdSettings className="text-orange-500" size={24} />
+                    System Logic
+                  </span>
                 </h5>
                 <div className="space-y-3">
                   <div>
@@ -103,7 +116,9 @@ export function ResearchDiscoverySection() {
           <h4 className="font-bold text-gray-900 mb-6 text-xl">Four Primary User Types Emerged</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-3xl mb-3">📱</div>
+              <div className="flex justify-center mb-3">
+                <MdPhoneAndroid className="text-blue-500" size={48} />
+              </div>
               <h5 className="font-bold text-gray-900 mb-2">Digital Natives</h5>
               <div className="text-2xl font-bold text-indigo-600 mb-3">32%</div>
               <p className="text-gray-600 text-base mb-3">Expected instant mobile experience</p>
@@ -136,7 +151,9 @@ export function ResearchDiscoverySection() {
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-3xl mb-3">📊</div>
+              <div className="flex justify-center mb-3">
+                <MdAssessment className="text-blue-500" size={48} />
+              </div>
               <h5 className="font-bold text-gray-900 mb-2">Bulk Processors</h5>
               <div className="text-2xl font-bold text-indigo-600 mb-3">9%</div>
               <p className="text-gray-600 text-base mb-3">Business owners with multiple claims</p>
@@ -155,7 +172,9 @@ export function ResearchDiscoverySection() {
           {/* Stats Overview */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="text-center p-4 bg-blue-50 rounded-lg">
-              <div className="text-3xl mb-2">📱</div>
+              <div className="flex justify-center mb-2">
+                <MdPhoneAndroid className="text-blue-500" size={48} />
+              </div>
               <div className="text-2xl font-bold text-blue-600">78%</div>
               <p className="text-base text-gray-600">Started on Mobile</p>
             </div>
@@ -177,7 +196,7 @@ export function ResearchDiscoverySection() {
             <div className="flex items-center justify-center space-x-4 flex-wrap">
               <div className="text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-2">
-                  <span className="text-2xl">📱</span>
+                  <MdPhoneAndroid className="text-blue-500" size={24} />
                 </div>
                 <p className="text-xs text-gray-600">Mobile Start</p>
               </div>
@@ -201,7 +220,10 @@ export function ResearchDiscoverySection() {
           {/* Context Insights */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-blue-50 p-4 rounded-lg">
-              <h6 className="font-semibold mb-2 text-blue-900">📱 Mobile Context</h6>
+              <h6 className="font-semibold mb-2 text-blue-900 flex items-center gap-1">
+                <MdPhoneAndroid className="text-blue-500" size={16} />
+                Mobile Context
+              </h6>
               <ul className="text-base space-y-1 text-gray-700">
                 <li>• Quick receipt capture on-the-go</li>
                 <li>• Expected instant processing</li>

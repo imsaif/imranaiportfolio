@@ -11,10 +11,8 @@ import { MdHealthAndSafety, MdManageSearch, MdDesignServices, MdIntegrationInstr
 import {
   startUHGVapiCall,
   stopUHGVapiCall,
-  setupUHGVapiEventHandlers,
   cleanupUHGVapi,
-  sendFunctionResult,
-  isUHGCallActive
+  sendFunctionResult
 } from '@/services/uhgVapiService';
 import * as scrollHandlers from '@/utils/vapiScrollHandlers';
 import { ProjectOverviewSection } from './sections/ProjectOverviewSection';

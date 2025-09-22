@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { MdWarning, MdGroups, MdEngineering, MdPolicy } from 'react-icons/md';
 
 export function ProjectOverviewSection() {
   return (
@@ -44,7 +45,8 @@ export function ProjectOverviewSection() {
       <div className="mb-12">
         <div className="bg-gray-50 border-l-4 border-gray-400 p-8 rounded-xl">
           <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-            🚨 The Challenge
+            <MdWarning className="text-red-500" size={24} />
+            The Challenge
           </h4>
           <p className="text-gray-800 text-lg leading-relaxed mb-4">
             The HSA platform processes <strong>$450M annually</strong>, but the reimbursement feature was failing with a <strong className="text-slate-700">98.9% abandonment rate</strong>—only 1 in 90 users completed submissions.
@@ -79,15 +81,24 @@ export function ProjectOverviewSection() {
         <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-base">
             <div>
-              <h4 className="font-semibold text-gray-800 mb-3">👥 Multi-User Challenge</h4>
+              <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                <MdGroups className="text-blue-500" size={20} />
+                Multi-User Challenge
+              </h4>
               <p className="text-gray-600">Four distinct user types with conflicting needs—from digital natives to assisted users</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 mb-3">⚙️ Technical Constraints</h4>
+              <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                <MdEngineering className="text-orange-500" size={20} />
+                Technical Constraints
+              </h4>
               <p className="text-gray-600">Legacy systems, OCR processing, and mobile network reliability issues</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 mb-3">📋 Regulatory Requirements</h4>
+              <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                <MdPolicy className="text-green-500" size={20} />
+                Regulatory Requirements
+              </h4>
               <p className="text-gray-600">IRS compliance, HIPAA restrictions, and mandatory audit trails</p>
             </div>
           </div>
