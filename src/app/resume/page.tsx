@@ -147,57 +147,62 @@ const StarIcon = () => (
 
 const ResumePage = () => {
   const resumeData = {
-    about: `As a product designer at NewGlobe, I apply my skills and knowledge in user experience (UX) and artificial intelligence (AI) to create products that improve the learning outcomes of millions of students around the world. I have over eight years of experience in UX design, working on analytical and data visualization products for the healthcare industry at Optum before joining NewGlobe in 2023.
+    about: `As a senior product designer and team leader at NewGlobe, I lead cross-functional teams in designing AI-powered educational experiences that transform learning outcomes for millions of students worldwide. With over eight years of experience, I've evolved from individual contributor to design leader, mentoring teams and establishing design systems that scale across organizations.
 
-My passion for design stems from my curiosity about how people think and interact with technology. I have a master's degree in psychology and a postgraduate program in visual and user experience design from the Indian Institute of Technology. I follow a user-centric and iterative process that involves understanding the problem, researching existing solutions, brainstorming ideas, prototyping, testing, and improving. I collaborate with developers, product managers, and educators to deliver solutions that are simple, intuitive, and impactful.`,
+My leadership approach combines strategic design thinking with hands-on mentorship, fostering collaborative environments where teams can innovate at the intersection of AI and human-centered design. I've led design initiatives across healthcare analytics at Optum and now spearhead AI experience design at NewGlobe, building products that are not just functional, but transformative.
+
+I bring a unique blend of psychology expertise (master's degree) and advanced design education from IIT, enabling me to guide teams in creating experiences that truly understand human behavior. My leadership philosophy centers on empowering designers to think strategically, collaborate effectively, and deliver solutions that create meaningful impact at scale.`,
     experience: [
       {
-        title: 'Product Designer',
+        title: 'Senior Product Designer',
         company: 'NewGlobe',
-        duration: 'Feb 2023 - Present · 2 yrs 3 mos',
+        duration: 'Feb 2023 - Present · 2 yrs 10 mos',
         location: 'Hyderabad, Telangana, India · On-site',
-        description: 'Designing products that transform educational outcomes.',
-        skills: ['Generative AI', 'Product Design', 'UX Research'], // Added UX Research based on Optum role
+        description: 'Leading cross-functional design teams to create AI-powered educational products that transform learning outcomes.',
+        skills: ['Team Leadership', 'Design Mentorship', 'Generative AI', 'AI Strategy', 'Product Design', 'UX Research', 'Cross-functional Leadership', 'Strategic Planning'],
       },
       {
         title: 'UX Designer',
         company: 'Optum',
         duration: 'Jun 2017 - Jan 2023 · 5 yrs 8 mos',
         location: 'Chennai, Tamil Nadu, India',
-        description: 'Building products that improve healthcare.',
+        description: 'Led design initiatives for healthcare analytics products, mentoring junior designers and collaborating across teams.',
         skills: [
+          'Team Collaboration Leadership',
+          'Design Mentorship',
+          'Stakeholder Management',
+          'Design System Governance',
           'User Interface Design',
           'UX Research',
           'Data Visualization',
           'Analytical Skills',
           'Prototyping',
           'User Testing',
-          'Collaboration',
-        ], // Expanded based on context
+        ],
       },
       {
         title: 'UX Designer',
         company: 'Freelance',
         duration: 'Jan 2015 - May 2017 · 2 yrs 5 mos',
         location: 'New Delhi, Istanbul, Amsterdam',
-        description: 'Worked remotely and on-site with different startups co-ordinating with dev and product teams.',
-        skills: ['Product Management', 'Project Management', 'UI Design', 'UX Design', 'Client Coordination'], // Expanded based on context
+        description: 'Led design projects for multiple startups, managing remote teams and coordinating with international clients.',
+        skills: ['Client Leadership', 'Project Leadership', 'Remote Team Management', 'Product Management', 'Project Management', 'UI Design', 'UX Design', 'Client Coordination'],
       },
       {
         title: 'Team Lead - Usability Analyst - Contract',
         company: 'Google',
         duration: 'Sep 2013 - Dec 2014 · 1 yr 4 mos',
         location: 'Hyderabad Area, India',
-        description: 'Usability Reviews for Google News and Google Maps. Managed a team of 15 full-time employees.',
-        skills: ['Usability Testing', 'Team Leadership', 'Google News', 'Google Maps', 'Reporting'], // Expanded based on context
+        description: 'Led a team of 15 full-time employees conducting usability reviews for Google News and Google Maps, driving strategic improvements.',
+        skills: ['Team Management', 'Performance Management', 'Strategic Planning', 'Process Optimization', 'Usability Testing', 'Team Leadership', 'Google News', 'Google Maps', 'Reporting'],
       },
       {
         title: 'Usability Analyst - Contract',
         company: 'Google',
         duration: 'Jun 2011 - Aug 2013 · 2 yrs 3 mos',
         location: 'Hyderabad',
-        description: 'Usability reviews for Google News.',
-        skills: ['Usability Testing', 'Google News', 'Analysis'], // Expanded based on context
+        description: 'Conducted comprehensive usability reviews for Google News, collaborating with product teams to enhance user experience.',
+        skills: ['Usability Testing', 'Product Collaboration', 'Quality Assurance', 'Google News', 'Analysis'],
       },
     ],
     education: [
@@ -252,11 +257,17 @@ My passion for design stems from my curiosity about how people think and interac
       },
     ],
     skills: [
+      'Team Leadership',
+      'Design Mentorship',
+      'Strategic Planning',
+      'Cross-functional Leadership',
+      'Stakeholder Management',
       'User Experience (UX)',
       'User Interface (UI) Design',
       'Product Design',
       'UX Research',
       'Generative AI',
+      'AI Strategy',
       'AI Prompt Engineering',
       'Responsible AI',
       'AI Ethics',
@@ -272,7 +283,8 @@ My passion for design stems from my curiosity about how people think and interac
       'Product Management',
       'Product Development',
       'Project Management',
-      'Team Leadership',
+      'Performance Management',
+      'Remote Team Management',
       'Collaboration',
     ],
     publications: [

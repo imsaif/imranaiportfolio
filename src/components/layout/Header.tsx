@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +27,7 @@ const Header = () => {
 
   return (
     <header
-      className={`w-full backdrop-blur-md transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 w-full backdrop-blur-md transition-all duration-300 z-50 ${
         scrolled ? 'py-4 bg-background/95 border-b border-border shadow-sm' : 'py-6 bg-background/80'
       }`}
     >
@@ -64,7 +66,7 @@ const Header = () => {
           <ul className="flex gap-8 items-center">
             <li>
               <Link
-                href="#work"
+                href={pathname === '/' ? '#work' : '/#work'}
                 className="link-effect text-foreground hover:text-accent transition-colors relative py-2"
               >
                 Work
@@ -91,7 +93,7 @@ const Header = () => {
             <ul className="flex flex-col gap-4">
               <li>
                 <Link
-                  href="#work"
+                  href={pathname === '/' ? '#work' : '/#work'}
                   className="block py-3 text-foreground hover:text-accent transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
