@@ -1,9 +1,9 @@
 import React from 'react';
-import { MdMenuBook, MdStar, MdTrendingUp, MdWork, MdPsychology } from 'react-icons/md';
+import { MdMenuBook, MdStar, MdTrendingUp, MdWork, MdPsychology, MdGroup } from 'react-icons/md';
 
 interface CredibilityCardContent {
   id: string;
-  type: 'testimonial' | 'books' | 'achievement' | 'companies' | 'impact' | 'work' | 'skills';
+  type: 'testimonial' | 'books' | 'achievement' | 'companies' | 'impact' | 'work' | 'skills' | 'leadership';
   content: any;
 }
 
@@ -215,6 +215,31 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
                   <li key={index} className="flex items-start gap-2">
                     <span className="text-accent mt-1">•</span>
                     <span className="text-gray-700 text-base font-medium leading-relaxed">{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        );
+      }
+
+      case 'leadership': {
+        return (
+          <div className={baseCardClass}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-20 h-20 bg-white rounded-xl border border-gray-100 flex items-center justify-center flex-shrink-0 p-4">
+                <MdGroup className="w-8 h-8 text-gray-600" />
+              </div>
+              <div className="flex-1 flex flex-col justify-center">
+                <h4 className="font-semibold text-gray-900 text-lg">{card.content.title}</h4>
+              </div>
+            </div>
+            <div className="border-t border-gray-100 pt-6 mt-6">
+              <ul className="space-y-3">
+                {card.content.leadership.map((item: string, index: number) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-accent mt-1">•</span>
+                    <span className="text-gray-700 text-base font-medium leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>

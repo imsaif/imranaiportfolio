@@ -2,19 +2,27 @@
 
 import { motion } from 'framer-motion';
 import StickyCredibilityCard from '../ui/StickyCredibilityCard';
+import { MdGroup, MdSchool, MdPeople, MdSpeed } from 'react-icons/md';
 
 interface CredibilityCard {
   id: string;
-  type: 'testimonial' | 'books' | 'achievement' | 'companies' | 'impact' | 'work' | 'skills';
+  type: 'testimonial' | 'books' | 'achievement' | 'companies' | 'impact' | 'work' | 'skills' | 'leadership';
   content: any;
 }
 
 const CredibilityIndicators = () => {
 
   const metrics = [
-    { number: '8+', label: 'Years of Experience' },
+    { number: '10+', label: 'Years of Experience' },
     { number: '15+', label: 'Products Shipped' },
     { number: '3', label: 'Industries Transformed' }
+  ];
+
+  const leadershipMetrics = [
+    { number: '5+', label: 'Teams Led', icon: MdGroup },
+    { number: '8', label: 'Designers Mentored', icon: MdSchool },
+    { number: '20+', label: 'Stakeholders Managed', icon: MdPeople },
+    { number: '30%', label: 'Faster Delivery', icon: MdSpeed }
   ];
 
   const credibilityCards: CredibilityCard[] = [
@@ -23,7 +31,7 @@ const CredibilityIndicators = () => {
       type: 'testimonial',
       content: {
         name: 'Sarah Chen',
-        title: 'Product Lead',
+        title: 'Senior Product Manager',
         company: 'Optum',
         rating: 5,
         quote: 'Transformed our patient experience, reducing abandonment from 98.9% to 3%',
@@ -35,7 +43,7 @@ const CredibilityIndicators = () => {
       type: 'testimonial',
       content: {
         name: 'Michael Torres',
-        title: 'Engineering Lead',
+        title: 'Engineering Manager',
         company: 'Google',
         rating: 5,
         quote: 'Outstanding leadership and vision. Imran consistently drives teams toward excellence while fostering innovation and collaboration across all disciplines.',
@@ -67,9 +75,22 @@ const CredibilityIndicators = () => {
       content: {
         title: 'Key Achievements',
         achievements: [
-          'Led 10+ cross-functional teams',
-          '$2M+ measurable business impact',
-          'Pioneered AI-first methodologies'
+          'Led 5+ cross-functional teams of 8-12 people',
+          '$2M+ measurable business impact through design',
+          'Scaled design team 3x with 95% retention rate'
+        ]
+      }
+    },
+    {
+      id: 'leadership',
+      type: 'leadership',
+      content: {
+        title: 'Leadership & Growth',
+        leadership: [
+          'Built design team from 3 to 8 designers',
+          'Mentored 8 designers, 3 promoted to senior',
+          'Coordinated 5+ cross-functional teams',
+          'Presented quarterly to senior leadership'
         ]
       }
     },
@@ -131,22 +152,48 @@ const CredibilityIndicators = () => {
                 Proven Impact
               </h2>
               <p className="text-lg text-muted leading-relaxed">
-                From reducing abandonment rates to pioneering AI experiences
+                Building high-performing teams while delivering measurable impact
               </p>
             </motion.div>
 
-            {/* Metrics Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4">
-              {metrics.map((metric, index) => (
-                <div key={index} className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                    {metric.number}
+            {/* Unified Metrics Grid */}
+            <div className="space-y-6">
+              {/* Primary Metrics */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4">
+                {metrics.map((metric, index) => (
+                  <div key={index} className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg text-center">
+                    <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+                      {metric.number}
+                    </div>
+                    <div className="text-base text-muted font-medium">
+                      {metric.label}
+                    </div>
                   </div>
-                  <div className="text-base text-muted font-medium">
-                    {metric.label}
-                  </div>
+                ))}
+              </div>
+
+              {/* Leadership Metrics with Header */}
+              <div>
+                <h3 className="text-lg font-semibold text-foreground mb-3 px-1">Leadership Impact</h3>
+                <div className="grid grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+                  {leadershipMetrics.map((metric, index) => {
+                    const IconComponent = metric.icon;
+                    return (
+                      <div key={index} className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg text-center">
+                        <div className="flex items-center justify-center mb-2">
+                          <IconComponent className="w-5 h-5 text-gray-600 mr-2" />
+                        </div>
+                        <div className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                          {metric.number}
+                        </div>
+                        <div className="text-sm text-muted font-medium">
+                          {metric.label}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
 
