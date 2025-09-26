@@ -395,12 +395,12 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
     <>
       {/* Header section */}
       <div className="relative overflow-hidden">
-        <header className="text-center pt-20 pb-12 md:pt-32 md:pb-20 relative overflow-visible">
+        <header className="text-left pt-12 pb-12 md:pt-20 md:pb-20 relative overflow-visible container mx-auto px-4 md:px-6 lg:px-8">
           <motion.h1
             className="
               text-4xl sm:text-5xl md:text-6xl font-bold
               text-transparent bg-clip-text
-              animate-gradient-text relative z-10 container mx-auto px-4 md:px-6 lg:px-8
+              animate-gradient-text relative z-10
             "
             style={{
               backgroundImage: 'linear-gradient(90deg, var(--accent), var(--tertiary), var(--accent))',
@@ -413,22 +413,44 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
             Imran Mohammed
           </motion.h1>
 
-          {/* Featured Testimonial - Added below name */}
+          {/* Bio Section - Added below name */}
           <motion.div
-            className="max-w-2xl mx-auto mt-6 mb-2 px-4 py-4 bg-transparent"
+            className="max-w-xl mt-6 mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="text-left space-y-3">
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                Driven by a fascination with how systems work, I began my journey in frontend engineering before discovering my true calling: crafting experiences that resonate with users. This led me to transition into design, where I've since partnered with diverse teams across multiple sectors on digital platforms and mobile experiences. Each collaboration has strengthened my ability to merge strategic thinking with creative execution, always focusing on solutions that are both seamless and meaningful.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Featured Testimonial - Added below bio */}
+          <motion.div
+            className="max-w-xl mt-6 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="flex flex-col items-center text-center">
-              <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 italic mb-3 relative">
-                "Imran is an incredibly talented and versatile experience designer — someone who consistently delivers
-                both strategic value and thoughtful, user-first design."
-              </p>
-              <div className="mt-2 flex items-center">
-                <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">
-                  — Kasia Rzezniczak, Senior Director of Product Management
-                </span>
+            <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200/50 dark:border-gray-700/50 relative">
+              {/* Quote icon - smaller */}
+              <div className="absolute -top-1.5 left-4 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                </svg>
+              </div>
+
+              <div className="text-left pt-2">
+                <p className="text-sm text-gray-600 dark:text-gray-400 italic leading-relaxed mb-3">
+                  "Imran is an incredibly talented and versatile experience designer who consistently delivers both strategic value and thoughtful, user-first design. Beyond his creative vision, he's an exceptional leader who mentors colleagues with empathy and elevates team culture through his insight and initiative."
+                </p>
+
+                <div className="flex items-baseline">
+                  <span className="text-xs font-medium text-gray-700 dark:text-gray-300">— Kasia Rzezniczak</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-500 ml-2">Senior Director of Product Management</span>
+                </div>
               </div>
             </div>
           </motion.div>

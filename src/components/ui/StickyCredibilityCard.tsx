@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MdMenuBook, MdStar, MdTrendingUp, MdWork, MdPsychology, MdGroup } from 'react-icons/md';
+import { useActiveCard } from '../../context/ActiveCardContext';
 
 interface CredibilityCardContent {
   id: string;
@@ -14,6 +15,39 @@ interface StickyCredibilityCardProps {
 }
 
 const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, index }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { setActiveCardId } = useActiveCard();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            // Card is more than 50% visible
+            setActiveCardId(card.id);
+          } else if (!entry.isIntersecting) {
+            // Card is not visible, clear if it was the active card
+            setActiveCardId(null);
+          }
+        });
+      },
+      {
+        threshold: [0, 0.5, 1], // Trigger at different visibility levels
+        rootMargin: '-100px 0px -100px 0px' // Adjust when card is considered "in view"
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, [card.id, setActiveCardId]);
+
   const renderCardContent = () => {
     const baseCardClass = "w-full bg-white rounded-xl border border-gray-100 p-6 shadow-lg";
 
@@ -255,6 +289,7 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
 
   return (
     <div
+      ref={cardRef}
       className="sticky top-24 mb-1"
       style={{
         zIndex: index + 1,

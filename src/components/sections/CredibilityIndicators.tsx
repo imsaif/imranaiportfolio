@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import StickyCredibilityCard from '../ui/StickyCredibilityCard';
+import { ActiveCardProvider } from '../../context/ActiveCardContext';
+import HighlightedMetricsTable from '../ui/HighlightedMetricsTable';
 import { MdGroup, MdSchool, MdPeople, MdSpeed } from 'react-icons/md';
 
 interface CredibilityCard {
@@ -13,17 +15,28 @@ interface CredibilityCard {
 const CredibilityIndicators = () => {
 
   const metrics = [
-    { number: '10+', label: 'Years of Experience' },
-    { number: '15+', label: 'Products Shipped' },
-    { number: '3', label: 'Industries Transformed' }
+    { id: 'experience', number: '10+', label: 'Years of Experience' },
+    { id: 'products', number: '15+', label: 'Products Shipped' },
+    { id: 'industries', number: '3', label: 'Industries Transformed' }
   ];
 
   const leadershipMetrics = [
-    { number: '5+', label: 'Teams Led', icon: MdGroup },
-    { number: '8', label: 'Designers Mentored', icon: MdSchool },
-    { number: '20+', label: 'Stakeholders Managed', icon: MdPeople },
-    { number: '30%', label: 'Faster Delivery', icon: MdSpeed }
+    { id: 'teams', number: '5+', label: 'Teams Led', icon: MdGroup },
+    { id: 'mentored', number: '8', label: 'Designers Mentored', icon: MdSchool },
+    { id: 'stakeholders', number: '20+', label: 'Stakeholders Managed', icon: MdPeople },
+    { id: 'delivery', number: '30%', label: 'Faster Delivery', icon: MdSpeed }
   ];
+
+  // Define which metrics should highlight for which cards
+  const cardMetricMapping = {
+    'impact': ['experience', 'products'], // Impact cards highlight experience and products
+    'leadership': ['teams', 'mentored', 'stakeholders'], // Leadership highlights team metrics
+    'achievement': ['experience', 'products', 'industries'], // Achievements highlight primary metrics
+    'work': ['products', 'industries'], // Work highlights products and industries
+    'skills': ['industries'], // Skills highlights industries
+    'testimonial-1': ['experience'], // Testimonials can highlight experience
+    'testimonial-2': ['teams'] // Second testimonial highlights leadership
+  };
 
   const credibilityCards: CredibilityCard[] = [
     {
@@ -136,83 +149,52 @@ const CredibilityIndicators = () => {
 
 
   return (
-    <section className="pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-20 lg:pb-24 bg-background">
-      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left Side - Sticky Sidebar */}
-          <div className="lg:w-2/5 lg:sticky lg:top-32 lg:h-fit space-y-8">
-            {/* Headline */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <h2 className="section-title text-3xl md:text-4xl font-bold text-foreground mb-6 tracking-tight leading-tight">
-                Proven Impact
-              </h2>
-              <p className="text-lg text-muted leading-relaxed">
-                Building high-performing teams while delivering measurable impact
-              </p>
-            </motion.div>
+    <ActiveCardProvider>
+      <section className="pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-20 lg:pb-24 bg-background">
+        <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
+          <div className="flex flex-col lg:flex-row gap-12 lg:items-start">
+            {/* Left Side - Sticky Sidebar */}
+            <div className="lg:w-2/5 lg:sticky lg:top-32 lg:h-fit space-y-8">
+              {/* Headline */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+              >
+                <h2 className="section-title text-3xl md:text-4xl font-bold text-foreground mb-6 tracking-tight leading-tight">
+                  Proven Impact
+                </h2>
+                <p className="text-lg text-muted leading-relaxed">
+                  Building high-performing teams while delivering measurable impact
+                </p>
+              </motion.div>
 
-            {/* Unified Metrics Grid */}
-            <div className="space-y-6">
-              {/* Primary Metrics */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4">
-                {metrics.map((metric, index) => (
-                  <div key={index} className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg text-center">
-                    <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                      {metric.number}
-                    </div>
-                    <div className="text-base text-muted font-medium">
-                      {metric.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
+              {/* Highlighted Metrics Table */}
+              <HighlightedMetricsTable
+                metrics={metrics}
+                leadershipMetrics={leadershipMetrics}
+                cardMetricMapping={cardMetricMapping}
+              />
+            </div>
 
-              {/* Leadership Metrics with Header */}
-              <div>
-                <h3 className="text-lg font-semibold text-foreground mb-3 px-1">Leadership Impact</h3>
-                <div className="grid grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
-                  {leadershipMetrics.map((metric, index) => {
-                    const IconComponent = metric.icon;
-                    return (
-                      <div key={index} className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg text-center">
-                        <div className="flex items-center justify-center mb-2">
-                          <IconComponent className="w-5 h-5 text-gray-600 mr-2" />
-                        </div>
-                        <div className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                          {metric.number}
-                        </div>
-                        <div className="text-sm text-muted font-medium">
-                          {metric.label}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+            {/* Right Side - Stacking Cards */}
+            <div className="lg:w-3/5">
+              {credibilityCards.map((card, index) => (
+                <StickyCredibilityCard
+                  key={card.id}
+                  card={card}
+                  index={index}
+                  total={credibilityCards.length}
+                />
+              ))}
+              {/* Spacer to give room for last card to stack properly */}
+              <div className="h-24"></div>
             </div>
           </div>
-
-          {/* Right Side - Stacking Cards */}
-          <div className="lg:w-3/5">
-            {credibilityCards.map((card, index) => (
-              <StickyCredibilityCard
-                key={card.id}
-                card={card}
-                index={index}
-                total={credibilityCards.length}
-              />
-            ))}
-            {/* Spacer to give room for last card to stack properly */}
-            <div className="h-24"></div>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </ActiveCardProvider>
   );
 };
 
