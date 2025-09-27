@@ -37,7 +37,6 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="mb-20"
     >
       <div className="space-y-10">
         {experience.map((job, index) => (

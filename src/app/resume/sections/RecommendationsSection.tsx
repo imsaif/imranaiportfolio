@@ -19,7 +19,6 @@ export function RecommendationsSection({ recommendations }: RecommendationsSecti
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="mb-20"
     >
       <div className="space-y-8">
         {recommendations.map((rec, index) => (

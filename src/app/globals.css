@@ -331,6 +331,112 @@ p {
   border-color: var(--accent);
 }
 
+/* Hero Circle Animation Styles */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate-orbit {
+  0% {
+    transform: rotate(0deg) translateX(200px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(200px) rotate(-360deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-circle-animation {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-icon-wrapper {
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-icon-wrapper:hover {
+  z-index: 10;
+}
+
+/* Smooth scroll behavior for tech rotation */
+.tech-orbit-container {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Gradient text animation */
+.animate-gradient-text {
+  animation: gradient-shift 5s ease infinite;
+  background-size: 200% auto;
+}
+
+/* Tech icon floating animation */
+.tech-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Orbit path for icons */
+.orbit-path {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .hero-circle-animation {
+    height: 350px !important;
+  }
+
+  .tech-icon-wrapper {
+    transform: scale(1);
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .tech-float,
+  .animate-gradient-text {
+    animation: none;
+  }
+
+  .tech-orbit-container {
+    transition: none;
+  }
+}
+
 /* Card styles */
 .card {
   background: var(--card-bg);

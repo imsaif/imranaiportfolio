@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
 import { MdPerson, MdWork, MdSchool, MdRecommend, MdStars } from 'react-icons/md';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
@@ -310,76 +311,138 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-gray-50 min-h-screen">
       <ProgressBar progress={scrollProgress} />
 
-      {/* Header section */}
-      <header className="text-left pt-12 pb-12 md:pt-20 md:pb-20 relative overflow-visible container mx-auto px-4 md:px-6 lg:px-8">
-        <motion.h1
-          className="
-            text-4xl sm:text-5xl md:text-6xl font-bold
-            text-transparent bg-clip-text
-            animate-gradient-text relative z-10
-          "
-          style={{
-            backgroundImage: 'linear-gradient(90deg, var(--accent), var(--tertiary), var(--accent))',
-            backgroundSize: '200% auto',
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Imran Mohammed
-        </motion.h1>
-
-        {/* Bio Section */}
-        <motion.div
-          className="max-w-xl mt-6 mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <div className="text-left space-y-3">
-            <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-              Driven by a fascination with how systems work, I began my journey in frontend engineering before discovering my true calling: crafting experiences that resonate with users. This led me to transition into design, where I've since partnered with diverse teams across multiple sectors on digital platforms and mobile experiences. Each collaboration has strengthened my ability to merge strategic thinking with creative execution, always focusing on solutions that are both seamless and meaningful.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Featured Testimonial */}
-        <motion.div
-          className="max-w-xl mt-6 mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 border border-gray-200/50 dark:border-gray-700/50 relative">
-            {/* Quote icon */}
-            <div className="absolute -top-1.5 left-4 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-              </svg>
-            </div>
-
-            <div className="text-left pt-2">
-              <p className="text-sm text-gray-600 dark:text-gray-400 italic leading-relaxed mb-3">
-                "Imran is an incredibly talented and versatile experience designer who consistently delivers both strategic value and thoughtful, user-first design. Beyond his creative vision, he's an exceptional leader who mentors colleagues with empathy and elevates team culture through his insight and initiative."
-              </p>
-
-              <div className="flex items-baseline">
-                <span className="text-xs font-medium text-gray-700 dark:text-gray-300">— Kasia Rzezniczak</span>
-                <span className="text-xs text-gray-500 dark:text-gray-500 ml-2">Senior Director of Product Management</span>
+      {/* Minimal Hero Section */}
+      <header className="relative overflow-hidden bg-white">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-20">
+          <motion.div
+            className="max-w-4xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {/* Visual Element - Overlapping Circles */}
+            <div className="flex mb-8">
+              <div className="relative flex items-center">
+                <motion.div
+                  className="w-16 h-16 bg-blue-600 rounded-full relative z-50 overflow-hidden flex items-center justify-center"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                >
+                  <div className="relative w-12 h-12">
+                    <Image
+                      src="/images/profile/avatar.jpg"
+                      alt="Imran Mohammed"
+                      fill
+                      className="object-cover rounded-full"
+                      style={{
+                        filter: 'grayscale(1) brightness(1.2) contrast(1.5) invert(1)',
+                        mixBlendMode: 'multiply',
+                        opacity: 0.8
+                      }}
+                    />
+                  </div>
+                </motion.div>
+                <motion.div
+                  className="w-16 h-16 bg-blue-500 rounded-full -ml-4 relative z-40"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+                ></motion.div>
+                <motion.div
+                  className="w-16 h-16 bg-blue-400 rounded-full -ml-4 relative z-30"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+                ></motion.div>
+                <motion.div
+                  className="w-16 h-16 bg-blue-300 rounded-full -ml-4 relative z-20"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+                ></motion.div>
+                <motion.div
+                  className="w-16 h-16 bg-blue-200 rounded-full -ml-4 relative z-10"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+                ></motion.div>
+                <motion.div
+                  className="w-16 h-16 bg-blue-100 rounded-full -ml-4 relative z-0"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
+                ></motion.div>
               </div>
             </div>
-          </div>
-        </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              The digital home for<br />
+              Imran's notes.
+            </motion.h1>
+
+            {/* Description */}
+            <motion.div
+              className="mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl leading-relaxed">
+                Driven by a fascination with how systems work, I began my journey in frontend engineering before discovering my true calling: crafting experiences that resonate with users. This led me to transition into design, where I've since partnered with diverse teams across multiple sectors on digital platforms and mobile experiences. Each collaboration has strengthened my ability to merge strategic thinking with creative execution, always focusing on solutions that are both seamless and meaningful.
+              </p>
+            </motion.div>
+
+            {/* Simple Links */}
+            <motion.div
+              className="flex space-x-8 text-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+            >
+              <a
+                href="https://www.linkedin.com/in/imsaif/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/imsaif"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://medium.com/@imsaif"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
+              >
+                Medium
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
       </header>
 
-      <main className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main content sections with sticky navigation */}
-        <section className="relative flex flex-row items-start gap-0 mb-20 min-h-[500px]">
+        <section className="relative flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
           {/* Sticky Title */}
-          <div className="sticky left-0 top-24 h-fit min-w-[300px] w-[300px] max-w-md flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
+          <div className="lg:sticky lg:top-24 h-fit w-full lg:min-w-[280px] lg:w-[280px] flex flex-col justify-start items-start lg:pr-6 py-4 lg:py-8">
             <AnimatePresence mode="wait">
               <CaseStudyHeader
                 level="h2"
@@ -422,36 +485,28 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
           </div>
 
           {/* Content sections */}
-          <div className="flex-1 pl-0 pr-4">
-            <div className="flex flex-col gap-8 max-w-5xl">
-              <div ref={aboutRef} id="about">
+          <div className="flex-1 w-full lg:pl-0">
+            <div className="flex flex-col gap-8 max-w-none">
+              <div ref={aboutRef} id="about" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <AboutSection about={resumeData.about} />
               </div>
 
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
-
-              <div ref={experienceRef} id="experience">
+              <div ref={experienceRef} id="experience" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <ExperienceSection experience={resumeData.experience} />
               </div>
 
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
-
-              <div ref={educationRef} id="education">
+              <div ref={educationRef} id="education" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <EducationSkillsSection
                   education={resumeData.education}
                   skills={resumeData.skills}
                 />
               </div>
 
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
-
-              <div ref={recommendationsRef} id="recommendations">
+              <div ref={recommendationsRef} id="recommendations" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <RecommendationsSection recommendations={resumeData.recommendations} />
               </div>
 
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
-
-              <div ref={awardsRef} id="awards">
+              <div ref={awardsRef} id="awards" className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <PublicationsAwardsSection
                   publications={resumeData.publications}
                   awards={resumeData.honorsAwards}
@@ -463,7 +518,7 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
         </section>
 
         {/* Download Resume Button */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 mt-16">
           <a
             href="https://drive.google.com/file/d/1dn0zJB2FjcgdidSu9Yd-k4vyPUVNX00T/view"
             target="_blank"

@@ -4,7 +4,16 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 // Simple TextType component based on your reference
-const TextType = ({ text, typingSpeed = 75, pauseDuration = 1500, showCursor = true, cursorCharacter = "|", className = "" }) => {
+interface TextTypeProps {
+  text: string | string[];
+  typingSpeed?: number;
+  pauseDuration?: number;
+  showCursor?: boolean;
+  cursorCharacter?: string;
+  className?: string;
+}
+
+const TextType = ({ text, typingSpeed = 75, pauseDuration = 1500, showCursor = true, cursorCharacter = "|", className = "" }: TextTypeProps) => {
   const [displayText, setDisplayText] = useState('');
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
@@ -15,8 +24,10 @@ const TextType = ({ text, typingSpeed = 75, pauseDuration = 1500, showCursor = t
 
   // Typewriter effect
   useEffect(() => {
-    let timeout;
+    let timeout: NodeJS.Timeout;
     const currentText = textArray[currentTextIndex];
+
+    if (!currentText) return;
 
     if (isDeleting) {
       if (displayText.length === 0) {
