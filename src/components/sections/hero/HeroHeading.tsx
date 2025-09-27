@@ -1,7 +1,71 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+
+// Simple TextType component based on your reference
+const TextType = ({ text, typingSpeed = 75, pauseDuration = 1500, showCursor = true, cursorCharacter = "|", className = "" }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [showCursorState, setShowCursorState] = useState(true);
+
+  const textArray = Array.isArray(text) ? text : [text];
+
+  // Typewriter effect
+  useEffect(() => {
+    let timeout;
+    const currentText = textArray[currentTextIndex];
+
+    if (isDeleting) {
+      if (displayText.length === 0) {
+        setIsDeleting(false);
+        setCurrentTextIndex(prev => (prev + 1) % textArray.length);
+        setCurrentCharIndex(0);
+      } else {
+        timeout = setTimeout(() => {
+          setDisplayText(prev => prev.slice(0, -1));
+        }, typingSpeed / 2);
+      }
+    } else {
+      if (currentCharIndex < currentText.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(prev => prev + currentText[currentCharIndex]);
+          setCurrentCharIndex(prev => prev + 1);
+        }, typingSpeed);
+      } else {
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, pauseDuration);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, currentCharIndex, isDeleting, currentTextIndex, textArray, typingSpeed, pauseDuration]);
+
+  // Cursor blinking
+  useEffect(() => {
+    if (!showCursor) return;
+
+    const cursorInterval = setInterval(() => {
+      setShowCursorState(prev => !prev);
+    }, 500);
+
+    return () => clearInterval(cursorInterval);
+  }, [showCursor]);
+
+  return (
+    <span className={className}>
+      {displayText}
+      {showCursor && (
+        <span style={{ opacity: showCursorState ? 1 : 0 }}>
+          {cursorCharacter}
+        </span>
+      )}
+    </span>
+  );
+};
 
 interface HeroHeadingProps {
   isVisible: boolean;
@@ -10,20 +74,10 @@ interface HeroHeadingProps {
 
 const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
   const [isMounted, setIsMounted] = useState(false);
-  const morphWords = ['AI-powered', 'human-first'];
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Force client-side rendering
   useEffect(() => {
     setIsMounted(true);
-  }, []);
-
-  // Timed automatic cycling every 5.5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % morphWords.length);
-    }, 5500);
-    return () => clearInterval(interval);
   }, []);
 
   // If not mounted yet (server-side), render a placeholder
@@ -38,7 +92,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
         className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center"
       >
         <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 leading-tight tracking-tight">
-          <span className="inline">Designing AI-powered experiences</span>
+          <span className="inline">Turning complexity into simplicity</span>
         </h1>
       </motion.div>
     );
@@ -60,33 +114,30 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          Designing{' '}
-          <span className="inline-block align-baseline relative" style={{ minWidth: 'auto' }}>
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={morphWords[currentIndex]}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.6, ease: 'easeInOut' }}
-                className="gradient-text animate-gradient font-semibold"
-                style={{
-                  background: 'linear-gradient(135deg, var(--accent), var(--tertiary))',
-                  backgroundSize: '300% 300%',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  color: 'transparent',
-                  display: 'inline-block',
-                  position: 'relative',
-                  paddingBottom: '5px',
-                }}
-                aria-live="polite"
-              >
-                {morphWords[currentIndex]}
-              </motion.span>
-            </AnimatePresence>
-          </span>{' '}
-          experiences
+          Turning{' '}
+          <TextType
+            text={["complexity", "confusion", "chaos", "clutter"]}
+            typingSpeed={100}
+            pauseDuration={2000}
+            showCursor={true}
+            cursorCharacter="|"
+            className="font-semibold"
+          /> into<br /><span
+            className="font-semibold"
+            style={{
+              background: 'linear-gradient(90deg, #3B82F6 0%, #EC4899 100%)',
+              backgroundSize: '100% 100%',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+              display: 'inline-block',
+              paddingBottom: '5px',
+              marginBottom: '-5px',
+              marginTop: '1.5rem',
+            }}
+          >
+            simplicity
+          </span>
         </h1>
 
         <p
