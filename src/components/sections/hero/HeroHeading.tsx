@@ -103,7 +103,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
         className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center"
       >
         <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 leading-tight tracking-tight">
-          <span className="inline">Turning complexity into simplicity</span>
+          <span className="inline">Transforming complexity into Clarity</span>
         </h1>
       </motion.div>
     );
@@ -125,7 +125,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          Turning{' '}
+          Transforming{' '}
           <TextType
             text={["complexity", "confusion", "chaos", "clutter"]}
             typingSpeed={100}
@@ -133,7 +133,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
             showCursor={true}
             cursorCharacter="|"
             className="font-semibold"
-          /> into<br /><span
+          />{' '}into<br /><span
             className="font-semibold"
             style={{
               background: 'linear-gradient(90deg, #3B82F6 0%, #EC4899 100%)',
@@ -147,7 +147,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
               marginTop: '1.5rem',
             }}
           >
-            simplicity
+            Clarity
           </span>
         </h1>
 

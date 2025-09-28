@@ -327,24 +327,17 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
             <div className="flex mb-8">
               <div className="relative flex items-center">
                 <motion.div
-                  className="w-16 h-16 bg-blue-600 rounded-full relative z-50 overflow-hidden flex items-center justify-center"
+                  className="w-16 h-16 rounded-full relative z-50 overflow-hidden border-2 border-blue-600"
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
                 >
-                  <div className="relative w-12 h-12">
-                    <Image
-                      src="/images/profile/avatar.jpg"
-                      alt="Imran Mohammed"
-                      fill
-                      className="object-cover rounded-full"
-                      style={{
-                        filter: 'grayscale(1) brightness(1.2) contrast(1.5) invert(1)',
-                        mixBlendMode: 'multiply',
-                        opacity: 0.8
-                      }}
-                    />
-                  </div>
+                  <Image
+                    src="/images/profile/avatar.jpg"
+                    alt="Imran Mohammed"
+                    fill
+                    className="object-cover rounded-full"
+                  />
                 </motion.div>
                 <motion.div
                   className="w-16 h-16 bg-blue-500 rounded-full -ml-4 relative z-40"
