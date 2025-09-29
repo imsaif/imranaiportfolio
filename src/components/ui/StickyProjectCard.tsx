@@ -9,9 +9,10 @@ interface StickyProjectCardProps {
   index: number;
   total: number;
   containerRef: RefObject<HTMLDivElement>;
+  onProjectClick?: (project: Project) => void;
 }
 
-const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, total, containerRef }) => {
+const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, total: _total, containerRef, onProjectClick }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [buttonPos, setButtonPos] = useState<{ x: number; y: number } | null>(null);
 
@@ -74,11 +75,7 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
           <Button
-            href={
-              project.slug === 'scheduler' || project.slug === 'lessonloom' || project.slug === 'uhg'
-                ? `/casestudy/${project.slug}`
-                : `/projects/${project.slug}`
-            }
+            onClick={() => onProjectClick?.(project)}
             variant="outline"
             className="w-40 h-12 flex items-center justify-center text-base font-semibold"
           >

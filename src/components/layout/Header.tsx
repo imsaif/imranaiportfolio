@@ -69,7 +69,7 @@ const Header = () => {
                 href={pathname === '/' ? '#work' : '/#work'}
                 className="link-effect text-foreground hover:text-accent transition-colors relative py-2"
               >
-                Work
+                About
               </Link>
             </li>
             <li>
@@ -97,7 +97,7 @@ const Header = () => {
                   className="block py-3 text-foreground hover:text-accent transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Work
+                  About
                 </Link>
               </li>
               <li>

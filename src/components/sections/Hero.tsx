@@ -159,7 +159,7 @@ const Hero = () => {
 
                 <div className="flex flex-col items-center">
                   <span
-                    className={`text-base xs:text-lg font-medium transition-all duration-700 ease-out ${
+                    className={`text-xl xs:text-2xl font-medium transition-all duration-700 ease-out ${
                       isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                     }`}
                   >

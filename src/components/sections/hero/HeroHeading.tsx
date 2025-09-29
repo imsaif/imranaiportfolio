@@ -102,7 +102,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
         transition={{ duration: 0.4, ease: 'easeInOut' }}
         className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center"
       >
-        <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 leading-tight tracking-tight">
+        <h1 className="text-3xl xs:text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 leading-tight tracking-tight">
           <span className="inline">Transforming complexity into Clarity</span>
         </h1>
       </motion.div>
@@ -121,7 +121,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
         style={{ willChange: 'opacity' }}
       >
         <h1
-          className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 tracking-tight leading-tight transition-all duration-700 ${
+          className={`text-3xl xs:text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 xs:mb-6 md:mb-8 tracking-tight leading-tight transition-all duration-700 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
@@ -134,7 +134,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
             cursorCharacter="|"
             className="font-semibold"
           />{' '}into<br /><span
-            className="font-semibold"
+            className="font-semibold text-4xl xs:text-5xl sm:text-4xl md:text-5xl lg:text-6xl"
             style={{
               background: 'linear-gradient(90deg, #3B82F6 0%, #EC4899 100%)',
               backgroundSize: '100% 100%',
@@ -152,7 +152,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
         </h1>
 
         <p
-          className={`text-sm xs:text-base sm:text-lg md:text-xl text-muted mb-6 xs:mb-8 md:mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-700 delay-300 ${
+          className={`text-lg xs:text-xl sm:text-lg md:text-xl text-muted mb-6 xs:mb-8 md:mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-700 delay-300 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >

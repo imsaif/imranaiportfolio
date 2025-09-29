@@ -290,7 +290,7 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
   return (
     <div
       ref={cardRef}
-      className="sticky top-24 mb-1"
+      className="sticky top-24 lg:top-32 mb-1"
       style={{
         zIndex: index + 1,
         transform: `translateY(${index * 4}px)`

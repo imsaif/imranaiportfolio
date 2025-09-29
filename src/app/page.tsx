@@ -5,9 +5,9 @@ import { useRef } from 'react';
 import Hero from '@/components/sections/Hero';
 
 // Lazy load non-critical components for better LCP
-const Process = dynamic(() => import('@/components/sections/Process'), {
-  loading: () => <div className="h-96 bg-background" />
-});
+// const Process = dynamic(() => import('@/components/sections/Process'), {
+//   loading: () => <div className="h-96 bg-background" />
+// });
 const Projects = dynamic(() => import('@/components/sections/Projects'), {
   loading: () => <div className="h-96 bg-background" />
 });
@@ -32,7 +32,7 @@ export default function Home() {
 
       {/* Lazy load below-the-fold sections */}
       <Projects />
-      <Process />
+      {/* <Process /> */}
       <CredibilityIndicators />
     </main>
   );

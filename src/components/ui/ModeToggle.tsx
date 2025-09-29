@@ -27,7 +27,7 @@ const modes: { id: Mode; label: string; icon: React.ReactNode }[] = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-7 h-7 xs:w-8 xs:h-8 sm:w-5 sm:h-5"
+        className="w-5 h-5 xs:w-6 xs:h-6 sm:w-5 sm:h-5"
       >
         <rect width="18" height="18" x="3" y="3" rx="2" />
         <path d="M3 9h18" />
@@ -49,7 +49,7 @@ const modes: { id: Mode; label: string; icon: React.ReactNode }[] = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-7 h-7 xs:w-8 xs:h-8 sm:w-5 sm:h-5"
+        className="w-5 h-5 xs:w-6 xs:h-6 sm:w-5 sm:h-5"
       >
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
@@ -73,7 +73,7 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-7 h-7 xs:w-8 xs:h-8 sm:w-5 sm:h-5"
+        className="w-5 h-5 xs:w-6 xs:h-6 sm:w-5 sm:h-5"
       >
         <path d="m18 6-12 12" />
         <path d="m6 6 12 12" />
@@ -89,7 +89,7 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-7 h-7 xs:w-8 xs:h-8 sm:w-5 sm:h-5"
+        className="w-5 h-5 xs:w-6 xs:h-6 sm:w-5 sm:h-5"
       >
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
@@ -118,7 +118,7 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
             <button
               key={mode.id}
               onClick={() => onModeChange(mode.id)}
-              className={`relative flex items-center gap-2 px-10 py-6 xs:px-8 xs:py-5 sm:px-8 sm:py-4 text-sm xs:text-base sm:text-sm font-medium transition-all duration-300 rounded-full ${
+              className={`relative flex items-center gap-2 px-6 py-4 xs:px-7 xs:py-4 sm:px-8 sm:py-4 text-sm xs:text-base sm:text-sm font-medium transition-all duration-300 rounded-full ${
                 currentMode === mode.id ? 'text-white font-semibold scale-105' : 'text-muted-foreground hover:text-foreground hover:scale-105'
               }`}
               aria-label={`Switch to ${mode.label} mode`}

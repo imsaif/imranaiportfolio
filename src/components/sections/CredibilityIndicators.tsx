@@ -165,7 +165,7 @@ const CredibilityIndicators = () => {
                 <h2 className="section-title text-3xl md:text-4xl font-bold text-foreground mb-6 tracking-tight leading-tight">
                   Proven Impact
                 </h2>
-                <p className="text-lg text-muted leading-relaxed">
+                <p className="text-lg text-muted leading-relaxed whitespace-nowrap">
                   Building high-performing teams while delivering measurable impact
                 </p>
               </motion.div>
@@ -179,7 +179,7 @@ const CredibilityIndicators = () => {
             </div>
 
             {/* Right Side - Stacking Cards */}
-            <div className="lg:w-3/5">
+            <div className="lg:w-3/5 lg:mt-[240px]">
               {credibilityCards.map((card, index) => (
                 <StickyCredibilityCard
                   key={card.id}
