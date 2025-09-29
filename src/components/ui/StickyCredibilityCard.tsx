@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { MdMenuBook, MdStar, MdTrendingUp, MdWork, MdPsychology, MdGroup } from 'react-icons/md';
-import { useActiveCard } from '../../context/ActiveCardContext';
 
 interface CredibilityCardContent {
   id: string;
@@ -10,53 +9,19 @@ interface CredibilityCardContent {
 
 interface StickyCredibilityCardProps {
   card: CredibilityCardContent;
-  index: number;
-  total: number;
 }
 
-const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, index }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const { setActiveCardId } = useActiveCard();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            // Card is more than 50% visible
-            setActiveCardId(card.id);
-          } else if (!entry.isIntersecting) {
-            // Card is not visible, clear if it was the active card
-            setActiveCardId(null);
-          }
-        });
-      },
-      {
-        threshold: [0, 0.5, 1], // Trigger at different visibility levels
-        rootMargin: '-100px 0px -100px 0px' // Adjust when card is considered "in view"
-      }
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
-      }
-    };
-  }, [card.id, setActiveCardId]);
+const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card }) => {
 
   const renderCardContent = () => {
-    const baseCardClass = "w-full bg-white rounded-xl border border-gray-100 p-6 shadow-lg";
+    const baseCardClass = "w-full bg-white rounded-xl border border-gray-100 p-4 shadow-lg";
 
     switch (card.type) {
       case 'testimonial': {
         return (
           <div className={baseCardClass}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-20 h-20 bg-white rounded-xl border border-gray-100 flex items-center justify-center flex-shrink-0 p-4">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-12 h-12 bg-white rounded-lg border border-gray-100 flex items-center justify-center flex-shrink-0 p-2">
                 {card.content.company === 'Optum' ? (
                   <img
                     src="/images/logos/optum-logo.png"
@@ -75,19 +40,17 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
                   </div>
                 )}
               </div>
-              <div className="flex-1 flex flex-col justify-center">
-                <h4 className="font-semibold text-gray-900 text-lg">{card.content.name}</h4>
-                <p className="text-base text-gray-600">{card.content.title}</p>
+              <div className="flex-1 min-w-0">
+                <h4 className="font-semibold text-gray-900 text-sm truncate">{card.content.name}</h4>
+                <p className="text-xs text-gray-600 truncate">{card.content.title}</p>
               </div>
             </div>
-            <div className="border-t border-gray-100 pt-6 mt-6">
-              <div className="flex mb-3">
-                {[...Array(card.content.rating)].map((_, i) => (
-                  <span key={i} className="text-yellow-400">⭐</span>
-                ))}
-              </div>
-              <p className="text-gray-700 text-base leading-relaxed">"{card.content.quote}"</p>
+            <div className="flex mb-2">
+              {[...Array(card.content.rating)].map((_, i) => (
+                <span key={i} className="text-yellow-400 text-sm">⭐</span>
+              ))}
             </div>
+            <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">"{card.content.quote}"</p>
           </div>
         );
       }
@@ -288,14 +251,7 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card, ind
   };
 
   return (
-    <div
-      ref={cardRef}
-      className="sticky top-24 lg:top-32 mb-1"
-      style={{
-        zIndex: index + 1,
-        transform: `translateY(${index * 4}px)`
-      }}
-    >
+    <div className="w-full max-w-[280px] h-auto">
       {renderCardContent()}
     </div>
   );

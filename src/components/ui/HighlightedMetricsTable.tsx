@@ -2,7 +2,6 @@
 
 import React from 'react';
 import AnimatedNumber from './AnimatedNumber';
-import { useActiveCard } from '../../context/ActiveCardContext';
 
 // Custom CSS for single pulse animation
 const singlePulseStyle = {
@@ -22,20 +21,14 @@ interface LeadershipMetric extends Metric {
 interface HighlightedMetricsTableProps {
   metrics: Metric[];
   leadershipMetrics: LeadershipMetric[];
-  cardMetricMapping: Record<string, string[]>;
 }
 
 const HighlightedMetricsTable: React.FC<HighlightedMetricsTableProps> = ({
   metrics,
-  leadershipMetrics,
-  cardMetricMapping
+  leadershipMetrics
 }) => {
-  const { activeCardId } = useActiveCard();
-
-  // Get the metrics that should be highlighted based on active card
-  const highlightedMetrics = activeCardId ? cardMetricMapping[activeCardId] || [] : [];
-
-  const isHighlighted = (metricId: string) => highlightedMetrics.includes(metricId);
+  // Since we removed card interactions, no metrics are highlighted
+  const isHighlighted = () => false;
 
   return (
     <div className="relative">
@@ -48,7 +41,7 @@ const HighlightedMetricsTable: React.FC<HighlightedMetricsTableProps> = ({
           <tbody>
             {/* Primary Metrics */}
             {metrics.map((metric, index) => {
-              const highlighted = isHighlighted(metric.id);
+              const highlighted = isHighlighted();
               return (
                 <tr
                   key={index}
@@ -93,7 +86,7 @@ const HighlightedMetricsTable: React.FC<HighlightedMetricsTableProps> = ({
 
             {/* Leadership Metrics */}
             {leadershipMetrics.map((metric, index) => {
-              const highlighted = isHighlighted(metric.id);
+              const highlighted = isHighlighted();
               return (
                 <tr
                   key={`leadership-${index}`}
