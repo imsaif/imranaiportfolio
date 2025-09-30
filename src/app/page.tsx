@@ -11,7 +11,13 @@ import Hero from '@/components/sections/Hero';
 const Projects = dynamic(() => import('@/components/sections/Projects'), {
   loading: () => <div className="h-96 bg-background" />
 });
-const CredibilityIndicators = dynamic(() => import('@/components/sections/CredibilityIndicators'), {
+const StrategicVision = dynamic(() => import('@/components/sections/StrategicVision'), {
+  loading: () => <div className="h-96 bg-background" />
+});
+const LeadershipPhilosophy = dynamic(() => import('@/components/sections/LeadershipPhilosophy'), {
+  loading: () => <div className="h-96 bg-background" />
+});
+const Collaboration = dynamic(() => import('@/components/sections/Collaboration'), {
   loading: () => <div className="h-96 bg-background" />
 });
 const CursorDot = dynamic(() => import('@/components/ui').then(module => ({ default: module.CursorDot })), {
@@ -33,7 +39,11 @@ export default function Home() {
       {/* Lazy load below-the-fold sections */}
       <Projects />
       {/* <Process /> */}
-      <CredibilityIndicators />
+
+      {/* Leadership Sections */}
+      <StrategicVision />
+      <LeadershipPhilosophy />
+      <Collaboration />
     </main>
   );
 }

@@ -3,6 +3,7 @@
 import StickyCredibilityCard from '../ui/StickyCredibilityCard';
 import HighlightedMetricsTable from '../ui/HighlightedMetricsTable';
 import { MdGroup, MdSchool, MdPeople } from 'react-icons/md';
+import { impactMetrics } from '@/data/leadership';
 
 interface CredibilityCard {
   id: string;
@@ -10,18 +11,15 @@ interface CredibilityCard {
   content: any;
 }
 
-const CredibilityIndicators = () => {
+const ImpactOutcomes = () => {
 
-  const metrics = [
-    { id: 'experience', number: '10+', label: 'Years of Experience' },
-    { id: 'products', number: '15+', label: 'Products Shipped' }
-  ];
-
-  const leadershipMetrics = [
-    { id: 'teams', number: '5+', label: 'Teams Led', icon: MdGroup },
-    { id: 'mentored', number: '8', label: 'Designers Mentored', icon: MdSchool },
-    { id: 'stakeholders', number: '20+', label: 'Stakeholders Managed', icon: MdPeople }
-  ];
+  const businessMetrics = impactMetrics.business;
+  const leadershipImpactMetrics = impactMetrics.leadership.map(metric => ({
+    ...metric,
+    icon: metric.id === 'team-growth' ? MdGroup :
+          metric.id === 'mentored' ? MdSchool :
+          metric.id === 'retention' ? MdPeople : MdGroup
+  }));
 
 
   const credibilityCards: CredibilityCard[] = [
@@ -59,10 +57,10 @@ const CredibilityIndicators = () => {
         {/* Title and Description */}
         <div className="text-center mb-12">
           <h2 className="section-title text-3xl md:text-4xl font-bold text-foreground mb-6 tracking-tight leading-tight">
-            Proven Impact
+            Measurable Impact
           </h2>
           <p className="text-lg text-muted leading-relaxed">
-            Building high-performing teams while delivering measurable impact
+            Driving business results through strategic design leadership and team excellence
           </p>
         </div>
 
@@ -71,8 +69,8 @@ const CredibilityIndicators = () => {
           {/* Left Side - Metrics Table Only */}
           <div className="lg:w-2/5">
             <HighlightedMetricsTable
-              metrics={metrics}
-              leadershipMetrics={leadershipMetrics}
+              metrics={businessMetrics}
+              leadershipMetrics={leadershipImpactMetrics}
             />
           </div>
 
@@ -93,4 +91,4 @@ const CredibilityIndicators = () => {
   );
 };
 
-export default CredibilityIndicators;
+export default ImpactOutcomes;
