@@ -125,15 +125,15 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          Transforming{' '}
+          <span className="text-gray-600">Transforming</span>{' '}
           <TextType
-            text={["complexity", "confusion", "chaos", "clutter"]}
+            text={["complexity", "confusion"]}
             typingSpeed={100}
             pauseDuration={2000}
             showCursor={true}
             cursorCharacter="|"
-            className="font-semibold"
-          />{' '}into<br /><span
+            className="font-semibold text-gray-600"
+          /><span className="text-gray-600">into</span><br /><span
             className="font-semibold text-4xl xs:text-5xl sm:text-4xl md:text-5xl lg:text-6xl"
             style={{
               background: 'linear-gradient(90deg, #3B82F6 0%, #EC4899 100%)',

@@ -1,7 +1,6 @@
 import { Project } from '@/data/projects';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { RefObject, useRef } from 'react';
-import Button from './Button';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { RefObject, useRef, useState } from 'react';
 import { ProjectMockup } from './ProjectMockup';
 import Link from 'next/link';
 
@@ -14,6 +13,18 @@ interface StickyProjectCardProps {
 
 const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, total: _total, containerRef }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    }
+  };
 
   // Set up scroll progress for this card
   const { scrollYProgress } = useScroll({
@@ -36,13 +47,17 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
 
 
   return (
-    <motion.div
-      ref={cardRef}
-      className={`sticky-project-card sticky top-[96px] min-h-[400px] mb-8 mt-0 bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible`}
-      style={{ zIndex: 10 + index, scale, boxShadow }}
-    >
+    <Link href={`/casestudy/${project.slug}`}>
+      <motion.div
+        ref={cardRef}
+        className={`sticky-project-card sticky top-[96px] min-h-[500px] mb-8 mt-0 bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible cursor-pointer`}
+        style={{ zIndex: 10 + index, scale, boxShadow }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onMouseMove={handleMouseMove}
+      >
       {/* Left side: Project mockup */}
-      <div className="relative w-full md:w-1/2 h-full min-h-[220px] flex items-stretch justify-stretch">
+      <div className="relative w-full md:w-1/2 h-full min-h-[280px] flex items-stretch justify-stretch">
         <ProjectMockup project={project} />
       </div>
       {/* Right side: Text content */}
@@ -75,22 +90,44 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
           </div>
         )}
 
-        {/* Direct navigation button */}
-        <div className="mt-4">
-          <Link href={`/casestudy/${project.slug}`}>
-            <Button
-              variant="outline"
-              className="w-40 h-12 flex items-center justify-center text-base font-semibold"
+        {/* Hover overlay circle */}
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="absolute rounded-full p-0.5 bg-gradient-to-r from-blue-500 to-pink-500 shadow-lg pointer-events-none"
+              style={{
+                zIndex: 30,
+                left: mousePosition.x - 80, // Adjust for chip width
+                top: mousePosition.y - 20, // Adjust for chip height
+                transform: 'translate(0, 0)' // Reset any default transforms
+              }}
             >
-              View Project
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Button>
-          </Link>
-        </div>
+              <div className="px-4 py-2 rounded-full bg-white">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-bold whitespace-nowrap text-gray-600">
+                    View Case Study
+                  </span>
+                  <svg
+                    className="w-4 h-4 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 };
 
