@@ -20,27 +20,34 @@ export const strategicVisionData = {
 };
 
 export const leadershipPhilosophy = {
-  principles: [
-    "User-centered decisions drive business value",
-    "Diverse teams create better solutions",
-    "Continuous learning fuels innovation"
-  ],
+  principles: {
+    title: "Core Leadership Principles",
+    approach: "My leadership philosophy is grounded in fundamental principles that drive both team success and business outcomes.",
+    items: [
+      "User-centered decisions drive business value",
+      "Diverse teams create better solutions",
+      "Continuous learning fuels innovation",
+      "Data-driven design decisions create measurable impact"
+    ]
+  },
   teamBuilding: {
     title: "Building High-Performance Teams",
     approach: "I focus on creating psychological safety, clear growth paths, and collaborative processes that enable designers to do their best work.",
     methods: [
       "Regular 1:1s with career development focus",
       "Cross-functional pairing and mentorship",
-      "Design critique culture that celebrates learning"
+      "Design critique culture that celebrates learning",
+      "Transparent goal-setting with measurable outcomes"
     ]
   },
   innovation: {
     title: "Fostering Innovation & Growth",
-    approach: "Innovation happens when teams have the right constraints, tools, and freedom to experiment.",
+    approach: "I believe innovation happens when teams have the right constraints, tools, and freedom to experiment.",
     methods: [
       "Design sprints for complex problems",
       "Prototype-first exploration culture",
-      "Regular design system evolution"
+      "Regular design system evolution",
+      "Continuous user feedback integration loops"
     ]
   }
 };
