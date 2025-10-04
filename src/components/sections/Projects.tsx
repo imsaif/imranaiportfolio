@@ -14,7 +14,7 @@ const Projects = () => {
   return (
     <section id="work" className="relative w-full mt-0 pt-2 md:mt-2 md:pt-4" ref={sectionRef}>
       <div className="container mx-auto max-w-4xl px-4">
-        <div className="relative overflow-visible min-h-[120vh]">
+        <div className="relative overflow-visible min-h-[120vh] pb-32">
           {projects.map((project, idx) => (
             <StickyProjectCard
               key={project.id}

@@ -50,7 +50,7 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
     <Link href={`/casestudy/${project.slug}`}>
       <motion.div
         ref={cardRef}
-        className={`sticky-project-card sticky top-[96px] min-h-[500px] mb-8 mt-0 bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible cursor-pointer`}
+        className={`sticky-project-card sticky top-[96px] min-h-[600px] mb-20 mt-0 bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible cursor-pointer`}
         style={{ zIndex: 10 + index, scale, boxShadow }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

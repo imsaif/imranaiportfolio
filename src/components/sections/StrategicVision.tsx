@@ -5,6 +5,7 @@ import { MdTrendingUp, MdGroup, MdLightbulb } from 'react-icons/md';
 import { strategicVisionData } from '@/data/leadership';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import PixelHoverBackground from '@/components/effects/PixelHoverBackground';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
@@ -140,10 +141,13 @@ const StrategicVision = () => {
   };
 
   return (
-    <section ref={sectionRef} className="pt-16 md:pt-20 lg:pt-24 pb-16 md:pb-20 lg:pb-24 bg-background">
-      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8">
+    <section ref={sectionRef} className="pt-20 md:pt-24 lg:pt-32 pb-20 md:pb-24 lg:pb-32 bg-background relative">
+      {/* Pixel Hover Background */}
+      <PixelHoverBackground pixelSize={25} />
+
+      <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8 relative z-10">
         {/* Title and Description */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-12 md:mb-16 pointer-events-none">
           <h2 ref={titleRef} className="section-title text-3xl md:text-4xl font-bold text-foreground mb-6 tracking-tight leading-tight">
             Strategic Leadership
           </h2>
