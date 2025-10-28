@@ -7,56 +7,6 @@ const Footer = () => {
     <footer className="pt-16 md:pt-20 lg:pt-24 pb-16 md:pb-20 lg:pb-24 border-t border-border mt-8 md:mt-12 lg:mt-16">
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-16 rounded-xl bg-white border border-gray-200 min-h-[380px] shadow-[0_0_35px_rgba(112,117,224,0.15),0_0_70px_rgba(224,99,124,0.1)]">
-            {/* Terminal Content */}
-            <div className="p-8">
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-baseline">
-                  <span className="text-gray-900 font-mono text-sm mr-2 animate-blink">{'>'}</span>
-                  <p className="text-sm font-mono text-gray-900 uppercase tracking-wider whitespace-nowrap">
-                    Currently Building
-                  </p>
-                </div>
-                <a
-                  href="https://github.com/imsaif"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-gray-300 hover:border-accent/50 px-4 py-1 rounded-lg text-xs font-mono text-gray-600 hover:text-gray-900 transition-all duration-200 flex items-center gap-1 flex-shrink-0 whitespace-nowrap"
-                >
-                  GitHub →
-                </a>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a
-                  href="https://github.com/imsaif/aiex"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block py-10 px-8 rounded-lg border border-gray-200 hover:border-accent/50 bg-gray-50 hover:bg-gray-100 transition-all duration-200 min-h-[160px]"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:gradient-text transition-all duration-200">
-                    AI UX Design Guide
-                  </h3>
-                  <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
-                    Comprehensive resource for human-centered AI experiences
-                  </p>
-                </a>
-                <a
-                  href="https://github.com/imsaif/design-with-claude"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block py-10 px-8 rounded-lg border border-gray-200 hover:border-tertiary/50 bg-gray-50 hover:bg-gray-100 transition-all duration-200 min-h-[160px]"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:gradient-text transition-all duration-200">
-                    DesignwithClaude
-                  </h3>
-                  <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
-                    Specialized AI agents + CLI tool for design challenges, powered by Claude
-                  </p>
-                </a>
-              </div>
-            </div>
-          </div>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-8 gradient-text block pb-2">
             Looking to enhance your AI experience?

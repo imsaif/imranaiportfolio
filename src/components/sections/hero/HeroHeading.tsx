@@ -142,9 +142,9 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
               backgroundClip: 'text',
               color: 'transparent',
               display: 'inline-block',
-              paddingBottom: '5px',
-              marginBottom: '-5px',
+              paddingBottom: '12px',
               marginTop: '1.5rem',
+              overflow: 'visible',
             }}
           >
             Clarity

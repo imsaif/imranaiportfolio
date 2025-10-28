@@ -1,6 +1,6 @@
 import { Project } from '@/data/projects';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { RefObject, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { RefObject, useRef } from 'react';
 import { ProjectMockup } from './ProjectMockup';
 import Link from 'next/link';
 
@@ -13,18 +13,6 @@ interface StickyProjectCardProps {
 
 const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, total: _total, containerRef }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (cardRef.current) {
-      const rect = cardRef.current.getBoundingClientRect();
-      setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      });
-    }
-  };
 
   // Set up scroll progress for this card
   const { scrollYProgress } = useScroll({
@@ -47,15 +35,11 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
 
 
   return (
-    <Link href={`/casestudy/${project.slug}`}>
-      <motion.div
-        ref={cardRef}
-        className={`sticky-project-card sticky top-[96px] min-h-[600px] mb-20 mt-0 bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible cursor-pointer`}
-        style={{ zIndex: 10 + index, scale, boxShadow }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onMouseMove={handleMouseMove}
-      >
+    <motion.div
+      ref={cardRef}
+      className={`sticky-project-card sticky top-[96px] min-h-[600px] mb-20 mt-0 bg-white rounded-xl flex flex-col md:flex-row items-center justify-center gap-8 shadow-2xl shadow-indigo-200 group relative overflow-visible`}
+      style={{ zIndex: 10 + index, scale, boxShadow }}
+    >
       {/* Left side: Project mockup */}
       <div className="relative w-full md:w-1/2 h-full min-h-[280px] flex items-stretch justify-stretch">
         <ProjectMockup project={project} />
@@ -90,22 +74,10 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
           </div>
         )}
 
-        {/* Hover overlay circle */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className="absolute rounded-full p-0.5 bg-gradient-to-r from-blue-500 to-pink-500 shadow-lg pointer-events-none"
-              style={{
-                zIndex: 30,
-                left: mousePosition.x - 80, // Adjust for chip width
-                top: mousePosition.y - 20, // Adjust for chip height
-                transform: 'translate(0, 0)' // Reset any default transforms
-              }}
-            >
+        {/* View Case Study Button */}
+        <div className="mt-8 w-full flex justify-center md:justify-start">
+          <Link href={`/casestudy/${project.slug}`}>
+            <div className="p-0.5 bg-gradient-to-r from-blue-500 to-pink-500 rounded-full">
               <div className="px-4 py-2 rounded-full bg-white">
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-bold whitespace-nowrap text-gray-600">
@@ -122,12 +94,11 @@ const StickyProjectCard: React.FC<StickyProjectCardProps> = ({ project, index, t
                   </svg>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          </Link>
+        </div>
       </div>
       </motion.div>
-    </Link>
   );
 };
 

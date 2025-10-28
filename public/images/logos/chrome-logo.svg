@@ -1,0 +1,12 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Red section -->
+  <circle cx="50" cy="50" r="45" fill="#EA4335"/>
+  <!-- Green section -->
+  <path d="M 50 50 A 45 45 0 0 0 27.5 77.5 L 50 50 Z" fill="#34A853"/>
+  <!-- Yellow section -->
+  <path d="M 50 50 A 45 45 0 0 0 72.5 77.5 L 50 50 Z" fill="#FBBC04"/>
+  <!-- Blue center circle -->
+  <circle cx="50" cy="50" r="20" fill="#4285F4"/>
+  <!-- White ring -->
+  <circle cx="50" cy="50" r="20" fill="none" stroke="white" stroke-width="3"/>
+</svg>

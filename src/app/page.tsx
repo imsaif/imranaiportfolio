@@ -20,6 +20,9 @@ const LeadershipPhilosophy = dynamic(() => import('@/components/sections/Leaders
 const Collaboration = dynamic(() => import('@/components/sections/Collaboration'), {
   loading: () => <div className="h-96 bg-background" />
 });
+const BuildingInPublic = dynamic(() => import('@/components/sections/BuildingInPublic'), {
+  loading: () => <div className="h-96 bg-background" />
+});
 const CursorDot = dynamic(() => import('@/components/ui').then(module => ({ default: module.CursorDot })), {
   ssr: false
 });
@@ -44,6 +47,7 @@ export default function Home() {
       <StrategicVision />
       <LeadershipPhilosophy />
       <Collaboration />
+      <BuildingInPublic />
     </main>
   );
 }
