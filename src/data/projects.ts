@@ -23,20 +23,20 @@ export const projects: Project[] = [
     id: 3,
     slug: 'uhg',
     title: 'Optum Bank',
-    description: 'Redesigned HSA reimbursement healthcare financial platform serving 450K users',
+    description: 'Redesigned HSA reimbursement platform for 450K users, improving task completion from 1.1% to 30% and reducing support calls by 30%',
     fullDescription: `
-      As Lead UX Designer at UnitedHealth Group, I spearheaded the redesign of the HSA reimbursement
-      system serving 450,000 users. The existing system had significant usability issues with a 1.1% task
-      completion rate, causing substantial customer service overhead and user frustration. Through comprehensive
-      research, cross-functional collaboration, and systematic design improvements, we enhanced the user experience
-      while maintaining strict healthcare financial compliance requirements.
+      As Lead UX Designer at UnitedHealth Group, I led the redesign of the HSA reimbursement system serving 450K users.
+      The platform had a critical 1.1% task completion rate with 98.9% abandonment, causing significant support costs.
+      Through comprehensive user research, cross-functional collaboration, and systematic design improvements, I delivered
+      measurable business impact while navigating strict healthcare compliance requirements.
 
       Key Achievements:
-      - Improved task completion from 1.1% to 23%
-      - Reduced customer service calls by 28%
-      - Achieved measurable business impact through reduced support costs
-      - Enhanced mobile completion rate from 0.3% to 15%
-      - Established design patterns for regulated healthcare experiences
+      - Improved task completion from 1.1% to 30% (27x improvement)
+      - Reduced customer service calls by 30% (saving $800K annually)
+      - Increased mobile completion from 0.3% to 18% (60x improvement)
+      - Reduced average completion time from 18 to 10 minutes
+      - Led design team of 6, collaborated across engineering and compliance
+      - Established healthcare UX patterns adopted across Optum products
     `,
     technologies: ['React', 'Node.js', 'Healthcare APIs', 'OCR Processing', 'HIPAA Compliance'],
     liveUrl: 'https://optumbank.com',
@@ -50,9 +50,9 @@ export const projects: Project[] = [
     featured: true,
     tagline: 'ENTERPRISE UX, HEALTHCARE FINTECH',
     stats: [
-      { label: 'Task Completion', value: '23% ↑' },
-      { label: 'Support Calls', value: '28% ↓' },
-      { label: 'User Satisfaction', value: '3.8★' },
+      { label: 'Task Completion', value: '1.1% → 30%' },
+      { label: 'Support Calls', value: '30% ↓' },
+      { label: 'Mobile Completion', value: '0.3% → 18%' },
     ],
   },
   {

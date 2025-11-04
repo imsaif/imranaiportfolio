@@ -5,9 +5,7 @@ import Image from 'next/image';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
 import ProgressBar from '@/components/ui/ProgressBar';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
-import { AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { MdHealthAndSafety, MdManageSearch, MdDesignServices, MdIntegrationInstructions, MdAssessment } from 'react-icons/md';
 import {
   startUHGVapiCall,
   stopUHGVapiCall,
@@ -15,7 +13,7 @@ import {
   sendFunctionResult
 } from '@/services/uhgVapiService';
 import * as scrollHandlers from '@/utils/vapiScrollHandlers';
-import { ProjectOverviewSection } from './sections/ProjectOverviewSection';
+import { CaseStudyTabs } from './components/CaseStudyTabs';
 
 // Voice Control Bar Component
 interface VoiceControlBarProps {
@@ -113,55 +111,9 @@ const VoiceControlBar: React.FC<VoiceControlBarProps> = ({
   );
 };
 
-import { ResearchDiscoverySection } from './sections/ResearchDiscoverySection';
-import { DesignStrategySection } from './sections/DesignStrategySection';
-import { TechnicalImplementationSection } from './sections/TechnicalImplementationSection';
-import { ResultsImpactSection } from './sections/ResultsImpactSection';
-
-// Material Design icons with accessible grey styling for sticky navigation
-const OverviewIcon = (
-  <MdHealthAndSafety
-    size={28}
-    className="inline-block align-middle text-gray-600"
-  />
-);
-
-const ResearchIcon = (
-  <MdManageSearch
-    size={28}
-    className="inline-block align-middle text-gray-600"
-  />
-);
-
-const DesignIcon = (
-  <MdDesignServices
-    size={28}
-    className="inline-block align-middle text-gray-600"
-  />
-);
-
-const TechnicalIcon = (
-  <MdIntegrationInstructions
-    size={28}
-    className="inline-block align-middle text-gray-600"
-  />
-);
-
-const ResultsIcon = (
-  <MdAssessment
-    size={28}
-    className="inline-block align-middle text-gray-600"
-  />
-);
-
 export default function UHGCaseStudyPage() {
   // Scroll progress state
   const [scrollProgress, setScrollProgress] = useState(0);
-
-  // Sticky section title logic
-  const [currentSection, setCurrentSection] = useState<
-    'overview' | 'research' | 'design' | 'technical' | 'results'
-  >('overview');
 
   // UHG Vapi assistant state
   const [isVapiActive, setIsVapiActive] = useState(false);
@@ -171,12 +123,6 @@ export default function UHGCaseStudyPage() {
   const [showFloatingVoiceBar, setShowFloatingVoiceBar] = useState(false);
   const conversationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const introSectionRef = useRef<HTMLDivElement>(null);
-
-  const overviewRef = useRef<HTMLDivElement>(null);
-  const researchRef = useRef<HTMLDivElement>(null);
-  const designRef = useRef<HTMLDivElement>(null);
-  const technicalRef = useRef<HTMLDivElement>(null);
-  const resultsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -189,26 +135,7 @@ export default function UHGCaseStudyPage() {
       if (introSectionRef.current) {
         const introRect = introSectionRef.current.getBoundingClientRect();
         const introBottom = introRect.bottom;
-        // Show floating bar when intro section is scrolled past (with 100px offset)
         setShowFloatingVoiceBar(introBottom < -100);
-      }
-
-      // Update current section
-      const researchTop = researchRef.current?.getBoundingClientRect().top ?? 0;
-      const designTop = designRef.current?.getBoundingClientRect().top ?? 0;
-      const technicalTop = technicalRef.current?.getBoundingClientRect().top ?? 0;
-      const resultsTop = resultsRef.current?.getBoundingClientRect().top ?? 0;
-
-      if (resultsTop <= 150) {
-        setCurrentSection('results');
-      } else if (technicalTop <= 150) {
-        setCurrentSection('technical');
-      } else if (designTop <= 150) {
-        setCurrentSection('design');
-      } else if (researchTop <= 150) {
-        setCurrentSection('research');
-      } else {
-        setCurrentSection('overview');
       }
     };
 
@@ -220,7 +147,7 @@ export default function UHGCaseStudyPage() {
   // Store event handlers for reuse
   const eventHandlers = {
     onCallStart: () => {
-      console.log('🎤 UHG Vapi call started - assistant should speak opening statement');
+      console.log('🎤 UHG Vapi call started');
       setVapiStatus('active');
       setIsVapiActive(true);
     },
@@ -231,7 +158,6 @@ export default function UHGCaseStudyPage() {
       setConversationPhase('opening');
       setMessageCount(0);
 
-      // Clear conversation timeout on call end
       if (conversationTimeoutRef.current) {
         clearTimeout(conversationTimeoutRef.current);
         conversationTimeoutRef.current = null;
@@ -249,15 +175,13 @@ export default function UHGCaseStudyPage() {
       setIsVapiActive(false);
     },
     onMessage: (message: any) => {
-      console.log('💬 UHG Vapi message received:', JSON.stringify(message, null, 2));
+      console.log('💬 UHG Vapi message:', message);
 
-      // Handle user transcripts
       if (message.type === 'transcript' && message.transcript) {
         console.log('👤 User said:', message.transcript);
         handleKeywordBasedScroll(message.transcript);
       }
 
-      // Handle assistant responses
       if (message.type === 'function-call-result' || message.role === 'assistant') {
         const content = message.content || message.text;
         if (content) {
@@ -266,33 +190,21 @@ export default function UHGCaseStudyPage() {
         }
       }
 
-      // Try to extract any text from the message for keyword detection
       const messageText = message.transcript || message.content || message.text || '';
       if (messageText) {
-        console.log('📝 Processing message text for keywords:', messageText);
         setMessageCount(prev => prev + 1);
         handleKeywordBasedScroll(messageText);
       }
     },
     onFunctionCall: (functionCall: any) => {
-      console.log('🔧 Function call received:', functionCall);
+      console.log('🔧 Function call:', functionCall);
       handleScrollFunction(functionCall);
     }
   };
 
   // Initialize on mount
   useEffect(() => {
-    console.log('🔧 Setting up UHG Vapi event handlers...');
-
-    // Add a manual test for scrolling
-    (window as any).testScroll = (section: string) => {
-      console.log('🧪 Manual scroll test to:', section);
-      scrollHandlers.scrollToSection(section);
-    };
-
-    console.log('✅ UHG page loaded. Test scrolling with: window.testScroll("research")');
-
-    // Cleanup on unmount
+    console.log('🔧 Setting up UHG Vapi...');
     return () => {
       cleanupUHGVapi();
     };
@@ -325,7 +237,6 @@ export default function UHGCaseStudyPage() {
           result = { success: false, message: `Unknown function: ${name}` };
       }
 
-      // Send result back to Vapi
       if (id) {
         await sendFunctionResult(id, result);
       }
@@ -344,34 +255,28 @@ export default function UHGCaseStudyPage() {
     if (!text) return;
 
     const lowerText = text.toLowerCase();
-    console.log('🔍 Checking keywords in:', lowerText, 'Phase:', conversationPhase, 'Messages:', messageCount);
+    console.log('🔍 Checking keywords in:', lowerText);
 
-    // Update conversation phase based on content and message count
     updateConversationPhase(lowerText);
 
-    // Skip scrolling during opening/introduction phases unless explicit discussion request
     if (conversationPhase === 'opening' || conversationPhase === 'introduction') {
-      console.log(`📢 ${conversationPhase} phase active - checking for explicit discussion request`);
-
-      // Check for explicit discussion requests about specific topics
       const explicitDiscussionRequests = [
         'tell me about', 'explain', 'show me', 'walk me through',
         'how did you', 'what was your', 'dive into', 'talk about',
         'discuss', 'go over', 'cover', 'explore', 'look at'
       ];
 
-      // Check for section-specific requests
       const sectionRequests = [
         'design', 'research', 'technical', 'prototype', 'results', 'implementation',
-        'discovery', 'strategy', 'approach', 'process', 'methodology', 'solution'
+        'discovery', 'strategy', 'approach', 'process', 'methodology', 'solution',
+        'strategic', 'business', 'context', 'leadership', 'crisis', 'organizational', 'insights'
       ];
 
       const hasExplicitRequest = explicitDiscussionRequests.some(request => lowerText.includes(request));
       const hasSectionRequest = sectionRequests.some(section => lowerText.includes(section));
 
-      // Allow scrolling if it's an explicit request OR if user specifically asks about a section
       const shouldAllowScroll = hasExplicitRequest || (hasSectionRequest && (
-        lowerText.includes('?') || // Questions about sections
+        lowerText.includes('?') ||
         lowerText.includes('tell me') ||
         lowerText.includes('show me') ||
         lowerText.includes('explain') ||
@@ -380,18 +285,13 @@ export default function UHGCaseStudyPage() {
       ));
 
       if (!shouldAllowScroll) {
-        console.log(`✋ ${conversationPhase} phase - no explicit discussion request found, skipping scroll`);
         return;
       } else {
-        console.log(`🎯 ${conversationPhase} phase - explicit discussion request detected, allowing scroll`);
-        // Transition to active phase since user made explicit request
         setConversationPhase('active');
       }
     }
 
-    // Only scroll when we detect actual topic discussion
     if (!shouldTriggerScroll(lowerText)) {
-      console.log('⏸️ Message does not indicate topic discussion - skipping scroll');
       return;
     }
 
@@ -401,22 +301,25 @@ export default function UHGCaseStudyPage() {
       'design': ['design', 'solution', 'approach', 'strategy', 'ocr', 'workflow', 'progressive', 'compliance'],
       'technical': ['technical', 'technology', 'tech stack', 'implementation', 'react native', 'node.js', 'aws', 'postgresql'],
       'results': ['results', 'impact', 'metrics', 'completion', 'abandonment', 'improvement', 'success', 'outcome'],
-      'overview': ['problem', 'challenge', 'business', 'platform', 'context', 'constraint']
+      'overview': ['problem', 'challenge', 'business', 'platform', 'context', 'constraint'],
+      'strategic-business-context': ['strategic', 'business context', 'market', 'competitive', 'investment'],
+      'leadership-team': ['leadership', 'team', 'authority', 'stakeholder', 'management'],
+      'crisis-management': ['crisis', 'pivot', 'challenge', 'setback', 'failure'],
+      'organizational-impact': ['organizational', 'design system', 'process', 'capability', 'culture'],
+      'strategic-insights': ['insights', 'leadership', 'learning', 'evolution', 'philosophy']
     };
 
-    // Check which section keywords appear in the text
     for (const [section, keywords] of Object.entries(keywordMappings)) {
       if (keywords.some(keyword => lowerText.includes(keyword))) {
-        console.log(`🎯 Detected ${section} keywords with discussion context, scrolling to section`);
+        console.log(`🎯 Detected ${section} keywords, scrolling to section`);
         scrollHandlers.scrollToSection(section);
-        break; // Only scroll to the first matching section
+        break;
       }
     }
   };
 
   // Update conversation phase based on content and context
   const updateConversationPhase = (lowerText: string) => {
-    // Transition from opening to introduction (be more conservative)
     if (conversationPhase === 'opening' && messageCount >= 3) {
       const introIndicators = [
         'let me walk you through', 'i\'ll show you', 'overview of the sections',
@@ -424,30 +327,22 @@ export default function UHGCaseStudyPage() {
       ];
 
       if (introIndicators.some(indicator => lowerText.includes(indicator))) {
-        console.log('🔄 Transitioning to introduction phase');
         setConversationPhase('introduction');
         return;
       }
     }
 
-    // Only transition to active with very explicit requests (handled above in main function)
-    // Remove automatic transitions based on message patterns
-
-    // Auto-transition to active only after many messages or explicit timeout
     if (conversationPhase !== 'active' && messageCount >= 8) {
-      console.log('🔄 Auto-transitioning to active phase after', messageCount, 'messages');
       setConversationPhase('active');
     }
   };
 
   // Determine if a message should trigger scrolling based on context
   const shouldTriggerScroll = (lowerText: string): boolean => {
-    // Always allow scrolling in active phase
     if (conversationPhase === 'active') {
       return true;
     }
 
-    // Check for discussion indicators
     const discussionIndicators = [
       'tell me about', 'explain', 'how did you', 'what was', 'why did',
       'diving into', 'exploring', 'let\'s look at', 'focusing on',
@@ -456,14 +351,12 @@ export default function UHGCaseStudyPage() {
 
     const hasDiscussionIndicator = discussionIndicators.some(indicator => lowerText.includes(indicator));
 
-    // Check for question patterns with section keywords
     const questionPatterns = ['?', 'how', 'what', 'why', 'when', 'where', 'which', 'who'];
-    const sectionKeywords = ['design', 'research', 'technical', 'prototype', 'results', 'implementation'];
+    const sectionKeywords = ['design', 'research', 'technical', 'prototype', 'results', 'implementation', 'strategic', 'leadership', 'business'];
 
     const hasQuestionWithSection = questionPatterns.some(pattern => lowerText.includes(pattern)) &&
                                    sectionKeywords.some(keyword => lowerText.includes(keyword));
 
-    // Avoid scrolling for future tense or overview mentions
     const futureIndicators = [
       'will discuss', 'we\'ll explore', 'later', 'next', 'upcoming',
       'available sections', 'you can ask', 'feel free to', 'sections include',
@@ -479,39 +372,33 @@ export default function UHGCaseStudyPage() {
   const handleVapiStart = async () => {
     try {
       setVapiStatus('connecting');
-      setConversationPhase('opening'); // Reset for new conversation
+      setConversationPhase('opening');
       setMessageCount(0);
 
-      // Clear any existing timeout
       if (conversationTimeoutRef.current) {
         clearTimeout(conversationTimeoutRef.current);
       }
 
-      // Set timeout to auto-transition to active phase after 30 seconds
       conversationTimeoutRef.current = setTimeout(() => {
-        console.log('⏰ Conversation timeout - transitioning to active phase');
         setConversationPhase('active');
-      }, 30000); // 30 seconds
+      }, 30000);
 
-      // Check microphone permission first
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        console.log('Microphone permission granted');
-        stream.getTracks().forEach(track => track.stop()); // Stop the test stream
+        stream.getTracks().forEach(track => track.stop());
       } catch (error) {
         console.error('Microphone permission denied:', error);
-        alert('Microphone access is required for the voice assistant. Please allow microphone access and try again.');
+        alert('Microphone access is required. Please allow microphone access and try again.');
         setVapiStatus('error');
         return;
       }
 
-      console.log('🚀 Starting UHG case study voice conversation...');
+      console.log('🚀 Starting UHG voice conversation...');
 
       const result = await startUHGVapiCall(eventHandlers);
 
       if (result.success) {
         console.log('✅ UHG Vapi call started successfully');
-        // State will be updated by onCallStart event handler
       } else {
         throw new Error(result.error || 'Failed to start call');
       }
@@ -538,135 +425,55 @@ export default function UHGCaseStudyPage() {
     <div className="bg-white min-h-screen">
       <ProgressBar progress={scrollProgress} />
 
-      {/* Header section */}
-      <header className="bg-white py-0 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-          {/* Navigation can be added here if needed */}
+      {/* Hero Image */}
+      <div className="w-full relative">
+        <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden">
+          <Image
+            src="/images/casestudy/uhg/uhg-hospital-bank.png"
+            alt="Optum Bank HSA Reimbursement Platform"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
         </div>
-      </header>
+      </div>
 
-      {/* Hero image */}
-      <div>
-        <div className="w-full relative">
-          <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden">
-            <Image
-              src="/images/casestudy/uhg/uhg-hospital-bank.png"
-              alt="UnitedHealth Group: HSA Reimbursement Redesign"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
+      {/* Introduction Section */}
+      <div
+        ref={introSectionRef}
+        className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-b border-blue-200/60"
+      >
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
+          <div className="mb-12 text-center">
+            <CaseStudyHeader level="h1" className="mb-6">
+              Optum Bank: HSA Reimbursement Platform Redesign
+            </CaseStudyHeader>
+
+            {/* Voice Control Bar */}
+            <div className="w-full max-w-2xl mx-auto mb-6">
+              <VoiceControlBar
+                isVapiActive={isVapiActive}
+                vapiStatus={vapiStatus}
+                handleVapiStart={handleVapiStart}
+                handleVapiStop={handleVapiStop}
+              />
+            </div>
+
+            <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              Redesigned a struggling reimbursement feature, improving task completion from 1.1% to 30% and reducing support costs by 30% for 450K users. Strategic transformation with strong business impact.
+            </p>
           </div>
         </div>
       </div>
 
-      <main className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
-        {/* Introduction Section */}
-        <div
-          ref={introSectionRef}
-          className="bg-gradient-to-r from-blue-50 via-white to-purple-50 p-8 mb-16 rounded-xl flex flex-col items-center justify-center text-center border border-blue-200/60 shadow-sm"
-        >
-          <CaseStudyHeader level="h1" className="text-center mb-4">
-            Optum Bank: HSA Reimbursement Redesign
-          </CaseStudyHeader>
+      {/* Tabbed Content System */}
+      <CaseStudyTabs />
 
-          {/* Voice Control Bar */}
-          <div className="w-full max-w-4xl mx-auto mb-6">
-            <VoiceControlBar
-              isVapiActive={isVapiActive}
-              vapiStatus={vapiStatus}
-              handleVapiStart={handleVapiStart}
-              handleVapiStop={handleVapiStop}
-            />
-          </div>
-
-          <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Transformed a 98.9% abandonment rate into a streamlined experience for 450,000 users.
-          </p>
-        </div>
-
-        {/* Main content sections with sticky navigation */}
-        <section className="relative flex flex-row items-start gap-0 mb-20 min-h-[500px]">
-          {/* Sticky Title */}
-          <div className="sticky left-0 top-24 h-fit min-w-[300px] w-[300px] max-w-md flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
-            <AnimatePresence mode="wait">
-              <CaseStudyHeader
-                level="h2"
-                showGradientLine
-                className="flex items-center gap-3 mb-4"
-                key={currentSection}
-              >
-                {currentSection === 'overview' && (
-                  <>
-                    {OverviewIcon}
-                    <span>Project Overview</span>
-                  </>
-                )}
-                {currentSection === 'research' && (
-                  <>
-                    {ResearchIcon}
-                    <span>Research & Discovery</span>
-                  </>
-                )}
-                {currentSection === 'design' && (
-                  <>
-                    {DesignIcon}
-                    <span>Design Strategy</span>
-                  </>
-                )}
-                {currentSection === 'technical' && (
-                  <>
-                    {TechnicalIcon}
-                    <span>Technical Implementation</span>
-                  </>
-                )}
-                {currentSection === 'results' && (
-                  <>
-                    {ResultsIcon}
-                    <span>Results & Impact</span>
-                  </>
-                )}
-              </CaseStudyHeader>
-            </AnimatePresence>
-          </div>
-
-          {/* Content sections */}
-          <div className="flex-1 pl-0 pr-4">
-            <div className="flex flex-col gap-8 max-w-5xl">
-              <div ref={overviewRef} id="overview">
-                <ProjectOverviewSection />
-              </div>
-
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
-
-              <div ref={researchRef} id="research">
-                <ResearchDiscoverySection />
-              </div>
-
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
-
-              <div ref={designRef} id="design">
-                <DesignStrategySection />
-              </div>
-
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
-
-              <div ref={technicalRef} id="technical">
-                <TechnicalImplementationSection />
-              </div>
-
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
-
-              <div ref={resultsRef} id="results">
-                <ResultsImpactSection />
-              </div>
-            </div>
-          </div>
-        </section>
-
+      {/* Footer */}
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
         <CaseStudyFooter />
-      </main>
+      </div>
 
       {/* Floating Voice Bar */}
       <div
@@ -676,7 +483,6 @@ export default function UHGCaseStudyPage() {
             : 'translate-y-full opacity-0 pointer-events-none'
         }`}
       >
-        {/* Gradient border wrapper */}
         <div className="p-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl shadow-2xl">
           <VoiceControlBar
             isVapiActive={isVapiActive}

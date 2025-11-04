@@ -10,7 +10,20 @@ export interface ScrollResponse {
 }
 
 // Valid section IDs that exist on the UHG case study page
-const VALID_SECTIONS = ['overview', 'research', 'design', 'technical', 'results'] as const;
+// Tactical sections: overview, research, design, technical, results
+// Strategic sections: overview, strategic-business-context, leadership-team, crisis-management, organizational-impact, strategic-insights, results
+const VALID_SECTIONS = [
+  'overview',
+  'research',
+  'design',
+  'technical',
+  'results',
+  'strategic-business-context',
+  'leadership-team',
+  'crisis-management',
+  'organizational-impact',
+  'strategic-insights'
+] as const;
 type SectionId = typeof VALID_SECTIONS[number];
 
 /**
@@ -198,7 +211,12 @@ function getSectionDisplayName(sectionId: string): string {
     'research': 'Research & Discovery',
     'design': 'Design Strategy',
     'technical': 'Technical Implementation',
-    'results': 'Results & Impact'
+    'results': 'Results & Impact',
+    'strategic-business-context': 'Strategic Business Context',
+    'leadership-team': 'Leadership Role & Authority',
+    'crisis-management': 'Crisis Management & Strategic Pivots',
+    'organizational-impact': 'Organizational Impact & Scaling',
+    'strategic-insights': 'Strategic Insights & Leadership Evolution'
   };
 
   return displayNames[sectionId] || sectionId;

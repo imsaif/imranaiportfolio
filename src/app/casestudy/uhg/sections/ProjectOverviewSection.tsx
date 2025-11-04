@@ -39,7 +39,7 @@ export function ProjectOverviewSection() {
       </div>
 
       {/* Gradient divider */}
-      <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
+      <div className="w-full h-px my-4 bg-gray-200" />
 
       {/* Problem Statement */}
       <div className="mb-12">
@@ -49,7 +49,7 @@ export function ProjectOverviewSection() {
             The Challenge
           </h4>
           <p className="text-gray-800 text-lg leading-relaxed mb-4">
-            The HSA platform processes <strong>$450M annually</strong>, but the reimbursement feature was failing with a <strong className="text-slate-700">98.9% abandonment rate</strong>—only 1 in 90 users completed submissions.
+            The HSA platform serves <strong>450K users</strong> managing their healthcare reimbursements, but the feature had a <strong className="text-slate-700">98.9% abandonment rate</strong> with only a <strong>1.1% completion rate</strong>—the lowest performing feature in the platform.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
             <div>
@@ -73,7 +73,7 @@ export function ProjectOverviewSection() {
       </div>
 
       {/* Gradient divider */}
-      <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-70" />
+      <div className="w-full h-px my-4 bg-gray-200" />
 
       {/* Complexity & Constraints */}
       <div className="mb-12">

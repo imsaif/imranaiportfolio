@@ -1,19 +1,20 @@
 {
   "caseStudy": {
     "title": "Optum Bank: HSA Reimbursement Redesign",
-    "subtitle": "Transformed a 98.9% abandonment rate into a streamlined experience for 450,000 users",
+    "subtitle": "Redesigned HSA reimbursement feature, improving task completion from 1.1% to 30% and reducing support calls by 30% for 450K users",
     "organization": "Major Healthcare Provider",
     "role": "Lead UX Designer",
     "technologies": ["React Native", "Node.js", "AWS OCR", "PostgreSQL"],
     "keyMetrics": {
-      "platformValue": "$450M annually",
-      "userBase": "450,000 users",
-      "originalAbandonmentRate": "98.9%",
-      "finalCompletionRate": "23%",
-      "improvementPercentage": "75% reduction in abandonment",
-      "timeReduction": "18 minutes to 12 minutes",
-      "supportCallReduction": "52%",
-      "mobileImprovement": "0.3% to 15%"
+      "userBase": "450K users",
+      "originalCompletionRate": "1.1%",
+      "finalCompletionRate": "30%",
+      "improvementPercentage": "27x improvement",
+      "timeReduction": "18 minutes to 10 minutes",
+      "supportCallReduction": "30%",
+      "mobileImprovement": "0.3% to 18%",
+      "annualSavings": "$800K",
+      "teamSize": "6 designers + cross-functional collaboration"
     }
   },
   "sections": {
@@ -21,11 +22,11 @@
       "id": "overview",
       "title": "Project Overview",
       "keyPoints": [
-        "The HSA platform processes $450M annually but had a 98.9% abandonment rate",
-        "Only 1 in 90 users completed reimbursement submissions",
-        "Average completion time was 18 minutes",
-        "22% of support calls were reimbursement-related",
-        "Users complained: 'I gave up after it lost my receipt again'"
+        "The HSA reimbursement feature had a 98.9% abandonment rate with only 1.1% completion—lowest performing feature in platform",
+        "Served 450K users managing healthcare reimbursements",
+        "Average completion time was 18 minutes (industry standard is 5-7 minutes)",
+        "Support calls related to reimbursement were high and costly",
+        "Users struggled with form complexity and mobile experience"
       ],
       "challenges": [
         "Scattered forms across multiple screens",
@@ -127,9 +128,9 @@
       "id": "results",
       "title": "Results & Impact",
       "userExperienceImprovements": {
-        "taskCompletion": "23% (from 1.1%)",
-        "avgCompletionTime": "12 minutes (from 18 minutes)",
-        "mobileCompletion": "15% (from 0.3%)"
+        "taskCompletion": "30% (from 1.1%)",
+        "avgCompletionTime": "10 minutes (from 18 minutes)",
+        "mobileCompletion": "18% (from 0.3%)"
       },
       "businessImpact": {
         "operationalEfficiency": "Automated workflows dramatically reduced manual processing and support burden",
@@ -175,7 +176,7 @@
     "What were the key insights?": "My biggest 'aha moment' was discovering this massive mental model mismatch - users thought about expenses by event like 'my dentist visit' while our system organized by tax category like 'preventive care'. I also identified four very distinct user types with completely different needs.",
     "What was your design approach?": "I realized I needed fundamentally different approaches for different user types. I implemented multi-path solutions, reframed compliance requirements as trust-building opportunities, and used constraints to drive innovation. My strategy focused on progressive disclosure for complex workflows.",
     "What technology did you use?": "I chose React Native for cross-platform mobile experience, Node.js for the backend, AWS OCR for automated receipt processing, and PostgreSQL for data storage with comprehensive audit trails. The OCR was key to eliminating manual data entry.",
-    "What were the results?": "I'm really proud of what we achieved! Task completion went from 1.1% to 23% - that's a 75% reduction in abandonment. I cut completion time from 18 to 12 minutes, improved mobile completion from 0.3% to 15%, and we reduced support calls by 52%.",
+    "What were the results?": "I'm really proud of what we achieved! Task completion went from 1.1% to 30% - that's a 27x improvement. We cut completion time from 18 to 10 minutes, improved mobile completion from 0.3% to 18%, and reduced support calls by 30%, saving about $800K annually in support costs.",
     "What did you learn?": "This project taught me to treat regulation as a feature rather than constraint, that diverse user needs require fundamentally different approaches, that constraints can drive innovation, and that mobile optimization had disproportionate impact on overall success."
   }
 }

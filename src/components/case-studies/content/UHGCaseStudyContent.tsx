@@ -123,8 +123,7 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
             Optum Bank: HSA Reimbursement Platform Redesign
           </CaseStudyHeader>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Redesigning the HSA reimbursement experience for 450,000 users at UnitedHealth Group,
-            improving task completion rates from 1.1% to 23% while reducing customer service calls by 28%.
+            Redesigned the HSA reimbursement system for 450K users, improving task completion from 1.1% to 30% while reducing support calls by 30% and improving mobile experience from 0.3% to 18%.
           </p>
         </div>
 
@@ -345,19 +344,19 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <div className="bg-green-50 rounded-lg p-6 text-center">
-                      <div className="text-3xl font-bold text-green-600 mb-2">23% ↑</div>
+                      <div className="text-3xl font-bold text-green-600 mb-2">30% ↑</div>
                       <div className="text-sm font-medium text-green-800">Task Completion Rate</div>
-                      <div className="text-xs text-green-600 mt-1">From 1.1% to 23%</div>
+                      <div className="text-xs text-green-600 mt-1">From 1.1% to 30% (27x)</div>
                     </div>
                     <div className="bg-blue-50 rounded-lg p-6 text-center">
-                      <div className="text-3xl font-bold text-blue-600 mb-2">28% ↓</div>
+                      <div className="text-3xl font-bold text-blue-600 mb-2">30% ↓</div>
                       <div className="text-sm font-medium text-blue-800">Support Calls</div>
-                      <div className="text-xs text-blue-600 mt-1">Reduced customer service load</div>
+                      <div className="text-xs text-blue-600 mt-1">~$800K annual savings</div>
                     </div>
                     <div className="bg-purple-50 rounded-lg p-6 text-center">
-                      <div className="text-3xl font-bold text-purple-600 mb-2">15%</div>
+                      <div className="text-3xl font-bold text-purple-600 mb-2">18%</div>
                       <div className="text-sm font-medium text-purple-800">Mobile Completion</div>
-                      <div className="text-xs text-purple-600 mt-1">From 0.3% to 15%</div>
+                      <div className="text-xs text-purple-600 mt-1">From 0.3% to 18% (60x)</div>
                     </div>
                   </div>
 
