@@ -2929,64 +2929,64 @@ export default function Page() {
                   <div id="tour-highlight-6" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ bottom: '20px', left: '35%', right: '20px', height: '100px' }}></div>
                 </div>
               </div>
+            </div>
+          </div>
 
-              {/* Key Features Explanation */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div className="bg-purple-50 p-6 rounded-xl border border-purple-200">
-                  <h5 className="font-bold text-purple-800 mb-4">Conversational AI Interface</h5>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start">
-                      <div className="text-purple-500 mr-2 mt-1">•</div>
-                      <span>Natural language guidance through the entire process</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="text-purple-500 mr-2 mt-1">•</div>
-                      <span>Drag-and-drop file upload with intelligent content analysis</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="text-purple-500 mr-2 mt-1">•</div>
-                      <span>Interactive lesson selection with real-time feedback</span>
-                    </li>
-                  </ul>
-                </div>
+          {/* Key Features Explanation - Outside app container */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div className="bg-purple-50 p-6 rounded-xl border border-purple-200">
+              <h5 className="font-bold text-purple-800 mb-4">Conversational AI Interface</h5>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-start">
+                  <div className="text-purple-500 mr-2 mt-1">•</div>
+                  <span>Natural language guidance through the entire process</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-purple-500 mr-2 mt-1">•</div>
+                  <span>Drag-and-drop file upload with intelligent content analysis</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-purple-500 mr-2 mt-1">•</div>
+                  <span>Interactive lesson selection with real-time feedback</span>
+                </li>
+              </ul>
+            </div>
 
-                <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
-                  <h5 className="font-bold text-blue-800 mb-4">Guided User Experience</h5>
-                  <ul className="space-y-2 text-sm text-gray-700">
-                    <li className="flex items-start">
-                      <div className="text-blue-500 mr-2 mt-1">•</div>
-                      <span>Step-by-step product tour with visual highlights</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="text-blue-500 mr-2 mt-1">•</div>
-                      <span>Real-time progress tracking with stop/start controls</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="text-blue-500 mr-2 mt-1">•</div>
-                      <span>Clear summary and download options upon completion</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
+              <h5 className="font-bold text-blue-800 mb-4">Guided User Experience</h5>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-start">
+                  <div className="text-blue-500 mr-2 mt-1">•</div>
+                  <span>Step-by-step product tour with visual highlights</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-blue-500 mr-2 mt-1">•</div>
+                  <span>Real-time progress tracking with stop/start controls</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-blue-500 mr-2 mt-1">•</div>
+                  <span>Clear summary and download options upon completion</span>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-              {/* Product Tour Benefits */}
-              <div className="mt-8 bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200">
-                <h5 className="font-bold text-gray-800 mb-4 flex items-center">
-                  <svg className="w-5 h-5 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  Interactive Product Tour
-                </h5>
-                <p className="text-sm text-gray-700 mb-4">
-                  The guided tour reduces the learning curve by 75% compared to traditional documentation approaches.
-                  Users can explore each feature hands-on while receiving contextual explanations.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-purple-700 border border-purple-200">5-Step Walkthrough</span>
-                  <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-blue-700 border border-blue-200">Visual Highlights</span>
-                  <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-green-700 border border-green-200">Skip Option Available</span>
-                </div>
-              </div>
+          {/* Product Tour Benefits */}
+          <div className="mt-8 bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200">
+            <h5 className="font-bold text-gray-800 mb-4 flex items-center">
+              <svg className="w-5 h-5 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Interactive Product Tour
+            </h5>
+            <p className="text-sm text-gray-700 mb-4">
+              The guided tour reduces the learning curve by 75% compared to traditional documentation approaches.
+              Users can explore each feature hands-on while receiving contextual explanations.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-purple-700 border border-purple-200">5-Step Walkthrough</span>
+              <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-blue-700 border border-blue-200">Visual Highlights</span>
+              <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-green-700 border border-green-200">Skip Option Available</span>
             </div>
           </div>
         </motion.section>
