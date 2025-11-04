@@ -112,35 +112,14 @@ export default function Page() {
   // Template and spreadsheet data
   const templates = [
     { id: 1, name: 'Mathematics Template', emoji: '📄', description: 'Grade 3 • Fractions & Decimals' },
-    { id: 2, name: 'Science Template', emoji: '🧪', description: 'Grade 5 • Lab Experiments' },
-    { id: 3, name: 'Language Template', emoji: '📝', description: 'Grade 4 • Reading Comprehension' },
-    { id: 4, name: 'History Template', emoji: '🏛️', description: 'Grade 6 • World History' },
-    { id: 5, name: 'Art Template', emoji: '🎨', description: 'Grade K-2 • Creative Arts' },
-    { id: 6, name: 'Music Template', emoji: '🎵', description: 'Grade 3-5 • Music Theory' },
-    { id: 7, name: 'PE Template', emoji: '⚽', description: 'Grade K-8 • Physical Education' },
-    { id: 8, name: 'Geography Template', emoji: '🗺️', description: 'Grade 4-6 • World Geography' },
-    { id: 9, name: 'Biology Template', emoji: '🧬', description: 'Grade 7-8 • Life Sciences' },
-    { id: 10, name: 'Chemistry Template', emoji: '⚗️', description: 'Grade 9-10 • Basic Chemistry' },
-    { id: 11, name: 'Physics Template', emoji: '⚡', description: 'Grade 9-10 • Physics Fundamentals' },
-    { id: 12, name: 'Social Studies Template', emoji: '🌍', description: 'Grade 3-6 • Community & World' }
+    { id: 2, name: 'Science Template', emoji: '🧪', description: 'Grade 5 • Lab Experiments' }
   ];
 
   const spreadsheets = [
     { id: 1, name: 'Q1 Math Content', emoji: '📊', description: 'Grade 3 • 25 lessons' },
     { id: 2, name: 'Science Units', emoji: '📊', description: 'Grade 5 • 30 lessons' },
     { id: 3, name: 'Language Arts', emoji: '📊', description: 'Grade 4 • 45 lessons' },
-    { id: 4, name: 'Q2 Math Content', emoji: '📊', description: 'Grade 3 • 28 lessons' },
-    { id: 5, name: 'History Curriculum', emoji: '📊', description: 'Grade 6 • 20 lessons' },
-    { id: 6, name: 'Art Projects', emoji: '📊', description: 'Grade K-2 • 15 projects' },
-    { id: 7, name: 'Music Lessons', emoji: '📊', description: 'Grade 3-5 • 12 lessons' },
-    { id: 8, name: 'PE Activities', emoji: '📊', description: 'Grade K-8 • 40 activities' },
-    { id: 9, name: 'Geography Units', emoji: '📊', description: 'Grade 4-6 • 18 lessons' },
-    { id: 10, name: 'Q3 Math Content', emoji: '📊', description: 'Grade 3 • 30 lessons' },
-    { id: 11, name: 'Q4 Math Content', emoji: '📊', description: 'Grade 3 • 24 lessons' },
-    { id: 12, name: 'Biology Lab Content', emoji: '📊', description: 'Grade 7-8 • 16 experiments' },
-    { id: 13, name: 'Chemistry Lab Content', emoji: '📊', description: 'Grade 9-10 • 22 experiments' },
-    { id: 14, name: 'Physics Problem Sets', emoji: '📊', description: 'Grade 9-10 • 35 problems' },
-    { id: 15, name: 'Social Studies Projects', emoji: '📊', description: 'Grade 3-6 • 12 projects' }
+    { id: 4, name: 'Q2 Math Content', emoji: '📊', description: 'Grade 3 • 28 lessons' }
   ];
 
   return (
@@ -2554,11 +2533,6 @@ export default function Page() {
                     <div className="h-3 w-3 rounded-full bg-green-500"></div>
                   </div>
                   <span className="text-gray-700 font-medium">LessonLoom AI Generation Studio</span>
-                  <div className="ml-auto">
-                    <button className="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full hover:bg-purple-200 transition-colors">
-                      Start Tour
-                    </button>
-                  </div>
                 </div>
 
                 {/* Two Column Layout */}
@@ -2587,7 +2561,7 @@ export default function Page() {
                       {/* Templates Section */}
                       <div>
                         <div className="flex items-center mb-3">
-                          <svg className="w-4 h-4 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-4 h-4 text-gray-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
                           <h4 className="text-sm font-semibold text-gray-800">Templates</h4>
@@ -2598,13 +2572,13 @@ export default function Page() {
                           {templates.map(template => (
                             <div
                               key={template.id}
-                              className={`template-card bg-purple-50 border border-purple-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedTemplate?.id === template.id ? 'ring-2 ring-purple-400' : ''}`}
+                              className={`template-card bg-white border border-gray-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedTemplate?.id === template.id ? 'ring-2 ring-gray-400' : ''}`}
                               draggable="true"
                               onDragStart={(e) => handleDragStart(e, template, 'template')}
                             >
                               <div className="flex items-center justify-between mb-1">
                                 <div className="flex items-center">
-                                  <div className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center mr-2">
+                                  <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
                                     <span className="text-white text-xs">{template.emoji}</span>
                                   </div>
                                   <span className="text-sm font-medium text-gray-800">{template.name}</span>
@@ -2622,7 +2596,7 @@ export default function Page() {
                       {/* Spreadsheets Section */}
                       <div>
                         <div className="flex items-center mb-3">
-                          <svg className="w-4 h-4 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-4 h-4 text-gray-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
                           </svg>
                           <h4 className="text-sm font-semibold text-gray-800">Content Spreadsheets</h4>
@@ -2633,13 +2607,13 @@ export default function Page() {
                           {spreadsheets.map(spreadsheet => (
                             <div
                               key={spreadsheet.id}
-                              className={`template-card bg-green-50 border border-green-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedSpreadsheet?.id === spreadsheet.id ? 'ring-2 ring-green-400' : ''}`}
+                              className={`template-card bg-white border border-gray-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedSpreadsheet?.id === spreadsheet.id ? 'ring-2 ring-gray-400' : ''}`}
                               draggable="true"
                               onDragStart={(e) => handleDragStart(e, spreadsheet, 'spreadsheet')}
                             >
                               <div className="flex items-center justify-between mb-1">
                                 <div className="flex items-center">
-                                  <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center mr-2">
+                                  <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
                                     <span className="text-white text-xs">{spreadsheet.emoji}</span>
                                   </div>
                                   <span className="text-sm font-medium text-gray-800">{spreadsheet.name}</span>
@@ -2702,30 +2676,32 @@ export default function Page() {
                         </div>
                       )}
 
-                      {/* Drop Zone in Chat */}
-                      <div className="flex justify-center my-6">
-                        <div
-                          id="chat-drop-zone"
-                          className={`border-2 border-dashed rounded-lg p-8 w-full max-w-md text-center transition-all ${
-                            isDragOver
-                              ? 'border-purple-500 bg-purple-50 scale-105'
-                              : 'border-gray-300 hover:border-purple-400'
-                          }`}
-                          onDragOver={handleDragOver}
-                          onDragLeave={handleDragLeave}
-                          onDrop={handleDrop}
-                        >
-                          <svg className={`mx-auto h-8 w-8 mb-2 transition-colors ${isDragOver ? 'text-purple-600' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                          </svg>
-                          <p className={`text-sm transition-colors ${isDragOver ? 'text-purple-700 font-medium' : 'text-gray-600'}`}>
-                            {isDragOver ? 'Release to add item' : 'Drop templates or spreadsheets here'}
-                          </p>
-                          <p className={`text-xs transition-colors ${isDragOver ? 'text-purple-500' : 'text-gray-400'}`}>
-                            {isDragOver ? 'Adding to your lesson plan...' : 'Start by adding at least one template'}
-                          </p>
+                      {/* Drop Zone in Chat - Only show if haven't selected both items yet */}
+                      {!(selectedTemplate && selectedSpreadsheet) && (
+                        <div className="flex justify-center my-6">
+                          <div
+                            id="chat-drop-zone"
+                            className={`border-2 border-dashed rounded-lg p-8 w-full max-w-md text-center transition-all ${
+                              isDragOver
+                                ? 'border-purple-500 bg-purple-50 scale-105'
+                                : 'border-gray-300 hover:border-purple-400'
+                            }`}
+                            onDragOver={handleDragOver}
+                            onDragLeave={handleDragLeave}
+                            onDrop={handleDrop}
+                          >
+                            <svg className={`mx-auto h-8 w-8 mb-2 transition-colors ${isDragOver ? 'text-purple-600' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                            </svg>
+                            <p className={`text-sm transition-colors ${isDragOver ? 'text-purple-700 font-medium' : 'text-gray-600'}`}>
+                              {isDragOver ? 'Release to add item' : 'Drop templates or spreadsheets here'}
+                            </p>
+                            <p className={`text-xs transition-colors ${isDragOver ? 'text-purple-500' : 'text-gray-400'}`}>
+                              {isDragOver ? 'Adding to your lesson plan...' : 'Start by adding at least one template'}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
                       {/* Selected Items Display */}
                       {(selectedTemplate || selectedSpreadsheet) && (
@@ -2734,7 +2710,7 @@ export default function Page() {
                           {selectedTemplate && (
                             <div className="bg-white border border-gray-200 rounded-lg p-3 mb-2">
                               <div className="flex items-center">
-                                <div className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center mr-2">
+                                <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
                                   <span className="text-white text-xs">{selectedTemplate.emoji}</span>
                                 </div>
                                 <span className="text-sm font-medium text-gray-800">Selected: {selectedTemplate.name}</span>
@@ -2746,7 +2722,7 @@ export default function Page() {
                           {selectedSpreadsheet && (
                             <div className="bg-white border border-gray-200 rounded-lg p-3 mb-2">
                               <div className="flex items-center">
-                                <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center mr-2">
+                                <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
                                   <span className="text-white text-xs">{selectedSpreadsheet.emoji}</span>
                                 </div>
                                 <span className="text-sm font-medium text-gray-800">Selected: {selectedSpreadsheet.name}</span>
@@ -2766,12 +2742,14 @@ export default function Page() {
                             <div>
                               <h4 className="font-semibold text-green-800 mb-2">Lessons Generated Successfully!</h4>
                               <div className="space-y-2 mb-4">
-                                <div className="bg-white border border-green-200 rounded p-3">
-                                  <div className="flex justify-between items-center">
-                                    <span className="text-sm font-medium">Mathematics Lesson Pack</span>
-                                    <button className="bg-green-600 text-white text-xs px-3 py-1 rounded hover:bg-green-700">Download</button>
+                                <div className="bg-white border border-green-200 rounded p-4">
+                                  <div className="flex justify-between items-start gap-4">
+                                    <div className="flex-1">
+                                      <span className="text-sm font-medium text-gray-800">Mathematics Lesson Pack</span>
+                                      <p className="text-xs text-gray-500 mt-2">25 lessons • PDF Format • 2.4 MB</p>
+                                    </div>
+                                    <button className="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition-colors flex-shrink-0">Download</button>
                                   </div>
-                                  <p className="text-xs text-gray-600 mt-1">25 lessons • PDF Format • 2.4 MB</p>
                                 </div>
                               </div>
                               <button
