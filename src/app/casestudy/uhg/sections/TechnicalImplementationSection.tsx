@@ -4,6 +4,7 @@ import { MdBuild, MdSecurity, MdAssessment, MdBalance, MdRocket } from 'react-ic
 export function TechnicalImplementationSection() {
   return (
     <motion.div
+      id="technical"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

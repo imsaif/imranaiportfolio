@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 w-full backdrop-blur-md transition-all duration-300 z-50 ${
-        scrolled ? 'py-4 bg-background/95 border-b border-border shadow-sm' : 'py-6 bg-background/80'
+        scrolled ? 'py-3 bg-background/95 border-b border-border shadow-sm' : 'py-3 bg-background/80'
       }`}
     >
       <div className="container mx-auto px-6 md:px-8 flex justify-between items-center">
@@ -67,7 +67,7 @@ const Header = () => {
             <li>
               <Link
                 href={pathname === '/' ? '#work' : '/#work'}
-                className="link-effect text-foreground hover:text-accent transition-colors relative py-2"
+                className="link-effect text-foreground hover:text-accent transition-colors relative"
               >
                 About
               </Link>
@@ -75,7 +75,7 @@ const Header = () => {
             <li>
               <Link
                 href="/resume"
-                className="link-effect text-foreground hover:text-accent transition-colors relative py-2"
+                className="link-effect text-foreground hover:text-accent transition-colors relative"
               >
                 Resume
               </Link>

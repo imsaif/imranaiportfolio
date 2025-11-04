@@ -20,9 +20,9 @@ export function LeadershipTeamSection() {
           <div className="flex items-start gap-4 mb-6">
             <MdPerson className="text-blue-600 flex-shrink-0" size={28} />
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Senior Product Designer</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Lead UX Designer</h3>
               <p className="text-gray-700 mb-6">
-                I worked as a senior designer on this project, responsible for defining the end-to-end UX strategy, research approach, and design execution. While I didn't manage direct reports, I collaborated closely with peers across design, research, product, and engineering to drive the initiative forward.
+                I worked as a Lead UX Designer on this project, responsible for defining the end-to-end UX strategy, research approach, and design execution. While I didn't manage direct reports, I collaborated closely with peers across design, research, product, and engineering to drive the initiative forward.
               </p>
               <div className="space-y-3">
                 <div className="flex gap-3">

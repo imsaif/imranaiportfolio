@@ -3,7 +3,6 @@
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import Image from 'next/image';
 import CaseStudyHeader from '@/components/case-studies/CaseStudyHeader';
-import ProgressBar from '@/components/ui/ProgressBar';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -112,9 +111,6 @@ const VoiceControlBar: React.FC<VoiceControlBarProps> = ({
 };
 
 export default function UHGCaseStudyPage() {
-  // Scroll progress state
-  const [scrollProgress, setScrollProgress] = useState(0);
-
   // UHG Vapi assistant state
   const [isVapiActive, setIsVapiActive] = useState(false);
   const [vapiStatus, setVapiStatus] = useState<'idle' | 'connecting' | 'active' | 'error'>('idle');
@@ -126,11 +122,6 @@ export default function UHGCaseStudyPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(progress);
-
       // Check if we should show floating voice bar
       if (introSectionRef.current) {
         const introRect = introSectionRef.current.getBoundingClientRect();
@@ -423,8 +414,6 @@ export default function UHGCaseStudyPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      <ProgressBar progress={scrollProgress} />
-
       {/* Hero Image */}
       <div className="w-full relative">
         <div className="w-full h-[70vh] md:h-[80vh] relative overflow-hidden">

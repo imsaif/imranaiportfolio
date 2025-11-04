@@ -62,7 +62,7 @@ export function StrategicInsightsSection() {
             <div className="flex-1">
               <h3 className="text-xl font-bold text-gray-900 mb-4">How Great Design Happens</h3>
               <p className="text-gray-700 mb-6">
-                This project showed me that exceptional design results from exceptional collaboration. The role of a senior designer is to orchestrate, not dictate.
+                This project showed me that exceptional design results from exceptional collaboration. The role of a Lead UX Designer is to orchestrate, not dictate.
               </p>
               <div className="space-y-4">
                 <div className="border-l-4 border-green-400 pl-4">
