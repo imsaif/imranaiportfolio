@@ -23,7 +23,8 @@ import {
   MdGroup,
   MdWarning,
   MdGroupWork,
-  MdLightbulb
+  MdLightbulb,
+  MdDevices
 } from 'react-icons/md';
 
 interface Section {
@@ -43,9 +44,11 @@ const strategicSections: Section[] = [
 ];
 
 const tacticalSections: Section[] = [
-  { id: 'research', title: 'Research & Discovery', icon: <MdSearch size={18} /> },
+  { id: 'research', title: 'The Challenge', icon: <MdWarning size={18} /> },
   { id: 'design', title: 'Design Solution', icon: <MdPalette size={18} /> },
+  { id: 'interactive-demo', title: 'Interactive Demo', icon: <MdDevices size={18} /> },
   { id: 'technical', title: 'Technical Implementation', icon: <MdBuild size={18} /> },
+  { id: 'ai-deep-dive', title: 'AI Implementation', icon: <MdLightbulb size={18} /> },
   { id: 'results', title: 'Results & Impact', icon: <MdShowChart size={18} /> }
 ];
 

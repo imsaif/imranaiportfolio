@@ -238,6 +238,14 @@ My approach combines strategic design thinking with hands-on mentorship, fosteri
     ],
     publications: [
       {
+        role: 'Review Team Member',
+        title: `Beyond Vibe Coding: From Coder to AI-Era Developer`,
+        date: 'August 2025',
+        description: `I was honored to be part of the review team for this groundbreaking book by Addy Osmani. Beyond Vibe Coding explores how AI-powered coding assistants are transforming software development, shifting focus from traditional code-writing to an "intent-driven workflow" where developers describe goals in natural language and collaborate with AI models to generate solutions.
+
+The book covers essential topics including techniques for reviewing and validating AI-generated code, practical strategies for integrating AI into development workflows, multiagent coding systems, security and ethical considerations, and preparing careers for AI's expanding role in engineering. This resource is invaluable for developers, tech leads, and organizations seeking to leverage AI tools effectively while maintaining code quality and reliability.`,
+      },
+      {
         role: 'Book Reviewer/Critic',
         title: `Observing User Experience : A Practitioner's Guide to User Research`,
         date: 'Apr 11, 2017',

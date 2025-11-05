@@ -23,7 +23,7 @@ export const projects: Project[] = [
     id: 3,
     slug: 'uhg',
     title: 'Optum Bank',
-    description: 'Redesigned HSA reimbursement platform for 450K users, improving task completion from 1.1% to 30% and reducing support calls by 30%',
+    description: 'Led HSA reimbursement platform redesign, achieving 27x improvement in task completion.',
     fullDescription: `
       As Lead UX Designer at UnitedHealth Group, I led the redesign of the HSA reimbursement system serving 450K users.
       The platform had a critical 1.1% task completion rate with 98.9% abandonment, causing significant support costs.
@@ -82,7 +82,7 @@ export const projects: Project[] = [
       '/images/casestudy/scheduler/conflict-icon.svg',
     ],
     featured: true,
-    tagline: 'UX RESEARCH, PRODUCT DESIGN',
+    tagline: 'EDUTECH, PRODUCT DESIGN',
     stats: [
       { label: 'Schools Automated', value: '120+' },
       { label: 'Scheduling Time Saved', value: '85%' },

@@ -1461,7 +1461,7 @@ export function TacticalExecutionContent() {
         </motion.section>
 
         {/* Design Solution Section */}
-        <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.5 }}>
+        <motion.section id="interactive-demo" className="mb-16" {...fadeIn} transition={{ delay: 0.5 }}>
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Interactive Demo</h2>
 
           <motion.div
@@ -2527,9 +2527,14 @@ export function TacticalExecutionContent() {
         <motion.section className="mb-16 px-6 sm:px-8 lg:px-12" {...fadeIn} transition={{ delay: 0.4 }}>
           <div>
             {/* AI-Powered Generation Interface */}
-            <div className="mb-8">
-              <h4 className="text-xl font-bold text-gray-800 mb-4">2. AI-Powered Generation Interface</h4>
-              <p className="text-gray-700 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg p-8 border border-blue-200"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">2. AI-Powered Generation Interface</h3>
+              <p className="text-gray-700 mb-6 leading-relaxed">
                 This is the actual LessonLoom application that educators use. I designed an intuitive, AI-native interface that combines a drag-and-drop library of templates and data sources with intelligent generation capabilities. The interface keeps educators in control while automating the tedious parts of lesson creation.
               </p>
 
@@ -3050,7 +3055,7 @@ export function TacticalExecutionContent() {
                   <div id="tour-highlight-6" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ bottom: '20px', left: '35%', right: '20px', height: '100px' }}></div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* FULLSCREEN MODAL - LessonLoom AI Generation Studio */}
@@ -3577,7 +3582,7 @@ export function TacticalExecutionContent() {
         </motion.section>
 
         {/* AI Implementation Deep-Dive Section */}
-        <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.5 }}>
+        <motion.section id="ai-deep-dive" className="mb-16" {...fadeIn} transition={{ delay: 0.5 }}>
           <h2 className="text-3xl font-bold text-gray-900 mb-8">AI Implementation Deep-Dive</h2>
 
           <motion.div

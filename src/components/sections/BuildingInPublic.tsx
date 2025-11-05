@@ -1,17 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { MdTerminal } from 'react-icons/md';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PixelHoverBackground from '@/components/effects/PixelHoverBackground';
 import Image from 'next/image';
 import Link from 'next/link';
-
-// Register ScrollTrigger plugin
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 interface Project {
   title: string;
@@ -26,10 +19,6 @@ interface Project {
 }
 
 const BuildingInPublic = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const projects: Project[] = [
     {
@@ -54,76 +43,19 @@ const BuildingInPublic = () => {
     }
   ];
 
-  const setCardRef = (index: number) => (el: HTMLDivElement | null) => {
-    cardsRef.current[index] = el;
-  };
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const ctx = gsap.context(() => {
-      // Initial setup - hide elements
-      gsap.set([titleRef.current, descriptionRef.current], {
-        opacity: 0,
-        y: 30
-      });
-
-      gsap.set(cardsRef.current, {
-        opacity: 0,
-        y: 50,
-        scale: 0.9
-      });
-
-      // Timeline for initial load animations
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse"
-        }
-      });
-
-      // Animate title and description
-      tl.to(titleRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out"
-      })
-      .to(descriptionRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out"
-      }, "-=0.4");
-
-      // Animate cards with stagger
-      tl.to(cardsRef.current, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out"
-      }, "-=0.2");
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
-    <section ref={sectionRef} className="pt-12 md:pt-16 pb-12 md:pb-16 bg-background relative">
+    <section className="pt-12 md:pt-16 pb-12 md:pb-16 bg-background relative">
       {/* Pixel Hover Background */}
       <PixelHoverBackground pixelSize={20} />
 
       <div className="container mx-auto px-4 xs:px-5 sm:px-6 md:px-8 relative z-10">
         {/* Title and Description */}
         <div className="text-center mb-8 md:mb-10 pointer-events-none">
-          <h2 ref={titleRef} className="section-title text-2xl md:text-3xl font-bold text-foreground mb-4 tracking-tight leading-tight">
+          <h2 className="section-title text-2xl md:text-3xl font-bold text-foreground mb-4 tracking-tight leading-tight">
             Building in Public
           </h2>
-          <p ref={descriptionRef} className="text-base text-muted leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base text-muted leading-relaxed max-w-2xl mx-auto">
             Open-source projects and resources for the design and AI community
           </p>
         </div>
@@ -131,7 +63,7 @@ const BuildingInPublic = () => {
         {/* Two Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <div key={index} ref={setCardRef(index)} className="group">
+            <div key={index} className="group">
               <Link href={project.github} target="_blank" rel="noopener noreferrer">
                 <div className="relative h-full cursor-pointer">
                   {/* Gradient Background */}
