@@ -83,7 +83,13 @@ public/
 
 ## Recent Sessions
 
-### Session 1: Oct 28, 2025 - Portfolio UI/UX Improvements
+### Session 2025-11-05 13:31 (MacBook) - LessonLoom Generate Button State Fix
+- **Pattern:** LessonLoom case study state management
+- **Status:** Complete
+- **Files Changed:** 1
+- **Tests Added/Modified:** 0
+- **Notes:** Fixed Generate Lessons button state variable references in both collapsed and expanded versions of LessonLoom AI Generation Studio. Corrected 7 instances where button conditions were checking embedded workflow state instead of fullscreen app state variables. All tests passed, build successful, dev server running.
+
 ### Session 2025-11-04 20:50 (MacBook) - LessonLoom AI Interface Refinements
 - **Pattern:** LessonLoom case study UI improvements
 - **Status:** Complete

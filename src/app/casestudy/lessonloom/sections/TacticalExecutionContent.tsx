@@ -26,9 +26,40 @@ export function TacticalExecutionContent() {
   ]);
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationComplete, setGenerationComplete] = useState(false);
+  const [generationStage, setGenerationStage] = useState(0);
+  const [lessonsGenerated, setLessonsGenerated] = useState(0);
+  const [showProcessTooltip, setShowProcessTooltip] = useState(false);
+  const [isValidated, setIsValidated] = useState(false);
+  const [showValidationSuggestions, setShowValidationSuggestions] = useState(false);
+  const [validationSuggestions] = useState([
+    'Consider using a more advanced template to unlock additional formatting options',
+    'The Q1 Math Content spreadsheet includes diverse learning styles - great choice for inclusivity!',
+    'Recommended: Enable peer review mode for this lesson configuration'
+  ]);
+
+  // FULLSCREEN APP STATE (Isolated/Separate from embedded version)
+  const [isFullscreenMode, setIsFullscreenMode] = useState(false);
+  const [isEmbeddedFullscreen, setIsEmbeddedFullscreen] = useState(false);
+  const [fullscreenSelectedTemplate, setFullscreenSelectedTemplate] = useState(null);
+  const [fullscreenSelectedSpreadsheet, setFullscreenSelectedSpreadsheet] = useState(null);
+  const [fullscreenChatMessages, setFullscreenChatMessages] = useState([
+    {
+      type: 'ai',
+      content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
+    }
+  ]);
+  const [fullscreenIsGenerating, setFullscreenIsGenerating] = useState(false);
+  const [fullscreenGenerationComplete, setFullscreenGenerationComplete] = useState(false);
+  const [fullscreenGenerationStage, setFullscreenGenerationStage] = useState(0);
+  const [fullscreenLessonsGenerated, setFullscreenLessonsGenerated] = useState(0);
+  const [fullscreenShowProcessTooltip, setFullscreenShowProcessTooltip] = useState(false);
+  const [fullscreenIsValidated, setFullscreenIsValidated] = useState(false);
+  const [fullscreenShowValidationSuggestions, setFullscreenShowValidationSuggestions] = useState(false);
+  const [fullscreenIsDragOver, setFullscreenIsDragOver] = useState(false);
 
   // Refs for scrolling
   const chatContainerRef = useRef(null);
+  const fullscreenChatContainerRef = useRef(null);
 
   // Auto-scroll chat to bottom when new messages are added
   useEffect(() => {
@@ -39,6 +70,30 @@ export function TacticalExecutionContent() {
       });
     }
   }, [chatMessages, isGenerating]);
+
+  // Auto-scroll fullscreen chat to bottom when new messages are added
+  useEffect(() => {
+    if (fullscreenChatContainerRef.current) {
+      fullscreenChatContainerRef.current.scrollTo({
+        top: fullscreenChatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [fullscreenChatMessages, fullscreenIsGenerating]);
+
+  // ESC key handler for fullscreen
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape' && isFullscreenMode) {
+        setIsFullscreenMode(false);
+      }
+    };
+
+    if (isFullscreenMode) {
+      window.addEventListener('keydown', handleEscapeKey);
+      return () => window.removeEventListener('keydown', handleEscapeKey);
+    }
+  }, [isFullscreenMode]);
 
   // Drag and Drop Handlers
   const [isDragOver, setIsDragOver] = useState(false);
@@ -73,39 +128,310 @@ export function TacticalExecutionContent() {
           content: `Great! I've added the ${item.name} template. Now drag a spreadsheet to provide content data.`
         }
       ]);
+
+      // Check if spreadsheet is already selected
+      if (selectedSpreadsheet) {
+        setIsValidated(true);
+        setShowValidationSuggestions(true);
+        setChatMessages(prev => [...prev,
+          {
+            type: 'ai',
+            content: `✓ Perfect! Scenario validated. I have both the ${item.name} template and ${fullscreenSelectedSpreadsheet.name} spreadsheet. Everything looks good - proceed to generate when ready!`
+          }
+        ]);
+      }
     } else if (type === 'spreadsheet') {
       setSelectedSpreadsheet(item);
       setChatMessages(prev => [...prev,
         {
           type: 'ai',
-          content: `Perfect! I now have both a template (${selectedTemplate?.name || 'Template'}) and content spreadsheet (${item.name}). You can generate your lessons now!`
+          content: `Great! I've added the ${item.name} spreadsheet. Now I have both a template and content data.`
         }
       ]);
+
+      // Check if template is already selected
+      if (selectedTemplate) {
+        setIsValidated(true);
+        setShowValidationSuggestions(true);
+        setChatMessages(prev => [...prev,
+          {
+            type: 'ai',
+            content: `✓ Perfect! Scenario validated. I have both the ${fullscreenSelectedTemplate.name} template and ${item.name} spreadsheet. Everything looks good - proceed to generate when ready!`
+          }
+        ]);
+      }
     }
   };
 
   const handleGenerate = () => {
     setIsGenerating(true);
+    setGenerationStage(1);
+    setLessonsGenerated(0);
     setChatMessages(prev => [...prev,
       {
         type: 'ai',
-        content: 'Generating lessons... This may take a few moments.'
+        content: 'Analyzing template structure...'
       }
     ]);
 
-    // Simulate generation process
+    // Stage 1: Analyze (0-1200ms) - extended for realistic analysis time
+    setTimeout(() => {
+      setGenerationStage(2);
+      setChatMessages(prev => [...prev.slice(0, -1),
+        {
+          type: 'ai',
+          content: 'Processing spreadsheet content...'
+        }
+      ]);
+    }, 1200);
+
+    // Stage 2: Process (1200-2500ms) - extended processing time
+    setTimeout(() => {
+      setGenerationStage(3);
+      setChatMessages(prev => [...prev.slice(0, -1),
+        {
+          type: 'ai',
+          content: 'Generating lessons 1-10...'
+        }
+      ]);
+    }, 2500);
+
+    // Stage 3: Generate first batch (2500-4200ms) - slowed lesson counter
+    let lessonCounter = 0;
+    const stage3Interval = setInterval(() => {
+      lessonCounter++;
+      if (lessonCounter <= 10) {
+        setLessonsGenerated(lessonCounter);
+        setChatMessages(prev => [...prev.slice(0, -1),
+          {
+            type: 'ai',
+            content: `Generating lessons 1-10... (Lesson ${lessonCounter} of 25)`
+          }
+        ]);
+      }
+      if (lessonCounter >= 10) clearInterval(stage3Interval);
+    }, 120);
+
+    // Stage 4: Generate second batch (4200-5900ms) - slowed lesson counter
+    setTimeout(() => {
+      setGenerationStage(4);
+      let stage4Counter = 10;
+      const stage4Interval = setInterval(() => {
+        stage4Counter++;
+        if (stage4Counter <= 20) {
+          setLessonsGenerated(stage4Counter);
+          setChatMessages(prev => [...prev.slice(0, -1),
+            {
+              type: 'ai',
+              content: `Generating lessons 11-20... (Lesson ${stage4Counter} of 25)`
+            }
+          ]);
+        }
+        if (stage4Counter >= 20) clearInterval(stage4Interval);
+      }, 120);
+    }, 4200);
+
+    // Stage 5: Finalize (5900-7200ms) - slowed lesson counter
+    setTimeout(() => {
+      setGenerationStage(5);
+      let stage5Counter = 20;
+      const stage5Interval = setInterval(() => {
+        stage5Counter++;
+        if (stage5Counter <= 25) {
+          setLessonsGenerated(stage5Counter);
+          setChatMessages(prev => [...prev.slice(0, -1),
+            {
+              type: 'ai',
+              content: `Finalizing ${stage5Counter} lessons...`
+            }
+          ]);
+        }
+        if (stage5Counter >= 25) clearInterval(stage5Interval);
+      }, 110);
+    }, 5900);
+
+    // Complete (7200ms) - total process now ~7.2 seconds
     setTimeout(() => {
       setIsGenerating(false);
       setGenerationComplete(true);
+      setGenerationStage(0);
+      setLessonsGenerated(0);
       setChatMessages(prev => [...prev,
         {
           type: 'ai',
           content: `🎉 Success! Generated 25 lessons using ${selectedTemplate?.name} template and ${selectedSpreadsheet?.name} data. Ready for download!`
         }
       ]);
-    }, 3000);
+    }, 7200);
   };
 
+  // FULLSCREEN-SPECIFIC HANDLERS
+  const handleFullscreenDragStart = (e, item, type) => {
+    e.dataTransfer.setData('application/json', JSON.stringify({ item, type }));
+    e.dataTransfer.effectAllowed = 'copy';
+  };
+
+  const handleFullscreenDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+    setFullscreenIsDragOver(true);
+  };
+
+  const handleFullscreenDragLeave = (e) => {
+    e.preventDefault();
+    setFullscreenIsDragOver(false);
+  };
+
+  const handleFullscreenDrop = (e) => {
+    e.preventDefault();
+    setFullscreenIsDragOver(false);
+    const data = JSON.parse(e.dataTransfer.getData('application/json'));
+    const { item, type } = data;
+
+    if (type === 'template') {
+      setFullscreenSelectedTemplate(item);
+      setFullscreenChatMessages(prev => [...prev,
+        {
+          type: 'ai',
+          content: `Great! I've added the ${item.name} template. Now drag a spreadsheet to provide content data.`
+        }
+      ]);
+
+      // Check if spreadsheet is already selected
+      if (fullscreenSelectedSpreadsheet) {
+        setFullscreenIsValidated(true);
+        setFullscreenShowValidationSuggestions(true);
+        setFullscreenChatMessages(prev => [...prev,
+          {
+            type: 'ai',
+            content: `✓ Perfect! Scenario validated. I have both the ${item.name} template and ${fullscreenSelectedSpreadsheet.name} spreadsheet. Everything looks good - proceed to generate when ready!`
+          }
+        ]);
+      }
+    } else if (type === 'spreadsheet') {
+      setFullscreenSelectedSpreadsheet(item);
+      setFullscreenChatMessages(prev => [...prev,
+        {
+          type: 'ai',
+          content: `Great! I've added the ${item.name} spreadsheet. Now I have both a template and content data.`
+        }
+      ]);
+
+      // Check if template is already selected
+      if (fullscreenSelectedTemplate) {
+        setFullscreenIsValidated(true);
+        setFullscreenShowValidationSuggestions(true);
+        setFullscreenChatMessages(prev => [...prev,
+          {
+            type: 'ai',
+            content: `✓ Perfect! Scenario validated. I have both the ${fullscreenSelectedTemplate.name} template and ${item.name} spreadsheet. Everything looks good - proceed to generate when ready!`
+          }
+        ]);
+      }
+    }
+  };
+
+  const handleFullscreenGenerate = () => {
+    setFullscreenIsGenerating(true);
+    setFullscreenGenerationStage(1);
+    setFullscreenLessonsGenerated(0);
+    setFullscreenChatMessages(prev => [...prev,
+      {
+        type: 'ai',
+        content: 'Analyzing template structure...'
+      }
+    ]);
+
+    // Stage 1: Analyze (0-1200ms)
+    setTimeout(() => {
+      setFullscreenGenerationStage(2);
+      setFullscreenChatMessages(prev => [...prev.slice(0, -1),
+        {
+          type: 'ai',
+          content: 'Processing spreadsheet content...'
+        }
+      ]);
+    }, 1200);
+
+    // Stage 2: Process (1200-2500ms)
+    setTimeout(() => {
+      setFullscreenGenerationStage(3);
+      setFullscreenChatMessages(prev => [...prev.slice(0, -1),
+        {
+          type: 'ai',
+          content: 'Generating lessons 1-10...'
+        }
+      ]);
+    }, 2500);
+
+    // Stage 3: Generate first batch (2500-4200ms)
+    let lessonCounter = 0;
+    const stage3Interval = setInterval(() => {
+      lessonCounter++;
+      if (lessonCounter <= 10) {
+        setFullscreenLessonsGenerated(lessonCounter);
+        setFullscreenChatMessages(prev => [...prev.slice(0, -1),
+          {
+            type: 'ai',
+            content: `Generating lessons 1-10... (Lesson ${lessonCounter} of 25)`
+          }
+        ]);
+      }
+      if (lessonCounter >= 10) clearInterval(stage3Interval);
+    }, 120);
+
+    // Stage 4: Generate second batch (4200-5900ms)
+    setTimeout(() => {
+      setFullscreenGenerationStage(4);
+      let stage4Counter = 10;
+      const stage4Interval = setInterval(() => {
+        stage4Counter++;
+        if (stage4Counter <= 20) {
+          setFullscreenLessonsGenerated(stage4Counter);
+          setFullscreenChatMessages(prev => [...prev.slice(0, -1),
+            {
+              type: 'ai',
+              content: `Generating lessons 11-20... (Lesson ${stage4Counter} of 25)`
+            }
+          ]);
+        }
+        if (stage4Counter >= 20) clearInterval(stage4Interval);
+      }, 120);
+    }, 4200);
+
+    // Stage 5: Finalize (5900-7200ms)
+    setTimeout(() => {
+      setFullscreenGenerationStage(5);
+      let stage5Counter = 20;
+      const stage5Interval = setInterval(() => {
+        stage5Counter++;
+        if (stage5Counter <= 25) {
+          setFullscreenLessonsGenerated(stage5Counter);
+          setFullscreenChatMessages(prev => [...prev.slice(0, -1),
+            {
+              type: 'ai',
+              content: `Finalizing ${stage5Counter} lessons...`
+            }
+          ]);
+        }
+        if (stage5Counter >= 25) clearInterval(stage5Interval);
+      }, 110);
+    }, 5900);
+
+    // Complete (7200ms)
+    setTimeout(() => {
+      setFullscreenIsGenerating(false);
+      setFullscreenGenerationComplete(true);
+      setFullscreenGenerationStage(0);
+      setFullscreenLessonsGenerated(0);
+      setFullscreenChatMessages(prev => [...prev,
+        {
+          type: 'ai',
+          content: `🎉 Success! Generated 25 lessons using ${fullscreenSelectedTemplate?.name} template and ${fullscreenSelectedSpreadsheet?.name} data. Ready for download!`
+        }
+      ]);
+    }, 7200);
+  };
 
   // Template and spreadsheet data
   const templates = [
@@ -155,54 +481,8 @@ export function TacticalExecutionContent() {
           </p>
         </motion.div>
 
-        {/* Project Overview Section */}
-        <section className="mb-16">
-          <motion.h2 className="text-3xl font-bold text-gray-800 mb-6" {...fadeIn}>
-            Project Overview
-          </motion.h2>
-
-          <motion.div
-            className="h-1 w-24 mb-10 rounded-full"
-            style={{
-              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
-            }}
-            initial={{ width: 0 }}
-            animate={{ width: '6rem' }}
-            transition={{ duration: 0.5 }}
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div
-              className="bg-[#f9f2ff] rounded-2xl p-6 shadow border-t-4 border-t-[#9333ea]"
-              {...fadeIn}
-              transition={{ delay: 0.1 }}
-            >
-              <h3 className="text-gray-800 font-semibold mb-3">Role</h3>
-              <p className="text-gray-800">Product Designer</p>
-            </motion.div>
-
-            <motion.div
-              className="bg-[#f2f7ff] rounded-2xl p-6 shadow border-t-4 border-t-[#4f69ea]"
-              {...fadeIn}
-              transition={{ delay: 0.2 }}
-            >
-              <h3 className="text-gray-800 font-semibold mb-3">Organization</h3>
-              <p className="text-gray-800">NewGlobe</p>
-            </motion.div>
-
-            <motion.div
-              className="bg-[#fff2f8] rounded-2xl p-6 shadow border-t-4 border-t-[#d94f9d]"
-              {...fadeIn}
-              transition={{ delay: 0.3 }}
-            >
-              <h3 className="text-gray-800 font-semibold mb-3">Technologies</h3>
-              <p className="text-gray-800">Vue.js, .NET Core, Python, Azure OpenAI, AWS S3</p>
-            </motion.div>
-          </div>
-        </section>
-
         {/* Challenge Section */}
-        <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.2 }}>
+        <motion.section id="research" className="mb-16" {...fadeIn} transition={{ delay: 0.2 }}>
           <h2 className="text-3xl font-bold text-gray-800 mb-6">The Challenge</h2>
 
           <motion.div
@@ -285,8 +565,8 @@ export function TacticalExecutionContent() {
         </motion.section>
 
         {/* Design Process Section */}
-        <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.4 }}>
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">Design Process</h2>
+        <motion.section id="design" className="mb-16" {...fadeIn} transition={{ delay: 0.4 }}>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Design Solution</h2>
 
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
@@ -1182,7 +1462,7 @@ export function TacticalExecutionContent() {
 
         {/* Design Solution Section */}
         <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.5 }}>
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">Design Solution</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Interactive Demo</h2>
 
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
@@ -1655,235 +1935,12 @@ export function TacticalExecutionContent() {
           <div className="bg-white p-8 rounded-xl shadow mt-8">
             <h3 className="text-2xl font-bold text-gray-800 mb-6">Visual System & Interface Design</h3>
 
-            <div className="mb-8">
-              <h4 className="text-xl font-bold text-gray-800 mb-4">1. Template Syntax System</h4>
-              <p className="text-gray-700 mb-6">
-                One of my key design challenges was creating a visual language that would clearly communicate different
-                types of automation. Working with content specialists, I developed a syntax system using familiar word
-                processing concepts:
-              </p>
-
-              <div className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg mb-6">
-                {/* Template Editor Header */}
-                <div className="bg-gray-50 p-3 border-b border-gray-200 flex items-center">
-                  <div className="flex space-x-2 mr-3">
-                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                  </div>
-                  <span className="text-gray-700 font-medium">Template Editor</span>
-                </div>
-
-                {/* Template Editor Content - Side by Side */}
-                <div className="flex flex-col md:flex-row">
-                  {/* Left side - Template with Placeholders */}
-                  <div className="p-4 md:w-1/2 border-r border-gray-200">
-                    <div className="flex justify-between items-center mb-4">
-                      <h5 className="font-semibold text-gray-700">Template with Placeholders</h5>
-                      <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Edit Mode</span>
-                    </div>
-
-                    <div className="bg-gray-50 p-4 rounded font-mono text-sm">
-                      <p className="mb-4"># Introduction to {'{{TOPIC}}'}</p>
-
-                      <p className="mb-2">
-                        ## Subject: <span className="text-red-600">{'{{SUBJECT}}'}</span>
-                      </p>
-
-                      <p className="mb-2">
-                        ## Grade Level: <span className="text-red-600">{'{{GRADE}}'}</span>
-                      </p>
-
-                      <p className="mb-4">
-                        ## Duration: <span className="text-red-600">{'{{DURATION}}'}</span> minutes
-                      </p>
-
-                      <p className="mb-4 text-gray-500">---</p>
-
-                      <p className="mb-2 text-blue-600">### Learning Objectives</p>
-
-                      <p className="mb-4">By the end of this lesson, students will be able to:</p>
-
-                      <p className="mb-4 bg-yellow-100 px-2">
-                        - Generate 3 specific learning objectives for{' '}
-                        <span className="text-red-600">{'{{SUBJECT}}'}</span>{' '}
-                        <span className="text-red-600">{'{{TOPIC}}'}</span> appropriate for{' '}
-                        <span className="text-red-600">{'{{GRADE}}'}</span>
-                      </p>
-
-                      <p className="mb-4 text-gray-500">---</p>
-
-                      <p className="mb-2 text-blue-600">### Introduction</p>
-
-                      <p className="mb-4 bg-yellow-100 px-2">
-                        Generate an engaging introduction about <span className="text-red-600">{'{{TOPIC}}'}</span> that
-                        includes a real-world example relevant for <span className="text-red-600">{'{{GRADE}}'}</span>{' '}
-                        students
-                      </p>
-
-                      <p className="mb-4 text-gray-500">---</p>
-
-                      <p className="mb-2 text-blue-600">### Main Activity</p>
-
-                      <p className="mb-2">Materials needed:</p>
-
-                      <p className="mb-4 text-red-600">{'{{MATERIALS}}'}</p>
-
-                      <p className="mb-2">Instructions:</p>
-
-                      <p className="bg-yellow-100 px-2">
-                        Generate step-by-step instructions for a hands-on activity about{' '}
-                        <span className="text-red-600">{'{{TOPIC}}'}</span>
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Right side - Filled Template Preview */}
-                  <div className="p-4 md:w-1/2 bg-white">
-                    <div className="flex justify-between items-center mb-4">
-                      <h5 className="font-semibold text-gray-700">Filled Template Preview</h5>
-                      <span className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">Preview Mode</span>
-                    </div>
-
-                    <div className="bg-gray-50 p-4 rounded text-sm">
-                      <p className="font-bold mb-4"># Introduction to Fractions</p>
-
-                      <p className="mb-2">## Subject: Mathematics</p>
-
-                      <p className="mb-2">## Grade Level: 3rd Grade</p>
-
-                      <p className="mb-4">## Duration: 45 minutes</p>
-
-                      <p className="mb-4 text-gray-500">---</p>
-
-                      <p className="mb-2 font-semibold text-gray-800">### Learning Objectives</p>
-
-                      <p className="mb-4">By the end of this lesson, students will be able to:</p>
-
-                      <ul className="list-disc pl-6 mb-4 space-y-2">
-                        <li>Identify fractions as parts of a whole</li>
-                        <li>Represent fractions using visual models</li>
-                        <li>Compare simple fractions (1/2, 1/4, 1/3)</li>
-                      </ul>
-
-                      <p className="mb-4 text-gray-500">---</p>
-
-                      <p className="mb-2 font-semibold text-gray-800">### Introduction</p>
-
-                      <p className="mb-4">
-                        Imagine sharing a pizza with friends! When we cut a pizza into equal pieces, each piece
-                        represents a fraction of the whole pizza. Today we'll explore how fractions help us share things
-                        fairly and measure parts of a whole in our everyday lives.
-                      </p>
-
-                      <p className="mb-4 text-gray-500">---</p>
-
-                      <p className="mb-2 font-semibold text-gray-800">### Main Activity</p>
-
-                      <p className="mb-2">Materials needed:</p>
-
-                      <ul className="list-disc pl-6 mb-4 space-y-1">
-                        <li>Circle fraction manipulatives</li>
-                        <li>Colored pencils</li>
-                        <li>Fraction worksheets</li>
-                      </ul>
-
-                      <p className="mb-2">Instructions:</p>
-
-                      <ol className="list-decimal pl-6 space-y-2">
-                        <li>Distribute fraction circles to each student</li>
-                        <li>Demonstrate how to create a whole using different pieces</li>
-                        <li>Have students explore combining different fractions</li>
-                        <li>Guide students in coloring the worksheet sections</li>
-                      </ol>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Color coding explanation */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-5 w-5 rounded bg-red-100 border border-red-200 flex items-center justify-center mr-3 mt-0.5">
-                    <div className="h-2 w-2 rounded bg-red-500"></div>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-700">Red text:</p>
-                    <p className="text-gray-600">Content from spreadsheets (mail-merge)</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-5 w-5 rounded bg-blue-100 border border-blue-200 flex items-center justify-center mr-3 mt-0.5">
-                    <div className="h-2 w-2 rounded bg-blue-500"></div>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-700">Blue text:</p>
-                    <p className="text-gray-600">Markdown formatting elements</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-5 w-5 rounded bg-yellow-100 border border-yellow-200 flex items-center justify-center mr-3 mt-0.5">
-                    <div className="h-2 w-2 rounded bg-yellow-500"></div>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-700">Yellow highlighting:</p>
-                    <p className="text-gray-600">AI-generated content instructions</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-5 w-5 rounded bg-gray-100 border border-gray-200 flex items-center justify-center mr-3 mt-0.5">
-                    <div className="h-2 w-2 rounded bg-gray-500"></div>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-700">Gray text:</p>
-                    <p className="text-gray-600">Section dividers and structural elements</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Template System Benefits */}
-              <div className="bg-gray-50 p-6 rounded-xl">
-                <h5 className="font-bold text-gray-800 mb-4">Template System Benefits</h5>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex items-center">
-                    <svg className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span className="text-gray-700">Consistent lesson structure across subjects</span>
-                  </div>
-
-                  <div className="flex items-center">
-                    <svg className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span className="text-gray-700">Clear visual differentiation of content types</span>
-                  </div>
-
-                  <div className="flex items-center">
-                    <svg className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span className="text-gray-700">Flexible generation instructions</span>
-                  </div>
-
-                  <div className="flex items-center">
-                    <svg className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span className="text-gray-700">Predictable output format</span>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             {/* Generation Workflow section */}
             <div className="mb-8">
-              <h4 className="text-xl font-bold text-gray-800 mb-4">2. Generation Workflow</h4>
+              <h4 className="text-xl font-bold text-gray-800 mb-4">1. Generation Workflow</h4>
               <p className="text-gray-700 mb-6">
-                I designed a step-by-step workflow that provided transparency and control:
+                To help educators understand how LessonLoom works, I designed an interactive workflow visualization that breaks down the lesson generation process into clear, understandable steps. This helps users grasp the system's logic before diving into the actual application.
               </p>
 
               {/* Try it yourself info box */}
@@ -1893,10 +1950,9 @@ export function TacticalExecutionContent() {
                     <span className="text-indigo-600 font-bold">?</span>
                   </div>
                   <div>
-                    <h5 className="font-semibold text-indigo-700 mb-2">Try it yourself!</h5>
+                    <h5 className="font-semibold text-indigo-700 mb-2">Understanding the workflow</h5>
                     <p className="text-gray-700">
-                      This wireframe is fully interactive. Click on the step numbers or use the navigation buttons to
-                      walk through the entire generation workflow.
+                      This interactive visualization shows the six key steps of the lesson generation process. Click on any step to see what happens at each stage of the workflow.
                     </p>
                   </div>
                 </div>
@@ -1905,13 +1961,20 @@ export function TacticalExecutionContent() {
               {/* Workflow Wireframe */}
               <div className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg mb-6">
                 {/* Wireframe Header */}
-                <div className="bg-gray-50 p-3 border-b border-gray-200 flex items-center">
-                  <div className="flex space-x-2 mr-3">
-                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                    <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                <div className="bg-gray-50 p-3 border-b border-gray-200 flex items-center justify-between">
+                  <div className="flex items-center">
+                    <span className="text-gray-700 font-medium">Generate lessons (interactive)</span>
                   </div>
-                  <span className="text-gray-700 font-medium">Generate lessons (interactive)</span>
+                  <button
+                    onClick={() => setIsEmbeddedFullscreen(true)}
+                    className="text-gray-600 hover:text-gray-800 transition-colors"
+                    aria-label="Fullscreen"
+                    title="Fullscreen (ESC to exit)"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4m-4 0l5 5m11-5v4m0-4h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
+                    </svg>
+                  </button>
                 </div>
 
                 {/* Step Indicators */}
@@ -2018,7 +2081,7 @@ export function TacticalExecutionContent() {
                 </div>
 
                 {/* Main Content Area - Based on current step */}
-                <div className="p-10 border-b border-gray-200">
+                <div className="p-10 border-b border-gray-200 min-h-[500px] flex flex-col justify-center">
                   {currentStep === 1 && (
                     <div className="max-w-lg mx-auto text-center">
                       <h3 className="text-xl font-bold text-gray-800 mb-4">Upload template library</h3>
@@ -2346,7 +2409,7 @@ export function TacticalExecutionContent() {
 
                   {currentStep === 6 && (
                     <div className="max-w-xl mx-auto">
-                      <div className="bg-green-50 p-5 rounded-lg mb-8">
+                      <div className="bg-green-50 p-4 rounded-lg mb-6">
                         <div className="flex items-start">
                           <svg
                             className="h-6 w-6 text-green-600 mr-3 mt-0.5"
@@ -2364,17 +2427,17 @@ export function TacticalExecutionContent() {
                           <div>
                             <h3 className="text-xl font-bold text-green-800 mb-2">Generation Complete</h3>
                             <p className="text-green-700">
-                              All 3 lessons have been generated successfully. You can download them individually or as a
+                              All 2 lessons have been generated successfully. You can download them individually or as a
                               package.
                             </p>
                           </div>
                         </div>
                       </div>
 
-                      <h4 className="font-bold text-gray-800 mb-4 text-xl">Generated Lessons</h4>
+                      <h4 className="font-bold text-gray-800 mb-3 text-xl">Generated Lessons</h4>
 
-                      <div className="space-y-4 mb-8">
-                        <div className="border border-gray-200 rounded-lg p-4 flex justify-between items-center">
+                      <div className="space-y-3 mb-6">
+                        <div className="border border-gray-200 rounded-lg p-3 flex justify-between items-center">
                           <div>
                             <h5 className="font-medium text-gray-800">Lesson 1: Introduction to Fractions</h5>
                             <p className="text-gray-500 text-sm">Generated: Just now • Size: 2.4 MB</p>
@@ -2389,25 +2452,10 @@ export function TacticalExecutionContent() {
                           </div>
                         </div>
 
-                        <div className="border border-gray-200 rounded-lg p-4 flex justify-between items-center">
+                        <div className="border border-gray-200 rounded-lg p-3 flex justify-between items-center">
                           <div>
                             <h5 className="font-medium text-gray-800">Lesson 2: Equivalent Fractions</h5>
                             <p className="text-gray-500 text-sm">Generated: Just now • Size: 2.1 MB</p>
-                          </div>
-                          <div className="space-x-2">
-                            <button className="px-4 py-1 bg-indigo-50 text-indigo-600 rounded hover:bg-indigo-100 transition-colors">
-                              Preview
-                            </button>
-                            <button className="px-4 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors">
-                              Download
-                            </button>
-                          </div>
-                        </div>
-
-                        <div className="border border-gray-200 rounded-lg p-4 flex justify-between items-center">
-                          <div>
-                            <h5 className="font-medium text-gray-800">Lesson 3: Comparing Fractions</h5>
-                            <p className="text-gray-500 text-sm">Generated: Just now • Size: 2.6 MB</p>
                           </div>
                           <div className="space-x-2">
                             <button className="px-4 py-1 bg-indigo-50 text-indigo-600 rounded hover:bg-indigo-100 transition-colors">
@@ -2438,7 +2486,10 @@ export function TacticalExecutionContent() {
                           </svg>
                           Download All Lessons
                         </button>
-                        <button className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors">
+                        <button
+                          className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors"
+                          onClick={() => setCurrentStep(1)}
+                        >
                           Start New Generation
                         </button>
                       </div>
@@ -2456,7 +2507,13 @@ export function TacticalExecutionContent() {
                   </button>
                   <button
                     className={`px-6 py-2 rounded-lg transition-colors ${currentStep < 6 ? 'bg-indigo-600 text-white hover:bg-indigo-700' : currentStep === 6 ? 'bg-green-600 text-white hover:bg-green-700' : ''}`}
-                    onClick={() => currentStep < 6 && setCurrentStep(currentStep + 1)}
+                    onClick={() => {
+                      if (currentStep < 6) {
+                        setCurrentStep(currentStep + 1);
+                      } else if (currentStep === 6) {
+                        setCurrentStep(1);
+                      }
+                    }}
                   >
                     {currentStep < 6 ? 'Next' : 'Finish'}
                   </button>
@@ -2471,19 +2528,29 @@ export function TacticalExecutionContent() {
           <div>
             {/* AI-Powered Generation Interface */}
             <div className="mb-8">
-              <h4 className="text-xl font-bold text-gray-800 mb-4">3. AI-Powered Generation Interface</h4>
+              <h4 className="text-xl font-bold text-gray-800 mb-4">2. AI-Powered Generation Interface</h4>
               <p className="text-gray-700 mb-6">
-                We designed an AI-native interface that streamlines content generation while maintaining
-                educator control over the creative process. This tool represents the evolution from manual
-                workflows to intelligent, context-aware content creation.
+                This is the actual LessonLoom application that educators use. I designed an intuitive, AI-native interface that combines a drag-and-drop library of templates and data sources with intelligent generation capabilities. The interface keeps educators in control while automating the tedious parts of lesson creation.
               </p>
 
               {/* Two-Column AI Interface with Templates Library */}
-              <div className="border border-gray-200 rounded-xl overflow-hidden transition-shadow duration-300 hover:shadow-lg mb-6 relative -mx-12 sm:-mx-16 lg:-mx-32">
+              <div className="border border-gray-200 rounded-xl overflow-hidden transition-shadow duration-300 hover:shadow-lg mb-6 relative">
                 {/* App Header */}
-                <div className="bg-gradient-to-r from-indigo-900 via-indigo-800 to-purple-900 py-5 px-6 border-b border-indigo-700 flex items-center gap-3 shadow-lg">
-                  <MdAutoAwesome className="w-6 h-6 text-indigo-300" />
-                  <span className="text-white font-bold text-xl">LessonLoom AI Generation Studio</span>
+                <div className="bg-gradient-to-r from-indigo-900 via-indigo-800 to-purple-900 py-5 px-6 border-b border-indigo-700 flex items-center justify-between shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <MdAutoAwesome className="w-6 h-6 text-indigo-300" />
+                    <span className="text-white font-bold text-xl">LessonLoom AI Generation Studio</span>
+                  </div>
+                  <button
+                    onClick={() => setIsFullscreenMode(true)}
+                    className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-lg p-2 transition-all duration-200 flex items-center gap-2"
+                    title="Expand to fullscreen"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6v4m12 0h4v-4m0 12h-4v4m4-4v-4m-12 4H6v4m0-12v-4" />
+                    </svg>
+                    <span className="text-sm font-medium">Expand</span>
+                  </button>
                 </div>
 
                 {/* Two Column Layout */}
@@ -2585,13 +2652,13 @@ export function TacticalExecutionContent() {
                   <div className="flex-1 flex flex-col">
                     {/* Chat Messages Area */}
                     <div
-                      ref={chatContainerRef}
+                      ref={fullscreenChatContainerRef}
                       className="flex-1 p-6 overflow-y-auto space-y-4 scroll-smooth"
                       id="chat-area"
                       style={{ scrollBehavior: 'smooth' }}
                     >
                       {/* Render Chat Messages */}
-                      {chatMessages.map((message, index) => (
+                      {fullscreenChatMessages.map((message, index) => (
                         <div key={index} className="flex items-start space-x-3">
                           <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
                             <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -2607,7 +2674,7 @@ export function TacticalExecutionContent() {
                       ))}
 
                       {/* Loading Animation during generation */}
-                      {isGenerating && (
+                      {fullscreenIsGenerating && (
                         <div className="flex items-start space-x-3">
                           <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
                             <svg className="w-4 h-4 text-white animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -2659,24 +2726,94 @@ export function TacticalExecutionContent() {
                         <div className="space-y-3">
                           {/* Selected Template */}
                           {selectedTemplate && (
-                            <div className="bg-white border border-gray-200 rounded-lg p-3 mb-2">
-                              <div className="flex items-center">
+                            <div className={`border-2 rounded-lg p-3 mb-2 flex items-center justify-between transition-all ${
+                              isValidated
+                                ? 'bg-green-50 border-green-300'
+                                : 'bg-white border-gray-200'
+                            }`}>
+                              <div className="flex items-center flex-1">
                                 <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
-                                  <span className="text-white text-xs">{selectedTemplate.emoji}</span>
+                                  <span className="text-white text-xs">{fullscreenSelectedTemplate.emoji}</span>
                                 </div>
-                                <span className="text-sm font-medium text-gray-800">Selected: {selectedTemplate.name}</span>
+                                <div>
+                                  <span className="text-sm font-medium text-gray-800">Template: {fullscreenSelectedTemplate.name}</span>
+                                  {fullscreenIsValidated && <p className="text-xs text-green-600 font-medium">✓ Validated</p>}
+                                </div>
                               </div>
+                              <button
+                                onClick={() => {
+                                  setFullscreenSelectedTemplate(null);
+                                  setFullscreenIsValidated(false);
+                                  setFullscreenShowValidationSuggestions(false);
+                                  setFullscreenChatMessages([{
+                                    type: 'ai',
+                                    content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
+                                  }]);
+                                }}
+                                className="text-xs px-2 py-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+                              >
+                                Change
+                              </button>
                             </div>
                           )}
 
                           {/* Selected Spreadsheet */}
-                          {selectedSpreadsheet && (
-                            <div className="bg-white border border-gray-200 rounded-lg p-3 mb-2">
-                              <div className="flex items-center">
+                          {fullscreenSelectedSpreadsheet && (
+                            <div className={`border-2 rounded-lg p-3 mb-2 flex items-center justify-between transition-all ${
+                              fullscreenIsValidated
+                                ? 'bg-green-50 border-green-300'
+                                : 'bg-white border-gray-200'
+                            }`}>
+                              <div className="flex items-center flex-1">
                                 <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
-                                  <span className="text-white text-xs">{selectedSpreadsheet.emoji}</span>
+                                  <span className="text-white text-xs">{fullscreenSelectedSpreadsheet.emoji}</span>
                                 </div>
-                                <span className="text-sm font-medium text-gray-800">Selected: {selectedSpreadsheet.name}</span>
+                                <div>
+                                  <span className="text-sm font-medium text-gray-800">Content: {fullscreenSelectedSpreadsheet.name}</span>
+                                  {fullscreenIsValidated && <p className="text-xs text-green-600 font-medium">✓ Validated</p>}
+                                </div>
+                              </div>
+                              <button
+                                onClick={() => {
+                                  setFullscreenSelectedSpreadsheet(null);
+                                  setFullscreenIsValidated(false);
+                                  setFullscreenShowValidationSuggestions(false);
+                                  setFullscreenChatMessages([{
+                                    type: 'ai',
+                                    content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
+                                  }]);
+                                }}
+                                className="text-xs px-2 py-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+                              >
+                                Change
+                              </button>
+                            </div>
+                          )}
+
+                          {/* AI Suggestions */}
+                          {isValidated && showValidationSuggestions && (
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
+                              <div className="flex items-start gap-2">
+                                <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <div className="flex-1">
+                                  <p className="text-xs font-semibold text-blue-900 mb-2">AI Suggestions for Correction:</p>
+                                  <ul className="space-y-1 text-xs text-blue-800">
+                                    {validationSuggestions.map((suggestion, idx) => (
+                                      <li key={idx} className="flex gap-2">
+                                        <span className="text-blue-600">•</span>
+                                        <span>{suggestion}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                  <button
+                                    onClick={() => setShowValidationSuggestions(!showValidationSuggestions)}
+                                    className="text-xs text-blue-600 hover:underline mt-2"
+                                  >
+                                    {showValidationSuggestions ? 'Hide suggestions' : 'Show suggestions'}
+                                  </button>
+                                </div>
                               </div>
                             </div>
                           )}
@@ -2705,10 +2842,10 @@ export function TacticalExecutionContent() {
                               </div>
                               <button
                                 onClick={() => {
-                                  setSelectedTemplate(null);
-                                  setSelectedSpreadsheet(null);
-                                  setGenerationComplete(false);
-                                  setChatMessages([{
+                                  setFullscreenSelectedTemplate(null);
+                                  setFullscreenSelectedSpreadsheet(null);
+                                  setFullscreenGenerationComplete(false);
+                                  setFullscreenChatMessages([{
                                     type: 'ai',
                                     content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
                                   }]);
@@ -2725,19 +2862,47 @@ export function TacticalExecutionContent() {
 
                     {/* Generate Button Area */}
                     <div className="border-t border-gray-200 p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <label className="text-sm font-medium text-gray-700">Generate Lesson Plan</label>
+                        <div className="relative">
+                          <button
+                            onMouseEnter={() => setShowProcessTooltip(true)}
+                            onMouseLeave={() => setShowProcessTooltip(false)}
+                            className="text-gray-400 hover:text-gray-600 transition-colors"
+                            type="button"
+                          >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                            </svg>
+                          </button>
+                          {showProcessTooltip && (
+                            <div className="absolute bottom-full left-0 mb-2 w-48 bg-gray-900 text-white text-xs rounded-lg p-3 shadow-lg z-50">
+                              <p className="font-semibold mb-2">AI Generation Process:</p>
+                              <ul className="space-y-1 text-gray-200">
+                                <li>• Analyzing template structure</li>
+                                <li>• Processing spreadsheet content</li>
+                                <li>• Generating lessons 1-10</li>
+                                <li>• Generating lessons 11-20</li>
+                                <li>• Finalizing all 25 lessons</li>
+                              </ul>
+                              <p className="text-gray-300 mt-2">Usually takes 3-5 seconds</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                       <button
-                        onClick={handleGenerate}
+                        onClick={handleFullscreenGenerate}
                         className={`w-full py-2 px-4 rounded-lg font-medium transition-all ${
-                          selectedTemplate && selectedSpreadsheet && !isGenerating && !generationComplete
+                          fullscreenSelectedTemplate && fullscreenSelectedSpreadsheet && !fullscreenIsGenerating && !fullscreenGenerationComplete
                             ? 'bg-purple-600 text-white hover:bg-purple-700 cursor-pointer'
                             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                         }`}
-                        disabled={!selectedTemplate || !selectedSpreadsheet || isGenerating || generationComplete}
+                        disabled={!fullscreenSelectedTemplate || !fullscreenSelectedSpreadsheet || fullscreenIsGenerating || fullscreenGenerationComplete}
                       >
-                        {isGenerating ? 'Generating...' : generationComplete ? 'Generation Complete' : 'Generate Lessons'}
+                        {fullscreenIsGenerating ? 'Generating...' : fullscreenGenerationComplete ? 'Generation Complete' : 'Generate Lessons'}
                       </button>
                       <p className="text-xs text-gray-400 text-center mt-2">
-                        {selectedTemplate && selectedSpreadsheet ? 'Ready to generate!' : 'Add at least one template and one spreadsheet'}
+                        {fullscreenSelectedTemplate && fullscreenSelectedSpreadsheet ? 'Ready to generate!' : 'Add at least one template and one spreadsheet'}
                       </p>
                       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-4">
                         <p className="text-xs text-yellow-800">
@@ -2888,6 +3053,369 @@ export function TacticalExecutionContent() {
             </div>
           </div>
 
+          {/* FULLSCREEN MODAL - LessonLoom AI Generation Studio */}
+          {isFullscreenMode && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-xl overflow-hidden shadow-2xl w-full h-full max-w-6xl max-h-[90vh] flex flex-col">
+                {/* Modal Header */}
+                <div className="bg-gradient-to-r from-indigo-900 via-indigo-800 to-purple-900 py-5 px-6 border-b border-indigo-700 flex items-center justify-between shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <MdAutoAwesome className="w-6 h-6 text-indigo-300" />
+                    <span className="text-white font-bold text-xl">LessonLoom AI Generation Studio</span>
+                  </div>
+                  <button
+                    onClick={() => setIsFullscreenMode(false)}
+                    className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-lg p-2 transition-all duration-200"
+                    title="Close fullscreen (ESC)"
+                  >
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Modal Content - Two Column Layout */}
+                <div className="bg-white flex flex-1 overflow-hidden">
+                  {/* Left Sidebar - Templates & Spreadsheets Library */}
+                  <div className="w-[30%] border-r border-gray-200 flex flex-col overflow-hidden">
+                    {/* Library Header */}
+                    <div className="p-4 border-b border-gray-200 flex-shrink-0">
+                      <h3 className="font-semibold text-gray-800">Library</h3>
+                      <p className="text-xs text-gray-500 mt-1">Drag items to the chat to build your lesson plan</p>
+                    </div>
+
+                    {/* Scrollable Library Content */}
+                    <div
+                      className="overflow-y-auto p-4 space-y-6 flex-1"
+                      style={{
+                        scrollbarWidth: 'thin',
+                        scrollbarColor: '#d1d5db #f3f4f6'
+                      }}
+                    >
+                      {/* Templates Section */}
+                      <div>
+                        <div className="flex items-center mb-3">
+                          <svg className="w-4 h-4 text-gray-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                          <h4 className="text-sm font-semibold text-gray-800">Templates</h4>
+                        </div>
+                        <div className="space-y-2">
+                          {templates.map(template => (
+                            <div
+                              key={template.id}
+                              className={`template-card bg-white border border-gray-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${fullscreenSelectedTemplate?.id === template.id ? 'ring-2 ring-gray-400' : ''}`}
+                              draggable="true"
+                              onDragStart={(e) => handleFullscreenDragStart(e, template, 'template')}
+                            >
+                              <div className="flex items-center justify-between mb-1">
+                                <div className="flex items-center">
+                                  <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
+                                    <span className="text-white text-xs">{template.emoji}</span>
+                                  </div>
+                                  <span className="text-sm font-medium text-gray-800">{template.name}</span>
+                                </div>
+                                <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                </svg>
+                              </div>
+                              <p className="text-xs text-gray-600">{template.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Spreadsheets Section */}
+                      <div>
+                        <div className="flex items-center mb-3">
+                          <svg className="w-4 h-4 text-gray-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                          </svg>
+                          <h4 className="text-sm font-semibold text-gray-800">Content Spreadsheets</h4>
+                        </div>
+                        <div className="space-y-2">
+                          {spreadsheets.map(spreadsheet => (
+                            <div
+                              key={spreadsheet.id}
+                              className={`template-card bg-white border border-gray-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${fullscreenSelectedSpreadsheet?.id === spreadsheet.id ? 'ring-2 ring-gray-400' : ''}`}
+                              draggable="true"
+                              onDragStart={(e) => handleFullscreenDragStart(e, spreadsheet, 'spreadsheet')}
+                            >
+                              <div className="flex items-center justify-between mb-1">
+                                <div className="flex items-center">
+                                  <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
+                                    <span className="text-white text-xs">{spreadsheet.emoji}</span>
+                                  </div>
+                                  <span className="text-sm font-medium text-gray-800">{spreadsheet.name}</span>
+                                </div>
+                                <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                </svg>
+                              </div>
+                              <p className="text-xs text-gray-600">{spreadsheet.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Side - Chat Interface */}
+                  <div className="flex-1 flex flex-col overflow-hidden">
+                    {/* Chat Messages Area */}
+                    <div
+                      ref={fullscreenChatContainerRef}
+                      className="flex-1 p-6 overflow-y-auto space-y-4 scroll-smooth"
+                      style={{ scrollBehavior: 'smooth' }}
+                    >
+                      {/* Chat Messages */}
+                      {fullscreenChatMessages.map((message, index) => (
+                        <div key={index} className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-3 max-w-xl">
+                            <p className="text-sm text-gray-800">{message.content}</p>
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* Loading Animation during generation */}
+                      {fullscreenIsGenerating && (
+                        <div className="flex items-start space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg className="w-4 h-4 text-white animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                          </div>
+                          <div className="bg-gray-50 rounded-lg p-3 max-w-xl">
+                            <div className="flex items-center space-x-2">
+                              <div className="flex space-x-1">
+                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+                              </div>
+                              <span className="text-sm text-gray-600">Processing...</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Drop Zone */}
+                      {!(fullscreenSelectedTemplate && fullscreenSelectedSpreadsheet) && (
+                        <div className="flex justify-center my-6">
+                          <div
+                            className={`border-2 border-dashed rounded-lg p-8 w-full max-w-md text-center transition-all ${
+                              fullscreenIsDragOver
+                                ? 'border-purple-500 bg-purple-50 scale-105'
+                                : 'border-gray-300 hover:border-purple-400'
+                            }`}
+                            onDragOver={handleFullscreenDragOver}
+                            onDragLeave={handleFullscreenDragLeave}
+                            onDrop={handleFullscreenDrop}
+                          >
+                            <svg className={`mx-auto h-8 w-8 mb-2 transition-colors ${fullscreenIsDragOver ? 'text-purple-600' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                            </svg>
+                            <p className={`text-sm transition-colors ${fullscreenIsDragOver ? 'text-purple-700 font-medium' : 'text-gray-600'}`}>
+                              {fullscreenIsDragOver ? 'Release to add item' : 'Drop templates or spreadsheets here'}
+                            </p>
+                            <p className={`text-xs transition-colors ${fullscreenIsDragOver ? 'text-purple-500' : 'text-gray-400'}`}>
+                              {fullscreenIsDragOver ? 'Adding to your lesson plan...' : 'Start by adding at least one template'}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Selected Items Display */}
+                      {(fullscreenSelectedTemplate || fullscreenSelectedSpreadsheet) && (
+                        <div className="space-y-3">
+                          {fullscreenSelectedTemplate && (
+                            <div className={`border-2 rounded-lg p-3 mb-2 flex items-center justify-between transition-all ${
+                              fullscreenIsValidated
+                                ? 'bg-green-50 border-green-300'
+                                : 'bg-white border-gray-200'
+                            }`}>
+                              <div className="flex items-center flex-1">
+                                <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">{fullscreenSelectedTemplate.emoji}</span>
+                                </div>
+                                <div>
+                                  <span className="text-sm font-medium text-gray-800">Template: {fullscreenSelectedTemplate.name}</span>
+                                  {fullscreenIsValidated && <p className="text-xs text-green-600 font-medium">✓ Validated</p>}
+                                </div>
+                              </div>
+                              <button
+                                onClick={() => {
+                                  setFullscreenSelectedTemplate(null);
+                                  setFullscreenIsValidated(false);
+                                  setFullscreenShowValidationSuggestions(false);
+                                  setFullscreenChatMessages([{
+                                    type: 'ai',
+                                    content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
+                                  }]);
+                                }}
+                                className="text-xs px-2 py-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+                              >
+                                Change
+                              </button>
+                            </div>
+                          )}
+
+                          {fullscreenSelectedSpreadsheet && (
+                            <div className={`border-2 rounded-lg p-3 mb-2 flex items-center justify-between transition-all ${
+                              fullscreenIsValidated
+                                ? 'bg-green-50 border-green-300'
+                                : 'bg-white border-gray-200'
+                            }`}>
+                              <div className="flex items-center flex-1">
+                                <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
+                                  <span className="text-white text-xs">{fullscreenSelectedSpreadsheet.emoji}</span>
+                                </div>
+                                <div>
+                                  <span className="text-sm font-medium text-gray-800">Content: {fullscreenSelectedSpreadsheet.name}</span>
+                                  {fullscreenIsValidated && <p className="text-xs text-green-600 font-medium">✓ Validated</p>}
+                                </div>
+                              </div>
+                              <button
+                                onClick={() => {
+                                  setFullscreenSelectedSpreadsheet(null);
+                                  setFullscreenIsValidated(false);
+                                  setFullscreenShowValidationSuggestions(false);
+                                  setFullscreenChatMessages([{
+                                    type: 'ai',
+                                    content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
+                                  }]);
+                                }}
+                                className="text-xs px-2 py-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+                              >
+                                Change
+                              </button>
+                            </div>
+                          )}
+
+                          {/* AI Suggestions */}
+                          {isValidated && showValidationSuggestions && (
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
+                              <div className="flex items-start gap-2">
+                                <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <div className="flex-1">
+                                  <p className="text-xs font-semibold text-blue-900 mb-2">AI Suggestions for Correction:</p>
+                                  <ul className="space-y-1 text-xs text-blue-800">
+                                    {validationSuggestions.map((suggestion, idx) => (
+                                      <li key={idx} className="flex gap-2">
+                                        <span className="text-blue-600">•</span>
+                                        <span>{suggestion}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Success State Display */}
+                      {generationComplete && (
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                          <div className="flex items-start space-x-3">
+                            <svg className="w-6 h-6 text-green-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div>
+                              <h4 className="font-semibold text-green-800 mb-2">Lessons Generated Successfully!</h4>
+                              <div className="space-y-2 mb-4">
+                                <div className="bg-white border border-green-200 rounded p-4">
+                                  <div className="flex justify-between items-start gap-4">
+                                    <div className="flex-1">
+                                      <span className="text-sm font-medium text-gray-800">Mathematics Lesson Pack</span>
+                                      <p className="text-xs text-gray-500 mt-2">25 lessons • PDF Format • 2.4 MB</p>
+                                    </div>
+                                    <button className="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition-colors flex-shrink-0">Download</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <button
+                                onClick={() => {
+                                  setFullscreenSelectedTemplate(null);
+                                  setFullscreenSelectedSpreadsheet(null);
+                                  setFullscreenGenerationComplete(false);
+                                  setFullscreenChatMessages([{
+                                    type: 'ai',
+                                    content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
+                                  }]);
+                                }}
+                                className="text-green-700 text-sm font-medium hover:underline"
+                              >
+                                Start New Generation →
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Generate Button Area */}
+                    <div className="border-t border-gray-200 p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <label className="text-sm font-medium text-gray-700">Generate Lesson Plan</label>
+                        <div className="relative">
+                          <button
+                            onMouseEnter={() => setShowProcessTooltip(true)}
+                            onMouseLeave={() => setShowProcessTooltip(false)}
+                            className="text-gray-400 hover:text-gray-600 transition-colors"
+                            type="button"
+                          >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                            </svg>
+                          </button>
+                          {showProcessTooltip && (
+                            <div className="absolute bottom-full left-0 mb-2 w-48 bg-gray-900 text-white text-xs rounded-lg p-3 shadow-lg z-50">
+                              <p className="font-semibold mb-2">AI Generation Process:</p>
+                              <ul className="space-y-1 text-gray-200">
+                                <li>• Analyzing template structure</li>
+                                <li>• Processing spreadsheet content</li>
+                                <li>• Generating lessons 1-10</li>
+                                <li>• Generating lessons 11-20</li>
+                                <li>• Finalizing all 25 lessons</li>
+                              </ul>
+                              <p className="text-gray-300 mt-2">Usually takes 3-5 seconds</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <button
+                        onClick={handleFullscreenGenerate}
+                        className={`w-full py-2 px-4 rounded-lg font-medium transition-all ${
+                          fullscreenSelectedTemplate && fullscreenSelectedSpreadsheet && !fullscreenIsGenerating && !fullscreenGenerationComplete
+                            ? 'bg-purple-600 text-white hover:bg-purple-700 cursor-pointer'
+                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                        }`}
+                        disabled={!fullscreenSelectedTemplate || !fullscreenSelectedSpreadsheet || fullscreenIsGenerating || fullscreenGenerationComplete}
+                      >
+                        {fullscreenIsGenerating ? 'Generating...' : fullscreenGenerationComplete ? 'Generation Complete' : 'Generate Lessons'}
+                      </button>
+                      <p className="text-xs text-gray-400 text-center mt-2">
+                        {fullscreenSelectedTemplate && fullscreenSelectedSpreadsheet ? 'Ready to generate!' : 'Add at least one template and one spreadsheet'}
+                      </p>
+                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-4">
+                        <p className="text-xs text-yellow-800">
+                          <span className="font-semibold">AI-Generated Content:</span> All lessons are generated by AI and must be thoroughly reviewed and edited before moving forward in the review process. Verify accuracy, alignment with curriculum standards, and appropriateness for your audience.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Key Features Explanation - Outside app container */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div className="bg-purple-50 p-6 rounded-xl border border-purple-200">
@@ -2948,8 +3476,8 @@ export function TacticalExecutionContent() {
         </motion.section>
 
         {/* Technical Challenges Section */}
-        <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.5 }}>
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">Technical Challenges</h2>
+        <motion.section id="technical" className="mb-16" {...fadeIn} transition={{ delay: 0.5 }}>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Technical Implementation</h2>
 
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
@@ -3045,67 +3573,6 @@ export function TacticalExecutionContent() {
                 </div>
               </div>
             </div>
-          </div>
-        </motion.section>
-
-        {/* Results Section */}
-        <motion.section className="mb-16" {...fadeIn} transition={{ delay: 0.6 }}>
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">Results & Impact</h2>
-
-          <motion.div
-            className="h-1 w-24 mb-10 rounded-full"
-            style={{
-              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
-            }}
-            initial={{ width: 0 }}
-            animate={{ width: '6rem' }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          />
-
-          <div className="bg-white p-8 rounded-xl shadow">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <motion.div
-                className="bg-green-50 rounded-lg p-6 text-center"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-              >
-                <div className="text-4xl font-bold text-green-600 mb-2">75%</div>
-                <div className="text-gray-800 font-medium">Reduction in lesson prep time</div>
-              </motion.div>
-
-              <motion.div
-                className="bg-blue-50 rounded-lg p-6 text-center"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-              >
-                <div className="text-4xl font-bold text-blue-600 mb-2">85%</div>
-                <div className="text-gray-800 font-medium">Teacher satisfaction rate</div>
-              </motion.div>
-
-              <motion.div
-                className="bg-purple-50 rounded-lg p-6 text-center"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-              >
-                <div className="text-4xl font-bold text-purple-600 mb-2">12,000+</div>
-                <div className="text-gray-800 font-medium">Active users</div>
-              </motion.div>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-xl mb-8">
-              <blockquote className="text-lg italic text-gray-700 border-l-4 border-purple-500 pl-4">
-                "LessonLoom has revolutionized how I prepare for my classes. What used to take hours now takes minutes,
-                and the quality of the materials is consistently excellent. My students are more engaged than ever."
-              </blockquote>
-              <div className="text-right mt-2 text-gray-600">- Jennifer K., High School English Teacher</div>
-            </div>
-
-            <p className="text-gray-700">
-              Lesson Loom has been adopted by over 200 schools and educational organizations, dramatically reducing the
-              time teachers spend on material preparation. User research shows that educators are able to create more
-              personalized content for their students, leading to improved engagement and learning outcomes. The
-              platform continues to grow, with new features being added based on ongoing user feedback.
-            </p>
           </div>
         </motion.section>
 
@@ -3247,6 +3714,596 @@ export function TacticalExecutionContent() {
             </div>
           </div>
         </motion.section>
+
+        {/* Results Section */}
+        <motion.section id="results" className="mb-16" {...fadeIn} transition={{ delay: 0.6 }}>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Results & Impact</h2>
+
+          <motion.div
+            className="h-1 w-24 mb-10 rounded-full"
+            style={{
+              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
+            }}
+            initial={{ width: 0 }}
+            animate={{ width: '6rem' }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          />
+
+          <div className="bg-white p-8 rounded-xl shadow">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <motion.div
+                className="bg-green-50 rounded-lg p-6 text-center"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              >
+                <div className="text-4xl font-bold text-green-600 mb-2">75%</div>
+                <div className="text-gray-800 font-medium">Reduction in lesson prep time</div>
+              </motion.div>
+
+              <motion.div
+                className="bg-blue-50 rounded-lg p-6 text-center"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              >
+                <div className="text-4xl font-bold text-blue-600 mb-2">85%</div>
+                <div className="text-gray-800 font-medium">Teacher satisfaction rate</div>
+              </motion.div>
+
+              <motion.div
+                className="bg-purple-50 rounded-lg p-6 text-center"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              >
+                <div className="text-4xl font-bold text-purple-600 mb-2">12,000+</div>
+                <div className="text-gray-800 font-medium">Active users</div>
+              </motion.div>
+            </div>
+
+            <div className="bg-gray-50 p-6 rounded-xl mb-8">
+              <blockquote className="text-lg italic text-gray-700 border-l-4 border-purple-500 pl-4">
+                "LessonLoom has revolutionized how I prepare for my classes. What used to take hours now takes minutes,
+                and the quality of the materials is consistently excellent. My students are more engaged than ever."
+              </blockquote>
+              <div className="text-right mt-2 text-gray-600">- Jennifer K., High School English Teacher</div>
+            </div>
+
+            <p className="text-gray-700">
+              Lesson Loom has been adopted by over 200 schools and educational organizations, dramatically reducing the
+              time teachers spend on material preparation. User research shows that educators are able to create more
+              personalized content for their students, leading to improved engagement and learning outcomes. The
+              platform continues to grow, with new features being added based on ongoing user feedback.
+            </p>
+          </div>
+        </motion.section>
+
+      {/* Fullscreen Modal for Generation Workflow */}
+      {isEmbeddedFullscreen && (
+        <div
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          onClick={() => setIsEmbeddedFullscreen(false)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white rounded-xl overflow-hidden w-full h-full max-h-[95vh] max-w-[95vw] flex flex-col shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Fullscreen Header */}
+            <div className="bg-gray-50 p-4 border-b border-gray-200 flex items-center justify-between flex-shrink-0">
+              <h3 className="text-xl font-semibold text-gray-800">Generation Workflow</h3>
+              <button
+                onClick={() => setIsEmbeddedFullscreen(false)}
+                className="text-gray-600 hover:text-gray-800 transition-colors p-2"
+                aria-label="Close fullscreen"
+                title="Close (ESC)"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Fullscreen Content - Scroll container */}
+            <div className="overflow-auto flex-1">
+              {/* Wireframe */}
+              <div className="p-6">
+                <div className="bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-300">
+                  {/* Step Indicators */}
+                  <div className="border-b border-gray-200 p-4">
+                    <div className="flex flex-wrap justify-between items-center max-w-5xl mx-auto relative">
+                      {/* Horizontal connecting lines */}
+                      <div className="absolute top-1/2 w-full h-[1px] bg-gray-200 -z-10"></div>
+
+                      {/* Active step line - only shows to the left of active step */}
+                      <div
+                        className="absolute top-1/2 left-0 h-[1px] bg-indigo-600 -z-10 transition-all duration-300"
+                        style={{
+                          width: `${Math.max(0, (currentStep - 1) * 20)}%`,
+                        }}
+                      ></div>
+
+                      {/* Steps 1-6 */}
+                      {[
+                        { num: 1, label: 'Upload template library' },
+                        { num: 2, label: 'Upload spreadsheet' },
+                        { num: 3, label: 'Select content' },
+                        { num: 4, label: 'Select lessons' },
+                        { num: 5, label: 'Generate lessons' },
+                        { num: 6, label: 'Summary' }
+                      ].map((step) => (
+                        <div key={step.num} className="flex flex-col items-center z-10">
+                          <div
+                            className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${
+                              currentStep >= step.num
+                                ? 'bg-indigo-600 text-white'
+                                : 'bg-gray-200 text-gray-600'
+                            }`}
+                            onClick={() => setCurrentStep(step.num)}
+                          >
+                            {step.num}
+                          </div>
+                          <span
+                            className={`text-sm font-medium text-center ${
+                              currentStep >= step.num ? 'text-indigo-600' : 'text-gray-600'
+                            }`}
+                          >
+                            {step.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Main Content Area - Same as embedded version */}
+                  <div className="p-10 border-b border-gray-200 h-[600px] overflow-y-auto flex flex-col justify-center">
+                    {currentStep === 1 && (
+                      <div className="max-w-lg mx-auto text-center">
+                        <h3 className="text-xl font-bold text-gray-800 mb-4">Upload template library</h3>
+                        <p className="text-gray-600 mb-8">Drag and drop template library here to upload.</p>
+
+                        <p className="text-gray-500 mb-8">Template library should be in .docx format.</p>
+
+                        <div className="mb-8 flex justify-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-16 w-16 text-gray-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={1}
+                              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                            />
+                          </svg>
+                        </div>
+
+                        <button className="px-6 py-2 bg-indigo-50 text-indigo-600 border border-indigo-200 hover:bg-indigo-100 rounded-lg transition-colors flex items-center mx-auto">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                            />
+                          </svg>
+                          Choose file
+                        </button>
+
+                        <p className="text-gray-500 mt-8">Upload your Word template library with automation syntax</p>
+                      </div>
+                    )}
+
+                    {currentStep === 2 && (
+                      <div className="max-w-lg mx-auto text-center">
+                        <h3 className="text-xl font-bold text-gray-800 mb-4">Upload content spreadsheet</h3>
+                        <p className="text-gray-600 mb-8">Drag and drop content spreadsheet here to upload.</p>
+
+                        <p className="text-gray-500 mb-8">Spreadsheet should be in .xlsx format.</p>
+
+                        <div className="mb-8 flex justify-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-16 w-16 text-gray-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={1}
+                              d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 0v2m0 0h14m0 0v14m-2-2H5m0-4h14m0-6H5"
+                            />
+                          </svg>
+                        </div>
+
+                        <button className="px-6 py-2 bg-indigo-50 text-indigo-600 border border-indigo-200 hover:bg-indigo-100 rounded-lg transition-colors flex items-center mx-auto">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                            />
+                          </svg>
+                          Choose file
+                        </button>
+
+                        <p className="text-gray-500 mt-8">Upload your content spreadsheet with lesson data</p>
+                      </div>
+                    )}
+
+                    {currentStep === 3 && (
+                      <div className="max-w-xl mx-auto">
+                        <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">Select content tab</h3>
+
+                        <p className="text-gray-600 mb-4">Choose which spreadsheet tab to use:</p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                          <div className="border border-indigo-200 bg-indigo-50 rounded-lg p-4 flex items-center">
+                            <input
+                              type="radio"
+                              name="tab"
+                              id="math"
+                              className="h-4 w-4 text-indigo-600"
+                              defaultChecked
+                              readOnly
+                            />
+                            <label htmlFor="math" className="ml-2 text-gray-800 font-medium">
+                              Grade 3 - Math
+                            </label>
+                          </div>
+
+                          <div className="border border-gray-200 rounded-lg p-4 flex items-center">
+                            <input type="radio" name="tab" id="science" className="h-4 w-4 text-indigo-600" />
+                            <label htmlFor="science" className="ml-2 text-gray-800 font-medium">
+                              Grade 3 - Science
+                            </label>
+                          </div>
+
+                          <div className="border border-gray-200 rounded-lg p-4 flex items-center">
+                            <input type="radio" name="tab" id="english" className="h-4 w-4 text-indigo-600" />
+                            <label htmlFor="english" className="ml-2 text-gray-800 font-medium">
+                              Grade 4 - English
+                            </label>
+                          </div>
+
+                          <div className="border border-gray-200 rounded-lg p-4 flex items-center">
+                            <input type="radio" name="tab" id="social" className="h-4 w-4 text-indigo-600" />
+                            <label htmlFor="social" className="ml-2 text-gray-800 font-medium">
+                              Grade 4 - Social Studies
+                            </label>
+                          </div>
+                        </div>
+
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                          <div className="flex items-start">
+                            <svg
+                              className="h-5 w-5 text-green-600 mr-2 mt-0.5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              ></path>
+                            </svg>
+                            <div>
+                              <p className="font-medium text-green-800">Valid content structure</p>
+                              <p className="text-green-700 text-sm">
+                                All required columns are present in the selected tab.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <p className="text-gray-500 text-center">Choose which content tab to use for generation</p>
+                      </div>
+                    )}
+
+                    {currentStep === 4 && (
+                      <div className="max-w-xl mx-auto">
+                        <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">Select lessons to generate</h3>
+
+                        <div className="flex justify-between items-center mb-4">
+                          <p className="text-gray-700">Found 12 lessons in Grade 3 - Math</p>
+                          <div>
+                            <button className="text-indigo-600 text-sm mr-3 hover:underline">All</button>
+                            <button className="text-indigo-600 text-sm hover:underline">None</button>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                          <div className="border border-gray-200 rounded-lg p-4">
+                            <div className="flex items-center">
+                              <input type="checkbox" id="lesson1" className="h-4 w-4 text-indigo-600" checked readOnly />
+                              <div className="ml-3">
+                                <label htmlFor="lesson1" className="font-medium text-gray-800 block">
+                                  Lesson 1: Introduction to Fractions
+                                </label>
+                                <span className="text-gray-600 text-sm">Topic: Basic fraction concepts</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="border border-gray-200 rounded-lg p-4">
+                            <div className="flex items-center">
+                              <input type="checkbox" id="lesson2" className="h-4 w-4 text-indigo-600" checked readOnly />
+                              <div className="ml-3">
+                                <label htmlFor="lesson2" className="font-medium text-gray-800 block">
+                                  Lesson 2: Equivalent Fractions
+                                </label>
+                                <span className="text-gray-600 text-sm">Topic: Finding equivalent fractions</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="border border-gray-200 rounded-lg p-4">
+                            <div className="flex items-center">
+                              <input type="checkbox" id="lesson3" className="h-4 w-4 text-indigo-600" checked readOnly />
+                              <div className="ml-3">
+                                <label htmlFor="lesson3" className="font-medium text-gray-800 block">
+                                  Lesson 3: Comparing Fractions
+                                </label>
+                                <span className="text-gray-600 text-sm">Topic: Greater than and less than</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="border border-gray-200 rounded-lg p-4">
+                            <div className="flex items-center">
+                              <input type="checkbox" id="lesson4" className="h-4 w-4 text-indigo-600" />
+                              <div className="ml-3">
+                                <label htmlFor="lesson4" className="font-medium text-gray-800 block">
+                                  Lesson 4: Adding Fractions
+                                </label>
+                                <span className="text-gray-600 text-sm">Topic: Adding with like denominators</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mb-6">
+                          <div className="flex justify-between text-sm mb-1">
+                            <span className="text-gray-600">Selected lessons: 3 of 12</span>
+                          </div>
+                          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full bg-indigo-600 rounded-full w-1/4"></div>
+                          </div>
+                        </div>
+
+                        <p className="text-gray-500 text-center">Choose which lessons to generate</p>
+                      </div>
+                    )}
+
+                    {currentStep === 5 && (
+                      <div className="max-w-lg mx-auto text-center">
+                        <h3 className="text-xl font-bold text-gray-800 mb-6">Generation in progress</h3>
+
+                        <div className="mb-6">
+                          <div className="flex justify-between text-sm mb-1">
+                            <span className="text-gray-600">Progress</span>
+                            <span className="text-gray-800">67%</span>
+                          </div>
+                          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full bg-indigo-600 rounded-full" style={{ width: '67%' }}></div>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4 mb-8">
+                          <div className="bg-indigo-50 p-4 rounded-lg text-center">
+                            <span className="text-indigo-700 font-bold text-xl">2/3</span>
+                            <span className="text-gray-600 text-sm block">Completed</span>
+                          </div>
+                          <div className="bg-indigo-50 p-4 rounded-lg text-center">
+                            <span className="text-indigo-700 font-bold text-xl">~1m</span>
+                            <span className="text-gray-600 text-sm block">Est. remaining</span>
+                          </div>
+                        </div>
+
+                        <div className="space-y-3 mb-8 text-left">
+                          <div className="flex items-center">
+                            <svg
+                              className="h-5 w-5 text-green-500 mr-2"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              ></path>
+                            </svg>
+                            <span className="text-gray-700">Lesson 1: Introduction to Fractions - Completed</span>
+                          </div>
+                          <div className="flex items-center">
+                            <svg
+                              className="h-5 w-5 text-green-500 mr-2"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              ></path>
+                            </svg>
+                            <span className="text-gray-700">Lesson 2: Equivalent Fractions - Completed</span>
+                          </div>
+                          <div className="flex items-center">
+                            <svg
+                              className="animate-spin h-5 w-5 text-indigo-500 mr-2"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                              ></circle>
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                              ></path>
+                            </svg>
+                            <span className="text-gray-700">Lesson 3: Comparing Fractions - Processing</span>
+                          </div>
+                        </div>
+
+                        <p className="text-gray-500 text-center">Please wait while your lessons are being generated</p>
+                      </div>
+                    )}
+
+                    {currentStep === 6 && (
+                      <div className="max-w-xl mx-auto">
+                        <div className="bg-green-50 p-5 rounded-lg mb-8">
+                          <div className="flex items-start">
+                            <svg
+                              className="h-6 w-6 text-green-600 mr-3 mt-0.5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              ></path>
+                            </svg>
+                            <div>
+                              <h3 className="text-xl font-bold text-green-800 mb-2">Generation Complete</h3>
+                              <p className="text-green-700">
+                                All 2 lessons have been generated successfully. You can download them individually or as a
+                                package.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <h4 className="font-bold text-gray-800 mb-4 text-xl">Generated Lessons</h4>
+
+                        <div className="space-y-4 mb-8">
+                          <div className="border border-gray-200 rounded-lg p-4 flex justify-between items-center">
+                            <div>
+                              <h5 className="font-medium text-gray-800">Lesson 1: Introduction to Fractions</h5>
+                              <p className="text-gray-500 text-sm">Generated: Just now • Size: 2.4 MB</p>
+                            </div>
+                            <div className="space-x-2">
+                              <button className="px-4 py-1 bg-indigo-50 text-indigo-600 rounded hover:bg-indigo-100 transition-colors">
+                                Preview
+                              </button>
+                              <button className="px-4 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors">
+                                Download
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="border border-gray-200 rounded-lg p-4 flex justify-between items-center">
+                            <div>
+                              <h5 className="font-medium text-gray-800">Lesson 2: Equivalent Fractions</h5>
+                              <p className="text-gray-500 text-sm">Generated: Just now • Size: 2.1 MB</p>
+                            </div>
+                            <div className="space-x-2">
+                              <button className="px-4 py-1 bg-indigo-50 text-indigo-600 rounded hover:bg-indigo-100 transition-colors">
+                                Preview
+                              </button>
+                              <button className="px-4 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors">
+                                Download
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col sm:flex-row justify-between">
+                          <button className="px-6 py-3 mb-3 sm:mb-0 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5 mr-2"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                              />
+                            </svg>
+                            Download All Lessons
+                          </button>
+                          <button
+                            className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors"
+                            onClick={() => setCurrentStep(1)}
+                          >
+                            Start New Generation
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Navigation Buttons */}
+                  <div className="p-4 flex justify-between flex-shrink-0">
+                    <button
+                      className={`px-6 py-2 rounded-lg transition-colors ${
+                        currentStep > 1
+                          ? 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      }`}
+                      onClick={() => currentStep > 1 && setCurrentStep(currentStep - 1)}
+                    >
+                      Previous
+                    </button>
+                    <button
+                      className={`px-6 py-2 rounded-lg transition-colors ${currentStep < 6 ? 'bg-indigo-600 text-white hover:bg-indigo-700' : currentStep === 6 ? 'bg-green-600 text-white hover:bg-green-700' : ''}`}
+                      onClick={() => {
+                        if (currentStep < 6) {
+                          setCurrentStep(currentStep + 1);
+                        } else if (currentStep === 6) {
+                          setCurrentStep(1);
+                        }
+                      }}
+                    >
+                      {currentStep < 6 ? 'Next' : 'Finish'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
     </main>
   );
