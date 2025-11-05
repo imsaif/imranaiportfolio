@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { TabNavigation } from './TabNavigation';
+import { TacticalExecutionContent } from '../sections/TacticalExecutionContent';
 import { ProjectOverviewSection } from '../sections/ProjectOverviewSection';
 import { DesignChallengesSection } from '../sections/DesignChallengesSection';
 import { RoleCollaborationSection } from '../sections/RoleCollaborationSection';
@@ -187,20 +188,8 @@ export function CaseStudyTabs() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="space-y-20"
             >
-              <section id="research">
-                <ResearchDiscoverySection />
-              </section>
-              <section id="design">
-                <DesignSolutionSection />
-              </section>
-              <section id="technical">
-                <TechnicalImplementationSection />
-              </section>
-              <section id="results">
-                <ResultsImpactSection />
-              </section>
+              <TacticalExecutionContent />
             </motion.div>
           )}
         </AnimatePresence>
