@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { TabNavigation } from './TabNavigation';
 import { ProjectOverviewSection } from '../sections/ProjectOverviewSection';
 import { ResearchDiscoverySection } from '../sections/ResearchDiscoverySection';
@@ -64,7 +64,10 @@ export function CaseStudyTabs({}: CaseStudyTabsProps) {
     setActiveSection(tab === 'strategic' ? 'overview' : 'research');
   };
 
-  const currentSections = activeTab === 'strategic' ? strategicSections : tacticalSections;
+  const currentSections = useMemo(
+    () => activeTab === 'strategic' ? strategicSections : tacticalSections,
+    [activeTab]
+  );
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -100,31 +103,53 @@ export function CaseStudyTabs({}: CaseStudyTabsProps) {
       const observer = new IntersectionObserver(observerCallback, observerOptions);
       observerRef.current = observer;
 
-      // Get all section elements for current tab
-      let foundElements = 0;
-      currentSections.forEach((section) => {
+      // Robust retry logic with exponential backoff
+      const attachObserver = (attempt = 0, maxAttempts = 5) => {
+        let foundElements = 0;
+        currentSections.forEach((section) => {
+          const element = document.getElementById(section.id);
+          if (element) {
+            observer.observe(element);
+            foundElements++;
+          }
+        });
+
+        // If not all elements found, retry with exponential backoff
+        if (foundElements < currentSections.length && attempt < maxAttempts) {
+          // Exponential backoff: 100ms, 200ms, 400ms, 800ms, 1600ms
+          const delay = 100 * Math.pow(2, attempt);
+          setTimeout(() => attachObserver(attempt + 1, maxAttempts), delay);
+        }
+      };
+
+      attachObserver();
+    }, 500); // Increased from 300ms to 500ms to account for animation duration
+
+    // Fallback scroll listener for reliability
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      for (let i = currentSections.length - 1; i >= 0; i--) {
+        const section = currentSections[i];
+        if (!section) continue;
         const element = document.getElementById(section.id);
         if (element) {
-          observer.observe(element);
-          foundElements++;
-        }
-      });
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
 
-      // If no elements found, try again after another delay
-      if (foundElements === 0) {
-        setTimeout(() => {
-          currentSections.forEach((section) => {
-            const element = document.getElementById(section.id);
-            if (element && observerRef.current) {
-              observerRef.current.observe(element);
-            }
-          });
-        }, 200);
+          if (scrollPosition >= elementTop) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
       }
-    }, 300);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
       if (observerRef.current) {
         observerRef.current.disconnect();
         observerRef.current = null;
@@ -166,7 +191,7 @@ export function CaseStudyTabs({}: CaseStudyTabsProps) {
 
           {/* Right Content Area */}
           <div className="flex-1 min-w-0">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               {/* STRATEGIC TAB */}
               {activeTab === 'strategic' && (
                 <motion.div
