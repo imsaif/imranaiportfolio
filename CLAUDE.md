@@ -84,6 +84,13 @@ public/
 ## Recent Sessions
 
 ### Session 2025-11-05 15:45 (MacBook) - Portfolio Refinements & LessonLoom Case Study Sidebar Updates
+### Session 2025-11-05 22:41 (MacBook) - LessonLoom Tactical Tab Bug Fixes
+- **Pattern:** LessonLoom case study bug fixes
+- **Status:** Complete
+- **Files Changed:** 2
+- **Tests Added/Modified:** 0
+- **Notes:** Fixed critical bugs in LessonLoom tactical tab by removing fullscreen/expand functionality and cleaning up 15+ undefined state variable references. Removed 1200+ lines of fullscreen modal code to simplify implementation and eliminate runtime errors when clicking tactical tab sections.
+
 - **Pattern:** Portfolio UI enhancements and case study navigation
 - **Status:** Complete
 - **Files Changed:** 5
