@@ -9,17 +9,10 @@ const fadeIn = {
 export function ProjectOverviewSection() {
   return (
     <motion.div {...fadeIn} className="max-w-4xl mx-auto">
-      <div className="mb-12">
-        <h2 className="text-4xl font-bold text-gray-900 mb-6">LessonLoom</h2>
-        <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-          An AI-powered platform that automates lesson plan generation for educators, reducing preparation time from hours to minutes while maintaining curriculum alignment and age-appropriate content.
-        </p>
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
           <h3 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Role</h3>
-          <p className="text-gray-900 font-medium">Product Designer</p>
+          <p className="text-gray-900 font-medium">Senior Product Designer</p>
         </div>
         <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
           <h3 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Timeline</h3>
@@ -31,7 +24,14 @@ export function ProjectOverviewSection() {
         </div>
         <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
           <h3 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Team</h3>
-          <p className="text-gray-900 font-medium">4 Engineers, 2 Designers</p>
+          <div className="space-y-1">
+            <p className="text-gray-900 font-medium">1 PM</p>
+            <p className="text-gray-700 text-sm">1 Solution Architect</p>
+            <p className="text-gray-700 text-sm">1 Backend Engineer</p>
+            <p className="text-gray-700 text-sm">1 Frontend Engineer</p>
+            <p className="text-gray-700 text-sm">1 AI/ML Engineer</p>
+            <p className="text-gray-700 text-sm">2 Product Designers</p>
+          </div>
         </div>
       </div>
 

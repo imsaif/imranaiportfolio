@@ -7,6 +7,7 @@ import { ProjectOverviewSection } from '../sections/ProjectOverviewSection';
 import { DesignChallengesSection } from '../sections/DesignChallengesSection';
 import { RoleCollaborationSection } from '../sections/RoleCollaborationSection';
 import { OrganizationalImpactSection } from '../sections/OrganizationalImpactSection';
+import { AIImplementationSection } from '../sections/AIImplementationSection';
 import { KeyLearningsSection } from '../sections/KeyLearningsSection';
 import { ResearchDiscoverySection } from '../sections/ResearchDiscoverySection';
 import { DesignSolutionSection } from '../sections/DesignSolutionSection';
@@ -19,7 +20,6 @@ import {
   MdPalette,
   MdBuild,
   MdShowChart,
-  MdBusinessCenter,
   MdGroup,
   MdWarning,
   MdGroupWork,
@@ -34,10 +34,10 @@ interface Section {
 
 const strategicSections: Section[] = [
   { id: 'overview', title: 'Project Overview', icon: <MdDescription size={18} /> },
-  { id: 'strategic-context', title: 'Strategic Context', icon: <MdBusinessCenter size={18} /> },
   { id: 'role-collaboration', title: 'My Role & Collaboration', icon: <MdGroup size={18} /> },
   { id: 'design-challenges', title: 'Design Challenges', icon: <MdWarning size={18} /> },
   { id: 'organizational-impact', title: 'Organizational Impact', icon: <MdGroupWork size={18} /> },
+  { id: 'ai-implementation', title: 'AI Implementation', icon: <MdLightbulb size={18} /> },
   { id: 'results', title: 'Results & Impact', icon: <MdShowChart size={18} /> },
   { id: 'key-learnings', title: 'Key Learnings', icon: <MdLightbulb size={18} /> }
 ];
@@ -141,58 +141,89 @@ export function CaseStudyTabs() {
   }, [currentSections]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div>
       <TabNavigation activeTab={activeTab} onTabChange={handleTabChange} />
 
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
-        <AnimatePresence mode="sync">
-          {/* STRATEGIC TAB */}
-          {activeTab === 'strategic' && (
-            <motion.div
-              key="strategic"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-20"
-            >
-              <section id="overview">
-                <ProjectOverviewSection />
-              </section>
-              <section id="strategic-context">
-                <DesignChallengesSection />
-              </section>
-              <section id="role-collaboration">
-                <RoleCollaborationSection />
-              </section>
-              <section id="design-challenges">
-                <DesignChallengesSection />
-              </section>
-              <section id="organizational-impact">
-                <OrganizationalImpactSection />
-              </section>
-              <section id="results">
-                <ResultsImpactSection />
-              </section>
-              <section id="key-learnings">
-                <KeyLearningsSection />
-              </section>
-            </motion.div>
-          )}
+        <div className="flex gap-12">
+          {/* Left Sidebar Navigation */}
+          <div className="hidden lg:block w-64 flex-shrink-0">
+            <nav className="sticky top-32 space-y-2">
+              {currentSections.map((section) => (
+                <button
+                  key={section.id}
+                  onClick={() => scrollToSection(section.id)}
+                  className={`w-full flex items-center gap-3 text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                    activeSection === section.id
+                      ? 'bg-blue-100 border-l-4 border-blue-600 text-blue-900 font-semibold'
+                      : 'text-gray-700 hover:bg-gray-100 border-l-4 border-transparent'
+                  }`}
+                >
+                  <span className={`flex-shrink-0 transition-colors ${
+                    activeSection === section.id
+                      ? 'text-gray-600'
+                      : 'text-gray-400'
+                  }`}>
+                    {section.icon}
+                  </span>
+                  <span>{section.title}</span>
+                </button>
+              ))}
+            </nav>
+          </div>
 
-          {/* TACTICAL TAB */}
-          {activeTab === 'tactical' && (
-            <motion.div
-              key="tactical"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <TacticalExecutionContent />
-            </motion.div>
-          )}
-        </AnimatePresence>
+          {/* Right Content Area */}
+          <div className="flex-1 min-w-0">
+            <AnimatePresence mode="sync">
+              {/* STRATEGIC TAB */}
+              {activeTab === 'strategic' && (
+                <motion.div
+                  key="strategic"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-20"
+                >
+                  <section id="overview">
+                    <ProjectOverviewSection />
+                  </section>
+                  <section id="role-collaboration">
+                    <RoleCollaborationSection />
+                  </section>
+                  <section id="design-challenges">
+                    <DesignChallengesSection />
+                  </section>
+                  <section id="organizational-impact">
+                    <OrganizationalImpactSection />
+                  </section>
+                  <section id="ai-implementation">
+                    <AIImplementationSection />
+                  </section>
+                  <section id="results">
+                    <ResultsImpactSection />
+                  </section>
+                  <section id="key-learnings">
+                    <KeyLearningsSection />
+                  </section>
+                </motion.div>
+              )}
+
+              {/* TACTICAL TAB */}
+              {activeTab === 'tactical' && (
+                <motion.div
+                  key="tactical"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <TacticalExecutionContent />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </div>
   );
