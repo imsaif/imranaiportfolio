@@ -8,7 +8,7 @@ export const strategicVisionData = {
   teamBuilding: {
     title: "Team Building",
     metric: "3→7",
-    description: "Designers hired and developed into senior roles",
+    description: "Designers mentored and developed into senior roles",
     icon: "team"
   },
   innovation: {
