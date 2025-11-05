@@ -236,7 +236,7 @@ export function TacticalExecutionContent() {
   ];
 
   return (
-    <main className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+    <>
         {/* Add CSS keyframes animation definition at the top of the page */}
         <style jsx global>{`
           @keyframes gradient-shift {
@@ -1251,9 +1251,9 @@ export function TacticalExecutionContent() {
           </div>
         </motion.section>
 
-        {/* Design Solution Section */}
+        {/* Solution Architecture Section */}
         <motion.section id="interactive-demo" className="mb-16" {...fadeIn} transition={{ delay: 0.5 }}>
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">Interactive Demo</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Solution Architecture</h2>
 
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
@@ -2305,19 +2305,23 @@ export function TacticalExecutionContent() {
         </motion.section>
 
         {/* AI-Powered Generation Interface Section */}
-        <motion.section className="mb-16 px-6 sm:px-8 lg:px-12" {...fadeIn} transition={{ delay: 0.4 }}>
-          <div>
-            {/* AI-Powered Generation Interface */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg p-8 border border-blue-200"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">2. AI-Powered Generation Interface</h3>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                This is the actual LessonLoom application that educators use. I designed an intuitive, AI-native interface that combines a drag-and-drop library of templates and data sources with intelligent generation capabilities. The interface keeps educators in control while automating the tedious parts of lesson creation.
-              </p>
+        <motion.section id="ai-interface" className="mb-16" {...fadeIn} transition={{ delay: 0.4 }}>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">AI-Powered Generation Interface</h2>
+
+          <motion.div
+            className="h-1 w-24 mb-10 rounded-full"
+            style={{
+              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
+            }}
+            initial={{ width: 0 }}
+            animate={{ width: '6rem' }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          />
+
+          <div className="bg-white p-8 rounded-xl shadow">
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              This is the actual LessonLoom application that educators use. I designed an intuitive, AI-native interface that combines a drag-and-drop library of templates and data sources with intelligent generation capabilities. The interface keeps educators in control while automating the tedious parts of lesson creation.
+            </p>
 
               {/* Two-Column AI Interface with Templates Library */}
               <div className="border border-gray-200 rounded-xl overflow-hidden transition-shadow duration-300 hover:shadow-lg mb-6 relative">
@@ -2838,10 +2842,8 @@ export function TacticalExecutionContent() {
                   <div id="tour-highlight-6" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ bottom: '20px', left: '35%', right: '20px', height: '100px' }}></div>
                 </div>
               </div>
-            </motion.div>
-          </div>
 
-          {/* Key Features Explanation - Outside app container */}
+            {/* Key Features Explanation */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div className="bg-purple-50 p-6 rounded-xl border border-purple-200">
               <h5 className="font-bold text-purple-800 mb-4">Conversational AI Interface</h5>
@@ -2897,6 +2899,7 @@ export function TacticalExecutionContent() {
               <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-blue-700 border border-blue-200">Visual Highlights</span>
               <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-green-700 border border-green-200">Skip Option Available</span>
             </div>
+          </div>
           </div>
         </motion.section>
 
@@ -3202,6 +3205,6 @@ export function TacticalExecutionContent() {
         </motion.section>
 
 
-    </main>
+    </>
   );
 }
