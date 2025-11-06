@@ -13,11 +13,12 @@ export function TechnicalImplementationSection() {
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Technical Implementation</h2>
         <p className="text-lg text-gray-700 leading-relaxed">
-          LessonLoom's technical architecture balanced complexity with maintainability, using Azure OpenAI APIs for content generation while building domain-specific validation layers to ensure educational quality.
+          As a designer, my role during implementation was to bridge user needs with technical constraints, collaborate with engineers on architecture decisions, and validate that the system worked intuitively for educators. This wasn't about knowing code—it was about asking the right questions and ensuring technical decisions served our users.
         </p>
       </div>
 
       <div className="space-y-8 mb-12">
+        {/* Shaping Interface Requirements */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -26,18 +27,31 @@ export function TechnicalImplementationSection() {
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
             <MdBuild className="w-6 h-6 text-blue-600" />
-            Tech Stack
+            Defining Interface Requirements That Shaped Architecture
           </h3>
-          <div className="grid grid-cols-2 gap-4 text-gray-700 text-sm">
-            <div><strong>Frontend:</strong> Vue.js 3, TypeScript</div>
-            <div><strong>Backend:</strong> .NET Core 6</div>
-            <div><strong>AI/ML:</strong> Azure OpenAI API (GPT-4)</div>
-            <div><strong>Data:</strong> PostgreSQL, AWS S3</div>
-            <div><strong>Infrastructure:</strong> Docker, Kubernetes</div>
-            <div><strong>Monitoring:</strong> Datadog, Custom logging</div>
-          </div>
+          <p className="text-gray-700 mb-4">
+            Early user research revealed that educators needed to <strong>see exact output before committing</strong>. This simple requirement had massive technical implications. Engineers had to build:
+          </p>
+          <ul className="space-y-3 text-gray-700 text-sm">
+            <li className="flex gap-3">
+              <span className="font-semibold text-blue-600 flex-shrink-0">•</span>
+              <span><strong>A preview system</strong> that could render lessons without saving them to the database</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="font-semibold text-blue-600 flex-shrink-0">•</span>
+              <span><strong>A stateless generation pipeline</strong> that could be called multiple times for the same input without side effects</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="font-semibold text-blue-600 flex-shrink-0">•</span>
+              <span><strong>Version control for prompts</strong> so we could track which prompt generated which lesson</span>
+            </li>
+          </ul>
+          <p className="text-gray-700 mt-4 italic">
+            By advocating for this user need, we indirectly shaped the backend architecture to be more flexible and resilient.
+          </p>
         </motion.div>
 
+        {/* Prompt Design & AI Collaboration */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -46,20 +60,28 @@ export function TechnicalImplementationSection() {
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
             <MdBuild className="w-6 h-6 text-green-600" />
-            AI Integration Architecture
+            Collaborating on Prompt Design & AI Optimization
           </h3>
           <p className="text-gray-700 mb-4">
-            The system uses a multi-stage approach to ensure quality:
+            I worked closely with our ML team on prompt engineering—not as a technical expert, but as a bridge between user needs and model behavior:
           </p>
-          <ul className="space-y-2 text-gray-700 text-sm">
-            <li className="flex gap-2"><span className="font-semibold text-green-600">1.</span> Template parsing to understand lesson structure requirements</li>
-            <li className="flex gap-2"><span className="font-semibold text-green-600">2.</span> Curriculum validation against stored curriculum frameworks</li>
-            <li className="flex gap-2"><span className="font-semibold text-green-600">3.</span> Content generation using few-shot prompting with examples</li>
-            <li className="flex gap-2"><span className="font-semibold text-green-600">4.</span> Quality checks for age-appropriateness, accuracy, and alignment</li>
-            <li className="flex gap-2"><span className="font-semibold text-green-600">5.</span> Localization pipeline for language and cultural adaptation</li>
-          </ul>
+          <div className="space-y-4 text-gray-700 text-sm">
+            <div>
+              <strong>Translating feedback into prompts:</strong>
+              <p className="mt-1">When user interviews revealed that teachers wanted lessons to emphasize "conceptual understanding" for math but "procedural fluency" for language arts, we worked with ML to create subject-specific prompts that encoded these pedagogical principles.</p>
+            </div>
+            <div>
+              <strong>Testing prompt variations:</strong>
+              <p className="mt-1">I conducted user testing on different prompt outputs—not just looking at technical quality, but whether educators trusted the AI's pedagogical reasoning. This feedback directly improved how we structured prompts.</p>
+            </div>
+            <div>
+              <strong>Balancing speed vs. quality:</strong>
+              <p className="mt-1">We discovered that more detailed prompts gave better output but took 3x longer. I helped advocate for the detailed approach during a time-vs-quality tradeoff discussion with engineering.</p>
+            </div>
+          </div>
         </motion.div>
 
+        {/* User Research Influencing Technical Decisions */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,28 +90,28 @@ export function TechnicalImplementationSection() {
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
             <MdBuild className="w-6 h-6 text-purple-600" />
-            Key Technical Challenges Solved
+            Using Research to Inform Technical Decisions
           </h3>
+          <p className="text-gray-700 mb-4">
+            I brought research insights directly into technical planning discussions:
+          </p>
           <div className="space-y-4 text-gray-700 text-sm">
             <div>
-              <strong>Curriculum Alignment</strong>
-              <p className="mt-1">Built a curriculum knowledge base that contains learning standards from 8 countries, enabling the AI to validate generated content against official frameworks.</p>
+              <strong>Trust in automation:</strong>
+              <p className="mt-1">User research showed educators were hesitant to trust AI output. This led to a technical requirement: <span className="italic">make the AI's reasoning visible</span>. Engineers built an "explain generation" feature that showed exactly which curriculum standards were matched and why specific content was included.</p>
             </div>
             <div>
-              <strong>Content Consistency</strong>
-              <p className="mt-1">Implemented template syntax and validation layers to ensure generated lessons follow consistent structure, even across multiple generations.</p>
+              <strong>Regeneration at scale:</strong>
+              <p className="mt-1">Teachers mentioned wanting to generate variations quickly (e.g., "Can you make this lesson harder?"). This insight drove technical work on prompt parameterization and caching strategies.</p>
             </div>
             <div>
-              <strong>Latency Optimization</strong>
-              <p className="mt-1">Generation times average 2-3 minutes per lesson through careful prompt design and token optimization. Caching strategies reduce repeat generations to &lt;30 seconds.</p>
-            </div>
-            <div>
-              <strong>Cost Management</strong>
-              <p className="mt-1">Used prompt optimization and token counting to reduce API costs by 60% without sacrificing output quality.</p>
+              <strong>Quality assurance workflow:</strong>
+              <p className="mt-1">Content teams showed me their manual QA process. I helped engineers understand what they were looking for—bias, factual errors, cultural sensitivity—which informed how we built automated validation.</p>
             </div>
           </div>
         </motion.div>
 
+        {/* Iteration & Feasibility */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -98,25 +120,69 @@ export function TechnicalImplementationSection() {
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
             <MdBuild className="w-6 h-6 text-orange-600" />
-            Quality Assurance & Safety
+            Iterating Design with Engineering Constraints
           </h3>
-          <p className="text-gray-700 text-sm mb-4">
-            Given the educational context, we implemented rigorous QA:
+          <p className="text-gray-700 mb-4">
+            Design-engineering collaboration meant sometimes simplifying:
           </p>
-          <ul className="space-y-2 text-gray-700 text-sm">
-            <li className="flex gap-2"><span className="text-orange-600">✓</span> Automated tests for bias detection in generated content</li>
-            <li className="flex gap-2"><span className="text-orange-600">✓</span> Manual review of edge cases and culturally sensitive topics</li>
-            <li className="flex gap-2"><span className="text-orange-600">✓</span> Feedback loops to continuously improve prompt engineering</li>
-            <li className="flex gap-2"><span className="text-orange-600">✓</span> Version control for all curriculum knowledge bases</li>
-            <li className="flex gap-2"><span className="text-orange-600">✓</span> Audit trails for all AI-generated content for transparency</li>
+          <ul className="space-y-3 text-gray-700 text-sm">
+            <li className="flex gap-3">
+              <span className="text-orange-600 flex-shrink-0">→</span>
+              <span><strong>Real-time collaborative editing:</strong> Originally envisioned but technically infeasible with our infrastructure. We pivoted to "commenting + revision suggestions" instead, which actually worked better for the asynchronous nature of content creation.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-orange-600 flex-shrink-0">→</span>
+              <span><strong>Multi-language generation:</strong> We wanted single-click translation, but maintaining curriculum alignment across languages was harder than expected. We built a review-and-refine workflow instead, where AI generates a first draft in the target language and humans validate cultural appropriateness.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-orange-600 flex-shrink-0">→</span>
+              <span><strong>Custom AI model fine-tuning:</strong> Turns out it was more cost-effective to use better prompts with GPT-4 than to fine-tune a smaller model. This realization came from prototyping and testing—and led to a better user experience anyway.</span>
+            </li>
+          </ul>
+        </motion.div>
+
+        {/* Design-Led QA & Validation */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="bg-indigo-50 rounded-lg p-6 border border-indigo-200"
+        >
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
+            <MdBuild className="w-6 h-6 text-indigo-600" />
+            Validating Technical Solutions with Real Users
+          </h3>
+          <p className="text-gray-700 mb-4">
+            While engineers handled automated testing, I focused on qualitative validation:
+          </p>
+          <ul className="space-y-3 text-gray-700 text-sm">
+            <li className="flex gap-3">
+              <span className="text-indigo-600 flex-shrink-0">✓</span>
+              <span><strong>Weekly user testing sessions</strong> with content creators using development builds, identifying friction points that weren't caught by unit tests</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-indigo-600 flex-shrink-0">✓</span>
+              <span><strong>Bias & cultural sensitivity reviews</strong> of AI outputs alongside domain experts from different regions</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-indigo-600 flex-shrink-0">✓</span>
+              <span><strong>Performance validation</strong> from an educator's perspective—testing if "2-3 minute generation time" actually felt acceptable while they waited</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-indigo-600 flex-shrink-0">✓</span>
+              <span><strong>Error handling scenarios</strong>—what happens when the AI fails? Working with engineers to ensure error messages helped educators understand why and what to do next</span>
+            </li>
           </ul>
         </motion.div>
       </div>
 
       <div className="bg-gradient-to-r from-slate-50 to-gray-50 rounded-lg p-8 border border-gray-200">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Design-Engineering Collaboration</h3>
+        <h3 className="text-xl font-bold text-gray-900 mb-4">The Designer's Role in Technical Implementation</h3>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          My contribution wasn't writing code—it was translating human needs into technical priorities, asking "why" when engineers suggested shortcuts, and validating that the final system actually served educators the way we intended.
+        </p>
         <p className="text-gray-700 leading-relaxed">
-          The technical implementation was closely tied to design decisions. For example, the "regenerate" feature in the UI was only possible because engineers built a stateless generation system that could safely retry or generate variations. Similarly, the transparent AI interface showing exact prompts and parameters was architected to support educator debugging and refinement.
+          The most impactful moment was pushing back on an optimization that would've reduced generation time to 30 seconds but made errors less recoverable. Yes, it was faster, but it violated the mental model educators had developed. Sometimes the "right" technical solution is the one that respects how humans actually think.
         </p>
       </div>
     </motion.div>

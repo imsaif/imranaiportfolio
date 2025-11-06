@@ -45,7 +45,7 @@ const strategicSections: Section[] = [
 
 const tacticalSections: Section[] = [
   { id: 'research', title: 'The Challenge', icon: <MdWarning size={18} /> },
-  { id: 'design', title: 'Design Solution', icon: <MdPalette size={18} /> },
+  { id: 'design', title: 'Design Approach', icon: <MdPalette size={18} /> },
   { id: 'interactive-demo', title: 'Solution Architecture', icon: <MdDevices size={18} /> },
   { id: 'technical', title: 'Technical Implementation', icon: <MdBuild size={18} /> },
   { id: 'ai-deep-dive', title: 'AI Implementation', icon: <MdLightbulb size={18} /> },
