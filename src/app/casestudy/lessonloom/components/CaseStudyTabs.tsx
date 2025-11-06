@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { TabNavigation } from './TabNavigation';
 import { TacticalExecutionContent } from '../sections/TacticalExecutionContent';
 import { ProjectOverviewSection } from '../sections/ProjectOverviewSection';
@@ -53,9 +54,19 @@ const tacticalSections: Section[] = [
 ];
 
 export function CaseStudyTabs() {
+  const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<'strategic' | 'tactical'>('strategic');
   const [activeSection, setActiveSection] = useState('overview');
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Check for tab parameter in URL and switch tabs if needed
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam === 'tactical') {
+      setActiveTab('tactical');
+      setActiveSection('research');
+    }
+  }, [searchParams]);
 
   const handleTabChange = (tab: 'strategic' | 'tactical') => {
     setActiveTab(tab);

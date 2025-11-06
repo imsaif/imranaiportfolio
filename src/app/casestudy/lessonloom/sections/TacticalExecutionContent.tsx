@@ -34,8 +34,7 @@ export function TacticalExecutionContent() {
   const [showValidationSuggestions, setShowValidationSuggestions] = useState(false);
   const [validationSuggestions] = useState([
     'Consider using a more advanced template to unlock additional formatting options',
-    'The Q1 Math Content spreadsheet includes diverse learning styles - great choice for inclusivity!',
-    'Recommended: Enable peer review mode for this lesson configuration'
+    'The Q1 Math Content spreadsheet includes diverse learning styles - great choice for inclusivity!'
   ]);
 
 
@@ -2184,9 +2183,9 @@ export function TacticalExecutionContent() {
               This is the actual LessonLoom application that instructional designers use. I designed an intuitive, AI-native interface that combines a drag-and-drop library of templates and data sources with intelligent generation capabilities. The interface keeps instructional designers in control while automating the tedious parts of lesson creation.
             </p>
 
-            <h3 className="text-xl font-bold text-gray-900 mb-6">Design Decisions & User Research</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Design Decisions & User Research</h3>
 
-            <p className="text-gray-700 text-sm mb-6">
+            <p className="text-gray-700 text-base mb-6">
               Each interface element was shaped by user feedback and testing with instructional designers. Here's the thinking behind the key design choices:
             </p>
 
@@ -2198,11 +2197,11 @@ export function TacticalExecutionContent() {
                   <span>🎯</span>
                   Drag-and-Drop Composition
                 </h4>
-                <div className="text-sm text-gray-700 space-y-2 mb-4">
+                <div className="text-base text-gray-700 space-y-2 mb-4">
                   <p><strong>User feedback:</strong> "I need to build lessons my own way, not follow a wizard"</p>
                   <p><strong>Decision:</strong> Non-linear composition. Drag templates + spreadsheets in any order</p>
                 </div>
-                <p className="text-xs text-gray-600 italic">Benefit: Instructional designers have full control over structure and flow, not constrained by sequential forms</p>
+                <p className="text-sm text-gray-600 italic">Benefit: Instructional designers have full control over structure and flow, not constrained by sequential forms</p>
               </div>
 
               {/* Card 2: Two-Column Layout */}
@@ -2211,11 +2210,11 @@ export function TacticalExecutionContent() {
                   <span>📐</span>
                   Two-Column Layout
                 </h4>
-                <div className="text-sm text-gray-700 space-y-2 mb-4">
+                <div className="text-base text-gray-700 space-y-2 mb-4">
                   <p><strong>User feedback:</strong> "Show me what's available AND let me build at the same time"</p>
                   <p><strong>Decision:</strong> Library (left) discoverable while building (right)</p>
                 </div>
-                <p className="text-xs text-gray-600 italic">Benefit: Matches natural workflow—see options, pick items, compose lesson without context switching</p>
+                <p className="text-sm text-gray-600 italic">Benefit: Matches natural workflow—see options, pick items, compose lesson without context switching</p>
               </div>
 
               {/* Card 3: Spreadsheet-Based Input */}
@@ -2224,11 +2223,11 @@ export function TacticalExecutionContent() {
                   <span>📊</span>
                   Spreadsheet-Based Input
                 </h4>
-                <div className="text-sm text-gray-700 space-y-2 mb-4">
+                <div className="text-base text-gray-700 space-y-2 mb-4">
                   <p><strong>User feedback:</strong> Design exploration testing showed instructional designers already organize content in spreadsheets</p>
                   <p><strong>Decision:</strong> Don't force new tools—use Excel/Google Sheets they already have</p>
                 </div>
-                <p className="text-xs text-gray-600 italic">Benefit: Zero friction adoption, instructional designers use existing files and workflows</p>
+                <p className="text-sm text-gray-600 italic">Benefit: Zero friction adoption, instructional designers use existing files and workflows</p>
               </div>
 
               {/* Card 4: Chat Interface */}
@@ -2237,16 +2236,16 @@ export function TacticalExecutionContent() {
                   <span>💬</span>
                   Conversational AI Interface
                 </h4>
-                <div className="text-sm text-gray-700 space-y-2 mb-4">
+                <div className="text-base text-gray-700 space-y-2 mb-4">
                   <p><strong>User feedback:</strong> "Tell me what was matched and why—I need to understand the AI's thinking"</p>
                   <p><strong>Decision:</strong> Chat shows AI reasoning, shows which curriculum standards were matched</p>
                 </div>
-                <p className="text-xs text-gray-600 italic">Benefit: Transparency builds designer trust—they see the "why" behind AI decisions</p>
+                <p className="text-sm text-gray-600 italic">Benefit: Transparency builds designer trust—they see the "why" behind AI decisions</p>
               </div>
             </div>
 
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-200 mb-8">
-              <p className="text-sm text-gray-700">
+              <p className="text-base text-gray-700">
                 <strong>Evolution:</strong> Early prototypes tested form-based input, single-column layouts, and hidden AI reasoning. User testing revealed that instructional designers valued agency (drag-and-drop), discoverability (two columns), familiarity (spreadsheets), and transparency (chat). This final version emerged from iterating on these insights.
               </p>
             </div>
@@ -2254,64 +2253,64 @@ export function TacticalExecutionContent() {
 
           {/* AIUX Design Patterns Section */}
           <div className="bg-white p-8 rounded-xl shadow mb-8">
-            <h3 className="text-xl font-bold text-gray-900 mb-6">AIUX Design Patterns Applied</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">AIUX Design Patterns Applied</h3>
 
-            <p className="text-gray-700 text-sm mb-8">
-              This interface applies foundational AI UX patterns documented in the <a href="https://www.aiuxdesign.guide/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-medium">AIUX Design Guide</a>—a pattern library built from the learnings of this LessonLoom project.
+            <p className="text-gray-700 text-base mb-8">
+              This interface applies foundational AI UX patterns that directly inspired the creation of the <a href="https://www.aiuxdesign.guide/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-medium">AIUX Design Guide</a>. While building LessonLoom, I discovered recurring design challenges and solutions when creating AI-native interfaces. These patterns—validated through real user testing on this project—became the foundation for AIUX Design Guide, a public pattern library for designing with AI.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {/* Pattern 1: Explainable AI */}
               <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200">
                 <h4 className="font-semibold text-gray-900 mb-2">🔍 Explainable AI</h4>
-                <p className="text-xs text-indigo-700 font-medium mb-3 uppercase">Category: Trustworthy & Reliable AI</p>
-                <p className="text-sm text-gray-700 mb-3">
+                <p className="text-sm text-indigo-700 font-medium mb-3 uppercase">Category: Trustworthy & Reliable AI</p>
+                <p className="text-base text-gray-700 mb-3">
                   <strong>Applied in LessonLoom:</strong> Chat interface shows AI reasoning—displays which curriculum standards were matched, why specific content was generated, and what constraints were applied.
                 </p>
-                <p className="text-xs text-gray-600">Builds trust through transparency</p>
+                <p className="text-sm text-gray-600">Builds trust through transparency</p>
               </div>
 
               {/* Pattern 2: Human-in-the-Loop */}
               <div className="bg-green-50 p-6 rounded-lg border border-green-200">
                 <h4 className="font-semibold text-gray-900 mb-2">🤝 Human-in-the-Loop</h4>
-                <p className="text-xs text-green-700 font-medium mb-3 uppercase">Category: Human-AI Collaboration</p>
-                <p className="text-sm text-gray-700 mb-3">
+                <p className="text-sm text-green-700 font-medium mb-3 uppercase">Category: Human-AI Collaboration</p>
+                <p className="text-base text-gray-700 mb-3">
                   <strong>Applied in LessonLoom:</strong> Designers compose lessons manually (choosing templates + spreadsheets), AI assists but doesn't dictate. Designers always review before publishing.
                 </p>
-                <p className="text-xs text-gray-600">Maintains designer agency and control</p>
+                <p className="text-sm text-gray-600">Maintains designer agency and control</p>
               </div>
 
               {/* Pattern 3: Conversational UI */}
               <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
                 <h4 className="font-semibold text-gray-900 mb-2">💬 Conversational UI</h4>
-                <p className="text-xs text-purple-700 font-medium mb-3 uppercase">Category: Natural Interaction</p>
-                <p className="text-sm text-gray-700 mb-3">
+                <p className="text-sm text-purple-700 font-medium mb-3 uppercase">Category: Natural Interaction</p>
+                <p className="text-base text-gray-700 mb-3">
                   <strong>Applied in LessonLoom:</strong> Chat-based interaction for communicating what lesson needs to be generated, receiving AI output, and iterating on results feels natural and familiar.
                 </p>
-                <p className="text-xs text-gray-600">Familiar, intuitive communication pattern</p>
+                <p className="text-sm text-gray-600">Familiar, intuitive communication pattern</p>
               </div>
 
               {/* Pattern 4: Contextual Assistance */}
               <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
                 <h4 className="font-semibold text-gray-900 mb-2">⚡ Contextual Assistance</h4>
-                <p className="text-xs text-orange-700 font-medium mb-3 uppercase">Category: Adaptive & Intelligent Systems</p>
-                <p className="text-sm text-gray-700 mb-3">
+                <p className="text-sm text-orange-700 font-medium mb-3 uppercase">Category: Adaptive & Intelligent Systems</p>
+                <p className="text-base text-gray-700 mb-3">
                   <strong>Applied in LessonLoom:</strong> Library sidebar shows relevant templates and examples. System suggests curriculum matches based on designer selections, guiding without forcing.
                 </p>
-                <p className="text-xs text-gray-600">Proactive help based on context</p>
+                <p className="text-sm text-gray-600">Proactive help based on context</p>
               </div>
             </div>
 
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
-              <p className="text-xs text-gray-600 italic">
-                These design patterns were validated through working on LessonLoom and later documented in the <a href="https://www.aiuxdesign.guide/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-medium">AIUX Design Guide</a>, a public pattern library for AI-native interface design.
+              <p className="text-sm text-gray-600 italic">
+                The patterns applied here in LessonLoom directly inspired and shaped the creation of the <a href="https://www.aiuxdesign.guide/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-medium">AIUX Design Guide</a>. What we learned building this project—about designing AI-native interfaces, handling uncertainty, and collaborating with AI—became the foundation for a public pattern library.
               </p>
             </div>
           </div>
 
-          <div className="bg-white p-8 rounded-xl shadow">
-            <h3 className="text-xl font-bold text-gray-900 mb-6">Interactive Prototype</h3>
-            <p className="text-gray-700 text-sm mb-6">
+          <div id="interactive-prototype" className="bg-white p-8 rounded-xl shadow">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Interactive Prototype</h3>
+            <p className="text-gray-700 text-base mb-6">
               Here's the actual interface instructional designers interact with:
             </p>
 
@@ -2327,12 +2326,9 @@ export function TacticalExecutionContent() {
                     href="/prototype/lessonloom"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-lg p-2 transition-all duration-200 flex items-center gap-2"
+                    className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-lg px-3 py-2 transition-all duration-200"
                     title="Open in new tab"
                   >
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6v4m12 0h4v-4m0 12h-4v4m4-4v-4m-12 4H6v4m0-12v-4" />
-                    </svg>
                     <span className="text-sm font-medium">Open Prototype →</span>
                   </Link>
                 </div>
@@ -2910,7 +2906,7 @@ export function TacticalExecutionContent() {
           />
 
           <div className="bg-white p-6 rounded-xl shadow mb-8 border border-gray-100">
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-gray-700 text-base leading-relaxed">
               My role bridged design research and engineering implementation. I advocated for user needs, collaborated on architecture decisions, and validated that technical solutions served educators intuitively.
             </p>
           </div>
@@ -2923,8 +2919,8 @@ export function TacticalExecutionContent() {
                 <span className="text-3xl">📋</span>
                 <span>Design Concept Chosen</span>
               </h3>
-              <div className="space-y-2 text-gray-700 text-sm">
-                <p className="font-medium text-gray-800 mb-3 text-xs uppercase tracking-wide">Content-First Won</p>
+              <div className="space-y-2 text-gray-700 text-base">
+                <p className="font-medium text-gray-800 mb-3 text-sm uppercase tracking-wide">Content-First Won</p>
                 <p className="mb-3">Spreadsheet-based planning resonated with curriculum specialists—it matched how they already worked</p>
                 <div className="space-y-1">
                   <p>• Educators provide content via spreadsheets</p>
@@ -2940,8 +2936,8 @@ export function TacticalExecutionContent() {
                 <span className="text-3xl">🔍</span>
                 <span>Research → Requirements</span>
               </h3>
-              <div className="space-y-2 text-gray-700 text-sm">
-                <p className="font-medium text-gray-800 mb-3 text-xs uppercase tracking-wide">Key Insights</p>
+              <div className="space-y-2 text-gray-700 text-base">
+                <p className="font-medium text-gray-800 mb-3 text-sm uppercase tracking-wide">Key Insights</p>
                 <div className="space-y-1.5">
                   <p>Educators distrust generic AI output</p>
                   <p>Need context about what was matched</p>
@@ -2956,8 +2952,8 @@ export function TacticalExecutionContent() {
                 <span className="text-3xl">🎯</span>
                 <span>Prompt Specialization</span>
               </h3>
-              <div className="space-y-2 text-gray-700 text-sm">
-                <p className="font-medium text-gray-800 mb-3 text-xs uppercase tracking-wide">~30 Tuned Prompts</p>
+              <div className="space-y-2 text-gray-700 text-base">
+                <p className="font-medium text-gray-800 mb-3 text-sm uppercase tracking-wide">~30 Tuned Prompts</p>
                 <div className="space-y-1.5">
                   <p><strong>Math grade 3</strong> → conceptual understanding</p>
                   <p><strong>Language arts</strong> → procedural fluency</p>
@@ -2972,8 +2968,8 @@ export function TacticalExecutionContent() {
                 <span className="text-3xl">✓</span>
                 <span>Quality Validation</span>
               </h3>
-              <div className="space-y-2 text-gray-700 text-sm">
-                <p className="font-medium text-gray-800 mb-3 text-xs uppercase tracking-wide">Multi-Stage Checks</p>
+              <div className="space-y-2 text-gray-700 text-base">
+                <p className="font-medium text-gray-800 mb-3 text-sm uppercase tracking-wide">Multi-Stage Checks</p>
                 <div className="space-y-1">
                   <p>~40 validation criteria per lesson</p>
                   <p>96% first-attempt success rate</p>
@@ -2988,29 +2984,29 @@ export function TacticalExecutionContent() {
                 <span className="text-3xl">🤝</span>
                 <span>How I Validated Technical Decisions</span>
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-700 text-sm">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-gray-700 text-base">
                 <div>
-                  <p className="font-medium text-sm">User Testing</p>
-                  <p className="text-xs text-gray-600">Dev builds with educators</p>
+                  <p className="font-medium text-base">User Testing</p>
+                  <p className="text-sm text-gray-600">Dev builds with educators</p>
                 </div>
                 <div>
-                  <p className="font-medium text-sm">Curriculum Alignment</p>
-                  <p className="text-xs text-gray-600">Tested across regions</p>
+                  <p className="font-medium text-base">Curriculum Alignment</p>
+                  <p className="text-sm text-gray-600">Tested across regions</p>
                 </div>
                 <div>
-                  <p className="font-medium text-sm">Bias Detection</p>
-                  <p className="text-xs text-gray-600">Regional expert reviews</p>
+                  <p className="font-medium text-base">Bias Detection</p>
+                  <p className="text-sm text-gray-600">Regional expert reviews</p>
                 </div>
                 <div>
-                  <p className="font-medium text-sm">Performance</p>
-                  <p className="text-xs text-gray-600">Does 8-12s feel acceptable?</p>
+                  <p className="font-medium text-base">Performance</p>
+                  <p className="text-sm text-gray-600">Does 8-12s feel acceptable?</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-r from-slate-50 to-gray-50 rounded-lg p-6 border border-gray-200">
-            <p className="text-gray-700 text-sm leading-relaxed mb-3">
+            <p className="text-gray-700 text-base leading-relaxed mb-3">
               My role wasn't technical execution—it was ensuring every engineering decision answered a user need. Research insights became technical requirements. Educator feedback shaped prompt design and validation criteria.
             </p>
           </div>
@@ -3019,7 +3015,7 @@ export function TacticalExecutionContent() {
           <div className="mt-12 pt-12 border-t border-gray-200">
             <h3 className="text-2xl font-bold text-gray-800 mb-8">Engineering Implementation</h3>
 
-            <p className="text-gray-700 text-sm mb-8">
+            <p className="text-gray-700 text-base mb-8">
               To support the design vision, engineering built systems for data pipeline efficiency, seamless integrations, and performance at scale across 200+ schools.
             </p>
 
@@ -3033,7 +3029,7 @@ export function TacticalExecutionContent() {
                     <span>📦</span>
                     Curriculum Knowledge Base
                   </h5>
-                  <div className="text-sm text-gray-700 space-y-2">
+                  <div className="text-base text-gray-700 space-y-2">
                     <p>• Learning standards from 8+ countries</p>
                     <p>• Hierarchical taxonomy (subject → grade → standard)</p>
                     <p>• Sample content patterns per subject</p>
@@ -3046,7 +3042,7 @@ export function TacticalExecutionContent() {
                     <span>⚡</span>
                     Context Compression
                   </h5>
-                  <div className="text-sm text-gray-700 space-y-2">
+                  <div className="text-base text-gray-700 space-y-2">
                     <p>• ~5KB per request (highly compressed)</p>
                     <p>• Smart selection based on query</p>
                     <p>• Avoids long context windows</p>
@@ -3063,17 +3059,17 @@ export function TacticalExecutionContent() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
                   <h5 className="font-semibold text-gray-900 mb-3">Spreadsheet Parser</h5>
-                  <p className="text-sm text-gray-700">Extracts educator inputs from CSV/Excel, validates structure, normalizes data before generation</p>
+                  <p className="text-base text-gray-700">Extracts educator inputs from CSV/Excel, validates structure, normalizes data before generation</p>
                 </div>
 
                 <div className="bg-pink-50 p-6 rounded-lg border border-pink-200">
                   <h5 className="font-semibold text-gray-900 mb-3">Template Engine</h5>
-                  <p className="text-sm text-gray-700">Loads lesson templates, maps AI outputs to template slots, applies formatting rules</p>
+                  <p className="text-base text-gray-700">Loads lesson templates, maps AI outputs to template slots, applies formatting rules</p>
                 </div>
 
                 <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200">
                   <h5 className="font-semibold text-gray-900 mb-3">Claude API Orchestration</h5>
-                  <p className="text-sm text-gray-700">Multi-prompt calls, context injection, response parsing, error handling & retries</p>
+                  <p className="text-base text-gray-700">Multi-prompt calls, context injection, response parsing, error handling & retries</p>
                 </div>
               </div>
             </div>
@@ -3088,7 +3084,7 @@ export function TacticalExecutionContent() {
                     <span>⚙️</span>
                     Caching Strategies
                   </h5>
-                  <div className="text-sm text-gray-700 space-y-2">
+                  <div className="text-base text-gray-700 space-y-2">
                     <p>✓ Curriculum data cached in-memory</p>
                     <p>✓ Template library pre-loaded</p>
                     <p>✓ Prompt generation cached by subject</p>
@@ -3101,7 +3097,7 @@ export function TacticalExecutionContent() {
                     <span>🎯</span>
                     Token Optimization
                   </h5>
-                  <div className="text-sm text-gray-700 space-y-2">
+                  <div className="text-base text-gray-700 space-y-2">
                     <p>✓ Prompt compression (remove redundancy)</p>
                     <p>✓ Structured response format (fewer tokens)</p>
                     <p>✓ 60% cost reduction vs. naive approach</p>
@@ -3113,23 +3109,23 @@ export function TacticalExecutionContent() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
                   <div className="text-2xl font-bold text-green-600 mb-2">60%</div>
-                  <p className="text-xs text-gray-700 font-medium">Cost reduction through optimization</p>
+                  <p className="text-sm text-gray-700 font-medium">Cost reduction through optimization</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-lg border border-blue-200">
                   <div className="text-2xl font-bold text-blue-600 mb-2">&lt;30s</div>
-                  <p className="text-xs text-gray-700 font-medium">Regeneration time with caching</p>
+                  <p className="text-sm text-gray-700 font-medium">Regeneration time with caching</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
                   <div className="text-2xl font-bold text-purple-600 mb-2">15K+</div>
-                  <p className="text-xs text-gray-700 font-medium">Concurrent monthly users at scale</p>
+                  <p className="text-sm text-gray-700 font-medium">Concurrent monthly users at scale</p>
                 </div>
               </div>
             </div>
 
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-200 mt-8">
-              <p className="text-sm text-gray-700">
+              <p className="text-base text-gray-700">
                 <strong>Design ↔ Engineering Partnership:</strong> Design defined what educators needed (fast, reliable, contextual). Engineering solved how to build it efficiently at scale. Every system (caching, compression, orchestration) directly enabled the design experience.
               </p>
             </div>
@@ -3154,7 +3150,7 @@ export function TacticalExecutionContent() {
           <div className="mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">1. Prompt Engineering</h3>
 
-            <p className="text-gray-700 text-sm mb-6">
+            <p className="text-gray-700 text-base mb-6">
               Problem: Generic AI lessons required 2-3 hours of teacher editing. Solution: Build multi-layered prompts that encode pedagogical best practices, curriculum requirements, and content constraints directly into AI instructions.
             </p>
 
@@ -3164,9 +3160,9 @@ export function TacticalExecutionContent() {
                   <div className="w-10 h-10 bg-blue-200 rounded-lg flex items-center justify-center">
                     <span className="text-blue-700 font-bold text-lg">1</span>
                   </div>
-                  <h5 className="text-sm font-semibold text-blue-900 ml-3">Discovery</h5>
+                  <h5 className="text-base font-semibold text-blue-900 ml-3">Discovery</h5>
                 </div>
-                <p className="text-gray-700 text-xs">Analyze curriculum, learning standards, educator needs</p>
+                <p className="text-gray-700 text-sm">Analyze curriculum, learning standards, educator needs</p>
               </div>
 
               <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
@@ -3174,9 +3170,9 @@ export function TacticalExecutionContent() {
                   <div className="w-10 h-10 bg-purple-200 rounded-lg flex items-center justify-center">
                     <span className="text-purple-700 font-bold text-lg">2</span>
                   </div>
-                  <h5 className="text-sm font-semibold text-purple-900 ml-3">Compose</h5>
+                  <h5 className="text-base font-semibold text-purple-900 ml-3">Compose</h5>
                 </div>
-                <p className="text-gray-700 text-xs">Build multi-part prompts with examples & format specs</p>
+                <p className="text-gray-700 text-sm">Build multi-part prompts with examples & format specs</p>
               </div>
 
               <div className="bg-pink-50 p-6 rounded-lg border border-pink-200">
@@ -3184,16 +3180,16 @@ export function TacticalExecutionContent() {
                   <div className="w-10 h-10 bg-pink-200 rounded-lg flex items-center justify-center">
                     <span className="text-pink-700 font-bold text-lg">3</span>
                   </div>
-                  <h5 className="text-sm font-semibold text-pink-900 ml-3">Test & Refine</h5>
+                  <h5 className="text-base font-semibold text-pink-900 ml-3">Test & Refine</h5>
                 </div>
-                <p className="text-gray-700 text-xs">Iterate with quality rubrics & educator feedback</p>
+                <p className="text-gray-700 text-sm">Iterate with quality rubrics & educator feedback</p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
                 <h4 className="font-semibold text-gray-900 mb-3">Prompt Library: ~30 Specialized</h4>
-                <div className="text-sm text-gray-700 space-y-2">
+                <div className="text-base text-gray-700 space-y-2">
                   <p><strong>Math grade 3</strong> → conceptual understanding</p>
                   <p><strong>Calculus</strong> → procedural fluency</p>
                   <p><strong>English</strong> → critical thinking</p>
@@ -3205,7 +3201,7 @@ export function TacticalExecutionContent() {
                   <span>📊 Impact</span>
                 </h4>
                 <div className="text-2xl font-bold text-blue-600 mb-1">18% → 3%</div>
-                <p className="text-xs text-gray-700">Error rate after tuning. Eliminated most post-processing.</p>
+                <p className="text-sm text-gray-700">Error rate after tuning. Eliminated most post-processing.</p>
               </div>
             </div>
           </div>
@@ -3214,7 +3210,7 @@ export function TacticalExecutionContent() {
           <div className="mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">2. Generation Pipeline</h3>
 
-            <p className="text-gray-700 text-sm mb-6">
+            <p className="text-gray-700 text-base mb-6">
               Not just one API call—a resilient pipeline that handles context, generation, validation & fallback. Philosophy: reliability over perfection (late reliable lesson &gt; fast broken one).
             </p>
 
@@ -3222,48 +3218,48 @@ export function TacticalExecutionContent() {
               <div className="mb-3">
                 <span className="text-green-400">↓ Input</span>
               </div>
-              <div className="text-gray-400 ml-4 text-xs">Subject, Grade, Duration, Learning Objectives</div>
+              <div className="text-gray-400 ml-4 text-sm">Subject, Grade, Duration, Learning Objectives</div>
 
               <div className="mt-3 mb-3">
                 <span className="text-blue-400">→ Context</span>
               </div>
-              <div className="text-gray-400 ml-4 text-xs">Load ~5KB curriculum data + standards + patterns</div>
+              <div className="text-gray-400 ml-4 text-sm">Load ~5KB curriculum data + standards + patterns</div>
 
               <div className="mt-3 mb-3">
                 <span className="text-yellow-400">⚡ Generate</span>
               </div>
-              <div className="text-gray-400 ml-4 text-xs">Claude API with orchestrated prompt</div>
+              <div className="text-gray-400 ml-4 text-sm">Claude API with orchestrated prompt</div>
 
               <div className="mt-3 mb-3">
                 <span className="text-purple-400">✓ Validate</span>
               </div>
-              <div className="text-gray-400 ml-4 text-xs">~40 criteria: format, alignment, age-appropriate, rigor</div>
+              <div className="text-gray-400 ml-4 text-sm">~40 criteria: format, alignment, age-appropriate, rigor</div>
 
               <div className="mt-3 mb-3">
                 <span className="text-orange-400">↻ Refine</span>
               </div>
-              <div className="text-gray-400 ml-4 text-xs">If fails: regenerate or apply fallback template</div>
+              <div className="text-gray-400 ml-4 text-sm">If fails: regenerate or apply fallback template</div>
 
               <div className="mt-3 mb-3">
                 <span className="text-green-400">✓ Deliver</span>
               </div>
-              <div className="text-gray-400 ml-4 text-xs">Return lesson + metadata to educator</div>
+              <div className="text-gray-400 ml-4 text-sm">Return lesson + metadata to educator</div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
                 <div className="text-3xl font-bold text-green-600 mb-1">8-12s</div>
-                <p className="text-xs text-gray-700 font-medium">Generation time per lesson</p>
+                <p className="text-sm text-gray-700 font-medium">Generation time per lesson</p>
               </div>
 
               <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-lg border border-blue-200">
                 <div className="text-3xl font-bold text-blue-600 mb-1">96%</div>
-                <p className="text-xs text-gray-700 font-medium">First-attempt success rate</p>
+                <p className="text-sm text-gray-700 font-medium">First-attempt success rate</p>
               </div>
 
               <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
                 <div className="text-3xl font-bold text-purple-600 mb-1">99.2%</div>
-                <p className="text-xs text-gray-700 font-medium">Uptime across 200+ schools</p>
+                <p className="text-sm text-gray-700 font-medium">Uptime across 200+ schools</p>
               </div>
             </div>
           </div>
@@ -3272,7 +3268,7 @@ export function TacticalExecutionContent() {
           <div className="mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">3. Quality Assurance & Safety</h3>
 
-            <p className="text-gray-700 text-sm mb-6">
+            <p className="text-gray-700 text-base mb-6">
               In education, AI mistakes matter. We built multi-layer QA to catch bias, ensure age-appropriate content, verify curriculum alignment, and maintain cultural sensitivity across 8+ countries.
             </p>
 
@@ -3282,7 +3278,7 @@ export function TacticalExecutionContent() {
                   <span>🚨</span>
                   Automated Checks (~40 Criteria)
                 </h4>
-                <div className="text-sm text-gray-700 space-y-2">
+                <div className="text-base text-gray-700 space-y-2">
                   <p>✓ Format validation (all sections present)</p>
                   <p>✓ Curriculum alignment verification</p>
                   <p>✓ Age-appropriate vocabulary scan</p>
@@ -3296,7 +3292,7 @@ export function TacticalExecutionContent() {
                   <span>👥</span>
                   Human Review (Ongoing)
                 </h4>
-                <div className="text-sm text-gray-700 space-y-2">
+                <div className="text-base text-gray-700 space-y-2">
                   <p>✓ Bias detection by region</p>
                   <p>✓ Cultural sensitivity reviews</p>
                   <p>✓ Edge case validation</p>
@@ -3308,26 +3304,26 @@ export function TacticalExecutionContent() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
-                <h4 className="font-semibold text-gray-900 mb-3 text-sm">Validation Layers</h4>
+                <h4 className="font-semibold text-gray-900 mb-3 text-base">Validation Layers</h4>
                 <div className="text-2xl font-bold text-green-600 mb-2">3-Stage</div>
-                <p className="text-xs text-gray-700">Automated → Regional Review → User Feedback</p>
+                <p className="text-sm text-gray-700">Automated → Regional Review → User Feedback</p>
               </div>
 
               <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-lg border border-blue-200">
-                <h4 className="font-semibold text-gray-900 mb-3 text-sm">Coverage</h4>
+                <h4 className="font-semibold text-gray-900 mb-3 text-base">Coverage</h4>
                 <div className="text-2xl font-bold text-blue-600 mb-2">8+ Regions</div>
-                <p className="text-xs text-gray-700">Culturally reviewed across countries</p>
+                <p className="text-sm text-gray-700">Culturally reviewed across countries</p>
               </div>
 
               <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
-                <h4 className="font-semibold text-gray-900 mb-3 text-sm">Continuous</h4>
+                <h4 className="font-semibold text-gray-900 mb-3 text-base">Continuous</h4>
                 <div className="text-2xl font-bold text-purple-600 mb-2">Real-time</div>
-                <p className="text-xs text-gray-700">Feedback improves future generations</p>
+                <p className="text-sm text-gray-700">Feedback improves future generations</p>
               </div>
             </div>
 
             <div className="mt-6 bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-lg border border-red-200">
-              <p className="text-sm text-gray-700">
+              <p className="text-base text-gray-700">
                 <strong>Why it matters:</strong> Teachers trust AI more when they understand safeguards. Transparent validation (showing which criteria passed/failed) helps educators make informed decisions about generated content.
               </p>
             </div>
@@ -3337,7 +3333,7 @@ export function TacticalExecutionContent() {
           <div className="mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">4. Testing & Evaluation</h3>
 
-            <p className="text-gray-700 text-sm mb-8">
+            <p className="text-gray-700 text-base mb-8">
               Before launch, engineering tested multiple AI models, iterated on prompt design, and established rigorous quality benchmarks. This section shows the evaluation process that validated production readiness.
             </p>
 
@@ -3382,7 +3378,7 @@ export function TacticalExecutionContent() {
                 </table>
               </div>
 
-              <p className="text-xs text-gray-600 italic">Claude Sonnet selected: best balance of accuracy (96%), speed, and cost-effectiveness for production deployment.</p>
+              <p className="text-sm text-gray-600 italic">Claude Sonnet selected: best balance of accuracy (96%), speed, and cost-effectiveness for production deployment.</p>
             </div>
 
             {/* Prompt Iteration */}
@@ -3392,42 +3388,42 @@ export function TacticalExecutionContent() {
               <div className="space-y-3">
                 <div className="flex items-center gap-4">
                   <div className="w-32">
-                    <p className="text-xs font-semibold text-gray-600 uppercase">Baseline</p>
+                    <p className="text-sm font-semibold text-gray-600 uppercase">Baseline</p>
                     <p className="text-2xl font-bold text-red-600">18%</p>
-                    <p className="text-xs text-gray-600">Error rate</p>
+                    <p className="text-sm text-gray-600">Error rate</p>
                   </div>
                   <div className="flex-1 bg-red-200 h-2 rounded"></div>
-                  <span className="text-xs text-gray-600">Generic prompts, no constraints</span>
+                  <span className="text-sm text-gray-600">Generic prompts, no constraints</span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <div className="w-32">
-                    <p className="text-xs font-semibold text-gray-600 uppercase">Iteration 1</p>
+                    <p className="text-sm font-semibold text-gray-600 uppercase">Iteration 1</p>
                     <p className="text-2xl font-bold text-orange-600">12%</p>
-                    <p className="text-xs text-gray-600">Added curriculum</p>
+                    <p className="text-sm text-gray-600">Added curriculum</p>
                   </div>
                   <div className="flex-1 bg-orange-200 h-2 rounded" style={{width: '67%'}}></div>
-                  <span className="text-xs text-gray-600">Embedded standards</span>
+                  <span className="text-sm text-gray-600">Embedded standards</span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <div className="w-32">
-                    <p className="text-xs font-semibold text-gray-600 uppercase">Iteration 2</p>
+                    <p className="text-sm font-semibold text-gray-600 uppercase">Iteration 2</p>
                     <p className="text-2xl font-bold text-yellow-600">7%</p>
-                    <p className="text-xs text-gray-600">Subject-specific</p>
+                    <p className="text-sm text-gray-600">Subject-specific</p>
                   </div>
                   <div className="flex-1 bg-yellow-200 h-2 rounded" style={{width: '39%'}}></div>
-                  <span className="text-xs text-gray-600">Subject examples added</span>
+                  <span className="text-sm text-gray-600">Subject examples added</span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <div className="w-32">
-                    <p className="text-xs font-semibold text-gray-600 uppercase">Final</p>
+                    <p className="text-sm font-semibold text-gray-600 uppercase">Final</p>
                     <p className="text-2xl font-bold text-green-600">3%</p>
-                    <p className="text-xs text-gray-600">Multi-layered</p>
+                    <p className="text-sm text-gray-600">Multi-layered</p>
                   </div>
                   <div className="flex-1 bg-green-200 h-2 rounded" style={{width: '17%'}}></div>
-                  <span className="text-xs text-gray-600">Full pedagogical framework</span>
+                  <span className="text-sm text-gray-600">Full pedagogical framework</span>
                 </div>
               </div>
             </div>
@@ -3438,33 +3434,33 @@ export function TacticalExecutionContent() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-purple-50 p-5 rounded-lg border border-purple-200">
-                  <p className="text-sm text-gray-700 mb-2"><strong>✓ Curriculum Alignment</strong></p>
-                  <p className="text-xs text-gray-600">Does lesson match stated learning standards & objectives?</p>
+                  <p className="text-base text-gray-700 mb-2"><strong>✓ Curriculum Alignment</strong></p>
+                  <p className="text-sm text-gray-600">Does lesson match stated learning standards & objectives?</p>
                 </div>
 
                 <div className="bg-blue-50 p-5 rounded-lg border border-blue-200">
-                  <p className="text-sm text-gray-700 mb-2"><strong>✓ Age-Appropriateness</strong></p>
-                  <p className="text-xs text-gray-600">Vocabulary, complexity, examples match grade level?</p>
+                  <p className="text-base text-gray-700 mb-2"><strong>✓ Age-Appropriateness</strong></p>
+                  <p className="text-sm text-gray-600">Vocabulary, complexity, examples match grade level?</p>
                 </div>
 
                 <div className="bg-green-50 p-5 rounded-lg border border-green-200">
-                  <p className="text-sm text-gray-700 mb-2"><strong>✓ Completeness</strong></p>
-                  <p className="text-xs text-gray-600">All required sections present (objectives, materials, assessment)?</p>
+                  <p className="text-base text-gray-700 mb-2"><strong>✓ Completeness</strong></p>
+                  <p className="text-sm text-gray-600">All required sections present (objectives, materials, assessment)?</p>
                 </div>
 
                 <div className="bg-yellow-50 p-5 rounded-lg border border-yellow-200">
-                  <p className="text-sm text-gray-700 mb-2"><strong>✓ Pedagogical Soundness</strong></p>
-                  <p className="text-xs text-gray-600">Learning progression logical? Activities support objectives?</p>
+                  <p className="text-base text-gray-700 mb-2"><strong>✓ Pedagogical Soundness</strong></p>
+                  <p className="text-sm text-gray-600">Learning progression logical? Activities support objectives?</p>
                 </div>
 
                 <div className="bg-orange-50 p-5 rounded-lg border border-orange-200">
-                  <p className="text-sm text-gray-700 mb-2"><strong>✓ Assessment Rigor</strong></p>
-                  <p className="text-xs text-gray-600">Assessment items challenge students appropriately?</p>
+                  <p className="text-base text-gray-700 mb-2"><strong>✓ Assessment Rigor</strong></p>
+                  <p className="text-sm text-gray-600">Assessment items challenge students appropriately?</p>
                 </div>
 
                 <div className="bg-pink-50 p-5 rounded-lg border border-pink-200">
-                  <p className="text-sm text-gray-700 mb-2"><strong>✓ Cultural Sensitivity</strong></p>
-                  <p className="text-xs text-gray-600">Content appropriate for diverse regional contexts?</p>
+                  <p className="text-base text-gray-700 mb-2"><strong>✓ Cultural Sensitivity</strong></p>
+                  <p className="text-sm text-gray-600">Content appropriate for diverse regional contexts?</p>
                 </div>
               </div>
             </div>
@@ -3475,33 +3471,33 @@ export function TacticalExecutionContent() {
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-5 rounded-lg border border-blue-200">
-                  <p className="text-xs font-semibold text-gray-600 uppercase mb-2">Response Time</p>
+                  <p className="text-sm font-semibold text-gray-600 uppercase mb-2">Response Time</p>
                   <p className="text-2xl font-bold text-blue-600">8-12s</p>
-                  <p className="text-xs text-gray-600">per lesson generation</p>
+                  <p className="text-sm text-gray-600">per lesson generation</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-5 rounded-lg border border-green-200">
-                  <p className="text-xs font-semibold text-gray-600 uppercase mb-2">Cost per Lesson</p>
+                  <p className="text-sm font-semibold text-gray-600 uppercase mb-2">Cost per Lesson</p>
                   <p className="text-2xl font-bold text-green-600">$0.08</p>
-                  <p className="text-xs text-gray-600">60% reduction vs baseline</p>
+                  <p className="text-sm text-gray-600">60% reduction vs baseline</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-5 rounded-lg border border-purple-200">
-                  <p className="text-xs font-semibold text-gray-600 uppercase mb-2">Throughput</p>
+                  <p className="text-sm font-semibold text-gray-600 uppercase mb-2">Throughput</p>
                   <p className="text-2xl font-bold text-purple-600">300+</p>
-                  <p className="text-xs text-gray-600">lessons/hour at scale</p>
+                  <p className="text-sm text-gray-600">lessons/hour at scale</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-5 rounded-lg border border-orange-200">
-                  <p className="text-xs font-semibold text-gray-600 uppercase mb-2">Success Rate</p>
+                  <p className="text-sm font-semibold text-gray-600 uppercase mb-2">Success Rate</p>
                   <p className="text-2xl font-bold text-orange-600">96%</p>
-                  <p className="text-xs text-gray-600">first-attempt pass rate</p>
+                  <p className="text-sm text-gray-600">first-attempt pass rate</p>
                 </div>
               </div>
             </div>
 
             <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6 border border-purple-200 mt-8">
-              <p className="text-sm text-gray-700">
+              <p className="text-base text-gray-700">
                 <strong>Outcome:</strong> Rigorous testing across models, prompts, and quality criteria validated Claude Sonnet 3.5 as the optimal choice for production. The 18% → 3% error rate improvement through prompt iteration demonstrated that good prompt engineering outweighs raw model capability.
               </p>
             </div>
@@ -3560,7 +3556,7 @@ export function TacticalExecutionContent() {
               <div className="text-right mt-2 text-gray-600">- Jennifer K., High School English Teacher</div>
             </div>
 
-            <p className="text-gray-700">
+            <p className="text-gray-700 text-base">
               Lesson Loom has been adopted by over 200 schools and educational organizations, dramatically reducing the
               time teachers spend on material preparation. User research shows that educators are able to create more
               personalized content for their students, leading to improved engagement and learning outcomes. The

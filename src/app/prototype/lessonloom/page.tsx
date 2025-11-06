@@ -2,9 +2,25 @@
 
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { MdAutoAwesome, MdArrowBack } from 'react-icons/md';
 
 export default function LessonLoomPrototypePage() {
+  const router = useRouter();
+
+  const handleBackToCaseStudy = () => {
+    // Navigate to the case study with tactical tab parameter
+    router.push('/casestudy/lessonloom?tab=tactical');
+
+    // Wait for navigation and tab switch to complete, then scroll to the Interactive Prototype section
+    setTimeout(() => {
+      const element = document.getElementById('interactive-prototype');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 1000);
+  };
+
   // AI Interface State
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [selectedSpreadsheet, setSelectedSpreadsheet] = useState(null);
@@ -28,23 +44,18 @@ export default function LessonLoomPrototypePage() {
   // Validation suggestions
   const [validationSuggestions] = useState([
     'Consider using a more advanced template to unlock additional formatting options',
-    'The Q1 Math Content spreadsheet includes diverse learning styles - great choice for inclusivity!',
-    'Recommended: Enable peer review mode for this lesson configuration'
+    'The Q1 Math Content spreadsheet includes diverse learning styles - great choice for inclusivity!'
   ]);
 
   // Sample data
   const templates = [
     { id: 1, name: 'Standard Lesson', emoji: '📄', description: 'Basic lesson structure with objectives, content, and assessment' },
-    { id: 2, name: 'Interactive Module', emoji: '🎮', description: 'Lesson with embedded interactivity and student engagement tools' },
-    { id: 3, name: 'Project-Based Learning', emoji: '🎯', description: 'Framework for project-based lessons with milestones' },
-    { id: 4, name: 'Discussion-Focused', emoji: '💬', description: 'Template optimized for group discussions and debates' }
+    { id: 2, name: 'Interactive Module', emoji: '🎮', description: 'Lesson with embedded interactivity and student engagement tools' }
   ];
 
   const spreadsheets = [
     { id: 1, name: 'Q1 Math Content', emoji: '📊', description: 'Mathematics curriculum content for Q1' },
-    { id: 2, name: 'Science Topics', emoji: '🔬', description: 'Science topics and lab activities' },
-    { id: 3, name: 'Literature Curriculum', emoji: '📚', description: 'Literature syllabus and reading list' },
-    { id: 4, name: 'History Timeline', emoji: '📅', description: 'Historical events and dates for instruction' }
+    { id: 2, name: 'Science Topics', emoji: '🔬', description: 'Science topics and lab activities' }
   ];
 
   // Auto-scroll chat to bottom when new messages are added
@@ -226,30 +237,27 @@ export default function LessonLoomPrototypePage() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-white">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-900 via-indigo-800 to-purple-900 py-5 px-6 border-b border-indigo-700 flex items-center justify-between shadow-lg">
-        <div className="flex items-center gap-4">
-          <Link
-            href="/casestudy/lessonloom"
-            className="text-white hover:bg-white hover:bg-opacity-10 rounded-lg p-2 transition-all duration-200"
-            title="Back to case study"
-          >
-            <MdArrowBack className="w-6 h-6" />
-          </Link>
-          <div className="flex items-center gap-3">
-            <MdAutoAwesome className="w-6 h-6 text-indigo-300" />
-            <span className="text-white font-bold text-xl">LessonLoom AI Generation Studio</span>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col items-center justify-center p-8">
+      {/* Back Button - Outside the prototype */}
+      <div className="w-full max-w-5xl mb-6 flex justify-start">
+        <button
+          onClick={handleBackToCaseStudy}
+          className="text-white hover:text-gray-300 transition-colors flex items-center gap-2 text-sm font-medium"
+          title="Back to case study"
+        >
+          <MdArrowBack className="w-5 h-5" />
+          Back to Case Study
+        </button>
       </div>
 
-      {/* Content - Two Column Layout */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Left Sidebar - Templates & Spreadsheets Library */}
-        <div className="w-[30%] border-r border-gray-200 flex flex-col overflow-hidden">
-          {/* Library Header */}
-          <div className="p-4 border-b border-gray-200 flex-shrink-0">
+      {/* Prototype Container */}
+      <div className="w-full max-w-5xl h-[90vh] bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col border border-gray-200">
+        {/* Content - Two Column Layout */}
+        <div className="flex flex-1 overflow-hidden">
+          {/* Left Sidebar - Templates & Spreadsheets Library */}
+          <div className="w-[30%] border-r border-gray-200 flex flex-col overflow-hidden">
+            {/* Library Header */}
+            <div className="p-4 border-b border-gray-200 flex-shrink-0">
             <h3 className="font-semibold text-gray-800">Library</h3>
             <p className="text-xs text-gray-500 mt-1">Drag items to the chat to build your lesson plan</p>
           </div>
@@ -262,73 +270,73 @@ export default function LessonLoomPrototypePage() {
               scrollbarColor: '#d1d5db #f3f4f6'
             }}
           >
-            {/* Templates Section */}
-            <div>
-              <div className="flex items-center mb-3">
-                <svg className="w-4 h-4 text-gray-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <h4 className="text-sm font-semibold text-gray-800">Templates</h4>
-              </div>
-              <div className="space-y-2">
-                {templates.map(template => (
-                  <div
-                    key={template.id}
-                    className={`template-card bg-white border border-gray-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedTemplate?.id === template.id ? 'ring-2 ring-gray-400' : ''}`}
-                    draggable="true"
-                    onDragStart={(e) => handleDragStart(e, template, 'template')}
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center">
-                        <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
-                          <span className="text-white text-xs">{template.emoji}</span>
+              {/* Templates Section */}
+              <div>
+                <div className="flex items-center mb-3">
+                  <svg className="w-4 h-4 text-gray-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <h4 className="text-sm font-semibold text-gray-800">Templates</h4>
+                </div>
+                <div className="space-y-2">
+                  {templates.map(template => (
+                    <div
+                      key={template.id}
+                      className={`template-card bg-white border border-gray-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedTemplate?.id === template.id ? 'ring-2 ring-gray-400' : ''}`}
+                      draggable="true"
+                      onDragStart={(e) => handleDragStart(e, template, 'template')}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center">
+                          <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
+                            <span className="text-white text-xs">{template.emoji}</span>
+                          </div>
+                          <span className="text-sm font-medium text-gray-800">{template.name}</span>
                         </div>
-                        <span className="text-sm font-medium text-gray-800">{template.name}</span>
+                        <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                        </svg>
                       </div>
-                      <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                      </svg>
+                      <p className="text-xs text-gray-600">{template.description}</p>
                     </div>
-                    <p className="text-xs text-gray-600">{template.description}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Spreadsheets Section */}
-            <div>
-              <div className="flex items-center mb-3">
-                <svg className="w-4 h-4 text-gray-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
-                </svg>
-                <h4 className="text-sm font-semibold text-gray-800">Content Spreadsheets</h4>
-              </div>
-              <div className="space-y-2">
-                {spreadsheets.map(spreadsheet => (
-                  <div
-                    key={spreadsheet.id}
-                    className={`template-card bg-white border border-gray-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedSpreadsheet?.id === spreadsheet.id ? 'ring-2 ring-gray-400' : ''}`}
-                    draggable="true"
-                    onDragStart={(e) => handleDragStart(e, spreadsheet, 'spreadsheet')}
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center">
-                        <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
-                          <span className="text-white text-xs">{spreadsheet.emoji}</span>
+              {/* Spreadsheets Section */}
+              <div>
+                <div className="flex items-center mb-3">
+                  <svg className="w-4 h-4 text-gray-800 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                  </svg>
+                  <h4 className="text-sm font-semibold text-gray-800">Content Spreadsheets</h4>
+                </div>
+                <div className="space-y-2">
+                  {spreadsheets.map(spreadsheet => (
+                    <div
+                      key={spreadsheet.id}
+                      className={`template-card bg-white border border-gray-200 rounded-lg p-3 cursor-move hover:shadow-md transition-all group select-none ${selectedSpreadsheet?.id === spreadsheet.id ? 'ring-2 ring-gray-400' : ''}`}
+                      draggable="true"
+                      onDragStart={(e) => handleDragStart(e, spreadsheet, 'spreadsheet')}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center">
+                          <div className="w-6 h-6 bg-gray-800 rounded flex items-center justify-center mr-2">
+                            <span className="text-white text-xs">{spreadsheet.emoji}</span>
+                          </div>
+                          <span className="text-sm font-medium text-gray-800">{spreadsheet.name}</span>
                         </div>
-                        <span className="text-sm font-medium text-gray-800">{spreadsheet.name}</span>
+                        <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                        </svg>
                       </div>
-                      <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                      </svg>
+                      <p className="text-xs text-gray-600">{spreadsheet.description}</p>
                     </div>
-                    <p className="text-xs text-gray-600">{spreadsheet.description}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
         {/* Right Side - Chat Interface */}
         <div className="flex-1 flex flex-col overflow-hidden">
@@ -531,11 +539,36 @@ export default function LessonLoomPrototypePage() {
           </div>
 
           {/* Bottom Action Bar */}
-          <div className="border-t border-gray-200 p-4 bg-gray-50 flex justify-end gap-3">
+          <div className="border-t border-gray-200 p-4 bg-gray-50">
+            <div className="flex items-center gap-2 mb-3">
+              <label className="text-sm font-medium text-gray-700">Generate Lesson Plan</label>
+              <div className="relative group">
+                <button
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  type="button"
+                  title="AI Generation Process"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                  </svg>
+                </button>
+                <div className="absolute bottom-full left-0 mb-2 w-48 bg-gray-900 text-white text-xs rounded-lg p-3 shadow-lg z-50 hidden group-hover:block">
+                  <p className="font-semibold mb-2">AI Generation Process:</p>
+                  <ul className="space-y-1 text-gray-200">
+                    <li>• Analyzing template structure</li>
+                    <li>• Processing spreadsheet content</li>
+                    <li>• Generating lessons 1-10</li>
+                    <li>• Generating lessons 11-20</li>
+                    <li>• Finalizing all 25 lessons</li>
+                  </ul>
+                  <p className="text-gray-300 mt-2">Usually takes 3-5 seconds</p>
+                </div>
+              </div>
+            </div>
             <button
               disabled={!selectedTemplate || !selectedSpreadsheet || isGenerating}
               onClick={handleGenerate}
-              className={`px-4 py-2 rounded font-medium transition-all ${
+              className={`w-full py-2 px-4 rounded font-medium transition-all ${
                 !selectedTemplate || !selectedSpreadsheet || isGenerating
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   : 'bg-indigo-600 text-white hover:bg-indigo-700'
@@ -543,7 +576,16 @@ export default function LessonLoomPrototypePage() {
             >
               {isGenerating ? 'Generating...' : 'Generate Lessons'}
             </button>
+            <p className="text-xs text-gray-400 text-center mt-2">
+              {selectedTemplate && selectedSpreadsheet ? 'Ready to generate!' : 'Add at least one template and one spreadsheet'}
+            </p>
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-4">
+              <p className="text-xs text-yellow-800">
+                <span className="font-semibold">AI-Generated Content:</span> All lessons are generated by AI and must be thoroughly reviewed and edited before moving forward in the review process. Verify accuracy, alignment with curriculum standards, and appropriateness for your audience.
+              </p>
+            </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
