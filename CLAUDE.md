@@ -84,6 +84,13 @@ public/
 ## Recent Sessions
 
 ### Session 2025-11-06 07:40 (MacBook) - LessonLoom Error Handling & User Recovery UX
+### Session 2026-01-13 20:15 (MacBook) - Added Gist to Building in Public & Minor Resume Fix
+- **Pattern:** Portfolio homepage and resume updates
+- **Status:** Complete
+- **Files Changed:** 2
+- **Tests Added/Modified:** 0
+- **Notes:** Added Gist project card to Building in Public section with lightbulb icon, amber/orange gradient, and GitHub link. Updated BuildingInPublic component to support custom link text per project and 3-column grid on large screens. Removed em-dash from resume page description.
+
 ### Session 2026-01-13 20:04 (MacBook) - Resume Page Revamp & Homepage Section Updates
 - **Pattern:** Portfolio content and resume updates
 - **Status:** Complete

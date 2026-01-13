@@ -399,7 +399,7 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl leading-relaxed">
-                My design journey began with content review and spotting usability errors, which sparked a deep curiosity about why users struggle and how experiences could be better. This led me to teach myself UX design, eventually spending years crafting healthcare experiences before transitioning to product design in education at NewGlobe—where I now design AI-powered learning tools reaching millions of children across Africa and Asia. Each chapter has sharpened my ability to merge strategic thinking with human-centered design, always focusing on solutions that drive meaningful impact at scale.
+                My design journey began with content review and spotting usability errors, which sparked a deep curiosity about why users struggle and how experiences could be better. This led me to teach myself UX design, eventually spending years crafting healthcare experiences before transitioning to product design in education at NewGlobe, where I now design AI-powered learning tools reaching millions of children across Africa and Asia. Each chapter has sharpened my ability to merge strategic thinking with human-centered design, always focusing on solutions that drive meaningful impact at scale.
               </p>
             </motion.div>
 

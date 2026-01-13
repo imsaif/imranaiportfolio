@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { MdTerminal } from 'react-icons/md';
+import { MdTerminal, MdLightbulbOutline } from 'react-icons/md';
 import PixelHoverBackground from '@/components/effects/PixelHoverBackground';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,7 +9,8 @@ import Link from 'next/link';
 interface Project {
   title: string;
   description: string;
-  github: string;
+  url: string;
+  linkText: string;
   logo: {
     type: 'image' | 'icon';
     src?: string;
@@ -24,7 +25,8 @@ const BuildingInPublic = () => {
     {
       title: 'AI UX Design Guide',
       description: 'Comprehensive resource for human-centered AI experiences. Open-source patterns, principles, and best practices.',
-      github: 'https://github.com/imsaif/aiex',
+      url: 'https://github.com/imsaif/aiex',
+      linkText: 'View on GitHub',
       logo: {
         type: 'image',
         src: '/images/logos/aiux-logo.svg'
@@ -32,9 +34,21 @@ const BuildingInPublic = () => {
       gradient: 'from-blue-500 to-blue-600'
     },
     {
+      title: 'Gist',
+      description: 'Design thinking partner powered by 28 real-world AI UX patterns. Think before you design. Know what works.',
+      url: 'https://github.com/imsaif/gist',
+      linkText: 'View on GitHub',
+      logo: {
+        type: 'icon',
+        icon: <MdLightbulbOutline className="w-10 h-10 text-gray-600" />
+      },
+      gradient: 'from-amber-500 to-orange-500'
+    },
+    {
       title: 'DesignwithClaude',
       description: 'Specialized AI agents + CLI tool for design challenges, powered by Claude. Automate design workflows.',
-      github: 'https://github.com/imsaif/design-with-claude',
+      url: 'https://github.com/imsaif/design-with-claude',
+      linkText: 'View on GitHub',
       logo: {
         type: 'icon',
         icon: <MdTerminal className="w-10 h-10 text-gray-600" />
@@ -60,11 +74,11 @@ const BuildingInPublic = () => {
           </p>
         </div>
 
-        {/* Two Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div key={index} className="group">
-              <Link href={project.github} target="_blank" rel="noopener noreferrer">
+              <Link href={project.url} target="_blank" rel="noopener noreferrer">
                 <div className="relative h-full cursor-pointer">
                   {/* Gradient Background */}
                   <div className={`absolute -inset-1 bg-gradient-to-r ${project.gradient} rounded-xl blur-lg opacity-15 group-hover:opacity-20 transition-opacity duration-300`}></div>
@@ -99,10 +113,10 @@ const BuildingInPublic = () => {
                       {project.description}
                     </p>
 
-                    {/* GitHub Link */}
+                    {/* Project Link */}
                     <div className="mt-4 pt-4">
                       <div className="flex items-center gap-2 text-accent font-semibold group-hover:gap-3 transition-all">
-                        <span className="text-sm">View on GitHub</span>
+                        <span className="text-sm">{project.linkText}</span>
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
