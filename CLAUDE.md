@@ -84,6 +84,13 @@ public/
 ## Recent Sessions
 
 ### Session 2025-11-06 07:40 (MacBook) - LessonLoom Error Handling & User Recovery UX
+### Session 2026-01-13 20:04 (MacBook) - Resume Page Revamp & Homepage Section Updates
+- **Pattern:** Portfolio content and resume updates
+- **Status:** Complete
+- **Files Changed:** 2
+- **Tests Added/Modified:** 0
+- **Notes:** Temporarily hidden three homepage sections (StrategicVision, LeadershipPhilosophy, Collaboration). Revamped resume page: changed title from "The digital home for Imran's notes" to "Shaping how millions learn", rewrote bio to reflect accurate career journey (content review → self-taught UX → healthcare → education), and added NewGlobe impact context highlighting millions of children reached across Africa/Asia with outcomes validated by Nobel Prize-winning economist Michael Kremer.
+
 - **Pattern:** LessonLoom prototype error handling and user experience
 - **Status:** Complete
 - **Files Changed:** 1

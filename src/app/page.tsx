@@ -43,10 +43,10 @@ export default function Home() {
       <Projects />
       {/* <Process /> */}
 
-      {/* Leadership Sections */}
-      <StrategicVision />
-      <LeadershipPhilosophy />
-      <Collaboration />
+      {/* Leadership Sections - TEMPORARILY HIDDEN */}
+      {/* <StrategicVision /> */}
+      {/* <LeadershipPhilosophy /> */}
+      {/* <Collaboration /> */}
       <BuildingInPublic />
     </main>
   );

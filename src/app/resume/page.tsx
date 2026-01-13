@@ -107,7 +107,7 @@ My approach combines strategic design thinking with hands-on mentorship, fosteri
         company: 'NewGlobe',
         duration: 'Feb 2023 - Present · 2 yrs 10 mos',
         location: 'Hyderabad, Telangana, India · On-site',
-        description: 'Leading cross-functional design teams to create AI-powered educational products that transform learning outcomes.',
+        description: 'Leading cross-functional design teams to create AI-powered educational products reaching millions of children across Africa and Asia. Contributing to learning outcomes validated by Nobel Prize-winning economist Michael Kremer as among the largest gains ever measured in international education.',
         skills: ['Team Leadership', 'Design Mentorship', 'Generative AI', 'AI Strategy', 'Product Design', 'UX Research', 'Cross-functional Leadership', 'Strategic Planning'],
       },
       {
@@ -387,8 +387,8 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              The digital home for<br />
-              Imran's notes.
+              Shaping how<br />
+              millions learn.
             </motion.h1>
 
             {/* Description */}
@@ -399,7 +399,7 @@ He's one of those rare individuals who is both a deep thinker and a reliable doe
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <p className="text-lg md:text-xl text-gray-600 max-w-3xl leading-relaxed">
-                Driven by a fascination with how systems work, I began my journey in frontend engineering before discovering my true calling: crafting experiences that resonate with users. This led me to transition into design, where I've since partnered with diverse teams across multiple sectors on digital platforms and mobile experiences. Each collaboration has strengthened my ability to merge strategic thinking with creative execution, always focusing on solutions that are both seamless and meaningful.
+                My design journey began with content review and spotting usability errors, which sparked a deep curiosity about why users struggle and how experiences could be better. This led me to teach myself UX design, eventually spending years crafting healthcare experiences before transitioning to product design in education at NewGlobe—where I now design AI-powered learning tools reaching millions of children across Africa and Asia. Each chapter has sharpened my ability to merge strategic thinking with human-centered design, always focusing on solutions that drive meaningful impact at scale.
               </p>
             </motion.div>
 
