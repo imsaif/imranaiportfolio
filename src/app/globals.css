@@ -1,119 +1,6 @@
-@import url('https://fonts.cdnfonts.com/css/satoshi');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  /* Poppins Font Classes - Regular */
-  .poppins-thin {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 100;
-    font-style: normal;
-  }
-
-  .poppins-extralight {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 200;
-    font-style: normal;
-  }
-
-  .poppins-light {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-
-  .poppins-regular {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  .poppins-medium {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-style: normal;
-  }
-
-  .poppins-semibold {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-style: normal;
-  }
-
-  .poppins-bold {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-
-  .poppins-extrabold {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    font-style: normal;
-  }
-
-  .poppins-black {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-
-  /* Poppins Font Classes - Italic */
-  .poppins-thin-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 100;
-    font-style: italic;
-  }
-
-  .poppins-extralight-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 200;
-    font-style: italic;
-  }
-
-  .poppins-light-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-style: italic;
-  }
-
-  .poppins-regular-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-
-  .poppins-medium-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-style: italic;
-  }
-
-  .poppins-semibold-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-style: italic;
-  }
-
-  .poppins-bold-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-
-  .poppins-extrabold-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    font-style: italic;
-  }
-
-  .poppins-black-italic {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 900;
-    font-style: italic;
-  }
-}
 
 @layer utilities {
   .bg-position-right {
@@ -126,34 +13,106 @@
 }
 
 :root {
-  /*
-  * PRIMARY COLOR PALETTE
-  * Organized system of colors with clear naming conventions
-  */
+  /* Background system — clean white + grain */
+  --background-primary: #ffffff;
+  --background-secondary: #fafafa;
+  --background-tertiary: #f5f5f5;
+  --background-grain: #F0F1F5;
 
-  /* Brand Colors - The foundation of your visual identity */
-  --accent: #7075e0; /* Primary brand color - use for main interactive elements */
-  --accent-light: #c4c7f7; /* Lighter accent - use for backgrounds, highlights */
-  --secondary: #3ca070; /* Secondary color - use for success states, alternate CTAs */
-  --tertiary: #e0637c; /* Tertiary color - use for highlights, important alerts */
+  --surface-primary: #ffffff;
+  --surface-secondary: #f9f9f9;
+  --surface-elevated: #ffffff;
 
-  /* Interface Colors - The building blocks of your UI */
-  --background: #ffffff; /* Main page background */
-  --foreground: #1a1a1a; /* Primary text color - lighter black */
-  --muted: #6b7280; /* Secondary text, descriptions, subtitles */
-  --border: #e2e8f0; /* Borders, dividers, separators */
-  --subtle-bg: #f1f5f9; /* Subtle backgrounds, hover states */
-  --card-bg: #ffffff; /* Card and component backgrounds */
-  --card-border: #e2e8f0; /* Card borders */
-  --card-shadow: rgba(0, 0, 0, 0.04); /* Card shadows */
+  /* Text — navy headings + slate body */
+  --text-primary: #162036;
+  --text-secondary: #20294C;
+  --text-tertiary: #64748b;
+  --text-disabled: #94a3b8;
+  --text-hero: #162036;
 
-  /* Semantic Colors - Communicating meaning */
-  --success: #3ca070; /* Success states, positive indicators */
-  --warning: #f59e0b; /* Warnings, attention required */
-  --error: #ef4444; /* Error states, destructive actions */
-  --info: #3b82f6; /* Informational states, help text */
+  /* Borders */
+  --border-primary: #e5e7eb;
+  --border-secondary: #d1d5db;
+  --border-focus: #525252;
 
-  /* Color shades - For more refined control */
+  /* Semantic state borders */
+  --border-success: #10b981;
+  --border-error: #ef4444;
+  --border-warning: #f59e0b;
+  --border-info: #3b82f6;
+
+  /* Interactive borders */
+  --border-interactive: #3b82f6;
+  --border-interactive-hover: #2563eb;
+  --border-selected: #3b82f6;
+  --border-disabled: #d1d5db;
+
+  /* Dividers */
+  --border-divider: #f9f9f9;
+  --border-divider-subtle: #fcfcfc;
+
+  /* Focus rings */
+  --ring-focus: #3b82f6;
+  --ring-focus-error: #ef4444;
+  --ring-focus-success: #10b981;
+  --ring-focus-warning: #f59e0b;
+
+  /* Brand accent — navy */
+  --accent-primary: #162036;
+  --accent-hover: #1e2a42;
+  --accent-subtle: #f5f5f5;
+
+  /* Semantic status (mode-agnostic) */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+
+  /* Legacy aliases — keep components that still reference these working */
+  --background: var(--background-primary);
+  --foreground: var(--text-primary);
+  --muted: var(--text-tertiary);
+  --border: var(--border-primary);
+  --subtle-bg: var(--background-tertiary);
+  --card-bg: var(--surface-primary);
+  --card-border: var(--border-primary);
+  --card-shadow: rgba(51, 65, 85, 0.05);
+  --accent: var(--accent-primary);
+  --accent-light: var(--background-grain);
+  --secondary: var(--success);
+  --tertiary: var(--accent-hover);
+
+  /* Font variables */
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-heading: var(--font-satoshi), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Legacy tokens — scoped to case study routes only.
+ * Keeps /casestudy/* on the original purple palette while the rest of the site
+ * adopts the aiex navy system. Re-declares the legacy CSS variables so any
+ * component referencing --accent / --border / etc. inside case studies keeps
+ * its prior look without code changes. */
+.legacy-tokens {
+  --accent: #7075e0;
+  --accent-light: #c4c7f7;
+  --secondary: #3ca070;
+  --tertiary: #e0637c;
+
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --muted: #6b7280;
+  --border: #e2e8f0;
+  --subtle-bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --card-shadow: rgba(0, 0, 0, 0.04);
+
+  --success: #3ca070;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+
   --accent-50: #f0f1fe;
   --accent-100: #e2e4fd;
   --accent-200: #c4c7f7;
@@ -163,10 +122,37 @@
   --accent-600: #5f64d1;
   --accent-700: #4e53c2;
 
-  /* Font variables */
-  --font-sans: 'Satoshi', 'Satoshi Placeholder', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-heading: 'Satoshi', 'Satoshi Placeholder', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Override aiex token names too so any new aiex-token-using component
+   * inside a case study still gets the legacy look. */
+  --background-primary: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #1a1a1a;
+  --text-tertiary: #6b7280;
+  --border-primary: #e2e8f0;
+  --accent-primary: #7075e0;
+}
+
+/* Canvas grid background — subtle architectural grid */
+.bg-canvas-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Grain background — fold.money inspired soft texture */
+.bg-grain {
+  position: relative;
+  background-color: var(--background-grain);
+}
+
+.bg-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @theme inline {
@@ -185,9 +171,12 @@ body {
   line-height: 1.6;
   letter-spacing: -0.01em;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Typography refinements */
+/* Typography refinements — fold.money / aiex inspired */
 h1,
 h2,
 h3,
@@ -196,20 +185,23 @@ h5,
 h6 {
   line-height: 1.2;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   font-family: var(--font-heading);
   font-optical-sizing: auto;
+  font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
 h1 {
   font-size: 3rem;
   font-weight: 700;
+  line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
 h2 {
   font-size: 2.25rem;
   font-weight: 600;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   margin-bottom: 1.75rem;
 }
@@ -217,12 +209,34 @@ h2 {
 h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  letter-spacing: -0.015em;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   margin-bottom: 1rem;
+}
+
+h4 {
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 p {
   margin-bottom: 1.5rem;
+}
+
+/* Typography utility classes */
+.text-display {
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.text-headline {
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.text-body {
+  letter-spacing: -0.01em;
+  line-height: 1.6;
 }
 
 /* Enhanced spacing */
@@ -872,4 +886,18 @@ p {
 /* Hide the browser cursor for all elements in the #work section on desktop */
 @media (min-width: 768px) {
   /* Removed: #work, #work * { cursor: none !important; } */
+}
+
+/* Footer robot walk — loops left → right, fades at endpoints */
+@keyframes robot-walk {
+  0%   { left: 0;                       opacity: 0; }
+  6%   {                                opacity: 1; }
+  94%  {                                opacity: 1; }
+  100% { left: calc(100% - 1.5rem);     opacity: 0; }
+}
+.robot-walk {
+  animation: robot-walk 32s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .robot-walk { animation: none; left: 1rem; opacity: 1; }
 }

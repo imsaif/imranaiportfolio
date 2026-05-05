@@ -3,6 +3,10 @@ export interface ProjectStat {
   value: string;
 }
 
+export type ProjectLogo =
+  | { type: 'image'; src: string }
+  | { type: 'icon'; name: 'terminal' | 'lightbulb' };
+
 export interface Project {
   id: number;
   slug: string;
@@ -16,9 +20,69 @@ export interface Project {
   featured?: boolean;
   tagline: string;
   stats?: ProjectStat[];
+  /**
+   * When true the card CTA links externally to liveUrl ("Visit site") instead
+   * of the internal /casestudy/<slug> route. Used for live products (dwc/aiex/llmsgist).
+   */
+  external?: boolean;
+  /** Optional CTA copy override; defaults to "View Case Study" or "Visit Site". */
+  ctaLabel?: string;
+  /** Optional logo treatment for live products (rendered in place of images). */
+  logo?: ProjectLogo;
 }
 
 export const projects: Project[] = [
+  {
+    id: 101,
+    slug: 'designwithclaude',
+    title: 'designwithclaude',
+    description:
+      'I built dwic to be a senior designer inside your terminal. It audits design systems, catches drift, and ships specialist agents you can drop into Claude Code.',
+    fullDescription: '',
+    technologies: [],
+    liveUrl: 'https://designwithclaude.com',
+    githubUrl: '',
+    images: [],
+    featured: true,
+    external: true,
+    ctaLabel: 'Visit site',
+    logo: { type: 'image', src: '/images/logos/dwic-icon.svg' },
+    tagline: 'AI DESIGN TOOLING',
+  },
+  {
+    id: 102,
+    slug: 'aiex',
+    title: 'AI UX Design Guide',
+    description:
+      'I built aiuxdesign.guide to document AI UX patterns from real products. A free, open library used by designers shipping AI features today.',
+    fullDescription: '',
+    technologies: [],
+    liveUrl: 'https://aiuxdesign.guide',
+    githubUrl: '',
+    images: [],
+    featured: true,
+    external: true,
+    ctaLabel: 'Visit site',
+    logo: { type: 'image', src: '/images/logos/aiux-logo.svg' },
+    tagline: 'AI UX PATTERNS',
+  },
+  {
+    id: 103,
+    slug: 'llmsgist',
+    title: 'llmsgist.org',
+    description:
+      'I built llmsgist as a structured spec format for AI coding tools. .gist.design files give Claude, Cursor, and Copilot the design context they otherwise lack.',
+    fullDescription: '',
+    technologies: [],
+    liveUrl: 'https://llmsgist.org',
+    githubUrl: '',
+    images: [],
+    featured: true,
+    external: true,
+    ctaLabel: 'Visit site',
+    logo: { type: 'image', src: '/images/logos/llmsgist-icon.svg' },
+    tagline: 'STRUCTURED DESIGN SPECS',
+  },
   {
     id: 3,
     slug: 'uhg',
@@ -47,7 +111,7 @@ export const projects: Project[] = [
       '/images/casestudy/uhg/desktop-interface.svg',
       '/images/casestudy/uhg/user-journey.svg',
     ],
-    featured: true,
+    featured: false,
     tagline: 'ENTERPRISE UX, HEALTHCARE FINTECH',
     stats: [
       { label: 'Task Completion', value: '1.1% → 30%' },
@@ -81,7 +145,7 @@ export const projects: Project[] = [
       '/images/casestudy/scheduler/classroom-icon.svg',
       '/images/casestudy/scheduler/conflict-icon.svg',
     ],
-    featured: true,
+    featured: false,
     tagline: 'EDUTECH, PRODUCT DESIGN',
     stats: [
       { label: 'Schools Automated', value: '120+' },
@@ -109,7 +173,7 @@ export const projects: Project[] = [
       '/images/casestudy/lessonloom/creator.svg',
       '/images/casestudy/lessonloom/content-view.svg',
     ],
-    featured: true,
+    featured: false,
     tagline: 'AI DESIGN, AUTOMATION',
     stats: [
       { label: 'Lessons Generated', value: '10,000+' },

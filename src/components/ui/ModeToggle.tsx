@@ -109,7 +109,7 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
         style={{
-          background: 'linear-gradient(135deg, #7075e0, #e0637c)',
+          background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-hover))',
           padding: '2px'
         }}
       >
@@ -130,7 +130,7 @@ const ModeToggle = ({ currentMode, onModeChange, isVisible, isChatOpen }: ModeTo
                   layoutId="activeMode"
                   className="absolute inset-0 rounded-full -z-10 shadow-lg"
                   style={{
-                    background: 'linear-gradient(135deg, #7075e0, #e0637c)',
+                    background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-hover))',
                   }}
                   transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                 />

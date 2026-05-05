@@ -151,12 +151,12 @@ export async function POST(request: Request) {
       // LessonLoom case study
       {
         name: 'LessonLoom',
-        url: 'https://www.imranaidesign.com/casestudy/lessonloom',
+        url: 'https://imranai.design/casestudy/lessonloom',
       },
       // EduScheduler case study
       {
         name: 'EduScheduler',
-        url: 'https://www.imranaidesign.com/casestudy/scheduler',
+        url: 'https://imranai.design/casestudy/scheduler',
       },
     ];
 
@@ -172,8 +172,8 @@ export async function POST(request: Request) {
     ${JSON.stringify(projectLinks)}
 
     Note: Imran has two detailed case studies available:
-    1. LessonLoom case study: https://www.imranaidesign.com/casestudy/lessonloom
-    2. EduScheduler case study: https://www.imranaidesign.com/casestudy/scheduler
+    1. LessonLoom case study: https://imranai.design/casestudy/lessonloom
+    2. EduScheduler case study: https://imranai.design/casestudy/scheduler
 
     When someone asks about case studies or projects, format your response like this:
 

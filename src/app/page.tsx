@@ -20,9 +20,6 @@ const LeadershipPhilosophy = dynamic(() => import('@/components/sections/Leaders
 const Collaboration = dynamic(() => import('@/components/sections/Collaboration'), {
   loading: () => <div className="h-96 bg-background" />
 });
-const BuildingInPublic = dynamic(() => import('@/components/sections/BuildingInPublic'), {
-  loading: () => <div className="h-96 bg-background" />
-});
 const CursorDot = dynamic(() => import('@/components/ui').then(module => ({ default: module.CursorDot })), {
   ssr: false
 });
@@ -32,22 +29,19 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-    <main ref={containerRef} className="min-h-screen bg-background relative" style={{ position: 'relative' }}>
-      {/* Load CursorDot after hero for better LCP */}
+    <div
+      ref={containerRef}
+      className="flex flex-col justify-center w-full bg-background relative"
+      style={{ minHeight: 'calc(100vh - 56px - 72px)' }}
+    >
       <CursorDot size={14} />
-
-      {/* Hero Section - prioritized for LCP */}
       <Hero />
-
-      {/* Lazy load below-the-fold sections */}
       <Projects />
+      {/* Hidden — kept for future use */}
       {/* <Process /> */}
-
-      {/* Leadership Sections - TEMPORARILY HIDDEN */}
       {/* <StrategicVision /> */}
       {/* <LeadershipPhilosophy /> */}
       {/* <Collaboration /> */}
-      <BuildingInPublic />
-    </main>
+    </div>
   );
 }

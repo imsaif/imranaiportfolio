@@ -8,7 +8,7 @@ export default function CaseStudyLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="case-study-layout">
+    <div className="case-study-layout legacy-tokens">
       {children}
     </div>
   );

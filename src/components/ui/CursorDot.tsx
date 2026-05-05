@@ -114,7 +114,7 @@ export const CursorDot = ({ hidden = false, size = 20, className = '' }: CursorD
         width: size,
         height: size,
         borderRadius: '50%',
-        background: 'linear-gradient(90deg, #a21caf 0%, #ec4899 100%)',
+        background: 'linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-hover) 100%)',
         opacity: isVisible && !isKeyboard ? 1 : 0,
         transition: 'opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1)',
         willChange: 'transform, opacity',
@@ -124,7 +124,7 @@ export const CursorDot = ({ hidden = false, size = 20, className = '' }: CursorD
       initial={false}
       animate={{
         scale: isVisible ? 1.1 : 0.8,
-        background: 'linear-gradient(90deg, #a21caf 0%, #ec4899 100%)',
+        background: 'linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-hover) 100%)',
       }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     />

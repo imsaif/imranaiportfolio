@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
+import localFont from 'next/font/local';
 
 import Hotjar from '../components/analytics/Hotjar';
 import ClientProviders from '../components/ClientProviders';
@@ -8,6 +9,18 @@ import { SmoothScrollProvider } from '../components/core/SmoothScrollProvider';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import './globals.css';
+
+const satoshi = localFont({
+  src: [
+    { path: '../../public/fonts/satoshi-400.woff2', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/satoshi-500.woff2', weight: '500', style: 'normal' },
+    { path: '../../public/fonts/satoshi-700.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-satoshi',
+  display: 'swap',
+  preload: true,
+  adjustFontFallback: 'Arial',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://your-domain.com' : 'http://localhost:3000'),
@@ -25,7 +38,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Imran Mohammed' }],
   viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#7075e0',
+  themeColor: '#162036',
 };
 
 export default function RootLayout({
@@ -34,16 +47,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={satoshi.variable} suppressHydrationWarning>
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
-        {/* Preload critical resources for better LCP */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="bg-white dark:bg-gray-950 text-foreground dark:text-white font-sans">
+      <body className="bg-background text-foreground font-sans">
         <ClientProviders>
           <SmoothScrollProvider>
             <div className="flex flex-col min-h-screen">

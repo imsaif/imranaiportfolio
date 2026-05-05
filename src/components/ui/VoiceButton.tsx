@@ -23,7 +23,7 @@ const VoiceButton = ({ isVisible, isActive, onClick }: VoiceButtonProps) => {
         key={index}
         className="w-[2px] rounded-full"
         style={{
-          background: 'linear-gradient(to top, #7075e0, #e0637c)',
+          background: 'linear-gradient(to top, var(--accent-primary), var(--accent-hover))',
         }}
         animate={{
           height: isActive
@@ -69,7 +69,7 @@ const VoiceButton = ({ isVisible, isActive, onClick }: VoiceButtonProps) => {
         <div
           className="relative p-[2px] rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
           style={{
-            background: 'linear-gradient(135deg, #7075e0, #e0637c)',
+            background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-hover))',
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}

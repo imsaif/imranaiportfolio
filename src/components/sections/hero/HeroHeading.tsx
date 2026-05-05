@@ -136,11 +136,7 @@ const HeroHeading = ({ isVisible }: HeroHeadingProps) => {
           /><span className="text-gray-600">into</span><br /><span
             className="font-semibold text-4xl xs:text-5xl sm:text-4xl md:text-5xl lg:text-6xl"
             style={{
-              background: 'linear-gradient(90deg, #3B82F6 0%, #EC4899 100%)',
-              backgroundSize: '100% 100%',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
+              color: 'var(--text-hero)',
               display: 'inline-block',
               paddingBottom: '12px',
               marginTop: '1.5rem',
