@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'Resume — Imran Mohammed',
   description:
     'Senior product designer at NewGlobe. 8+ years across AI, edtech, healthcare, and Google. Designs that reach millions.',
+  alternates: { canonical: '/resume' },
 };
 
 const resumeData = {
