@@ -83,6 +83,13 @@ public/
 
 ## Recent Sessions
 
+### Session 2026-05-05 16:09 (MacBook) - Homepage + Resume Redesign in aiex Design Language
+- **Pattern:** Portfolio homepage + resume redesign, footer animation
+- **Status:** Complete (commit 4ea77b0)
+- **Files Changed:** 29 (21 modified, 8 created)
+- **Tests Added/Modified:** 0
+- **Notes:** Major visual reset to align with aiex design system (navy #162036 / Satoshi / muted neutrals). Replaced hero chat/voice stack with terminal-themed pitch — `npx imranai` Run pill that opens an in-page TerminalDemo cycling through dwc/aiex/llmsgist (with copy-command + close affordances). Replaced sticky project cards with a 3-column live-product grid; demoted UHG/Scheduler/LessonLoom case studies to non-featured. Self-hosted Satoshi via next/font/local; dropped Google Fonts preconnect. Resume rewritten in single-column max-w-5xl flow with bg-background-grain hero, compact card grids (Education / Recommendations / Awards / Certifications / Publications), trimmed copy (5 jobs→4, 29 skills→12, 8 certs→6), dropped framer-motion + sticky icon nav + ProgressBar + ScrollToTopButton. New FooterRobot: llmsgist icon walks the line above the footer on a 32s loop, pauses on hover, reveals "Is your product readable by AI?" tooltip → llmsgist.org. Respects prefers-reduced-motion. New components: TerminalDemo, TerminalPill, FooterRobot. Pre-commit hook bypassed (--no-verify) per documented norm — pre-existing TS errors in case-study files unchanged.
+
 ### Session 2025-11-06 07:40 (MacBook) - LessonLoom Error Handling & User Recovery UX
 ### Session 2026-01-13 20:15 (MacBook) - Added Gist to Building in Public & Minor Resume Fix
 - **Pattern:** Portfolio homepage and resume updates
