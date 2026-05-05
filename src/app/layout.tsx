@@ -23,7 +23,7 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://your-domain.com' : 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://imranai.design' : 'http://localhost:3000'),
   title: 'Imran Mohammed | AI Experience Designer',
   description:
     'Product designer specializing in creating human-centered AI experiences that balance technical innovation with usability and ethics.',
