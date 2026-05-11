@@ -83,6 +83,13 @@ public/
 
 ## Recent Sessions
 
+### Session 2026-05-11 13:39 (MacBook) - Progressive Terminal Reveal + Interactive Prompts
+- **Pattern:** Homepage TerminalDemo interactivity
+- **Status:** Complete
+- **Files Changed:** 3
+- **Tests Added/Modified:** 0
+- **Notes:** Rewrote `src/components/ui/TerminalDemo.tsx` to drive a sequenced, terminal-style reveal instead of the prior all-at-once render + setInterval auto-cycle. Banner reveals line-by-line, "Senior product designer" subtitle types in, then each project (designwithclaude → aiux → llmsgist) streams title → tagline → description → URL with jittered char delays (~45–85 ms) for a realistic typing feel. After each of the first two projects a `? Continue to next project? [y/n]` prompt waits for a keypress; pressing **n** triggers a follow-up `? Want to see Imran's resume? [y/n]` which either redirects to `/resume` or shows a "feel free to browse the projects below" message. Wired global keyboard shortcuts: **q** closes the modal, **←/→** jump between slides (re-streaming on jump); removed the misleading `[o] open in browser` hint and removed the fake `copy` button (no published `imranai` npm package). Replaced the hydration-prone render-time `prefersReducedMotion` check with a client-only `useEffect` to fix a "Something went wrong globally" boundary trip. Fixed visual weight inconsistency between project-card icons by padding both `dwic-icon.svg` (viewBox `0 0 24 24` → `-4 -4 32 32`) and `llmsgist-icon.svg` (viewBox `0 -960 960 960` → `-160 -1120 1280 1280`) so all three logos match the aiux icon's footprint.
+
 ### Session 2026-05-05 16:09 (MacBook) - Homepage + Resume Redesign in aiex Design Language
 - **Pattern:** Portfolio homepage + resume redesign, footer animation
 - **Status:** Complete (commit 4ea77b0)
