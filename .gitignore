@@ -47,3 +47,6 @@ next-env.d.ts
 *.backup
 
 .vercel
+
+# designwithclaude audit tool artifacts
+.dwic/

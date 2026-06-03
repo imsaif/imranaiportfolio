@@ -26,7 +26,7 @@
   /* Text — navy headings + slate body */
   --text-primary: #162036;
   --text-secondary: #20294C;
-  --text-tertiary: #64748b;
+  --text-tertiary: #475569; /* slate-600, ~7:1 on white (WCAG AA); was #64748b (~4.8:1, borderline) */
   --text-disabled: #94a3b8;
   --text-hero: #162036;
 
@@ -101,7 +101,7 @@
 
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --muted: #6b7280;
+  --muted: #4b5563; /* gray-600, ~7:1 on white (WCAG AA); was #6b7280 (~4.8:1, borderline) */
   --border: #e2e8f0;
   --subtle-bg: #f1f5f9;
   --card-bg: #ffffff;
@@ -127,7 +127,7 @@
   --background-primary: #ffffff;
   --text-primary: #1a1a1a;
   --text-secondary: #1a1a1a;
-  --text-tertiary: #6b7280;
+  --text-tertiary: #4b5563; /* gray-600, ~7:1 on white (WCAG AA); was #6b7280 (~4.8:1, borderline) */
   --border-primary: #e2e8f0;
   --accent-primary: #7075e0;
 }

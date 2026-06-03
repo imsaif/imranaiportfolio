@@ -84,6 +84,13 @@ public/
 ## Recent Sessions
 
 ### Session 2026-05-11 13:39 (MacBook) - Progressive Terminal Reveal + Interactive Prompts
+### Session 2026-06-03 16:38 (MacBook)
+- **Pattern:** Hero copy + Writing section + accessibility
+- **Status:** Complete
+- **Files Changed:** 6
+- **Tests Added/Modified:** 0
+- **Notes:** Reworked the Hero (`src/components/sections/Hero.tsx`): replaced the "Transforming complexity into Clarity" typing animation with a three-line headline — small uppercase label "I DESIGN AND SHIP", a bold cycling middle line (`design systems` → `AI audit tools` → `AI products` → `AI-readable specs`), and "END TO END" — reusing the `TextType` component on its own block line with `min-h` to stop vertical jump. Tuned label tracking (`0.18em`→`0.08em`) to fix odd word spacing, bumped framing-label sizes up and cycling text down a step, and opened line spacing (`my-3`→`my-5 md:my-7`). Strengthened the sub-line ("Designer who codes…") to `text-lg md:text-xl font-medium text-foreground`, and moved "Run the command to see what I've built" to small muted text under the `npx imranai` pill. Added a new **Writing** section (`src/components/sections/Writing.tsx`, wired into `page.tsx` after Projects): a plain left-aligned list of six Medium articles, each link with a persistent external-link ↗ icon that brightens and nudges on hover (plus sr-only "opens in a new tab"), and a "Read the series on Medium" link to `@imsaif`. **Accessibility sweep:** darkened low-contrast tokens in `globals.css` — `--text-tertiary` `#64748b`→`#475569` and legacy `--muted`/`--text-tertiary` `#6b7280`→`#4b5563` (both ~4.8:1 borderline → ~7:1 AA), lifting footer, Building-in-Public, and all `text-muted`/`text-tertiary` consumers at once. Centered + baseline-aligned the footer links onto one line with the copyright (`src/components/layout/Footer.tsx`). Gitignored the stray `.dwic/` audit-tool artifact.
+
 - **Pattern:** Homepage TerminalDemo interactivity
 - **Status:** Complete
 - **Files Changed:** 3

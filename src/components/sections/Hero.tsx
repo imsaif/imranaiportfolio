@@ -77,29 +77,30 @@ const Hero = () => {
           ) : (
             <>
               <h1
-                className="font-bold tracking-tight leading-[1.15]"
+                className="tracking-tight leading-[1.15] max-w-3xl"
                 style={{ color: 'var(--text-hero)' }}
               >
-                <span className="block whitespace-nowrap text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-medium text-text-secondary">
-                  Transforming{' '}
-                  <TextType
-                    text={['complexity', 'confusion']}
-                    typingSpeed={90}
-                    pauseDuration={1800}
-                    className="font-medium"
-                  />
-                  {' '}into
+                <span className="block text-lg xs:text-xl md:text-2xl lg:text-3xl font-medium uppercase tracking-[0.08em] text-text-secondary">
+                  I design and ship
                 </span>
-                <span className="block mt-3 md:mt-4 text-4xl xs:text-5xl md:text-6xl lg:text-7xl">
-                  Clarity
+                <TextType
+                  text={['design systems', 'AI audit tools', 'AI products', 'AI-readable specs']}
+                  typingSpeed={90}
+                  pauseDuration={1800}
+                  className="block my-5 md:my-7 text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold min-h-[1.15em]"
+                />
+                <span className="block text-lg xs:text-xl md:text-2xl lg:text-3xl font-medium uppercase tracking-[0.08em] text-text-secondary">
+                  end to end
                 </span>
               </h1>
-              <p className="mt-7 max-w-2xl text-base md:text-lg text-text-secondary leading-relaxed">
-                Imran is a senior product designer building AI-native apps.
-                Run the command to see what he&apos;s built.
+              <p className="mt-7 max-w-2xl text-lg md:text-xl font-medium text-foreground leading-relaxed">
+                Designer who codes. I build the tools and write about what breaks.
               </p>
-              <div className="mt-7">
+              <div className="mt-7 flex flex-col items-center">
                 <TerminalPill command="npx imranai" onClick={() => setShowDemo(true)} />
+                <p className="mt-2 text-xs md:text-sm text-text-secondary">
+                  Run the command to see what I&apos;ve built.
+                </p>
               </div>
             </>
           )}
