@@ -5,9 +5,14 @@ interface Education {
   duration: string;
 }
 
+interface SkillGroup {
+  category: string;
+  items: string[];
+}
+
 interface EducationSkillsSectionProps {
   education: Education[];
-  skills: string[];
+  skills: SkillGroup[];
 }
 
 export function EducationSkillsSection({ education, skills }: EducationSkillsSectionProps) {
@@ -34,16 +39,25 @@ export function EducationSkillsSection({ education, skills }: EducationSkillsSec
 
       <div>
         <h3 className="text-lg font-semibold text-text-primary mb-4">Skills</h3>
-        <ul className="flex flex-wrap gap-2">
-          {skills.map((skill, i) => (
-            <li
-              key={i}
-              className="bg-accent-subtle text-text-secondary text-sm px-3 py-1.5 rounded-full"
-            >
-              {skill}
-            </li>
+        <div className="space-y-5">
+          {skills.map((group, i) => (
+            <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+              <p className="text-xs uppercase tracking-wide text-text-tertiary font-medium sm:w-28 sm:shrink-0 sm:pt-1.5">
+                {group.category}
+              </p>
+              <ul className="flex flex-wrap gap-2">
+                {group.items.map((item, j) => (
+                  <li
+                    key={j}
+                    className="bg-accent-subtle text-text-secondary text-sm px-3 py-1.5 rounded-full"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

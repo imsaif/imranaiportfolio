@@ -3,47 +3,67 @@ import type { Metadata } from 'next';
 import { AboutSection } from './sections/AboutSection';
 import { EducationSkillsSection } from './sections/EducationSkillsSection';
 import { ExperienceSection } from './sections/ExperienceSection';
+import { ProjectsSection } from './sections/ProjectsSection';
 import { PublicationsAwardsSection } from './sections/PublicationsAwardsSection';
 import { RecommendationsSection } from './sections/RecommendationsSection';
 
 export const metadata: Metadata = {
-  title: 'Resume — Imran Mohammed',
+  title: 'Resume | Imran Mohammed',
   description:
-    'Senior product designer at NewGlobe. 8+ years across AI, edtech, healthcare, and Google. Designs that reach millions.',
+    'Senior AI product designer and design engineer. 10+ years across AI, edtech, healthcare, and Google. Founder of aiuxdesign.guide. Ships production React, TypeScript, and Tailwind.',
   alternates: { canonical: '/resume' },
 };
 
 const resumeData = {
-  about: `Senior product designer at NewGlobe, leading AI-powered learning experiences that reach millions of children across Africa and Asia. 8+ years across edtech, healthcare, and Google. I work at the intersection of AI and human-centered design — turning model output into interfaces people trust.`,
+  about: `Senior product designer with 10+ years working at the intersection of software and human behavior. A designer who ships production code (React, TypeScript, Tailwind). I founded aiuxdesign.guide, a free AI-UX audit tool used by 3,000+ designers monthly and cited by Claude and Perplexity. Previously embedded with Google News, led enterprise UX at UnitedHealth Group for 5+ years, and now design AI tools impacting 10,000+ schools at NewGlobe.`,
+  projects: [
+    {
+      name: 'aiuxdesign.guide',
+      role: 'AI-UX audit tool · founder, built end-to-end',
+      url: 'https://aiuxdesign.guide',
+      description:
+        'Upload any AI-interface screenshot and get instant feedback scored against 36 patterns drawn from 50+ shipped products including Claude, Copilot, and Notion. 3,000+ monthly users, referenced by Claude and Perplexity, 300+ daily newsletter subscribers. Designed and shipped end-to-end in Next.js, React, TypeScript, and Tailwind with Postgres/Prisma, including evidence-first grading and evals.',
+    },
+    {
+      name: 'dwic · designwithclaude.com',
+      role: 'MCP server for design systems',
+      url: 'https://designwithclaude.com',
+      description:
+        'An MCP server that audits your design system from inside Claude Code, catching contrast failures, token drift, and pattern misuse before they ship.',
+    },
+  ],
   experience: [
     {
       title: 'Senior Product Designer',
       company: 'NewGlobe',
-      duration: '2023 – Present',
+      duration: 'Feb 2023 – Present',
       location: 'Hyderabad',
       description:
-        'Leading design for AI-powered learning products reaching millions of children. Outcomes validated by Nobel laureate Michael Kremer as among the largest measured in international education.',
+        'Led AI product design for an edtech platform deployed across 10,000+ schools and government programs. Designed core tools for teachers and school heads powering daily instructional workflows.',
     },
     {
       title: 'UX Designer',
       company: 'Optum (UnitedHealth Group)',
-      duration: '2017 – 2023',
-      location: 'Chennai',
-      description: 'Led design for healthcare analytics products and governed the design system across squads.',
+      duration: 'Jun 2017 – Jan 2023',
+      location: 'Chennai · Hyderabad',
+      description:
+        'Designed Optum Bank, a healthcare financial product serving patients and enterprise clients. Resolved billing experience issues, improving clarity for patients navigating healthcare payments.',
     },
     {
-      title: 'UX Designer (Freelance)',
+      title: 'UX Designer (Consultant)',
       company: 'Independent',
-      duration: '2015 – 2017',
-      location: 'Delhi · Istanbul · Amsterdam',
-      description: 'Designed product experiences for early-stage startups across three continents.',
+      duration: 'Jan 2015 – May 2017',
+      location: 'Remote',
+      description:
+        'Worked remotely and on-site with startups across India, the US, and Europe, coordinating closely with developers and product managers.',
     },
     {
-      title: 'Usability Lead (Contract)',
+      title: 'Usability Analyst Lead',
       company: 'Google',
-      duration: '2011 – 2014',
+      duration: 'Jun 2011 – Dec 2014',
       location: 'Hyderabad',
-      description: 'Led a 15-person usability team conducting reviews for Google News and Google Maps.',
+      description:
+        "Embedded with the Google News team in Hyderabad, identifying and resolving UX issues. Collaborated with Google India's product and engineering teams on continuous product improvement.",
     },
   ],
   education: [
@@ -67,18 +87,18 @@ const resumeData = {
     { name: 'Human Computer Interaction', issuer: 'Interaction Design Foundation', date: '2018' },
   ],
   skills: [
-    'Product Design',
-    'AI Strategy',
-    'Generative AI',
-    'Design Systems',
-    'UX Research',
-    'Design Leadership',
-    'Prototyping',
-    'Data Visualization',
-    'Stakeholder Management',
-    'Strategic Planning',
-    'Design Mentorship',
-    'Visual Design',
+    {
+      category: 'Design',
+      items: ['Figma', 'Design Systems', 'Design Tokens', 'Prototyping', 'Evals for AI UX'],
+    },
+    {
+      category: 'Engineering',
+      items: ['React', 'TypeScript', 'Tailwind', 'HTML / CSS', 'Next.js', 'MCP Servers'],
+    },
+    {
+      category: 'AI Tools',
+      items: ['Claude Code', 'Cursor', 'Gemini', 'Bolt', 'GitHub'],
+    },
   ],
   publications: [
     {
@@ -111,7 +131,7 @@ const resumeData = {
   honorsAwards: [
     { title: 'Excellent Performance & Compassion', issuer: 'UnitedHealth Group / Optum', date: '2018' },
     { title: 'Excellent Performance & Collaboration', issuer: 'UnitedHealth Group / Optum', date: '2018' },
-    { title: 'Top 10% — Gestalt Psychology & Web', issuer: 'Interaction Design Foundation', date: '2018' },
+    { title: 'Top 10%: Gestalt Psychology & Web', issuer: 'Interaction Design Foundation', date: '2018' },
     { title: 'Exceptional Performance', issuer: 'Google India', date: '2012' },
   ],
 };
@@ -121,15 +141,16 @@ const ResumePage = () => {
     <div className="bg-background-primary min-h-screen">
       <section className="pt-12 pb-14 md:pt-16 md:pb-20 bg-background-grain">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-accent-primary font-medium text-sm uppercase tracking-wide mb-4">Resume</p>
+          <p className="text-accent-primary font-medium text-sm uppercase tracking-wide mb-4">
+            Senior AI Product Designer · Design Engineer
+          </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-text-primary leading-tight mb-6">
-            Shaping how millions learn.
+            A designer who ships.
           </h1>
           <p className="text-text-secondary text-lg md:text-xl leading-relaxed max-w-3xl">
-            My journey began with content review and spotting usability errors, which sparked a curiosity
-            about why users struggle and how experiences could be better. I taught myself UX design, spent
-            years on healthcare experiences at Optum, and now design AI-powered learning tools at NewGlobe
-            reaching millions of children across Africa and Asia.
+            10+ years at the intersection of software and human behavior, and I write the production code, not
+            just the specs. I founded aiuxdesign.guide, a free AI-UX audit tool used by 3,000+ designers a month
+            and cited by Claude and Perplexity. Today I design AI tools reaching 10,000+ schools at NewGlobe.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <a
@@ -166,6 +187,11 @@ const ResumePage = () => {
           <AboutSection about={resumeData.about} />
         </section>
 
+        <section id="projects">
+          <h2 className="text-2xl md:text-3xl font-semibold text-text-primary mb-6">Projects</h2>
+          <ProjectsSection projects={resumeData.projects} />
+        </section>
+
         <section id="experience">
           <h2 className="text-2xl md:text-3xl font-semibold text-text-primary mb-6">Experience</h2>
           <ExperienceSection experience={resumeData.experience} />
@@ -192,7 +218,7 @@ const ResumePage = () => {
 
         <div className="pt-4">
           <a
-            href="https://drive.google.com/file/d/1dn0zJB2FjcgdidSu9Yd-k4vyPUVNX00T/view"
+            href="https://drive.google.com/file/d/1CxHYGdt-W4EpVltOkpFRRiitFIAa8lQl/view"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent-primary text-white font-medium hover:bg-accent-hover hover:scale-[1.02] active:scale-[0.98] transition-all"
