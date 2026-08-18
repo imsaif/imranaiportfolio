@@ -1,5 +1,7 @@
 'use client';
 
+import { motion, useReducedMotion } from 'framer-motion';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import TerminalDemo from '@/components/ui/TerminalDemo';
@@ -67,15 +69,52 @@ const TextType = ({
 
 const Hero = () => {
   const [showDemo, setShowDemo] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   return (
     <section className="relative w-full px-4 xs:px-5 sm:px-6 md:px-8">
       <div className="container mx-auto max-w-5xl">
-        <div className="flex min-h-[calc(100vh-53px)] flex-col items-center justify-center text-center py-16">
+        <div className="relative flex min-h-[calc(100vh-53px)] flex-col items-center justify-center text-center py-16">
           {showDemo ? (
             <TerminalDemo onClose={() => setShowDemo(false)} />
           ) : (
             <>
+              {/*
+                Above the fold, so it is the likely LCP element: priority skips
+                the lazy-load wait. The source is a 1024px square with no alpha,
+                and the hero is white, so it sits on the page without a cutout.
+              */}
+              <motion.div
+                // Entrance is quick; the idle float is ambient, so it is allowed
+                // to be slow. Both are transform/opacity only, and reduced
+                // motion drops straight to the resting state.
+                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.96 }}
+                animate={
+                  reduceMotion
+                    ? { opacity: 1 }
+                    : { opacity: 1, y: [0, -6, 0], scale: 1 }
+                }
+                transition={
+                  reduceMotion
+                    ? { duration: 0 }
+                    : {
+                        opacity: { duration: 0.45, ease: [0.23, 1, 0.32, 1] },
+                        scale: { duration: 0.45, ease: [0.23, 1, 0.32, 1] },
+                        y: { duration: 5.5, ease: 'easeInOut', repeat: Infinity, delay: 0.45 },
+                      }
+                }
+                {...(reduceMotion ? {} : { whileHover: { scale: 1.05, rotate: -1.5 } })}
+                className="mb-8 md:mb-10"
+              >
+                <Image
+                  src="/images/profile/imranlineart.png"
+                  alt="Line drawing of Imran Mohammed"
+                  width={160}
+                  height={160}
+                  priority
+                  className="h-28 w-28 md:h-36 md:w-36"
+                />
+              </motion.div>
               <h1
                 className="tracking-tight leading-[1.6] max-w-4xl"
                 style={{ color: 'var(--text-hero)' }}
@@ -97,6 +136,30 @@ const Hero = () => {
               <div className="mt-14 md:mt-20 flex flex-col items-center">
                 <TerminalPill command="imran --work" onClick={() => setShowDemo(true)} />
               </div>
+
+              {/*
+                The hero owns a full screen, so nothing below it peeks through.
+                This cue says there is more, and is a real link so keyboard and
+                screen-reader users get the same affordance. motion-safe keeps
+                it still for anyone who asked for reduced motion.
+              */}
+              <a
+                href="#work"
+                aria-label="Scroll to selected work"
+                className="group absolute bottom-8 flex flex-col items-center gap-2 text-text-tertiary transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+              >
+                <span className="text-[11px] font-medium uppercase tracking-[0.08em]">Work</span>
+                <svg
+                  aria-hidden="true"
+                  className="h-5 w-5 motion-safe:animate-[bounce_2.4s_ease-in-out_infinite]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
             </>
           )}
         </div>

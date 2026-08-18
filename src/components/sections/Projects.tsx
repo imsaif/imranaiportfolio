@@ -16,7 +16,14 @@ const MAX_ZOOM_OUT = 0.07;
  * is settled and readable when you arrive instead of already travelling.
  */
 const LEAD_IN = 0.12;
-const travelProgress = (p: number) => Math.max(0, (p - LEAD_IN) / (1 - LEAD_IN));
+/**
+ * And a matching hold at the end. Without it the indicator marks the last
+ * panel active while the strip is still travelling, so you stop scrolling
+ * with that panel still cut off at the edge.
+ */
+const LEAD_OUT = 0.12;
+const travelProgress = (p: number) =>
+  Math.min(1, Math.max(0, (p - LEAD_IN) / (1 - LEAD_IN - LEAD_OUT)));
 
 const Arrow = () => (
   <svg
@@ -265,7 +272,8 @@ const PinnedStrip = () => {
   const scrollToIndex = useCallback((index: number, behavior: ScrollBehavior = 'smooth') => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
-    const ratio = LEAD_IN + (index / Math.max(1, projects.length - 1)) * (1 - LEAD_IN);
+    const ratio =
+      LEAD_IN + (index / Math.max(1, projects.length - 1)) * (1 - LEAD_IN - LEAD_OUT);
     // Document position, not offsetTop: offsetTop is relative to the offset
     // parent, which left the scroll landing short and the indicator a panel behind.
     const documentTop = window.scrollY + wrapper.getBoundingClientRect().top;
@@ -306,8 +314,15 @@ const PinnedStrip = () => {
         <Ticks activeIndex={activeIndex} onSelect={scrollToIndex} />
         <motion.div
           ref={stripRef}
-          style={{ x, scale, transformOrigin: 'left center' }}
-          className="flex gap-5 pl-8 will-change-transform"
+          style={{
+            x,
+            scale,
+            transformOrigin: 'left center',
+            // Inset so the first panel sits centred at rest. Flush to the left
+            // edge reads as "already scrolled past the start".
+            paddingLeft: 'max(2rem, calc((100vw - 46rem) / 2))',
+          }}
+          className="flex gap-5 will-change-transform"
         >
           {projects.map(project => (
             <div key={project.id} className="h-[34rem] w-[46rem] max-w-[85vw] shrink-0">
