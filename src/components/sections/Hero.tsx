@@ -71,19 +71,19 @@ const Hero = () => {
   return (
     <section className="relative w-full px-4 xs:px-5 sm:px-6 md:px-8">
       <div className="container mx-auto max-w-5xl">
-        <div className="flex flex-col items-center text-center pt-14 pb-6 md:pt-20 md:pb-8">
+        <div className="flex min-h-[calc(100vh-53px)] flex-col items-center justify-center text-center py-16">
           {showDemo ? (
             <TerminalDemo onClose={() => setShowDemo(false)} />
           ) : (
             <>
               <h1
-                className="tracking-tight leading-[1.45] max-w-4xl"
+                className="tracking-tight leading-[1.6] max-w-4xl"
                 style={{ color: 'var(--text-hero)' }}
               >
                 <span className="block text-[11px] xs:text-xs md:text-sm font-bold uppercase tracking-[0.08em] text-text-secondary">
                   Senior Product Designer and Design Engineer
                 </span>
-                <span className="mt-6 md:mt-8 block text-balance text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold">
+                <span className="mt-8 md:mt-12 block text-balance text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold">
                   I design and build
                 </span>
                 {/* Cycling text sits last so nothing downstream can reflow as it types. */}
@@ -91,10 +91,10 @@ const Hero = () => {
                   text={['audit tools', 'MCP servers', 'design systems']}
                   typingSpeed={90}
                   pauseDuration={1800}
-                  className="mt-6 md:mt-8 block text-base xs:text-lg md:text-xl font-medium uppercase tracking-[0.08em] text-text-secondary min-h-[1.8em]"
+                  className="mt-8 md:mt-12 block text-base xs:text-lg md:text-xl font-medium uppercase tracking-[0.08em] text-text-secondary min-h-[1.8em]"
                 />
               </h1>
-              <div className="mt-10 md:mt-12 flex flex-col items-center">
+              <div className="mt-14 md:mt-20 flex flex-col items-center">
                 <TerminalPill command="imran --work" onClick={() => setShowDemo(true)} />
               </div>
             </>

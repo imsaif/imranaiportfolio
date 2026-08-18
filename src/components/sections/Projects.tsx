@@ -11,6 +11,13 @@ const projects = getFeaturedProjects();
 /** How far the strip pulls back across the scroll. Subtle on purpose. */
 const MAX_ZOOM_OUT = 0.07;
 
+/**
+ * The strip holds still for the first slice of the scroll, so the first panel
+ * is settled and readable when you arrive instead of already travelling.
+ */
+const LEAD_IN = 0.12;
+const travelProgress = (p: number) => Math.max(0, (p - LEAD_IN) / (1 - LEAD_IN));
+
 const Arrow = () => (
   <svg
     aria-hidden="true"
@@ -234,20 +241,23 @@ const PinnedStrip = () => {
   });
 
   // Pull back to reveal more of the strip, then hold, the way rauno.me does.
-  const scaleAt = (p: number) => 1 - MAX_ZOOM_OUT * Math.min(1, p / 0.5);
+  const scaleAt = (p: number) => 1 - MAX_ZOOM_OUT * Math.min(1, travelProgress(p) / 0.5);
   const scale = useTransform(scrollYProgress, p => scaleAt(p));
 
   // Translation is computed against the SCALED width, so the last panel still
   // reaches the edge once the strip has shrunk.
   const x = useTransform(scrollYProgress, p => {
+    const t = travelProgress(p);
     const scaledWidth = scaleAt(p) * metrics.stripWidth;
     const travel = Math.max(0, scaledWidth - metrics.viewportWidth + 64);
-    return -travel * p;
+    return -travel * t;
   });
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.on('change', value => {
-      setActiveIndex(Math.min(projects.length - 1, Math.round(value * (projects.length - 1))));
+      setActiveIndex(
+        Math.min(projects.length - 1, Math.round(travelProgress(value) * (projects.length - 1)))
+      );
     });
     return unsubscribe;
   }, [scrollYProgress]);
@@ -255,7 +265,7 @@ const PinnedStrip = () => {
   const scrollToIndex = useCallback((index: number, behavior: ScrollBehavior = 'smooth') => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
-    const ratio = index / Math.max(1, projects.length - 1);
+    const ratio = LEAD_IN + (index / Math.max(1, projects.length - 1)) * (1 - LEAD_IN);
     // Document position, not offsetTop: offsetTop is relative to the offset
     // parent, which left the scroll landing short and the indicator a panel behind.
     const documentTop = window.scrollY + wrapper.getBoundingClientRect().top;
@@ -291,7 +301,7 @@ const PinnedStrip = () => {
       <div
         ref={stickyRef}
         onFocus={handleFocusIn}
-        className="sticky top-20 flex flex-col overflow-hidden py-2"
+        className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pt-20"
       >
         <Ticks activeIndex={activeIndex} onSelect={scrollToIndex} />
         <motion.div
