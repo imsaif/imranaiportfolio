@@ -34,6 +34,19 @@ export interface Project {
   /** Short factual number shown as a label on the card. Omit when there isn't one worth showing. */
   statLabel?: string;
   /**
+   * Shown when the card is expanded. Products carry problem + decision;
+   * index cards carry `inside` instead, since inventing a "problem" for an
+   * index would put a position in my mouth I never took.
+   */
+  detail?: {
+    problem?: string;
+    chose?: string;
+    over?: string;
+    inside?: string;
+    moreHref?: string;
+    moreLabel?: string;
+  };
+  /**
    * When present the card lists these links instead of a description.
    * A card with its own links cannot also be one big click target.
    */
@@ -47,6 +60,15 @@ export const projects: Project[] = [
     title: 'designwithclaude',
     description: 'An MCP server that audits design systems from inside Claude Code.',
     statLabel: '14 specialists',
+    detail: {
+      problem:
+        'A designer working inside Claude Code cannot tell whether the UI it just generated follows their design system. Contrast failures, token drift and off-grid spacing ship silently, and the usual answer is a design review that happens too late to matter.',
+      chose:
+        'Every finding cites the evidence behind it: the token name, the computed contrast ratio, the off-grid pixel value, or the offending selector.',
+      over: 'Returning a severity label and a short description, the way most linters and most AI reviewers do.',
+      moreHref: '/decisions/dwic',
+      moreLabel: 'Read the full decision record',
+    },
     fullDescription: '',
     technologies: [],
     liveUrl: 'https://designwithclaude.com',
@@ -65,6 +87,13 @@ export const projects: Project[] = [
     title: 'AI UX Design Guide',
     description: 'A free, open library of AI UX patterns drawn from real products.',
     statLabel: '3,000+ monthly',
+    detail: {
+      problem:
+        'Designers shipping AI features are still evaluating them with generic UX heuristics that were never written for AI. There is no fast way to check an AI interface against patterns specific to how AI actually behaves.',
+      chose:
+        'Free and no signup, with the audit as the front door: upload a screenshot of any AI interface and get it scored against 36 research-backed patterns.',
+      over: 'An email gate, a Figma plugin install, or a paid cohort.',
+    },
     fullDescription: '',
     technologies: [],
     liveUrl: 'https://aiuxdesign.guide',
@@ -112,6 +141,10 @@ export const projects: Project[] = [
     images: [],
     featured: true,
     external: false,
+    detail: {
+      inside:
+        'Longer write-ups of the work: what the problem was, what I decided, and what I would do differently. AI tools at NewGlobe, enterprise healthcare at Optum, and the decisions behind dwic.',
+    },
     ctaLabel: 'All case studies',
     logo: { type: 'icon', name: 'folder' },
     tagline: 'CASE STUDIES',
@@ -129,6 +162,10 @@ export const projects: Project[] = [
     images: [],
     featured: true,
     external: false,
+    detail: {
+      inside:
+        'Thoughts on AI interfaces and what breaks in them, published in Design Bootcamp. Six pieces on where AI explains itself badly, guesses at your design, and oversteps its boundary.',
+    },
     ctaLabel: 'All writing',
     logo: { type: 'icon', name: 'writing' },
     tagline: 'WRITING',
