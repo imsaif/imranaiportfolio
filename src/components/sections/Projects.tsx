@@ -56,7 +56,7 @@ const PrimaryLink = ({ project }: { project: Project }) => {
 const Panel = ({ project }: { project: Project }) => {
   const detail = project.detail;
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-border-secondary bg-transparent p-8 transition-colors duration-200 [@media(hover:hover)]:hover:border-text-tertiary [@media(hover:hover)]:hover:bg-background-grain md:p-10">
+    <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-border-secondary bg-background-grain p-8 transition-colors duration-200 [@media(hover:hover)]:hover:border-text-tertiary [@media(hover:hover)]:hover:bg-background-primary md:p-10">
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <h3 className="text-xl font-semibold tracking-tight text-text-primary md:text-2xl">
           {project.title}
