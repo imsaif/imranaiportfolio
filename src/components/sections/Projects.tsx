@@ -185,7 +185,7 @@ const Ticks = ({ activeIndex, onSelect }: { activeIndex: number; onSelect: (i: n
         onClick={() => onSelect(index)}
         aria-label={`Go to ${project.title}`}
         aria-current={index === activeIndex}
-        className="group rounded p-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        className="group flex min-h-[24px] min-w-[24px] items-center justify-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         <span
           className={`block h-3 rounded-full transition-all duration-300 ${
@@ -369,6 +369,8 @@ const Projects = () => {
   const pinned = usePinnedScroll();
   return (
     <section id="work" className="relative w-full pb-8 md:pb-10">
+      {/* Panels use h3; without an h2 the heading order jumps from the hero's h1. */}
+      <h2 className="sr-only">Selected work</h2>
       {pinned ? <PinnedStrip /> : <NativeStrip />}
     </section>
   );
