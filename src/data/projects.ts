@@ -162,10 +162,33 @@ export const projects: Project[] = [
     images: [],
     featured: true,
     external: false,
-    detail: {
-      inside:
-        'Six pieces on where AI explains itself badly, guesses at your design, and oversteps the boundary it was given.',
-    },
+    detail: {},
+    links: [
+      {
+        label: 'AI is finally learning to shut up',
+        href: 'https://medium.com/design-bootcamp/ai-is-finally-learning-to-shut-up-62af1d2c01c8',
+      },
+      {
+        label: 'AI learned to shut up. It forgot to say what it was doing',
+        href: 'https://medium.com/design-bootcamp/ai-learned-to-shut-up-it-forgot-to-say-what-it-was-doing-91df21ad2742',
+      },
+      {
+        label: "AI can't see your design, so it guesses",
+        href: 'https://medium.com/design-bootcamp/ai-cant-see-your-design-so-it-guesses-c50e3695f01a',
+      },
+      {
+        label: 'Who is designing the boundary for AI?',
+        href: 'https://medium.com/design-bootcamp/who-is-designing-the-boundary-for-ai-3a51b18b5fc7',
+      },
+      {
+        label: 'The AI you use for design feedback is guessing',
+        href: 'https://medium.com/design-bootcamp/the-ai-you-use-for-design-feedback-is-guessing-b4b9cfeaf7ee',
+      },
+      {
+        label: 'Most AIUX is just search with extra steps?',
+        href: 'https://medium.com/design-bootcamp/most-aiux-is-just-search-with-extra-steps-3faaae035ab8',
+      },
+    ],
     ctaLabel: 'All writing',
     logo: { type: 'icon', name: 'writing' },
     tagline: 'WRITING',
