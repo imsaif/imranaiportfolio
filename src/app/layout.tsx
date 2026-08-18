@@ -6,7 +6,6 @@ import localFont from 'next/font/local';
 import Hotjar from '../components/analytics/Hotjar';
 import ClientProviders from '../components/ClientProviders';
 import { SmoothScrollProvider } from '../components/core/SmoothScrollProvider';
-import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import './globals.css';
 
@@ -58,7 +57,6 @@ export default function RootLayout({
             <div className="flex flex-col min-h-screen">
               <Header />
               <main className="flex-grow pt-14 md:pt-16">{children}</main>
-              <Footer />
             </div>
           </SmoothScrollProvider>
         </ClientProviders>

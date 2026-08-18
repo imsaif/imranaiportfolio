@@ -206,10 +206,7 @@ export const projects: Project[] = [
     featured: true,
     external: true,
     ctaLabel: 'Email me',
-    detail: {
-      inside:
-        'Email is the fastest way to reach me. GitHub is where the tools live, LinkedIn has the full history, and Medium has the writing.',
-    },
+    detail: {},
     links: [
       { label: 'GitHub', href: 'https://github.com/imsaif' },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/imsaif/' },
