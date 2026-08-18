@@ -202,6 +202,7 @@ const Ticks = ({ activeIndex, onSelect }: { activeIndex: number; onSelect: (i: n
 /** Desktop: the section pins and vertical scroll drives the strip sideways. */
 const PinnedStrip = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
   const [metrics, setMetrics] = useState({ stripWidth: 0, viewportWidth: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
@@ -215,6 +216,16 @@ const PinnedStrip = () => {
     measure();
     window.addEventListener('resize', measure);
     return () => window.removeEventListener('resize', measure);
+  }, []);
+
+  useEffect(() => {
+    const sticky = stickyRef.current;
+    if (!sticky) return;
+    const reset = () => {
+      if (sticky.scrollLeft !== 0) sticky.scrollLeft = 0;
+    };
+    sticky.addEventListener('scroll', reset);
+    return () => sticky.removeEventListener('scroll', reset);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -241,20 +252,47 @@ const PinnedStrip = () => {
     return unsubscribe;
   }, [scrollYProgress]);
 
-  const scrollToIndex = useCallback(
-    (index: number) => {
-      const wrapper = wrapperRef.current;
-      if (!wrapper) return;
-      const ratio = index / Math.max(1, projects.length - 1);
-      const top = wrapper.offsetTop + ratio * (wrapper.offsetHeight - window.innerHeight);
-      window.scrollTo({ top, behavior: 'smooth' });
+  const scrollToIndex = useCallback((index: number, behavior: ScrollBehavior = 'smooth') => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    const ratio = index / Math.max(1, projects.length - 1);
+    // Document position, not offsetTop: offsetTop is relative to the offset
+    // parent, which left the scroll landing short and the indicator a panel behind.
+    const documentTop = window.scrollY + wrapper.getBoundingClientRect().top;
+    const top = documentTop + ratio * (wrapper.offsetHeight - window.innerHeight);
+    window.scrollTo({ top, behavior });
+  }, []);
+
+  /**
+   * Keyboard focus lands on links in panels that are translated off-screen.
+   * The browser tries to reveal them by scrolling the overflow-hidden
+   * container, which desyncs it from the scroll-driven transform. Undo that
+   * and move the page instead, so transform, indicator and focus agree.
+   * No smooth scroll here: keyboard-initiated moves should be instant.
+   */
+  const handleFocusIn = useCallback(
+    (event: React.FocusEvent<HTMLDivElement>) => {
+      const strip = stripRef.current;
+      if (!strip) return;
+      const panels = Array.from(strip.children) as HTMLElement[];
+      const index = panels.findIndex(panel => panel.contains(event.target as Node));
+      if (index >= 0) {
+        // Set the indicator from focus directly. Deriving it from scroll maths
+        // leaves it a panel behind, since the scroll lands mid-range.
+        setActiveIndex(index);
+        scrollToIndex(index, 'auto');
+      }
     },
-    []
+    [scrollToIndex]
   );
 
   return (
     <div ref={wrapperRef} style={{ height: `${projects.length * 90}vh` }}>
-      <div className="sticky top-20 flex flex-col overflow-hidden py-2">
+      <div
+        ref={stickyRef}
+        onFocus={handleFocusIn}
+        className="sticky top-20 flex flex-col overflow-hidden py-2"
+      >
         <Ticks activeIndex={activeIndex} onSelect={scrollToIndex} />
         <motion.div
           ref={stripRef}
