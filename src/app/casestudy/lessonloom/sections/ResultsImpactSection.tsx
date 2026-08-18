@@ -22,9 +22,9 @@ export function ResultsImpactSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0 }}
-          className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg p-8 border border-blue-200 text-center"
+          className="bg-gradient-to-br from-slate-50 to-slate-50 rounded-lg p-8 border border-slate-200 text-center"
         >
-          <div className="text-4xl font-bold text-blue-600 mb-3 flex items-center justify-center gap-2">
+          <div className="text-4xl font-bold text-slate-600 mb-3 flex items-center justify-center gap-2">
             <MdTrendingUp className="w-10 h-10" />
             ~50%
           </div>
@@ -36,9 +36,9 @@ export function ResultsImpactSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-8 border border-green-200 text-center"
+          className="bg-gradient-to-br from-slate-50 to-slate-50 rounded-lg p-8 border border-slate-200 text-center"
         >
-          <div className="text-4xl font-bold text-green-600 mb-3 flex items-center justify-center gap-2">
+          <div className="text-4xl font-bold text-slate-600 mb-3 flex items-center justify-center gap-2">
             <MdShowChart className="w-10 h-10" />
             2K+
           </div>
@@ -50,9 +50,9 @@ export function ResultsImpactSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-8 border border-purple-200 text-center"
+          className="bg-gradient-to-br from-slate-50 to-slate-50 rounded-lg p-8 border border-slate-200 text-center"
         >
-          <div className="text-4xl font-bold text-purple-600 mb-3 flex items-center justify-center gap-2">
+          <div className="text-4xl font-bold text-slate-600 mb-3 flex items-center justify-center gap-2">
             <MdShowChart className="w-10 h-10" />
             Positive
           </div>
@@ -66,7 +66,7 @@ export function ResultsImpactSection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-8 border border-indigo-200"
+          className="bg-gradient-to-br from-slate-50 to-slate-50 rounded-lg p-8 border border-slate-200"
         >
           <h3 className="text-2xl font-bold text-gray-900 mb-6">Measurable Outcomes</h3>
           <ul className="space-y-4 text-gray-700">
@@ -105,7 +105,7 @@ export function ResultsImpactSection() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-8 border border-amber-200"
+          className="bg-gradient-to-br from-slate-50 to-slate-50 rounded-lg p-8 border border-slate-200"
         >
           <h3 className="text-2xl font-bold text-gray-900 mb-6">Design Learnings</h3>
           <div className="space-y-4 text-gray-700">

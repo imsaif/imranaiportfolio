@@ -32,13 +32,13 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
     // Replace case study links with specially styled buttons
     let formattedContent = content.replace(
       caseStudyLinkRegex,
-      '<a href="$2" class="block px-4 py-2.5 my-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-md hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-medium text-center w-full sm:w-auto" target="_self" rel="noopener noreferrer">View $1 Case Study</a>'
+      '<a href="$2" class="block px-4 py-2.5 my-3 bg-gradient-to-r from-slate-600 to-slate-600 text-white rounded-md hover:from-slate-700 hover:to-slate-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-medium text-center w-full sm:w-auto" target="_self" rel="noopener noreferrer">View $1 Case Study</a>'
     );
 
     // Style project titles more prominently
     formattedContent = formattedContent.replace(
       /\*\*(LessonLoom|EduScheduler)\*\*/g,
-      '<h3 class="text-xl font-bold text-indigo-700 mt-5 mb-2">$1</h3>'
+      '<h3 class="text-xl font-bold text-slate-700 mt-5 mb-2">$1</h3>'
     );
 
     // Enhance paragraphs after headings for better readability with subtle indentation
@@ -53,14 +53,14 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
     // Replace regular markdown links with styled button HTML
     formattedContent = formattedContent.replace(
       regularLinkRegex,
-      '<a href="$2" class="inline-block px-4 py-2 mt-2 mb-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors shadow-sm font-medium" target="_blank" rel="noopener noreferrer">$1</a>'
+      '<a href="$2" class="inline-block px-4 py-2 mt-2 mb-2 bg-slate-600 text-white rounded-md hover:bg-slate-700 transition-colors shadow-sm font-medium" target="_blank" rel="noopener noreferrer">$1</a>'
     );
 
     // Format lists better
     formattedContent = formattedContent.replace(/- /g, '• ');
 
     // Add proper styling to bold text that isn't already styled as a heading
-    formattedContent = formattedContent.replace(/\*\*([^*]+)\*\*/g, '<strong class="text-indigo-700 font-semibold block mt-3 mb-1">$1</strong>');
+    formattedContent = formattedContent.replace(/\*\*([^*]+)\*\*/g, '<strong class="text-slate-700 font-semibold block mt-3 mb-1">$1</strong>');
 
     // Convert line breaks to proper HTML with more spacing between paragraphs
     formattedContent = formattedContent.replace(/\n\n/g, '</p><p class="mt-3">').replace(/\n/g, '<br/>');
@@ -79,7 +79,7 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
         padding: 0.5rem 1rem;
         margin: 0.5rem 0;
         color: white;
-        background-color: #4f46e5;
+        background-color: #475569;
         border-radius: 0.375rem;
         font-weight: 500;
         text-decoration: none;
@@ -87,7 +87,7 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
       }
       .chat-message-content a:hover {
-        background-color: #4338ca;
+        background-color: #475569;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transform: translateY(-1px);
       }
@@ -102,14 +102,14 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
         margin-bottom: 0;
       }
       .chat-message-content strong {
-        color: #4f46e5;
+        color: #475569;
         font-weight: 600;
         display: block;
         margin-top: 1rem;
         margin-bottom: 0.25rem;
       }
       .chat-message-content h3 {
-        color: #4338ca;
+        color: #475569;
         font-weight: 700;
         font-size: 1.25rem;
         margin-top: 1.5rem;
@@ -119,7 +119,7 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
         padding-bottom: 0.25rem;
       }
       .chat-message-content h3 + p {
-        color: #4b5563;
+        color: #475569;
         line-height: 1.6;
         margin-bottom: 1rem;
       }
@@ -147,7 +147,7 @@ const ChatMessage = ({ message, className = '' }: ChatMessageProps) => {
           ${
             isBot
               ? 'bg-gradient-to-br from-gray-50/90 to-white/70 text-foreground border border-white/40'
-              : 'bg-gradient-to-br from-indigo-500/90 to-purple-600/90 text-white border border-white/20'
+              : 'bg-gradient-to-br from-slate-500/90 to-slate-600/90 text-white border border-white/20'
           }
           ${isBot ? 'rounded-tl-sm' : 'rounded-tr-sm'}
         `}

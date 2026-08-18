@@ -5,13 +5,13 @@ import React from 'react';
 import { AnimatedScrollableList } from '@/components/ui';
 
 const sampleItems = [
-  <div key="1" className="p-4 bg-blue-100 rounded shadow w-full text-center">
+  <div key="1" className="p-4 bg-slate-100 rounded shadow w-full text-center">
     Item 1: Welcome to the animated list!
   </div>,
-  <div key="2" className="p-4 bg-green-100 rounded shadow w-full text-center">
+  <div key="2" className="p-4 bg-slate-100 rounded shadow w-full text-center">
     Item 2: Scroll resets to 1 when in view.
   </div>,
-  <div key="3" className="p-4 bg-yellow-100 rounded shadow w-full text-center">
+  <div key="3" className="p-4 bg-slate-100 rounded shadow w-full text-center">
     Item 3: Try scrolling away and back!
   </div>,
 ];
@@ -26,7 +26,7 @@ export default function TestPage() {
       <div className="w-full max-w-md mb-8">
         <AnimatedScrollableList items={sampleItems} />
       </div>
-      <Link href="/" className="text-blue-600 hover:underline">
+      <Link href="/" className="text-slate-600 hover:underline">
         Back to Home
       </Link>
     </div>

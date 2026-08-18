@@ -36,7 +36,7 @@ export const techStackData: TechStackItem[] = [
     id: 'figma',
     name: 'Figma',
     icon: SiFigma,
-    color: '#F24E1E',
+    color: '#64748b',
     bgColor: 'rgba(242, 78, 30, 0.1)',
     category: 'design',
     proficiency: 95
@@ -45,7 +45,7 @@ export const techStackData: TechStackItem[] = [
     id: 'sketch',
     name: 'Sketch',
     icon: SiSketch,
-    color: '#F7B500',
+    color: '#cbd5e1',
     bgColor: 'rgba(247, 181, 0, 0.1)',
     category: 'design',
     proficiency: 85
@@ -54,7 +54,7 @@ export const techStackData: TechStackItem[] = [
     id: 'adobe',
     name: 'Adobe Creative Suite',
     icon: SiAdobe,
-    color: '#FF0000',
+    color: '#64748b',
     bgColor: 'rgba(255, 0, 0, 0.1)',
     category: 'design',
     proficiency: 90
@@ -63,7 +63,7 @@ export const techStackData: TechStackItem[] = [
     id: 'framer',
     name: 'Framer',
     icon: SiFramer,
-    color: '#0055FF',
+    color: '#64748b',
     bgColor: 'rgba(0, 85, 255, 0.1)',
     category: 'design',
     proficiency: 88
@@ -72,7 +72,7 @@ export const techStackData: TechStackItem[] = [
     id: 'webflow',
     name: 'Webflow',
     icon: SiWebflow,
-    color: '#4353FF',
+    color: '#64748b',
     bgColor: 'rgba(67, 83, 255, 0.1)',
     category: 'design',
     proficiency: 75
@@ -83,7 +83,7 @@ export const techStackData: TechStackItem[] = [
     id: 'react',
     name: 'React',
     icon: SiReact,
-    color: '#61DAFB',
+    color: '#cbd5e1',
     bgColor: 'rgba(97, 218, 251, 0.1)',
     category: 'frontend',
     proficiency: 92
@@ -101,7 +101,7 @@ export const techStackData: TechStackItem[] = [
     id: 'typescript',
     name: 'TypeScript',
     icon: SiTypescript,
-    color: '#3178C6',
+    color: '#64748b',
     bgColor: 'rgba(49, 120, 198, 0.1)',
     category: 'frontend',
     proficiency: 85
@@ -110,7 +110,7 @@ export const techStackData: TechStackItem[] = [
     id: 'javascript',
     name: 'JavaScript',
     icon: SiJavascript,
-    color: '#F7DF1E',
+    color: '#cbd5e1',
     bgColor: 'rgba(247, 223, 30, 0.1)',
     category: 'frontend',
     proficiency: 95
@@ -119,7 +119,7 @@ export const techStackData: TechStackItem[] = [
     id: 'tailwind',
     name: 'Tailwind CSS',
     icon: SiTailwindcss,
-    color: '#06B6D4',
+    color: '#94a3b8',
     bgColor: 'rgba(6, 182, 212, 0.1)',
     category: 'frontend',
     proficiency: 90
@@ -130,7 +130,7 @@ export const techStackData: TechStackItem[] = [
     id: 'nodejs',
     name: 'Node.js',
     icon: SiNodedotjs,
-    color: '#339933',
+    color: '#64748b',
     bgColor: 'rgba(51, 153, 51, 0.1)',
     category: 'backend',
     proficiency: 80
@@ -139,7 +139,7 @@ export const techStackData: TechStackItem[] = [
     id: 'python',
     name: 'Python',
     icon: SiPython,
-    color: '#3776AB',
+    color: '#64748b',
     bgColor: 'rgba(55, 118, 171, 0.1)',
     category: 'backend',
     proficiency: 75
@@ -150,7 +150,7 @@ export const techStackData: TechStackItem[] = [
     id: 'openai',
     name: 'OpenAI/GPT',
     icon: SiOpenai,
-    color: '#412991',
+    color: '#334155',
     bgColor: 'rgba(65, 41, 145, 0.1)',
     category: 'ai',
     proficiency: 90
@@ -159,7 +159,7 @@ export const techStackData: TechStackItem[] = [
     id: 'git',
     name: 'Git',
     icon: SiGit,
-    color: '#F05032',
+    color: '#64748b',
     bgColor: 'rgba(240, 80, 50, 0.1)',
     category: 'tools',
     proficiency: 85
@@ -186,7 +186,7 @@ export const techStackData: TechStackItem[] = [
     id: 'miro',
     name: 'Miro',
     icon: SiMiro,
-    color: '#FFD02F',
+    color: '#cbd5e1',
     bgColor: 'rgba(255, 208, 47, 0.1)',
     category: 'design',
     proficiency: 85
@@ -195,7 +195,7 @@ export const techStackData: TechStackItem[] = [
     id: 'jira',
     name: 'Jira',
     icon: SiJira,
-    color: '#0052CC',
+    color: '#475569',
     bgColor: 'rgba(0, 82, 204, 0.1)',
     category: 'tools',
     proficiency: 80

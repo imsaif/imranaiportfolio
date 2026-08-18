@@ -6,16 +6,16 @@ import { collaborationData } from '@/data/leadership';
 
 const Collaboration = () => {
   const getIcon = (title: string) => {
-    if (title.includes('Engineering')) return <MdCode className="w-8 h-8 text-blue-600" />;
-    if (title.includes('Product')) return <MdAnalytics className="w-8 h-8 text-green-600" />;
-    if (title.includes('Business')) return <MdBusiness className="w-8 h-8 text-purple-600" />;
+    if (title.includes('Engineering')) return <MdCode className="w-8 h-8 text-slate-600" />;
+    if (title.includes('Product')) return <MdAnalytics className="w-8 h-8 text-slate-600" />;
+    if (title.includes('Business')) return <MdBusiness className="w-8 h-8 text-slate-600" />;
     return <MdWorkspaces className="w-8 h-8 text-gray-600" />;
   };
 
   const getGradient = (title: string) => {
-    if (title.includes('Engineering')) return 'from-blue-500 to-blue-600';
-    if (title.includes('Product')) return 'from-green-500 to-green-600';
-    if (title.includes('Business')) return 'from-purple-500 to-purple-600';
+    if (title.includes('Engineering')) return 'from-slate-500 to-slate-600';
+    if (title.includes('Product')) return 'from-slate-500 to-slate-600';
+    if (title.includes('Business')) return 'from-slate-500 to-slate-600';
     return 'from-gray-500 to-gray-600';
   };
 
@@ -59,8 +59,8 @@ const Collaboration = () => {
 
                   {/* Impact Metric */}
                   <div className="mb-6">
-                    <div className="inline-block bg-gradient-to-r from-green-100 to-green-50 px-4 py-2 rounded-lg">
-                      <span className="text-green-700 font-semibold">{partnership.impact}</span>
+                    <div className="inline-block bg-gradient-to-r from-slate-100 to-slate-50 px-4 py-2 rounded-lg">
+                      <span className="text-slate-700 font-semibold">{partnership.impact}</span>
                     </div>
                   </div>
 
@@ -92,15 +92,15 @@ const Collaboration = () => {
           {/* Workshop Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600 mb-2">{collaborationData.workshops.facilitated}</div>
+              <div className="text-4xl font-bold text-slate-600 mb-2">{collaborationData.workshops.facilitated}</div>
               <div className="text-sm text-gray-600 font-medium">Workshops Facilitated</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-purple-600 mb-2">{collaborationData.workshops.participants}+</div>
+              <div className="text-4xl font-bold text-slate-600 mb-2">{collaborationData.workshops.participants}+</div>
               <div className="text-sm text-gray-600 font-medium">Participants Engaged</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-green-600 mb-2">60%</div>
+              <div className="text-4xl font-bold text-slate-600 mb-2">60%</div>
               <div className="text-sm text-gray-600 font-medium">Faster Decisions</div>
             </div>
           </div>

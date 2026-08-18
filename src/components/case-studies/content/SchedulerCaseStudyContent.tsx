@@ -190,8 +190,8 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
     <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
       <defs>
         <linearGradient id="designprocess-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#EC4899" />
-          <stop offset="1" stopColor="#8B5CF6" />
+          <stop stopColor="#64748b" />
+          <stop offset="1" stopColor="#64748b" />
         </linearGradient>
       </defs>
       <path
@@ -210,8 +210,8 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
     <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
       <defs>
         <linearGradient id="lessons-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#A21CAF" />
-          <stop offset="1" stopColor="#EC4899" />
+          <stop stopColor="#475569" />
+          <stop offset="1" stopColor="#64748b" />
         </linearGradient>
       </defs>
       <path
@@ -235,8 +235,8 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
     <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
       <defs>
         <linearGradient id="conclusion-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#A21CAF" />
-          <stop offset="1" stopColor="#EC4899" />
+          <stop stopColor="#475569" />
+          <stop offset="1" stopColor="#64748b" />
         </linearGradient>
       </defs>
       <circle cx="12" cy="12" r="9" stroke="url(#conclusion-gradient)" strokeWidth="2" fill="none" />
@@ -321,8 +321,8 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                           y2="20"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stopColor="#EC4899" />
-                          <stop offset="1" stopColor="#8B5CF6" />
+                          <stop stopColor="#64748b" />
+                          <stop offset="1" stopColor="#64748b" />
                         </linearGradient>
                       </defs>
                       <rect x="4" y="4" width="16" height="16" rx="3" />
@@ -351,8 +351,8 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                           y2="20"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stopColor="#EC4899" />
-                          <stop offset="1" stopColor="#8B5CF6" />
+                          <stop stopColor="#64748b" />
+                          <stop offset="1" stopColor="#64748b" />
                         </linearGradient>
                       </defs>
                       <path d="M7 21V5a2 2 0 012-2h6a2 2 0 012 2v16l-5-3-5 3z" />
@@ -380,8 +380,8 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                           y2="20"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stopColor="#EC4899" />
-                          <stop offset="1" stopColor="#8B5CF6" />
+                          <stop stopColor="#64748b" />
+                          <stop offset="1" stopColor="#64748b" />
                         </linearGradient>
                       </defs>
                       <circle cx="11" cy="11" r="7" />
@@ -410,8 +410,8 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                           y2="20"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stopColor="#EC4899" />
-                          <stop offset="1" stopColor="#8B5CF6" />
+                          <stop stopColor="#64748b" />
+                          <stop offset="1" stopColor="#64748b" />
                         </linearGradient>
                       </defs>
                       <circle cx="9" cy="10" r="4" />
@@ -438,22 +438,22 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                 <ProjectOverviewSection />
               </div>
               {/* Gradient separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               <div ref={challengeRef} id="challenge">
                 <ChallengeSection />
               </div>
               {/* Gradient separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               <div ref={userResearchRef} id="user-research">
                 <UserResearchSection />
               </div>
               {/* Gradient separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               <div ref={userPersonasRef} id="user-personas">
                 <UserPersonasSection />
               </div>
               {/* Gradient separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               {/* Move Design Process section here */}
               <div ref={designProcessRef} id="design-process">
                 {/* Design Process Section Content */}
@@ -490,7 +490,7 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                           />
                           <circle cx="12" cy="10" r="2" fill="#334155" />
                         </svg>
-                        <div className="font-bold text-blue-700 mb-1">Programs</div>
+                        <div className="font-bold text-slate-700 mb-1">Programs</div>
                         <div className="text-gray-600 text-sm text-center">
                           Represents the geographical location (e.g., Nigeria).
                         </div>
@@ -517,7 +517,7 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                           <path d="M2 10l10-6 10 6" stroke="#334155" strokeWidth="2" fill="none" />
                           <rect x="10" y="14" width="4" height="4" stroke="#334155" strokeWidth="1.5" fill="none" />
                         </svg>
-                        <div className="font-bold text-blue-700 mb-1">Schools</div>
+                        <div className="font-bold text-slate-700 mb-1">Schools</div>
                         <div className="text-gray-600 text-sm text-center">Each program contains multiple schools.</div>
                       </motion.div>
                       {/* Additional cards truncated for brevity */}
@@ -538,7 +538,7 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                   </p>
                 </motion.div>
               </div>
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               <div className="mt-16" />
             </div>
           </div>
@@ -555,7 +555,7 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
           <div className="sticky left-0 top-24 h-fit min-w-[300px] w-[300px] max-w-md flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
             <div className="flex items-center mb-8 w-full">
               <CaseStudyHeader level="h2" showGradientLine className="flex items-center gap-3 w-full">
-                <svg className="w-7 h-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-7 h-7 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
                 <span>Teacher Guide Flow</span>
@@ -577,8 +577,8 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                 <p className="text-gray-800 text-lg mb-6 leading-relaxed">
                   Teachers start by viewing their daily schedule and can click on any lesson to instantly access the detailed teaching guide for that subject.
                 </p>
-                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                  <p className="text-blue-800 font-medium">
+                <div className="bg-slate-50 border-l-4 border-slate-500 p-4 rounded-r-lg">
+                  <p className="text-slate-800 font-medium">
                     <span className="font-bold">Interactive Flow:</span> Click any subject in the schedule below to see how the teacher guide appears instantly.
                   </p>
                 </div>
@@ -594,7 +594,7 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                 {currentView === 'guide' && (
                   <div>
                     <p className="text-gray-600 mb-4 text-lg">
-                      Currently viewing: <span className="font-semibold text-blue-600">{selectedSubject} Lesson Guide</span>
+                      Currently viewing: <span className="font-semibold text-slate-600">{selectedSubject} Lesson Guide</span>
                     </p>
                     <div className="flex flex-wrap gap-2 justify-center">
                       <span className="text-sm text-gray-500 mr-2">Try other subjects:</span>
@@ -604,7 +604,7 @@ export const SchedulerCaseStudyContent: React.FC<SchedulerCaseStudyContentProps>
                           onClick={() => setSelectedSubject(subject)}
                           className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
                             selectedSubject === subject
-                              ? 'bg-blue-600 text-white'
+                              ? 'bg-slate-600 text-white'
                               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                           }`}
                         >

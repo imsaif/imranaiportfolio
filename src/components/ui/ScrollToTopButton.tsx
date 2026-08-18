@@ -55,7 +55,7 @@ export default function ScrollToTopButton({ targetId }: ScrollToTopButtonProps) 
           transition={{ duration: 0.3 }}
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 rounded-full shadow-lg hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-transform"
+          className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-slate-500 to-slate-500 text-white p-4 rounded-full shadow-lg hover:scale-110 focus:outline-none focus:ring-2 focus:ring-slate-400 transition-transform"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

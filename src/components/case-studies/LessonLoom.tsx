@@ -42,15 +42,15 @@ export default function LessonLoomContent() {
               <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2 text-indigo-700">Role</h3>
+                  <h3 className="text-lg font-semibold mb-2 text-slate-700">Role</h3>
                   <p>Product Designer</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2 text-indigo-700">Organization</h3>
+                  <h3 className="text-lg font-semibold mb-2 text-slate-700">Organization</h3>
                   <p>NewGlobe</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2 text-indigo-700">Technologies</h3>
+                  <h3 className="text-lg font-semibold mb-2 text-slate-700">Technologies</h3>
                   <p>Vue.js, .NET Core, Python, Azure OpenAI, AWS S3</p>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function LessonLoomContent() {
               </li>
             </motion.ul>
 
-            <div className="bg-indigo-50 p-6 border-l-4 border-indigo-500 my-8 rounded-r-lg shadow-sm">
+            <div className="bg-slate-50 p-6 border-l-4 border-slate-500 my-8 rounded-r-lg shadow-sm">
               <p>
                 Content creators needed a solution that would free them from tedious formatting work while maintaining
                 their pedagogical expertise in the process.

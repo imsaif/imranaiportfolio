@@ -13,7 +13,7 @@ export const IntroductionSection: React.FC<{ children?: ReactNode }> = ({ childr
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay: 0.2 }}
-    className="bg-gradient-to-r from-blue-50 via-white to-purple-50 p-8 mb-16 rounded-xl flex flex-col items-center justify-center text-center border border-blue-200/60 shadow-sm"
+    className="bg-gradient-to-r from-slate-50 via-white to-slate-50 p-8 mb-16 rounded-xl flex flex-col items-center justify-center text-center border border-slate-200/60 shadow-sm"
   >
     {children}
     <p className="text-lg text-gray-700">

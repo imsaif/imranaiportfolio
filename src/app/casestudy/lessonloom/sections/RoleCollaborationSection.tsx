@@ -22,10 +22,10 @@ export function RoleCollaborationSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0 }}
-          className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg p-6 border border-blue-100"
+          className="bg-gradient-to-br from-slate-50 to-slate-50 rounded-lg p-6 border border-slate-100"
         >
           <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-            <MdGroup className="w-5 h-5 text-blue-600" />
+            <MdGroup className="w-5 h-5 text-slate-600" />
             Design Direction
           </h3>
           <p className="text-gray-700 text-sm">
@@ -37,10 +37,10 @@ export function RoleCollaborationSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-6 border border-purple-100"
+          className="bg-gradient-to-br from-slate-50 to-slate-50 rounded-lg p-6 border border-slate-100"
         >
           <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-            <MdGroup className="w-5 h-5 text-purple-600" />
+            <MdGroup className="w-5 h-5 text-slate-600" />
             Technical Partnership
           </h3>
           <p className="text-gray-700 text-sm">
@@ -52,10 +52,10 @@ export function RoleCollaborationSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-6 border border-green-100"
+          className="bg-gradient-to-br from-slate-50 to-slate-50 rounded-lg p-6 border border-slate-100"
         >
           <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-            <MdGroup className="w-5 h-5 text-green-600" />
+            <MdGroup className="w-5 h-5 text-slate-600" />
             Educator Input
           </h3>
           <p className="text-gray-700 text-sm">
@@ -64,7 +64,7 @@ export function RoleCollaborationSection() {
         </motion.div>
       </div>
 
-      <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-8 border border-indigo-100">
+      <div className="bg-gradient-to-r from-slate-50 to-slate-50 rounded-lg p-8 border border-slate-100">
         <h3 className="text-xl font-bold text-gray-900 mb-4">How Senior Design Added Value</h3>
         <p className="text-gray-700 mb-4 leading-relaxed">
           This project required more than execution—it required defining a new design category (AI-assisted education tools). My role was to establish clear principles: transparency about AI involvement, educator agency over automation, quality over speed, and building systems that could scale across multiple languages and curricula.

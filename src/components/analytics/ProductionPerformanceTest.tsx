@@ -210,9 +210,9 @@ const ProductionPerformanceTest = () => {
 
   const getRatingColor = (rating: string) => {
     switch (rating) {
-      case 'good': return 'text-green-600';
-      case 'needs-improvement': return 'text-yellow-600';
-      case 'poor': return 'text-red-600';
+      case 'good': return 'text-slate-600';
+      case 'needs-improvement': return 'text-slate-600';
+      case 'poor': return 'text-slate-600';
       default: return 'text-gray-500';
     }
   };

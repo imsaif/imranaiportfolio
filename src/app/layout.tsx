@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Imran Mohammed' }],
   viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#162036',
+  themeColor: '#0f172a',
 };
 
 export default function RootLayout({

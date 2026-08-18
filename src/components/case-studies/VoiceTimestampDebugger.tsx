@@ -199,7 +199,7 @@ ${customSections
       <div className="fixed bottom-4 right-4 z-50">
         <button
           onClick={() => setIsVisible(true)}
-          className="bg-purple-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-purple-700 transition-colors"
+          className="bg-slate-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-slate-700 transition-colors"
         >
           🎵 Debug Timestamps
         </button>
@@ -225,7 +225,7 @@ ${customSections
         <div className="flex items-center gap-2 mb-2">
           <button
             onClick={handlePlay}
-            className={`px-4 py-2 rounded-lg ${isPlaying ? 'bg-red-500 text-white' : 'bg-green-500 text-white'}`}
+            className={`px-4 py-2 rounded-lg ${isPlaying ? 'bg-slate-500 text-white' : 'bg-slate-500 text-white'}`}
           >
             {isPlaying ? '⏸️ Pause' : '▶️ Play'}
           </button>
@@ -237,7 +237,7 @@ ${customSections
         {/* Progress Bar */}
         <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
           <div
-            className="bg-blue-500 h-2 rounded-full transition-all duration-100"
+            className="bg-slate-500 h-2 rounded-full transition-all duration-100"
             style={{ width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%` }}
           />
         </div>
@@ -260,7 +260,7 @@ ${customSections
               <div
                 key={sectionKey}
                 className={`p-2 rounded text-xs cursor-pointer transition-colors ${
-                  isActive ? 'bg-blue-100 border border-blue-300' : 'bg-gray-50 hover:bg-gray-100'
+                  isActive ? 'bg-slate-100 border border-slate-300' : 'bg-gray-50 hover:bg-gray-100'
                 }`}
                 onClick={() => seekToSection(sectionKey)}
               >
@@ -268,7 +268,7 @@ ${customSections
                 <div className="text-gray-600">
                   {timestamp ? `${formatTime(timestamp.start)} - ${formatTime(timestamp.end)}` : 'No timestamp'}
                   <span className="ml-2">({timestamp?.characters || 0} chars)</span>
-                  <span className="ml-2 text-purple-600">→ {timestamp?.elementId || 'unknown'}</span>
+                  <span className="ml-2 text-slate-600">→ {timestamp?.elementId || 'unknown'}</span>
                 </div>
               </div>
             );
@@ -282,7 +282,7 @@ ${customSections
           <h4 className="font-semibold mb-2">Custom Sections (Based on Actual Audio):</h4>
           <div className="space-y-1 max-h-32 overflow-y-auto">
             {customSections.map(section => (
-              <div key={section.key} className="p-2 rounded text-xs bg-green-50 border border-green-200">
+              <div key={section.key} className="p-2 rounded text-xs bg-slate-50 border border-slate-200">
                 <div className="font-medium">{section.name}</div>
                 <div className="text-gray-600">
                   {formatTime(section.start)} - {formatTime(section.end)}
@@ -297,28 +297,28 @@ ${customSections
       <div className="space-y-2">
         <button
           onClick={testAudioFile}
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+          className="w-full bg-slate-600 text-white py-2 rounded-lg hover:bg-slate-700 transition-colors text-sm"
         >
           🔍 Test Audio File
         </button>
 
         <button
           onClick={copyTimestamps}
-          className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
+          className="w-full bg-slate-600 text-white py-2 rounded-lg hover:bg-slate-700 transition-colors text-sm"
         >
           📋 Copy Timestamps Code
         </button>
 
         <button
           onClick={addCustomSection}
-          className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm"
+          className="w-full bg-slate-600 text-white py-2 rounded-lg hover:bg-slate-700 transition-colors text-sm"
         >
           ➕ Add Custom Section
         </button>
 
         <button
           onClick={exportCustomSections}
-          className="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
+          className="w-full bg-slate-600 text-white py-2 rounded-lg hover:bg-slate-700 transition-colors text-sm"
         >
           📋 Export Custom Sections
         </button>

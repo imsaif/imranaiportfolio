@@ -31,7 +31,7 @@ export default function CaseStudyFooter() {
         </div>
 
         <div className="flex flex-wrap gap-4">
-          <div className="inline-flex rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 p-[1.5px] hover:from-purple-700 hover:via-pink-600 hover:to-blue-700 transition-all duration-300">
+          <div className="inline-flex rounded-xl bg-gradient-to-r from-slate-600 via-slate-500 to-slate-600 p-[1.5px] hover:from-slate-700 hover:via-slate-600 hover:to-slate-700 transition-all duration-300">
             <Link
               href="/"
               className="px-6 py-3 bg-white text-gray-700 rounded-xl flex items-center transition-all duration-200 group hover:bg-gray-50"
@@ -41,7 +41,7 @@ export default function CaseStudyFooter() {
             </Link>
           </div>
 
-          <div className="inline-flex rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 p-[1.5px] hover:from-purple-700 hover:via-pink-600 hover:to-blue-700 transition-all duration-300">
+          <div className="inline-flex rounded-xl bg-gradient-to-r from-slate-600 via-slate-500 to-slate-600 p-[1.5px] hover:from-slate-700 hover:via-slate-600 hover:to-slate-700 transition-all duration-300">
             <Link
               href={otherCaseStudyLink}
               className="px-6 py-3 bg-white text-gray-700 rounded-xl flex items-center transition-all duration-200 hover:bg-gray-50"

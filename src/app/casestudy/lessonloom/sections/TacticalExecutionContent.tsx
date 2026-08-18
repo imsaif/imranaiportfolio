@@ -258,7 +258,7 @@ export function TacticalExecutionContent() {
         {/* Introduction Section */}
         <motion.div
           id="intro-section"
-          className="mb-16 border-l-4 border-blue-500 pl-6 py-4 bg-white rounded-lg shadow-sm"
+          className="mb-16 border-l-4 border-slate-500 pl-6 py-4 bg-white rounded-lg shadow-sm"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -278,7 +278,7 @@ export function TacticalExecutionContent() {
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
             style={{
-              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
+              background: 'linear-gradient(to right, #64748b, #64748b)',
             }}
             initial={{ width: 0 }}
             animate={{ width: '6rem' }}
@@ -293,8 +293,8 @@ export function TacticalExecutionContent() {
 
             <div className="space-y-6 mb-8">
               <div className="flex items-start">
-                <div className="h-5 w-5 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4 mt-1 flex-shrink-0">
-                  <div className="h-2.5 w-2.5 rounded-full bg-purple-600"></div>
+                <div className="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold mr-4 mt-1 flex-shrink-0">
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-600"></div>
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">Curriculum Alignment</h3>
@@ -306,8 +306,8 @@ export function TacticalExecutionContent() {
               </div>
 
               <div className="flex items-start">
-                <div className="h-5 w-5 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4 mt-1 flex-shrink-0">
-                  <div className="h-2.5 w-2.5 rounded-full bg-purple-600"></div>
+                <div className="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold mr-4 mt-1 flex-shrink-0">
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-600"></div>
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">Content Diversity</h3>
@@ -319,8 +319,8 @@ export function TacticalExecutionContent() {
               </div>
 
               <div className="flex items-start">
-                <div className="h-5 w-5 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4 mt-1 flex-shrink-0">
-                  <div className="h-2.5 w-2.5 rounded-full bg-purple-600"></div>
+                <div className="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 font-bold mr-4 mt-1 flex-shrink-0">
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-600"></div>
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">Age-Appropriate Content</h3>
@@ -332,8 +332,8 @@ export function TacticalExecutionContent() {
               </div>
 
               <div className="flex items-start">
-                <div className="h-5 w-5 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                  <div className="h-2.5 w-2.5 rounded-full bg-purple-600"></div>
+                <div className="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-600"></div>
                 </div>
                 <div>
                   <span className="font-semibold text-gray-800">Localization bottlenecks:</span>
@@ -345,7 +345,7 @@ export function TacticalExecutionContent() {
               </div>
             </div>
 
-            <div className="border-l-4 border-blue-500 pl-6 py-4">
+            <div className="border-l-4 border-slate-500 pl-6 py-4">
               <p className="text-gray-800">
                 Content creators needed a solution that would free them from tedious formatting work while maintaining
                 their pedagogical expertise in the process.
@@ -361,7 +361,7 @@ export function TacticalExecutionContent() {
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
             style={{
-              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
+              background: 'linear-gradient(to right, #64748b, #64748b)',
             }}
             initial={{ width: 0 }}
             animate={{ width: '6rem' }}
@@ -377,66 +377,66 @@ export function TacticalExecutionContent() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* User Interviews Column */}
-              <div className="bg-purple-50 p-6 rounded-xl">
+              <div className="bg-slate-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
                   <span className="text-xl font-bold text-gray-800 mr-2">1</span>
                   <span className="text-xl font-semibold text-gray-800">User Interviews</span>
                 </h4>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                    <div className="text-slate-600 mr-2 mt-1.5">•</div>
                     <p className="text-gray-800">Shadowed 8 instructional designers</p>
                   </li>
                   <li className="flex items-start">
-                    <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                    <div className="text-slate-600 mr-2 mt-1.5">•</div>
                     <p className="text-gray-800">Conducted interviews with 12 curriculum specialists</p>
                   </li>
                   <li className="flex items-start">
-                    <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                    <div className="text-slate-600 mr-2 mt-1.5">•</div>
                     <p className="text-gray-800">Ran collaborative workshops with translation teams</p>
                   </li>
                 </ul>
               </div>
 
               {/* Content Analysis Column */}
-              <div className="bg-blue-50 p-6 rounded-xl">
+              <div className="bg-slate-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
                   <span className="text-xl font-bold text-gray-800 mr-2">2</span>
                   <span className="text-xl font-semibold text-gray-800">Content Analysis</span>
                 </h4>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                    <div className="text-slate-600 mr-2 mt-1.5">•</div>
                     <p className="text-gray-800">Analyzed 150+ teacher guides</p>
                   </li>
                   <li className="flex items-start">
-                    <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                    <div className="text-slate-600 mr-2 mt-1.5">•</div>
                     <p className="text-gray-800">Mapped recurring patterns</p>
                   </li>
                   <li className="flex items-start">
-                    <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                    <div className="text-slate-600 mr-2 mt-1.5">•</div>
                     <p className="text-gray-800">Created information architecture diagrams</p>
                   </li>
                 </ul>
               </div>
 
               {/* Pain Point Analysis Column */}
-              <div className="bg-pink-50 p-6 rounded-xl">
+              <div className="bg-slate-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
                   <span className="text-xl font-bold text-gray-800 mr-2">3</span>
                   <span className="text-xl font-semibold text-gray-800">Pain Point Analysis</span>
                 </h4>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <div className="text-pink-600 mr-2 mt-1.5">•</div>
+                    <div className="text-slate-600 mr-2 mt-1.5">•</div>
                     <p className="text-gray-800">Created journey maps</p>
                   </li>
                   <li className="flex items-start">
-                    <div className="text-pink-600 mr-2 mt-1.5">•</div>
+                    <div className="text-slate-600 mr-2 mt-1.5">•</div>
                     <p className="text-gray-800">Quantified time spent on tasks</p>
                   </li>
                   <li className="flex items-start">
-                    <div className="text-pink-600 mr-2 mt-1.5">•</div>
+                    <div className="text-slate-600 mr-2 mt-1.5">•</div>
                     <p className="text-gray-800">Developed empathy maps</p>
                   </li>
                 </ul>
@@ -454,13 +454,13 @@ export function TacticalExecutionContent() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
               {/* Pedagogical Focus */}
-              <div className="bg-purple-50 p-6 rounded-xl">
+              <div className="bg-slate-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
                   <span className="text-xl font-bold text-gray-800 mr-2">1</span>
                   <span className="text-xl font-semibold text-gray-800">Pedagogical Focus</span>
                 </h4>
                 <p className="text-gray-800 mb-2">
-                  Creators valued pedagogical decisions, not <span className="text-amber-700">formatting</span>
+                  Creators valued pedagogical decisions, not <span className="text-slate-700">formatting</span>
                 </p>
                 <div className="bg-white p-3 rounded-lg italic text-gray-700 text-sm">
                   "I spend 70% of my time making things look right rather than thinking about how students will learn."
@@ -468,7 +468,7 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Mental Templates */}
-              <div className="bg-blue-50 p-6 rounded-xl">
+              <div className="bg-slate-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
                   <span className="text-xl font-bold text-gray-800 mr-2">2</span>
                   <span className="text-xl font-semibold text-gray-800">Mental Templates</span>
@@ -480,7 +480,7 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Subject Variations */}
-              <div className="bg-pink-50 p-6 rounded-xl">
+              <div className="bg-slate-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
                   <span className="text-xl font-bold text-gray-800 mr-2">3</span>
                   <span className="text-xl font-semibold text-gray-800">Subject Variations</span>
@@ -494,7 +494,7 @@ export function TacticalExecutionContent() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Visual Clarity */}
-              <div className="bg-purple-50 p-6 rounded-xl">
+              <div className="bg-slate-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
                   <span className="text-xl font-bold text-gray-800 mr-2">4</span>
                   <span className="text-xl font-semibold text-gray-800">Visual Clarity</span>
@@ -506,7 +506,7 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Trust in Automation */}
-              <div className="bg-blue-50 p-6 rounded-xl">
+              <div className="bg-slate-50 p-6 rounded-xl">
                 <h4 className="flex items-center mb-4">
                   <span className="text-xl font-bold text-gray-800 mr-2">5</span>
                   <span className="text-xl font-semibold text-gray-800">Trust in Automation</span>
@@ -529,7 +529,7 @@ export function TacticalExecutionContent() {
               for curriculum specialists.
             </p>
 
-            <div className="bg-blue-50 p-8 rounded-xl">
+            <div className="bg-slate-50 p-8 rounded-xl">
               <h4 className="text-xl font-bold text-gray-800 mb-4">Design Exploration Methodology</h4>
 
               <p className="text-gray-800 mb-6">
@@ -538,7 +538,7 @@ export function TacticalExecutionContent() {
 
               <div className="space-y-5">
                 <div className="flex items-start">
-                  <div className="text-indigo-600 mr-2">
+                  <div className="text-slate-600 mr-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path
                         fillRule="evenodd"
@@ -558,7 +558,7 @@ export function TacticalExecutionContent() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="text-indigo-600 mr-2">
+                  <div className="text-slate-600 mr-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path
                         fillRule="evenodd"
@@ -577,7 +577,7 @@ export function TacticalExecutionContent() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="text-indigo-600 mr-2">
+                  <div className="text-slate-600 mr-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path
                         fillRule="evenodd"
@@ -597,7 +597,7 @@ export function TacticalExecutionContent() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="text-indigo-600 mr-2">
+                  <div className="text-slate-600 mr-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path
                         fillRule="evenodd"
@@ -628,63 +628,63 @@ export function TacticalExecutionContent() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-purple-50 p-6 rounded-xl">
-                  <h5 className="font-bold text-purple-800 mb-4">Key Characteristics</h5>
+                <div className="bg-slate-50 p-6 rounded-xl">
+                  <h5 className="font-bold text-slate-800 mb-4">Key Characteristics</h5>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Templates designed by instructional designers with embedded automation tags
                       </p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Content parameters provided separately and mapped to template placeholders
                       </p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Strong emphasis on consistent output format across all generated materials
                       </p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Validation of inputs against template requirements</p>
                     </li>
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 p-6 rounded-xl">
-                  <h5 className="font-bold text-blue-800 mb-4">Strategic Rationale</h5>
+                <div className="bg-slate-50 p-6 rounded-xl">
+                  <h5 className="font-bold text-slate-800 mb-4">Strategic Rationale</h5>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Ensures pedagogical best practices are encoded in templates</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Provides predictable output structure for review and quality control
                       </p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Allows content specialists to focus on subject matter rather than formatting
                       </p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Creates organization-wide consistency in teaching materials</p>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <div className="bg-amber-50 p-6 rounded-xl mt-6">
-                <h5 className="font-bold text-amber-800 mb-4">Design Consideration</h5>
+              <div className="bg-slate-50 p-6 rounded-xl mt-6">
+                <h5 className="font-bold text-slate-800 mb-4">Design Consideration</h5>
                 <p className="text-gray-800">
                   User testing revealed template creation was challenging for many curriculum specialists. This approach
                   would require specialized training or dedicated template designers.
@@ -697,9 +697,9 @@ export function TacticalExecutionContent() {
                 <div className="bg-gray-50 p-4 border-b border-gray-200 flex justify-between items-center">
                   <div className="flex items-center">
                     <div className="flex space-x-1 mr-3">
-                      <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                      <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                      <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-slate-500"></div>
                     </div>
                     <h5 className="font-semibold text-gray-800">Concept 1: Template-Driven Generation</h5>
                   </div>
@@ -781,47 +781,47 @@ export function TacticalExecutionContent() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-purple-50 p-6 rounded-xl">
-                  <h5 className="font-bold text-purple-800 mb-4">Key Characteristics</h5>
+                <div className="bg-slate-50 p-6 rounded-xl">
+                  <h5 className="font-bold text-slate-800 mb-4">Key Characteristics</h5>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Content parameters organized in spreadsheets with standard columns
                       </p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Format selection happens after content planning</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Content can be filtered, sorted, and batch processed</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Uses familiar spreadsheet interface for planning</p>
                     </li>
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 p-6 rounded-xl">
-                  <h5 className="font-bold text-blue-800 mb-4">Strategic Rationale</h5>
+                <div className="bg-slate-50 p-6 rounded-xl">
+                  <h5 className="font-bold text-slate-800 mb-4">Strategic Rationale</h5>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Aligns with how curriculum specialists naturally organize content</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Emphasizes pedagogical content over presentation format</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Easier for teams to collaborate on content creation</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Simplifies the process of creating multiple variations of similar lessons
                       </p>
@@ -830,8 +830,8 @@ export function TacticalExecutionContent() {
                 </div>
               </div>
 
-              <div className="bg-amber-50 p-6 rounded-xl mt-6">
-                <h5 className="font-bold text-amber-800 mb-4">User Insight</h5>
+              <div className="bg-slate-50 p-6 rounded-xl mt-6">
+                <h5 className="font-bold text-slate-800 mb-4">User Insight</h5>
                 <p className="text-gray-800">
                   During testing, curriculum specialists responded positively to the spreadsheet approach, noting that
                   it mirrored their existing content planning workflows. However, some expressed concern about the lack
@@ -845,9 +845,9 @@ export function TacticalExecutionContent() {
                 <div className="bg-gray-50 p-4 border-b border-gray-200 flex justify-between items-center">
                   <div className="flex items-center">
                     <div className="flex space-x-1 mr-3">
-                      <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                      <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                      <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-slate-500"></div>
                     </div>
                     <h5 className="font-semibold text-gray-800">Concept 2: Content-First Approach</h5>
                   </div>
@@ -884,9 +884,9 @@ export function TacticalExecutionContent() {
                     <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
                       {/* Tab buttons */}
                       <div className="flex mb-4">
-                        <div className="bg-blue-100 px-3 py-1 rounded-md text-blue-700 mr-2 text-sm">Subject</div>
-                        <div className="bg-green-100 px-3 py-1 rounded-md text-green-700 mr-2 text-sm">Grade</div>
-                        <div className="bg-purple-100 px-3 py-1 rounded-md text-purple-700 text-sm">Topic</div>
+                        <div className="bg-slate-100 px-3 py-1 rounded-md text-slate-700 mr-2 text-sm">Subject</div>
+                        <div className="bg-slate-100 px-3 py-1 rounded-md text-slate-700 mr-2 text-sm">Grade</div>
+                        <div className="bg-slate-100 px-3 py-1 rounded-md text-slate-700 text-sm">Topic</div>
                       </div>
 
                       {/* Content parameters */}
@@ -914,7 +914,7 @@ export function TacticalExecutionContent() {
                         <div className="flex items-center">
                           <input
                             type="checkbox"
-                            className="h-4 w-4 text-blue-600 border-gray-300 rounded"
+                            className="h-4 w-4 text-slate-600 border-gray-300 rounded"
                             checked
                             readOnly
                           />
@@ -938,49 +938,49 @@ export function TacticalExecutionContent() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-purple-50 p-6 rounded-xl">
-                  <h5 className="font-bold text-purple-800 mb-4">Key Characteristics</h5>
+                <div className="bg-slate-50 p-6 rounded-xl">
+                  <h5 className="font-bold text-slate-800 mb-4">Key Characteristics</h5>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Separate but interconnected content and template systems</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Intelligent matching between content parameters and suitable templates
                       </p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Live preview capability during content planning</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-purple-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Multi-stage workflow with validation at each step</p>
                     </li>
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 p-6 rounded-xl">
-                  <h5 className="font-bold text-blue-800 mb-4">Strategic Rationale</h5>
+                <div className="bg-slate-50 p-6 rounded-xl">
+                  <h5 className="font-bold text-slate-800 mb-4">Strategic Rationale</h5>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Splits responsibilities between template designers and content creators
                       </p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Balances standardization needs with content flexibility</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">Provides visibility into the generation process</p>
                     </li>
                     <li className="flex items-start">
-                      <div className="text-blue-600 mr-2 mt-1.5">•</div>
+                      <div className="text-slate-600 mr-2 mt-1.5">•</div>
                       <p className="text-gray-800">
                         Creates clear separation of concerns while maintaining integration
                       </p>
@@ -989,8 +989,8 @@ export function TacticalExecutionContent() {
                 </div>
               </div>
 
-              <div className="bg-green-50 p-6 rounded-xl mt-6 border-l-4 border-green-500 shadow-md">
-                <h5 className="font-bold text-green-800 mb-4 flex items-center">
+              <div className="bg-slate-50 p-6 rounded-xl mt-6 border-l-4 border-slate-500 shadow-md">
+                <h5 className="font-bold text-slate-800 mb-4 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 mr-2"
@@ -1015,16 +1015,16 @@ export function TacticalExecutionContent() {
               {/* Hybrid Approach Visualization */}
               <div className="mt-8 border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl">
                 {/* Header with concept label */}
-                <div className="bg-purple-50 p-4 border-b border-gray-200 flex justify-between items-center">
+                <div className="bg-slate-50 p-4 border-b border-gray-200 flex justify-between items-center">
                   <div className="flex items-center">
                     <div className="flex space-x-1 mr-3">
-                      <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                      <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                      <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                      <div className="h-3 w-3 rounded-full bg-slate-500"></div>
                     </div>
                     <h5 className="font-semibold text-gray-800">Concept 3: Hybrid Approach</h5>
                   </div>
-                  <span className="text-sm text-white bg-purple-600 px-3 py-1 rounded-full flex items-center">
+                  <span className="text-sm text-white bg-slate-600 px-3 py-1 rounded-full flex items-center">
                     Selected Approach
                     <svg
                       className="w-4 h-4 ml-1"
@@ -1081,15 +1081,15 @@ export function TacticalExecutionContent() {
                       <div className="mb-6 border border-gray-200 rounded-lg p-3">
                         <div className="flex justify-between items-center mb-2">
                           <h6 className="font-medium text-gray-700">Matching System</h6>
-                          <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Active</span>
+                          <span className="bg-slate-100 text-slate-800 text-xs px-2 py-1 rounded">Active</span>
                         </div>
                         <div className="space-y-2">
                           <div className="flex items-center">
-                            <div className="h-3 w-3 rounded-full bg-purple-500 mr-2"></div>
+                            <div className="h-3 w-3 rounded-full bg-slate-500 mr-2"></div>
                             <span className="text-sm text-gray-700">Content ID: L001</span>
                           </div>
                           <div className="flex items-center">
-                            <div className="h-3 w-3 rounded-full bg-blue-500 mr-2"></div>
+                            <div className="h-3 w-3 rounded-full bg-slate-500 mr-2"></div>
                             <span className="text-sm text-gray-700">Template: Math-Basic</span>
                           </div>
                         </div>
@@ -1118,7 +1118,7 @@ export function TacticalExecutionContent() {
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
             style={{
-              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
+              background: 'linear-gradient(to right, #64748b, #64748b)',
             }}
             initial={{ width: 0 }}
             animate={{ width: '6rem' }}
@@ -1132,20 +1132,20 @@ export function TacticalExecutionContent() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               {/* Content Spreadsheet */}
-              <div className="bg-blue-50 p-6 rounded-xl">
-                <h4 className="font-bold text-blue-800 mb-4 text-xl">Content Spreadsheet</h4>
+              <div className="bg-slate-50 p-6 rounded-xl">
+                <h4 className="font-bold text-slate-800 mb-4 text-xl">Content Spreadsheet</h4>
                 <p className="text-gray-700">Centralized data structure where users define lesson parameters</p>
               </div>
 
               {/* Template Library */}
-              <div className="bg-purple-50 p-6 rounded-xl">
-                <h4 className="font-bold text-purple-800 mb-4 text-xl">Template Library</h4>
+              <div className="bg-slate-50 p-6 rounded-xl">
+                <h4 className="font-bold text-slate-800 mb-4 text-xl">Template Library</h4>
                 <p className="text-gray-700">Repository of lesson formats with specialized syntax for automation</p>
               </div>
 
               {/* Generation Interface */}
-              <div className="bg-pink-50 p-6 rounded-xl">
-                <h4 className="font-bold text-pink-800 mb-4 text-xl">Generation Interface</h4>
+              <div className="bg-slate-50 p-6 rounded-xl">
+                <h4 className="font-bold text-slate-800 mb-4 text-xl">Generation Interface</h4>
                 <p className="text-gray-700">Process management and review interface</p>
               </div>
             </div>
@@ -1165,10 +1165,10 @@ export function TacticalExecutionContent() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
                 {/* Content Spreadsheet */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-purple-100 p-5 rounded-lg mb-6">
+                  <div className="bg-slate-100 p-5 rounded-lg mb-6">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-12 w-12 text-purple-600"
+                      className="h-12 w-12 text-slate-600"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -1185,10 +1185,10 @@ export function TacticalExecutionContent() {
 
                 {/* Template Library */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-blue-100 p-5 rounded-lg mb-6">
+                  <div className="bg-slate-100 p-5 rounded-lg mb-6">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-12 w-12 text-blue-600"
+                      className="h-12 w-12 text-slate-600"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -1201,10 +1201,10 @@ export function TacticalExecutionContent() {
 
                 {/* Generation Interface */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-pink-100 p-5 rounded-lg mb-6">
+                  <div className="bg-slate-100 p-5 rounded-lg mb-6">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-12 w-12 text-pink-600"
+                      className="h-12 w-12 text-slate-600"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -1239,12 +1239,12 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Generated Lesson Box */}
-              <div className="bg-green-50 p-8 rounded-xl max-w-2xl mx-auto mb-12">
+              <div className="bg-slate-50 p-8 rounded-xl max-w-2xl mx-auto mb-12">
                 <div className="flex justify-center mb-6">
-                  <div className="bg-green-100 p-4 rounded-lg">
+                  <div className="bg-slate-100 p-4 rounded-lg">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-12 w-12 text-green-600"
+                      className="h-12 w-12 text-slate-600"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -1258,19 +1258,19 @@ export function TacticalExecutionContent() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center">
-                    <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                    <div className="h-3 w-3 rounded-full bg-slate-500 mr-2"></div>
                     <span className="text-gray-700">Content data merged</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="h-3 w-3 rounded-full bg-blue-500 mr-2"></div>
+                    <div className="h-3 w-3 rounded-full bg-slate-500 mr-2"></div>
                     <span className="text-gray-700">Format applied</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="h-3 w-3 rounded-full bg-pink-500 mr-2"></div>
+                    <div className="h-3 w-3 rounded-full bg-slate-500 mr-2"></div>
                     <span className="text-gray-700">User reviewed</span>
                   </div>
                   <div className="flex items-center">
-                    <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                    <div className="h-3 w-3 rounded-full bg-slate-500 mr-2"></div>
                     <span className="text-gray-700">Ready for use</span>
                   </div>
                 </div>
@@ -1293,9 +1293,9 @@ export function TacticalExecutionContent() {
               {/* Spreadsheet Header */}
               <div className="bg-gray-50 p-3 border-b border-gray-200 flex items-center">
                 <div className="flex space-x-2 mr-3">
-                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-slate-500"></div>
                 </div>
                 <span className="text-gray-700 font-medium">Content Spreadsheet</span>
               </div>
@@ -1375,9 +1375,9 @@ export function TacticalExecutionContent() {
               {/* Template Library Header */}
               <div className="bg-gray-50 p-3 border-b border-gray-200 flex items-center">
                 <div className="flex space-x-2 mr-3">
-                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-slate-500"></div>
                 </div>
                 <span className="text-gray-700 font-medium">Template Library</span>
               </div>
@@ -1388,10 +1388,10 @@ export function TacticalExecutionContent() {
                   {/* Math Lesson Template */}
                   <div className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow">
                     <div className="flex justify-center mb-3">
-                      <div className="h-10 w-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <div className="h-10 w-10 bg-slate-100 rounded-lg flex items-center justify-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 text-purple-600"
+                          className="h-6 w-6 text-slate-600"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -1412,10 +1412,10 @@ export function TacticalExecutionContent() {
                   {/* Reading Template */}
                   <div className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow">
                     <div className="flex justify-center mb-3">
-                      <div className="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <div className="h-10 w-10 bg-slate-100 rounded-lg flex items-center justify-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 text-blue-600"
+                          className="h-6 w-6 text-slate-600"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -1436,10 +1436,10 @@ export function TacticalExecutionContent() {
                   {/* Science Template */}
                   <div className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow">
                     <div className="flex justify-center mb-3">
-                      <div className="h-10 w-10 bg-pink-100 rounded-lg flex items-center justify-center">
+                      <div className="h-10 w-10 bg-slate-100 rounded-lg flex items-center justify-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 text-pink-600"
+                          className="h-6 w-6 text-slate-600"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -1460,10 +1460,10 @@ export function TacticalExecutionContent() {
                   {/* English Template */}
                   <div className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow">
                     <div className="flex justify-center mb-3">
-                      <div className="h-10 w-10 bg-green-100 rounded-lg flex items-center justify-center">
+                      <div className="h-10 w-10 bg-slate-100 rounded-lg flex items-center justify-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 text-green-600"
+                          className="h-6 w-6 text-slate-600"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -1498,9 +1498,9 @@ export function TacticalExecutionContent() {
               {/* Generation Interface Header */}
               <div className="bg-gray-50 p-3 border-b border-gray-200 flex items-center">
                 <div className="flex space-x-2 mr-3">
-                  <div className="h-3 w-3 rounded-full bg-red-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
-                  <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+                  <div className="h-3 w-3 rounded-full bg-slate-500"></div>
                 </div>
                 <span className="text-gray-700 font-medium">Generation Interface</span>
               </div>
@@ -1513,21 +1513,21 @@ export function TacticalExecutionContent() {
                     <h4 className="font-bold text-gray-800 mb-4">Generation Queue</h4>
 
                     {/* Completed Lesson */}
-                    <div className="bg-green-50 p-4 rounded-lg mb-3 flex items-center justify-between">
+                    <div className="bg-slate-50 p-4 rounded-lg mb-3 flex items-center justify-between">
                       <div className="flex items-center">
-                        <div className="h-3 w-3 bg-green-500 rounded-full mr-3"></div>
+                        <div className="h-3 w-3 bg-slate-500 rounded-full mr-3"></div>
                         <span className="text-gray-800">L001 - Grade 3 Math: Fractions</span>
                       </div>
-                      <span className="text-green-600 text-sm font-medium">Completed</span>
+                      <span className="text-slate-600 text-sm font-medium">Completed</span>
                     </div>
 
                     {/* In Progress Lesson */}
-                    <div className="bg-blue-50 p-4 rounded-lg mb-3 flex items-center justify-between">
+                    <div className="bg-slate-50 p-4 rounded-lg mb-3 flex items-center justify-between">
                       <div className="flex items-center">
-                        <div className="h-3 w-3 bg-blue-500 rounded-full mr-3"></div>
+                        <div className="h-3 w-3 bg-slate-500 rounded-full mr-3"></div>
                         <span className="text-gray-800">L002 - Grade 3 Math: Addition</span>
                       </div>
-                      <span className="text-blue-600 text-sm font-medium">In Progress</span>
+                      <span className="text-slate-600 text-sm font-medium">In Progress</span>
                     </div>
 
                     {/* Queued Lesson */}
@@ -1551,24 +1551,24 @@ export function TacticalExecutionContent() {
                         <span className="text-gray-800">33%</span>
                       </div>
                       <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div className="h-full bg-purple-500 rounded-full" style={{ width: '33%' }}></div>
+                        <div className="h-full bg-slate-500 rounded-full" style={{ width: '33%' }}></div>
                       </div>
                     </div>
 
                     {/* Stats Cards */}
                     <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="bg-purple-50 p-4 rounded-lg flex flex-col items-center">
-                        <span className="text-purple-700 font-bold text-xl">1/3</span>
+                      <div className="bg-slate-50 p-4 rounded-lg flex flex-col items-center">
+                        <span className="text-slate-700 font-bold text-xl">1/3</span>
                         <span className="text-gray-600 text-sm">Completed</span>
                       </div>
-                      <div className="bg-blue-50 p-4 rounded-lg flex flex-col items-center">
-                        <span className="text-blue-700 font-bold text-xl">~15m</span>
+                      <div className="bg-slate-50 p-4 rounded-lg flex flex-col items-center">
+                        <span className="text-slate-700 font-bold text-xl">~15m</span>
                         <span className="text-gray-600 text-sm">Est. Time</span>
                       </div>
                     </div>
 
                     {/* Download Button */}
-                    <button className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-purple-700 transition-colors">
+                    <button className="w-full bg-slate-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-slate-700 transition-colors">
                       Download Complete
                     </button>
                   </div>
@@ -1595,13 +1595,13 @@ export function TacticalExecutionContent() {
               </p>
 
               {/* Try it yourself info box */}
-              <div className="bg-indigo-50 p-6 rounded-xl mb-8">
+              <div className="bg-slate-50 p-6 rounded-xl mb-8">
                 <div className="flex items-start">
-                  <div className="bg-indigo-100 h-8 w-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <span className="text-indigo-600 font-bold">?</span>
+                  <div className="bg-slate-100 h-8 w-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <span className="text-slate-600 font-bold">?</span>
                   </div>
                   <div>
-                    <h5 className="font-semibold text-indigo-700 mb-2">Understanding the workflow</h5>
+                    <h5 className="font-semibold text-slate-700 mb-2">Understanding the workflow</h5>
                     <p className="text-gray-700">
                       This interactive visualization shows the six key steps of the lesson generation process. Click on any step to see what happens at each stage of the workflow.
                     </p>
@@ -1626,7 +1626,7 @@ export function TacticalExecutionContent() {
 
                     {/* Active step line - only shows to the left of active step */}
                     <div
-                      className="absolute top-1/2 left-0 h-[1px] bg-indigo-600 -z-10 transition-all duration-300"
+                      className="absolute top-1/2 left-0 h-[1px] bg-slate-600 -z-10 transition-all duration-300"
                       style={{
                         width: `${Math.max(0, (currentStep - 1) * 20)}%`,
                       }}
@@ -1636,24 +1636,24 @@ export function TacticalExecutionContent() {
                     {/* Step 1 */}
                     <div className="flex flex-col items-center z-10">
                       <div
-                        className="h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors bg-indigo-600 text-white"
+                        className="h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors bg-slate-600 text-white"
                         onClick={() => setCurrentStep(1)}
                       >
                         1
                       </div>
-                      <span className="text-indigo-600 text-sm font-medium text-center">Upload template library</span>
+                      <span className="text-slate-600 text-sm font-medium text-center">Upload template library</span>
                     </div>
 
                     {/* Step 2 */}
                     <div className="flex flex-col items-center z-10">
                       <div
-                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 2 ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-600'}`}
+                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 2 ? 'bg-slate-600 text-white' : 'bg-gray-200 text-gray-600'}`}
                         onClick={() => setCurrentStep(2)}
                       >
                         2
                       </div>
                       <span
-                        className={`text-sm font-medium text-center ${currentStep >= 2 ? 'text-indigo-600' : 'text-gray-600'}`}
+                        className={`text-sm font-medium text-center ${currentStep >= 2 ? 'text-slate-600' : 'text-gray-600'}`}
                       >
                         Upload spreadsheet
                       </span>
@@ -1662,13 +1662,13 @@ export function TacticalExecutionContent() {
                     {/* Step 3 */}
                     <div className="flex flex-col items-center z-10">
                       <div
-                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 3 ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-600'}`}
+                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 3 ? 'bg-slate-600 text-white' : 'bg-gray-200 text-gray-600'}`}
                         onClick={() => setCurrentStep(3)}
                       >
                         3
                       </div>
                       <span
-                        className={`text-sm font-medium text-center ${currentStep >= 3 ? 'text-indigo-600' : 'text-gray-600'}`}
+                        className={`text-sm font-medium text-center ${currentStep >= 3 ? 'text-slate-600' : 'text-gray-600'}`}
                       >
                         Select content
                       </span>
@@ -1677,13 +1677,13 @@ export function TacticalExecutionContent() {
                     {/* Step 4 */}
                     <div className="flex flex-col items-center z-10">
                       <div
-                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 4 ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-600'}`}
+                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 4 ? 'bg-slate-600 text-white' : 'bg-gray-200 text-gray-600'}`}
                         onClick={() => setCurrentStep(4)}
                       >
                         4
                       </div>
                       <span
-                        className={`text-sm font-medium text-center ${currentStep >= 4 ? 'text-indigo-600' : 'text-gray-600'}`}
+                        className={`text-sm font-medium text-center ${currentStep >= 4 ? 'text-slate-600' : 'text-gray-600'}`}
                       >
                         Select lessons
                       </span>
@@ -1692,13 +1692,13 @@ export function TacticalExecutionContent() {
                     {/* Step 5 */}
                     <div className="flex flex-col items-center z-10">
                       <div
-                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 5 ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-600'}`}
+                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 5 ? 'bg-slate-600 text-white' : 'bg-gray-200 text-gray-600'}`}
                         onClick={() => setCurrentStep(5)}
                       >
                         5
                       </div>
                       <span
-                        className={`text-sm font-medium text-center ${currentStep >= 5 ? 'text-indigo-600' : 'text-gray-600'}`}
+                        className={`text-sm font-medium text-center ${currentStep >= 5 ? 'text-slate-600' : 'text-gray-600'}`}
                       >
                         Generate lessons
                       </span>
@@ -1707,13 +1707,13 @@ export function TacticalExecutionContent() {
                     {/* Step 6 */}
                     <div className="flex flex-col items-center z-10">
                       <div
-                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 6 ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-600'}`}
+                        className={`h-12 w-12 rounded-full flex items-center justify-center font-bold mb-2 cursor-pointer transition-colors ${currentStep >= 6 ? 'bg-slate-600 text-white' : 'bg-gray-200 text-gray-600'}`}
                         onClick={() => setCurrentStep(6)}
                       >
                         6
                       </div>
                       <span
-                        className={`text-sm font-medium text-center ${currentStep >= 6 ? 'text-indigo-600' : 'text-gray-600'}`}
+                        className={`text-sm font-medium text-center ${currentStep >= 6 ? 'text-slate-600' : 'text-gray-600'}`}
                       >
                         Summary
                       </span>
@@ -1747,7 +1747,7 @@ export function TacticalExecutionContent() {
                         </svg>
                       </div>
 
-                      <button className="px-6 py-2 bg-indigo-50 text-indigo-600 border border-indigo-200 hover:bg-indigo-100 rounded-lg transition-colors flex items-center mx-auto">
+                      <button className="px-6 py-2 bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100 rounded-lg transition-colors flex items-center mx-auto">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-5 w-5 mr-2"
@@ -1793,7 +1793,7 @@ export function TacticalExecutionContent() {
                         </svg>
                       </div>
 
-                      <button className="px-6 py-2 bg-indigo-50 text-indigo-600 border border-indigo-200 hover:bg-indigo-100 rounded-lg transition-colors flex items-center mx-auto">
+                      <button className="px-6 py-2 bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100 rounded-lg transition-colors flex items-center mx-auto">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-5 w-5 mr-2"
@@ -1822,12 +1822,12 @@ export function TacticalExecutionContent() {
                       <p className="text-gray-600 mb-4">Choose which spreadsheet tab to use:</p>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                        <div className="border border-indigo-200 bg-indigo-50 rounded-lg p-4 flex items-center">
+                        <div className="border border-slate-200 bg-slate-50 rounded-lg p-4 flex items-center">
                           <input
                             type="radio"
                             name="tab"
                             id="math"
-                            className="h-4 w-4 text-indigo-600"
+                            className="h-4 w-4 text-slate-600"
                             defaultChecked
                             readOnly
                           />
@@ -1837,31 +1837,31 @@ export function TacticalExecutionContent() {
                         </div>
 
                         <div className="border border-gray-200 rounded-lg p-4 flex items-center">
-                          <input type="radio" name="tab" id="science" className="h-4 w-4 text-indigo-600" />
+                          <input type="radio" name="tab" id="science" className="h-4 w-4 text-slate-600" />
                           <label htmlFor="science" className="ml-2 text-gray-800 font-medium">
                             Grade 3 - Science
                           </label>
                         </div>
 
                         <div className="border border-gray-200 rounded-lg p-4 flex items-center">
-                          <input type="radio" name="tab" id="english" className="h-4 w-4 text-indigo-600" />
+                          <input type="radio" name="tab" id="english" className="h-4 w-4 text-slate-600" />
                           <label htmlFor="english" className="ml-2 text-gray-800 font-medium">
                             Grade 4 - English
                           </label>
                         </div>
 
                         <div className="border border-gray-200 rounded-lg p-4 flex items-center">
-                          <input type="radio" name="tab" id="social" className="h-4 w-4 text-indigo-600" />
+                          <input type="radio" name="tab" id="social" className="h-4 w-4 text-slate-600" />
                           <label htmlFor="social" className="ml-2 text-gray-800 font-medium">
                             Grade 4 - Social Studies
                           </label>
                         </div>
                       </div>
 
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4">
                         <div className="flex items-start">
                           <svg
-                            className="h-5 w-5 text-green-600 mr-2 mt-0.5"
+                            className="h-5 w-5 text-slate-600 mr-2 mt-0.5"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -1875,7 +1875,7 @@ export function TacticalExecutionContent() {
                           </svg>
                           <div>
                             <p className="font-medium text-green-800">Valid content structure</p>
-                            <p className="text-green-700 text-sm">
+                            <p className="text-slate-700 text-sm">
                               All required columns are present in the selected tab.
                             </p>
                           </div>
@@ -1893,15 +1893,15 @@ export function TacticalExecutionContent() {
                       <div className="flex justify-between items-center mb-4">
                         <p className="text-gray-700">Found 12 lessons in Grade 3 - Math</p>
                         <div>
-                          <button className="text-indigo-600 text-sm mr-3 hover:underline">All</button>
-                          <button className="text-indigo-600 text-sm hover:underline">None</button>
+                          <button className="text-slate-600 text-sm mr-3 hover:underline">All</button>
+                          <button className="text-slate-600 text-sm hover:underline">None</button>
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                         <div className="border border-gray-200 rounded-lg p-4">
                           <div className="flex items-center">
-                            <input type="checkbox" id="lesson1" className="h-4 w-4 text-indigo-600" checked readOnly />
+                            <input type="checkbox" id="lesson1" className="h-4 w-4 text-slate-600" checked readOnly />
                             <div className="ml-3">
                               <label htmlFor="lesson1" className="font-medium text-gray-800 block">
                                 Lesson 1: Introduction to Fractions
@@ -1913,7 +1913,7 @@ export function TacticalExecutionContent() {
 
                         <div className="border border-gray-200 rounded-lg p-4">
                           <div className="flex items-center">
-                            <input type="checkbox" id="lesson2" className="h-4 w-4 text-indigo-600" checked readOnly />
+                            <input type="checkbox" id="lesson2" className="h-4 w-4 text-slate-600" checked readOnly />
                             <div className="ml-3">
                               <label htmlFor="lesson2" className="font-medium text-gray-800 block">
                                 Lesson 2: Equivalent Fractions
@@ -1925,7 +1925,7 @@ export function TacticalExecutionContent() {
 
                         <div className="border border-gray-200 rounded-lg p-4">
                           <div className="flex items-center">
-                            <input type="checkbox" id="lesson3" className="h-4 w-4 text-indigo-600" checked readOnly />
+                            <input type="checkbox" id="lesson3" className="h-4 w-4 text-slate-600" checked readOnly />
                             <div className="ml-3">
                               <label htmlFor="lesson3" className="font-medium text-gray-800 block">
                                 Lesson 3: Comparing Fractions
@@ -1937,7 +1937,7 @@ export function TacticalExecutionContent() {
 
                         <div className="border border-gray-200 rounded-lg p-4">
                           <div className="flex items-center">
-                            <input type="checkbox" id="lesson4" className="h-4 w-4 text-indigo-600" />
+                            <input type="checkbox" id="lesson4" className="h-4 w-4 text-slate-600" />
                             <div className="ml-3">
                               <label htmlFor="lesson4" className="font-medium text-gray-800 block">
                                 Lesson 4: Adding Fractions
@@ -1953,7 +1953,7 @@ export function TacticalExecutionContent() {
                           <span className="text-gray-600">Selected lessons: 3 of 12</span>
                         </div>
                         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-indigo-600 rounded-full w-1/4"></div>
+                          <div className="h-full bg-slate-600 rounded-full w-1/4"></div>
                         </div>
                       </div>
 
@@ -1971,17 +1971,17 @@ export function TacticalExecutionContent() {
                           <span className="text-gray-800">67%</span>
                         </div>
                         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="h-full bg-indigo-600 rounded-full" style={{ width: '67%' }}></div>
+                          <div className="h-full bg-slate-600 rounded-full" style={{ width: '67%' }}></div>
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4 mb-8">
-                        <div className="bg-indigo-50 p-4 rounded-lg text-center">
-                          <span className="text-indigo-700 font-bold text-xl">2/3</span>
+                        <div className="bg-slate-50 p-4 rounded-lg text-center">
+                          <span className="text-slate-700 font-bold text-xl">2/3</span>
                           <span className="text-gray-600 text-sm block">Completed</span>
                         </div>
-                        <div className="bg-indigo-50 p-4 rounded-lg text-center">
-                          <span className="text-indigo-700 font-bold text-xl">~1m</span>
+                        <div className="bg-slate-50 p-4 rounded-lg text-center">
+                          <span className="text-slate-700 font-bold text-xl">~1m</span>
                           <span className="text-gray-600 text-sm block">Est. remaining</span>
                         </div>
                       </div>
@@ -1989,7 +1989,7 @@ export function TacticalExecutionContent() {
                       <div className="space-y-3 mb-8 text-left">
                         <div className="flex items-center">
                           <svg
-                            className="h-5 w-5 text-green-500 mr-2"
+                            className="h-5 w-5 text-slate-500 mr-2"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -2005,7 +2005,7 @@ export function TacticalExecutionContent() {
                         </div>
                         <div className="flex items-center">
                           <svg
-                            className="h-5 w-5 text-green-500 mr-2"
+                            className="h-5 w-5 text-slate-500 mr-2"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -2021,7 +2021,7 @@ export function TacticalExecutionContent() {
                         </div>
                         <div className="flex items-center">
                           <svg
-                            className="animate-spin h-5 w-5 text-indigo-500 mr-2"
+                            className="animate-spin h-5 w-5 text-slate-500 mr-2"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -2050,10 +2050,10 @@ export function TacticalExecutionContent() {
 
                   {currentStep === 6 && (
                     <div className="max-w-xl mx-auto">
-                      <div className="bg-green-50 p-4 rounded-lg mb-6">
+                      <div className="bg-slate-50 p-4 rounded-lg mb-6">
                         <div className="flex items-start">
                           <svg
-                            className="h-6 w-6 text-green-600 mr-3 mt-0.5"
+                            className="h-6 w-6 text-slate-600 mr-3 mt-0.5"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -2066,8 +2066,8 @@ export function TacticalExecutionContent() {
                             ></path>
                           </svg>
                           <div>
-                            <h3 className="text-xl font-bold text-green-800 mb-2">Generation Complete</h3>
-                            <p className="text-green-700">
+                            <h3 className="text-xl font-bold text-slate-800 mb-2">Generation Complete</h3>
+                            <p className="text-slate-700">
                               All 2 lessons have been generated successfully. You can download them individually or as a
                               package.
                             </p>
@@ -2084,10 +2084,10 @@ export function TacticalExecutionContent() {
                             <p className="text-gray-500 text-sm">Generated: Just now • Size: 2.4 MB</p>
                           </div>
                           <div className="space-x-2">
-                            <button className="px-4 py-1 bg-indigo-50 text-indigo-600 rounded hover:bg-indigo-100 transition-colors">
+                            <button className="px-4 py-1 bg-slate-50 text-slate-600 rounded hover:bg-slate-100 transition-colors">
                               Preview
                             </button>
-                            <button className="px-4 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors">
+                            <button className="px-4 py-1 bg-slate-600 text-white rounded hover:bg-slate-700 transition-colors">
                               Download
                             </button>
                           </div>
@@ -2099,10 +2099,10 @@ export function TacticalExecutionContent() {
                             <p className="text-gray-500 text-sm">Generated: Just now • Size: 2.1 MB</p>
                           </div>
                           <div className="space-x-2">
-                            <button className="px-4 py-1 bg-indigo-50 text-indigo-600 rounded hover:bg-indigo-100 transition-colors">
+                            <button className="px-4 py-1 bg-slate-50 text-slate-600 rounded hover:bg-slate-100 transition-colors">
                               Preview
                             </button>
-                            <button className="px-4 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors">
+                            <button className="px-4 py-1 bg-slate-600 text-white rounded hover:bg-slate-700 transition-colors">
                               Download
                             </button>
                           </div>
@@ -2110,7 +2110,7 @@ export function TacticalExecutionContent() {
                       </div>
 
                       <div className="flex flex-col sm:flex-row justify-between">
-                        <button className="px-6 py-3 mb-3 sm:mb-0 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center">
+                        <button className="px-6 py-3 mb-3 sm:mb-0 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors flex items-center justify-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5 mr-2"
@@ -2128,7 +2128,7 @@ export function TacticalExecutionContent() {
                           Download All Lessons
                         </button>
                         <button
-                          className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors"
+                          className="px-6 py-3 border border-slate-600 text-slate-600 rounded-lg hover:bg-slate-50 transition-colors"
                           onClick={() => setCurrentStep(1)}
                         >
                           Start New Generation
@@ -2147,7 +2147,7 @@ export function TacticalExecutionContent() {
                     Previous
                   </button>
                   <button
-                    className={`px-6 py-2 rounded-lg transition-colors ${currentStep < 6 ? 'bg-indigo-600 text-white hover:bg-indigo-700' : currentStep === 6 ? 'bg-green-600 text-white hover:bg-green-700' : ''}`}
+                    className={`px-6 py-2 rounded-lg transition-colors ${currentStep < 6 ? 'bg-slate-600 text-white hover:bg-slate-700' : currentStep === 6 ? 'bg-slate-600 text-white hover:bg-slate-700' : ''}`}
                     onClick={() => {
                       if (currentStep < 6) {
                         setCurrentStep(currentStep + 1);
@@ -2171,7 +2171,7 @@ export function TacticalExecutionContent() {
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
             style={{
-              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
+              background: 'linear-gradient(to right, #64748b, #64748b)',
             }}
             initial={{ width: 0 }}
             animate={{ width: '6rem' }}
@@ -2192,7 +2192,7 @@ export function TacticalExecutionContent() {
             {/* Design Decision Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {/* Card 1: Drag-and-Drop */}
-              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                   <span>🎯</span>
                   Drag-and-Drop Composition
@@ -2205,7 +2205,7 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Card 2: Two-Column Layout */}
-              <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                   <span>📐</span>
                   Two-Column Layout
@@ -2218,7 +2218,7 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Card 3: Spreadsheet-Based Input */}
-              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                   <span>📊</span>
                   Spreadsheet-Based Input
@@ -2231,7 +2231,7 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Card 4: Chat Interface */}
-              <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                   <span>💬</span>
                   Conversational AI Interface
@@ -2244,7 +2244,7 @@ export function TacticalExecutionContent() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-200 mb-8">
+            <div className="bg-gradient-to-r from-slate-50 to-slate-50 rounded-lg p-6 border border-slate-200 mb-8">
               <p className="text-base text-gray-700">
                 <strong>Evolution:</strong> Early prototypes tested form-based input, single-column layouts, and hidden AI reasoning. User testing revealed that instructional designers valued agency (drag-and-drop), discoverability (two columns), familiarity (spreadsheets), and transparency (chat). This final version emerged from iterating on these insights.
               </p>
@@ -2261,9 +2261,9 @@ export function TacticalExecutionContent() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {/* Pattern 1: Explainable AI */}
-              <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-2">🔍 Explainable AI</h4>
-                <p className="text-sm text-indigo-700 font-medium mb-3 uppercase">Category: Trustworthy & Reliable AI</p>
+                <p className="text-sm text-slate-700 font-medium mb-3 uppercase">Category: Trustworthy & Reliable AI</p>
                 <p className="text-base text-gray-700 mb-3">
                   <strong>Applied in LessonLoom:</strong> Chat interface shows AI reasoning—displays which curriculum standards were matched, why specific content was generated, and what constraints were applied.
                 </p>
@@ -2271,9 +2271,9 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Pattern 2: Human-in-the-Loop */}
-              <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-2">🤝 Human-in-the-Loop</h4>
-                <p className="text-sm text-green-700 font-medium mb-3 uppercase">Category: Human-AI Collaboration</p>
+                <p className="text-sm text-slate-700 font-medium mb-3 uppercase">Category: Human-AI Collaboration</p>
                 <p className="text-base text-gray-700 mb-3">
                   <strong>Applied in LessonLoom:</strong> Designers compose lessons manually (choosing templates + spreadsheets), AI assists but doesn't dictate. Designers always review before publishing.
                 </p>
@@ -2281,9 +2281,9 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Pattern 3: Conversational UI */}
-              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-2">💬 Conversational UI</h4>
-                <p className="text-sm text-purple-700 font-medium mb-3 uppercase">Category: Natural Interaction</p>
+                <p className="text-sm text-slate-700 font-medium mb-3 uppercase">Category: Natural Interaction</p>
                 <p className="text-base text-gray-700 mb-3">
                   <strong>Applied in LessonLoom:</strong> Chat-based interaction for communicating what lesson needs to be generated, receiving AI output, and iterating on results feels natural and familiar.
                 </p>
@@ -2291,9 +2291,9 @@ export function TacticalExecutionContent() {
               </div>
 
               {/* Pattern 4: Contextual Assistance */}
-              <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-2">⚡ Contextual Assistance</h4>
-                <p className="text-sm text-orange-700 font-medium mb-3 uppercase">Category: Adaptive & Intelligent Systems</p>
+                <p className="text-sm text-slate-700 font-medium mb-3 uppercase">Category: Adaptive & Intelligent Systems</p>
                 <p className="text-base text-gray-700 mb-3">
                   <strong>Applied in LessonLoom:</strong> Library sidebar shows relevant templates and examples. System suggests curriculum matches based on designer selections, guiding without forcing.
                 </p>
@@ -2301,9 +2301,9 @@ export function TacticalExecutionContent() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+            <div className="bg-gradient-to-r from-slate-50 to-slate-50 rounded-lg p-6 border border-slate-200">
               <p className="text-sm text-gray-600 italic">
-                The patterns applied here in LessonLoom directly inspired and shaped the creation of the <a href="https://www.aiuxdesign.guide/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-medium">AIUX Design Guide</a>. What we learned building this project—about designing AI-native interfaces, handling uncertainty, and collaborating with AI—became the foundation for a public pattern library.
+                The patterns applied here in LessonLoom directly inspired and shaped the creation of the <a href="https://www.aiuxdesign.guide/" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:underline font-medium">AIUX Design Guide</a>. What we learned building this project—about designing AI-native interfaces, handling uncertainty, and collaborating with AI—became the foundation for a public pattern library.
               </p>
             </div>
           </div>
@@ -2317,9 +2317,9 @@ export function TacticalExecutionContent() {
               {/* Two-Column AI Interface with Templates Library */}
               <div className="border border-gray-200 rounded-xl overflow-hidden transition-shadow duration-300 hover:shadow-lg mb-6 relative">
                 {/* App Header */}
-                <div className="bg-gradient-to-r from-indigo-900 via-indigo-800 to-purple-900 py-5 px-6 border-b border-indigo-700 flex items-center justify-between shadow-lg">
+                <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-5 px-6 border-b border-slate-700 flex items-center justify-between shadow-lg">
                   <div className="flex items-center gap-3">
-                    <MdAutoAwesome className="w-6 h-6 text-indigo-300" />
+                    <MdAutoAwesome className="w-6 h-6 text-slate-300" />
                     <span className="text-white font-bold text-xl">LessonLoom AI Generation Studio</span>
                   </div>
                   <Link
@@ -2349,7 +2349,7 @@ export function TacticalExecutionContent() {
                       style={{
                         height: '590px',
                         scrollbarWidth: 'thin',
-                        scrollbarColor: '#d1d5db #f3f4f6'
+                        scrollbarColor: '#cbd5e1 #f1f5f9'
                       }}
                     >
                       {/* Top scroll shadow */}
@@ -2440,7 +2440,7 @@ export function TacticalExecutionContent() {
                       {/* Render Chat Messages */}
                       {chatMessages.map((message, index) => (
                         <div key={index} className="flex items-start space-x-3">
-                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-500 rounded-full flex items-center justify-center flex-shrink-0">
                             <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
@@ -2456,7 +2456,7 @@ export function TacticalExecutionContent() {
                       {/* Loading Animation during generation */}
                       {isGenerating && (
                         <div className="flex items-start space-x-3">
-                          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-500 rounded-full flex items-center justify-center flex-shrink-0">
                             <svg className="w-4 h-4 text-white animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
@@ -2464,9 +2464,9 @@ export function TacticalExecutionContent() {
                           <div className="bg-gray-50 rounded-lg p-3 max-w-md">
                             <div className="flex items-center space-x-2">
                               <div className="flex space-x-1">
-                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
-                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
-                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+                                <div className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+                                <div className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+                                <div className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
                               </div>
                               <span className="text-sm text-gray-600">Processing...</span>
                             </div>
@@ -2481,20 +2481,20 @@ export function TacticalExecutionContent() {
                             id="chat-drop-zone"
                             className={`border-2 border-dashed rounded-lg p-8 w-full max-w-md text-center transition-all ${
                               isDragOver
-                                ? 'border-purple-500 bg-purple-50 scale-105'
-                                : 'border-gray-300 hover:border-purple-400'
+                                ? 'border-slate-500 bg-slate-50 scale-105'
+                                : 'border-gray-300 hover:border-slate-400'
                             }`}
                             onDragOver={handleDragOver}
                             onDragLeave={handleDragLeave}
                             onDrop={handleDrop}
                           >
-                            <svg className={`mx-auto h-8 w-8 mb-2 transition-colors ${isDragOver ? 'text-purple-600' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className={`mx-auto h-8 w-8 mb-2 transition-colors ${isDragOver ? 'text-slate-600' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                             </svg>
-                            <p className={`text-sm transition-colors ${isDragOver ? 'text-purple-700 font-medium' : 'text-gray-600'}`}>
+                            <p className={`text-sm transition-colors ${isDragOver ? 'text-slate-700 font-medium' : 'text-gray-600'}`}>
                               {isDragOver ? 'Release to add item' : 'Drop templates or spreadsheets here'}
                             </p>
-                            <p className={`text-xs transition-colors ${isDragOver ? 'text-purple-500' : 'text-gray-400'}`}>
+                            <p className={`text-xs transition-colors ${isDragOver ? 'text-slate-500' : 'text-gray-400'}`}>
                               {isDragOver ? 'Adding to your lesson plan...' : 'Start by adding at least one template'}
                             </p>
                           </div>
@@ -2508,7 +2508,7 @@ export function TacticalExecutionContent() {
                           {selectedTemplate && (
                             <div className={`border-2 rounded-lg p-3 mb-2 flex items-center justify-between transition-all ${
                               isValidated
-                                ? 'bg-green-50 border-green-300'
+                                ? 'bg-slate-50 border-slate-300'
                                 : 'bg-white border-gray-200'
                             }`}>
                               <div className="flex items-center flex-1">
@@ -2530,7 +2530,7 @@ export function TacticalExecutionContent() {
                                     content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
                                   }]);
                                 }}
-                                className="text-xs px-2 py-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+                                className="text-xs px-2 py-1 text-slate-600 hover:bg-slate-50 rounded transition-colors"
                               >
                                 Change
                               </button>
@@ -2541,7 +2541,7 @@ export function TacticalExecutionContent() {
                           {selectedSpreadsheet && (
                             <div className={`border-2 rounded-lg p-3 mb-2 flex items-center justify-between transition-all ${
                               isValidated
-                                ? 'bg-green-50 border-green-300'
+                                ? 'bg-slate-50 border-slate-300'
                                 : 'bg-white border-gray-200'
                             }`}>
                               <div className="flex items-center flex-1">
@@ -2563,7 +2563,7 @@ export function TacticalExecutionContent() {
                                     content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
                                   }]);
                                 }}
-                                className="text-xs px-2 py-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+                                className="text-xs px-2 py-1 text-slate-600 hover:bg-slate-50 rounded transition-colors"
                               >
                                 Change
                               </button>
@@ -2572,24 +2572,24 @@ export function TacticalExecutionContent() {
 
                           {/* AI Suggestions */}
                           {isValidated && showValidationSuggestions && (
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
+                            <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 mt-3">
                               <div className="flex items-start gap-2">
-                                <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg className="w-5 h-5 text-slate-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <div className="flex-1">
-                                  <p className="text-xs font-semibold text-blue-900 mb-2">AI Suggestions for Correction:</p>
-                                  <ul className="space-y-1 text-xs text-blue-800">
+                                  <p className="text-xs font-semibold text-slate-900 mb-2">AI Suggestions for Correction:</p>
+                                  <ul className="space-y-1 text-xs text-slate-800">
                                     {validationSuggestions.map((suggestion, idx) => (
                                       <li key={idx} className="flex gap-2">
-                                        <span className="text-blue-600">•</span>
+                                        <span className="text-slate-600">•</span>
                                         <span>{suggestion}</span>
                                       </li>
                                     ))}
                                   </ul>
                                   <button
                                     onClick={() => setShowValidationSuggestions(!showValidationSuggestions)}
-                                    className="text-xs text-blue-600 hover:underline mt-2"
+                                    className="text-xs text-slate-600 hover:underline mt-2"
                                   >
                                     {showValidationSuggestions ? 'Hide suggestions' : 'Show suggestions'}
                                   </button>
@@ -2602,21 +2602,21 @@ export function TacticalExecutionContent() {
 
                       {/* Success State Display */}
                       {generationComplete && (
-                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                        <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                           <div className="flex items-start space-x-3">
-                            <svg className="w-6 h-6 text-green-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-6 h-6 text-slate-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <div>
                               <h4 className="font-semibold text-green-800 mb-2">Lessons Generated Successfully!</h4>
                               <div className="space-y-2 mb-4">
-                                <div className="bg-white border border-green-200 rounded p-4">
+                                <div className="bg-white border border-slate-200 rounded p-4">
                                   <div className="flex justify-between items-start gap-4">
                                     <div className="flex-1">
                                       <span className="text-sm font-medium text-gray-800">Mathematics Lesson Pack</span>
                                       <p className="text-xs text-gray-500 mt-2">25 lessons • PDF Format • 2.4 MB</p>
                                     </div>
-                                    <button className="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition-colors flex-shrink-0">Download</button>
+                                    <button className="bg-slate-600 text-white text-sm px-4 py-2 rounded hover:bg-slate-700 transition-colors flex-shrink-0">Download</button>
                                   </div>
                                 </div>
                               </div>
@@ -2630,7 +2630,7 @@ export function TacticalExecutionContent() {
                                     content: 'Welcome! Drag templates and spreadsheets from the left panel to build your lesson plan.'
                                   }]);
                                 }}
-                                className="text-green-700 text-sm font-medium hover:underline"
+                                className="text-slate-700 text-sm font-medium hover:underline"
                               >
                                 Start New Generation →
                               </button>
@@ -2674,7 +2674,7 @@ export function TacticalExecutionContent() {
                         onClick={handleGenerate}
                         className={`w-full py-2 px-4 rounded-lg font-medium transition-all ${
                           selectedTemplate && selectedSpreadsheet && !isGenerating && !generationComplete
-                            ? 'bg-purple-600 text-white hover:bg-purple-700 cursor-pointer'
+                            ? 'bg-slate-600 text-white hover:bg-slate-700 cursor-pointer'
                             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                         }`}
                         disabled={!selectedTemplate || !selectedSpreadsheet || isGenerating || generationComplete}
@@ -2684,8 +2684,8 @@ export function TacticalExecutionContent() {
                       <p className="text-xs text-gray-400 text-center mt-2">
                         {selectedTemplate && selectedSpreadsheet ? 'Ready to generate!' : 'Add at least one template and one spreadsheet'}
                       </p>
-                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-4">
-                        <p className="text-xs text-yellow-800">
+                      <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 mt-4">
+                        <p className="text-xs text-slate-800">
                           <span className="font-semibold">AI-Generated Content:</span> All lessons are generated by AI and must be thoroughly reviewed and edited before moving forward in the review process. Verify accuracy, alignment with curriculum standards, and appropriateness for your audience.
                         </p>
                       </div>
@@ -2700,7 +2700,7 @@ export function TacticalExecutionContent() {
                   <div id="tour-step-1" className="absolute top-20 left-8 bg-white rounded-lg p-4 shadow-xl max-w-sm z-20">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-slate-600 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
@@ -2712,7 +2712,7 @@ export function TacticalExecutionContent() {
                     <h3 className="font-semibold text-gray-800 mb-2">Browse the Library</h3>
                     <p className="text-sm text-gray-600 mb-4">Start by exploring templates and spreadsheets in the left panel. Each card shows the grade level and content type.</p>
                     <div className="flex justify-end">
-                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                      <button className="bg-slate-600 text-white px-4 py-2 rounded text-sm hover:bg-slate-700">Next</button>
                     </div>
                   </div>
 
@@ -2721,7 +2721,7 @@ export function TacticalExecutionContent() {
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-slate-600 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
@@ -2732,8 +2732,8 @@ export function TacticalExecutionContent() {
                     <h3 className="font-semibold text-gray-800 mb-2">Select Templates</h3>
                     <p className="text-sm text-gray-600 mb-4">Templates define the structure and format of your lessons. Choose one that matches your subject and grade level.</p>
                     <div className="flex justify-between">
-                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
-                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                      <button className="text-slate-600 px-3 py-2 text-sm hover:bg-slate-50 rounded">Previous</button>
+                      <button className="bg-slate-600 text-white px-4 py-2 rounded text-sm hover:bg-slate-700">Next</button>
                     </div>
                   </div>
 
@@ -2743,7 +2743,7 @@ export function TacticalExecutionContent() {
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-slate-600 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
@@ -2753,8 +2753,8 @@ export function TacticalExecutionContent() {
                     <h3 className="font-semibold text-gray-800 mb-2">Choose Content</h3>
                     <p className="text-sm text-gray-600 mb-4">Spreadsheets contain your curriculum content. Select one with the lessons you want to generate.</p>
                     <div className="flex justify-between">
-                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
-                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                      <button className="text-slate-600 px-3 py-2 text-sm hover:bg-slate-50 rounded">Previous</button>
+                      <button className="bg-slate-600 text-white px-4 py-2 rounded text-sm hover:bg-slate-700">Next</button>
                     </div>
                   </div>
 
@@ -2765,7 +2765,7 @@ export function TacticalExecutionContent() {
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-slate-600 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                       </div>
@@ -2774,8 +2774,8 @@ export function TacticalExecutionContent() {
                     <h3 className="font-semibold text-gray-800 mb-2">Drag to Drop Zone</h3>
                     <p className="text-sm text-gray-600 mb-4">Drag items from the library to the drop zone in the chat. The AI will confirm each addition and guide you.</p>
                     <div className="flex justify-between">
-                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
-                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                      <button className="text-slate-600 px-3 py-2 text-sm hover:bg-slate-50 rounded">Previous</button>
+                      <button className="bg-slate-600 text-white px-4 py-2 rounded text-sm hover:bg-slate-700">Next</button>
                     </div>
                   </div>
 
@@ -2787,7 +2787,7 @@ export function TacticalExecutionContent() {
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-slate-600 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                       </div>
                       <button className="text-gray-400 hover:text-gray-600 text-sm">Skip Tour</button>
@@ -2795,8 +2795,8 @@ export function TacticalExecutionContent() {
                     <h3 className="font-semibold text-gray-800 mb-2">AI Chat Assistance</h3>
                     <p className="text-sm text-gray-600 mb-4">The AI assistant guides you through each step, confirming your selections and providing helpful feedback.</p>
                     <div className="flex justify-between">
-                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
-                      <button className="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700">Next</button>
+                      <button className="text-slate-600 px-3 py-2 text-sm hover:bg-slate-50 rounded">Previous</button>
+                      <button className="bg-slate-600 text-white px-4 py-2 rounded text-sm hover:bg-slate-700">Next</button>
                     </div>
                   </div>
 
@@ -2809,61 +2809,61 @@ export function TacticalExecutionContent() {
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                        <div className="w-2 h-2 bg-slate-600 rounded-full"></div>
                       </div>
                       <button className="text-gray-400 hover:text-gray-600 text-sm">Skip Tour</button>
                     </div>
                     <h3 className="font-semibold text-gray-800 mb-2">Generate Lessons</h3>
                     <p className="text-sm text-gray-600 mb-4">Once you've added at least one template and spreadsheet, the Generate button activates. Click to start creating your lessons!</p>
                     <div className="flex justify-between">
-                      <button className="text-purple-600 px-3 py-2 text-sm hover:bg-purple-50 rounded">Previous</button>
-                      <button className="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700">Finish Tour</button>
+                      <button className="text-slate-600 px-3 py-2 text-sm hover:bg-slate-50 rounded">Previous</button>
+                      <button className="bg-slate-600 text-white px-4 py-2 rounded text-sm hover:bg-slate-700">Finish Tour</button>
                     </div>
                   </div>
 
                   {/* Highlight Areas for Tour */}
-                  <div id="tour-highlight-1" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ top: '60px', left: '20px', width: '35%', height: '80%' }}></div>
-                  <div id="tour-highlight-2" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ top: '120px', left: '20px', width: '35%', height: '200px' }}></div>
-                  <div id="tour-highlight-3" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ bottom: '180px', left: '20px', width: '35%', height: '200px' }}></div>
-                  <div id="tour-highlight-4" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ top: '200px', left: '35%', right: '20px', height: '200px' }}></div>
-                  <div id="tour-highlight-5" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ top: '100px', left: '35%', right: '20px', bottom: '120px' }}></div>
-                  <div id="tour-highlight-6" className="absolute border-4 border-purple-400 rounded-lg hidden pointer-events-none" style={{ bottom: '20px', left: '35%', right: '20px', height: '100px' }}></div>
+                  <div id="tour-highlight-1" className="absolute border-4 border-slate-400 rounded-lg hidden pointer-events-none" style={{ top: '60px', left: '20px', width: '35%', height: '80%' }}></div>
+                  <div id="tour-highlight-2" className="absolute border-4 border-slate-400 rounded-lg hidden pointer-events-none" style={{ top: '120px', left: '20px', width: '35%', height: '200px' }}></div>
+                  <div id="tour-highlight-3" className="absolute border-4 border-slate-400 rounded-lg hidden pointer-events-none" style={{ bottom: '180px', left: '20px', width: '35%', height: '200px' }}></div>
+                  <div id="tour-highlight-4" className="absolute border-4 border-slate-400 rounded-lg hidden pointer-events-none" style={{ top: '200px', left: '35%', right: '20px', height: '200px' }}></div>
+                  <div id="tour-highlight-5" className="absolute border-4 border-slate-400 rounded-lg hidden pointer-events-none" style={{ top: '100px', left: '35%', right: '20px', bottom: '120px' }}></div>
+                  <div id="tour-highlight-6" className="absolute border-4 border-slate-400 rounded-lg hidden pointer-events-none" style={{ bottom: '20px', left: '35%', right: '20px', height: '100px' }}></div>
                 </div>
               </div>
 
             {/* Key Features Explanation */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            <div className="bg-purple-50 p-6 rounded-xl border border-purple-200">
-              <h5 className="font-bold text-purple-800 mb-4">Conversational AI Interface</h5>
+            <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+              <h5 className="font-bold text-slate-800 mb-4">Conversational AI Interface</h5>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start">
-                  <div className="text-purple-500 mr-2 mt-1">•</div>
+                  <div className="text-slate-500 mr-2 mt-1">•</div>
                   <span>Natural language guidance through the entire process</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="text-purple-500 mr-2 mt-1">•</div>
+                  <div className="text-slate-500 mr-2 mt-1">•</div>
                   <span>Drag-and-drop file upload with intelligent content analysis</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="text-purple-500 mr-2 mt-1">•</div>
+                  <div className="text-slate-500 mr-2 mt-1">•</div>
                   <span>Interactive lesson selection with real-time feedback</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
-              <h5 className="font-bold text-blue-800 mb-4">Guided User Experience</h5>
+            <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+              <h5 className="font-bold text-slate-800 mb-4">Guided User Experience</h5>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start">
-                  <div className="text-blue-500 mr-2 mt-1">•</div>
+                  <div className="text-slate-500 mr-2 mt-1">•</div>
                   <span>Step-by-step product tour with visual highlights</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="text-blue-500 mr-2 mt-1">•</div>
+                  <div className="text-slate-500 mr-2 mt-1">•</div>
                   <span>Real-time progress tracking with stop/start controls</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="text-blue-500 mr-2 mt-1">•</div>
+                  <div className="text-slate-500 mr-2 mt-1">•</div>
                   <span>Clear summary and download options upon completion</span>
                 </li>
               </ul>
@@ -2871,9 +2871,9 @@ export function TacticalExecutionContent() {
           </div>
 
           {/* Product Tour Benefits */}
-          <div className="mt-8 bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200">
+          <div className="mt-8 bg-gradient-to-r from-slate-50 to-slate-50 p-6 rounded-xl border border-slate-200">
             <h5 className="font-bold text-gray-800 mb-4 flex items-center">
-              <svg className="w-5 h-5 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 text-slate-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               Interactive Product Tour
@@ -2883,9 +2883,9 @@ export function TacticalExecutionContent() {
               Users can explore each feature hands-on while receiving contextual explanations.
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-purple-700 border border-purple-200">5-Step Walkthrough</span>
-              <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-blue-700 border border-blue-200">Visual Highlights</span>
-              <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-green-700 border border-green-200">Skip Option Available</span>
+              <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-slate-700 border border-slate-200">5-Step Walkthrough</span>
+              <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-slate-700 border border-slate-200">Visual Highlights</span>
+              <span className="bg-white px-3 py-1 rounded-full text-xs font-medium text-slate-700 border border-slate-200">Skip Option Available</span>
             </div>
           </div>
           </div>
@@ -2898,7 +2898,7 @@ export function TacticalExecutionContent() {
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
             style={{
-              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
+              background: 'linear-gradient(to right, #64748b, #64748b)',
             }}
             initial={{ width: 0 }}
             animate={{ width: '6rem' }}
@@ -2914,7 +2914,7 @@ export function TacticalExecutionContent() {
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Design Concept to Architecture */}
-            <div className="bg-blue-50 rounded-lg p-6 border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-slate-50 rounded-lg p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <span className="text-3xl">📋</span>
                 <span>Design Concept Chosen</span>
@@ -2931,7 +2931,7 @@ export function TacticalExecutionContent() {
             </div>
 
             {/* Research Driving Technical Requirements */}
-            <div className="bg-green-50 rounded-lg p-6 border border-green-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-slate-50 rounded-lg p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <span className="text-3xl">🔍</span>
                 <span>Research → Requirements</span>
@@ -2947,7 +2947,7 @@ export function TacticalExecutionContent() {
             </div>
 
             {/* Subject-Specific Prompts */}
-            <div className="bg-purple-50 rounded-lg p-6 border border-purple-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-slate-50 rounded-lg p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <span className="text-3xl">🎯</span>
                 <span>Prompt Specialization</span>
@@ -2963,7 +2963,7 @@ export function TacticalExecutionContent() {
             </div>
 
             {/* Validation Pipeline */}
-            <div className="bg-orange-50 rounded-lg p-6 border border-orange-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-slate-50 rounded-lg p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <span className="text-3xl">✓</span>
                 <span>Quality Validation</span>
@@ -2979,7 +2979,7 @@ export function TacticalExecutionContent() {
             </div>
 
             {/* Collaboration & Validation */}
-            <div className="bg-indigo-50 rounded-lg p-6 border border-indigo-200 shadow-sm hover:shadow-md transition-shadow md:col-span-2">
+            <div className="bg-slate-50 rounded-lg p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow md:col-span-2">
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <span className="text-3xl">🤝</span>
                 <span>How I Validated Technical Decisions</span>
@@ -3024,7 +3024,7 @@ export function TacticalExecutionContent() {
               <h4 className="text-lg font-semibold text-gray-900 mb-4">1. Data Pipelines & Context Injection</h4>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                   <h5 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                     <span>📦</span>
                     Curriculum Knowledge Base
@@ -3037,7 +3037,7 @@ export function TacticalExecutionContent() {
                   </div>
                 </div>
 
-                <div className="bg-cyan-50 p-6 rounded-lg border border-cyan-200">
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                   <h5 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                     <span>⚡</span>
                     Context Compression
@@ -3057,17 +3057,17 @@ export function TacticalExecutionContent() {
               <h4 className="text-lg font-semibold text-gray-900 mb-4">2. Integration Points</h4>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                   <h5 className="font-semibold text-gray-900 mb-3">Spreadsheet Parser</h5>
                   <p className="text-base text-gray-700">Extracts educator inputs from CSV/Excel, validates structure, normalizes data before generation</p>
                 </div>
 
-                <div className="bg-pink-50 p-6 rounded-lg border border-pink-200">
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                   <h5 className="font-semibold text-gray-900 mb-3">Template Engine</h5>
                   <p className="text-base text-gray-700">Loads lesson templates, maps AI outputs to template slots, applies formatting rules</p>
                 </div>
 
-                <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-200">
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                   <h5 className="font-semibold text-gray-900 mb-3">Claude API Orchestration</h5>
                   <p className="text-base text-gray-700">Multi-prompt calls, context injection, response parsing, error handling & retries</p>
                 </div>
@@ -3079,7 +3079,7 @@ export function TacticalExecutionContent() {
               <h4 className="text-lg font-semibold text-gray-900 mb-4">3. Performance Optimizations</h4>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                   <h5 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <span>⚙️</span>
                     Caching Strategies
@@ -3092,7 +3092,7 @@ export function TacticalExecutionContent() {
                   </div>
                 </div>
 
-                <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
+                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                   <h5 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <span>🎯</span>
                     Token Optimization
@@ -3107,24 +3107,24 @@ export function TacticalExecutionContent() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
-                  <div className="text-2xl font-bold text-green-600 mb-2">60%</div>
+                <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
+                  <div className="text-2xl font-bold text-slate-600 mb-2">60%</div>
                   <p className="text-sm text-gray-700 font-medium">Cost reduction through optimization</p>
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-lg border border-blue-200">
-                  <div className="text-2xl font-bold text-blue-600 mb-2">&lt;30s</div>
+                <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
+                  <div className="text-2xl font-bold text-slate-600 mb-2">&lt;30s</div>
                   <p className="text-sm text-gray-700 font-medium">Regeneration time with caching</p>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
-                  <div className="text-2xl font-bold text-purple-600 mb-2">15K+</div>
+                <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
+                  <div className="text-2xl font-bold text-slate-600 mb-2">15K+</div>
                   <p className="text-sm text-gray-700 font-medium">Concurrent monthly users at scale</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-200 mt-8">
+            <div className="bg-gradient-to-r from-slate-50 to-slate-50 rounded-lg p-6 border border-slate-200 mt-8">
               <p className="text-base text-gray-700">
                 <strong>Design ↔ Engineering Partnership:</strong> Design defined what educators needed (fast, reliable, contextual). Engineering solved how to build it efficiently at scale. Every system (caching, compression, orchestration) directly enabled the design experience.
               </p>
@@ -3139,7 +3139,7 @@ export function TacticalExecutionContent() {
           <motion.div
             className="h-1 w-24 mb-12 rounded-full"
             style={{
-              background: 'linear-gradient(to right, #8b5cf6, #ec4899)',
+              background: 'linear-gradient(to right, #64748b, #64748b)',
             }}
             initial={{ width: 0 }}
             animate={{ width: '6rem' }}
@@ -3155,39 +3155,39 @@ export function TacticalExecutionContent() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <div className="flex items-center mb-3">
-                  <div className="w-10 h-10 bg-blue-200 rounded-lg flex items-center justify-center">
-                    <span className="text-blue-700 font-bold text-lg">1</span>
+                  <div className="w-10 h-10 bg-slate-200 rounded-lg flex items-center justify-center">
+                    <span className="text-slate-700 font-bold text-lg">1</span>
                   </div>
-                  <h5 className="text-base font-semibold text-blue-900 ml-3">Discovery</h5>
+                  <h5 className="text-base font-semibold text-slate-900 ml-3">Discovery</h5>
                 </div>
                 <p className="text-gray-700 text-sm">Analyze curriculum, learning standards, educator needs</p>
               </div>
 
-              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <div className="flex items-center mb-3">
-                  <div className="w-10 h-10 bg-purple-200 rounded-lg flex items-center justify-center">
-                    <span className="text-purple-700 font-bold text-lg">2</span>
+                  <div className="w-10 h-10 bg-slate-200 rounded-lg flex items-center justify-center">
+                    <span className="text-slate-700 font-bold text-lg">2</span>
                   </div>
-                  <h5 className="text-base font-semibold text-purple-900 ml-3">Compose</h5>
+                  <h5 className="text-base font-semibold text-slate-900 ml-3">Compose</h5>
                 </div>
                 <p className="text-gray-700 text-sm">Build multi-part prompts with examples & format specs</p>
               </div>
 
-              <div className="bg-pink-50 p-6 rounded-lg border border-pink-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <div className="flex items-center mb-3">
-                  <div className="w-10 h-10 bg-pink-200 rounded-lg flex items-center justify-center">
-                    <span className="text-pink-700 font-bold text-lg">3</span>
+                  <div className="w-10 h-10 bg-slate-200 rounded-lg flex items-center justify-center">
+                    <span className="text-slate-700 font-bold text-lg">3</span>
                   </div>
-                  <h5 className="text-base font-semibold text-pink-900 ml-3">Test & Refine</h5>
+                  <h5 className="text-base font-semibold text-slate-900 ml-3">Test & Refine</h5>
                 </div>
                 <p className="text-gray-700 text-sm">Iterate with quality rubrics & educator feedback</p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+              <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-3">Prompt Library: ~30 Specialized</h4>
                 <div className="text-base text-gray-700 space-y-2">
                   <p><strong>Math grade 3</strong> → conceptual understanding</p>
@@ -3196,11 +3196,11 @@ export function TacticalExecutionContent() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-300">
+              <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-300">
                 <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                   <span>📊 Impact</span>
                 </h4>
-                <div className="text-2xl font-bold text-blue-600 mb-1">18% → 3%</div>
+                <div className="text-2xl font-bold text-slate-600 mb-1">18% → 3%</div>
                 <p className="text-sm text-gray-700">Error rate after tuning. Eliminated most post-processing.</p>
               </div>
             </div>
@@ -3216,17 +3216,17 @@ export function TacticalExecutionContent() {
 
             <div className="bg-gray-900 text-gray-100 p-6 rounded-lg font-mono text-sm mb-6 overflow-x-auto">
               <div className="mb-3">
-                <span className="text-green-400">↓ Input</span>
+                <span className="text-slate-400">↓ Input</span>
               </div>
               <div className="text-gray-400 ml-4 text-sm">Subject, Grade, Duration, Learning Objectives</div>
 
               <div className="mt-3 mb-3">
-                <span className="text-blue-400">→ Context</span>
+                <span className="text-slate-400">→ Context</span>
               </div>
               <div className="text-gray-400 ml-4 text-sm">Load ~5KB curriculum data + standards + patterns</div>
 
               <div className="mt-3 mb-3">
-                <span className="text-yellow-400">⚡ Generate</span>
+                <span className="text-slate-400">⚡ Generate</span>
               </div>
               <div className="text-gray-400 ml-4 text-sm">Claude API with orchestrated prompt</div>
 
@@ -3236,29 +3236,29 @@ export function TacticalExecutionContent() {
               <div className="text-gray-400 ml-4 text-sm">~40 criteria: format, alignment, age-appropriate, rigor</div>
 
               <div className="mt-3 mb-3">
-                <span className="text-orange-400">↻ Refine</span>
+                <span className="text-slate-400">↻ Refine</span>
               </div>
               <div className="text-gray-400 ml-4 text-sm">If fails: regenerate or apply fallback template</div>
 
               <div className="mt-3 mb-3">
-                <span className="text-green-400">✓ Deliver</span>
+                <span className="text-slate-400">✓ Deliver</span>
               </div>
               <div className="text-gray-400 ml-4 text-sm">Return lesson + metadata to educator</div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
-                <div className="text-3xl font-bold text-green-600 mb-1">8-12s</div>
+              <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
+                <div className="text-3xl font-bold text-slate-600 mb-1">8-12s</div>
                 <p className="text-sm text-gray-700 font-medium">Generation time per lesson</p>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-lg border border-blue-200">
-                <div className="text-3xl font-bold text-blue-600 mb-1">96%</div>
+              <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
+                <div className="text-3xl font-bold text-slate-600 mb-1">96%</div>
                 <p className="text-sm text-gray-700 font-medium">First-attempt success rate</p>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
-                <div className="text-3xl font-bold text-purple-600 mb-1">99.2%</div>
+              <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
+                <div className="text-3xl font-bold text-slate-600 mb-1">99.2%</div>
                 <p className="text-sm text-gray-700 font-medium">Uptime across 200+ schools</p>
               </div>
             </div>
@@ -3273,7 +3273,7 @@ export function TacticalExecutionContent() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div className="bg-red-50 p-6 rounded-lg border border-red-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                   <span>🚨</span>
                   Automated Checks (~40 Criteria)
@@ -3287,7 +3287,7 @@ export function TacticalExecutionContent() {
                 </div>
               </div>
 
-              <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
+              <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                   <span>👥</span>
                   Human Review (Ongoing)
@@ -3303,26 +3303,26 @@ export function TacticalExecutionContent() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
+              <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-3 text-base">Validation Layers</h4>
-                <div className="text-2xl font-bold text-green-600 mb-2">3-Stage</div>
+                <div className="text-2xl font-bold text-slate-600 mb-2">3-Stage</div>
                 <p className="text-sm text-gray-700">Automated → Regional Review → User Feedback</p>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-lg border border-blue-200">
+              <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-3 text-base">Coverage</h4>
-                <div className="text-2xl font-bold text-blue-600 mb-2">8+ Regions</div>
+                <div className="text-2xl font-bold text-slate-600 mb-2">8+ Regions</div>
                 <p className="text-sm text-gray-700">Culturally reviewed across countries</p>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
+              <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
                 <h4 className="font-semibold text-gray-900 mb-3 text-base">Continuous</h4>
-                <div className="text-2xl font-bold text-purple-600 mb-2">Real-time</div>
+                <div className="text-2xl font-bold text-slate-600 mb-2">Real-time</div>
                 <p className="text-sm text-gray-700">Feedback improves future generations</p>
               </div>
             </div>
 
-            <div className="mt-6 bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-lg border border-red-200">
+            <div className="mt-6 bg-gradient-to-r from-slate-50 to-slate-50 p-6 rounded-lg border border-slate-200">
               <p className="text-base text-gray-700">
                 <strong>Why it matters:</strong> Teachers trust AI more when they understand safeguards. Transparent validation (showing which criteria passed/failed) helps educators make informed decisions about generated content.
               </p>
@@ -3355,21 +3355,21 @@ export function TacticalExecutionContent() {
                   <tbody>
                     <tr className="border border-gray-200 bg-white">
                       <td className="p-3 font-medium text-gray-800">Claude Sonnet 3.5</td>
-                      <td className="p-3 text-center text-green-600 font-semibold">96%</td>
+                      <td className="p-3 text-center text-slate-600 font-semibold">96%</td>
                       <td className="p-3 text-center text-gray-700">8-12s</td>
                       <td className="p-3 text-center text-gray-700">$0.08</td>
-                      <td className="p-3 text-center"><span className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">✓ Yes</span></td>
+                      <td className="p-3 text-center"><span className="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs font-semibold">✓ Yes</span></td>
                     </tr>
                     <tr className="border border-gray-200 bg-gray-50">
                       <td className="p-3 font-medium text-gray-800">GPT-4 Turbo</td>
-                      <td className="p-3 text-center text-green-600 font-semibold">94%</td>
+                      <td className="p-3 text-center text-slate-600 font-semibold">94%</td>
                       <td className="p-3 text-center text-gray-700">12-15s</td>
                       <td className="p-3 text-center text-gray-700">$0.15</td>
                       <td className="p-3 text-center text-gray-500">–</td>
                     </tr>
                     <tr className="border border-gray-200 bg-white">
                       <td className="p-3 font-medium text-gray-800">Gemini Pro</td>
-                      <td className="p-3 text-center text-yellow-600 font-semibold">88%</td>
+                      <td className="p-3 text-center text-slate-600 font-semibold">88%</td>
                       <td className="p-3 text-center text-gray-700">10-14s</td>
                       <td className="p-3 text-center text-gray-700">$0.06</td>
                       <td className="p-3 text-center text-gray-500">–</td>
@@ -3389,40 +3389,40 @@ export function TacticalExecutionContent() {
                 <div className="flex items-center gap-4">
                   <div className="w-32">
                     <p className="text-sm font-semibold text-gray-600 uppercase">Baseline</p>
-                    <p className="text-2xl font-bold text-red-600">18%</p>
+                    <p className="text-2xl font-bold text-slate-600">18%</p>
                     <p className="text-sm text-gray-600">Error rate</p>
                   </div>
-                  <div className="flex-1 bg-red-200 h-2 rounded"></div>
+                  <div className="flex-1 bg-slate-200 h-2 rounded"></div>
                   <span className="text-sm text-gray-600">Generic prompts, no constraints</span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <div className="w-32">
                     <p className="text-sm font-semibold text-gray-600 uppercase">Iteration 1</p>
-                    <p className="text-2xl font-bold text-orange-600">12%</p>
+                    <p className="text-2xl font-bold text-slate-600">12%</p>
                     <p className="text-sm text-gray-600">Added curriculum</p>
                   </div>
-                  <div className="flex-1 bg-orange-200 h-2 rounded" style={{width: '67%'}}></div>
+                  <div className="flex-1 bg-slate-200 h-2 rounded" style={{width: '67%'}}></div>
                   <span className="text-sm text-gray-600">Embedded standards</span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <div className="w-32">
                     <p className="text-sm font-semibold text-gray-600 uppercase">Iteration 2</p>
-                    <p className="text-2xl font-bold text-yellow-600">7%</p>
+                    <p className="text-2xl font-bold text-slate-600">7%</p>
                     <p className="text-sm text-gray-600">Subject-specific</p>
                   </div>
-                  <div className="flex-1 bg-yellow-200 h-2 rounded" style={{width: '39%'}}></div>
+                  <div className="flex-1 bg-slate-200 h-2 rounded" style={{width: '39%'}}></div>
                   <span className="text-sm text-gray-600">Subject examples added</span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <div className="w-32">
                     <p className="text-sm font-semibold text-gray-600 uppercase">Final</p>
-                    <p className="text-2xl font-bold text-green-600">3%</p>
+                    <p className="text-2xl font-bold text-slate-600">3%</p>
                     <p className="text-sm text-gray-600">Multi-layered</p>
                   </div>
-                  <div className="flex-1 bg-green-200 h-2 rounded" style={{width: '17%'}}></div>
+                  <div className="flex-1 bg-slate-200 h-2 rounded" style={{width: '17%'}}></div>
                   <span className="text-sm text-gray-600">Full pedagogical framework</span>
                 </div>
               </div>
@@ -3433,32 +3433,32 @@ export function TacticalExecutionContent() {
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Quality Evaluation Criteria</h4>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-purple-50 p-5 rounded-lg border border-purple-200">
+                <div className="bg-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-base text-gray-700 mb-2"><strong>✓ Curriculum Alignment</strong></p>
                   <p className="text-sm text-gray-600">Does lesson match stated learning standards & objectives?</p>
                 </div>
 
-                <div className="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                <div className="bg-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-base text-gray-700 mb-2"><strong>✓ Age-Appropriateness</strong></p>
                   <p className="text-sm text-gray-600">Vocabulary, complexity, examples match grade level?</p>
                 </div>
 
-                <div className="bg-green-50 p-5 rounded-lg border border-green-200">
+                <div className="bg-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-base text-gray-700 mb-2"><strong>✓ Completeness</strong></p>
                   <p className="text-sm text-gray-600">All required sections present (objectives, materials, assessment)?</p>
                 </div>
 
-                <div className="bg-yellow-50 p-5 rounded-lg border border-yellow-200">
+                <div className="bg-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-base text-gray-700 mb-2"><strong>✓ Pedagogical Soundness</strong></p>
                   <p className="text-sm text-gray-600">Learning progression logical? Activities support objectives?</p>
                 </div>
 
-                <div className="bg-orange-50 p-5 rounded-lg border border-orange-200">
+                <div className="bg-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-base text-gray-700 mb-2"><strong>✓ Assessment Rigor</strong></p>
                   <p className="text-sm text-gray-600">Assessment items challenge students appropriately?</p>
                 </div>
 
-                <div className="bg-pink-50 p-5 rounded-lg border border-pink-200">
+                <div className="bg-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-base text-gray-700 mb-2"><strong>✓ Cultural Sensitivity</strong></p>
                   <p className="text-sm text-gray-600">Content appropriate for diverse regional contexts?</p>
                 </div>
@@ -3470,33 +3470,33 @@ export function TacticalExecutionContent() {
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Performance Benchmarks</h4>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-5 rounded-lg border border-blue-200">
+                <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-sm font-semibold text-gray-600 uppercase mb-2">Response Time</p>
-                  <p className="text-2xl font-bold text-blue-600">8-12s</p>
+                  <p className="text-2xl font-bold text-slate-600">8-12s</p>
                   <p className="text-sm text-gray-600">per lesson generation</p>
                 </div>
 
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-5 rounded-lg border border-green-200">
+                <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-sm font-semibold text-gray-600 uppercase mb-2">Cost per Lesson</p>
-                  <p className="text-2xl font-bold text-green-600">$0.08</p>
+                  <p className="text-2xl font-bold text-slate-600">$0.08</p>
                   <p className="text-sm text-gray-600">60% reduction vs baseline</p>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-5 rounded-lg border border-purple-200">
+                <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-sm font-semibold text-gray-600 uppercase mb-2">Throughput</p>
-                  <p className="text-2xl font-bold text-purple-600">300+</p>
+                  <p className="text-2xl font-bold text-slate-600">300+</p>
                   <p className="text-sm text-gray-600">lessons/hour at scale</p>
                 </div>
 
-                <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-5 rounded-lg border border-orange-200">
+                <div className="bg-gradient-to-br from-slate-50 to-slate-50 p-5 rounded-lg border border-slate-200">
                   <p className="text-sm font-semibold text-gray-600 uppercase mb-2">Success Rate</p>
-                  <p className="text-2xl font-bold text-orange-600">96%</p>
+                  <p className="text-2xl font-bold text-slate-600">96%</p>
                   <p className="text-sm text-gray-600">first-attempt pass rate</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6 border border-purple-200 mt-8">
+            <div className="bg-gradient-to-r from-slate-50 to-slate-50 rounded-lg p-6 border border-slate-200 mt-8">
               <p className="text-base text-gray-700">
                 <strong>Outcome:</strong> Rigorous testing across models, prompts, and quality criteria validated Claude Sonnet 3.5 as the optimal choice for production. The 18% → 3% error rate improvement through prompt iteration demonstrated that good prompt engineering outweighs raw model capability.
               </p>
@@ -3511,7 +3511,7 @@ export function TacticalExecutionContent() {
           <motion.div
             className="h-1 w-24 mb-10 rounded-full"
             style={{
-              background: 'linear-gradient(to right, #9333ea, #d94f9d)',
+              background: 'linear-gradient(to right, #64748b, #64748b)',
             }}
             initial={{ width: 0 }}
             animate={{ width: '6rem' }}
@@ -3521,35 +3521,35 @@ export function TacticalExecutionContent() {
           <div className="bg-white p-8 rounded-xl shadow">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <motion.div
-                className="bg-green-50 rounded-lg p-6 text-center"
+                className="bg-slate-50 rounded-lg p-6 text-center"
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
-                <div className="text-4xl font-bold text-green-600 mb-2">75%</div>
+                <div className="text-4xl font-bold text-slate-600 mb-2">75%</div>
                 <div className="text-gray-800 font-medium">Reduction in lesson prep time</div>
               </motion.div>
 
               <motion.div
-                className="bg-blue-50 rounded-lg p-6 text-center"
+                className="bg-slate-50 rounded-lg p-6 text-center"
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
-                <div className="text-4xl font-bold text-blue-600 mb-2">85%</div>
+                <div className="text-4xl font-bold text-slate-600 mb-2">85%</div>
                 <div className="text-gray-800 font-medium">Teacher satisfaction rate</div>
               </motion.div>
 
               <motion.div
-                className="bg-purple-50 rounded-lg p-6 text-center"
+                className="bg-slate-50 rounded-lg p-6 text-center"
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
-                <div className="text-4xl font-bold text-purple-600 mb-2">12,000+</div>
+                <div className="text-4xl font-bold text-slate-600 mb-2">12,000+</div>
                 <div className="text-gray-800 font-medium">Active users</div>
               </motion.div>
             </div>
 
             <div className="bg-gray-50 p-6 rounded-xl mb-8">
-              <blockquote className="text-lg italic text-gray-700 border-l-4 border-purple-500 pl-4">
+              <blockquote className="text-lg italic text-gray-700 border-l-4 border-slate-500 pl-4">
                 "LessonLoom has revolutionized how I prepare for my classes. What used to take hours now takes minutes,
                 and the quality of the materials is consistently excellent. My students are more engaged than ever."
               </blockquote>

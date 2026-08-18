@@ -36,33 +36,33 @@ export function DesignChallengesSection() {
       title: 'Curriculum Alignment',
       description: 'Ensuring AI-generated content adheres to specific curriculum frameworks and learning standards across different regions and education systems.',
       icon: DocumentIcon,
-      gradient: 'from-blue-50 to-indigo-50',
-      borderColor: 'border-blue-100',
-      iconColor: 'text-blue-600'
+      gradient: 'from-slate-50 to-slate-50',
+      borderColor: 'border-slate-100',
+      iconColor: 'text-slate-600'
     },
     {
       title: 'Content Diversity',
       description: 'Generating varied, contextually relevant lesson content that avoids repetition and maintains educational rigor across thousands of lessons.',
       icon: GridIcon,
-      gradient: 'from-purple-50 to-pink-50',
-      borderColor: 'border-purple-100',
-      iconColor: 'text-purple-600'
+      gradient: 'from-slate-50 to-slate-50',
+      borderColor: 'border-slate-100',
+      iconColor: 'text-slate-600'
     },
     {
       title: 'Age-Appropriate Content',
       description: 'Tailoring complexity, language, and examples to suit specific age groups and developmental stages while maintaining pedagogical accuracy.',
       icon: UserIcon,
-      gradient: 'from-green-50 to-emerald-50',
-      borderColor: 'border-green-100',
-      iconColor: 'text-green-600'
+      gradient: 'from-slate-50 to-slate-50',
+      borderColor: 'border-slate-100',
+      iconColor: 'text-slate-600'
     },
     {
       title: 'Localization at Scale',
       description: 'Supporting multiple languages while preserving cultural context, educational nuances, and local curriculum requirements.',
       icon: MapIcon,
-      gradient: 'from-orange-50 to-amber-50',
-      borderColor: 'border-orange-100',
-      iconColor: 'text-orange-600'
+      gradient: 'from-slate-50 to-slate-50',
+      borderColor: 'border-slate-100',
+      iconColor: 'text-slate-600'
     }
   ];
 
@@ -101,7 +101,7 @@ export function DesignChallengesSection() {
         </div>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-8">
+      <div className="bg-slate-50 border border-slate-200 rounded-lg p-8">
         <h3 className="font-semibold text-gray-900 mb-4">Why This Mattered</h3>
         <p className="text-gray-700 leading-relaxed">
           Instructional designers and teachers were experiencing genuine time pressure. Manual lesson creation involved: analyzing curriculum documents, crafting learning objectives, writing content, creating assessments, and adapting materials for different grades. Most lessons took 3-5 hours to produce well.

@@ -169,7 +169,7 @@ const InteractiveBubbles = ({ containerId }: InteractiveBubblesProps) => {
   }, [dimensions, containerFound]);
 
   if (!containerFound) {
-    return <div className="p-4 bg-red-100 text-red-700">Container not found!</div>;
+    return <div className="p-4 bg-slate-100 text-slate-700">Container not found!</div>;
   }
 
   return (

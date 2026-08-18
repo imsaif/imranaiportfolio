@@ -23,8 +23,8 @@ const VoiceControlBar: React.FC<VoiceControlBarProps> = ({
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="inline-block">
               <defs>
                 <linearGradient id="voice-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#EC4899" />
-                  <stop offset="1" stopColor="#8B5CF6" />
+                  <stop stopColor="#64748b" />
+                  <stop offset="1" stopColor="#64748b" />
                 </linearGradient>
               </defs>
               <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="url(#voice-gradient)" />
@@ -56,7 +56,7 @@ const VoiceControlBar: React.FC<VoiceControlBarProps> = ({
         {/* Center: Progress bar */}
         <div className="flex-1 flex flex-col justify-center">
           <div className="relative w-full bg-gray-200 rounded-full h-1">
-            <div className="h-full rounded-full bg-gradient-to-r from-pink-500 to-purple-600 w-0"></div>
+            <div className="h-full rounded-full bg-gradient-to-r from-slate-500 to-slate-600 w-0"></div>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function Page() {
       </div>
 
       {/* Introduction Section */}
-      <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-b border-blue-200/60">
+      <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 border-b border-slate-200/60">
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
           <div className="mb-12 text-center">
             <CaseStudyHeader level="h1" className="mb-6">

@@ -47,14 +47,14 @@ function PersonaCard({ persona }: { persona: Persona }) {
   let borderColor = '';
   let bgColor = '';
   if (persona.name === 'Anne') {
-    borderColor = 'border-blue-300';
-    bgColor = 'bg-blue-50';
+    borderColor = 'border-slate-300';
+    bgColor = 'bg-slate-50';
   } else if (persona.name === 'Jake') {
-    borderColor = 'border-purple-300';
-    bgColor = 'bg-purple-50';
+    borderColor = 'border-slate-300';
+    bgColor = 'bg-slate-50';
   } else if (persona.name === 'Laura') {
-    borderColor = 'border-pink-300';
-    bgColor = 'bg-pink-50';
+    borderColor = 'border-slate-300';
+    bgColor = 'bg-slate-50';
   }
 
   return (
@@ -105,7 +105,7 @@ function PersonaCard({ persona }: { persona: Persona }) {
             className={`absolute w-full h-full ${bgColor} ${borderColor} border-2 rounded-xl shadow-md flex flex-col items-center justify-center p-6`}
             style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
           >
-            <div className="text-purple-700 font-bold text-lg mb-2 w-full text-center">Pain Points</div>
+            <div className="text-slate-700 font-bold text-lg mb-2 w-full text-center">Pain Points</div>
             <div className="text-gray-700 text-base italic w-full text-center">{persona.painPoints}</div>
           </div>
         </motion.div>
@@ -114,7 +114,7 @@ function PersonaCard({ persona }: { persona: Persona }) {
       {hovered && !flipped && (
         <button
           className={`absolute z-20 left-1/2 -translate-x-1/2 bottom-6 px-5 py-2 text-xs rounded-full shadow-md font-medium text-white focus:outline-none
-            ${persona.name === 'Anne' ? 'bg-blue-500' : persona.name === 'Jake' ? 'bg-purple-500' : 'bg-pink-500'}`}
+            ${persona.name === 'Anne' ? 'bg-slate-500' : persona.name === 'Jake' ? 'bg-slate-500' : 'bg-slate-500'}`}
           tabIndex={-1}
           aria-hidden
           style={{ pointerEvents: 'none' }}
@@ -155,10 +155,10 @@ const UserPersonasSection: React.FC = () => {
           <h3 className="text-lg font-bold text-gray-900 mb-6 text-left ml-1">Key Pain Points Identified</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Process Issues */}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 shadow-sm flex flex-col">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col">
               <div className="flex items-center mb-3">
                 <svg
-                  className="w-6 h-6 text-blue-400 mr-2"
+                  className="w-6 h-6 text-slate-400 mr-2"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -167,7 +167,7 @@ const UserPersonasSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 17v-2a4 4 0 014-4h4" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5v2a4 4 0 004 4h4" />
                 </svg>
-                <span className="font-semibold text-blue-700 text-lg">Process Issues</span>
+                <span className="font-semibold text-slate-700 text-lg">Process Issues</span>
               </div>
               <ul className="list-disc pl-5 text-gray-700 space-y-2 text-sm">
                 <li>Manual timetable creation takes 2-3 weeks</li>
@@ -178,10 +178,10 @@ const UserPersonasSection: React.FC = () => {
               </ul>
             </div>
             {/* Technical Limitations */}
-            <div className="bg-purple-50 border border-purple-200 rounded-xl p-6 shadow-sm flex flex-col">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col">
               <div className="flex items-center mb-3">
                 <svg
-                  className="w-6 h-6 text-purple-400 mr-2"
+                  className="w-6 h-6 text-slate-400 mr-2"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -189,7 +189,7 @@ const UserPersonasSection: React.FC = () => {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m4 0h-1v-4h-1m4 0h-1v-4h-1" />
                 </svg>
-                <span className="font-semibold text-purple-700 text-lg">Technical Limitations</span>
+                <span className="font-semibold text-slate-700 text-lg">Technical Limitations</span>
               </div>
               <ul className="list-disc pl-5 text-gray-700 space-y-2 text-sm">
                 <li>Current system cannot handle more than 12 teaching tracks</li>
@@ -200,10 +200,10 @@ const UserPersonasSection: React.FC = () => {
               </ul>
             </div>
             {/* Resource Constraints */}
-            <div className="bg-pink-50 border border-pink-200 rounded-xl p-6 shadow-sm flex flex-col">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col">
               <div className="flex items-center mb-3">
                 <svg
-                  className="w-6 h-6 text-pink-400 mr-2"
+                  className="w-6 h-6 text-slate-400 mr-2"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -212,7 +212,7 @@ const UserPersonasSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 9V7a5 5 0 00-10 0v2a5 5 0 0010 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 17v2m0 0h-2m2 0h2" />
                 </svg>
-                <span className="font-semibold text-pink-700 text-lg">Resource Constraints</span>
+                <span className="font-semibold text-slate-700 text-lg">Resource Constraints</span>
               </div>
               <ul className="list-disc pl-5 text-gray-700 space-y-2 text-sm">
                 <li>Textbook sharing not optimized (12% higher costs)</li>
@@ -233,7 +233,7 @@ const UserPersonasSection: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-200 rounded-xl shadow-sm">
               <thead>
-                <tr className="bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50">
+                <tr className="bg-gradient-to-r from-slate-50 via-slate-50 to-slate-50">
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 border-b border-gray-200">
                     Requirement Category
                   </th>
@@ -249,8 +249,8 @@ const UserPersonasSection: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="hover:bg-blue-50 transition">
-                  <td className="px-4 py-3 align-top text-sm font-medium text-blue-700 whitespace-nowrap">
+                <tr className="hover:bg-slate-50 transition">
+                  <td className="px-4 py-3 align-top text-sm font-medium text-slate-700 whitespace-nowrap">
                     Plan Generation &amp; Management
                   </td>
                   <td className="px-4 py-3 align-top text-sm text-gray-900 font-semibold">
@@ -263,8 +263,8 @@ const UserPersonasSection: React.FC = () => {
                     Digital Production spends 2-3 weeks manually creating timetables
                   </td>
                 </tr>
-                <tr className="hover:bg-purple-50 transition">
-                  <td className="px-4 py-3 align-top text-sm font-medium text-purple-700 whitespace-nowrap">
+                <tr className="hover:bg-slate-50 transition">
+                  <td className="px-4 py-3 align-top text-sm font-medium text-slate-700 whitespace-nowrap">
                     Rule Violation Management
                   </td>
                   <td className="px-4 py-3 align-top text-sm text-gray-900 font-semibold">Violation Categorization</td>
@@ -275,8 +275,8 @@ const UserPersonasSection: React.FC = () => {
                     23% of schedules contain errors when created manually
                   </td>
                 </tr>
-                <tr className="hover:bg-pink-50 transition">
-                  <td className="px-4 py-3 align-top text-sm font-medium text-pink-700 whitespace-nowrap">
+                <tr className="hover:bg-slate-50 transition">
+                  <td className="px-4 py-3 align-top text-sm font-medium text-slate-700 whitespace-nowrap">
                     View Flexibility
                   </td>
                   <td className="px-4 py-3 align-top text-sm text-gray-900 font-semibold">Multiple Perspectives</td>
@@ -287,8 +287,8 @@ const UserPersonasSection: React.FC = () => {
                     Different stakeholders need different perspectives
                   </td>
                 </tr>
-                <tr className="hover:bg-green-50 transition">
-                  <td className="px-4 py-3 align-top text-sm font-medium text-green-700 whitespace-nowrap">
+                <tr className="hover:bg-slate-50 transition">
+                  <td className="px-4 py-3 align-top text-sm font-medium text-slate-700 whitespace-nowrap">
                     Resource Optimization
                   </td>
                   <td className="px-4 py-3 align-top text-sm text-gray-900 font-semibold">Book-Sharing Scheduling</td>

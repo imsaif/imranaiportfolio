@@ -22,10 +22,10 @@ export function ResearchDiscoverySection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0 }}
-          className="bg-blue-50 rounded-lg p-6 border border-blue-200"
+          className="bg-slate-50 rounded-lg p-6 border border-slate-200"
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
-            <MdSearch className="w-6 h-6 text-blue-600" />
+            <MdSearch className="w-6 h-6 text-slate-600" />
             User Interviews (8 Instructional Designers)
           </h3>
           <p className="text-gray-700 mb-4">
@@ -44,10 +44,10 @@ export function ResearchDiscoverySection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-green-50 rounded-lg p-6 border border-green-200"
+          className="bg-slate-50 rounded-lg p-6 border border-slate-200"
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
-            <MdSearch className="w-6 h-6 text-green-600" />
+            <MdSearch className="w-6 h-6 text-slate-600" />
             Content Analysis (150+ Lesson Guides)
           </h3>
           <p className="text-gray-700 mb-4">
@@ -65,10 +65,10 @@ export function ResearchDiscoverySection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-purple-50 rounded-lg p-6 border border-purple-200"
+          className="bg-slate-50 rounded-lg p-6 border border-slate-200"
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
-            <MdSearch className="w-6 h-6 text-purple-600" />
+            <MdSearch className="w-6 h-6 text-slate-600" />
             Pain Point Analysis & Journey Mapping
           </h3>
           <p className="text-gray-700 mb-4">

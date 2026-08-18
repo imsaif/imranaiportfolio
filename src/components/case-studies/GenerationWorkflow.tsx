@@ -66,7 +66,7 @@ const GenerationWorkflow = () => {
             </svg>
           </div>
 
-          <button className="flex items-center px-4 py-2 bg-white border border-indigo-600 rounded-md text-indigo-600 text-sm md:text-base font-medium hover:bg-indigo-50 transition-colors">
+          <button className="flex items-center px-4 py-2 bg-white border border-slate-600 rounded-md text-slate-600 text-sm md:text-base font-medium hover:bg-slate-50 transition-colors">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4 md:h-5 md:w-5 mr-2"
@@ -115,7 +115,7 @@ const GenerationWorkflow = () => {
             </svg>
           </div>
 
-          <button className="flex items-center px-4 py-2 bg-white border border-indigo-600 rounded-md text-indigo-600 text-sm md:text-base font-medium hover:bg-indigo-50 transition-colors">
+          <button className="flex items-center px-4 py-2 bg-white border border-slate-600 rounded-md text-slate-600 text-sm md:text-base font-medium hover:bg-slate-50 transition-colors">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4 md:h-5 md:w-5 mr-2"
@@ -146,19 +146,19 @@ const GenerationWorkflow = () => {
           <div className="mb-4">
             <p className="text-sm text-gray-500 mb-2">Choose which spreadsheet tab to use:</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-3">
-              <div className="border border-indigo-200 bg-indigo-50 p-3 rounded-md flex items-center">
+              <div className="border border-slate-200 bg-slate-50 p-3 rounded-md flex items-center">
                 <input type="radio" name="tab" className="mr-2" checked />
                 <span>Grade 3 - Math</span>
               </div>
-              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors">
+              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:border-slate-200 hover:bg-slate-50/30 transition-colors">
                 <input type="radio" name="tab" className="mr-2" />
                 <span>Grade 3 - Science</span>
               </div>
-              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors">
+              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:border-slate-200 hover:bg-slate-50/30 transition-colors">
                 <input type="radio" name="tab" className="mr-2" />
                 <span>Grade 4 - English</span>
               </div>
-              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors">
+              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:border-slate-200 hover:bg-slate-50/30 transition-colors">
                 <input type="radio" name="tab" className="mr-2" />
                 <span>Grade 4 - Social Studies</span>
               </div>
@@ -167,8 +167,8 @@ const GenerationWorkflow = () => {
 
           <div>
             <p className="text-sm text-gray-500 mb-2">Content tab validation:</p>
-            <div className="bg-green-50 border border-green-200 p-3 rounded-md">
-              <div className="flex items-center text-green-700 mb-2">
+            <div className="bg-slate-50 border border-slate-200 p-3 rounded-md">
+              <div className="flex items-center text-slate-700 mb-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 mr-2"
@@ -183,7 +183,7 @@ const GenerationWorkflow = () => {
                 </svg>
                 <span className="font-medium">Valid content structure</span>
               </div>
-              <p className="text-sm text-green-600">All required columns are present in the selected tab.</p>
+              <p className="text-sm text-slate-600">All required columns are present in the selected tab.</p>
             </div>
           </div>
         </div>
@@ -202,34 +202,34 @@ const GenerationWorkflow = () => {
               <p className="text-sm text-gray-500">Found 12 lessons in Grade 3 - Math</p>
               <div className="flex items-center">
                 <label className="text-sm text-gray-500 mr-2">Select:</label>
-                <button className="text-xs text-indigo-600 mr-2 hover:underline">All</button>
-                <button className="text-xs text-indigo-600 hover:underline">None</button>
+                <button className="text-xs text-slate-600 mr-2 hover:underline">All</button>
+                <button className="text-xs text-slate-600 hover:underline">None</button>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:bg-indigo-50/30 transition-colors">
+              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:bg-slate-50/30 transition-colors">
                 <input type="checkbox" className="mr-3" checked />
                 <div>
                   <div className="font-medium">Lesson 1: Introduction to Fractions</div>
                   <div className="text-xs text-gray-500">Topic: Basic fraction concepts</div>
                 </div>
               </div>
-              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:bg-indigo-50/30 transition-colors">
+              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:bg-slate-50/30 transition-colors">
                 <input type="checkbox" className="mr-3" checked />
                 <div>
                   <div className="font-medium">Lesson 2: Equivalent Fractions</div>
                   <div className="text-xs text-gray-500">Topic: Finding equivalent fractions</div>
                 </div>
               </div>
-              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:bg-indigo-50/30 transition-colors">
+              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:bg-slate-50/30 transition-colors">
                 <input type="checkbox" className="mr-3" checked />
                 <div>
                   <div className="font-medium">Lesson 3: Comparing Fractions</div>
                   <div className="text-xs text-gray-500">Topic: Greater than and less than</div>
                 </div>
               </div>
-              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:bg-indigo-50/30 transition-colors">
+              <div className="border border-gray-200 p-3 rounded-md flex items-center hover:bg-slate-50/30 transition-colors">
                 <input type="checkbox" className="mr-3" />
                 <div>
                   <div className="font-medium">Lesson 4: Adding Fractions</div>
@@ -242,7 +242,7 @@ const GenerationWorkflow = () => {
           <div>
             <p className="text-sm text-gray-500 mb-2">Selected lessons: 3 of 12</p>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div className="bg-indigo-600 h-2.5 rounded-full" style={{ width: '25%' }}></div>
+              <div className="bg-slate-600 h-2.5 rounded-full" style={{ width: '25%' }}></div>
             </div>
           </div>
         </div>
@@ -257,8 +257,8 @@ const GenerationWorkflow = () => {
           <h3 className="text-lg md:text-xl font-medium mb-4">Generate lessons</h3>
 
           <div className="mb-6">
-            <div className="bg-indigo-50 border border-indigo-200 p-4 rounded-md mb-4">
-              <h4 className="font-medium text-indigo-700 mb-2">Generation Summary</h4>
+            <div className="bg-slate-50 border border-slate-200 p-4 rounded-md mb-4">
+              <h4 className="font-medium text-slate-700 mb-2">Generation Summary</h4>
               <ul className="text-sm text-gray-700 space-y-1">
                 <li>
                   Template library: <span className="font-medium">Math_Templates_v2.docx</span>
@@ -278,12 +278,12 @@ const GenerationWorkflow = () => {
               </ul>
             </div>
 
-            <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-md">
-              <h4 className="font-medium text-yellow-700 mb-2">Preview First Lesson</h4>
+            <div className="bg-slate-50 border border-slate-200 p-4 rounded-md">
+              <h4 className="font-medium text-slate-700 mb-2">Preview First Lesson</h4>
               <p className="text-sm text-gray-700 mb-3">
                 Review the first lesson before generating all selected lessons:
               </p>
-              <button className="px-3 py-1.5 bg-yellow-100 text-yellow-700 border border-yellow-300 rounded text-sm hover:bg-yellow-200 transition-colors">
+              <button className="px-3 py-1.5 bg-slate-100 text-slate-700 border border-slate-300 rounded text-sm hover:bg-slate-200 transition-colors">
                 Preview Lesson 1
               </button>
             </div>
@@ -315,8 +315,8 @@ const GenerationWorkflow = () => {
       description: 'View and download generated lessons',
       content: (
         <div className="border border-gray-200 rounded-lg p-4 md:p-8">
-          <div className="mb-6 bg-green-50 border border-green-200 p-4 rounded-md">
-            <div className="flex items-center text-green-700 mb-3">
+          <div className="mb-6 bg-slate-50 border border-slate-200 p-4 rounded-md">
+            <div className="flex items-center text-slate-700 mb-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 mr-2"
@@ -343,10 +343,10 @@ const GenerationWorkflow = () => {
                 <div className="text-xs text-gray-500">Generated: Just now • Size: 2.4 MB</div>
               </div>
               <div className="flex items-center w-full sm:w-auto">
-                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-indigo-100 text-indigo-700 rounded text-sm mr-2 hover:bg-indigo-200 transition-colors">
+                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-slate-100 text-slate-700 rounded text-sm mr-2 hover:bg-slate-200 transition-colors">
                   Preview
                 </button>
-                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-indigo-600 text-white rounded text-sm hover:bg-indigo-700 transition-colors">
+                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-slate-600 text-white rounded text-sm hover:bg-slate-700 transition-colors">
                   Download
                 </button>
               </div>
@@ -358,10 +358,10 @@ const GenerationWorkflow = () => {
                 <div className="text-xs text-gray-500">Generated: Just now • Size: 2.1 MB</div>
               </div>
               <div className="flex items-center w-full sm:w-auto">
-                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-indigo-100 text-indigo-700 rounded text-sm mr-2 hover:bg-indigo-200 transition-colors">
+                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-slate-100 text-slate-700 rounded text-sm mr-2 hover:bg-slate-200 transition-colors">
                   Preview
                 </button>
-                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-indigo-600 text-white rounded text-sm hover:bg-indigo-700 transition-colors">
+                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-slate-600 text-white rounded text-sm hover:bg-slate-700 transition-colors">
                   Download
                 </button>
               </div>
@@ -373,10 +373,10 @@ const GenerationWorkflow = () => {
                 <div className="text-xs text-gray-500">Generated: Just now • Size: 2.6 MB</div>
               </div>
               <div className="flex items-center w-full sm:w-auto">
-                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-indigo-100 text-indigo-700 rounded text-sm mr-2 hover:bg-indigo-200 transition-colors">
+                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-slate-100 text-slate-700 rounded text-sm mr-2 hover:bg-slate-200 transition-colors">
                   Preview
                 </button>
-                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-indigo-600 text-white rounded text-sm hover:bg-indigo-700 transition-colors">
+                <button className="flex-1 sm:flex-initial px-3 py-1.5 bg-slate-600 text-white rounded text-sm hover:bg-slate-700 transition-colors">
                   Download
                 </button>
               </div>
@@ -384,7 +384,7 @@ const GenerationWorkflow = () => {
           </div>
 
           <div className="flex flex-col md:flex-row md:justify-between items-center gap-3">
-            <button className="w-full md:w-auto px-4 py-2 bg-indigo-600 text-white rounded flex items-center justify-center hover:bg-indigo-700 transition-colors">
+            <button className="w-full md:w-auto px-4 py-2 bg-slate-600 text-white rounded flex items-center justify-center hover:bg-slate-700 transition-colors">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 mr-2"
@@ -402,7 +402,7 @@ const GenerationWorkflow = () => {
               Download All Lessons
             </button>
 
-            <button className="w-full md:w-auto px-4 py-2 border border-indigo-600 text-indigo-600 rounded hover:bg-indigo-50 transition-colors">
+            <button className="w-full md:w-auto px-4 py-2 border border-slate-600 text-slate-600 rounded hover:bg-slate-50 transition-colors">
               Start New Generation
             </button>
           </div>
@@ -434,9 +434,9 @@ const GenerationWorkflow = () => {
       <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-1">
           <div className="flex items-center flex-shrink-0">
-            <div className="w-3 h-3 rounded-full bg-red-400 mr-1"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-400 mr-1"></div>
-            <div className="w-3 h-3 rounded-full bg-green-400 mr-1"></div>
+            <div className="w-3 h-3 rounded-full bg-slate-400 mr-1"></div>
+            <div className="w-3 h-3 rounded-full bg-slate-400 mr-1"></div>
+            <div className="w-3 h-3 rounded-full bg-slate-400 mr-1"></div>
           </div>
           <span className="text-sm text-gray-500 ml-1">Generate lessons (interactive)</span>
         </div>
@@ -447,7 +447,7 @@ const GenerationWorkflow = () => {
           {/* Progress bar - with color indication for completed steps */}
           <div className="absolute h-[1px] bg-gray-200 top-5 left-0 right-0 z-0 hidden md:block"></div>
           <div
-            className="absolute h-[1px] bg-indigo-400 top-5 left-0 z-0 hidden md:block transition-all duration-300 ease-in-out"
+            className="absolute h-[1px] bg-slate-400 top-5 left-0 z-0 hidden md:block transition-all duration-300 ease-in-out"
             style={{
               width: `${((currentStep - 1) * 100) / (steps.length - 1)}%`,
             }}
@@ -463,9 +463,9 @@ const GenerationWorkflow = () => {
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center mb-3 transition-all duration-300 ease-in-out ${
                     currentStep === step.id
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-slate-600 text-white'
                       : currentStep > step.id
-                        ? 'bg-indigo-200 text-indigo-700'
+                        ? 'bg-slate-200 text-slate-700'
                         : 'bg-gray-200 text-gray-500'
                   }`}
                 >
@@ -475,9 +475,9 @@ const GenerationWorkflow = () => {
               <span
                 className={`text-xs md:text-sm text-center font-medium ${
                   currentStep === step.id
-                    ? 'text-indigo-600'
+                    ? 'text-slate-600'
                     : currentStep > step.id
-                      ? 'text-indigo-500'
+                      ? 'text-slate-500'
                       : 'text-gray-500'
                 }`}
               >
@@ -522,8 +522,8 @@ const GenerationWorkflow = () => {
           <button
             className={`px-4 md:px-6 py-2 rounded-md text-sm md:text-base transition-colors ${
               currentStep < steps.length
-                ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                : 'bg-indigo-300 text-white cursor-not-allowed'
+                ? 'bg-slate-600 text-white hover:bg-slate-700'
+                : 'bg-slate-300 text-white cursor-not-allowed'
             }`}
             onClick={handleNext}
             disabled={currentStep === steps.length}

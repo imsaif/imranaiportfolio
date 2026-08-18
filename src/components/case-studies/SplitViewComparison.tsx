@@ -99,7 +99,7 @@ export default function SplitViewComparison({
         {hotspots.map((hotspot) => (
           <motion.div
             key={hotspot.id}
-            className="absolute w-6 h-6 bg-blue-500 rounded-full cursor-pointer"
+            className="absolute w-6 h-6 bg-slate-500 rounded-full cursor-pointer"
             style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
             whileHover={{ scale: 1.2 }}
             onClick={() => setActiveHotspot(activeHotspot === hotspot.id ? null : hotspot.id)}

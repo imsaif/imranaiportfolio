@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="bg-[#f8f9fe] min-h-screen">
+    <div className="bg-[#f8fafc] min-h-screen">
       {/* Header section */}
       <header className="bg-white py-4 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -17,7 +17,7 @@ export default function Loading() {
         <div className="w-2/3 h-14 bg-gray-200 animate-pulse rounded-lg mb-12"></div>
 
         {/* Introduction Section */}
-        <div className="mb-16 border-l-4 border-blue-200 pl-6 py-4 bg-white rounded-lg shadow-sm">
+        <div className="mb-16 border-l-4 border-slate-200 pl-6 py-4 bg-white rounded-lg shadow-sm">
           <div className="space-y-3">
             <div className="w-full h-5 bg-gray-200 animate-pulse rounded"></div>
             <div className="w-full h-5 bg-gray-200 animate-pulse rounded"></div>
@@ -32,9 +32,9 @@ export default function Loading() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-blue-50 p-8 rounded-2xl border-t-4 border-blue-200 shadow-md h-32 animate-pulse"></div>
-            <div className="bg-purple-50 p-8 rounded-2xl border-t-4 border-purple-200 shadow-md h-32 animate-pulse"></div>
-            <div className="bg-pink-50 p-8 rounded-2xl border-t-4 border-pink-200 shadow-md h-32 animate-pulse"></div>
+            <div className="bg-slate-50 p-8 rounded-2xl border-t-4 border-slate-200 shadow-md h-32 animate-pulse"></div>
+            <div className="bg-slate-50 p-8 rounded-2xl border-t-4 border-slate-200 shadow-md h-32 animate-pulse"></div>
+            <div className="bg-slate-50 p-8 rounded-2xl border-t-4 border-slate-200 shadow-md h-32 animate-pulse"></div>
           </div>
         </section>
 

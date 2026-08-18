@@ -182,22 +182,22 @@ export function PerformanceMonitor({
                   <h4 className="text-accent/80 mb-1">Frames Per Second</h4>
                   <div className="grid grid-cols-2 gap-x-2 gap-y-1">
                     <span>Average:</span>
-                    <span className={metrics.fps.avg < 50 ? 'text-red-400' : 'text-green-400'}>
+                    <span className={metrics.fps.avg < 50 ? 'text-slate-400' : 'text-slate-400'}>
                       {metrics.fps.avg.toFixed(1)} FPS
                     </span>
 
                     <span>Min:</span>
-                    <span className={metrics.fps.min < 30 ? 'text-red-400' : 'text-yellow-400'}>
+                    <span className={metrics.fps.min < 30 ? 'text-slate-400' : 'text-slate-400'}>
                       {metrics.fps.min.toFixed(1)} FPS
                     </span>
 
                     <span>Max:</span>
-                    <span className="text-green-400">
+                    <span className="text-slate-400">
                       {metrics.fps.max.toFixed(1)} FPS
                     </span>
 
                     <span>Jank Frames:</span>
-                    <span className={metrics.fps.jank > 5 ? 'text-red-400' : 'text-green-400'}>
+                    <span className={metrics.fps.jank > 5 ? 'text-slate-400' : 'text-slate-400'}>
                       {metrics.fps.jank} ({metrics.fps.jankPercentage.toFixed(1)}%)
                     </span>
                   </div>
@@ -210,27 +210,27 @@ export function PerformanceMonitor({
                   <h4 className="text-accent/80 mb-1">Web Vitals</h4>
                   <div className="grid grid-cols-2 gap-x-2 gap-y-1">
                     <span>TTFB:</span>
-                    <span className={metrics.navigation.ttfb > 500 ? 'text-red-400' : 'text-green-400'}>
+                    <span className={metrics.navigation.ttfb > 500 ? 'text-slate-400' : 'text-slate-400'}>
                       {metrics.navigation.ttfb.toFixed(0)} ms
                     </span>
 
                     <span>FCP:</span>
-                    <span className={metrics.navigation.fcp > 2000 ? 'text-red-400' : 'text-green-400'}>
+                    <span className={metrics.navigation.fcp > 2000 ? 'text-slate-400' : 'text-slate-400'}>
                       {metrics.navigation.fcp.toFixed(0)} ms
                     </span>
 
                     <span>LCP:</span>
-                    <span className={metrics.navigation.lcp > 2500 ? 'text-red-400' : 'text-green-400'}>
+                    <span className={metrics.navigation.lcp > 2500 ? 'text-slate-400' : 'text-slate-400'}>
                       {metrics.navigation.lcp.toFixed(0)} ms
                     </span>
 
                     <span>CLS:</span>
-                    <span className={metrics.navigation.cls > 0.1 ? 'text-red-400' : 'text-green-400'}>
+                    <span className={metrics.navigation.cls > 0.1 ? 'text-slate-400' : 'text-slate-400'}>
                       {metrics.navigation.cls.toFixed(3)}
                     </span>
 
                     <span>Total Load:</span>
-                    <span className={metrics.navigation.totalLoad > 3000 ? 'text-red-400' : 'text-green-400'}>
+                    <span className={metrics.navigation.totalLoad > 3000 ? 'text-slate-400' : 'text-slate-400'}>
                       {metrics.navigation.totalLoad.toFixed(0)} ms
                     </span>
                   </div>
@@ -243,7 +243,7 @@ export function PerformanceMonitor({
                   <h4 className="text-accent/80 mb-1">Memory Usage</h4>
                   <div className="grid grid-cols-2 gap-x-2 gap-y-1">
                     <span>Used:</span>
-                    <span className={metrics.memory.usagePercentage > 80 ? 'text-red-400' : 'text-green-400'}>
+                    <span className={metrics.memory.usagePercentage > 80 ? 'text-slate-400' : 'text-slate-400'}>
                       {(metrics.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1)} MB
                     </span>
 
@@ -258,7 +258,7 @@ export function PerformanceMonitor({
                     </span>
 
                     <span>Usage:</span>
-                    <span className={metrics.memory.usagePercentage > 80 ? 'text-red-400' : 'text-green-400'}>
+                    <span className={metrics.memory.usagePercentage > 80 ? 'text-slate-400' : 'text-slate-400'}>
                       {metrics.memory.usagePercentage.toFixed(1)}%
                     </span>
                   </div>

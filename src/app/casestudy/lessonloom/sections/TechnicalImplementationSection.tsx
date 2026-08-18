@@ -23,10 +23,10 @@ export function TechnicalImplementationSection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0 }}
-          className="bg-blue-50 rounded-lg p-6 border border-blue-200"
+          className="bg-slate-50 rounded-lg p-6 border border-slate-200"
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
-            <MdBuild className="w-6 h-6 text-blue-600" />
+            <MdBuild className="w-6 h-6 text-slate-600" />
             Defining Interface Requirements That Shaped Architecture
           </h3>
           <p className="text-gray-700 mb-4">
@@ -34,15 +34,15 @@ export function TechnicalImplementationSection() {
           </p>
           <ul className="space-y-3 text-gray-700 text-sm">
             <li className="flex gap-3">
-              <span className="font-semibold text-blue-600 flex-shrink-0">•</span>
+              <span className="font-semibold text-slate-600 flex-shrink-0">•</span>
               <span><strong>A preview system</strong> that could render lessons without saving them to the database</span>
             </li>
             <li className="flex gap-3">
-              <span className="font-semibold text-blue-600 flex-shrink-0">•</span>
+              <span className="font-semibold text-slate-600 flex-shrink-0">•</span>
               <span><strong>A stateless generation pipeline</strong> that could be called multiple times for the same input without side effects</span>
             </li>
             <li className="flex gap-3">
-              <span className="font-semibold text-blue-600 flex-shrink-0">•</span>
+              <span className="font-semibold text-slate-600 flex-shrink-0">•</span>
               <span><strong>Version control for prompts</strong> so we could track which prompt generated which lesson</span>
             </li>
           </ul>
@@ -56,10 +56,10 @@ export function TechnicalImplementationSection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-green-50 rounded-lg p-6 border border-green-200"
+          className="bg-slate-50 rounded-lg p-6 border border-slate-200"
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
-            <MdBuild className="w-6 h-6 text-green-600" />
+            <MdBuild className="w-6 h-6 text-slate-600" />
             Collaborating on Prompt Design & AI Optimization
           </h3>
           <p className="text-gray-700 mb-4">
@@ -86,10 +86,10 @@ export function TechnicalImplementationSection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-purple-50 rounded-lg p-6 border border-purple-200"
+          className="bg-slate-50 rounded-lg p-6 border border-slate-200"
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
-            <MdBuild className="w-6 h-6 text-purple-600" />
+            <MdBuild className="w-6 h-6 text-slate-600" />
             Using Research to Inform Technical Decisions
           </h3>
           <p className="text-gray-700 mb-4">
@@ -116,10 +116,10 @@ export function TechnicalImplementationSection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-orange-50 rounded-lg p-6 border border-orange-200"
+          className="bg-slate-50 rounded-lg p-6 border border-slate-200"
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
-            <MdBuild className="w-6 h-6 text-orange-600" />
+            <MdBuild className="w-6 h-6 text-slate-600" />
             Iterating Design with Engineering Constraints
           </h3>
           <p className="text-gray-700 mb-4">
@@ -127,15 +127,15 @@ export function TechnicalImplementationSection() {
           </p>
           <ul className="space-y-3 text-gray-700 text-sm">
             <li className="flex gap-3">
-              <span className="text-orange-600 flex-shrink-0">→</span>
+              <span className="text-slate-600 flex-shrink-0">→</span>
               <span><strong>Real-time collaborative editing:</strong> Originally envisioned but technically infeasible with our infrastructure. We pivoted to "commenting + revision suggestions" instead, which actually worked better for the asynchronous nature of content creation.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-orange-600 flex-shrink-0">→</span>
+              <span className="text-slate-600 flex-shrink-0">→</span>
               <span><strong>Multi-language generation:</strong> We wanted single-click translation, but maintaining curriculum alignment across languages was harder than expected. We built a review-and-refine workflow instead, where AI generates a first draft in the target language and humans validate cultural appropriateness.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-orange-600 flex-shrink-0">→</span>
+              <span className="text-slate-600 flex-shrink-0">→</span>
               <span><strong>Custom AI model fine-tuning:</strong> Turns out it was more cost-effective to use better prompts with GPT-4 than to fine-tune a smaller model. This realization came from prototyping and testing—and led to a better user experience anyway.</span>
             </li>
           </ul>
@@ -146,10 +146,10 @@ export function TechnicalImplementationSection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-indigo-50 rounded-lg p-6 border border-indigo-200"
+          className="bg-slate-50 rounded-lg p-6 border border-slate-200"
         >
           <h3 className="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-3">
-            <MdBuild className="w-6 h-6 text-indigo-600" />
+            <MdBuild className="w-6 h-6 text-slate-600" />
             Validating Technical Solutions with Real Users
           </h3>
           <p className="text-gray-700 mb-4">
@@ -157,19 +157,19 @@ export function TechnicalImplementationSection() {
           </p>
           <ul className="space-y-3 text-gray-700 text-sm">
             <li className="flex gap-3">
-              <span className="text-indigo-600 flex-shrink-0">✓</span>
+              <span className="text-slate-600 flex-shrink-0">✓</span>
               <span><strong>Weekly user testing sessions</strong> with content creators using development builds, identifying friction points that weren't caught by unit tests</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-indigo-600 flex-shrink-0">✓</span>
+              <span className="text-slate-600 flex-shrink-0">✓</span>
               <span><strong>Bias & cultural sensitivity reviews</strong> of AI outputs alongside domain experts from different regions</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-indigo-600 flex-shrink-0">✓</span>
+              <span className="text-slate-600 flex-shrink-0">✓</span>
               <span><strong>Performance validation</strong> from an educator's perspective—testing if "2-3 minute generation time" actually felt acceptable while they waited</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-indigo-600 flex-shrink-0">✓</span>
+              <span className="text-slate-600 flex-shrink-0">✓</span>
               <span><strong>Error handling scenarios</strong>—what happens when the AI fails? Working with engineers to ensure error messages helped educators understand why and what to do next</span>
             </li>
           </ul>

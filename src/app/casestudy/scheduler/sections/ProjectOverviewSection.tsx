@@ -35,7 +35,7 @@ export const ProjectOverviewSection: React.FC = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="flex-1 bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-sm p-8 flex items-center border border-gray-200 bg-white"
+        className="flex-1 bg-gradient-to-br from-slate-50 to-white rounded-xl shadow-sm p-8 flex items-center border border-gray-200 bg-white"
       >
         <p className="text-gray-700 text-lg">
           Before EduScheduler, timetables were created manually—slow, error-prone, and inflexible. As Lead Product

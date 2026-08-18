@@ -133,7 +133,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
   ];
 
   return (
-    <div className="bg-[#f8f9fe] min-h-screen">
+    <div className="bg-[#f8fafc] min-h-screen">
       {/* Full-width hero image section */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -158,7 +158,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
         <motion.h1
           className="text-5xl font-bold text-transparent bg-clip-text animate-gradient-text mb-12"
           style={{
-            backgroundImage: 'linear-gradient(90deg, #d94f9d, #9333ea, #d94f9d)',
+            backgroundImage: 'linear-gradient(90deg, #64748b, #64748b, #64748b)',
             backgroundSize: '200% auto',
           }}
           initial={{ opacity: 0, y: 20 }}
@@ -191,15 +191,15 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-red-500 mb-2">15+ hrs</div>
+                <div className="text-3xl font-bold text-slate-500 mb-2">15+ hrs</div>
                 <div className="text-gray-600">per week on lesson planning</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-red-500 mb-2">60%</div>
+                <div className="text-3xl font-bold text-slate-500 mb-2">60%</div>
                 <div className="text-gray-600">of materials created from scratch</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-red-500 mb-2">1 in 3</div>
+                <div className="text-3xl font-bold text-slate-500 mb-2">1 in 3</div>
                 <div className="text-gray-600">teachers report feeling overwhelmed</div>
               </div>
             </div>
@@ -218,7 +218,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
             {/* AI Generation Process */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📝</span>
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">Input</h4>
@@ -226,7 +226,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">🤖</span>
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">AI Processing</h4>
@@ -234,7 +234,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">📋</span>
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">Generation</h4>
@@ -242,7 +242,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">✨</span>
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">Customize</h4>
@@ -270,7 +270,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
                       key={template.id}
                       draggable
                       onDragStart={(e) => handleDragStart(e, template, 'template')}
-                      className="flex items-center p-3 bg-blue-50 rounded-lg cursor-move hover:bg-blue-100 transition-colors"
+                      className="flex items-center p-3 bg-slate-50 rounded-lg cursor-move hover:bg-slate-100 transition-colors"
                     >
                       <span className="mr-3 text-lg">{template.emoji}</span>
                       <div>
@@ -285,7 +285,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
               {/* AI Chat Interface */}
               <div
                 className={`border-2 border-dashed rounded-lg p-4 transition-colors ${
-                  isDragOver ? 'border-blue-400 bg-blue-50' : 'border-gray-300 bg-gray-50'
+                  isDragOver ? 'border-slate-400 bg-slate-50' : 'border-gray-300 bg-gray-50'
                 }`}
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
@@ -298,7 +298,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
                 >
                   {chatMessages.map((message, index) => (
                     <div key={index} className="flex items-start space-x-2">
-                      <div className="w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                      <div className="w-6 h-6 bg-gradient-to-r from-slate-400 to-slate-400 rounded-full flex items-center justify-center text-white text-xs font-bold">
                         AI
                       </div>
                       <div className="flex-1 text-sm text-gray-700">
@@ -308,7 +308,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
                   ))}
                   {isGenerating && (
                     <div className="flex items-center space-x-2">
-                      <div className="w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
+                      <div className="w-6 h-6 bg-gradient-to-r from-slate-400 to-slate-400 rounded-full flex items-center justify-center">
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                       </div>
                       <div className="text-sm text-gray-500">AI is working...</div>
@@ -319,7 +319,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
                 {selectedTemplate && selectedSpreadsheet && !isGenerating && !generationComplete && (
                   <button
                     onClick={handleGenerate}
-                    className="w-full py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-colors"
+                    className="w-full py-2 bg-gradient-to-r from-slate-500 to-slate-500 text-white rounded-lg font-medium hover:from-slate-600 hover:to-slate-600 transition-colors"
                   >
                     Generate Lessons
                   </button>
@@ -327,8 +327,8 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
 
                 {generationComplete && (
                   <div className="text-center">
-                    <div className="text-green-600 font-medium mb-2">✅ Generation Complete!</div>
-                    <button className="px-4 py-2 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors">
+                    <div className="text-slate-600 font-medium mb-2">✅ Generation Complete!</div>
+                    <button className="px-4 py-2 bg-slate-500 text-white rounded-lg font-medium hover:bg-slate-600 transition-colors">
                       Download Lessons
                     </button>
                   </div>
@@ -344,7 +344,7 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
                       key={spreadsheet.id}
                       draggable
                       onDragStart={(e) => handleDragStart(e, spreadsheet, 'spreadsheet')}
-                      className="flex items-center p-3 bg-green-50 rounded-lg cursor-move hover:bg-green-100 transition-colors"
+                      className="flex items-center p-3 bg-slate-50 rounded-lg cursor-move hover:bg-slate-100 transition-colors"
                     >
                       <span className="mr-3 text-lg">{spreadsheet.emoji}</span>
                       <div>
@@ -365,17 +365,17 @@ export const LessonLoomCaseStudyContent: React.FC<LessonLoomCaseStudyContentProp
           <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="text-4xl font-bold text-green-500 mb-2">10,000+</div>
+                <div className="text-4xl font-bold text-slate-500 mb-2">10,000+</div>
                 <div className="text-gray-600 font-medium">Lessons Generated</div>
                 <div className="text-sm text-gray-500 mt-1">Across all subjects and grade levels</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-500 mb-2">6hrs/week</div>
+                <div className="text-4xl font-bold text-slate-500 mb-2">6hrs/week</div>
                 <div className="text-gray-600 font-medium">Time Saved per Teacher</div>
                 <div className="text-sm text-gray-500 mt-1">More time for actual teaching</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-purple-500 mb-2">92%</div>
+                <div className="text-4xl font-bold text-slate-500 mb-2">92%</div>
                 <div className="text-gray-600 font-medium">Adoption Rate</div>
                 <div className="text-sm text-gray-500 mt-1">Teachers continue using after trial</div>
               </div>

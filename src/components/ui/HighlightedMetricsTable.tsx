@@ -33,7 +33,7 @@ const HighlightedMetricsTable: React.FC<HighlightedMetricsTableProps> = ({
   return (
     <div className="relative">
       {/* Gradient Shadow Background - Brand Colors */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl blur-lg opacity-20"></div>
+      <div className="absolute -inset-1 bg-gradient-to-r from-slate-500 via-slate-500 to-slate-500 rounded-xl blur-lg opacity-20"></div>
 
       {/* Table Container */}
       <div className="relative bg-white rounded-xl border border-gray-200 overflow-hidden">
@@ -47,12 +47,12 @@ const HighlightedMetricsTable: React.FC<HighlightedMetricsTableProps> = ({
                   key={index}
                   className={`border-b border-gray-100 transition-all duration-500 ${
                     highlighted
-                      ? 'bg-gradient-to-r from-blue-50 to-purple-50 shadow-md border-blue-200'
+                      ? 'bg-gradient-to-r from-slate-50 to-slate-50 shadow-md border-slate-200'
                       : 'hover:bg-gray-50'
                   }`}
                 >
                   <td className={`px-5 py-6 text-sm font-medium transition-colors duration-300 ${
-                    highlighted ? 'text-blue-800' : 'text-gray-700'
+                    highlighted ? 'text-slate-800' : 'text-gray-700'
                   }`}>
                     {metric.label}
                   </td>
@@ -61,13 +61,13 @@ const HighlightedMetricsTable: React.FC<HighlightedMetricsTableProps> = ({
                       <AnimatedNumber
                         value={metric.number}
                         className={`text-xl font-bold transition-colors duration-300 ${
-                          highlighted ? 'text-blue-700' : 'text-gray-900'
+                          highlighted ? 'text-slate-700' : 'text-gray-900'
                         }`}
                         duration={1500}
                       />
                       {highlighted && (
                         <div
-                          className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-md opacity-20 -mx-1 -my-0.5"
+                          className="absolute inset-0 bg-gradient-to-r from-slate-400 to-slate-400 rounded-md opacity-20 -mx-1 -my-0.5"
                           style={singlePulseStyle}
                         ></div>
                       )}
@@ -92,12 +92,12 @@ const HighlightedMetricsTable: React.FC<HighlightedMetricsTableProps> = ({
                   key={`leadership-${index}`}
                   className={`border-b border-gray-100 transition-all duration-500 ${
                     highlighted
-                      ? 'bg-gradient-to-r from-blue-50 to-purple-50 shadow-md border-blue-200'
+                      ? 'bg-gradient-to-r from-slate-50 to-slate-50 shadow-md border-slate-200'
                       : 'hover:bg-gray-50'
                   }`}
                 >
                   <td className={`px-5 py-6 text-sm font-medium transition-colors duration-300 ${
-                    highlighted ? 'text-blue-800' : 'text-gray-700'
+                    highlighted ? 'text-slate-800' : 'text-gray-700'
                   }`}>
                     {metric.label}
                   </td>
@@ -106,13 +106,13 @@ const HighlightedMetricsTable: React.FC<HighlightedMetricsTableProps> = ({
                       <AnimatedNumber
                         value={metric.number}
                         className={`text-xl font-bold transition-colors duration-300 ${
-                          highlighted ? 'text-blue-700' : 'text-gray-900'
+                          highlighted ? 'text-slate-700' : 'text-gray-900'
                         }`}
                         duration={1800}
                       />
                       {highlighted && (
                         <div
-                          className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-md opacity-20 -mx-1 -my-0.5"
+                          className="absolute inset-0 bg-gradient-to-r from-slate-400 to-slate-400 rounded-md opacity-20 -mx-1 -my-0.5"
                           style={singlePulseStyle}
                         ></div>
                       )}

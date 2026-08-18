@@ -12,12 +12,12 @@ export default function CaseStudy() {
       <footer className="mt-16 py-8 border-t border-gray-200">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <Link href="/" className="text-purple-700 hover:text-purple-900 font-medium mb-4 md:mb-0">
+            <Link href="/" className="text-slate-700 hover:text-slate-900 font-medium mb-4 md:mb-0">
               ← Back to Portfolio
             </Link>
 
             <div className="flex space-x-4">
-              <Link href="/case-study-2" className="text-gray-600 hover:text-purple-700">
+              <Link href="/case-study-2" className="text-gray-600 hover:text-slate-700">
                 Next Case Study →
               </Link>
               {/* Add other navigation links as needed */}

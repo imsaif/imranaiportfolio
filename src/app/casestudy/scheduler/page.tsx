@@ -29,8 +29,8 @@ const DesignProcessIcon = (
   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
     <defs>
       <linearGradient id="designprocess-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#EC4899" />
-        <stop offset="1" stopColor="#8B5CF6" />
+        <stop stopColor="#64748b" />
+        <stop offset="1" stopColor="#64748b" />
       </linearGradient>
     </defs>
     <path
@@ -49,8 +49,8 @@ const LessonsLearnedIcon = (
   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
     <defs>
       <linearGradient id="lessons-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#A21CAF" />
-        <stop offset="1" stopColor="#EC4899" />
+        <stop stopColor="#475569" />
+        <stop offset="1" stopColor="#64748b" />
       </linearGradient>
     </defs>
     <path
@@ -74,8 +74,8 @@ const ConclusionIcon = (
   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" className="inline-block align-middle" aria-hidden="true">
     <defs>
       <linearGradient id="conclusion-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#A21CAF" />
-        <stop offset="1" stopColor="#EC4899" />
+        <stop stopColor="#475569" />
+        <stop offset="1" stopColor="#64748b" />
       </linearGradient>
     </defs>
     <circle cx="12" cy="12" r="9" stroke="url(#conclusion-gradient)" strokeWidth="2" fill="none" />
@@ -254,7 +254,7 @@ export default function Page() {
       {/* Header section */}
       <header className="bg-white py-0 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-          {/* Removed: <Link href="/" className="text-purple-600 font-medium text-xl">Imran Mohammed</Link> */}
+          {/* Removed: <Link href="/" className="text-slate-600 font-medium text-xl">Imran Mohammed</Link> */}
         </div>
       </header>
 
@@ -324,8 +324,8 @@ export default function Page() {
                           y2="20"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stopColor="#EC4899" />
-                          <stop offset="1" stopColor="#8B5CF6" />
+                          <stop stopColor="#64748b" />
+                          <stop offset="1" stopColor="#64748b" />
                         </linearGradient>
                       </defs>
                       <rect x="4" y="4" width="16" height="16" rx="3" />
@@ -354,8 +354,8 @@ export default function Page() {
                           y2="20"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stopColor="#EC4899" />
-                          <stop offset="1" stopColor="#8B5CF6" />
+                          <stop stopColor="#64748b" />
+                          <stop offset="1" stopColor="#64748b" />
                         </linearGradient>
                       </defs>
                       <path d="M7 21V5a2 2 0 012-2h6a2 2 0 012 2v16l-5-3-5 3z" />
@@ -383,8 +383,8 @@ export default function Page() {
                           y2="20"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stopColor="#EC4899" />
-                          <stop offset="1" stopColor="#8B5CF6" />
+                          <stop stopColor="#64748b" />
+                          <stop offset="1" stopColor="#64748b" />
                         </linearGradient>
                       </defs>
                       <circle cx="11" cy="11" r="7" />
@@ -413,8 +413,8 @@ export default function Page() {
                           y2="20"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stopColor="#EC4899" />
-                          <stop offset="1" stopColor="#8B5CF6" />
+                          <stop stopColor="#64748b" />
+                          <stop offset="1" stopColor="#64748b" />
                         </linearGradient>
                       </defs>
                       <circle cx="9" cy="10" r="4" />
@@ -441,22 +441,22 @@ export default function Page() {
                 <ProjectOverviewSection />
               </div>
               {/* Gradient separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               <div ref={challengeRef} id="challenge">
                 <ChallengeSection />
               </div>
               {/* Gradient separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               <div ref={userResearchRef} id="user-research">
                 <UserResearchSection />
               </div>
               {/* Gradient separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               <div ref={userPersonasRef} id="user-personas">
                 <UserPersonasSection />
               </div>
               {/* Gradient separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               {/* Move Design Process section here */}
               <div ref={designProcessRef} id="design-process">
                 {/* Design Process Section Content (move from below) */}
@@ -493,7 +493,7 @@ export default function Page() {
                           />
                           <circle cx="12" cy="10" r="2" fill="#334155" />
                         </svg>
-                        <div className="font-bold text-blue-700 mb-1">Programs</div>
+                        <div className="font-bold text-slate-700 mb-1">Programs</div>
                         <div className="text-gray-600 text-sm text-center">
                           Represents the geographical location (e.g., Nigeria).
                         </div>
@@ -520,7 +520,7 @@ export default function Page() {
                           <path d="M2 10l10-6 10 6" stroke="#334155" strokeWidth="2" fill="none" />
                           <rect x="10" y="14" width="4" height="4" stroke="#334155" strokeWidth="1.5" fill="none" />
                         </svg>
-                        <div className="font-bold text-blue-700 mb-1">Schools</div>
+                        <div className="font-bold text-slate-700 mb-1">Schools</div>
                         <div className="text-gray-600 text-sm text-center">Each program contains multiple schools.</div>
                       </motion.div>
                       {/* Grades Card */}
@@ -554,7 +554,7 @@ export default function Page() {
                           />
                           <rect x="6" y="6" width="12" height="3" rx="1" stroke="#334155" strokeWidth="2" fill="none" />
                         </svg>
-                        <div className="font-bold text-blue-700 mb-1">Grades</div>
+                        <div className="font-bold text-slate-700 mb-1">Grades</div>
                         <div className="text-gray-600 text-sm text-center">
                           Schools are divided into grades or streams.
                         </div>
@@ -571,7 +571,7 @@ export default function Page() {
                           <circle cx="12" cy="9" r="4" stroke="#334155" strokeWidth="2" fill="none" />
                           <path d="M4 21v-1a7 7 0 0 1 14 0v1" stroke="#334155" strokeWidth="2" fill="none" />
                         </svg>
-                        <div className="font-bold text-blue-700 mb-1">Teachers</div>
+                        <div className="font-bold text-slate-700 mb-1">Teachers</div>
                         <div className="text-gray-600 text-sm text-center">
                           Teachers are assigned to grades and subjects.
                         </div>
@@ -599,7 +599,7 @@ export default function Page() {
                           />
                           <path d="M12 20V4" stroke="#334155" strokeWidth="1.5" />
                         </svg>
-                        <div className="font-bold text-blue-700 mb-1">Subjects</div>
+                        <div className="font-bold text-slate-700 mb-1">Subjects</div>
                         <div className="text-gray-600 text-sm text-center">Subjects are taught within each grade.</div>
                       </motion.div>
                     </div>
@@ -619,25 +619,25 @@ export default function Page() {
                         <h4 className="font-bold mb-4 text-gray-800">Pain Points</h4>
                         <ul className="space-y-4">
                           <li>
-                            <div className="border-l-4 border-red-500 pl-3">
+                            <div className="border-l-4 border-slate-500 pl-3">
                               <p className="text-gray-800 font-medium">Limited visibility</p>
                               <p className="text-gray-700">into which schools have unique constraints</p>
                             </div>
                           </li>
                           <li>
-                            <div className="border-l-4 border-red-500 pl-3">
+                            <div className="border-l-4 border-slate-500 pl-3">
                               <p className="text-gray-800 font-medium">Long waiting times</p>
                               <p className="text-gray-700">for plan generation with no progress indicator</p>
                             </div>
                           </li>
                           <li>
-                            <div className="border-l-4 border-red-500 pl-3">
+                            <div className="border-l-4 border-slate-500 pl-3">
                               <p className="text-gray-800 font-medium">Overwhelming error messages</p>
                               <p className="text-gray-700">with no clear resolution path</p>
                             </div>
                           </li>
                           <li>
-                            <div className="border-l-4 border-red-500 pl-3">
+                            <div className="border-l-4 border-slate-500 pl-3">
                               <p className="text-gray-800 font-medium">Tedious manual adjustments</p>
                               <p className="text-gray-700">requiring repetitive actions</p>
                             </div>
@@ -649,25 +649,25 @@ export default function Page() {
                         <h4 className="font-bold mb-4 text-gray-800">Design Opportunities</h4>
                         <ul className="space-y-4">
                           <li>
-                            <div className="border-l-4 border-green-500 pl-3">
+                            <div className="border-l-4 border-slate-500 pl-3">
                               <p className="text-gray-800 font-medium">Create visual constraint indicators</p>
                               <p className="text-gray-700">for quick school assessment</p>
                             </div>
                           </li>
                           <li>
-                            <div className="border-l-4 border-green-500 pl-3">
+                            <div className="border-l-4 border-slate-500 pl-3">
                               <p className="text-gray-800 font-medium">Implement real-time progress updates</p>
                               <p className="text-gray-700">with estimated completion times</p>
                             </div>
                           </li>
                           <li>
-                            <div className="border-l-4 border-green-500 pl-3">
+                            <div className="border-l-4 border-slate-500 pl-3">
                               <p className="text-gray-800 font-medium">Design guided resolution workflows</p>
                               <p className="text-gray-700">for each violation type</p>
                             </div>
                           </li>
                           <li>
-                            <div className="border-l-4 border-green-500 pl-3">
+                            <div className="border-l-4 border-slate-500 pl-3">
                               <p className="text-gray-800 font-medium">Create bulk editing capabilities</p>
                               <p className="text-gray-700">for common adjustment patterns</p>
                             </div>
@@ -682,7 +682,7 @@ export default function Page() {
                   </p>
                 </motion.div>
               </div>
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
               <div className="mt-16" />
             </div>
           </div>
@@ -699,7 +699,7 @@ export default function Page() {
           <div className="sticky left-0 top-24 h-fit min-w-[300px] w-[300px] max-w-md flex flex-col justify-start items-start pr-4 py-8 bg-gradient-to-b from-white/90 to-white/60 z-10">
             <div className="flex items-center mb-8 w-full">
               <CaseStudyHeader level="h2" showGradientLine className="flex items-center gap-3 w-full">
-                <svg className="w-7 h-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-7 h-7 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
                 <span>Teacher Guide Flow</span>
@@ -721,8 +721,8 @@ export default function Page() {
                 <p className="text-gray-800 text-lg mb-6 leading-relaxed">
                   Teachers start by viewing their daily schedule and can click on any lesson to instantly access the detailed teaching guide for that subject.
                 </p>
-                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                  <p className="text-blue-800 font-medium">
+                <div className="bg-slate-50 border-l-4 border-slate-500 p-4 rounded-r-lg">
+                  <p className="text-slate-800 font-medium">
                     <span className="font-bold">Interactive Flow:</span> Click any subject in the schedule below to see how the teacher guide appears instantly.
                   </p>
                 </div>
@@ -738,7 +738,7 @@ export default function Page() {
                 {currentView === 'guide' && (
                   <div>
                     <p className="text-gray-600 mb-4 text-lg">
-                      Currently viewing: <span className="font-semibold text-blue-600">{selectedSubject} Lesson Guide</span>
+                      Currently viewing: <span className="font-semibold text-slate-600">{selectedSubject} Lesson Guide</span>
                     </p>
                     <div className="flex flex-wrap gap-2 justify-center">
                       <span className="text-sm text-gray-500 mr-2">Try other subjects:</span>
@@ -748,7 +748,7 @@ export default function Page() {
                           onClick={() => setSelectedSubject(subject)}
                           className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
                             selectedSubject === subject
-                              ? 'bg-blue-600 text-white'
+                              ? 'bg-slate-600 text-white'
                               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                           }`}
                         >
@@ -811,10 +811,10 @@ export default function Page() {
               </div>
 
               {/* Backend Sync Explanation Section */}
-              <div className="mt-20 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 border border-blue-200">
+              <div className="mt-20 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-6 border border-slate-200">
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center justify-center">
-                    <svg className="w-6 h-6 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-6 h-6 mr-2 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                     </svg>
                     Smart Backend Integration
@@ -828,8 +828,8 @@ export default function Page() {
                   
                   {/* Step 1 */}
                   <div className="flex-1 text-center bg-white rounded-lg p-4 shadow-sm">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <span className="text-lg font-bold text-blue-600">1</span>
+                    <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-lg font-bold text-slate-600">1</span>
                     </div>
                     <h5 className="font-semibold text-gray-900 mb-1">Generate</h5>
                     <p className="text-xs text-gray-600">AI creates optimized timetables</p>
@@ -844,8 +844,8 @@ export default function Page() {
 
                   {/* Step 2 */}
                   <div className="flex-1 text-center bg-white rounded-lg p-4 shadow-sm">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <span className="text-lg font-bold text-green-600">2</span>
+                    <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-lg font-bold text-slate-600">2</span>
                     </div>
                     <h5 className="font-semibold text-gray-900 mb-1">Map</h5>
                     <p className="text-xs text-gray-600">Links lessons to content</p>
@@ -860,8 +860,8 @@ export default function Page() {
 
                   {/* Step 3 */}
                   <div className="flex-1 text-center bg-white rounded-lg p-4 shadow-sm">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <span className="text-lg font-bold text-purple-600">3</span>
+                    <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span className="text-lg font-bold text-slate-600">3</span>
                     </div>
                     <h5 className="font-semibold text-gray-900 mb-1">Sync</h5>
                     <p className="text-xs text-gray-600">Updates in real-time</p>
@@ -872,15 +872,15 @@ export default function Page() {
                 {/* Key Stats */}
                 <div className="mt-6 grid grid-cols-3 gap-4 text-center">
                   <div className="bg-white rounded-lg p-3">
-                    <div className="text-lg font-bold text-blue-600">1000+</div>
+                    <div className="text-lg font-bold text-slate-600">1000+</div>
                     <div className="text-xs text-gray-600">Schedule combinations/sec</div>
                   </div>
                   <div className="bg-white rounded-lg p-3">
-                    <div className="text-lg font-bold text-green-600">500+</div>
+                    <div className="text-lg font-bold text-slate-600">500+</div>
                     <div className="text-xs text-gray-600">Lesson templates</div>
                   </div>
                   <div className="bg-white rounded-lg p-3">
-                    <div className="text-lg font-bold text-purple-600">200ms</div>
+                    <div className="text-lg font-bold text-slate-600">200ms</div>
                     <div className="text-xs text-gray-600">Update speed</div>
                   </div>
                 </div>
@@ -921,9 +921,9 @@ export default function Page() {
               <div className="mb-12">
                 <h3 className="text-gray-900 font-bold text-xl mb-6">Key Challenges</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 max-w-5xl mx-auto">
-                  <div className="bg-blue-50 p-6 rounded-xl border-t-4 border-blue-400 shadow-sm">
+                  <div className="bg-slate-50 p-6 rounded-xl border-t-4 border-slate-400 shadow-sm">
                     <div className="flex items-center mb-4">
-                      <div className="text-blue-600 mr-3">
+                      <div className="text-slate-600 mr-3">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-6 w-6"
@@ -945,9 +945,9 @@ export default function Page() {
                       Making schedules work for both shared rules and local needs was difficult.
                     </p>
                   </div>
-                  <div className="bg-purple-50 p-6 rounded-xl border-t-4 border-purple-400 shadow-sm">
+                  <div className="bg-slate-50 p-6 rounded-xl border-t-4 border-slate-400 shadow-sm">
                     <div className="flex items-center mb-4">
-                      <div className="text-purple-600 mr-3">
+                      <div className="text-slate-600 mr-3">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-6 w-6"
@@ -967,9 +967,9 @@ export default function Page() {
                     </div>
                     <p className="text-gray-700">Getting everyone on the same page was tough.</p>
                   </div>
-                  <div className="bg-pink-50 p-6 rounded-xl border-t-4 border-pink-400 shadow-sm">
+                  <div className="bg-slate-50 p-6 rounded-xl border-t-4 border-slate-400 shadow-sm">
                     <div className="flex items-center mb-4">
-                      <div className="text-pink-600 mr-3">
+                      <div className="text-slate-600 mr-3">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-6 w-6"
@@ -991,13 +991,13 @@ export default function Page() {
               <div className="mb-12">
                 <h3 className="text-gray-900 font-bold text-xl mb-6">What I Would Do Differently</h3>
                 <motion.div className="rounded-xl overflow-hidden shadow-md border border-gray-200 mb-8">
-                  <div className="py-4 px-6 bg-blue-50 rounded-t-xl">
+                  <div className="py-4 px-6 bg-slate-50 rounded-t-xl">
                     <h4 className="font-bold text-gray-900">Process Improvements</h4>
                   </div>
                   <div className="bg-white p-6">
                     <div className="space-y-4">
                       <div className="flex items-start">
-                        <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
+                        <div className="flex-shrink-0 h-5 w-5 rounded-full bg-slate-500 flex items-center justify-center mt-1 mr-3">
                           <span className="text-white text-xs">1</span>
                         </div>
                         <div>
@@ -1009,7 +1009,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="flex items-start">
-                        <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
+                        <div className="flex-shrink-0 h-5 w-5 rounded-full bg-slate-500 flex items-center justify-center mt-1 mr-3">
                           <span className="text-white text-xs">2</span>
                         </div>
                         <div>
@@ -1021,7 +1021,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="flex items-start">
-                        <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center mt-1 mr-3">
+                        <div className="flex-shrink-0 h-5 w-5 rounded-full bg-slate-500 flex items-center justify-center mt-1 mr-3">
                           <span className="text-white text-xs">3</span>
                         </div>
                         <div>
@@ -1041,7 +1041,7 @@ export default function Page() {
                 <h3 className="text-gray-900 font-bold text-xl mb-6">Design Principles Reinforced</h3>
                 <div className="grid grid-cols-1 gap-6 mb-8">
                   <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-blue-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
+                    <div className="absolute top-0 right-0 bg-slate-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
                     <h4 className="font-bold text-gray-900 mb-3">Progressive Disclosure</h4>
                     <p className="text-gray-700 relative z-10">
                       Revealing complexity gradually allowed users to navigate the system confidently despite its
@@ -1049,14 +1049,14 @@ export default function Page() {
                     </p>
                   </div>
                   <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-purple-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
+                    <div className="absolute top-0 right-0 bg-slate-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
                     <h4 className="font-bold text-gray-900 mb-3">Contextual Assistance</h4>
                     <p className="text-gray-700 relative z-10">
                       Providing help and guidance at the point of need significantly reduced training requirements.
                     </p>
                   </div>
                   <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-pink-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
+                    <div className="absolute top-0 right-0 bg-slate-400 w-16 h-16 -mr-6 -mt-6 rounded-full opacity-20"></div>
                     <h4 className="font-bold text-gray-900 mb-3">Adaptive Interfaces</h4>
                     <p className="text-gray-700 relative z-10">
                       Different user roles required tailored interfaces to focus on their specific needs and
@@ -1070,7 +1070,7 @@ export default function Page() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
-                  className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-100"
+                  className="bg-gradient-to-r from-slate-50 to-slate-50 p-6 rounded-xl border border-slate-100"
                 >
                   <h3 className="text-xl font-bold mb-4 text-gray-900">The Biggest Takeaway</h3>
                   <p className="text-gray-700">
@@ -1110,8 +1110,8 @@ export default function Page() {
                 administrators to create optimal schedules while meeting diverse needs.
               </p>
 
-              <h3 className="text-blue-700 font-bold text-lg mb-4">Project Achievements</h3>
-              <div className="bg-blue-50 p-6 rounded-lg mb-8">
+              <h3 className="text-slate-700 font-bold text-lg mb-4">Project Achievements</h3>
+              <div className="bg-slate-50 p-6 rounded-lg mb-8">
                 <p className="text-gray-700">
                   Thoughtful UX design enabled automation and control, balancing optimization with human expertise.
                   Clear workflows and visualizations made schedule creation accessible for all stakeholders.
@@ -1120,20 +1120,20 @@ export default function Page() {
 
               <h4 className="font-bold text-gray-900 mb-4 text-xl">Impact Metrics</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-blue-100 rounded-lg p-4 text-center">
-                  <div className="text-3xl font-bold text-blue-700 mb-1">80%</div>
+                <div className="bg-slate-100 rounded-lg p-4 text-center">
+                  <div className="text-3xl font-bold text-slate-700 mb-1">80%</div>
                   <div className="text-sm text-gray-700">Fewer scheduling errors</div>
                 </div>
-                <div className="bg-purple-100 rounded-lg p-4 text-center">
-                  <div className="text-3xl font-bold text-purple-700 mb-1">85%</div>
+                <div className="bg-slate-100 rounded-lg p-4 text-center">
+                  <div className="text-3xl font-bold text-slate-700 mb-1">85%</div>
                   <div className="text-sm text-gray-700">Time saved</div>
                 </div>
-                <div className="bg-pink-100 rounded-lg p-4 text-center">
-                  <div className="text-3xl font-bold text-pink-700 mb-1">92%</div>
+                <div className="bg-slate-100 rounded-lg p-4 text-center">
+                  <div className="text-3xl font-bold text-slate-700 mb-1">92%</div>
                   <div className="text-sm text-gray-700">Teacher resource optimization</div>
                 </div>
-                <div className="bg-green-100 rounded-lg p-4 text-center">
-                  <div className="text-3xl font-bold text-green-700 mb-1">12%</div>
+                <div className="bg-slate-100 rounded-lg p-4 text-center">
+                  <div className="text-3xl font-bold text-slate-700 mb-1">12%</div>
                   <div className="text-sm text-gray-700">Cost reduction</div>
                 </div>
               </div>
@@ -1150,11 +1150,11 @@ export default function Page() {
                 content, planning, teacher, and school management.
               </p>
 
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-xl flex items-start">
+              <div className="bg-slate-50 border-l-4 border-slate-400 p-6 rounded-xl flex items-start">
                 <div className="mr-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 text-blue-400"
+                    className="h-8 w-8 text-slate-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

@@ -14,15 +14,15 @@ const ChatTypingIndicator = () => {
       >
         <div className="flex space-x-2">
           <div
-            className="w-2 h-2 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full animate-pulse"
+            className="w-2 h-2 bg-gradient-to-r from-slate-400 to-slate-500 rounded-full animate-pulse"
             style={{ animationDelay: '0ms' }}
           ></div>
           <div
-            className="w-2 h-2 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full animate-pulse"
+            className="w-2 h-2 bg-gradient-to-r from-slate-400 to-slate-500 rounded-full animate-pulse"
             style={{ animationDelay: '300ms' }}
           ></div>
           <div
-            className="w-2 h-2 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full animate-pulse"
+            className="w-2 h-2 bg-gradient-to-r from-slate-400 to-slate-500 rounded-full animate-pulse"
             style={{ animationDelay: '600ms' }}
           ></div>
         </div>
