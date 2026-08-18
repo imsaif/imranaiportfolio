@@ -56,7 +56,7 @@ const PrimaryLink = ({ project }: { project: Project }) => {
 const Panel = ({ project }: { project: Project }) => {
   const detail = project.detail;
   return (
-    <article className="flex h-full flex-col rounded-3xl border border-border-secondary bg-transparent p-8 transition-colors duration-200 [@media(hover:hover)]:hover:border-text-tertiary [@media(hover:hover)]:hover:bg-background-grain md:p-10">
+    <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-border-secondary bg-transparent p-8 transition-colors duration-200 [@media(hover:hover)]:hover:border-text-tertiary [@media(hover:hover)]:hover:bg-background-grain md:p-10">
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <h3 className="text-xl font-semibold tracking-tight text-text-primary md:text-2xl">
           {project.title}
@@ -71,7 +71,7 @@ const Panel = ({ project }: { project: Project }) => {
         {project.description}
       </p>
 
-      <div className="mt-7 flex-grow">
+      <div className="mt-7 min-h-0 flex-grow overflow-hidden">
         {detail?.problem && (
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.08em] text-text-secondary">
@@ -254,7 +254,7 @@ const PinnedStrip = () => {
 
   return (
     <div ref={wrapperRef} style={{ height: `${projects.length * 90}vh` }}>
-      <div className="sticky top-0 flex h-screen flex-col justify-start overflow-hidden pt-6">
+      <div className="sticky top-20 flex flex-col overflow-hidden py-2">
         <Ticks activeIndex={activeIndex} onSelect={scrollToIndex} />
         <motion.div
           ref={stripRef}
@@ -262,12 +262,12 @@ const PinnedStrip = () => {
           className="flex gap-5 pl-8 will-change-transform"
         >
           {projects.map(project => (
-            <div key={project.id} className="w-[46rem] max-w-[85vw] shrink-0">
+            <div key={project.id} className="h-[34rem] w-[46rem] max-w-[85vw] shrink-0">
               <Panel project={project} />
             </div>
           ))}
         </motion.div>
-        <p className="mt-6 text-center text-xs text-text-tertiary">Keep scrolling</p>
+        <p className="mt-5 text-center text-xs text-text-tertiary">Keep scrolling</p>
       </div>
     </div>
   );
@@ -317,7 +317,7 @@ const NativeStrip = () => {
             ref={el => {
               panelRefs.current[index] = el;
             }}
-            className="w-[85vw] max-w-3xl shrink-0 snap-center"
+            className="h-[34rem] w-[85vw] max-w-3xl shrink-0 snap-center"
           >
             <Panel project={project} />
           </div>
