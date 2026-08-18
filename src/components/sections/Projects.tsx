@@ -9,7 +9,7 @@ import { getFeaturedProjects, type Project } from '@/data/projects';
 const projects = getFeaturedProjects();
 
 /** How far the strip pulls back across the scroll. Subtle on purpose. */
-const MAX_ZOOM_OUT = 0.16;
+const MAX_ZOOM_OUT = 0.07;
 
 const Arrow = () => (
   <svg
@@ -29,6 +29,14 @@ const LINK_CLASS =
 
 const PrimaryLink = ({ project }: { project: Project }) => {
   const label = project.ctaLabel ?? 'Visit site';
+  if (project.liveUrl.startsWith('mailto:')) {
+    return (
+      <a href={project.liveUrl} className={LINK_CLASS}>
+        <span>{label}</span>
+        <Arrow />
+      </a>
+    );
+  }
   if (project.external === false) {
     return (
       <Link href={project.liveUrl} className={LINK_CLASS}>
@@ -59,7 +67,7 @@ const Panel = ({ project }: { project: Project }) => {
           </span>
         )}
       </div>
-      <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-text-secondary">
+      <p className="mt-2 max-w-2xl text-[16px] leading-relaxed text-text-secondary">
         {project.description}
       </p>
 
@@ -70,7 +78,7 @@ const Panel = ({ project }: { project: Project }) => {
               The problem
             </p>
             {/* Reading measure stays capped even though the panel is wide. */}
-            <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-text-secondary">
+            <p className="mt-2 max-w-2xl text-[16px] leading-relaxed text-text-secondary">
               {detail.problem}
             </p>
           </div>
@@ -81,11 +89,11 @@ const Panel = ({ project }: { project: Project }) => {
             <p className="text-xs font-semibold uppercase tracking-[0.08em] text-text-secondary">
               What I decided
             </p>
-            <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-text-primary">
+            <p className="mt-2 max-w-2xl text-[16px] leading-relaxed text-text-primary">
               {detail.chose}
             </p>
             {detail.over && (
-              <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-text-secondary">
+              <p className="mt-2 max-w-2xl text-[16px] leading-relaxed text-text-secondary">
                 Over: {detail.over}
               </p>
             )}
@@ -93,14 +101,14 @@ const Panel = ({ project }: { project: Project }) => {
         )}
 
         {detail?.inside && (
-          <p className="max-w-xl text-[15px] leading-relaxed text-text-secondary">{detail.inside}</p>
+          <p className="max-w-2xl text-[16px] leading-relaxed text-text-secondary">{detail.inside}</p>
         )}
 
         {project.links?.length ? (
           <ul className="mt-6 space-y-2.5">
             {project.links.map(link => {
               const className =
-                'text-[15px] font-medium text-text-primary underline decoration-border-secondary underline-offset-4 transition-colors hover:text-accent hover:decoration-accent';
+                'text-[16px] font-medium text-text-primary underline decoration-border-secondary underline-offset-4 transition-colors hover:text-accent hover:decoration-accent';
               // Article links point off-site; case-study links stay internal.
               const isExternal = link.href.startsWith('http');
               return (
@@ -246,7 +254,7 @@ const PinnedStrip = () => {
 
   return (
     <div ref={wrapperRef} style={{ height: `${projects.length * 90}vh` }}>
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-screen flex-col justify-start overflow-hidden pt-6">
         <Ticks activeIndex={activeIndex} onSelect={scrollToIndex} />
         <motion.div
           ref={stripRef}

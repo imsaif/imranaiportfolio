@@ -71,7 +71,7 @@ const Hero = () => {
   return (
     <section className="relative w-full px-4 xs:px-5 sm:px-6 md:px-8">
       <div className="container mx-auto max-w-5xl">
-        <div className="flex flex-col items-center text-center pt-14 pb-12 md:pt-20 md:pb-16">
+        <div className="flex flex-col items-center text-center pt-14 pb-6 md:pt-20 md:pb-8">
           {showDemo ? (
             <TerminalDemo onClose={() => setShowDemo(false)} />
           ) : (

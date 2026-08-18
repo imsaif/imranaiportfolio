@@ -194,6 +194,31 @@ export const projects: Project[] = [
     tagline: 'WRITING',
   },
   {
+    id: 106,
+    slug: 'contact',
+    title: 'Get in touch',
+    description: 'Open to senior product design and design engineering roles.',
+    fullDescription: '',
+    technologies: [],
+    liveUrl: 'mailto:imranrizom@gmail.com',
+    githubUrl: '',
+    images: [],
+    featured: true,
+    external: true,
+    ctaLabel: 'Email me',
+    detail: {
+      inside:
+        'Email is the fastest way to reach me. GitHub is where the tools live, LinkedIn has the full history, and Medium has the writing.',
+    },
+    links: [
+      { label: 'GitHub', href: 'https://github.com/imsaif' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/imsaif/' },
+      { label: 'Medium', href: 'https://medium.com/@imsaif' },
+    ],
+    logo: { type: 'icon', name: 'writing' },
+    tagline: 'CONTACT',
+  },
+  {
     id: 3,
     slug: 'uhg',
     title: 'Optum Bank',
