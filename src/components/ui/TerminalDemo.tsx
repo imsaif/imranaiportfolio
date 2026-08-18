@@ -362,7 +362,7 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
             <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
             <span className="w-3 h-3 rounded-full bg-[#28c840]" />
           </div>
-          <span className="text-xs text-white/40 font-mono">~ — npx imranai</span>
+          <span className="text-xs text-white/40 font-mono">~ imran --work</span>
           <button
             type="button"
             onClick={onClose}
@@ -375,7 +375,7 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
 
         {/* Terminal body */}
         <div className="p-6 md:p-8 font-mono text-[13px] md:text-sm leading-[1.6]">
-          <div className="text-white/40">$ npx imranai</div>
+          <div className="text-white/40">$ imran --work</div>
 
           {/* Banner */}
           <div className="mt-4 text-white/90 whitespace-pre min-h-[7.5em]">
@@ -453,7 +453,7 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
               {phase === 'resume-prompt' && <Cursor />}
               {phase === 'resume-declined' && (
                 <div className="mt-2 text-white/50">
-                  No problem — feel free to browse the projects below.
+                  No problem. Feel free to browse the projects below.
                 </div>
               )}
               {phase === 'resume-redirecting' && (

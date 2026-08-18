@@ -5,21 +5,21 @@ interface TerminalPillProps {
   onClick?: () => void;
 }
 
+/**
+ * A single outlined control: the whole command is the button, so the part that
+ * looks like a command is also the part you can click. One affordance (the
+ * border plus its hover state) rather than a dark fill and a separate button.
+ */
 const TerminalPill = ({ command, onClick }: TerminalPillProps) => (
-  <div className="inline-flex items-center gap-1 rounded-full bg-text-primary p-1 pl-5 shadow-card">
-    <code className="font-mono text-sm md:text-base text-white/90 mr-3 select-all">
-      <span className="text-white/40 mr-2">$</span>
-      {command}
-    </code>
-    <button
-      type="button"
-      onClick={onClick}
-      className="rounded-full bg-white text-text-primary text-sm font-medium px-5 py-2 transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/40"
-      aria-label={`Run ${command} demo`}
-    >
-      Run
-    </button>
-  </div>
+  <button
+    type="button"
+    onClick={onClick}
+    aria-label={`Run ${command} to see what I have built`}
+    className="group inline-flex items-center gap-2 rounded-full border border-border-secondary px-5 py-2.5 font-mono text-sm md:text-base text-text-secondary transition-colors hover:border-text-primary hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+  >
+    <span className="text-text-tertiary transition-colors group-hover:text-text-secondary">$</span>
+    <span>{command}</span>
+  </button>
 );
 
 export default TerminalPill;

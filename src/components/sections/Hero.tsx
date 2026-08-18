@@ -71,36 +71,31 @@ const Hero = () => {
   return (
     <section className="relative w-full px-4 xs:px-5 sm:px-6 md:px-8">
       <div className="container mx-auto max-w-5xl">
-        <div className="flex flex-col items-center text-center pt-8 pb-8 md:pt-10 md:pb-10">
+        <div className="flex flex-col items-center text-center pt-14 pb-12 md:pt-20 md:pb-16">
           {showDemo ? (
             <TerminalDemo onClose={() => setShowDemo(false)} />
           ) : (
             <>
               <h1
-                className="tracking-tight leading-[1.15] max-w-3xl"
+                className="tracking-tight leading-[1.45] max-w-4xl"
                 style={{ color: 'var(--text-hero)' }}
               >
-                <span className="block text-lg xs:text-xl md:text-2xl lg:text-3xl font-medium uppercase tracking-[0.08em] text-text-secondary">
-                  I design and ship
+                <span className="block text-[11px] xs:text-xs md:text-sm font-bold uppercase tracking-[0.08em] text-text-secondary">
+                  Senior Product Designer and Design Engineer
                 </span>
+                <span className="mt-6 md:mt-8 block text-balance text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold">
+                  I design and build
+                </span>
+                {/* Cycling text sits last so nothing downstream can reflow as it types. */}
                 <TextType
-                  text={['design systems', 'AI audit tools', 'AI products', 'AI-readable specs']}
+                  text={['audit tools', 'MCP servers', 'design systems']}
                   typingSpeed={90}
                   pauseDuration={1800}
-                  className="block my-5 md:my-7 text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold min-h-[1.15em]"
+                  className="mt-6 md:mt-8 block text-base xs:text-lg md:text-xl font-medium uppercase tracking-[0.08em] text-text-secondary min-h-[1.8em]"
                 />
-                <span className="block text-lg xs:text-xl md:text-2xl lg:text-3xl font-medium uppercase tracking-[0.08em] text-text-secondary">
-                  end to end
-                </span>
               </h1>
-              <p className="mt-7 max-w-2xl text-lg md:text-xl font-medium text-foreground leading-relaxed">
-                Designer who codes. I build the tools and write about what breaks.
-              </p>
-              <div className="mt-7 flex flex-col items-center">
-                <TerminalPill command="npx imranai" onClick={() => setShowDemo(true)} />
-                <p className="mt-2 text-xs md:text-sm text-text-secondary">
-                  Run the command to see what I&apos;ve built.
-                </p>
+              <div className="mt-10 md:mt-12 flex flex-col items-center">
+                <TerminalPill command="imran --work" onClick={() => setShowDemo(true)} />
               </div>
             </>
           )}
