@@ -127,7 +127,7 @@ export const projects: Project[] = [
     id: 104,
     slug: 'projects',
     title: 'Case studies',
-    description: '',
+    description: 'Longer write-ups of the work, and the decisions behind them.',
     links: [
       { label: 'LessonLoom', href: '/casestudy/lessonloom' },
       { label: 'EduScheduler', href: '/casestudy/scheduler' },
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     external: false,
     detail: {
       inside:
-        'Longer write-ups of the work: what the problem was, what I decided, and what I would do differently. AI tools at NewGlobe, enterprise healthcare at Optum, and the decisions behind dwic.',
+        'What the problem was, what I decided, and what I would do differently. AI tools at NewGlobe, enterprise healthcare at Optum, and the decisions behind dwic.',
     },
     ctaLabel: 'All case studies',
     logo: { type: 'icon', name: 'folder' },
@@ -164,7 +164,7 @@ export const projects: Project[] = [
     external: false,
     detail: {
       inside:
-        'Thoughts on AI interfaces and what breaks in them, published in Design Bootcamp. Six pieces on where AI explains itself badly, guesses at your design, and oversteps its boundary.',
+        'Six pieces on where AI explains itself badly, guesses at your design, and oversteps the boundary it was given.',
     },
     ctaLabel: 'All writing',
     logo: { type: 'icon', name: 'writing' },

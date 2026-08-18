@@ -2,13 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import {
-  MdLightbulbOutline,
-  MdOutlineArticle,
-  MdOutlineFolderOpen,
-  MdTerminal,
-} from 'react-icons/md';
+import { useState } from 'react';
 
 import { getFeaturedProjects, type Project } from '@/data/projects';
 
@@ -17,32 +11,6 @@ const projects = getFeaturedProjects();
 // Emil Kowalski's rules: ease-out, never ease-in, under 300ms for UI motion.
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 const DURATION = 0.25;
-
-const ProductIcon = ({ project }: { project: Project }) => {
-  if (!project.logo) return null;
-  if (project.logo.type === 'image') {
-    // Plain <img> for static SVG icons: Next/Image adds no value at this size
-    // and occasionally mangles SVGs with negative viewBox values.
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={project.logo.src}
-        alt={`${project.title} logo`}
-        width={36}
-        height={36}
-        // These SVGs pad their artwork inside the viewBox (dwic is -4 -4 32 32),
-        // so a 28px box renders ~21px of glyph. Sized up to match the icon set.
-        className="object-contain w-9 h-9"
-      />
-    );
-  }
-  if (project.logo.name === 'terminal') return <MdTerminal className="w-7 h-7 text-text-primary" />;
-  if (project.logo.name === 'folder')
-    return <MdOutlineFolderOpen className="w-7 h-7 text-text-primary" />;
-  if (project.logo.name === 'writing')
-    return <MdOutlineArticle className="w-7 h-7 text-text-primary" />;
-  return <MdLightbulbOutline className="w-7 h-7 text-text-primary" />;
-};
 
 const Arrow = () => (
   <svg
@@ -58,9 +26,8 @@ const Arrow = () => (
 );
 
 const LINK_CLASS =
-  'relative z-10 inline-flex items-center gap-1.5 text-sm font-medium text-text-primary hover:text-accent transition-colors';
+  'inline-flex items-center gap-1.5 text-sm font-medium text-text-primary hover:text-accent transition-colors';
 
-/** Links sit above the expand overlay so they stay individually clickable. */
 const PrimaryLink = ({ project }: { project: Project }) => {
   const label = project.ctaLabel ?? 'Visit site';
   if (project.external === false) {
@@ -79,121 +46,18 @@ const PrimaryLink = ({ project }: { project: Project }) => {
   );
 };
 
-const CardLinks = ({ project, className }: { project: Project; className: string }) => {
-  if (!project.links?.length) return null;
-  return (
-    <ul className={className}>
-      {project.links.map(link => (
-        <li key={link.href}>
-          <Link
-            href={link.href}
-            className="relative z-10 text-[15px] font-medium text-text-primary underline decoration-border-secondary underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
-          >
-            {link.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-/** Shared between the collapsed card and the expanded panel so they morph cleanly. */
-const CardHead = ({ project }: { project: Project }) => (
-  <>
-    <div className="mb-5 flex h-10 w-10 items-center">
-      <ProductIcon project={project} />
-    </div>
-    <h3 className="mb-2 text-lg font-semibold text-text-primary">{project.title}</h3>
-    {project.statLabel && (
-      <p className="mb-3 font-mono text-xs uppercase tracking-[0.06em] text-text-tertiary">
-        {project.statLabel}
-      </p>
-    )}
-  </>
-);
-
-const ProductCard = ({ project, onExpand }: { project: Project; onExpand: () => void }) => {
-  const reduceMotion = useReducedMotion();
-  return (
-  <motion.div
-    layoutId={`card-${project.id}`}
-    transition={{ duration: reduceMotion ? 0 : DURATION, ease: EASE_OUT }}
-    className="group relative flex h-full flex-col rounded-3xl bg-background-grain p-7 transition-shadow duration-300 hover:shadow-card-hover"
-  >
-    <CardHead project={project} />
-
-    {project.links?.length ? (
-      <CardLinks project={project} className="mb-6 flex-grow space-y-2.5" />
-    ) : (
-      <p className="mb-6 text-[15px] leading-relaxed text-text-secondary flex-grow">
-        {project.description}
-      </p>
-    )}
-
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-      <PrimaryLink project={project} />
-      {project.decisionsUrl && (
-        <Link
-          href={project.decisionsUrl}
-          className="relative z-10 text-sm font-medium text-text-secondary hover:text-accent transition-colors"
-        >
-          Design decisions
-        </Link>
-      )}
-    </div>
-
-    {/*
-      Inverts the usual stretched-link: this overlay expands the card, and it sits
-      BENEATH the links above (which are z-10), so explicit links still navigate.
-    */}
-    <button
-      type="button"
-      onClick={onExpand}
-      aria-label={`More about ${project.title}`}
-      className="absolute inset-0 rounded-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-    />
-  </motion.div>
-  );
-};
-
-const DetailPanel = ({ project, onClose }: { project: Project; onClose: () => void }) => {
-  const panelRef = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
+const Detail = ({ project }: { project: Project }) => {
   const detail = project.detail;
-
-  useEffect(() => {
-    panelRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', onKey);
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [onClose]);
-
   return (
-    <motion.div
-      layoutId={`card-${project.id}`}
-      transition={{ duration: reduceMotion ? 0 : DURATION, ease: EASE_OUT }}
-      ref={panelRef}
-      tabIndex={-1}
-      role="dialog"
-      aria-modal="true"
-      aria-label={project.title}
-      className="relative z-10 max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-3xl bg-background-grain p-8 shadow-card-hover focus:outline-none"
-    >
-      <CardHead project={project} />
-
+    <div className="pt-5">
       {detail?.problem && (
-        <div className="mt-5">
+        <div>
           <p className="text-xs font-semibold uppercase tracking-[0.08em] text-text-secondary">
             The problem
           </p>
-          <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">{detail.problem}</p>
+          <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-text-secondary">
+            {detail.problem}
+          </p>
         </div>
       )}
 
@@ -202,9 +66,11 @@ const DetailPanel = ({ project, onClose }: { project: Project; onClose: () => vo
           <p className="text-xs font-semibold uppercase tracking-[0.08em] text-text-secondary">
             What I decided
           </p>
-          <p className="mt-2 text-[15px] leading-relaxed text-text-primary">{detail.chose}</p>
+          <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-text-primary">
+            {detail.chose}
+          </p>
           {detail.over && (
-            <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">
+            <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-text-secondary">
               Over: {detail.over}
             </p>
           )}
@@ -212,75 +78,114 @@ const DetailPanel = ({ project, onClose }: { project: Project; onClose: () => vo
       )}
 
       {detail?.inside && (
-        <p className="mt-5 text-[15px] leading-relaxed text-text-secondary">{detail.inside}</p>
+        <p className="max-w-2xl text-[15px] leading-relaxed text-text-secondary">{detail.inside}</p>
       )}
 
-      <CardLinks project={project} className="mt-5 space-y-2.5" />
+      {project.links?.length ? (
+        <ul className="mt-5 space-y-2.5">
+          {project.links.map(link => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="text-[15px] font-medium text-text-primary underline decoration-border-secondary underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : null}
 
-      <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2">
+      <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
         <PrimaryLink project={project} />
-        {detail?.moreHref && (
+        {project.detail?.moreHref && (
           <Link
-            href={detail.moreHref}
-            className="relative z-10 text-sm font-medium text-text-secondary hover:text-accent transition-colors"
+            href={project.detail.moreHref}
+            className="text-sm font-medium text-text-secondary hover:text-accent transition-colors"
           >
-            {detail.moreLabel ?? 'Read more'}
+            {project.detail.moreLabel ?? 'Read more'}
+          </Link>
+        )}
+        {project.decisionsUrl && !project.detail?.moreHref && (
+          <Link
+            href={project.decisionsUrl}
+            className="text-sm font-medium text-text-secondary hover:text-accent transition-colors"
+          >
+            Design decisions
           </Link>
         )}
       </div>
-
-      <button
-        type="button"
-        onClick={onClose}
-        aria-label="Close"
-        className="absolute right-5 top-5 rounded-full p-2 text-text-secondary transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-      >
-        <svg
-          aria-hidden="true"
-          className="h-4 w-4"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6L6 18" />
-        </svg>
-      </button>
-    </motion.div>
+    </div>
   );
 };
 
 const Projects = () => {
-  const [openId, setOpenId] = useState<number | null>(null);
-  const open = projects.find(p => p.id === openId) ?? null;
-  const close = useCallback(() => setOpenId(null), []);
+  // First row is open on load so the section never reads as empty.
+  const [activeId, setActiveId] = useState<number | null>(projects[0]?.id ?? null);
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="work" className="relative w-full pb-8 md:pb-10">
-      <div className="container mx-auto max-w-6xl px-4 xs:px-5 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {projects.map(project => (
-            <ProductCard key={project.id} project={project} onExpand={() => setOpenId(project.id)} />
-          ))}
-        </div>
-      </div>
+      <div className="container mx-auto max-w-3xl px-4 xs:px-5 sm:px-6 md:px-8">
+        <ul className="flex flex-col gap-1">
+          {projects.map(project => {
+            const isActive = project.id === activeId;
+            return (
+              <li key={project.id}>
+                {/*
+                  Hover and focus both open the row, so this is not a hover-only
+                  affordance. On touch, where hover never fires, tapping the row
+                  opens it.
+                */}
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isActive}
+                  onMouseEnter={() => setActiveId(project.id)}
+                  onFocus={() => setActiveId(project.id)}
+                  onClick={() => setActiveId(project.id)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveId(project.id);
+                    }
+                  }}
+                  className={`cursor-default rounded-2xl px-5 py-4 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                    isActive ? 'bg-background-grain' : 'hover:bg-background-grain/60'
+                  }`}
+                >
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 className="text-[17px] font-semibold text-text-primary">{project.title}</h3>
+                    {project.statLabel && (
+                      <span className="font-mono text-xs uppercase tracking-[0.06em] text-text-tertiary">
+                        {project.statLabel}
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-1 text-[15px] leading-relaxed text-text-secondary">
+                    {project.description}
+                  </p>
 
-      <AnimatePresence>
-        {open && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div
-              key="scrim"
-              className="absolute inset-0 bg-text-primary/20 backdrop-blur-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: DURATION, ease: EASE_OUT }}
-              onClick={close}
-            />
-            <DetailPanel project={open} onClose={close} />
-          </div>
-        )}
-      </AnimatePresence>
+                  <AnimatePresence initial={false}>
+                    {isActive && (
+                      <motion.div
+                        key="detail"
+                        initial={reduceMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                        animate={reduceMotion ? { opacity: 1 } : { opacity: 1, height: 'auto' }}
+                        exit={reduceMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                        transition={{ duration: reduceMotion ? 0 : DURATION, ease: EASE_OUT }}
+                        className="overflow-hidden"
+                      >
+                        <Detail project={project} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 };
