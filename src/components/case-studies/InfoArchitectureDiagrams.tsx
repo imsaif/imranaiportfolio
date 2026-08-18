@@ -162,7 +162,7 @@ const InfoArchitectureDiagrams: React.FC = () => {
                   cy={node.y}
                   r={expanded ? nodeRadius + 6 : nodeRadius}
                   fill="#fff"
-                  stroke={expanded ? '#93c5fd' : '#cbd5e1'}
+                  stroke={expanded ? '#cbd5e1' : '#cbd5e1'}
                   strokeWidth={2}
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 />
@@ -189,7 +189,7 @@ const InfoArchitectureDiagrams: React.FC = () => {
                       className="bg-white border border-gray-200 rounded shadow-sm px-3 py-2 mt-1 text-gray-700 text-xs text-center"
                       style={{ minHeight: 32 }}
                     >
-                      <div className="font-semibold text-blue-700 mb-1">{node.label}</div>
+                      <div className="font-semibold text-slate-700 mb-1">{node.label}</div>
                       <div>{nodeDetails[node.id]}</div>
                     </motion.div>
                   </foreignObject>

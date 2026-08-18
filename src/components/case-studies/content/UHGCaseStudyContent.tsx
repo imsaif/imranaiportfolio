@@ -179,7 +179,7 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
               </div>
 
               {/* Separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
 
               {/* Research & Discovery Section */}
               <div ref={researchRef} id="research">
@@ -191,19 +191,19 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
                       <h4 className="text-xl font-semibold text-gray-800 mb-4">Key Problems Identified</h4>
                       <ul className="space-y-3">
                         <li className="flex items-start">
-                          <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span className="w-2 h-2 bg-slate-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                           <span className="text-gray-700">Complex navigation with unclear information hierarchy</span>
                         </li>
                         <li className="flex items-start">
-                          <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span className="w-2 h-2 bg-slate-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                           <span className="text-gray-700">Confusing form layouts causing user errors</span>
                         </li>
                         <li className="flex items-start">
-                          <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span className="w-2 h-2 bg-slate-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                           <span className="text-gray-700">Poor mobile experience limiting accessibility</span>
                         </li>
                         <li className="flex items-start">
-                          <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span className="w-2 h-2 bg-slate-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                           <span className="text-gray-700">Lack of clear status indicators and feedback</span>
                         </li>
                       </ul>
@@ -214,19 +214,19 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
                       <div className="bg-gray-50 p-6 rounded-lg">
                         <div className="grid grid-cols-2 gap-4 text-center">
                           <div>
-                            <div className="text-2xl font-bold text-red-600 mb-1">1.1%</div>
+                            <div className="text-2xl font-bold text-slate-600 mb-1">1.1%</div>
                             <div className="text-sm text-gray-600">Task completion rate</div>
                           </div>
                           <div>
-                            <div className="text-2xl font-bold text-red-600 mb-1">0.3%</div>
+                            <div className="text-2xl font-bold text-slate-600 mb-1">0.3%</div>
                             <div className="text-sm text-gray-600">Mobile completion rate</div>
                           </div>
                           <div>
-                            <div className="text-2xl font-bold text-red-600 mb-1">68%</div>
+                            <div className="text-2xl font-bold text-slate-600 mb-1">68%</div>
                             <div className="text-sm text-gray-600">Users contacted support</div>
                           </div>
                           <div>
-                            <div className="text-2xl font-bold text-red-600 mb-1">45min</div>
+                            <div className="text-2xl font-bold text-slate-600 mb-1">45min</div>
                             <div className="text-sm text-gray-600">Average task time</div>
                           </div>
                         </div>
@@ -237,7 +237,7 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
               </div>
 
               {/* Separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
 
               {/* Design Strategy Section */}
               <div ref={designRef} id="design">
@@ -245,9 +245,9 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">Design Strategy</h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div className="bg-blue-50 p-6 rounded-lg">
-                      <h4 className="font-bold text-blue-900 mb-3">🎯 Design Principles</h4>
-                      <ul className="space-y-2 text-blue-800">
+                    <div className="bg-slate-50 p-6 rounded-lg">
+                      <h4 className="font-bold text-slate-900 mb-3">🎯 Design Principles</h4>
+                      <ul className="space-y-2 text-slate-800">
                         <li>• Simplify complex healthcare processes</li>
                         <li>• Provide clear, actionable feedback</li>
                         <li>• Ensure mobile-first accessibility</li>
@@ -255,9 +255,9 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
                       </ul>
                     </div>
 
-                    <div className="bg-green-50 p-6 rounded-lg">
-                      <h4 className="font-bold text-green-900 mb-3">📱 Key Improvements</h4>
-                      <ul className="space-y-2 text-green-800">
+                    <div className="bg-slate-50 p-6 rounded-lg">
+                      <h4 className="font-bold text-slate-900 mb-3">📱 Key Improvements</h4>
+                      <ul className="space-y-2 text-slate-800">
                         <li>• Streamlined information architecture</li>
                         <li>• Progressive form completion</li>
                         <li>• Enhanced mobile responsive design</li>
@@ -290,7 +290,7 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
               </div>
 
               {/* Separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
 
               {/* Technical Implementation Section */}
               <div ref={technicalRef} id="technical">
@@ -302,7 +302,7 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
                       <h4 className="text-xl font-semibold text-gray-800 mb-4">Technology Stack</h4>
                       <div className="flex flex-wrap gap-2">
                         {['React', 'Node.js', 'Healthcare APIs', 'OCR Processing', 'HIPAA Compliance'].map((tech, idx) => (
-                          <span key={idx} className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm">
+                          <span key={idx} className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">
                             {tech}
                           </span>
                         ))}
@@ -310,9 +310,9 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="bg-purple-50 p-6 rounded-lg">
-                        <h5 className="font-bold text-purple-900 mb-3">Frontend Improvements</h5>
-                        <ul className="space-y-2 text-purple-800 text-sm">
+                      <div className="bg-slate-50 p-6 rounded-lg">
+                        <h5 className="font-bold text-slate-900 mb-3">Frontend Improvements</h5>
+                        <ul className="space-y-2 text-slate-800 text-sm">
                           <li>• Responsive design system implementation</li>
                           <li>• Progressive web app capabilities</li>
                           <li>• Real-time form validation</li>
@@ -320,9 +320,9 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
                         </ul>
                       </div>
 
-                      <div className="bg-orange-50 p-6 rounded-lg">
-                        <h5 className="font-bold text-orange-900 mb-3">Backend Integration</h5>
-                        <ul className="space-y-2 text-orange-800 text-sm">
+                      <div className="bg-slate-50 p-6 rounded-lg">
+                        <h5 className="font-bold text-slate-900 mb-3">Backend Integration</h5>
+                        <ul className="space-y-2 text-slate-800 text-sm">
                           <li>• Legacy system integration</li>
                           <li>• OCR document processing</li>
                           <li>• Secure API endpoints</li>
@@ -335,7 +335,7 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
               </div>
 
               {/* Separator */}
-              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 opacity-70" />
+              <div className="w-full h-0.5 my-4 rounded-full bg-gradient-to-r from-slate-400 via-slate-400 to-slate-400 opacity-70" />
 
               {/* Results & Impact Section */}
               <div ref={resultsRef} id="results">
@@ -343,20 +343,20 @@ export const UHGCaseStudyContent: React.FC<UHGCaseStudyContentProps> = ({
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">Results & Impact</h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div className="bg-green-50 rounded-lg p-6 text-center">
-                      <div className="text-3xl font-bold text-green-600 mb-2">30% ↑</div>
-                      <div className="text-sm font-medium text-green-800">Task Completion Rate</div>
-                      <div className="text-xs text-green-600 mt-1">From 1.1% to 30% (27x)</div>
+                    <div className="bg-slate-50 rounded-lg p-6 text-center">
+                      <div className="text-3xl font-bold text-slate-600 mb-2">30% ↑</div>
+                      <div className="text-sm font-medium text-slate-800">Task Completion Rate</div>
+                      <div className="text-xs text-slate-600 mt-1">From 1.1% to 30% (27x)</div>
                     </div>
-                    <div className="bg-blue-50 rounded-lg p-6 text-center">
-                      <div className="text-3xl font-bold text-blue-600 mb-2">30% ↓</div>
-                      <div className="text-sm font-medium text-blue-800">Support Calls</div>
-                      <div className="text-xs text-blue-600 mt-1">~$800K annual savings</div>
+                    <div className="bg-slate-50 rounded-lg p-6 text-center">
+                      <div className="text-3xl font-bold text-slate-600 mb-2">30% ↓</div>
+                      <div className="text-sm font-medium text-slate-800">Support Calls</div>
+                      <div className="text-xs text-slate-600 mt-1">~$800K annual savings</div>
                     </div>
-                    <div className="bg-purple-50 rounded-lg p-6 text-center">
-                      <div className="text-3xl font-bold text-purple-600 mb-2">18%</div>
-                      <div className="text-sm font-medium text-purple-800">Mobile Completion</div>
-                      <div className="text-xs text-purple-600 mt-1">From 0.3% to 18% (60x)</div>
+                    <div className="bg-slate-50 rounded-lg p-6 text-center">
+                      <div className="text-3xl font-bold text-slate-600 mb-2">18%</div>
+                      <div className="text-sm font-medium text-slate-800">Mobile Completion</div>
+                      <div className="text-xs text-slate-600 mt-1">From 0.3% to 18% (60x)</div>
                     </div>
                   </div>
 

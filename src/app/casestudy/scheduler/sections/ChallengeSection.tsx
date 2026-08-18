@@ -43,9 +43,9 @@ export const ChallengeSection: React.FC = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="flex items-start border-l-4 border-blue-200 p-6 transition-shadow hover:shadow-lg"
+            className="flex items-start border-l-4 border-slate-200 p-6 transition-shadow hover:shadow-lg"
           >
-            <span className="bg-blue-100 text-blue-500 rounded-full p-2 mr-4 flex items-center justify-center">
+            <span className="bg-slate-100 text-slate-500 rounded-full p-2 mr-4 flex items-center justify-center">
               {/* Clock Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -69,9 +69,9 @@ export const ChallengeSection: React.FC = () => {
           </motion.div>
           <motion.div
             variants={itemVariants}
-            className="flex items-start border-l-4 border-pink-200 p-6 transition-shadow hover:shadow-lg"
+            className="flex items-start border-l-4 border-slate-200 p-6 transition-shadow hover:shadow-lg"
           >
-            <span className="bg-pink-100 text-pink-500 rounded-full p-2 mr-4 flex items-center justify-center">
+            <span className="bg-slate-100 text-slate-500 rounded-full p-2 mr-4 flex items-center justify-center">
               {/* Briefcase Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,9 +95,9 @@ export const ChallengeSection: React.FC = () => {
           </motion.div>
           <motion.div
             variants={itemVariants}
-            className="flex items-start border-l-4 border-yellow-200 p-6 transition-shadow hover:shadow-lg"
+            className="flex items-start border-l-4 border-slate-200 p-6 transition-shadow hover:shadow-lg"
           >
-            <span className="bg-yellow-100 text-yellow-500 rounded-full p-2 mr-4 flex items-center justify-center">
+            <span className="bg-slate-100 text-slate-500 rounded-full p-2 mr-4 flex items-center justify-center">
               {/* Check Badge Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -117,9 +117,9 @@ export const ChallengeSection: React.FC = () => {
           </motion.div>
           <motion.div
             variants={itemVariants}
-            className="flex items-start border-l-4 border-green-200 p-6 transition-shadow hover:shadow-lg"
+            className="flex items-start border-l-4 border-slate-200 p-6 transition-shadow hover:shadow-lg"
           >
-            <span className="bg-green-100 text-green-500 rounded-full p-2 mr-4 flex items-center justify-center">
+            <span className="bg-slate-100 text-slate-500 rounded-full p-2 mr-4 flex items-center justify-center">
               {/* Globe Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

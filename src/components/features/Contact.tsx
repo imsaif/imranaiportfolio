@@ -194,7 +194,7 @@ const Contact = () => {
                 </button>
 
                 {submitSuccess && (
-                  <p className="text-green-600 text-sm mt-2">
+                  <p className="text-slate-600 text-sm mt-2">
                     Your message has been sent successfully! I'll get back to you soon.
                   </p>
                 )}

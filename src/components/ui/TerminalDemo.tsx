@@ -355,14 +355,14 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
   return (
     <div className="w-full max-w-3xl mx-auto">
       {/* Window chrome */}
-      <div className="rounded-2xl bg-[#1a1f2e] shadow-elevated overflow-hidden text-left">
-        <div className="flex items-center justify-between px-4 py-3 bg-[#0f1320] border-b border-white/5">
+      <div className="rounded-2xl bg-[#0f172a] shadow-elevated overflow-hidden text-left">
+        <div className="flex items-center justify-between px-4 py-3 bg-[#0f172a] border-b border-white/5">
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-            <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
-            <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+            <span className="w-3 h-3 rounded-full bg-[#94a3b8]" />
+            <span className="w-3 h-3 rounded-full bg-[#cbd5e1]" />
+            <span className="w-3 h-3 rounded-full bg-[#94a3b8]" />
           </div>
-          <span className="text-xs text-white/40 font-mono">~ — npx imranai</span>
+          <span className="text-xs text-white/40 font-mono">~ imran --work</span>
           <button
             type="button"
             onClick={onClose}
@@ -375,7 +375,7 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
 
         {/* Terminal body */}
         <div className="p-6 md:p-8 font-mono text-[13px] md:text-sm leading-[1.6]">
-          <div className="text-white/40">$ npx imranai</div>
+          <div className="text-white/40">$ imran --work</div>
 
           {/* Banner */}
           <div className="mt-4 text-white/90 whitespace-pre min-h-[7.5em]">
@@ -453,7 +453,7 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
               {phase === 'resume-prompt' && <Cursor />}
               {phase === 'resume-declined' && (
                 <div className="mt-2 text-white/50">
-                  No problem — feel free to browse the projects below.
+                  No problem. Feel free to browse the projects below.
                 </div>
               )}
               {phase === 'resume-redirecting' && (

@@ -47,7 +47,7 @@ const StickyCredibilityCard: React.FC<StickyCredibilityCardProps> = ({ card }) =
             </div>
             <div className="flex mb-2">
               {[...Array(card.content.rating)].map((_, i) => (
-                <span key={i} className="text-yellow-400 text-sm">⭐</span>
+                <span key={i} className="text-slate-400 text-sm">⭐</span>
               ))}
             </div>
             <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">"{card.content.quote}"</p>

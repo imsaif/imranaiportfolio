@@ -7,7 +7,7 @@ interface ParticlesOnHoverProps {
 
 const NUM_PARTICLES = 8;
 // Use only brand colors for gradient
-const GRADIENT_COLORS = ['#7075e0', '#e0637c'];
+const GRADIENT_COLORS = ['#64748b', '#64748b'];
 
 function randomBetween(a: number, b: number) {
   return a + Math.random() * (b - a);
@@ -29,11 +29,11 @@ function drawStarWithGradient(ctx: CanvasRenderingContext2D, cx: number, cy: num
   ctx.closePath();
   // Create a gradient for the star
   const grad = ctx.createLinearGradient(-outerRadius, 0, outerRadius, 0);
-  grad.addColorStop(0, GRADIENT_COLORS[0] || '#6366f1');
-  grad.addColorStop(1, GRADIENT_COLORS[1] || '#f43f5e');
+  grad.addColorStop(0, GRADIENT_COLORS[0] || '#64748b');
+  grad.addColorStop(1, GRADIENT_COLORS[1] || '#64748b');
   ctx.fillStyle = grad;
   ctx.globalAlpha = 0.9;
-  ctx.shadowColor = GRADIENT_COLORS[1] || '#f43f5e';
+  ctx.shadowColor = GRADIENT_COLORS[1] || '#64748b';
   ctx.shadowBlur = 15;
   ctx.fill();
   ctx.globalAlpha = 1;

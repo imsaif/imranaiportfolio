@@ -92,8 +92,8 @@ export default function VoiceControlBar({
     <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="inline-block">
       <defs>
         <linearGradient id="voice-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#EC4899" />
-          <stop offset="1" stopColor="#8B5CF6" />
+          <stop stopColor="#64748b" />
+          <stop offset="1" stopColor="#64748b" />
         </linearGradient>
       </defs>
       <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="url(#voice-gradient)" />
@@ -146,7 +146,7 @@ export default function VoiceControlBar({
                 flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200
                 ${
                   isPlaying
-                    ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md hover:shadow-lg'
+                    ? 'bg-gradient-to-r from-slate-500 to-slate-600 text-white shadow-md hover:shadow-lg'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }
               `}
@@ -165,7 +165,7 @@ export default function VoiceControlBar({
               onMouseDown={handleMouseDown}
             >
               <motion.div
-                className="bg-gradient-to-r from-pink-500 to-purple-600 h-full rounded-full relative"
+                className="bg-gradient-to-r from-slate-500 to-slate-600 h-full rounded-full relative"
                 initial={{ width: 0 }}
                 animate={{ width: `${displayProgress}%` }}
                 transition={{ duration: isDragging ? 0 : 0.3 }}
@@ -174,7 +174,7 @@ export default function VoiceControlBar({
                 <div
                   className={`
                     absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2
-                    w-3 h-3 bg-white border-2 border-pink-500 rounded-full shadow-sm
+                    w-3 h-3 bg-white border-2 border-slate-500 rounded-full shadow-sm
                     transition-all duration-200
                     ${isDragging || totalDuration > 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}
                     hover:scale-110 cursor-grab active:cursor-grabbing
@@ -204,7 +204,7 @@ export default function VoiceControlBar({
             >
               <div className="flex items-center justify-between text-sm text-gray-600">
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <div className="w-2 h-2 bg-slate-400 rounded-full animate-pulse" />
                   <span>Playing with Imran's voice</span>
                 </div>
 

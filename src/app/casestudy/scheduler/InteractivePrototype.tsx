@@ -28,13 +28,13 @@ const SCHOOLS = [
     name: 'Ivbore Primary School',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   {
     name: 'Unity Primary School',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Sunrise Academy', grades: 'Primary • P1-P8', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   { name: 'Greenfield School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
@@ -48,13 +48,13 @@ const SCHOOLS = [
     name: 'Royal Scholars School',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   {
     name: "St. Mary's Academy",
     grades: 'Primary • P1-P8',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Oakwood Preparatory', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -67,7 +67,7 @@ const SCHOOLS = [
     name: 'Mountain View School',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   {
     name: 'Valley Heights Academy',
@@ -80,7 +80,7 @@ const SCHOOLS = [
     name: 'Cedar Ridge Primary',
     grades: 'Primary • P1-P7',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Maple Leaf Academy', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -93,7 +93,7 @@ const SCHOOLS = [
     name: 'Birchwood Preparatory',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   {
     name: 'Aspen Heights School',
@@ -111,7 +111,7 @@ const SCHOOLS = [
     name: 'Cypress Primary School',
     grades: 'Primary • P1-P8',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   {
     name: 'Magnolia Preparatory',
@@ -129,7 +129,7 @@ const SCHOOLS = [
     name: 'Sycamore Academy',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Redwood School', grades: 'Primary • P1-P8', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -142,7 +142,7 @@ const SCHOOLS = [
     name: 'Palm Grove Academy',
     grades: 'Primary • P1-P7',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   {
     name: 'Bamboo Heights School',
@@ -155,7 +155,7 @@ const SCHOOLS = [
     name: 'Mango Tree Academy',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Banana Leaf School', grades: 'Primary • P1-P7', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -168,7 +168,7 @@ const SCHOOLS = [
     name: 'Guava Heights Academy',
     grades: 'Primary • P1-P8',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Dragon Fruit School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -181,7 +181,7 @@ const SCHOOLS = [
     name: 'Passion Fruit Primary',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Kiwi Preparatory', grades: 'Primary • P1-P8', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   { name: 'Blueberry School', grades: 'Primary • P1-P6', status: 'No Plan', statusColor: 'bg-gray-100 text-gray-800' },
@@ -189,7 +189,7 @@ const SCHOOLS = [
     name: 'Strawberry Academy',
     grades: 'Primary • P1-P7',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Raspberry Heights', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -202,7 +202,7 @@ const SCHOOLS = [
     name: 'Cranberry School',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Gooseberry Academy', grades: 'Primary • P1-P7', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -215,7 +215,7 @@ const SCHOOLS = [
     name: 'Mulberry Heights',
     grades: 'Primary • P1-P8',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Huckleberry School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -228,7 +228,7 @@ const SCHOOLS = [
     name: 'Loganberry Primary',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Marionberry School', grades: 'Primary • P1-P8', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -241,7 +241,7 @@ const SCHOOLS = [
     name: 'Salmonberry Heights',
     grades: 'Primary • P1-P7',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Thimbleberry School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   { name: 'Wineberry Academy', grades: 'Primary • P1-P8', status: 'No Plan', statusColor: 'bg-gray-100 text-gray-800' },
@@ -249,7 +249,7 @@ const SCHOOLS = [
     name: 'Bearberry Primary',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Bilberry School', grades: 'Primary • P1-P7', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -262,7 +262,7 @@ const SCHOOLS = [
     name: 'Barberry Heights',
     grades: 'Primary • P1-P8',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Bayberry School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   { name: 'Bogberry Academy', grades: 'Primary • P1-P7', status: 'No Plan', statusColor: 'bg-gray-100 text-gray-800' },
@@ -270,7 +270,7 @@ const SCHOOLS = [
     name: 'Bunchberry Primary',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Checkerberry School', grades: 'Primary • P1-P8', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   { name: 'Crowberry Academy', grades: 'Primary • P1-P6', status: 'No Plan', statusColor: 'bg-gray-100 text-gray-800' },
@@ -278,7 +278,7 @@ const SCHOOLS = [
     name: 'Dewberry Heights',
     grades: 'Primary • P1-P7',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Foxberry School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -291,7 +291,7 @@ const SCHOOLS = [
     name: 'Hackberry Primary',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Huckleberry School', grades: 'Primary • P1-P7', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -304,7 +304,7 @@ const SCHOOLS = [
     name: 'Kinnikinnick Heights',
     grades: 'Primary • P1-P8',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Lingonberry School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -317,7 +317,7 @@ const SCHOOLS = [
     name: 'Nannyberry Primary',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Oregonberry School', grades: 'Primary • P1-P8', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -330,7 +330,7 @@ const SCHOOLS = [
     name: 'Pigeonberry Heights',
     grades: 'Primary • P1-P7',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Pokeberry School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   { name: 'Raspberry Academy', grades: 'Primary • P1-P8', status: 'No Plan', statusColor: 'bg-gray-100 text-gray-800' },
@@ -338,7 +338,7 @@ const SCHOOLS = [
     name: 'Salmonberry Primary',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Serviceberry School', grades: 'Primary • P1-P7', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   { name: 'Snowberry Academy', grades: 'Primary • P1-P6', status: 'No Plan', statusColor: 'bg-gray-100 text-gray-800' },
@@ -346,7 +346,7 @@ const SCHOOLS = [
     name: 'Sparkleberry Heights',
     grades: 'Primary • P1-P8',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Squashberry School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -359,7 +359,7 @@ const SCHOOLS = [
     name: 'Sugarberry Primary',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Tayberry School', grades: 'Primary • P1-P8', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   {
@@ -372,7 +372,7 @@ const SCHOOLS = [
     name: 'Waxberry Heights',
     grades: 'Primary • P1-P7',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Winterberry School', grades: 'Primary • P1-P6', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
   { name: 'Wolfberry Academy', grades: 'Primary • P1-P8', status: 'No Plan', statusColor: 'bg-gray-100 text-gray-800' },
@@ -380,7 +380,7 @@ const SCHOOLS = [
     name: 'Youngberry Primary',
     grades: 'Primary • P1-P6',
     status: 'Published',
-    statusColor: 'bg-green-100 text-green-800',
+    statusColor: 'bg-slate-100 text-slate-800',
   },
   { name: 'Zucchini School', grades: 'Primary • P1-P7', status: 'Draft', statusColor: 'bg-gray-100 text-gray-800' },
 ];
@@ -508,33 +508,33 @@ const InteractivePrototype: React.FC = () => {
     {
       time: '8:30 AM',
       slots: [
-        { subject: 'Mathematics', teacher: 'Mr. Okoro', color: 'bg-blue-100 text-blue-800', conflict: false },
-        { subject: 'English', teacher: 'Ms. Adesina', color: 'bg-green-100 text-green-800', conflict: false },
+        { subject: 'Mathematics', teacher: 'Mr. Okoro', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'English', teacher: 'Ms. Adesina', color: 'bg-slate-100 text-slate-800', conflict: false },
         {
           subject: 'Science',
           teacher: 'Mr. Bello',
-          color: 'bg-yellow-100 text-yellow-800',
+          color: 'bg-slate-100 text-slate-800',
           conflict: true,
           conflictType: 'double-booking',
         },
-        { subject: 'Arts', teacher: 'Ms. Chika', color: 'bg-purple-100 text-purple-800', conflict: false },
-        { subject: 'History', teacher: 'Mr. Musa', color: 'bg-pink-100 text-pink-800', conflict: false },
+        { subject: 'Arts', teacher: 'Ms. Chika', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'History', teacher: 'Mr. Musa', color: 'bg-slate-100 text-slate-800', conflict: false },
       ],
     },
     {
       time: '9:15 AM',
       slots: [
-        { subject: 'English', teacher: 'Ms. Adesina', color: 'bg-green-100 text-green-800', conflict: false },
+        { subject: 'English', teacher: 'Ms. Adesina', color: 'bg-slate-100 text-slate-800', conflict: false },
         {
           subject: 'Mathematics',
           teacher: 'Mr. Okoro',
-          color: 'bg-blue-100 text-blue-800',
+          color: 'bg-slate-100 text-slate-800',
           conflict: true,
           conflictType: 'double-booking',
         },
-        { subject: 'Science', teacher: 'Mr. Bello', color: 'bg-yellow-100 text-yellow-800', conflict: false },
-        { subject: 'Arts', teacher: 'Ms. Chika', color: 'bg-purple-100 text-purple-800', conflict: false },
-        { subject: 'History', teacher: 'Mr. Musa', color: 'bg-pink-100 text-pink-800', conflict: false },
+        { subject: 'Science', teacher: 'Mr. Bello', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'Arts', teacher: 'Ms. Chika', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'History', teacher: 'Mr. Musa', color: 'bg-slate-100 text-slate-800', conflict: false },
       ],
     },
     {
@@ -550,27 +550,27 @@ const InteractivePrototype: React.FC = () => {
     {
       time: '10:15 AM',
       slots: [
-        { subject: 'Science', teacher: 'Mr. Bello', color: 'bg-yellow-100 text-yellow-800', conflict: false },
-        { subject: 'English', teacher: 'Ms. Adesina', color: 'bg-green-100 text-green-800', conflict: false },
-        { subject: 'Mathematics', teacher: 'Mr. Okoro', color: 'bg-blue-100 text-blue-800', conflict: false },
+        { subject: 'Science', teacher: 'Mr. Bello', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'English', teacher: 'Ms. Adesina', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'Mathematics', teacher: 'Mr. Okoro', color: 'bg-slate-100 text-slate-800', conflict: false },
         {
           subject: 'History',
           teacher: 'Mr. Musa',
-          color: 'bg-pink-100 text-pink-800',
+          color: 'bg-slate-100 text-slate-800',
           conflict: true,
           conflictType: 'soft-constraint',
         },
-        { subject: 'Arts', teacher: 'Ms. Chika', color: 'bg-purple-100 text-purple-800', conflict: false },
+        { subject: 'Arts', teacher: 'Ms. Chika', color: 'bg-slate-100 text-slate-800', conflict: false },
       ],
     },
     {
       time: '11:00 AM',
       slots: [
-        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-orange-100 text-orange-800', conflict: false },
-        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-orange-100 text-orange-800', conflict: false },
-        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-orange-100 text-orange-800', conflict: false },
-        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-orange-100 text-orange-800', conflict: false },
-        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-orange-100 text-orange-800', conflict: false },
+        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-slate-100 text-slate-800', conflict: false },
+        { subject: 'Social Studies', teacher: 'Mr. Johnson', color: 'bg-slate-100 text-slate-800', conflict: false },
       ],
     },
     {
@@ -743,7 +743,7 @@ const InteractivePrototype: React.FC = () => {
           href="https://www.figma.com/proto/4HVHnoV0n8uEVLf7XkKU1f/AIP---Multiple-schools?page-id=225%3A12437&node-id=54617-3517&viewport=482%2C201%2C0.05&t=dYiIBvYppZoyDru5-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=54617%3A3517"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-5 py-2 border border-blue-200 text-blue-700 bg-white text-sm font-semibold rounded hover:bg-blue-50 transition focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="inline-block px-5 py-2 border border-slate-200 text-slate-700 bg-white text-sm font-semibold rounded hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-slate-400"
           aria-label="View the interactive prototype in Figma (opens in new tab)"
           aria-labelledby="interactive-prototype-title interactive-prototype-desc"
         >
@@ -759,7 +759,7 @@ const InteractivePrototype: React.FC = () => {
                 {/* School Selection Interface */}
                 <div className="border border-gray-200 rounded-xl overflow-hidden mb-6 w-full h-full flex flex-col">
                   {/* Header */}
-                  <div className="bg-blue-600 text-white px-4 py-2 flex justify-between items-center">
+                  <div className="bg-slate-600 text-white px-4 py-2 flex justify-between items-center">
                     <div className="flex items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -794,7 +794,7 @@ const InteractivePrototype: React.FC = () => {
                       </div>
                       <input
                         type="text"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-500"
                         placeholder="Search schools..."
                         value={searchQuery}
                         onChange={e => setSearchQuery(e.target.value)}
@@ -806,7 +806,7 @@ const InteractivePrototype: React.FC = () => {
                       </label>
                       <select
                         id="status-filter"
-                        className="block w-full pl-3 pr-8 py-2 border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        className="block w-full pl-3 pr-8 py-2 border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
                         value={statusFilter}
                         onChange={e => setStatusFilter(e.target.value as 'All' | 'Published' | 'Draft' | 'No Plan')}
                         aria-label="Filter schools by status"
@@ -822,7 +822,7 @@ const InteractivePrototype: React.FC = () => {
                   {/* Generate Timetable Button */}
                   <div className="flex items-center px-4 py-3 border-b border-gray-200">
                     <button
-                      className={`mr-4 px-5 py-2 rounded-lg text-base font-semibold shadow transition-colors ${selectedSchools.length > 0 ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
+                      className={`mr-4 px-5 py-2 rounded-lg text-base font-semibold shadow transition-colors ${selectedSchools.length > 0 ? 'bg-slate-600 text-white hover:bg-slate-700' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
                       disabled={selectedSchools.length === 0}
                       onClick={handleGenerate}
                     >
@@ -843,7 +843,7 @@ const InteractivePrototype: React.FC = () => {
                             <input
                               type="checkbox"
                               name="school"
-                              className="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-3"
+                              className="h-4 w-4 text-slate-600 border-gray-300 focus:ring-slate-500 mr-3"
                               checked={selectedSchools.includes(school.name)}
                               onChange={() => {
                                 setSelectedSchools(prev =>
@@ -856,7 +856,7 @@ const InteractivePrototype: React.FC = () => {
                             />
                             <div>
                               <div
-                                className={`text-sm font-medium ${selectedSchools.includes(school.name) ? 'text-blue-600' : 'text-gray-900'}`}
+                                className={`text-sm font-medium ${selectedSchools.includes(school.name) ? 'text-slate-600' : 'text-gray-900'}`}
                               >
                                 {school.name}
                               </div>
@@ -870,7 +870,7 @@ const InteractivePrototype: React.FC = () => {
                               </span>
                             )}
                             {school.status === 'Published' && (
-                              <button className="text-xs text-blue-600" tabIndex={-1}>
+                              <button className="text-xs text-slate-600" tabIndex={-1}>
                                 View
                               </button>
                             )}
@@ -959,7 +959,7 @@ const InteractivePrototype: React.FC = () => {
                                   onClick={() => handlePageChange(pageNumber)}
                                   className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
                                     currentPage === pageNumber
-                                      ? 'z-10 bg-blue-50 border-blue-500 text-blue-600'
+                                      ? 'z-10 bg-slate-50 border-slate-500 text-slate-600'
                                       : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
                                   }`}
                                 >
@@ -1013,7 +1013,7 @@ const InteractivePrototype: React.FC = () => {
             {step === STEP.GRADE_SELECTION && (
               <motion.div key="grade-selection" {...fadeSlide} className="w-full h-full">
                 <div className="border border-gray-200 rounded overflow-hidden mb-6 w-full h-full flex flex-col">
-                  <div className="bg-blue-600 text-white px-4 py-2">
+                  <div className="bg-slate-600 text-white px-4 py-2">
                     <h3 className="text-lg font-medium">Select Grade Level</h3>
                   </div>
                   <div className="p-4">
@@ -1023,7 +1023,7 @@ const InteractivePrototype: React.FC = () => {
                         <button
                           key={grade.id}
                           onClick={() => handleGradeSelect(grade.id)}
-                          className="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors text-left"
+                          className="p-4 border border-gray-200 rounded-lg hover:border-slate-500 hover:bg-slate-50 transition-colors text-left"
                         >
                           <h4 className="font-medium text-gray-900">{grade.name}</h4>
                           <p className="text-sm text-gray-500 mt-1">Subjects: {grade.subjects.join(', ')}</p>
@@ -1043,10 +1043,10 @@ const InteractivePrototype: React.FC = () => {
                 aria-busy="true"
               >
                 {/* Generating Plan Modal UI */}
-                <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg border border-blue-200 p-8 flex flex-col items-center">
-                  <div className="inline-block p-3 rounded-full bg-blue-50 mb-4">
+                <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg border border-slate-200 p-8 flex flex-col items-center">
+                  <div className="inline-block p-3 rounded-full bg-slate-50 mb-4">
                     <svg
-                      className="w-8 h-8 text-blue-600 animate-spin"
+                      className="w-8 h-8 text-slate-600 animate-spin"
                       fill="none"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -1069,19 +1069,19 @@ const InteractivePrototype: React.FC = () => {
                       initial={{ width: 0 }}
                       animate={{ width: '70%' }}
                       transition={{ duration: shouldReduceMotion ? 0 : 2.2, ease: 'easeInOut' }}
-                      className="bg-blue-600 h-2 rounded-full"
+                      className="bg-slate-600 h-2 rounded-full"
                       aria-hidden="true"
                     ></motion.div>
                   </div>
                   <p className="text-xs text-gray-500 mb-4">Processing constraints</p>
                   <div className="space-y-2 w-full">
                     <div className="flex items-center">
-                      <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-medium bg-red-500 text-red-800">
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-medium bg-slate-500 text-slate-800">
                         Hard Violations (2)
                       </span>
                     </div>
                     <div className="flex items-center">
-                      <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-medium bg-yellow-500 text-yellow-800">
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-medium bg-slate-500 text-slate-800">
                         Soft Violations (3)
                       </span>
                     </div>
@@ -1099,7 +1099,7 @@ const InteractivePrototype: React.FC = () => {
                     <div className="flex items-center min-w-0">
                       <button
                         onClick={() => setStep(STEP.SCHOOL_SELECTION)}
-                        className="p-1 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 mr-2"
+                        className="p-1 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-slate-400 mr-2"
                         aria-label="Back to School List"
                       >
                         <svg
@@ -1121,10 +1121,10 @@ const InteractivePrototype: React.FC = () => {
                       <div className="flex items-center">
                         {/* Tabs */}
                         <div className="flex items-center bg-gray-100 rounded-full p-1">
-                          <button className="px-3 py-1.5 rounded-full text-sm font-semibold text-blue-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors hover:bg-blue-50">
+                          <button className="px-3 py-1.5 rounded-full text-sm font-semibold text-slate-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-slate-400 transition-colors hover:bg-slate-50">
                             Summary
                           </button>
-                          <button className="px-3 py-1.5 rounded-full text-sm font-semibold bg-blue-700 text-white shadow focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors">
+                          <button className="px-3 py-1.5 rounded-full text-sm font-semibold bg-slate-700 text-white shadow focus:outline-none focus:ring-2 focus:ring-slate-400 transition-colors">
                             Plan
                           </button>
                         </div>
@@ -1133,17 +1133,17 @@ const InteractivePrototype: React.FC = () => {
                         {/* View By Controls */}
                         <div className="flex items-center space-x-2">
                           <span className="text-sm font-medium text-gray-700">View by</span>
-                          <select className="text-sm border border-gray-200 rounded-lg px-3 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+                          <select className="text-sm border border-gray-200 rounded-lg px-3 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-slate-400">
                             <option>Grade and Stream</option>
                             <option>Teacher</option>
                             <option>Subject</option>
                           </select>
-                          <select className="text-sm border border-gray-200 rounded-lg px-3 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+                          <select className="text-sm border border-gray-200 rounded-lg px-3 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-slate-400">
                             <option>Primary 1</option>
                             <option>Primary 2</option>
                             <option>Primary 3</option>
                           </select>
-                          <select className="text-sm border border-gray-200 rounded-lg px-3 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400">
+                          <select className="text-sm border border-gray-200 rounded-lg px-3 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-slate-400">
                             <option>A</option>
                             <option>B</option>
                             <option>C</option>
@@ -1153,13 +1153,13 @@ const InteractivePrototype: React.FC = () => {
                       {/* Right: DRAFT Status, Icon Buttons, Publish */}
                       <div className="flex items-center space-x-4">
                         <span
-                          className={`px-5 py-1 rounded-full ${isPublished ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-blue-700'} text-sm font-semibold`}
+                          className={`px-5 py-1 rounded-full ${isPublished ? 'bg-slate-100 text-slate-700' : 'bg-gray-100 text-slate-700'} text-sm font-semibold`}
                         >
                           {isPublished ? 'PUBLISHED' : 'DRAFT'}
                         </span>
                         {/* Icon Button Group */}
-                        <div className="flex rounded-lg overflow-hidden border border-blue-200 bg-white">
-                          <button className="px-4 py-2 text-blue-700 bg-blue-50 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <div className="flex rounded-lg overflow-hidden border border-slate-200 bg-white">
+                          <button className="px-4 py-2 text-slate-700 bg-slate-50 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400">
                             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path
                                 strokeLinecap="round"
@@ -1169,7 +1169,7 @@ const InteractivePrototype: React.FC = () => {
                               />
                             </svg>
                           </button>
-                          <button className="px-4 py-2 text-blue-700 bg-white hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400 border-l border-blue-200">
+                          <button className="px-4 py-2 text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400 border-l border-slate-200">
                             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path
                                 strokeLinecap="round"
@@ -1183,7 +1183,7 @@ const InteractivePrototype: React.FC = () => {
                         {/* Publish Button with Dropdown */}
                         <div className="relative">
                           <button
-                            className="flex items-center px-7 py-2 rounded-lg bg-blue-700 text-white text-base font-semibold shadow hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            className="flex items-center px-7 py-2 rounded-lg bg-slate-700 text-white text-base font-semibold shadow hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400"
                             onClick={() => setPublishModalOpen(true)}
                             disabled={isPublished}
                             aria-disabled={isPublished}
@@ -1231,12 +1231,12 @@ const InteractivePrototype: React.FC = () => {
                                         `relative rounded-lg border ` +
                                         (slot.conflict
                                           ? slot.conflictType === 'soft-constraint'
-                                            ? 'border-yellow-200 bg-yellow-50'
-                                            : 'border-red-200 bg-red-50'
+                                            ? 'border-slate-200 bg-slate-50'
+                                            : 'border-slate-200 bg-slate-50'
                                           : `border-gray-200 ${slot.color}`) +
                                         ` p-1.5 min-h-[48px] flex flex-col justify-between ` +
                                         (slot.conflict
-                                          ? 'cursor-pointer hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-400 transition-shadow'
+                                          ? 'cursor-pointer hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 transition-shadow'
                                           : '')
                                       }
                                       tabIndex={slot.conflict ? 0 : -1}
@@ -1294,8 +1294,8 @@ const InteractivePrototype: React.FC = () => {
                                           className={`text-xs font-medium ${
                                             slot.conflict
                                               ? slot.conflictType === 'soft-constraint'
-                                                ? 'text-yellow-700'
-                                                : 'text-red-700'
+                                                ? 'text-slate-700'
+                                                : 'text-slate-700'
                                               : 'text-gray-900'
                                           }`}
                                         >
@@ -1305,8 +1305,8 @@ const InteractivePrototype: React.FC = () => {
                                           <span
                                             className={`inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-medium ${
                                               slot.conflictType === 'soft-constraint'
-                                                ? 'bg-yellow-100 text-yellow-800'
-                                                : 'bg-red-100 text-red-800'
+                                                ? 'bg-slate-100 text-slate-800'
+                                                : 'bg-slate-100 text-slate-800'
                                             }`}
                                           >
                                             {slot.conflictType === 'soft-constraint' ? 'Soft Constraint' : 'Conflict'}
@@ -1345,7 +1345,7 @@ const InteractivePrototype: React.FC = () => {
                                   setNewTeacher('');
                                   setMoveTarget(null);
                                 }}
-                                className="p-2 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className="p-2 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-slate-400"
                                 aria-label="Close conflict details"
                               >
                                 <svg
@@ -1386,7 +1386,7 @@ const InteractivePrototype: React.FC = () => {
                               </div>
                               <div className="mb-3">
                                 <div className="text-xs text-gray-500 mb-1">Conflict Type</div>
-                                <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
                                   {sidePanelData.conflictType === 'soft-constraint'
                                     ? 'Soft Constraint'
                                     : 'Hard Conflict'}
@@ -1398,20 +1398,20 @@ const InteractivePrototype: React.FC = () => {
                                 {!sidePanelAction && (
                                   <div className="flex flex-col gap-2">
                                     <button
-                                      className="px-3 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-xs text-left"
+                                      className="px-3 py-2 rounded bg-slate-600 text-white font-semibold hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 text-xs text-left"
                                       onClick={() => setSidePanelAction('reassign')}
                                     >
                                       Reassign Teacher
                                     </button>
                                     <button
-                                      className="px-3 py-2 rounded bg-blue-50 text-blue-700 font-semibold hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400 text-xs text-left"
+                                      className="px-3 py-2 rounded bg-slate-50 text-slate-700 font-semibold hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 text-xs text-left"
                                       onClick={() => setSidePanelAction('move')}
                                     >
                                       Move Subject to Another Slot
                                     </button>
                                     {sidePanelData.conflictType === 'soft-constraint' && (
                                       <button
-                                        className="px-3 py-2 rounded bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-xs text-left"
+                                        className="px-3 py-2 rounded bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-400 text-xs text-left"
                                         onClick={() => {
                                           handleIgnoreConflict(sidePanelData.row, sidePanelData.col);
                                           setSidePanelAction(null);
@@ -1441,7 +1441,7 @@ const InteractivePrototype: React.FC = () => {
                                     <input
                                       id="new-teacher"
                                       type="text"
-                                      className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                      className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
                                       value={newTeacher}
                                       onChange={e => setNewTeacher(e.target.value)}
                                       placeholder="Enter teacher name"
@@ -1450,13 +1450,13 @@ const InteractivePrototype: React.FC = () => {
                                     <div className="flex gap-2 mt-2">
                                       <button
                                         type="submit"
-                                        className="px-3 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-xs"
+                                        className="px-3 py-2 rounded bg-slate-600 text-white font-semibold hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 text-xs"
                                       >
                                         Save
                                       </button>
                                       <button
                                         type="button"
-                                        className="px-3 py-2 rounded bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-xs"
+                                        className="px-3 py-2 rounded bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-400 text-xs"
                                         onClick={() => {
                                           setSidePanelAction(null);
                                           setNewTeacher('');
@@ -1485,7 +1485,7 @@ const InteractivePrototype: React.FC = () => {
                                             return (
                                               <button
                                                 key={`move-${rIdx}-${cIdx}`}
-                                                className={`px-2 py-1 rounded border border-gray-200 text-xs text-left hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-400 ${moveTarget && moveTarget.row === rIdx && moveTarget.col === cIdx ? 'bg-blue-100' : ''}`}
+                                                className={`px-2 py-1 rounded border border-gray-200 text-xs text-left hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400 ${moveTarget && moveTarget.row === rIdx && moveTarget.col === cIdx ? 'bg-slate-100' : ''}`}
                                                 onClick={() => setMoveTarget({ row: rIdx, col: cIdx })}
                                               >
                                                 {row.time} - {days[cIdx]}{' '}
@@ -1499,7 +1499,7 @@ const InteractivePrototype: React.FC = () => {
                                     </div>
                                     <div className="flex gap-2 mt-2">
                                       <button
-                                        className="px-3 py-2 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 text-xs"
+                                        className="px-3 py-2 rounded bg-slate-600 text-white font-semibold hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 text-xs"
                                         disabled={!moveTarget}
                                         onClick={() => {
                                           if (moveTarget) {
@@ -1517,7 +1517,7 @@ const InteractivePrototype: React.FC = () => {
                                         Move
                                       </button>
                                       <button
-                                        className="px-3 py-2 rounded bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-xs"
+                                        className="px-3 py-2 rounded bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-400 text-xs"
                                         onClick={() => {
                                           setSidePanelAction(null);
                                           setMoveTarget(null);
@@ -1550,7 +1550,7 @@ const InteractivePrototype: React.FC = () => {
               href="https://www.figma.com/proto/4HVHnoV0n8uEVLf7XkKU1f/AIP---Multiple-schools?page-id=225%3A12437&node-id=54617-3517&viewport=482%2C201%2C0.05&t=dYiIBvYppZoyDru5-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=54617%3A3517"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-5 py-2 border border-blue-200 text-blue-700 bg-white text-sm font-semibold rounded hover:bg-blue-50 transition focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="inline-block px-5 py-2 border border-slate-200 text-slate-700 bg-white text-sm font-semibold rounded hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-slate-400"
               aria-label="View in Figma (opens in new tab)"
             >
               View in Figma
@@ -1561,7 +1561,7 @@ const InteractivePrototype: React.FC = () => {
       {/* Publish Modal - now overlays only the timetable area */}
       {publishModalOpen && step === STEP.TIMETABLE_VIEW && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-          <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full border border-blue-200">
+          <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full border border-slate-200">
             <h2 className="text-lg font-bold text-gray-900 mb-2">Publish Plan?</h2>
             <p className="text-gray-700 mb-6">
               Once published, this plan will be operational starting the next school day. Are you sure you want to
@@ -1569,13 +1569,13 @@ const InteractivePrototype: React.FC = () => {
             </p>
             <div className="flex justify-end gap-3">
               <button
-                className="px-4 py-2 rounded bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                className="px-4 py-2 rounded bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-400 text-sm"
                 onClick={() => setPublishModalOpen(false)}
               >
                 Cancel
               </button>
               <button
-                className="px-4 py-2 rounded bg-blue-700 text-white font-semibold hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                className="px-4 py-2 rounded bg-slate-700 text-white font-semibold hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400 text-sm"
                 onClick={() => {
                   setIsPublished(true);
                   setPublishModalOpen(false);
@@ -1585,7 +1585,7 @@ const InteractivePrototype: React.FC = () => {
               </button>
             </div>
             {isPublished && (
-              <div className="mt-4 text-green-700 bg-green-50 border border-green-200 rounded p-2 text-sm">
+              <div className="mt-4 text-slate-700 bg-slate-50 border border-slate-200 rounded p-2 text-sm">
                 Plan published! It will be operational next school day.
               </div>
             )}

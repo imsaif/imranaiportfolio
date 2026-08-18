@@ -195,15 +195,15 @@ const CaseStudyConversationalAgent: React.FC<CaseStudyConversationalAgentProps> 
   const getStateBgColor = () => {
     switch (agentState) {
       case 'listening':
-        return 'bg-blue-500';
+        return 'bg-slate-500';
       case 'processing':
-        return 'bg-yellow-500';
+        return 'bg-slate-500';
       case 'speaking':
-        return 'bg-green-500';
+        return 'bg-slate-500';
       case 'error':
-        return 'bg-red-500';
+        return 'bg-slate-500';
       default:
-        return 'bg-purple-500';
+        return 'bg-slate-500';
     }
   };
 
@@ -225,7 +225,7 @@ const CaseStudyConversationalAgent: React.FC<CaseStudyConversationalAgentProps> 
           </p>
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            className="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors"
           >
             Close
           </button>
@@ -274,9 +274,9 @@ const CaseStudyConversationalAgent: React.FC<CaseStudyConversationalAgentProps> 
               <div
                 className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
                   message.sender === 'user'
-                    ? 'bg-blue-500 text-white'
+                    ? 'bg-slate-500 text-white'
                     : message.usedPremiumVoice
-                      ? 'bg-purple-100 text-purple-900 border-2 border-purple-300'
+                      ? 'bg-slate-100 text-slate-900 border-2 border-slate-300'
                       : 'bg-gray-100 text-gray-900'
                 }`}
               >
@@ -315,7 +315,7 @@ const CaseStudyConversationalAgent: React.FC<CaseStudyConversationalAgentProps> 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleStartListening}
-                className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center space-x-2"
+                className="px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors flex items-center space-x-2"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -334,7 +334,7 @@ const CaseStudyConversationalAgent: React.FC<CaseStudyConversationalAgentProps> 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleStopListening}
-                className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center space-x-2"
+                className="px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors flex items-center space-x-2"
               >
                 <div className="w-4 h-4 bg-white rounded-sm" />
                 <span>Stop Listening</span>
@@ -346,7 +346,7 @@ const CaseStudyConversationalAgent: React.FC<CaseStudyConversationalAgentProps> 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleStopSpeaking}
-                className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors flex items-center space-x-2"
+                className="px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors flex items-center space-x-2"
               >
                 <div className="w-4 h-4 bg-white rounded-sm" />
                 <span>Stop Speaking</span>
@@ -365,7 +365,7 @@ const CaseStudyConversationalAgent: React.FC<CaseStudyConversationalAgentProps> 
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div
-                  className="bg-purple-600 h-2 rounded-full transition-all duration-300"
+                  className="bg-slate-600 h-2 rounded-full transition-all duration-300"
                   style={{
                     width: `${Math.min((sessionStatus.premiumMinutesUsed / limits.maxPremiumMinutes) * 100, 100)}%`,
                   }}

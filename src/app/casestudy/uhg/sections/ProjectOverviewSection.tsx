@@ -30,7 +30,7 @@ export function ProjectOverviewSection() {
           </div>
 
           {/* Right column - Context */}
-          <div className="flex-1 bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-sm p-8 flex items-center border border-gray-200">
+          <div className="flex-1 bg-gradient-to-br from-slate-50 to-white rounded-xl shadow-sm p-8 flex items-center border border-gray-200">
             <p className="text-gray-700 text-lg">
               Before the redesign, users struggled with a complex reimbursement process that was manual, error-prone, and inflexible.
               As Lead UX Designer, I worked with cross-functional teams to design an automated, intelligent system that reduced abandonment by 75% and support calls by 52%.
@@ -83,21 +83,21 @@ export function ProjectOverviewSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-base">
             <div>
               <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                <MdGroups className="text-blue-500" size={20} />
+                <MdGroups className="text-slate-500" size={20} />
                 Multi-User Challenge
               </h4>
               <p className="text-gray-600">Four distinct user types with conflicting needs—from digital natives to assisted users</p>
             </div>
             <div>
               <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                <MdEngineering className="text-orange-500" size={20} />
+                <MdEngineering className="text-slate-500" size={20} />
                 Technical Constraints
               </h4>
               <p className="text-gray-600">Legacy systems, OCR processing, and mobile network reliability issues</p>
             </div>
             <div>
               <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                <MdPolicy className="text-green-500" size={20} />
+                <MdPolicy className="text-slate-500" size={20} />
                 Regulatory Requirements
               </h4>
               <p className="text-gray-600">IRS compliance, HIPAA restrictions, and mandatory audit trails</p>

@@ -31,7 +31,7 @@ export default function DesignComparisons({ comparisons }: DesignComparisonsProp
             onClick={() => setActiveComparison(index)}
             className={`px-4 py-2 rounded-lg transition-colors ${
               activeComparison === index
-                ? 'bg-blue-500 text-white'
+                ? 'bg-slate-500 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >

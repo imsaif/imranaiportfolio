@@ -66,8 +66,8 @@ const CaseStudyVoiceToggle: React.FC<CaseStudyVoiceToggleProps> = ({
               disabled
                 ? 'bg-gray-400 cursor-not-allowed'
                 : isAgentOpen
-                  ? 'bg-red-500 hover:bg-red-600'
-                  : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700'
+                  ? 'bg-slate-500 hover:bg-slate-600'
+                  : 'bg-gradient-to-r from-slate-600 to-slate-600 hover:from-slate-700 hover:to-slate-700'
             }
             ${!disabled && 'hover:shadow-xl hover:scale-110'}
           `}
@@ -77,7 +77,7 @@ const CaseStudyVoiceToggle: React.FC<CaseStudyVoiceToggleProps> = ({
           {/* Pulsing ring effect */}
           {!isAgentOpen && !disabled && (
             <motion.div
-              className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-30"
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-slate-600 to-slate-600 opacity-30"
               animate={{
                 scale: [1, 1.4, 1],
                 opacity: [0.3, 0, 0.3],

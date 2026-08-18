@@ -41,14 +41,14 @@ export const FloatingNavBar: React.FC = () => {
             <a
               href={`#${section.id}`}
               className={`px-3 py-1 font-medium transition-colors ${
-                active === section.id ? 'text-blue-600' : 'text-gray-500 hover:text-blue-500'
+                active === section.id ? 'text-slate-600' : 'text-gray-500 hover:text-slate-500'
               }`}
             >
               {section.label}
               {active === section.id && (
                 <motion.div
                   layoutId="underline"
-                  className="absolute left-0 right-0 -bottom-1 h-1 bg-blue-500 rounded"
+                  className="absolute left-0 right-0 -bottom-1 h-1 bg-slate-500 rounded"
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                 />
               )}

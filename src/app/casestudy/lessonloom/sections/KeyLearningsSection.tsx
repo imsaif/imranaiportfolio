@@ -69,7 +69,7 @@ export function KeyLearningsSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="mt-12 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-8 border border-indigo-100"
+        className="mt-12 bg-gradient-to-r from-slate-50 to-slate-50 rounded-lg p-8 border border-slate-100"
       >
         <h3 className="text-xl font-bold text-gray-900 mb-4">How This Shaped My Design Philosophy</h3>
         <p className="text-gray-700 leading-relaxed mb-4">

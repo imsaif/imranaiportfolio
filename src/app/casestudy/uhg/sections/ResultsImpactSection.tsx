@@ -15,19 +15,19 @@ export function ResultsImpactSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 text-center">
-            <div className="text-3xl font-bold text-green-600 mb-2">23%</div>
+            <div className="text-3xl font-bold text-slate-600 mb-2">23%</div>
             <div className="text-base font-medium text-gray-900 mb-1">Task Completion</div>
             <div className="text-xs text-gray-600">From 1.1%</div>
           </div>
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">12min</div>
+            <div className="text-3xl font-bold text-slate-600 mb-2">12min</div>
             <div className="text-base font-medium text-gray-900 mb-1">Avg Completion Time</div>
             <div className="text-xs text-gray-600">From 18 minutes</div>
           </div>
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 text-center">
-            <div className="text-3xl font-bold text-purple-600 mb-2">15%</div>
+            <div className="text-3xl font-bold text-slate-600 mb-2">15%</div>
             <div className="text-base font-medium text-gray-900 mb-1">Mobile Completion</div>
             <div className="text-xs text-gray-600">From 0.3%</div>
           </div>
@@ -55,7 +55,7 @@ export function ResultsImpactSection() {
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-8">
             <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <MdTrendingUp className="text-green-500" size={20} />
+              <MdTrendingUp className="text-slate-500" size={20} />
               Scalability
             </h4>
             <p className="text-gray-700 text-base leading-relaxed">
@@ -65,7 +65,7 @@ export function ResultsImpactSection() {
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-8">
             <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <MdPolicy className="text-blue-500" size={20} />
+              <MdPolicy className="text-slate-500" size={20} />
               Compliance
             </h4>
             <p className="text-gray-700 text-base leading-relaxed">
@@ -83,28 +83,28 @@ export function ResultsImpactSection() {
           <div className="space-y-4 text-base">
             <div>
               <strong className="text-gray-900 flex items-center gap-1">
-                <MdLocalHospital className="text-green-500" size={16} />
+                <MdLocalHospital className="text-slate-500" size={16} />
                 Regulation as Feature:
               </strong>
               <span className="text-gray-700 ml-2">Reframed compliance requirements as trust-building opportunities</span>
             </div>
             <div>
               <strong className="text-gray-900 flex items-center gap-1">
-                <MdAltRoute className="text-blue-500" size={16} />
+                <MdAltRoute className="text-slate-500" size={16} />
                 Multi-Path Solutions:
               </strong>
               <span className="text-gray-700 ml-2">Diverse user needs required fundamentally different approaches</span>
             </div>
             <div>
               <strong className="text-gray-900 flex items-center gap-1">
-                <MdSettings className="text-orange-500" size={16} />
+                <MdSettings className="text-slate-500" size={16} />
                 Constraints Drive Innovation:
               </strong>
               <span className="text-gray-700 ml-2">Technical limitations forced creative solutions that improved performance</span>
             </div>
             <div>
               <strong className="text-gray-900 flex items-center gap-1">
-                <MdPhoneAndroid className="text-blue-500" size={16} />
+                <MdPhoneAndroid className="text-slate-500" size={16} />
                 System-Level Design:
               </strong>
               <span className="text-gray-700 ml-2">Cross-device completion required experience orchestration, not just screen optimization</span>

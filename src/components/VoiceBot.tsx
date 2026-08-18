@@ -133,8 +133,8 @@ const VoiceVisualizer: React.FC<{
           key={index}
           className={`rounded-full transition-all duration-100 ${
             isClonedVoice
-              ? 'bg-gradient-to-t from-indigo-600 via-rose-500 to-indigo-400'
-              : 'bg-gradient-to-t from-indigo-500 via-rose-500 to-indigo-300'
+              ? 'bg-gradient-to-t from-slate-600 via-slate-500 to-slate-400'
+              : 'bg-gradient-to-t from-slate-500 via-slate-500 to-slate-300'
           }`}
           style={{
             width: `${2 + (index === 10 ? 1 : 0)}px`, // Center bar slightly wider
@@ -172,14 +172,14 @@ const MicrophoneIcon: React.FC<{
       style={{
         background:
           state === 'listening'
-            ? 'linear-gradient(135deg, #7075e0, #e0637c, #7075e0)'
+            ? 'linear-gradient(135deg, #64748b, #64748b, #64748b)'
             : state === 'speaking' && isClonedVoice
-              ? 'linear-gradient(135deg, #5f64d1, #e0637c, #7075e0)'
+              ? 'linear-gradient(135deg, #64748b, #64748b, #64748b)'
               : state === 'processing'
-                ? 'linear-gradient(135deg, #5f64d1, #e0637c, #7075e0)'
+                ? 'linear-gradient(135deg, #64748b, #64748b, #64748b)'
                 : isClonedVoice
-                  ? 'linear-gradient(135deg, #5f64d1, #e0637c, #7075e0)'
-                  : 'linear-gradient(135deg, #7075e0, #e0637c, #7075e0)',
+                  ? 'linear-gradient(135deg, #64748b, #64748b, #64748b)'
+                  : 'linear-gradient(135deg, #64748b, #64748b, #64748b)',
       }}
       whileHover={{ scale: disabled ? 1 : 1.05 }}
       whileTap={{ scale: disabled ? 1 : 0.95 }}
@@ -295,33 +295,33 @@ const StatusDisplay: React.FC<{
       if (vapiCallActive) {
         switch (state) {
           case 'listening':
-            return 'text-green-600 dark:text-green-400'; // Green for active listening
+            return 'text-slate-600 dark:text-slate-400'; // Green for active listening
           case 'processing':
-            return 'text-purple-600 dark:text-purple-400'; // Purple for thinking
+            return 'text-slate-600 dark:text-slate-400'; // Purple for thinking
           case 'speaking':
-            return 'text-indigo-600 dark:text-indigo-400'; // Indigo for speaking
+            return 'text-slate-600 dark:text-slate-400'; // Indigo for speaking
           case 'idle':
-            return 'text-emerald-600 dark:text-emerald-400'; // Emerald for ready state
+            return 'text-slate-600 dark:text-slate-400'; // Emerald for ready state
           default:
-            return 'text-indigo-600 dark:text-indigo-400';
+            return 'text-slate-600 dark:text-slate-400';
         }
       } else {
         // Connecting state colors
         return state === 'error' 
-          ? 'text-red-600 dark:text-red-400'
-          : 'text-amber-600 dark:text-amber-400'; // Amber for connecting
+          ? 'text-slate-600 dark:text-slate-400'
+          : 'text-slate-600 dark:text-slate-400'; // Amber for connecting
       }
     } // Fixed: Added closing brace for isVapiMode condition
 
     switch (state) {
       case 'listening':
-        return 'text-blue-600 dark:text-blue-400';
+        return 'text-slate-600 dark:text-slate-400';
       case 'processing':
-        return 'text-amber-600 dark:text-amber-400';
+        return 'text-slate-600 dark:text-slate-400';
       case 'speaking':
-        return isClonedVoice ? 'text-rose-600 dark:text-rose-400' : 'text-indigo-600 dark:text-indigo-400';
+        return isClonedVoice ? 'text-slate-600 dark:text-slate-400' : 'text-slate-600 dark:text-slate-400';
       case 'error':
-        return 'text-red-600 dark:text-red-400';
+        return 'text-slate-600 dark:text-slate-400';
       default:
         return 'text-muted-foreground';
     }
@@ -895,8 +895,8 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
         exit={{ opacity: 0, y: 20 }}
         className="text-center py-12"
       >
-        <div className="max-w-md mx-auto p-8 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
-          <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="max-w-md mx-auto p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/20 border border-slate-200 dark:border-slate-800">
+          <svg className="w-16 h-16 mx-auto mb-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -904,8 +904,8 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
               d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.318 16.5c-.77.833.192 2.5 1.732 2.5z"
             />
           </svg>
-          <h3 className="text-xl font-semibold mb-2 text-red-700 dark:text-red-300">Voice Not Supported</h3>
-          <p className="text-red-600 dark:text-red-400">
+          <h3 className="text-xl font-semibold mb-2 text-slate-700 dark:text-slate-300">Voice Not Supported</h3>
+          <p className="text-slate-600 dark:text-slate-400">
             Voice recognition isn't available in your browser. Please try using Chrome or Safari.
           </p>
         </div>
@@ -957,7 +957,7 @@ const VoiceBot: React.FC<VoiceBotProps> = ({ isActive, closeVoice }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={stopSpeaking}
-            className="px-4 py-2 rounded-full bg-orange-100 hover:bg-orange-200 text-orange-700 border border-orange-300 transition-all"
+            className="px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all"
             aria-label="Stop Speaking"
           >
             <svg

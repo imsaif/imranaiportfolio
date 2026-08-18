@@ -24,7 +24,7 @@ const TeamCulture = () => {
 
           <div className="relative max-w-4xl mx-auto">
             {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 via-purple-500 to-green-500 hidden md:block"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-slate-500 via-slate-500 to-slate-500 hidden md:block"></div>
 
             {/* Timeline Items */}
             <div className="space-y-12 md:space-y-16">
@@ -34,7 +34,7 @@ const TeamCulture = () => {
                   <div className="flex-1 w-full max-w-lg">
                     <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 bg-gradient-to-r from-slate-500 to-slate-500 rounded-full flex items-center justify-center">
                           <span className="text-white font-bold text-lg">{item.teamSize}</span>
                         </div>
                         <div>
@@ -48,7 +48,7 @@ const TeamCulture = () => {
                       <div className="space-y-2">
                         {item.achievements.map((achievement, achIndex) => (
                           <div key={achIndex} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                            <div className="w-1.5 h-1.5 bg-slate-500 rounded-full"></div>
                             <span className="text-sm text-gray-600">{achievement}</span>
                           </div>
                         ))}
@@ -58,7 +58,7 @@ const TeamCulture = () => {
 
                   {/* Timeline Node */}
                   <div className="relative z-10 hidden md:block">
-                    <div className="w-6 h-6 bg-white border-4 border-blue-500 rounded-full shadow-lg"></div>
+                    <div className="w-6 h-6 bg-white border-4 border-slate-500 rounded-full shadow-lg"></div>
                   </div>
 
                   {/* Spacer */}
@@ -76,8 +76,8 @@ const TeamCulture = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Retention Rate */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MdFavorite className="w-8 h-8 text-green-600" />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MdFavorite className="w-8 h-8 text-slate-600" />
               </div>
               <div className="text-3xl font-bold text-gray-900 mb-2">{teamCultureData.metrics.retentionRate}</div>
               <div className="text-sm text-gray-600 font-medium">Retention Rate</div>
@@ -85,8 +85,8 @@ const TeamCulture = () => {
 
             {/* Satisfaction Score */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MdStar className="w-8 h-8 text-yellow-600" />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MdStar className="w-8 h-8 text-slate-600" />
               </div>
               <div className="text-3xl font-bold text-gray-900 mb-2">{teamCultureData.metrics.satisfactionScore}</div>
               <div className="text-sm text-gray-600 font-medium">Team Satisfaction</div>
@@ -94,8 +94,8 @@ const TeamCulture = () => {
 
             {/* Promotions */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MdTrendingUp className="w-8 h-8 text-blue-600" />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MdTrendingUp className="w-8 h-8 text-slate-600" />
               </div>
               <div className="text-3xl font-bold text-gray-900 mb-2">{teamCultureData.metrics.promotions}</div>
               <div className="text-sm text-gray-600 font-medium">Team Promotions</div>
@@ -103,8 +103,8 @@ const TeamCulture = () => {
 
             {/* Cross-functional Rating */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MdGroup className="w-8 h-8 text-purple-600" />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MdGroup className="w-8 h-8 text-slate-600" />
               </div>
               <div className="text-3xl font-bold text-gray-900 mb-2">{teamCultureData.metrics.crossFunctionalRating}</div>
               <div className="text-sm text-gray-600 font-medium">Cross-team Rating</div>

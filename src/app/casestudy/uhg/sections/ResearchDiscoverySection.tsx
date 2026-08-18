@@ -16,7 +16,7 @@ export function ResearchDiscoverySection() {
       <div className="mb-20">
         <div className="bg-gray-50 border-l-4 border-gray-400 p-8 rounded-xl mb-8">
           <h4 className="font-bold text-gray-800 mb-3 text-lg flex items-center gap-2">
-            <MdSearch className="text-blue-500" size={24} />
+            <MdSearch className="text-slate-500" size={24} />
             Research Strategy
           </h4>
           <p className="text-gray-800 leading-relaxed">
@@ -34,7 +34,7 @@ export function ResearchDiscoverySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
             <h4 className="font-bold text-gray-900 mb-4 text-lg flex items-center gap-2">
-              <MdBarChart className="text-green-500" size={20} />
+              <MdBarChart className="text-slate-500" size={20} />
               Data Analysis
             </h4>
             <ul className="text-base text-gray-800 space-y-2">
@@ -47,7 +47,7 @@ export function ResearchDiscoverySection() {
 
           <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
             <h4 className="font-bold text-gray-900 mb-4 text-lg flex items-center gap-2">
-              <MdGroups className="text-blue-500" size={20} />
+              <MdGroups className="text-slate-500" size={20} />
               User Research
             </h4>
             <ul className="text-base text-gray-800 space-y-2">
@@ -102,8 +102,8 @@ export function ResearchDiscoverySection() {
 
               {/* The Gap */}
               <div className="flex-shrink-0 flex flex-col items-center justify-center w-16 h-auto">
-                <div className="text-3xl text-red-500 mb-2">⚡</div>
-                <div className="text-xs text-red-600 font-semibold text-center">THE<br/>GAP</div>
+                <div className="text-3xl text-slate-500 mb-2">⚡</div>
+                <div className="text-xs text-slate-600 font-semibold text-center">THE<br/>GAP</div>
                 <div className="text-xs text-gray-500 mt-2">Where users<br/>get lost</div>
               </div>
 
@@ -149,10 +149,10 @@ export function ResearchDiscoverySection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex justify-center mb-3">
-                <MdPhoneAndroid className="text-blue-500" size={48} />
+                <MdPhoneAndroid className="text-slate-500" size={48} />
               </div>
               <h5 className="font-bold text-gray-900 mb-2">Digital Natives</h5>
-              <div className="text-2xl font-bold text-indigo-600 mb-3">32%</div>
+              <div className="text-2xl font-bold text-slate-600 mb-3">32%</div>
               <p className="text-gray-600 text-base mb-3">Expected instant mobile experience</p>
               <div className="border-t pt-3">
                 <p className="text-xs text-gray-500 font-medium">BEHAVIOR</p>
@@ -163,7 +163,7 @@ export function ResearchDiscoverySection() {
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="text-3xl mb-3">💻</div>
               <h5 className="font-bold text-gray-900 mb-2">Traditional Planners</h5>
-              <div className="text-2xl font-bold text-indigo-600 mb-3">41%</div>
+              <div className="text-2xl font-bold text-slate-600 mb-3">41%</div>
               <p className="text-gray-600 text-base mb-3">Preferred desktop with detailed forms</p>
               <div className="border-t pt-3">
                 <p className="text-xs text-gray-500 font-medium">BEHAVIOR</p>
@@ -174,7 +174,7 @@ export function ResearchDiscoverySection() {
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="text-3xl mb-3">🤝</div>
               <h5 className="font-bold text-gray-900 mb-2">Assisted Users</h5>
-              <div className="text-2xl font-bold text-indigo-600 mb-3">18%</div>
+              <div className="text-2xl font-bold text-slate-600 mb-3">18%</div>
               <p className="text-gray-600 text-base mb-3">Required customer service help</p>
               <div className="border-t pt-3">
                 <p className="text-xs text-gray-500 font-medium">BEHAVIOR</p>
@@ -184,10 +184,10 @@ export function ResearchDiscoverySection() {
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex justify-center mb-3">
-                <MdAssessment className="text-blue-500" size={48} />
+                <MdAssessment className="text-slate-500" size={48} />
               </div>
               <h5 className="font-bold text-gray-900 mb-2">Bulk Processors</h5>
-              <div className="text-2xl font-bold text-indigo-600 mb-3">9%</div>
+              <div className="text-2xl font-bold text-slate-600 mb-3">9%</div>
               <p className="text-gray-600 text-base mb-3">Business owners with multiple claims</p>
               <div className="border-t pt-3">
                 <p className="text-xs text-gray-500 font-medium">BEHAVIOR</p>
@@ -204,7 +204,7 @@ export function ResearchDiscoverySection() {
             {/* Persona Header */}
             <div className="mb-8 pb-8 border-b border-gray-200">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center">
                   <span className="text-2xl">👩‍💼</span>
                 </div>
                 <div>
@@ -218,9 +218,9 @@ export function ResearchDiscoverySection() {
             {/* Empathy Map Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* What She Thinks */}
-              <div className="bg-white border-l-4 border-blue-500 rounded-lg p-6">
+              <div className="bg-white border-l-4 border-slate-500 rounded-lg p-6">
                 <h6 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <MdBuild size={20} className="text-blue-600" />
+                  <MdBuild size={20} className="text-slate-600" />
                   <span>What She THINKS</span>
                 </h6>
                 <ul className="space-y-2 text-sm text-gray-800">
@@ -233,9 +233,9 @@ export function ResearchDiscoverySection() {
               </div>
 
               {/* What She Sees */}
-              <div className="bg-white border-l-4 border-red-500 rounded-lg p-6">
+              <div className="bg-white border-l-4 border-slate-500 rounded-lg p-6">
                 <h6 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <MdVisibility size={20} className="text-red-600" />
+                  <MdVisibility size={20} className="text-slate-600" />
                   <span>What She SEES</span>
                 </h6>
                 <ul className="space-y-2 text-sm text-gray-800">
@@ -248,9 +248,9 @@ export function ResearchDiscoverySection() {
               </div>
 
               {/* What She Feels */}
-              <div className="bg-white border-l-4 border-amber-500 rounded-lg p-6">
+              <div className="bg-white border-l-4 border-slate-500 rounded-lg p-6">
                 <h6 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <MdFavoriteBorder size={20} className="text-amber-600" />
+                  <MdFavoriteBorder size={20} className="text-slate-600" />
                   <span>What She FEELS</span>
                 </h6>
                 <ul className="space-y-2 text-sm text-gray-800">
@@ -263,9 +263,9 @@ export function ResearchDiscoverySection() {
               </div>
 
               {/* What She Does */}
-              <div className="bg-white border-l-4 border-green-500 rounded-lg p-6">
+              <div className="bg-white border-l-4 border-slate-500 rounded-lg p-6">
                 <h6 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <MdGesture size={20} className="text-green-600" />
+                  <MdGesture size={20} className="text-slate-600" />
                   <span>What She DOES</span>
                 </h6>
                 <ul className="space-y-2 text-sm text-gray-800">
@@ -310,21 +310,21 @@ export function ResearchDiscoverySection() {
         <div className="bg-white border border-gray-200 rounded-xl p-8">
           {/* Stats Overview */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="text-center p-4 bg-blue-50 rounded-lg">
+            <div className="text-center p-4 bg-slate-50 rounded-lg">
               <div className="flex justify-center mb-2">
-                <MdPhoneAndroid className="text-blue-500" size={48} />
+                <MdPhoneAndroid className="text-slate-500" size={48} />
               </div>
-              <div className="text-2xl font-bold text-blue-600">78%</div>
+              <div className="text-2xl font-bold text-slate-600">78%</div>
               <p className="text-base text-gray-600">Started on Mobile</p>
             </div>
-            <div className="text-center p-4 bg-red-50 rounded-lg">
+            <div className="text-center p-4 bg-slate-50 rounded-lg">
               <div className="text-3xl mb-2">❌</div>
-              <div className="text-2xl font-bold text-red-600">45%</div>
+              <div className="text-2xl font-bold text-slate-600">45%</div>
               <p className="text-base text-gray-600">Switched After Failure</p>
             </div>
-            <div className="text-center p-4 bg-green-50 rounded-lg">
+            <div className="text-center p-4 bg-slate-50 rounded-lg">
               <div className="text-3xl mb-2">💻</div>
-              <div className="text-2xl font-bold text-green-600">33%</div>
+              <div className="text-2xl font-bold text-slate-600">33%</div>
               <p className="text-base text-gray-600">Completed on Desktop</p>
             </div>
           </div>
@@ -334,21 +334,21 @@ export function ResearchDiscoverySection() {
             <h6 className="font-semibold mb-4 text-gray-800">Typical User Journey</h6>
             <div className="flex items-center justify-center space-x-4 flex-wrap">
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-2">
-                  <MdPhoneAndroid className="text-blue-500" size={24} />
+                <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-2">
+                  <MdPhoneAndroid className="text-slate-500" size={24} />
                 </div>
                 <p className="text-xs text-gray-600">Mobile Start</p>
               </div>
               <span className="text-gray-400 text-2xl">→</span>
               <div className="text-center">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-2">
+                <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-2">
                   <span className="text-2xl">❌</span>
                 </div>
                 <p className="text-xs text-gray-600">Upload Fails</p>
               </div>
               <span className="text-gray-400 text-2xl">→</span>
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-2">
+                <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-2">
                   <span className="text-2xl">💻</span>
                 </div>
                 <p className="text-xs text-gray-600">Desktop Switch</p>
@@ -358,9 +358,9 @@ export function ResearchDiscoverySection() {
 
           {/* Context Insights */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <h6 className="font-semibold mb-2 text-blue-900 flex items-center gap-1">
-                <MdPhoneAndroid className="text-blue-500" size={16} />
+            <div className="bg-slate-50 p-4 rounded-lg">
+              <h6 className="font-semibold mb-2 text-slate-900 flex items-center gap-1">
+                <MdPhoneAndroid className="text-slate-500" size={16} />
                 Mobile Context
               </h6>
               <ul className="text-base space-y-1 text-gray-700">
@@ -370,8 +370,8 @@ export function ResearchDiscoverySection() {
                 <li>• Camera quality and lighting issues</li>
               </ul>
             </div>
-            <div className="bg-green-50 p-4 rounded-lg">
-              <h6 className="font-semibold mb-2 text-green-900">💻 Desktop Switch Reasons</h6>
+            <div className="bg-slate-50 p-4 rounded-lg">
+              <h6 className="font-semibold mb-2 text-slate-900">💻 Desktop Switch Reasons</h6>
               <ul className="text-base space-y-1 text-gray-700">
                 <li>• Better file management capabilities</li>
                 <li>• Easier form completion</li>
@@ -402,13 +402,13 @@ export function ResearchDiscoverySection() {
             {/* Phase 1: Discovery */}
             <div className="flex gap-4 items-start">
               <div className="w-32 flex-shrink-0">
-                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-blue-500">
+                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-slate-500">
                   <p className="text-xs font-semibold text-gray-600">PHASE 1</p>
-                  <p className="text-sm font-bold text-blue-600">Discovery</p>
+                  <p className="text-sm font-bold text-slate-600">Discovery</p>
                 </div>
               </div>
               <div className="flex-1">
-                <div className="bg-white border-l-4 border-blue-500 rounded-lg p-4">
+                <div className="bg-white border-l-4 border-slate-500 rounded-lg p-4">
                   <p className="font-semibold text-gray-900 mb-2">📱 Mobile App - At Pharmacy</p>
                   <p className="text-sm text-gray-700 mb-2">User opens HSA app after paying for prescription. First time using reimbursement feature.</p>
                   <div className="text-2xl">😊 Optimistic</div>
@@ -420,13 +420,13 @@ export function ResearchDiscoverySection() {
             {/* Phase 2: Capture */}
             <div className="flex gap-4 items-start">
               <div className="w-32 flex-shrink-0">
-                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-green-500">
+                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-slate-500">
                   <p className="text-xs font-semibold text-gray-600">PHASE 2</p>
-                  <p className="text-sm font-bold text-green-600">Capture</p>
+                  <p className="text-sm font-bold text-slate-600">Capture</p>
                 </div>
               </div>
               <div className="flex-1">
-                <div className="bg-white border-l-4 border-green-500 rounded-lg p-4">
+                <div className="bg-white border-l-4 border-slate-500 rounded-lg p-4">
                   <p className="font-semibold text-gray-900 mb-2">📸 Takes Receipt Photo</p>
                   <p className="text-sm text-gray-700 mb-2">Quickly takes photo with phone camera. Poor lighting in pharmacy bathroom. File size: 15MB</p>
                   <div className="text-2xl">😐 Proceeding</div>
@@ -438,13 +438,13 @@ export function ResearchDiscoverySection() {
             {/* Phase 3: Upload Attempt - FAILURE */}
             <div className="flex gap-4 items-start">
               <div className="w-32 flex-shrink-0">
-                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-red-500">
+                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-slate-500">
                   <p className="text-xs font-semibold text-gray-600">PHASE 3</p>
                   <p className="text-sm font-bold text-red-600">Upload Fail</p>
                 </div>
               </div>
               <div className="flex-1">
-                <div className="bg-white border-l-4 border-red-500 rounded-lg p-4">
+                <div className="bg-white border-l-4 border-slate-500 rounded-lg p-4">
                   <p className="font-semibold text-gray-900 mb-2">❌ Upload Error</p>
                   <p className="text-sm text-gray-700 mb-2">File size exceeds 10MB limit. Error message: "Error code 413 - Payload too large"</p>
                   <p className="text-xs bg-white p-2 rounded border border-red-200 my-2 font-mono text-red-700">Error code 413</p>
@@ -457,13 +457,13 @@ export function ResearchDiscoverySection() {
             {/* Phase 4: Retry & Frustration */}
             <div className="flex gap-4 items-start">
               <div className="w-32 flex-shrink-0">
-                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-amber-500">
+                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-slate-500">
                   <p className="text-xs font-semibold text-gray-600">PHASE 4</p>
-                  <p className="text-sm font-bold text-amber-600">Retry (3x)</p>
+                  <p className="text-sm font-bold text-slate-600">Retry (3x)</p>
                 </div>
               </div>
               <div className="flex-1">
-                <div className="bg-white border-l-4 border-amber-500 rounded-lg p-4">
+                <div className="bg-white border-l-4 border-slate-500 rounded-lg p-4">
                   <p className="font-semibold text-gray-900 mb-2">🔄 Multiple Retry Attempts</p>
                   <p className="text-sm text-gray-700 mb-2">Retries 3-4 times on mobile. Gets same error or network timeout. Different error message each time.</p>
                   <div className="text-2xl">😤 Frustrated</div>
@@ -475,13 +475,13 @@ export function ResearchDiscoverySection() {
             {/* Phase 5: Device Switch */}
             <div className="flex gap-4 items-start">
               <div className="w-32 flex-shrink-0">
-                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-purple-500">
+                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-slate-500">
                   <p className="text-xs font-semibold text-gray-600">PHASE 5</p>
-                  <p className="text-sm font-bold text-purple-600">Switch</p>
+                  <p className="text-sm font-bold text-slate-600">Switch</p>
                 </div>
               </div>
               <div className="flex-1">
-                <div className="bg-white border-l-4 border-purple-500 rounded-lg p-4">
+                <div className="bg-white border-l-4 border-slate-500 rounded-lg p-4">
                   <p className="font-semibold text-gray-900 mb-2">💻 Switches to Desktop</p>
                   <p className="text-sm text-gray-700 mb-2">Walks home, opens laptop. Wants better file management. Lost progress - no draft saved.</p>
                   <div className="text-2xl">😰 Anxious</div>
@@ -493,13 +493,13 @@ export function ResearchDiscoverySection() {
             {/* Phase 6: Re-entry & Recovery */}
             <div className="flex gap-4 items-start">
               <div className="w-32 flex-shrink-0">
-                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-amber-400">
+                <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-slate-400">
                   <p className="text-xs font-semibold text-gray-600">PHASE 6</p>
-                  <p className="text-sm font-bold text-amber-600">Re-entry</p>
+                  <p className="text-sm font-bold text-slate-600">Re-entry</p>
                 </div>
               </div>
               <div className="flex-1">
-                <div className="bg-white border-l-4 border-amber-400 rounded-lg p-4">
+                <div className="bg-white border-l-4 border-slate-400 rounded-lg p-4">
                   <p className="font-semibold text-gray-900 mb-2">🔐 Re-authenticate & Re-enter</p>
                   <p className="text-sm text-gray-700 mb-2">Logs back in. Must re-take photo or find original file. Re-enters all information manually.</p>
                   <div className="text-2xl">😔 Resigned</div>
@@ -512,13 +512,13 @@ export function ResearchDiscoverySection() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex gap-4 items-start">
                 <div className="w-32 flex-shrink-0">
-                  <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-green-500">
+                  <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-slate-500">
                     <p className="text-xs font-semibold text-gray-600">PHASE 7A</p>
                     <p className="text-sm font-bold text-green-600">Success</p>
                   </div>
                 </div>
                 <div className="flex-1">
-                  <div className="bg-white border-l-4 border-green-500 rounded-lg p-4">
+                  <div className="bg-white border-l-4 border-slate-500 rounded-lg p-4">
                     <p className="font-semibold text-gray-900 mb-2">✅ Finally Uploaded</p>
                     <p className="text-sm text-gray-700 mb-2">Desktop upload succeeds. Photo quality better. Form easier on larger screen.</p>
                     <div className="text-2xl">😌 Relief</div>
@@ -528,13 +528,13 @@ export function ResearchDiscoverySection() {
               </div>
               <div className="flex gap-4 items-start">
                 <div className="w-32 flex-shrink-0">
-                  <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-red-500">
+                  <div className="bg-gray-100 rounded-lg p-3 text-center border-l-4 border-slate-500">
                     <p className="text-xs font-semibold text-gray-600">PHASE 7B</p>
-                    <p className="text-sm font-bold text-red-600">Abandon</p>
+                    <p className="text-sm font-bold text-slate-600">Abandon</p>
                   </div>
                 </div>
                 <div className="flex-1">
-                  <div className="bg-white border-l-4 border-red-500 rounded-lg p-4">
+                  <div className="bg-white border-l-4 border-slate-500 rounded-lg p-4">
                     <p className="font-semibold text-gray-900 mb-2">🚫 Gives Up</p>
                     <p className="text-sm text-gray-700 mb-2">Too much effort. Closes laptop. Waits for paper reimbursement form instead.</p>
                     <div className="text-2xl">😠 Annoyed</div>
@@ -653,44 +653,44 @@ export function ResearchDiscoverySection() {
           <div className="bg-gray-50 p-6 rounded-xl">
             <h6 className="font-semibold mb-4 text-gray-800">Common Error Messages (Before Redesign)</h6>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded border-l-4 border-red-500">
+              <div className="bg-white p-4 rounded border-l-4 border-slate-500">
                 <p className="text-sm font-mono text-red-600">"Upload failed. Error code: 413"</p>
                 <p className="text-sm text-gray-500 mt-1">❌ User has no idea what this means</p>
-                <p className="text-sm text-green-600 mt-1">✅ Should say: "File too large (max 10MB)"</p>
+                <p className="text-sm text-slate-600 mt-1">✅ Should say: "File too large (max 10MB)"</p>
               </div>
-              <div className="bg-white p-4 rounded border-l-4 border-red-500">
+              <div className="bg-white p-4 rounded border-l-4 border-slate-500">
                 <p className="text-sm font-mono text-red-600">"Invalid file format"</p>
                 <p className="text-sm text-gray-500 mt-1">❌ No guidance on accepted formats</p>
-                <p className="text-sm text-green-600 mt-1">✅ Should say: "Use JPG, PNG, or PDF files"</p>
+                <p className="text-sm text-slate-600 mt-1">✅ Should say: "Use JPG, PNG, or PDF files"</p>
               </div>
-              <div className="bg-white p-4 rounded border-l-4 border-red-500">
+              <div className="bg-white p-4 rounded border-l-4 border-slate-500">
                 <p className="text-sm font-mono text-red-600">"Validation failed"</p>
                 <p className="text-sm text-gray-500 mt-1">❌ Doesn't specify which field</p>
                 <p className="text-sm text-green-600 mt-1">✅ Should highlight specific errors</p>
               </div>
-              <div className="bg-white p-4 rounded border-l-4 border-red-500">
-                <p className="text-sm font-mono text-red-600">"Request timeout"</p>
+              <div className="bg-white p-4 rounded border-l-4 border-slate-500">
+                <p className="text-sm font-mono text-slate-600">"Request timeout"</p>
                 <p className="text-sm text-gray-500 mt-1">❌ No recovery suggestion</p>
-                <p className="text-sm text-green-600 mt-1">✅ Should offer retry option</p>
+                <p className="text-sm text-slate-600 mt-1">✅ Should offer retry option</p>
               </div>
             </div>
           </div>
 
           {/* Impact Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-gray-50 rounded-lg border-t-4 border-t-red-500">
+            <div className="text-center p-4 bg-gray-50 rounded-lg border-t-4 border-t-slate-500">
               <div className="text-xl font-bold text-gray-900">18 min</div>
               <p className="text-base text-gray-600">Avg. time lost per failure</p>
             </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg border-t-4 border-t-amber-500">
+            <div className="text-center p-4 bg-gray-50 rounded-lg border-t-4 border-t-slate-500">
               <div className="text-xl font-bold text-gray-900">3.2</div>
               <p className="text-base text-gray-600">Retry attempts before giving up</p>
             </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg border-t-4 border-t-amber-400">
+            <div className="text-center p-4 bg-gray-50 rounded-lg border-t-4 border-t-slate-400">
               <div className="text-xl font-bold text-gray-900">67%</div>
               <p className="text-base text-gray-600">Called support after failure</p>
             </div>
-            <div className="text-center p-4 bg-gray-50 rounded-lg border-t-4 border-t-blue-500">
+            <div className="text-center p-4 bg-gray-50 rounded-lg border-t-4 border-t-slate-500">
               <div className="text-xl font-bold text-gray-900">$2.3M</div>
               <p className="text-base text-gray-600">Annual cost of failures</p>
             </div>

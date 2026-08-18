@@ -162,7 +162,7 @@ export const HeroCircleAnimation: React.FC<HeroCircleAnimationProps> = ({ classN
           <path
             d={`M ${dimensions.radius * 2 * 0.15} ${dimensions.radius} A ${dimensions.radius * 0.85} ${dimensions.radius * 0.85} 0 0 1 ${dimensions.radius * 2 * 0.85} ${dimensions.radius}`}
             fill="none"
-            stroke="#3B82F6"
+            stroke="#64748b"
             strokeWidth="1"
             strokeDasharray="5 10"
           />
@@ -170,7 +170,7 @@ export const HeroCircleAnimation: React.FC<HeroCircleAnimationProps> = ({ classN
           <path
             d={`M ${dimensions.radius * 2 * 0.35} ${dimensions.radius} A ${dimensions.radius * 0.65} ${dimensions.radius * 0.65} 0 0 1 ${dimensions.radius * 2 * 0.65} ${dimensions.radius}`}
             fill="none"
-            stroke="#10B981"
+            stroke="#94a3b8"
             strokeWidth="1"
             strokeDasharray="4 9"
           />

@@ -430,7 +430,7 @@ export default function LessonLoomPrototypePage() {
             className="overflow-y-auto p-4 space-y-6 flex-1"
             style={{
               scrollbarWidth: 'thin',
-              scrollbarColor: '#d1d5db #f3f4f6'
+              scrollbarColor: '#cbd5e1 #f1f5f9'
             }}
           >
               {/* Templates Section */}
@@ -444,7 +444,7 @@ export default function LessonLoomPrototypePage() {
                   </div>
                   <button
                     onClick={() => handleOpenUploadModal('template')}
-                    className="text-sm px-3 py-1.5 bg-indigo-50 text-indigo-600 rounded hover:bg-indigo-100 transition-colors font-medium"
+                    className="text-sm px-3 py-1.5 bg-slate-50 text-slate-600 rounded hover:bg-slate-100 transition-colors font-medium"
                     title="Upload new template"
                   >
                     + Upload
@@ -465,7 +465,7 @@ export default function LessonLoomPrototypePage() {
                           </div>
                           <span className="text-base font-medium text-gray-800">{template.name}</span>
                           {template.isUploaded && (
-                            <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium">Uploaded</span>
+                            <span className="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium">Uploaded</span>
                           )}
                         </div>
                         <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -489,7 +489,7 @@ export default function LessonLoomPrototypePage() {
                   </div>
                   <button
                     onClick={() => handleOpenUploadModal('spreadsheet')}
-                    className="text-sm px-3 py-1.5 bg-indigo-50 text-indigo-600 rounded hover:bg-indigo-100 transition-colors font-medium"
+                    className="text-sm px-3 py-1.5 bg-slate-50 text-slate-600 rounded hover:bg-slate-100 transition-colors font-medium"
                     title="Upload new spreadsheet"
                   >
                     + Upload
@@ -510,7 +510,7 @@ export default function LessonLoomPrototypePage() {
                           </div>
                           <span className="text-sm font-medium text-gray-800">{spreadsheet.name}</span>
                           {spreadsheet.isUploaded && (
-                            <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium">Uploaded</span>
+                            <span className="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium">Uploaded</span>
                           )}
                         </div>
                         <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -605,7 +605,7 @@ export default function LessonLoomPrototypePage() {
                         <p className="text-xs font-medium text-gray-800 truncate">{item.template}</p>
                         <p className="text-xs text-gray-500 truncate">{item.spreadsheet}</p>
                         <div className="flex items-center justify-between mt-2">
-                          <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded font-medium">{item.lessons} lessons</span>
+                          <span className="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-medium">{item.lessons} lessons</span>
                           <span className="text-xs text-gray-400">{item.date}</span>
                         </div>
                       </div>
@@ -630,7 +630,7 @@ export default function LessonLoomPrototypePage() {
               if (message.type === 'ai') {
                 return (
                   <div key={index} className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
@@ -646,40 +646,40 @@ export default function LessonLoomPrototypePage() {
               if (message.type === 'validation') {
                 return (
                   <div key={index} className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                     <div className="space-y-3 max-w-2xl">
                       {/* Validation Checks */}
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                         <div className="flex items-start gap-2">
-                          <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-5 h-5 text-slate-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                           </svg>
                           <div className="flex-1">
                             <p className="text-xs font-semibold text-green-900 mb-3">AI Validation Complete</p>
-                            <div className="space-y-2 text-xs text-green-800">
+                            <div className="space-y-2 text-xs text-slate-800">
                               <div className="flex items-start gap-2">
-                                <span className="text-green-600 font-bold mt-0.5">✓</span>
+                                <span className="text-slate-600 font-bold mt-0.5">✓</span>
                                 <div>
                                   <p className="font-medium">File Format Validation</p>
                                   <p className="text-green-700">{message.template?.isUploaded ? 'Custom' : message.template?.name} is valid .docx template • {message.spreadsheet?.isUploaded ? 'Custom' : message.spreadsheet?.name} is valid .xlsx spreadsheet</p>
                                 </div>
                               </div>
                               <div className="flex items-start gap-2">
-                                <span className="text-green-600 font-bold mt-0.5">✓</span>
+                                <span className="text-slate-600 font-bold mt-0.5">✓</span>
                                 <div>
                                   <p className="font-medium">Content Structure Analysis</p>
-                                  <p className="text-green-700">Template has 12 variable placeholders • Spreadsheet contains 487 rows of structured data across 6 columns</p>
+                                  <p className="text-slate-700">Template has 12 variable placeholders • Spreadsheet contains 487 rows of structured data across 6 columns</p>
                                 </div>
                               </div>
                               <div className="flex items-start gap-2">
-                                <span className="text-green-600 font-bold mt-0.5">✓</span>
+                                <span className="text-slate-600 font-bold mt-0.5">✓</span>
                                 <div>
                                   <p className="font-medium">Compatibility Checking</p>
-                                  <p className="text-green-700">All template variables match spreadsheet column headers • Perfect alignment detected</p>
+                                  <p className="text-slate-700">All template variables match spreadsheet column headers • Perfect alignment detected</p>
                                 </div>
                               </div>
                             </div>
@@ -688,17 +688,17 @@ export default function LessonLoomPrototypePage() {
                       </div>
 
                       {/* AI Suggestions */}
-                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                      <div className="bg-slate-50 border border-slate-200 rounded-lg p-3">
                         <div className="flex items-start gap-2">
-                          <svg className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-5 h-5 text-slate-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div className="flex-1">
-                            <p className="text-xs font-semibold text-blue-900 mb-2">Suggestions for Optimization:</p>
-                            <ul className="space-y-1 text-xs text-blue-800">
+                            <p className="text-xs font-semibold text-slate-900 mb-2">Suggestions for Optimization:</p>
+                            <ul className="space-y-1 text-xs text-slate-800">
                               {validationSuggestions.map((suggestion, idx) => (
                                 <li key={idx} className="flex gap-2">
-                                  <span className="text-blue-600">•</span>
+                                  <span className="text-slate-600">•</span>
                                   <span>{suggestion}</span>
                                 </li>
                               ))}
@@ -715,18 +715,18 @@ export default function LessonLoomPrototypePage() {
               if (message.type === 'error') {
                 return (
                   <div key={index} className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                     <div className="space-y-3 max-w-2xl w-full">
-                      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                         <div className="flex items-start gap-3">
                           <MdError className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
                           <div className="flex-1">
                             <p className="font-semibold text-red-900 text-sm mb-2">Error</p>
-                            <p className="text-sm text-red-800">{message.content}</p>
+                            <p className="text-sm text-slate-800">{message.content}</p>
                             {message.action === 'retry' && (
                               <div className="mt-3 flex flex-col gap-2">
                                 <button
@@ -740,7 +740,7 @@ export default function LessonLoomPrototypePage() {
                                       setChatMessages(prev => prev.filter((_, i) => i !== index));
                                     }
                                   }}
-                                  className="text-red-700 hover:text-red-800 text-sm font-medium underline text-left"
+                                  className="text-slate-700 hover:text-slate-800 text-sm font-medium underline text-left"
                                 >
                                   Try Again →
                                 </button>
@@ -760,7 +760,7 @@ export default function LessonLoomPrototypePage() {
                                         content: 'Hi! Let\'s create lessons together. Start by uploading a template and spreadsheet using the + Upload buttons on the left, then drag them here to get started.'
                                       }]);
                                     }}
-                                    className="text-red-700 hover:text-red-800 text-sm font-medium underline text-left"
+                                    className="text-slate-700 hover:text-slate-800 text-sm font-medium underline text-left"
                                   >
                                     Start New Generation →
                                   </button>
@@ -779,19 +779,19 @@ export default function LessonLoomPrototypePage() {
               if (message.type === 'warning') {
                 return (
                   <div key={index} className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                     <div className="space-y-3 max-w-2xl w-full">
-                      <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                         <div className="flex items-start gap-3">
                           <MdWarning className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
                           <div className="flex-1">
                             <p className="font-semibold text-orange-900 text-sm mb-2">Compatibility Warning</p>
-                            <p className="text-sm text-orange-800">{message.content}</p>
-                            <p className="text-xs text-orange-700 mt-3 font-medium">Please select compatible files and try again.</p>
+                            <p className="text-sm text-slate-800">{message.content}</p>
+                            <p className="text-xs text-slate-700 mt-3 font-medium">Please select compatible files and try again.</p>
                             <button
                               onClick={() => {
                                 setSelectedTemplate(null);
@@ -806,7 +806,7 @@ export default function LessonLoomPrototypePage() {
                                   content: 'Hi! Let\'s create lessons together. Start by uploading a template and spreadsheet using the + Upload buttons on the left, then drag them here to get started.'
                                 }]);
                               }}
-                              className="mt-3 text-orange-700 hover:text-orange-800 text-sm font-medium underline block"
+                              className="mt-3 text-slate-700 hover:text-slate-800 text-sm font-medium underline block"
                             >
                               Start New Generation →
                             </button>
@@ -822,19 +822,19 @@ export default function LessonLoomPrototypePage() {
               if (message.type === 'quality-warning') {
                 return (
                   <div key={index} className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                     <div className="space-y-3 max-w-2xl w-full">
-                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                         <div className="flex items-start gap-3">
-                          <MdInfo className="w-5 h-5 text-yellow-700 mt-0.5 flex-shrink-0" />
+                          <MdInfo className="w-5 h-5 text-slate-700 mt-0.5 flex-shrink-0" />
                           <div className="flex-1">
                             <p className="font-semibold text-yellow-900 text-sm mb-2">Data Quality Notice</p>
-                            <p className="text-sm text-yellow-800">{message.content}</p>
-                            <p className="text-xs text-yellow-700 mt-3 font-medium">Generation will proceed, but review output carefully.</p>
+                            <p className="text-sm text-slate-800">{message.content}</p>
+                            <p className="text-xs text-slate-700 mt-3 font-medium">Generation will proceed, but review output carefully.</p>
                           </div>
                         </div>
                       </div>
@@ -847,21 +847,21 @@ export default function LessonLoomPrototypePage() {
               if (message.type === 'success') {
                 return (
                   <div key={index} className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                     <div className="space-y-3 max-w-2xl">
                       {/* Success Header */}
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
                         <div className="flex items-start gap-3">
-                          <svg className="w-6 h-6 text-green-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-6 h-6 text-slate-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
                           <div>
                             <h4 className="font-semibold text-green-800 text-base">Lessons Generated Successfully!</h4>
-                            <p className="text-sm text-green-700 mt-2">Your lesson pack is ready for download and review.</p>
+                            <p className="text-sm text-slate-700 mt-2">Your lesson pack is ready for download and review.</p>
                           </div>
                         </div>
                       </div>
@@ -873,7 +873,7 @@ export default function LessonLoomPrototypePage() {
                             <span className="text-base font-medium text-gray-800 block">Mathematics Lesson Pack</span>
                             <p className="text-sm text-gray-500 mt-2">25 lessons • PDF Format • 2.4 MB</p>
                           </div>
-                          <button className="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition-colors flex-shrink-0 font-medium">
+                          <button className="bg-slate-600 text-white text-sm px-4 py-2 rounded hover:bg-slate-700 transition-colors flex-shrink-0 font-medium">
                             Download
                           </button>
                         </div>
@@ -887,7 +887,7 @@ export default function LessonLoomPrototypePage() {
                             onClick={() => setGenerationFeedback('thumbsup')}
                             className={`flex items-center gap-2 px-4 py-2 rounded transition-colors ${
                               generationFeedback === 'thumbsup'
-                                ? 'bg-green-100 border border-green-500 text-green-700'
+                                ? 'bg-slate-100 border border-slate-500 text-slate-700'
                                 : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200'
                             }`}
                           >
@@ -898,7 +898,7 @@ export default function LessonLoomPrototypePage() {
                             onClick={() => setGenerationFeedback('thumbsdown')}
                             className={`flex items-center gap-2 px-4 py-2 rounded transition-colors ${
                               generationFeedback === 'thumbsdown'
-                                ? 'bg-red-100 border border-red-500 text-red-700'
+                                ? 'bg-slate-100 border border-slate-500 text-slate-700'
                                 : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200'
                             }`}
                           >
@@ -923,7 +923,7 @@ export default function LessonLoomPrototypePage() {
                             content: 'Hi! Let\'s create lessons together. Start by uploading a template and spreadsheet using the + Upload buttons on the left, then drag them here to get started.'
                           }]);
                         }}
-                        className="text-green-700 text-sm font-medium hover:underline"
+                        className="text-slate-700 text-sm font-medium hover:underline"
                       >
                         Start New Generation →
                       </button>
@@ -937,19 +937,19 @@ export default function LessonLoomPrototypePage() {
 
             {/* Generation Progress with Stages */}
             {isGenerating && (
-              <div className="my-4 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-4">
+              <div className="my-4 bg-gradient-to-r from-slate-50 to-slate-50 border border-slate-200 rounded-lg p-4">
                 <div className="mb-4">
                   <div className="flex items-center gap-2 mb-3">
-                    <svg className="w-5 h-5 text-indigo-600 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 text-slate-600 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                     </svg>
-                    <h3 className="text-base font-semibold text-indigo-900">Generating Lessons</h3>
+                    <h3 className="text-base font-semibold text-slate-900">Generating Lessons</h3>
                   </div>
 
                   {/* Progress Bar */}
                   <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
                     <div
-                      className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2.5 rounded-full transition-all duration-300"
+                      className="bg-gradient-to-r from-slate-500 to-slate-500 h-2.5 rounded-full transition-all duration-300"
                       style={{ width: `${(generationStage / 5) * 100}%` }}
                     ></div>
                   </div>
@@ -967,7 +967,7 @@ export default function LessonLoomPrototypePage() {
                         key={stage.num}
                         className={`text-center py-2 px-2 rounded-lg transition-all ${
                           generationStage >= stage.num
-                            ? 'bg-indigo-600 text-white font-semibold'
+                            ? 'bg-slate-600 text-white font-semibold'
                             : 'bg-white text-gray-500 border border-gray-200'
                         }`}
                       >
@@ -980,8 +980,8 @@ export default function LessonLoomPrototypePage() {
 
                 {/* Current Lesson Count */}
                 {lessonsGenerated > 0 && (
-                  <div className="text-center pt-2 border-t border-indigo-200">
-                    <p className="text-base font-semibold text-indigo-900">
+                  <div className="text-center pt-2 border-t border-slate-200">
+                    <p className="text-base font-semibold text-slate-900">
                       Lesson {lessonsGenerated} of 25 ✨
                     </p>
                   </div>
@@ -995,17 +995,17 @@ export default function LessonLoomPrototypePage() {
                 <div
                   className={`border-2 border-dashed rounded-lg p-6 w-full text-center transition-all ${
                     isDragOver
-                      ? 'border-purple-500 bg-purple-50 scale-105'
-                      : 'border-gray-300 hover:border-purple-400'
+                      ? 'border-slate-500 bg-slate-50 scale-105'
+                      : 'border-gray-300 hover:border-slate-400'
                   }`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
                 >
-                  <svg className={`mx-auto h-6 w-6 mb-2 transition-colors ${isDragOver ? 'text-purple-600' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className={`mx-auto h-6 w-6 mb-2 transition-colors ${isDragOver ? 'text-slate-600' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
-                  <p className={`text-base transition-colors ${isDragOver ? 'text-purple-700 font-medium' : 'text-gray-600'}`}>
+                  <p className={`text-base transition-colors ${isDragOver ? 'text-slate-700 font-medium' : 'text-gray-600'}`}>
                     {isDragOver ? 'Release to add item' : 'Drop templates or spreadsheets here'}
                   </p>
                 </div>
@@ -1018,7 +1018,7 @@ export default function LessonLoomPrototypePage() {
                 {selectedTemplate && (
                   <div className={`border rounded-lg p-2 flex items-center justify-between transition-all ${
                     isValidated
-                      ? 'bg-green-50 border-green-300'
+                      ? 'bg-slate-50 border-slate-300'
                       : 'bg-white border-gray-200'
                   }`}>
                     <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -1041,7 +1041,7 @@ export default function LessonLoomPrototypePage() {
                           content: 'Hi! Let\'s create lessons together. Start by uploading a template and spreadsheet using the + Upload buttons on the left, then drag them here to get started.'
                         }]);
                       }}
-                      className="text-xs px-2 py-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors flex-shrink-0 ml-2"
+                      className="text-xs px-2 py-1 text-slate-600 hover:bg-slate-50 rounded transition-colors flex-shrink-0 ml-2"
                     >
                       Change
                     </button>
@@ -1051,7 +1051,7 @@ export default function LessonLoomPrototypePage() {
                 {selectedSpreadsheet && (
                   <div className={`border rounded-lg p-2 flex items-center justify-between transition-all ${
                     isValidated
-                      ? 'bg-green-50 border-green-300'
+                      ? 'bg-slate-50 border-slate-300'
                       : 'bg-white border-gray-200'
                   }`}>
                     <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -1074,7 +1074,7 @@ export default function LessonLoomPrototypePage() {
                           content: 'Hi! Let\'s create lessons together. Start by uploading a template and spreadsheet using the + Upload buttons on the left, then drag them here to get started.'
                         }]);
                       }}
-                      className="text-xs px-2 py-1 text-indigo-600 hover:bg-indigo-50 rounded transition-colors flex-shrink-0 ml-2"
+                      className="text-xs px-2 py-1 text-slate-600 hover:bg-slate-50 rounded transition-colors flex-shrink-0 ml-2"
                     >
                       Change
                     </button>
@@ -1112,7 +1112,7 @@ export default function LessonLoomPrototypePage() {
               className={`w-full py-3 px-4 rounded font-medium transition-all text-base ${
                 !selectedTemplate || !selectedSpreadsheet || isGenerating || generationComplete
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                  : 'bg-slate-600 text-white hover:bg-slate-700'
               }`}
             >
               {isGenerating ? 'Generating...' : generationComplete ? 'Generation Complete' : 'Generate Lessons'}
@@ -1164,7 +1164,7 @@ export default function LessonLoomPrototypePage() {
                           className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                         >
                           <div className="flex items-center">
-                            <svg className="w-5 h-5 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-5 h-5 text-slate-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
                             <div>
@@ -1178,7 +1178,7 @@ export default function LessonLoomPrototypePage() {
                           className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                         >
                           <div className="flex items-center">
-                            <svg className="w-5 h-5 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-5 h-5 text-slate-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
                             <div>
@@ -1195,7 +1195,7 @@ export default function LessonLoomPrototypePage() {
                           className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                         >
                           <div className="flex items-center">
-                            <svg className="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-5 h-5 text-slate-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
                             </svg>
                             <div>
@@ -1209,7 +1209,7 @@ export default function LessonLoomPrototypePage() {
                           className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                         >
                           <div className="flex items-center">
-                            <svg className="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-5 h-5 text-slate-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
                             </svg>
                             <div>
@@ -1226,7 +1226,7 @@ export default function LessonLoomPrototypePage() {
                 <div className="space-y-4">
                   <div className="text-center">
                     <div className="inline-block">
-                      <svg className="w-12 h-12 text-indigo-600 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-12 h-12 text-slate-600 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                       </svg>
                     </div>
@@ -1234,7 +1234,7 @@ export default function LessonLoomPrototypePage() {
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                      className="bg-slate-600 h-2 rounded-full transition-all duration-300"
                       style={{ width: `${uploadProgress}%` }}
                     ></div>
                   </div>
@@ -1275,7 +1275,7 @@ export default function LessonLoomPrototypePage() {
                     ...prev,
                     fileValidation: e.target.checked
                   }))}
-                  className="w-4 h-4 text-red-600 rounded"
+                  className="w-4 h-4 text-slate-600 rounded"
                 />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-800">File Validation Error</p>
@@ -1292,7 +1292,7 @@ export default function LessonLoomPrototypePage() {
                     ...prev,
                     compatibility: e.target.checked
                   }))}
-                  className="w-4 h-4 text-orange-600 rounded"
+                  className="w-4 h-4 text-slate-600 rounded"
                 />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-800">Compatibility Error</p>
@@ -1309,7 +1309,7 @@ export default function LessonLoomPrototypePage() {
                     ...prev,
                     contentQuality: e.target.checked
                   }))}
-                  className="w-4 h-4 text-yellow-600 rounded"
+                  className="w-4 h-4 text-slate-600 rounded"
                 />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-800">Content Quality Warning</p>
@@ -1326,7 +1326,7 @@ export default function LessonLoomPrototypePage() {
                     ...prev,
                     generationFailure: e.target.checked
                   }))}
-                  className="w-4 h-4 text-red-600 rounded"
+                  className="w-4 h-4 text-slate-600 rounded"
                 />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-800">Generation Failure</p>

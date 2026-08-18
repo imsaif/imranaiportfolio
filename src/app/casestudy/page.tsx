@@ -17,11 +17,11 @@ export default function CaseStudyIndex() {
       <ul style={{ listStyle: 'none', padding: 0 }}>
         <li style={{ marginBottom: '10px' }}>
           <Link href="/casestudy/lessonloom" style={{
-            color: '#3b82f6',
+            color: '#64748b',
             textDecoration: 'none',
             display: 'block',
             padding: '12px',
-            backgroundColor: '#f3f4f6',
+            backgroundColor: '#f1f5f9',
             borderRadius: '4px'
           }}>
             Lesson Loom - AI-powered Educational Content
@@ -29,11 +29,11 @@ export default function CaseStudyIndex() {
         </li>
         <li style={{ marginBottom: '10px' }}>
           <Link href="/casestudy/scheduler" style={{
-            color: '#3b82f6',
+            color: '#64748b',
             textDecoration: 'none',
             display: 'block',
             padding: '12px',
-            backgroundColor: '#f3f4f6',
+            backgroundColor: '#f1f5f9',
             borderRadius: '4px'
           }}>
             EduScheduler: Intelligent Academic Planning System
@@ -41,11 +41,11 @@ export default function CaseStudyIndex() {
         </li>
         <li>
           <Link href="/test" style={{
-            color: '#3b82f6',
+            color: '#64748b',
             textDecoration: 'none',
             display: 'block',
             padding: '12px',
-            backgroundColor: '#f3f4f6',
+            backgroundColor: '#f1f5f9',
             borderRadius: '4px'
           }}>
             Test Page
@@ -55,7 +55,7 @@ export default function CaseStudyIndex() {
 
       <div style={{ marginTop: '30px' }}>
         <Link href="/" style={{
-          color: '#3b82f6',
+          color: '#64748b',
           textDecoration: 'none'
         }}>
           ← Back to Home

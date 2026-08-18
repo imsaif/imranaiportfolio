@@ -77,7 +77,7 @@ const LeadershipPhilosophy = () => {
                   key={index}
                   className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200"
                 >
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-slate-500 rounded-full mt-3 flex-shrink-0"></div>
                   <p className="text-gray-700 leading-relaxed">{principle}</p>
                 </div>
               ))}
@@ -110,7 +110,7 @@ const LeadershipPhilosophy = () => {
                   key={index}
                   className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200"
                 >
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-slate-500 rounded-full mt-3 flex-shrink-0"></div>
                   <p className="text-gray-700 leading-relaxed">{method}</p>
                 </div>
               ))}
@@ -143,7 +143,7 @@ const LeadershipPhilosophy = () => {
                   key={index}
                   className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200"
                 >
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-slate-500 rounded-full mt-3 flex-shrink-0"></div>
                   <p className="text-gray-700 leading-relaxed">{method}</p>
                 </div>
               ))}
@@ -207,7 +207,7 @@ const LeadershipPhilosophy = () => {
               <div
                 className="relative flex items-center p-[2px] rounded-full"
                 style={{
-                  background: 'linear-gradient(135deg, #7075e0, #e0637c)',
+                  background: 'linear-gradient(135deg, #64748b, #64748b)',
                 }}
               >
                 <div className="relative flex items-center bg-white rounded-full">
@@ -235,7 +235,7 @@ const LeadershipPhilosophy = () => {
                             layoutId="activeTabFill"
                             className="absolute inset-0 rounded-full"
                             style={{
-                              background: 'linear-gradient(135deg, #7075e0, #e0637c)',
+                              background: 'linear-gradient(135deg, #64748b, #64748b)',
                             }}
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                           />

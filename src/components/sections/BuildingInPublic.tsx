@@ -31,7 +31,7 @@ const BuildingInPublic = () => {
         type: 'image',
         src: '/images/logos/aiux-logo.svg'
       },
-      gradient: 'from-blue-500 to-blue-600'
+      gradient: 'from-slate-500 to-slate-600'
     },
     {
       title: 'Gist',
@@ -42,7 +42,7 @@ const BuildingInPublic = () => {
         type: 'icon',
         icon: <MdLightbulbOutline className="w-10 h-10 text-gray-600" />
       },
-      gradient: 'from-amber-500 to-orange-500'
+      gradient: 'from-slate-500 to-slate-500'
     },
     {
       title: 'DesignwithClaude',
@@ -53,7 +53,7 @@ const BuildingInPublic = () => {
         type: 'icon',
         icon: <MdTerminal className="w-10 h-10 text-gray-600" />
       },
-      gradient: 'from-purple-500 to-purple-600'
+      gradient: 'from-slate-500 to-slate-600'
     }
   ];
 

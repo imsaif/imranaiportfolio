@@ -20,9 +20,6 @@ const LeadershipPhilosophy = dynamic(() => import('@/components/sections/Leaders
 const Collaboration = dynamic(() => import('@/components/sections/Collaboration'), {
   loading: () => <div className="h-96 bg-background" />
 });
-const Writing = dynamic(() => import('@/components/sections/Writing'), {
-  loading: () => <div className="h-96 bg-background" />
-});
 const CursorDot = dynamic(() => import('@/components/ui').then(module => ({ default: module.CursorDot })), {
   ssr: false
 });
@@ -40,7 +37,6 @@ export default function Home() {
       <CursorDot size={14} />
       <Hero />
       <Projects />
-      <Writing />
       {/* Hidden — kept for future use */}
       {/* <Process /> */}
       {/* <StrategicVision /> */}

@@ -39,8 +39,8 @@ const VoiceControlBar: React.FC<VoiceControlBarProps> = ({
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" className="inline-block">
               <defs>
                 <linearGradient id="voice-gradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#EC4899" />
-                  <stop offset="1" stopColor="#8B5CF6" />
+                  <stop stopColor="#64748b" />
+                  <stop offset="1" stopColor="#64748b" />
                 </linearGradient>
               </defs>
               <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="url(#voice-gradient)" />
@@ -63,9 +63,9 @@ const VoiceControlBar: React.FC<VoiceControlBarProps> = ({
             disabled={vapiStatus === 'connecting'}
             className={`flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 ${
               vapiStatus === 'active'
-                ? 'bg-red-100 text-red-600 hover:bg-red-200'
+                ? 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 : vapiStatus === 'connecting'
-                ? 'bg-blue-100 text-blue-600 animate-pulse'
+                ? 'bg-slate-100 text-slate-600 animate-pulse'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
             aria-label={isVapiActive ? "Stop voice assistant" : "Start voice assistant"}
@@ -94,13 +94,13 @@ const VoiceControlBar: React.FC<VoiceControlBarProps> = ({
             <div
               className={`h-full rounded-full transition-all duration-300 ${
                 vapiStatus === 'active'
-                  ? 'bg-gradient-to-r from-green-500 to-blue-600 animate-pulse'
-                  : 'bg-gradient-to-r from-pink-500 to-purple-600'
+                  ? 'bg-gradient-to-r from-slate-500 to-slate-600 animate-pulse'
+                  : 'bg-gradient-to-r from-slate-500 to-slate-600'
               } w-0`}
             ></div>
           </div>
           {vapiStatus === 'active' && (
-            <div className="text-xs text-center mt-1 text-green-600 font-medium">
+            <div className="text-xs text-center mt-1 text-slate-600 font-medium">
               Voice assistant is listening...
             </div>
           )}
@@ -431,7 +431,7 @@ export default function UHGCaseStudyPage() {
       {/* Introduction Section */}
       <div
         ref={introSectionRef}
-        className="bg-gradient-to-r from-blue-50 via-white to-purple-50 border-b border-blue-200/60"
+        className="bg-gradient-to-r from-slate-50 via-white to-slate-50 border-b border-slate-200/60"
       >
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-8 lg:px-16 py-12">
           <div className="mb-12 text-center">
@@ -472,7 +472,7 @@ export default function UHGCaseStudyPage() {
             : 'translate-y-full opacity-0 pointer-events-none'
         }`}
       >
-        <div className="p-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl shadow-2xl">
+        <div className="p-[2px] bg-gradient-to-r from-slate-500 via-slate-500 to-slate-500 rounded-xl shadow-2xl">
           <VoiceControlBar
             isVapiActive={isVapiActive}
             vapiStatus={vapiStatus}

@@ -17,7 +17,7 @@ export function TabNavigation({ activeTab, onTabChange }: TabNavigationProps) {
             onClick={() => onTabChange('strategic')}
             className={`flex-1 py-4 px-6 transition-all duration-300 border-b-2 font-medium flex items-center justify-center gap-2 ${
               activeTab === 'strategic'
-                ? 'border-blue-600 text-blue-600 bg-blue-50'
+                ? 'border-slate-600 text-slate-600 bg-slate-50'
                 : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
             }`}
           >
@@ -30,7 +30,7 @@ export function TabNavigation({ activeTab, onTabChange }: TabNavigationProps) {
             onClick={() => onTabChange('tactical')}
             className={`flex-1 py-4 px-6 transition-all duration-300 border-b-2 font-medium flex items-center justify-center gap-2 ${
               activeTab === 'tactical'
-                ? 'border-purple-600 text-purple-600 bg-purple-50'
+                ? 'border-slate-600 text-slate-600 bg-slate-50'
                 : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
             }`}
           >

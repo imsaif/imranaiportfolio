@@ -172,7 +172,7 @@ export function CaseStudyTabs({}: CaseStudyTabsProps) {
                   onClick={() => scrollToSection(section.id)}
                   className={`w-full flex items-center gap-3 text-left px-4 py-3 rounded-lg transition-all duration-200 ${
                     activeSection === section.id
-                      ? 'bg-blue-100 border-l-4 border-blue-600 text-blue-900 font-semibold'
+                      ? 'bg-slate-100 border-l-4 border-slate-600 text-slate-900 font-semibold'
                       : 'text-gray-700 hover:bg-gray-100 border-l-4 border-transparent'
                   }`}
                 >

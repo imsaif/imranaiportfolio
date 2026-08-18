@@ -23,8 +23,8 @@ export const UserResearchSection: React.FC = () => {
   // Card data
   const cards: ResearchCard[] = [
     {
-      border: 'border-blue-300',
-      iconClass: 'text-blue-600',
+      border: 'border-slate-300',
+      iconClass: 'text-slate-600',
       title: 'Stakeholder Interviews',
       description:
         'In-depth conversations with academic directors, digital production, and schools teams to uncover real scheduling needs and pain points.',
@@ -32,8 +32,8 @@ export const UserResearchSection: React.FC = () => {
       impact: 'Helped define core requirements and surfaced hidden workflow blockers.',
     },
     {
-      border: 'border-purple-300',
-      iconClass: 'text-purple-600',
+      border: 'border-slate-300',
+      iconClass: 'text-slate-600',
       title: 'Process Shadowing',
       description:
         'Observed the end-to-end timetable creation process in real school environments to identify bottlenecks and inefficiencies.',
@@ -41,8 +41,8 @@ export const UserResearchSection: React.FC = () => {
       impact: 'Revealed manual steps and delays, informing automation priorities.',
     },
     {
-      border: 'border-pink-300',
-      iconClass: 'text-pink-600',
+      border: 'border-slate-300',
+      iconClass: 'text-slate-600',
       title: 'Collaborative Workshops',
       description:
         'Facilitated sessions with stakeholders to co-create journey maps, identify rules, and prioritize requirements.',
@@ -54,8 +54,8 @@ export const UserResearchSection: React.FC = () => {
       impact: 'Built consensus and ensured all voices were heard in the design process.',
     },
     {
-      border: 'border-green-300',
-      iconClass: 'text-green-600',
+      border: 'border-slate-300',
+      iconClass: 'text-slate-600',
       title: 'System Analysis',
       description:
         'Audited the legacy scheduling system, reviewed documentation, and analyzed data flows to find technical gaps.',
@@ -157,11 +157,11 @@ export const UserResearchSection: React.FC = () => {
             {/* Card 0 */}
             <motion.div
               ref={cardRef0}
-              className="sticky top-12 z-[10] border-blue-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px]"
+              className="sticky top-12 z-[10] border-slate-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px]"
               style={{ scale: scale0, boxShadow: boxShadow0 }}
             >
               <div className="flex items-center mb-3">
-                <div className="text-blue-600 mr-3">
+                <div className="text-slate-600 mr-3">
                   {/* SVG icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +190,7 @@ export const UserResearchSection: React.FC = () => {
                 <li>Documented scheduling needs</li>
               </ul>
               <div
-                className="mt-2 rounded-lg px-4 py-3 text-base flex items-start gap-2 bg-blue-100 text-blue-800 border-l-4 border-blue-400"
+                className="mt-2 rounded-lg px-4 py-3 text-base flex items-start gap-2 bg-slate-100 text-slate-800 border-l-4 border-slate-400"
                 aria-label="Key Insight"
               >
                 <svg
@@ -208,11 +208,11 @@ export const UserResearchSection: React.FC = () => {
             {/* Card 1 */}
             <motion.div
               ref={cardRef1}
-              className="sticky top-24 z-[11] border-purple-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px]"
+              className="sticky top-24 z-[11] border-slate-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px]"
               style={{ scale: scale1, boxShadow: boxShadow1 }}
             >
               <div className="flex items-center mb-3">
-                <div className="text-purple-600 mr-3">
+                <div className="text-slate-600 mr-3">
                   {/* SVG icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +242,7 @@ export const UserResearchSection: React.FC = () => {
                 <li>Found process bottlenecks</li>
               </ul>
               <div
-                className="mt-2 rounded-lg px-4 py-3 text-base flex items-start gap-2 bg-purple-100 text-purple-800 border-l-4 border-purple-400"
+                className="mt-2 rounded-lg px-4 py-3 text-base flex items-start gap-2 bg-slate-100 text-slate-800 border-l-4 border-slate-400"
                 aria-label="Key Insight"
               >
                 <svg
@@ -260,11 +260,11 @@ export const UserResearchSection: React.FC = () => {
             {/* Card 2 */}
             <motion.div
               ref={cardRef2}
-              className="sticky top-36 z-[12] border-pink-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px]"
+              className="sticky top-36 z-[12] border-slate-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col mb-8 w-full h-[340px]"
               style={{ scale: scale2, boxShadow: boxShadow2 }}
             >
               <div className="flex items-center mb-3">
-                <div className="text-pink-600 mr-3">
+                <div className="text-slate-600 mr-3">
                   {/* SVG icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -293,7 +293,7 @@ export const UserResearchSection: React.FC = () => {
                 <li>Prioritized requirements together</li>
               </ul>
               <div
-                className="mt-2 rounded-lg px-4 py-3 text-base flex items-start gap-2 bg-pink-100 text-pink-800 border-l-4 border-pink-400"
+                className="mt-2 rounded-lg px-4 py-3 text-base flex items-start gap-2 bg-slate-100 text-slate-800 border-l-4 border-slate-400"
                 aria-label="Key Insight"
               >
                 <svg
@@ -311,11 +311,11 @@ export const UserResearchSection: React.FC = () => {
             {/* Card 3 (last, should be sticky and on top) */}
             <motion.div
               ref={cardRef3}
-              className="sticky top-48 z-[13] border-green-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col w-full h-[340px]"
+              className="sticky top-48 z-[13] border-slate-300 border border-gray-200 bg-white shadow-md p-6 sm:p-8 lg:p-12 rounded-xl flex flex-col w-full h-[340px]"
               style={{ scale: scale3, boxShadow: boxShadow3 }}
             >
               <div className="flex items-center mb-3">
-                <div className="text-green-600 mr-3">
+                <div className="text-slate-600 mr-3">
                   {/* SVG icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -344,7 +344,7 @@ export const UserResearchSection: React.FC = () => {
                 <li>Found technical gaps</li>
               </ul>
               <div
-                className="mt-2 rounded-lg px-4 py-3 text-base flex items-start gap-2 bg-green-100 text-green-800 border-l-4 border-green-400"
+                className="mt-2 rounded-lg px-4 py-3 text-base flex items-start gap-2 bg-slate-100 text-slate-800 border-l-4 border-slate-400"
                 aria-label="Key Insight"
               >
                 <svg

@@ -5,7 +5,7 @@ export interface ProjectStat {
 
 export type ProjectLogo =
   | { type: 'image'; src: string }
-  | { type: 'icon'; name: 'terminal' | 'lightbulb' };
+  | { type: 'icon'; name: 'terminal' | 'lightbulb' | 'folder' | 'writing' };
 
 export interface Project {
   id: number;
@@ -29,6 +29,28 @@ export interface Project {
   ctaLabel?: string;
   /** Optional logo treatment for live products (rendered in place of images). */
   logo?: ProjectLogo;
+  /** Optional internal decision-record page, linked beneath the card. */
+  decisionsUrl?: string;
+  /** Short factual number shown as a label on the card. Omit when there isn't one worth showing. */
+  statLabel?: string;
+  /**
+   * Shown when the card is expanded. Products carry problem + decision;
+   * index cards carry `inside` instead, since inventing a "problem" for an
+   * index would put a position in my mouth I never took.
+   */
+  detail?: {
+    problem?: string;
+    chose?: string;
+    over?: string;
+    inside?: string;
+    moreHref?: string;
+    moreLabel?: string;
+  };
+  /**
+   * When present the card lists these links instead of a description.
+   * A card with its own links cannot also be one big click target.
+   */
+  links?: { label: string; href: string }[];
 }
 
 export const projects: Project[] = [
@@ -36,8 +58,17 @@ export const projects: Project[] = [
     id: 101,
     slug: 'designwithclaude',
     title: 'designwithclaude',
-    description:
-      'I built dwic to be a senior designer inside your terminal. It audits design systems, catches drift, and ships specialist agents you can drop into Claude Code.',
+    description: 'An MCP server that audits design systems from inside Claude Code.',
+    statLabel: '14 specialists',
+    detail: {
+      problem:
+        'A designer working inside Claude Code cannot tell whether the UI it just generated follows their design system. Contrast failures, token drift and off-grid spacing ship silently, and the usual answer is a design review that happens too late to matter.',
+      chose:
+        'Every finding cites the evidence behind it: the token name, the computed contrast ratio, the off-grid pixel value, or the offending selector.',
+      over: 'Returning a severity label and a short description, the way most linters and most AI reviewers do.',
+      moreHref: '/decisions/dwic',
+      moreLabel: 'Read the full decision record',
+    },
     fullDescription: '',
     technologies: [],
     liveUrl: 'https://designwithclaude.com',
@@ -47,14 +78,22 @@ export const projects: Project[] = [
     external: true,
     ctaLabel: 'Visit site',
     logo: { type: 'image', src: '/images/logos/dwic-icon.svg' },
+    decisionsUrl: '/decisions/dwic',
     tagline: 'AI DESIGN TOOLING',
   },
   {
     id: 102,
     slug: 'aiex',
     title: 'AI UX Design Guide',
-    description:
-      'I built aiuxdesign.guide to document AI UX patterns from real products. A free, open library used by designers shipping AI features today.',
+    description: 'A free, open library of AI UX patterns drawn from real products.',
+    statLabel: '3,000+ monthly',
+    detail: {
+      problem:
+        'Designers shipping AI features are still evaluating them with generic UX heuristics that were never written for AI. There is no fast way to check an AI interface against patterns specific to how AI actually behaves.',
+      chose:
+        'Free and no signup, with the audit as the front door: upload a screenshot of any AI interface and get it scored against 36 research-backed patterns.',
+      over: 'An email gate, a Figma plugin install, or a paid cohort.',
+    },
     fullDescription: '',
     technologies: [],
     liveUrl: 'https://aiuxdesign.guide',
@@ -77,11 +116,104 @@ export const projects: Project[] = [
     liveUrl: 'https://llmsgist.org',
     githubUrl: '',
     images: [],
-    featured: true,
+    // Temporarily demoted: the third card slot now points at the projects index.
+    featured: false,
     external: true,
     ctaLabel: 'Visit site',
     logo: { type: 'image', src: '/images/logos/llmsgist-icon.svg' },
     tagline: 'STRUCTURED DESIGN SPECS',
+  },
+  {
+    id: 104,
+    slug: 'projects',
+    title: 'Case studies',
+    description: 'Longer write-ups of the work, and the decisions behind them.',
+    links: [
+      { label: 'LessonLoom', href: '/casestudy/lessonloom' },
+      { label: 'EduScheduler', href: '/casestudy/scheduler' },
+      { label: 'Optum Bank', href: '/casestudy/uhg' },
+      { label: 'dwic design decisions', href: '/decisions/dwic' },
+    ],
+    fullDescription: '',
+    technologies: [],
+    liveUrl: '/projects',
+    githubUrl: '',
+    images: [],
+    featured: true,
+    external: false,
+    detail: {
+      inside:
+        'What the problem was, what I decided, and what I would do differently. AI tools at NewGlobe, enterprise healthcare at Optum, and the decisions behind dwic.',
+    },
+    ctaLabel: 'All case studies',
+    logo: { type: 'icon', name: 'folder' },
+    tagline: 'CASE STUDIES',
+  },
+  {
+    id: 105,
+    slug: 'writing',
+    title: 'Writing',
+    description: 'Thoughts on AI interfaces and what breaks in them, published in Design Bootcamp.',
+    statLabel: '4,000+ readers',
+    fullDescription: '',
+    technologies: [],
+    liveUrl: '/writing',
+    githubUrl: '',
+    images: [],
+    featured: true,
+    external: false,
+    detail: {},
+    links: [
+      {
+        label: 'AI is finally learning to shut up',
+        href: 'https://medium.com/design-bootcamp/ai-is-finally-learning-to-shut-up-62af1d2c01c8',
+      },
+      {
+        label: 'AI learned to shut up. It forgot to say what it was doing',
+        href: 'https://medium.com/design-bootcamp/ai-learned-to-shut-up-it-forgot-to-say-what-it-was-doing-91df21ad2742',
+      },
+      {
+        label: "AI can't see your design, so it guesses",
+        href: 'https://medium.com/design-bootcamp/ai-cant-see-your-design-so-it-guesses-c50e3695f01a',
+      },
+      {
+        label: 'Who is designing the boundary for AI?',
+        href: 'https://medium.com/design-bootcamp/who-is-designing-the-boundary-for-ai-3a51b18b5fc7',
+      },
+      {
+        label: 'The AI you use for design feedback is guessing',
+        href: 'https://medium.com/design-bootcamp/the-ai-you-use-for-design-feedback-is-guessing-b4b9cfeaf7ee',
+      },
+      {
+        label: 'Most AIUX is just search with extra steps?',
+        href: 'https://medium.com/design-bootcamp/most-aiux-is-just-search-with-extra-steps-3faaae035ab8',
+      },
+    ],
+    ctaLabel: 'All writing',
+    logo: { type: 'icon', name: 'writing' },
+    tagline: 'WRITING',
+  },
+  {
+    id: 106,
+    slug: 'contact',
+    title: 'Get in touch',
+    description: 'Open to senior product design and design engineering roles.',
+    fullDescription: '',
+    technologies: [],
+    liveUrl: 'mailto:imranrizom@gmail.com',
+    githubUrl: '',
+    images: [],
+    featured: true,
+    external: true,
+    ctaLabel: 'Email me',
+    detail: {},
+    links: [
+      { label: 'GitHub', href: 'https://github.com/imsaif' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/imsaif/' },
+      { label: 'Medium', href: 'https://medium.com/@imsaif' },
+    ],
+    logo: { type: 'icon', name: 'writing' },
+    tagline: 'CONTACT',
   },
   {
     id: 3,

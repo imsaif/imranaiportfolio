@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="bg-[#f8f9fe] min-h-screen">
+    <div className="bg-[#f8fafc] min-h-screen">
       {/* Header section */}
       <header className="bg-white py-4 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
