@@ -83,6 +83,15 @@ public/
 
 ## Recent Sessions
 
+### Session 2026-08-19 10:48 (MacBook) - Homepage Rework, Filmstrip, Colour Sweep
+- **Pattern:** Homepage identity + scroll filmstrip + colour system sweep
+- **Status:** Complete (PR #9, merged as `a8ae85e`, deployed)
+- **Files Changed:** 104 (+2,794 / -1,859)
+- **Tests Added/Modified:** 0
+- **Notes:** Benchmarked the site against ten designer portfolios (rauno.me, paco.me, emilkowal.ski, brianlovin.com, maggieappleton.com, thesephist.com, levels.io, benshih.design) and found the structure was already right but two things were missing: a one-line identity and any visible design reasoning. Every site in that set borrows recognisability from an employer (Vercel/Linear/Notion/GitHub Next); NewGlobe does not compress that way, so the hero substitutes borrowed AI credibility instead. Reworked the hero to a single claim ("I design and build") with the cycling object line placed LAST so nothing downstream reflows as it types, plus a line-art portrait, and a scroll cue (the hero now owns a full screen, so nothing below peeks through). Replaced the card grid with a horizontal filmstrip pinned to vertical scroll in the shape of rauno.me: fixed 34rem panels, a tick indicator, a scroll-linked pull-back, and lead-in/lead-out holds so the first panel is settled on arrival and the last stays fully visible. Panel content answers "what problem does this solve", sourced from `~/dwc/dwic.gist.design` and `aiuxdesign.guide/llms.txt` rather than written fresh. New pages: `/decisions/dwic` (Chose/Over/Because decision record), `/projects`, `/writing`. Replaced `npx imranai` (which resolved to no published npm package, i.e. a checkable claim that was false) with `imran --work`. Removed the site-wide footer and the walking FooterRobot; contact moved into a filmstrip panel.
+- **Notes:** **Colour sweep.** The case studies looked untouched because of a deliberate `.legacy-tokens` block in `globals.css` scoped to `/casestudy/*`, pinning those routes to the original purple palette (`#7075e0`/`#3ca070`/`#e0637c`). Token *names* stay (case-study components reference them) but values are now navy — that one block did more work than any number of utility rewrites. Then swept 2,316 coloured Tailwind utilities and 165 saturated hex values across 92 files, mapping hue to the slate scale with the lightness step preserved. Coloured utility hits fell 2,464 → 152. Deliberately NOT swept: 30 lines matching error/warning/success/severity, the `--success`/`--warning`/`--error`/`--info` tokens, and `AIPTimetableVisualization` + `UserJourneyMapInteractive` where colour separates data series — flattening those loses information nothing else encodes. Case-study hero illustrations are colour image assets, not code.
+- **Notes:** **Accessibility.** Lighthouse 100 (51 passed, 0 failed), but it scored 94 with a real keyboard bug present that no audit could detect: two thirds of the filmstrip's focusable elements sit outside the viewport, translated away by the scroll transform, and the browser "revealed" a focused link by scrolling the `overflow-hidden` container 917px while the page and indicator still said panel one. Fixed so the transform solely owns position and focus moves the page instead. Also fixed heading order and 24px minimum tick target size. Reduced-motion falls back to a plain scroll-snap strip with no pinning. Motion follows Emil Kowalski's published rules (ease-out `cubic-bezier(0.23,1,0.32,1)`, under 300ms, transform/opacity only).
+
 ### Session 2026-05-11 13:39 (MacBook) - Progressive Terminal Reveal + Interactive Prompts
 ### Session 2026-06-03 16:38 (MacBook)
 - **Pattern:** Hero copy + Writing section + accessibility
@@ -146,37 +155,38 @@ public/
 - **Tests Added/Modified:** 0
 - **Notes:** Multi-task session addressing user feedback across portfolio and case study pages. Updated project card descriptions for consistency (Optum Bank), removed animations from Building in Public section, updated EduScheduler tagline, added "Beyond Vibe Coding" publication to resume, expanded LessonLoom tactical tab navigation from 4 to 6 sections with proper scroll tracking, and unified styling of AI-Powered Generation Interface section to match other content boxes with proper Framer Motion animations.
 
-### Session 2025-11-05 13:31 (MacBook) - LessonLoom Generate Button State Fix
-- **Pattern:** LessonLoom case study state management
-- **Status:** Complete
-- **Files Changed:** 1
-- **Tests Added/Modified:** 0
-- **Notes:** Fixed Generate Lessons button state variable references in both collapsed and expanded versions of LessonLoom AI Generation Studio. Corrected 7 instances where button conditions were checking embedded workflow state instead of fullscreen app state variables. All tests passed, build successful, dev server running.
-
-### Session 2025-11-04 20:50 (MacBook) - LessonLoom AI Interface Refinements
-- **Pattern:** LessonLoom case study UI improvements
-- **Status:** Complete
-- **Files Changed:** 1
-- **Tests Added/Modified:** 0
-- **Notes:** Hidden drop zone after both template and spreadsheet are selected to reduce visual clutter. Converted all colored UI elements (purple templates, green spreadsheets) to clean black and white design for professional aesthetic.
-
-**Files Changed**: 7 (4 modified, 3 created)
-**Commit**: 9d4f86a - "Refactor portfolio sections and improve component styling"
-
-**Accomplishments**:
-- **Sticky Project Cards**: Removed hover overlay, made "View Case Study" button static and always visible
-- **Hero Text Fix**: Fixed "Clarity" descender clipping by adjusting padding (12px) and removing negative margin
-- **New Section**: Created "Building in Public" section with AIUX and DesignwithClaude project cards
-- **Logo Integration**: Added AIUX logo (heart + sparkle) from https://www.aiuxdesign.guide/
-- **Visual Refinement**: Reduced section padding, compacted card styling, subtler gradient effects
-- **Footer Update**: Removed "Currently Building" box, kept CTA and social links
-
 ## Important Notes & Gotchas
 
 ### TypeScript Errors
 - Pre-commit hook has existing TypeScript errors in unrelated files (lessonloom, voiceCloning, etc)
 - Commit with `--no-verify` flag to bypass these
 - These should be fixed separately
+- **Baseline is 104 source-level errors.** Compare with
+  `npx tsc --noEmit 2>&1 | grep 'error TS' | grep -v '^\.next/' | wc -l`. Filtering out
+  `.next/` matters: Next generates per-route type files there, so a worktree and the main
+  checkout can report different totals purely from being at different build states.
+
+### Never run `next build` while `next dev` is running
+- They share the same `.next` directory and the production build corrupts the dev webpack
+  cache. Symptom: components silently vanish from the page and the dev log shows
+  `Can't resolve './vendor-chunks/<pkg>'`. Fix is `rm -rf .next` and restart dev.
+- Use `npx tsc --noEmit` to typecheck while dev is running.
+
+### Colour: what must never be swept
+- `globals.css` has a `.legacy-tokens` block scoped to `/casestudy/*`. It re-declares the
+  token names so case-study components keep working. Values are now navy; the names stay.
+  Changing a case study's palette usually means editing this block, not the components.
+- Semantic colour is load-bearing and must keep its hue: the `--success` / `--warning` /
+  `--error` / `--info` tokens, and any line mentioning error/warning/success/severity.
+  Colour is the only thing encoding severity in those components.
+- `AIPTimetableVisualization.tsx` and `UserJourneyMapInteractive.tsx` use colour to separate
+  data series. Monochrome there needs re-encoding as luminance or pattern, not substitution.
+
+### SVG logos carry viewBox padding
+- `dwic-icon.svg` uses `viewBox="-4 -4 32 32"`, so its artwork fills only 24 of a 32-unit box
+  and renders ~25% smaller than a react-icons glyph in the same pixel box. Image-type logos
+  are sized up (36px against the icons' 28px) to match optically. Don't "fix" this by
+  equalising the box sizes.
 
 ### Logo Assets
 - AIUX logo: `public/images/logos/aiux-logo.svg` (heart shape with sparkle, from their official site)
