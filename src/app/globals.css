@@ -902,3 +902,28 @@ p {
 @media (prefers-reduced-motion: reduce) {
   .robot-walk { animation: none; left: 1rem; opacity: 1; }
 }
+
+/*
+  Panel hover: the lighter fill blooms outward from wherever the pointer
+  entered the card, instead of the whole surface switching colour at once.
+  The centre comes from --mx/--my, set once on pointer enter so the circle
+  does not chase the cursor around the card while it expands.
+*/
+.cursor-fill {
+  position: absolute;
+  left: var(--mx, 50%);
+  top: var(--my, 50%);
+  width: 260%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 900ms cubic-bezier(0.25, 0.8, 0.3, 1);
+}
+@media (hover: hover) {
+  .group:hover .cursor-fill {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-fill { transition: none; }
+}

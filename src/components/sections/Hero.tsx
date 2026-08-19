@@ -140,18 +140,31 @@ const Hero = () => {
               {/*
                 The hero owns a full screen, so nothing below it peeks through.
                 This cue says there is more, and is a real link so keyboard and
-                screen-reader users get the same affordance. motion-safe keeps
+                screen-reader users get the same affordance. Arrow only: the
+                word "work" already appears in the hero command and the strip
+                heading just below, and three in a column read as a stutter. motion-safe keeps
                 it still for anyone who asked for reduced motion.
               */}
               <a
                 href="#work"
                 aria-label="Scroll to selected work"
-                className="group absolute bottom-8 flex flex-col items-center gap-2 text-text-tertiary transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+                onClick={event => {
+                  const target = document.getElementById('work');
+                  if (!target) return;
+                  // The default anchor jump lands on the filmstrip with no
+                  // travel, which reads as a glitch rather than a move.
+                  // Reduced motion keeps the instant jump on purpose.
+                  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                  event.preventDefault();
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="group absolute bottom-8 flex flex-col items-center p-2 text-text-tertiary transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
               >
-                <span className="text-[11px] font-medium uppercase tracking-[0.08em]">Work</span>
                 <svg
                   aria-hidden="true"
-                  className="h-5 w-5 motion-safe:animate-[bounce_2.4s_ease-in-out_infinite]"
+                  // Still on phones: an endless bounce costs battery and
+                  // attention on a small screen for decoration nobody needs.
+                  className="h-5 w-5 md:motion-safe:animate-[bounce_2.4s_ease-in-out_infinite]"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.75"

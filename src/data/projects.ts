@@ -5,7 +5,7 @@ export interface ProjectStat {
 
 export type ProjectLogo =
   | { type: 'image'; src: string }
-  | { type: 'icon'; name: 'terminal' | 'lightbulb' | 'folder' | 'writing' };
+  | { type: 'icon'; name: 'terminal' | 'lightbulb' | 'folder' | 'writing' | 'mail' };
 
 export interface Project {
   id: number;
@@ -59,13 +59,13 @@ export const projects: Project[] = [
     slug: 'designwithclaude',
     title: 'designwithclaude',
     description: 'An MCP server that audits design systems from inside Claude Code.',
-    statLabel: '14 specialists',
+    statLabel: '48 design specialists inside Claude Code',
     detail: {
       problem:
-        'A designer working inside Claude Code cannot tell whether the UI it just generated follows their design system. Contrast failures, token drift and off-grid spacing ship silently, and the usual answer is a design review that happens too late to matter.',
+        'Claude Code will happily generate UI that breaks your design system. Contrast failures, token drift and off-grid spacing ship silently, and the review that would catch them lands too late.',
       chose:
-        'Every finding cites the evidence behind it: the token name, the computed contrast ratio, the off-grid pixel value, or the offending selector.',
-      over: 'Returning a severity label and a short description, the way most linters and most AI reviewers do.',
+        'Every finding cites its evidence: the token name, the computed contrast ratio, the off-grid value, the offending selector.',
+      over: 'A severity label and a vague description, the way most linters do.',
       moreHref: '/decisions/dwic',
       moreLabel: 'Read the full decision record',
     },
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     slug: 'aiex',
     title: 'AI UX Design Guide',
     description: 'A free, open library of AI UX patterns drawn from real products.',
-    statLabel: '3,000+ monthly',
+    statLabel: '3,000+ designers using',
     detail: {
       problem:
         'Designers shipping AI features are still evaluating them with generic UX heuristics that were never written for AI. There is no fast way to check an AI interface against patterns specific to how AI actually behaves.',
@@ -127,7 +127,8 @@ export const projects: Project[] = [
     id: 104,
     slug: 'projects',
     title: 'Case studies',
-    description: 'Longer write-ups of the work, and the decisions behind them.',
+    description:
+      'Four projects taken apart: the constraint I was designing against, the call I made, and what I would do differently now.',
     links: [
       { label: 'LessonLoom', href: '/casestudy/lessonloom' },
       { label: 'EduScheduler', href: '/casestudy/scheduler' },
@@ -143,7 +144,7 @@ export const projects: Project[] = [
     external: false,
     detail: {
       inside:
-        'What the problem was, what I decided, and what I would do differently. AI tools at NewGlobe, enterprise healthcare at Optum, and the decisions behind dwic.',
+        'AI tooling at NewGlobe, enterprise healthcare at Optum, and the decision record behind dwic.',
     },
     ctaLabel: 'All case studies',
     logo: { type: 'icon', name: 'folder' },
@@ -212,7 +213,7 @@ export const projects: Project[] = [
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/imsaif/' },
       { label: 'Medium', href: 'https://medium.com/@imsaif' },
     ],
-    logo: { type: 'icon', name: 'writing' },
+    logo: { type: 'icon', name: 'mail' },
     tagline: 'CONTACT',
   },
   {
