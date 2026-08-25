@@ -85,14 +85,16 @@ export const projects: Project[] = [
     id: 102,
     slug: 'aiex',
     title: 'AI UX Design Guide',
-    description: 'A free, open library of AI UX patterns drawn from real products.',
+    description: 'A free AI UX audit built on 38 patterns, each one a working example rather than a picture of one.',
     statLabel: '3,000+ designers using',
     detail: {
       problem:
         'Designers shipping AI features are still evaluating them with generic UX heuristics that were never written for AI. There is no fast way to check an AI interface against patterns specific to how AI actually behaves.',
       chose:
-        'Free and no signup, with the audit as the front door: upload a screenshot of any AI interface and get it scored against 36 research-backed patterns.',
+        'Free and no signup, with the audit as the front door: upload a screenshot of any AI interface and get it scored against 38 patterns.',
       over: 'An email gate, a Figma plugin install, or a paid cohort.',
+      moreHref: '/casestudy/aiex',
+      moreLabel: 'Read how it got here',
     },
     fullDescription: '',
     technologies: [],
@@ -131,6 +133,7 @@ export const projects: Project[] = [
       'Projects taken apart: the constraint I was designing against, the call I made, and what I would do differently now.',
     links: [
       { label: 'Cognition', href: '/casestudy/cognition' },
+      { label: 'AI UX Design Guide', href: '/casestudy/aiex' },
       { label: 'Optum Bank', href: '/casestudy/uhg' },
       { label: 'dwic design decisions', href: '/decisions/dwic' },
     ],
