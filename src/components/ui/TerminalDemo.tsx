@@ -28,9 +28,9 @@ const slides: DemoSlide[] = [
       'get an answer back, instead of a dashboard to interpret.',
       'Unveiled at the Education World Forum, London 2026.',
     ],
-    // Shown, not followed. Written in full so it reads like the other two
-    // rather than as a bare path.
-    url: 'https://imranai.design/casestudy/cognition',
+    // Points at NewGlobe's own announcement, the same destination as the
+    // card's Visit site. The case study is reachable from the card.
+    url: 'https://newglobe.education/enterprise-ai.html',
   },
   {
     title: 'aiuxdesign.guide',
@@ -440,7 +440,16 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
               {showUrl && (
                 <>
                   <span className="text-white/40">→ </span>
-                  {urlText}
+                  {/* The href is the whole URL even while the text is still
+                      typing, so a click mid-animation still lands correctly. */}
+                  <a
+                    href={slide.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-white/25 underline-offset-4 transition-colors hover:text-white hover:decoration-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
+                  >
+                    {urlText}
+                  </a>
                   {phase === 'slide-url' && <Cursor />}
                 </>
               )}
