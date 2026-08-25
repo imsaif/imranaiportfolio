@@ -612,7 +612,7 @@ export function TechnicalImplementationSection() {
           Technical Innovation Through Constraints
         </h4>
         <p className="text-gray-800 text-base">
-          Working within technical limitations—legacy systems, API constraints, processing delays—forced
+          Working within technical limitations (legacy systems, API constraints, processing delays) forced
           creative solutions providing better UX than unlimited resources might have enabled.
           <strong> Constraints, when properly understood, often lead to more robust and
           user-friendly solutions than greenfield development.</strong>

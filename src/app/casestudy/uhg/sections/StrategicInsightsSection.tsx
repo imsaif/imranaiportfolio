@@ -40,14 +40,14 @@ export function StrategicInsightsSection() {
                 <div className="border-l-4 border-slate-400 pl-6 py-4">
                   <p className="font-bold text-gray-900 mb-2 text-lg">Data Informs But Doesn't Decide</p>
                   <p className="text-gray-700">
-                    Analytics showed us the problems (98.9% abandonment, 18-minute flows). But they didn't tell us why or how to fix it. Good research—combining data with transcripts, stakeholder interviews, and observation—revealed the true mental models and needs. Data opens the door; qualitative research walks through it.
+                    Analytics showed us the problems (98.9% abandonment, 18-minute flows). But they didn't tell us why or how to fix it. Good research, combining data with transcripts, stakeholder interviews and observation, revealed the true mental models and needs. Data opens the door; qualitative research walks through it.
                   </p>
                 </div>
 
                 <div className="border-l-4 border-slate-400 pl-6 py-4">
                   <p className="font-bold text-gray-900 mb-2 text-lg">Mobile Matters More Than You Think</p>
                   <p className="text-gray-700">
-                    We initially prioritized desktop. But 0.3% mobile completion meant the feature was effectively broken for mobile users. When we properly optimized for mobile as a first-class experience (not a responsive afterthought), it contributed 60x improvement. Mobile isn't an edge case—it's core.
+                    We initially prioritized desktop. But 0.3% mobile completion meant the feature was effectively broken for mobile users. When we properly optimized for mobile as a first-class experience (not a responsive afterthought), it contributed 60x improvement. Mobile isn't an edge case. It's core.
                   </p>
                 </div>
               </div>

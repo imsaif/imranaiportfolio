@@ -52,7 +52,7 @@ export function StrategicBusinessContextSection() {
             <div className="flex-1">
               <h3 className="text-xl font-bold text-gray-900 mb-4">Why This Project Was Board-Level Priority</h3>
               <p className="text-gray-700 mb-6">
-                This wasn't just a UX improvement—it was a strategic business initiative with C-suite sponsorship driven by key OKRs and fiscal pressures.
+                This wasn't just a UX improvement. It was a strategic business initiative with C-suite sponsorship driven by key OKRs and fiscal pressures.
               </p>
               <div className="space-y-4">
                 <div className="flex gap-3">

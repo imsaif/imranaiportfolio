@@ -148,15 +148,15 @@ export async function POST(request: Request) {
 
     // Define direct links to case studies with full URLs
     const projectLinks: ProjectLink[] = [
-      // LessonLoom case study
+      // Cognition case study
       {
-        name: 'LessonLoom',
-        url: 'https://imranai.design/casestudy/lessonloom',
+        name: 'Cognition',
+        url: 'https://imranai.design/casestudy/cognition',
       },
-      // EduScheduler case study
+      // Optum Bank case study
       {
-        name: 'EduScheduler',
-        url: 'https://imranai.design/casestudy/scheduler',
+        name: 'Optum Bank',
+        url: 'https://imranai.design/casestudy/uhg',
       },
     ];
 
@@ -171,19 +171,22 @@ export async function POST(request: Request) {
     Project links to share:
     ${JSON.stringify(projectLinks)}
 
-    Note: Imran has two detailed case studies available:
-    1. LessonLoom case study: https://imranai.design/casestudy/lessonloom
-    2. EduScheduler case study: https://imranai.design/casestudy/scheduler
+    Note: Imran has two published case studies available:
+    1. Cognition case study: https://imranai.design/casestudy/cognition
+    2. Optum Bank case study: https://imranai.design/casestudy/uhg
+
+    Only ever link these two. Other case studies exist but are unpublished. Do
+    not mention or link them.
 
     When someone asks about case studies or projects, format your response like this:
 
     Of course! I've worked on several exciting projects:
 
-    **LessonLoom**
-    This innovative platform automates the creation of educational materials using AI and templating systems. It personalizes learning experiences based on student progress and learning style, increasing student engagement by 35% and reducing lesson planning time by 40%.
+    **Cognition**
+    Conversational AI for the government education leaders who run a national programme. It is scoped strictly to programme data and declines anything outside that, out loud, which is what makes it something an official can put in front of a minister. NewGlobe unveiled it at the Education World Forum in London in 2026.
 
-    **EduScheduler**
-    An intelligent academic planning system that generates optimized teaching schedules, balancing automation with user preferences and priorities. It reduced meeting scheduling time by 60% and improved meeting attendance rates by 25%.
+    **Optum Bank**
+    Receipt capture and claims substantiation for healthcare payments, designed against strict compliance requirements without making the everyday path harder for people just trying to submit a receipt.
 
     These projects showcase my expertise in AI design and user experience. If you have any more questions or need further details, feel free to ask!
 

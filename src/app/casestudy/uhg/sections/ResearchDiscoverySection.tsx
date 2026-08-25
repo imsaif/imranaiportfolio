@@ -383,7 +383,7 @@ export function ResearchDiscoverySection() {
 
           <div className="mt-6 p-4 bg-gray-100 rounded-lg">
             <p className="text-base text-gray-700">
-              <strong>Key Insight:</strong> Device choice was context-dependent—users needed connected experiences across platforms, not identical interfaces. The system needed to maintain state and progress across devices.
+              <strong>Key Insight:</strong> Device choice was context-dependent: users needed connected experiences across platforms, not identical interfaces. The system needed to maintain state and progress across devices.
             </p>
           </div>
         </div>
