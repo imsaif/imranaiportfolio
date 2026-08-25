@@ -21,11 +21,12 @@ interface DemoSlide {
 const slides: DemoSlide[] = [
   {
     title: 'Cognition',
-    tagline: 'An assistant that says what it will not answer.',
+    tagline: 'Plain-English answers from national education data.',
     description: [
-      'I designed Cognition for officials who answer to ministers.',
-      'It answers on national programme data and declines everything',
-      'else, out loud. Unveiled at the Education World Forum, 2026.',
+      'I designed Cognition for the officials who run a national',
+      'education programme. They ask a question in plain English and',
+      'get an answer back, instead of a dashboard to interpret.',
+      'Unveiled at the Education World Forum, London 2026.',
     ],
     // Shown, not followed. Written in full so it reads like the other two
     // rather than as a bare path.
