@@ -117,7 +117,7 @@ export function Shipped({ built, notBuilt }: { built: string[]; notBuilt: string
         </ul>
       </div>
       <div>
-        <h3 className="mb-3 font-mono text-xs uppercase tracking-wider text-gray-500">Designed, not built</h3>
+        <h3 className="mb-3 font-mono text-xs uppercase tracking-wider text-gray-500">Scoped, and next</h3>
         <ul className="space-y-2">
           {notBuilt.map(b => (
             <li key={b} className="flex gap-2 text-[15px] text-gray-500">

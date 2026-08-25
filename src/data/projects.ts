@@ -128,8 +128,9 @@ export const projects: Project[] = [
     slug: 'projects',
     title: 'Case studies',
     description:
-      'Four projects taken apart: the constraint I was designing against, the call I made, and what I would do differently now.',
+      'Five projects taken apart: the constraint I was designing against, the call I made, and what I would do differently now.',
     links: [
+      { label: 'Cognition', href: '/casestudy/cognition' },
       { label: 'LessonLoom', href: '/casestudy/lessonloom' },
       { label: 'EduScheduler', href: '/casestudy/scheduler' },
       { label: 'Optum Bank', href: '/casestudy/uhg' },
@@ -143,8 +144,7 @@ export const projects: Project[] = [
     featured: true,
     external: false,
     detail: {
-      inside:
-        'AI tooling at NewGlobe, enterprise healthcare at Optum, and the decision record behind dwic.',
+      inside: 'AI tooling at NewGlobe, enterprise healthcare at Optum, and the decision record behind dwic.',
     },
     ctaLabel: 'All case studies',
     logo: { type: 'icon', name: 'folder' },
@@ -321,11 +321,11 @@ export const projects: Project[] = [
     description:
       'An AI assistant that answers questions about national programme data \u2014 and declines everything else.',
     fullDescription: `
-      Government education leaders sat on a rich daily dataset they could not interrogate, because
-      the only way in was a BI tool that assumed analyst fluency. I designed and built Cognition as
+      Government education leaders had dashboards over a rich daily dataset, and used them. What the
+      dashboards gave back was numbers to interpret, not answers to repeat. I designed Cognition as
       a conversational surface scoped strictly to programme data, where refusing out-of-scope
-      questions is the product rather than a limitation. Shipped as a working prototype and an
-      internal proposal; the client, country and programme are not named.
+      questions is the product rather than a limitation. Unveiled at the Education World Forum in
+      London in May 2026 as part of NewGlobe's enterprise AI suite.
     `,
     technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Zustand'],
     liveUrl: '',
@@ -338,10 +338,10 @@ export const projects: Project[] = [
     ],
     featured: true,
     tagline: 'AI PRODUCT DESIGN, CONVERSATIONAL UX',
-    statLabel: 'Designed and built end to end',
+    statLabel: 'Unveiled at the Education World Forum 2026',
     detail: {
       problem:
-        'Officials who answer to ministers could not interrogate their own programme data \u2014 the only interface assumed analyst fluency they did not have.',
+        'Officials who answer to ministers had dashboards, but a dashboard hands back numbers to interpret \u2014 not an answer they can say out loud in the next meeting.',
       chose: 'An assistant scoped strictly to programme data, which declines out loud and says why',
       over: 'A capable general assistant that answers whatever it is asked',
     },
@@ -359,4 +359,3 @@ export function getFeaturedProjects(): Project[] {
 export function getAllProjects(): Project[] {
   return projects;
 }
-
