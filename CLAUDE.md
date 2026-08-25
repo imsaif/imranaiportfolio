@@ -83,6 +83,17 @@ public/
 
 ## Recent Sessions
 
+### Session 2026-08-25 (MacBook) - Case Study Overhaul: Cognition + aiuxdesign.guide
+- **Pattern:** Two new case studies, two unpublished, sitewide copy sweep
+- **Status:** Complete (PRs #12 and #13, merged, deployed)
+- **Files Changed:** 28 (+835 / -380) across 18 commits
+- **Tests Added/Modified:** 0
+- **Notes:** Started from the premise that the case studies were overcrowded. The bigger finding was that UHG and LessonLoom each render the same project **twice** through two parallel tab tracks (`strategicSections` + `tacticalSections` in `CaseStudyTabs.tsx`), 13 sections between them with Research, IA, Workflow and Results duplicated in both. Rather than cut those first, built `/casestudy/cognition` as a six-section, visual-led alternative: real product screenshots instead of diagrams, 919 words. Screens were captured by cloning `~/cognition` to a temp dir, swapping the identifying data, building and screenshotting — the user's own repo was never touched (the anonymisation diff is saved at `~/cognition/docs/portfolio-anonymisation/`).
+- **Notes:** **The refusal was designed but never built.** The deck argued "a tool that says no is a tool you can show a minister", but `getMatchedResponse()` had six keyword branches and a `defaultResponse` fallback — an out-of-scope question returned a generic programme summary. Wrote `scopeGuard.ts` (off-topic patterns + domain-vocabulary check, declining with a capability line and a redirect) and wired it ahead of the keyword match, so the screenshot on the case study is real behaviour. That file is now in `~/cognition/src/services/` **uncommitted**, alongside the 26 changes already pending there.
+- **Notes:** **Anonymity reversed mid-session.** Built the page fully anonymised, then the user surfaced `newglobe.education/enterprise-ai.html` — NewGlobe publicly names Cognition, the country, the state and the minister, and unveiled it at the Education World Forum in London, May 2026. Anonymising cost the verifiable claim and protected nothing, so the page now names both and links their announcement. That also supplied the ending: it closes on the public unveiling rather than on internal approval. Credits corrected after clarification from "sole product designer / designed and built" to design lead working with a PM, solution architect and engineers.
+- **Notes:** **aiuxdesign.guide case study** built on the origin story: a folder of screenshots, the Human-in-the-Loop micro-app that turned it into a product, the audit as an engineering question, and two surveys that each moved the front door (guides, then Claude skills). Its centrepiece is the measurement correction — a fortnight of funnel data read as a product-quality failure until an ipHash grouping showed six of seven sessions were self-testing across five browsers. Described the audit accurately as an evaluation harness with a flag-disabled critic stage (`AUDIT_VERIFY_LOOP`), **not** reinforcement learning: nothing learns between runs and there is no reward signal.
+- **Notes:** **Published set is now Cognition, aiuxdesign.guide, Optum Bank.** LessonLoom and EduScheduler are unpublished — URLs work, `robots noindex` via a layout in each folder (the pages are client components and cannot export metadata; there is no sitemap or robots.txt, so that tag is the whole mechanism), and removed from `/projects`, the index card, `CaseStudyFooter` and the site chatbot, which had been recommending both by name. `/casestudy` was a bare dev index linking a Test Page; it now redirects to `/projects`. Deleted the unreferenced `newproject` scaffold. Terminal walkthrough reordered to match the card strip with clickable URLs.
+
 ### Session 2026-08-19 10:48 (MacBook) - Homepage Rework, Filmstrip, Colour Sweep
 - **Pattern:** Homepage identity + scroll filmstrip + colour system sweep
 - **Status:** Complete (PR #9, merged as `a8ae85e`, deployed)
@@ -165,6 +176,17 @@ public/
   `npx tsc --noEmit 2>&1 | grep 'error TS' | grep -v '^\.next/' | wc -l`. Filtering out
   `.next/` matters: Next generates per-route type files there, so a worktree and the main
   checkout can report different totals purely from being at different build states.
+
+### Sweeping em-dashes: grep for the escape too
+- Em-dashes are a strong generated-text tell (see `/anti-slop-designer` in `~/dwc/commands/`).
+  A sweep that only greps for the literal `—` and `&mdash;` **misses the ones in `.ts` data
+  files**, where they are written `—`. That is how the project-card copy survived a
+  pass that had already cleaned both case-study pages.
+- Search all three forms: `grep -rn "—\|&mdash;\|u2014" src --include='*.ts*'`.
+- Vary the replacement per sentence — colon, comma, period, parentheses. A uniform swap to
+  one of them is its own tell.
+- The em-dashes used as **list bullets** in `Shipped` (`&#8212;`) are a typographic marker,
+  not a sentence connector. Leave those.
 
 ### Never run `next build` while `next dev` is running
 - They share the same `.next` directory and the production build corrupts the dev webpack
