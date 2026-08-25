@@ -181,7 +181,7 @@ export default function CognitionCaseStudy() {
       <Figure
         src="/images/casestudy/cognition/reasoning.jpg"
         alt="Pro mode showing reasoning steps streaming live above the answer"
-        caption="Pro mode mid-answer: the active step, a live timer, and the steps it has already taken."
+        caption="Pro mode while the answer is still forming: the active step, a live timer, and the steps already taken. On completion the whole panel folds to one line."
       />
 
       {/* ---------- 06 ---------- */}
