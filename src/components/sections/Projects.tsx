@@ -133,17 +133,16 @@ const Panel = ({ project }: { project: Project }) => {
       <span aria-hidden="true" className="cursor-fill pointer-events-none -z-10 bg-background-primary" />
       <div className="flex items-start gap-3">
         <PanelIcon project={project} />
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h3 className="text-xl font-semibold tracking-tight text-text-primary md:text-2xl">{project.title}</h3>
-          {/* basis-full keeps the stat on its own line under the title, rather
-              than trailing it on the same baseline where a long one crowds it. */}
-          {project.statLabel && (
-            <span className="basis-full font-mono text-xs uppercase tracking-[0.06em] text-text-tertiary">
-              {project.statLabel}
-            </span>
-          )}
-        </div>
+        <h3 className="text-xl font-semibold tracking-tight text-text-primary md:text-2xl">{project.title}</h3>
       </div>
+      {/* Deliberately outside the icon row. Nested beside the icon it inherited
+          the icon's indent, so on a card with a mark it sat further in than the
+          description directly beneath it. */}
+      {project.statLabel && (
+        <span className="mt-2 block font-mono text-xs uppercase tracking-[0.06em] text-text-tertiary">
+          {project.statLabel}
+        </span>
+      )}
       <p className="mt-2 max-w-2xl text-[15px] leading-[1.55] sm:text-[16px] sm:leading-relaxed text-text-secondary">
         {project.description}
       </p>

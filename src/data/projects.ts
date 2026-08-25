@@ -121,7 +121,7 @@ export const projects: Project[] = [
   {
     id: 102,
     slug: 'aiex',
-    title: 'AIUXD',
+    title: 'aiuxdesign.guide',
     description: 'A free AI UX audit built on 38 patterns, each one a working example rather than a picture of one.',
     statLabel: '3,000+ designers using',
     detail: {
@@ -169,7 +169,7 @@ export const projects: Project[] = [
     description: 'The full write-ups.',
     links: [
       { label: 'Cognition', href: '/casestudy/cognition' },
-      { label: 'AIUXD', href: '/casestudy/aiex' },
+      { label: 'aiuxdesign.guide', href: '/casestudy/aiex' },
       { label: 'Optum Bank', href: '/casestudy/uhg' },
       { label: 'dwic design decisions', href: '/decisions/dwic' },
     ],
