@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 /** Ordered deliberately: the AI work leads, then the strongest measured outcome. */
-const CASE_STUDY_SLUGS = ['cognition', 'lessonloom', 'scheduler', 'uhg'] as const;
+const CASE_STUDY_SLUGS = ['cognition', 'uhg'] as const;
 
 interface Entry {
   title: string;

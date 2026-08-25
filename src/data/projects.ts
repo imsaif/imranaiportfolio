@@ -128,11 +128,9 @@ export const projects: Project[] = [
     slug: 'projects',
     title: 'Case studies',
     description:
-      'Five projects taken apart: the constraint I was designing against, the call I made, and what I would do differently now.',
+      'Projects taken apart: the constraint I was designing against, the call I made, and what I would do differently now.',
     links: [
       { label: 'Cognition', href: '/casestudy/cognition' },
-      { label: 'LessonLoom', href: '/casestudy/lessonloom' },
-      { label: 'EduScheduler', href: '/casestudy/scheduler' },
       { label: 'Optum Bank', href: '/casestudy/uhg' },
       { label: 'dwic design decisions', href: '/decisions/dwic' },
     ],

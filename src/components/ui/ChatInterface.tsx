@@ -12,18 +12,18 @@ import ChatSuggestions from './chat/ChatSuggestions';
 // Case study data for easy maintenance
 const caseStudies = [
   {
-    id: 'lessonloom',
-    title: 'LessonLoom',
+    id: 'cognition',
+    title: 'Cognition',
     description:
-      'An innovative platform that automates the creation of educational materials using AI and templating systems. Increased student engagement by 35% and reduced lesson planning time by 40%.',
-    url: '/casestudy/lessonloom',
+      'Conversational AI for government education leaders, scoped strictly to programme data. It declines out-of-scope questions out loud, which is the product rather than a limitation. Unveiled at the Education World Forum in 2026.',
+    url: '/casestudy/cognition',
   },
   {
-    id: 'eduscheduler',
-    title: 'EduScheduler',
+    id: 'uhg',
+    title: 'Optum Bank',
     description:
-      'An intelligent academic planning system that generates optimized teaching schedules. Reduced scheduling time by 60% and improved meeting attendance by 25%.',
-    url: '/casestudy/scheduler',
+      'Receipt capture and claims substantiation for healthcare payments, designed against strict compliance constraints without making the everyday path harder.',
+    url: '/casestudy/uhg',
   },
 ];
 

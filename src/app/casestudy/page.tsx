@@ -1,66 +1,10 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-import Link from 'next/link';
-import React from 'react';
-
+/**
+ * /casestudy was a bare dev index that listed every case study plus a test
+ * page, with no site chrome. It also linked the two unpublished studies, which
+ * defeated the point of unpublishing them. The real index is /projects.
+ */
 export default function CaseStudyIndex() {
-  return (
-    <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '20px' }}>
-        Case Studies
-      </h1>
-
-      <p style={{ marginBottom: '20px' }}>
-        Select a case study from the list below:
-      </p>
-
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        <li style={{ marginBottom: '10px' }}>
-          <Link href="/casestudy/lessonloom" style={{
-            color: '#64748b',
-            textDecoration: 'none',
-            display: 'block',
-            padding: '12px',
-            backgroundColor: '#f1f5f9',
-            borderRadius: '4px'
-          }}>
-            Lesson Loom - AI-powered Educational Content
-          </Link>
-        </li>
-        <li style={{ marginBottom: '10px' }}>
-          <Link href="/casestudy/scheduler" style={{
-            color: '#64748b',
-            textDecoration: 'none',
-            display: 'block',
-            padding: '12px',
-            backgroundColor: '#f1f5f9',
-            borderRadius: '4px'
-          }}>
-            EduScheduler: Intelligent Academic Planning System
-          </Link>
-        </li>
-        <li>
-          <Link href="/test" style={{
-            color: '#64748b',
-            textDecoration: 'none',
-            display: 'block',
-            padding: '12px',
-            backgroundColor: '#f1f5f9',
-            borderRadius: '4px'
-          }}>
-            Test Page
-          </Link>
-        </li>
-      </ul>
-
-      <div style={{ marginTop: '30px' }}>
-        <Link href="/" style={{
-          color: '#64748b',
-          textDecoration: 'none'
-        }}>
-          ← Back to Home
-        </Link>
-      </div>
-    </div>
-  );
+  redirect('/projects');
 }

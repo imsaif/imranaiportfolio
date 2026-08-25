@@ -9,12 +9,11 @@ import { ArrowLeft } from '@/components/Icons';
 export default function CaseStudyFooter() {
   const pathname = usePathname();
 
-  // Determine which case study is being viewed
-  const isSchedulerCaseStudy = pathname?.includes('/scheduler');
-
-  // Set the other case study link and title
-  const otherCaseStudyLink = isSchedulerCaseStudy ? '/casestudy/lessonloom' : '/casestudy/scheduler';
-  const otherCaseStudyTitle = isSchedulerCaseStudy ? 'LessonLoom Case Study' : 'EduScheduler Case Study';
+  // Point at another *published* case study. LessonLoom and EduScheduler are
+  // unpublished — their URLs still work, but nothing should route readers there.
+  const onCognition = pathname?.includes('/cognition');
+  const otherCaseStudyLink = onCognition ? '/casestudy/uhg' : '/casestudy/cognition';
+  const otherCaseStudyTitle = onCognition ? 'Optum Bank Case Study' : 'Cognition Case Study';
 
   return (
     <motion.div
