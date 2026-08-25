@@ -13,7 +13,36 @@ interface DemoSlide {
   url: string;
 }
 
+/**
+ * Ordered to match the card strip: the client work first, then my own
+ * products. Lines are hand-wrapped to roughly 60 characters so they sit
+ * inside the terminal frame without reflowing.
+ */
 const slides: DemoSlide[] = [
+  {
+    title: 'Cognition',
+    tagline: 'Plain-English answers from national education data.',
+    description: [
+      'I designed Cognition for the officials who run a national',
+      'education programme. They ask a question in plain English and',
+      'get an answer back, instead of a dashboard to interpret.',
+      'Unveiled at the Education World Forum, London 2026.',
+    ],
+    // Points at NewGlobe's own announcement, the same destination as the
+    // card's Visit site. The case study is reachable from the card.
+    url: 'https://newglobe.education/enterprise-ai.html',
+  },
+  {
+    title: 'aiuxdesign.guide',
+    tagline: 'Audit your design, take the fixes as Claude skills.',
+    description: [
+      'I built aiuxdesign.guide to score AI interfaces against 38',
+      'patterns from real products. Upload a screenshot and see what',
+      'is missing, then download each gap as a Claude skill you can',
+      'work from in Claude Code. Free, no signup.',
+    ],
+    url: 'https://aiuxdesign.guide',
+  },
   {
     title: 'designwithclaude',
     tagline: 'A senior designer inside your terminal.',
@@ -23,26 +52,6 @@ const slides: DemoSlide[] = [
       'agents you can drop into Claude Code.',
     ],
     url: 'https://designwithclaude.com',
-  },
-  {
-    title: 'AI UX Design Guide',
-    tagline: 'AI UX patterns from real products.',
-    description: [
-      'I built aiuxdesign.guide to document AI UX patterns from real',
-      'products. A free, open library used by designers shipping AI',
-      'features today.',
-    ],
-    url: 'https://aiuxdesign.guide',
-  },
-  {
-    title: 'llmsgist.org',
-    tagline: 'Structured design specs for AI coding tools.',
-    description: [
-      'I built llmsgist as a structured spec format for AI coding tools.',
-      '.gist.design files give Claude, Cursor, and Copilot the design',
-      'context they otherwise lack.',
-    ],
-    url: 'https://llmsgist.org',
   },
 ];
 
@@ -328,12 +337,17 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
   const titleText = prefersReducedMotion ? slide.title : slide.title.slice(0, titleChars);
   const taglineText = prefersReducedMotion ? slide.tagline : slide.tagline.slice(0, taglineChars);
   const urlText = prefersReducedMotion ? slide.url : slide.url.slice(0, urlChars);
-  const afterSlideUrl = ['slide-url', 'slide-prompt', 'slide-hold', 'resume-prompt', 'resume-declined', 'resume-redirecting', 'done'];
-  const showTagline =
-    prefersReducedMotion ||
-    ['slide-tagline', 'slide-desc', ...afterSlideUrl].includes(phase);
-  const showDesc =
-    prefersReducedMotion || ['slide-desc', ...afterSlideUrl].includes(phase);
+  const afterSlideUrl = [
+    'slide-url',
+    'slide-prompt',
+    'slide-hold',
+    'resume-prompt',
+    'resume-declined',
+    'resume-redirecting',
+    'done',
+  ];
+  const showTagline = prefersReducedMotion || ['slide-tagline', 'slide-desc', ...afterSlideUrl].includes(phase);
+  const showDesc = prefersReducedMotion || ['slide-desc', ...afterSlideUrl].includes(phase);
   const showUrl = prefersReducedMotion || afterSlideUrl.includes(phase);
   const showContinuePrompt =
     phase === 'slide-prompt' ||
@@ -341,16 +355,15 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
     phase === 'resume-declined' ||
     phase === 'resume-redirecting' ||
     (phase === 'slide-hold' && promptAnswer === 'y');
-  const showResumePrompt =
-    phase === 'resume-prompt' || phase === 'resume-declined' || phase === 'resume-redirecting';
+  const showResumePrompt = phase === 'resume-prompt' || phase === 'resume-declined' || phase === 'resume-redirecting';
 
   const renderedDesc = prefersReducedMotion
     ? slide.description
-    : slide.description.slice(0, descLineIdx).concat(
-        descLineIdx < slide.description.length
-          ? [slide.description[descLineIdx]!.slice(0, descLineChars)]
-          : []
-      );
+    : slide.description
+        .slice(0, descLineIdx)
+        .concat(
+          descLineIdx < slide.description.length ? [slide.description[descLineIdx]!.slice(0, descLineChars)] : []
+        );
 
   return (
     <div className="w-full max-w-3xl mx-auto">
@@ -427,7 +440,16 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
               {showUrl && (
                 <>
                   <span className="text-white/40">→ </span>
-                  {urlText}
+                  {/* The href is the whole URL even while the text is still
+                      typing, so a click mid-animation still lands correctly. */}
+                  <a
+                    href={slide.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-white/25 underline-offset-4 transition-colors hover:text-white hover:decoration-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60"
+                  >
+                    {urlText}
+                  </a>
                   {phase === 'slide-url' && <Cursor />}
                 </>
               )}
@@ -452,9 +474,7 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
               <span className="text-white">{resumeAnswer}</span>
               {phase === 'resume-prompt' && <Cursor />}
               {phase === 'resume-declined' && (
-                <div className="mt-2 text-white/50">
-                  No problem. Feel free to browse the projects below.
-                </div>
+                <div className="mt-2 text-white/50">No problem. Feel free to browse the projects below.</div>
               )}
               {phase === 'resume-redirecting' && (
                 <div className="mt-2 text-white/50">
@@ -464,9 +484,7 @@ const TerminalDemo = ({ onClose }: TerminalDemoProps) => {
             </div>
           )}
 
-          <div className="mt-3 text-white/30">
-            [←] back   [→] next   [q] quit
-          </div>
+          <div className="mt-3 text-white/30">[←] back [→] next [q] quit</div>
         </div>
       </div>
 

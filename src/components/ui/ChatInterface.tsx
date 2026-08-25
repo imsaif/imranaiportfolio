@@ -15,7 +15,7 @@ const caseStudies = [
     id: 'cognition',
     title: 'Cognition',
     description:
-      'Conversational AI for government education leaders, scoped strictly to programme data. It declines out-of-scope questions out loud, which is the product rather than a limitation. Unveiled at the Education World Forum in 2026.',
+      'Conversational AI for government education leaders, scoped strictly to programme data. It declines out-of-scope questions out loud, which is the product rather than a limitation. Unveiled at the Education World Forum in London, 2026.',
     url: '/casestudy/cognition',
   },
   {

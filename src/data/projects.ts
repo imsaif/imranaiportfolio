@@ -81,7 +81,7 @@ export const projects: Project[] = [
     external: true,
     ctaLabel: 'Visit site',
     tagline: 'AI PRODUCT DESIGN, CONVERSATIONAL UX',
-    statLabel: 'Unveiled at the Education World Forum 2026',
+    statLabel: 'Unveiled at the Education World Forum, London 2026',
     detail: {
       problem:
         'Officials who answer to ministers had dashboards, but a dashboard hands back numbers to interpret, not an answer they can say out loud in the next meeting.',
@@ -121,8 +121,9 @@ export const projects: Project[] = [
   {
     id: 102,
     slug: 'aiex',
-    title: 'AI UX Design Guide',
-    description: 'A free AI UX audit built on 38 patterns, each one a working example rather than a picture of one.',
+    title: 'aiuxdesign.guide',
+    description:
+      'A free AI UX audit built on 38 patterns. Upload a screenshot, see what is missing, and take each gap away as a Claude skill.',
     statLabel: '3,000+ designers using',
     detail: {
       problem:
@@ -166,11 +167,12 @@ export const projects: Project[] = [
     id: 104,
     slug: 'projects',
     title: 'Case studies',
-    description:
-      'Projects taken apart: the constraint I was designing against, the call I made, and what I would do differently now.',
+    // No description: the four links below say what this is better than a line
+    // introducing them would.
+    description: '',
     links: [
       { label: 'Cognition', href: '/casestudy/cognition' },
-      { label: 'AI UX Design Guide', href: '/casestudy/aiex' },
+      { label: 'aiuxdesign.guide', href: '/casestudy/aiex' },
       { label: 'Optum Bank', href: '/casestudy/uhg' },
       { label: 'dwic design decisions', href: '/decisions/dwic' },
     ],
@@ -181,9 +183,9 @@ export const projects: Project[] = [
     images: [],
     featured: true,
     external: false,
-    detail: {
-      inside: 'AI tooling at NewGlobe, enterprise healthcare at Optum, and the decision record behind dwic.',
-    },
+    // No summary line either. Four named links are the clearest thing this card
+    // can say about itself.
+    detail: {},
     ctaLabel: 'All case studies',
     logo: { type: 'icon', name: 'folder' },
     tagline: 'CASE STUDIES',

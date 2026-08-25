@@ -23,8 +23,7 @@ const LEAD_IN = 0.12;
  * with that panel still cut off at the edge.
  */
 const LEAD_OUT = 0.12;
-const travelProgress = (p: number) =>
-  Math.min(1, Math.max(0, (p - LEAD_IN) / (1 - LEAD_IN - LEAD_OUT)));
+const travelProgress = (p: number) => Math.min(1, Math.max(0, (p - LEAD_IN) / (1 - LEAD_IN - LEAD_OUT)));
 
 const Arrow = () => (
   <svg
@@ -121,14 +120,8 @@ const Panel = ({ project }: { project: Project }) => {
    */
   const markEntryPoint = (event: React.PointerEvent<HTMLElement>) => {
     const box = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty(
-      '--mx',
-      `${((event.clientX - box.left) / box.width) * 100}%`
-    );
-    event.currentTarget.style.setProperty(
-      '--my',
-      `${((event.clientY - box.top) / box.height) * 100}%`
-    );
+    event.currentTarget.style.setProperty('--mx', `${((event.clientX - box.left) / box.width) * 100}%`);
+    event.currentTarget.style.setProperty('--my', `${((event.clientY - box.top) / box.height) * 100}%`);
   };
 
   return (
@@ -137,33 +130,31 @@ const Panel = ({ project }: { project: Project }) => {
       onPointerLeave={markEntryPoint}
       className="group relative isolate flex h-full flex-col overflow-hidden rounded-3xl border border-border-secondary bg-background-grain p-5 transition-colors duration-200 sm:p-8 [@media(hover:hover)]:hover:border-text-tertiary md:p-10"
     >
-      <span
-        aria-hidden="true"
-        className="cursor-fill pointer-events-none -z-10 bg-background-primary"
-      />
+      <span aria-hidden="true" className="cursor-fill pointer-events-none -z-10 bg-background-primary" />
       <div className="flex items-start gap-3">
         <PanelIcon project={project} />
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h3 className="text-xl font-semibold tracking-tight text-text-primary md:text-2xl">
-            {project.title}
-          </h3>
-          {project.statLabel && (
-            <span className="font-mono text-xs uppercase tracking-[0.06em] text-text-tertiary">
-              {project.statLabel}
-            </span>
-          )}
-        </div>
+        <h3 className="text-xl font-semibold tracking-tight text-text-primary md:text-2xl">{project.title}</h3>
       </div>
-      <p className="mt-2 max-w-2xl text-[15px] leading-[1.55] sm:text-[16px] sm:leading-relaxed text-text-secondary">
-        {project.description}
-      </p>
+      {/* Deliberately outside the icon row. Nested beside the icon it inherited
+          the icon's indent, so on a card with a mark it sat further in than the
+          description directly beneath it. */}
+      {project.statLabel && (
+        <span className="mt-2 block font-mono text-xs uppercase tracking-[0.06em] text-text-tertiary">
+          {project.statLabel}
+        </span>
+      )}
+      {/* Guarded: a card whose links speak for themselves leaves this empty,
+          and an empty paragraph still takes its top margin. */}
+      {project.description && (
+        <p className="mt-2 max-w-2xl text-[15px] leading-[1.55] sm:text-[16px] sm:leading-relaxed text-text-secondary">
+          {project.description}
+        </p>
+      )}
 
       <div className="mt-5 flex-grow sm:mt-7">
         {detail?.problem && (
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-text-secondary">
-              The problem
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-text-secondary">The problem</p>
             {/* Reading measure stays capped even though the panel is wide. */}
             <p className="mt-2 max-w-2xl text-[15px] leading-[1.55] sm:text-[16px] sm:leading-relaxed text-text-secondary">
               {detail.problem}
@@ -173,9 +164,7 @@ const Panel = ({ project }: { project: Project }) => {
 
         {detail?.chose && (
           <div className="mt-5 sm:mt-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-text-secondary">
-              What I decided
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-[0.08em] text-text-secondary">What I decided</p>
             <p className="mt-2 max-w-2xl text-[15px] leading-[1.55] sm:text-[16px] sm:leading-relaxed text-text-primary">
               {detail.chose}
             </p>
@@ -188,7 +177,9 @@ const Panel = ({ project }: { project: Project }) => {
         )}
 
         {detail?.inside && (
-          <p className="max-w-2xl text-[15px] leading-[1.55] sm:text-[16px] sm:leading-relaxed text-text-secondary">{detail.inside}</p>
+          <p className="max-w-2xl text-[15px] leading-[1.55] sm:text-[16px] sm:leading-relaxed text-text-secondary">
+            {detail.inside}
+          </p>
         )}
 
         {project.links?.length ? (
@@ -201,12 +192,7 @@ const Panel = ({ project }: { project: Project }) => {
               return (
                 <li key={link.href}>
                   {isExternal ? (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={className}
-                    >
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className={className}>
                       {link.label}
                       <span className="sr-only"> (opens in a new tab)</span>
                     </a>
@@ -276,9 +262,7 @@ const useStripMode = (): StripMode => {
 
 /** Panels use h3; without an h2 the heading order jumps from the hero's h1. */
 const StripHeading = () => (
-  <h2 className="mb-4 text-center font-mono text-xs uppercase tracking-[0.14em] text-text-tertiary">
-    Selected work
-  </h2>
+  <h2 className="mb-4 text-center font-mono text-xs uppercase tracking-[0.14em] text-text-tertiary">Selected work</h2>
 );
 
 const Ticks = ({ activeIndex, onSelect }: { activeIndex: number; onSelect: (i: number) => void }) => (
@@ -294,9 +278,7 @@ const Ticks = ({ activeIndex, onSelect }: { activeIndex: number; onSelect: (i: n
       >
         <span
           className={`block h-3 rounded-full transition-all duration-300 ${
-            index === activeIndex
-              ? 'w-8 bg-text-primary'
-              : 'w-1 bg-border-secondary group-hover:bg-text-tertiary'
+            index === activeIndex ? 'w-8 bg-text-primary' : 'w-1 bg-border-secondary group-hover:bg-text-tertiary'
           }`}
         />
       </button>
@@ -353,9 +335,7 @@ const PinnedStrip = () => {
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.on('change', value => {
-      setActiveIndex(
-        Math.min(projects.length - 1, Math.round(travelProgress(value) * (projects.length - 1)))
-      );
+      setActiveIndex(Math.min(projects.length - 1, Math.round(travelProgress(value) * (projects.length - 1))));
     });
     return unsubscribe;
   }, [scrollYProgress]);
@@ -363,8 +343,7 @@ const PinnedStrip = () => {
   const scrollToIndex = useCallback((index: number, behavior: ScrollBehavior = 'smooth') => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
-    const ratio =
-      LEAD_IN + (index / Math.max(1, projects.length - 1)) * (1 - LEAD_IN - LEAD_OUT);
+    const ratio = LEAD_IN + (index / Math.max(1, projects.length - 1)) * (1 - LEAD_IN - LEAD_OUT);
     // Document position, not offsetTop: offsetTop is relative to the offset
     // parent, which left the scroll landing short and the indicator a panel behind.
     const documentTop = window.scrollY + wrapper.getBoundingClientRect().top;
