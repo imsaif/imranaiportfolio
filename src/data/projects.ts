@@ -81,7 +81,7 @@ export const projects: Project[] = [
     external: true,
     ctaLabel: 'Visit site',
     tagline: 'AI PRODUCT DESIGN, CONVERSATIONAL UX',
-    statLabel: 'Unveiled at the Education World Forum 2026',
+    statLabel: 'Unveiled at the Education World Forum, London 2026',
     detail: {
       problem:
         'Officials who answer to ministers had dashboards, but a dashboard hands back numbers to interpret, not an answer they can say out loud in the next meeting.',
@@ -121,7 +121,7 @@ export const projects: Project[] = [
   {
     id: 102,
     slug: 'aiex',
-    title: 'AI UX Design Guide',
+    title: 'AIUXD',
     description: 'A free AI UX audit built on 38 patterns, each one a working example rather than a picture of one.',
     statLabel: '3,000+ designers using',
     detail: {
@@ -166,11 +166,10 @@ export const projects: Project[] = [
     id: 104,
     slug: 'projects',
     title: 'Case studies',
-    description:
-      'Projects taken apart: the constraint I was designing against, the call I made, and what I would do differently now.',
+    description: 'The full write-ups.',
     links: [
       { label: 'Cognition', href: '/casestudy/cognition' },
-      { label: 'AI UX Design Guide', href: '/casestudy/aiex' },
+      { label: 'AIUXD', href: '/casestudy/aiex' },
       { label: 'Optum Bank', href: '/casestudy/uhg' },
       { label: 'dwic design decisions', href: '/decisions/dwic' },
     ],
@@ -182,7 +181,7 @@ export const projects: Project[] = [
     featured: true,
     external: false,
     detail: {
-      inside: 'AI tooling at NewGlobe, enterprise healthcare at Optum, and the decision record behind dwic.',
+      inside: 'AI at NewGlobe, my own audit tool, enterprise healthcare at Optum, and the decisions behind dwic.',
     },
     ctaLabel: 'All case studies',
     logo: { type: 'icon', name: 'folder' },
