@@ -314,6 +314,38 @@ export const projects: Project[] = [
       { label: 'Adoption Rate', value: '92%' },
     ],
   },
+  {
+    id: 5,
+    slug: 'cognition',
+    title: 'Cognition: Conversational AI for Education Leaders',
+    description:
+      'An AI assistant that answers questions about national programme data \u2014 and declines everything else.',
+    fullDescription: `
+      Government education leaders sat on a rich daily dataset they could not interrogate, because
+      the only way in was a BI tool that assumed analyst fluency. I designed and built Cognition as
+      a conversational surface scoped strictly to programme data, where refusing out-of-scope
+      questions is the product rather than a limitation. Shipped as a working prototype and an
+      internal proposal; the client, country and programme are not named.
+    `,
+    technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Zustand'],
+    liveUrl: '',
+    githubUrl: '',
+    images: [
+      '/images/casestudy/cognition/welcome.jpg',
+      '/images/casestudy/cognition/refusal.jpg',
+      '/images/casestudy/cognition/answer-table.jpg',
+      '/images/casestudy/cognition/reasoning.jpg',
+    ],
+    featured: true,
+    tagline: 'AI PRODUCT DESIGN, CONVERSATIONAL UX',
+    statLabel: 'Designed and built end to end',
+    detail: {
+      problem:
+        'Officials who answer to ministers could not interrogate their own programme data \u2014 the only interface assumed analyst fluency they did not have.',
+      chose: 'An assistant scoped strictly to programme data, which declines out loud and says why',
+      over: 'A capable general assistant that answers whatever it is asked',
+    },
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
