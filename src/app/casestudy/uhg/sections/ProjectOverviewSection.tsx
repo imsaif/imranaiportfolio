@@ -50,7 +50,7 @@ export function ProjectOverviewSection() {
             The Challenge
           </h4>
           <p className="text-gray-800 text-lg leading-relaxed mb-4">
-            The HSA platform serves <strong>450K users</strong> managing their healthcare reimbursements, but the feature had a <strong className="text-slate-700">98.9% abandonment rate</strong> with only a <strong>1.1% completion rate</strong>—the lowest performing feature in the platform.
+            The HSA platform serves <strong>450K users</strong> managing their healthcare reimbursements, but the feature had a <strong className="text-slate-700">98.9% abandonment rate</strong> with only a <strong>1.1% completion rate</strong>, the lowest performing feature in the platform.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
             <div>
@@ -86,7 +86,7 @@ export function ProjectOverviewSection() {
                 <MdGroups className="text-slate-500" size={20} />
                 Multi-User Challenge
               </h4>
-              <p className="text-gray-600">Four distinct user types with conflicting needs—from digital natives to assisted users</p>
+              <p className="text-gray-600">Four distinct user types with conflicting needs, from digital natives to assisted users</p>
             </div>
             <div>
               <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
@@ -105,7 +105,7 @@ export function ProjectOverviewSection() {
           </div>
           <div className="mt-6 pt-6 border-t border-gray-200">
             <p className="text-gray-700 text-base">
-              <strong>Cross-device reality:</strong> 67% started on mobile, 38% switched to desktop after failures—revealing device choice was context-dependent.
+              <strong>Cross-device reality:</strong> 67% started on mobile, 38% switched to desktop after failures, revealing device choice was context-dependent.
             </p>
           </div>
         </div>

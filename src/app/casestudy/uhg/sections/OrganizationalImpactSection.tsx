@@ -28,7 +28,7 @@ export function OrganizationalImpactSection() {
                 <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
                   <p className="font-bold text-slate-900 mb-3">Progressive Disclosure Pattern</p>
                   <p className="text-sm text-slate-800 mb-2">
-                    How we balanced compliance requirements with usability—showing information contextually rather than overwhelming users upfront. This became the team's go-to approach for regulated features.
+                    How we balanced compliance requirements with usability, showing information contextually rather than overwhelming users upfront. This became the team's go-to approach for regulated features.
                   </p>
                   <p className="text-xs text-gray-600">Adopted by: Product design team (adopted in 3+ projects)</p>
                 </div>

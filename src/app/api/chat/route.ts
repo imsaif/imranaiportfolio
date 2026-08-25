@@ -175,7 +175,7 @@ export async function POST(request: Request) {
     1. Cognition case study: https://imranai.design/casestudy/cognition
     2. Optum Bank case study: https://imranai.design/casestudy/uhg
 
-    Only ever link these two. Other case studies exist but are unpublished — do
+    Only ever link these two. Other case studies exist but are unpublished. Do
     not mention or link them.
 
     When someone asks about case studies or projects, format your response like this:
@@ -183,7 +183,7 @@ export async function POST(request: Request) {
     Of course! I've worked on several exciting projects:
 
     **Cognition**
-    Conversational AI for the government education leaders who run a national programme. It is scoped strictly to programme data and declines anything outside that, out loud — which is what makes it something an official can put in front of a minister. NewGlobe unveiled it at the Education World Forum in London in 2026.
+    Conversational AI for the government education leaders who run a national programme. It is scoped strictly to programme data and declines anything outside that, out loud, which is what makes it something an official can put in front of a minister. NewGlobe unveiled it at the Education World Forum in London in 2026.
 
     **Optum Bank**
     Receipt capture and claims substantiation for healthcare payments, designed against strict compliance requirements without making the everyday path harder for people just trying to submit a receipt.

@@ -55,6 +55,43 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 5,
+    slug: 'cognition',
+    title: 'Cognition: Conversational AI for Education Leaders',
+    description: 'An AI assistant that answers questions about national programme data, and declines everything else.',
+    fullDescription: `
+      Government education leaders had dashboards over a rich daily dataset, and used them. What the
+      dashboards gave back was numbers to interpret, not answers to repeat. I designed Cognition as
+      a conversational surface scoped strictly to programme data, where refusing out-of-scope
+      questions is the product rather than a limitation. Unveiled at the Education World Forum in
+      London in May 2026 as part of NewGlobe's enterprise AI suite.
+    `,
+    technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Zustand'],
+    // The primary CTA goes to NewGlobe's own announcement, which is the outside
+    // proof the product is real. The case study sits behind the secondary link.
+    liveUrl: 'https://newglobe.education/enterprise-ai.html',
+    githubUrl: '',
+    images: [
+      '/images/casestudy/cognition/welcome.jpg',
+      '/images/casestudy/cognition/refusal.jpg',
+      '/images/casestudy/cognition/answer-table.jpg',
+      '/images/casestudy/cognition/reasoning.jpg',
+    ],
+    featured: true,
+    external: true,
+    ctaLabel: 'Visit site',
+    tagline: 'AI PRODUCT DESIGN, CONVERSATIONAL UX',
+    statLabel: 'Unveiled at the Education World Forum 2026',
+    detail: {
+      problem:
+        'Officials who answer to ministers had dashboards, but a dashboard hands back numbers to interpret, not an answer they can say out loud in the next meeting.',
+      chose: 'An assistant scoped strictly to programme data, which declines out loud and says why',
+      over: 'A capable general assistant that answers whatever it is asked',
+      moreHref: '/casestudy/cognition',
+      moreLabel: 'Read how I designed it',
+    },
+  },
+  {
     id: 101,
     slug: 'designwithclaude',
     title: 'designwithclaude',
@@ -74,7 +111,7 @@ export const projects: Project[] = [
     liveUrl: 'https://designwithclaude.com',
     githubUrl: '',
     images: [],
-    featured: true,
+    featured: false,
     external: true,
     ctaLabel: 'Visit site',
     logo: { type: 'image', src: '/images/logos/dwic-icon.svg' },
@@ -295,7 +332,7 @@ export const projects: Project[] = [
     fullDescription: `
       As a product designer for LessonLoom, I led the design process for an innovative platform that automates 
       the creation of educational materials using AI and templating systems. This case study walks through how our 
-      design team approached this complex challenge – from understanding user needs and pain points to crafting an 
+      design team approached this complex challenge, from understanding user needs and pain points to crafting an 
       intuitive interface that empowers educators to create high-quality content at scale.
     `,
     technologies: ['Vue.js', '.NET Core', 'Python', 'Azure OpenAI', 'AWS S3'],
@@ -314,38 +351,6 @@ export const projects: Project[] = [
       { label: 'Time Saved per Teacher', value: '6h/week' },
       { label: 'Adoption Rate', value: '92%' },
     ],
-  },
-  {
-    id: 5,
-    slug: 'cognition',
-    title: 'Cognition: Conversational AI for Education Leaders',
-    description:
-      'An AI assistant that answers questions about national programme data \u2014 and declines everything else.',
-    fullDescription: `
-      Government education leaders had dashboards over a rich daily dataset, and used them. What the
-      dashboards gave back was numbers to interpret, not answers to repeat. I designed Cognition as
-      a conversational surface scoped strictly to programme data, where refusing out-of-scope
-      questions is the product rather than a limitation. Unveiled at the Education World Forum in
-      London in May 2026 as part of NewGlobe's enterprise AI suite.
-    `,
-    technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Zustand'],
-    liveUrl: '',
-    githubUrl: '',
-    images: [
-      '/images/casestudy/cognition/welcome.jpg',
-      '/images/casestudy/cognition/refusal.jpg',
-      '/images/casestudy/cognition/answer-table.jpg',
-      '/images/casestudy/cognition/reasoning.jpg',
-    ],
-    featured: true,
-    tagline: 'AI PRODUCT DESIGN, CONVERSATIONAL UX',
-    statLabel: 'Unveiled at the Education World Forum 2026',
-    detail: {
-      problem:
-        'Officials who answer to ministers had dashboards, but a dashboard hands back numbers to interpret \u2014 not an answer they can say out loud in the next meeting.',
-      chose: 'An assistant scoped strictly to programme data, which declines out loud and says why',
-      over: 'A capable general assistant that answers whatever it is asked',
-    },
   },
 ];
 
