@@ -34,11 +34,12 @@ const slides: DemoSlide[] = [
   },
   {
     title: 'aiuxdesign.guide',
-    tagline: 'A free audit for AI interfaces.',
+    tagline: 'Audit your design, take the fixes as Claude skills.',
     description: [
       'I built aiuxdesign.guide to score AI interfaces against 38',
-      'patterns taken from real products. Upload a screenshot, see',
-      'what is missing. Free, no signup.',
+      'patterns from real products. Upload a screenshot and see what',
+      'is missing, then download each gap as a Claude skill you can',
+      'work from in Claude Code. Free, no signup.',
     ],
     url: 'https://aiuxdesign.guide',
   },

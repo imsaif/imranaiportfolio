@@ -122,7 +122,8 @@ export const projects: Project[] = [
     id: 102,
     slug: 'aiex',
     title: 'aiuxdesign.guide',
-    description: 'A free AI UX audit built on 38 patterns, each one a working example rather than a picture of one.',
+    description:
+      'A free AI UX audit built on 38 patterns. Upload a screenshot, see what is missing, and take each gap away as a Claude skill.',
     statLabel: '3,000+ designers using',
     detail: {
       problem:
