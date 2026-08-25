@@ -12,7 +12,7 @@ const META: { label: string; value: string }[] = [
 ];
 
 /**
- * aiuxdesign.guide — my own product. Every claim here is checkable by opening
+ * aiuxdesign.guide, my own product. Every claim here is checkable by opening
  * the site. Funnel figures are dated windows, not current state: two of the
  * readings quoted were later corrected, and that correction is the point of
  * section 05.
@@ -25,7 +25,7 @@ export default function AiexCaseStudy() {
           aiuxdesign.guide &middot; my own product
         </p>
         <h1 className="mt-5 text-4xl font-bold leading-[1.12] tracking-tight text-gray-900 md:text-5xl">
-          It started as a folder on my laptop.
+          From a folder on my laptop to production.
         </h1>
         <p className="mt-6 text-xl leading-relaxed text-gray-600">
           A free AI UX audit built on 38 patterns, each one a working example rather than a picture of one. Nothing here
@@ -55,8 +55,8 @@ export default function AiexCaseStudy() {
       <Section index="01" title="Nowhere to look">
         <p>
           I was designing for AI, with AI, and I wanted to know how other people were solving the same problems. There
-          was no good answer. Figma templates and Dribbble shots show you what an AI product <em>looks</em> like &mdash;
-          the polish, the gradient, the imagined screen. None of them show you how the thing behaves when the model is
+          was no good answer. Figma templates and Dribbble shots show you what an AI product <em>looks</em> like: the
+          polish, the gradient, the imagined screen. None of them show you how the thing behaves when the model is
           uncertain, or wrong, or slow.
         </p>
         <p>
@@ -84,7 +84,7 @@ export default function AiexCaseStudy() {
       <Figure
         src="/images/casestudy/aiex/micro-app.jpg"
         alt="The Human-in-the-Loop pattern page showing a working content moderation queue you can interact with, plus a Preview and Code toggle"
-        caption="The Human-in-the-Loop micro-app. Flag something, approve it, override the model — then read the code that does it."
+        caption="The Human-in-the-Loop micro-app. Flag something, approve it, override the model, then read the code that does it."
       />
 
       {/* ---------- 03 ---------- */}
@@ -103,11 +103,11 @@ export default function AiexCaseStudy() {
           items={[
             {
               label: 'It evaluates, it does not learn',
-              body: 'Each audit is independent. Nothing carries over between runs and no signal adjusts the model — so this is an evaluation harness, not a system that improves itself.',
+              body: 'Each audit is independent. Nothing carries over between runs, and no signal adjusts the model. This is an evaluation harness, not a system that improves itself.',
             },
             {
               label: 'A critic stage, built and held back',
-              body: 'A second pass judges each finding against a quality rubric — keep, sharpen or drop, and whether the evidence is actually visible in the screenshot — then a revision step fixes what it flags, inside a 55-second budget so it cannot run past the timeout.',
+              body: 'A second pass judges each finding against a quality rubric (keep, sharpen or drop, and whether the evidence is actually visible in the screenshot). A revision step then fixes what it flags, inside a 55-second budget so it cannot run past the timeout.',
             },
             {
               label: 'Off in production, deliberately',
@@ -121,8 +121,8 @@ export default function AiexCaseStudy() {
       <Section index="04" title="Twice I asked, twice I changed direction">
         <p>
           I ran a survey asking what would make the site more useful. Over 60% wanted something that closed the gap
-          between design and engineering &mdash; not more patterns. So I wrote guides. There are eight now, and the two
-          people stay longest in, three to four hours, are Claude Code for Designers and Building Conversational UI.
+          between design and engineering, not more patterns. So I wrote guides. There are eight now, and the two people
+          stay longest in, three to four hours, are Claude Code for Designers and Building Conversational UI.
         </p>
         <p>
           A later survey said something different: people wanted help turning all of this into Claude skills they could
@@ -143,14 +143,14 @@ export default function AiexCaseStudy() {
           concluded people were uploading the wrong kind of screenshot and started designing fixes for that.
         </p>
         <p>
-          Before building them, I grouped the sessions by IP hash. Six of the seven were me &mdash; my own testing
-          across two Macs and three Windows browsers. One row was a real person, and for that person the tool had worked
-          on the first try, with the maximum number of images.
+          Before building them, I grouped the sessions by IP hash. Six of the seven were me: my own testing across two
+          Macs and three Windows browsers. One row was a real person, and for that person the tool had worked on the
+          first try, with the maximum number of images.
         </p>
         <p>
           There was no quality problem. There was one real user in fourteen days. The bottleneck was not the product at
-          all, it was that almost nobody had arrived yet &mdash; and every fix I had been about to build would have
-          addressed a failure that did not exist.
+          all, it was that almost nobody had arrived yet. Every fix I had been about to build would have addressed a
+          failure that did not exist.
         </p>
         <Steps
           items={[
@@ -174,8 +174,8 @@ export default function AiexCaseStudy() {
       <Section index="06" title="The leak I did find">
         <p>
           Once there were real users, one drop dominated everything: of the people who watched the demo on the homepage,
-          only about a fifth went on to start an audit of their own. Everything downstream of that click was healthy
-          &mdash; most people who started, finished, and most who finished got useful results.
+          only about a fifth went on to start an audit of their own. Everything downstream of that click was healthy .
+          Most people who started, finished, and most who finished got useful results.
         </p>
         <p>
           My first theory was that the interactive demo was satisfying people instead of converting them. The data said

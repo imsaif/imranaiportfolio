@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 /**
  * Small, shared pieces for the Cognition case study.
  *
- * The page deliberately runs long on images and short on prose — the product's
+ * The page deliberately runs long on images and short on prose. The product's
  * own design principle was "calm, editorial", and the write-up holds to it.
  */
 

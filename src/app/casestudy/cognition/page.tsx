@@ -12,10 +12,10 @@ const META: { label: string; value: string }[] = [
 ];
 
 /**
- * Cognition — conversational AI for government education leaders at NewGlobe.
+ * Cognition: conversational AI for government education leaders at NewGlobe.
  *
  * The product is public: NewGlobe unveiled it at the Education World Forum in
- * May 2026. Screens are the real interface running on synthetic figures — the
+ * May 2026. Screens are the real interface running on synthetic figures. The
  * partner data behind it is not mine to publish.
  */
 export default function CognitionCaseStudy() {
@@ -28,9 +28,9 @@ export default function CognitionCaseStudy() {
           A quiet interface for asking hard questions of programme data.
         </h1>
         <p className="mt-6 text-xl leading-relaxed text-gray-600">
-          Conversational AI for the officials who run a national education programme &mdash; and answer to ministers for
-          it. I led the design from problem framing through to the shipped interface, working with a PM, a solution
-          architect and the engineering team.
+          Conversational AI for the officials who run a national education programme, and answer to ministers for it. I
+          led the design from problem framing through to the shipped interface, working with a PM, a solution architect
+          and the engineering team.
         </p>
 
         <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-gray-200 pt-8 sm:grid-cols-4">
@@ -55,9 +55,9 @@ export default function CognitionCaseStudy() {
       {/* ---------- 01 ---------- */}
       <Section index="01" title="Data, not answers">
         <p>
-          NewGlobe held one of the richest education datasets anywhere &mdash; attendance, lesson delivery and
-          assessment captured daily across every school in the programme. The dashboards on top of it were real, and
-          people used them.
+          NewGlobe held one of the richest education datasets anywhere: attendance, lesson delivery and assessment
+          captured daily across every school in the programme. The dashboards on top of it were real, and people used
+          them.
         </p>
         <p>
           They just answered a different question. A dashboard shows you the numbers and leaves the interpretation to
@@ -157,14 +157,14 @@ export default function CognitionCaseStudy() {
       {/* ---------- 05 ---------- */}
       <Section index="05" title="Getting the reasoning disclosure right">
         <p>
-          A Lite mode answers immediately. A Pro mode shows the working &mdash; what was compared, against which
-          baseline, in what order. Deciding how much of that to show, and when, took three attempts.
+          A Lite mode answers immediately. A Pro mode shows the working: what was compared, against which baseline, in
+          what order. Deciding how much of that to show, and when, took three attempts.
         </p>
         <Steps
           items={[
             {
               label: 'Two separate boxes',
-              body: 'A thinking indicator above a list of steps. Accurate, and visually noisy — two containers competing before the answer had even arrived.',
+              body: 'A thinking indicator above a list of steps. Accurate, and visually noisy: two containers competing before the answer had even arrived.',
             },
             {
               label: 'One merged box',
@@ -200,8 +200,8 @@ export default function CognitionCaseStudy() {
           >
             Education World Forum
           </a>{' '}
-          in London in May 2026 &mdash; the largest annual gathering of education ministers in the world &mdash; as part
-          of NewGlobe&rsquo;s enterprise AI suite. Their announcement page carries the film of the unveiling.
+          in London in May 2026, the largest annual gathering of education ministers in the world, as part of
+          NewGlobe&rsquo;s enterprise AI suite. Their announcement page carries the film of the unveiling.
         </p>
         <p>
           I designed two of the others in the same suite: Activation, which narrows a district officer&rsquo;s week down
