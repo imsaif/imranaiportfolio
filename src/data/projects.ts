@@ -182,9 +182,9 @@ export const projects: Project[] = [
     images: [],
     featured: true,
     external: false,
-    detail: {
-      inside: 'AI at NewGlobe, my own audit tool, enterprise healthcare at Optum, and the decisions behind dwic.',
-    },
+    // No summary line either. Four named links are the clearest thing this card
+    // can say about itself.
+    detail: {},
     ctaLabel: 'All case studies',
     logo: { type: 'icon', name: 'folder' },
     tagline: 'CASE STUDIES',
