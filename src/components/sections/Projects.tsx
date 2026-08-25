@@ -143,9 +143,13 @@ const Panel = ({ project }: { project: Project }) => {
           {project.statLabel}
         </span>
       )}
-      <p className="mt-2 max-w-2xl text-[15px] leading-[1.55] sm:text-[16px] sm:leading-relaxed text-text-secondary">
-        {project.description}
-      </p>
+      {/* Guarded: a card whose links speak for themselves leaves this empty,
+          and an empty paragraph still takes its top margin. */}
+      {project.description && (
+        <p className="mt-2 max-w-2xl text-[15px] leading-[1.55] sm:text-[16px] sm:leading-relaxed text-text-secondary">
+          {project.description}
+        </p>
+      )}
 
       <div className="mt-5 flex-grow sm:mt-7">
         {detail?.problem && (

@@ -166,7 +166,9 @@ export const projects: Project[] = [
     id: 104,
     slug: 'projects',
     title: 'Case studies',
-    description: 'The full write-ups.',
+    // No description: the four links below say what this is better than a line
+    // introducing them would.
+    description: '',
     links: [
       { label: 'Cognition', href: '/casestudy/cognition' },
       { label: 'aiuxdesign.guide', href: '/casestudy/aiex' },
