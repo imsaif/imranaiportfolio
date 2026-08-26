@@ -67,7 +67,7 @@ export function TwoUp({
   items,
   caption,
 }: {
-  items: { src: string; alt: string; label: string }[];
+  items: { src: string; alt: string; label: string; width?: number; height?: number }[];
   caption: string;
 }) {
   return (
@@ -79,8 +79,8 @@ export function TwoUp({
               <Image
                 src={item.src}
                 alt={item.alt}
-                width={1570}
-                height={751}
+                width={item.width ?? 1570}
+                height={item.height ?? 751}
                 className="h-auto w-full"
                 sizes="(max-width: 640px) 100vw, 512px"
               />

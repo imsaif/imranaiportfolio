@@ -289,6 +289,26 @@ export default function CognitionCaseStudy() {
       </Section>
 
       <TwoUp
+        caption="At tablet width the sidebar stops being a rail and becomes a drawer, and the install prompt is what turns a URL into something that sits on the home screen."
+        items={[
+          {
+            src: '/images/casestudy/cognition/mobile-install.png',
+            alt: 'Cognition on a tablet in portrait, with an Install Cognition prompt above the composer',
+            label: 'Install prompt',
+            width: 876,
+            height: 1356,
+          },
+          {
+            src: '/images/casestudy/cognition/mobile-drawer.png',
+            alt: 'The sidebar opened as a full-height drawer with new chat, history, theme and logout',
+            label: 'Sidebar as a drawer',
+            width: 876,
+            height: 1356,
+          },
+        ]}
+      />
+
+      <TwoUp
         caption="Speech lands in the composer as text the official can correct, not as a query already sent."
         items={[
           {
