@@ -316,17 +316,42 @@ export default function CognitionCaseStudy() {
       />
 
       <TwoUp
-        caption="Speech lands in the composer as text the official can correct, not as a query already sent."
+        caption="Speech lands in the composer as text the official can correct. The keyboard is up and nothing has been sent yet, which is the whole point: a mis-heard question gets fixed before it becomes an answer about the wrong district."
         items={[
           {
-            src: '/images/casestudy/cognition/voice-listening.png',
-            alt: 'The composer showing a live waveform and the word Listening while the official speaks',
+            src: '/images/casestudy/cognition/voice-mobile-listening.png',
+            alt: 'Cognition on a phone with a live waveform and the word Listening in the composer',
             label: 'Listening',
+            width: 488,
+            height: 991,
           },
           {
-            src: '/images/casestudy/cognition/voice-transcript.png',
-            alt: 'The same composer with the spoken question transcribed as editable text, ready to send',
-            label: 'Transcribed, not yet sent',
+            src: '/images/casestudy/cognition/voice-mobile-transcript.png',
+            alt: 'The same screen with the spoken question transcribed into the focused input, keyboard up, not yet sent',
+            label: 'Transcribed, editable, not sent',
+            width: 488,
+            height: 991,
+          },
+        ]}
+      />
+
+      <TwoUp
+        stacked
+        caption="Closer in. While it is listening the send button is disabled, so the only thing the official can do is finish speaking and read back what was heard. It only becomes available once there is text to check."
+        items={[
+          {
+            src: '/images/casestudy/cognition/voice-send-disabled.png',
+            alt: 'The composer while listening: a live waveform, the word Listening, and a greyed-out send button',
+            label: 'Listening, send disabled',
+            width: 1260,
+            height: 108,
+          },
+          {
+            src: '/images/casestudy/cognition/voice-send-available.png',
+            alt: 'The same composer with the question transcribed as editable text and the send button now active',
+            label: 'Transcribed, send available',
+            width: 965,
+            height: 83,
           },
         ]}
       />

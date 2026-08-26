@@ -66,22 +66,31 @@ export function Figure({
 export function TwoUp({
   items,
   caption,
+  stacked = false,
 }: {
   items: { src: string; alt: string; label: string; width?: number; height?: number }[];
   caption: string;
+  stacked?: boolean;
 }) {
+  const columns = stacked ? '' : items.length >= 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2';
   return (
     <motion.figure {...rise} className="mx-auto w-full max-w-5xl px-6 py-10">
-      <div className={`grid gap-5 ${items.length >= 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
+      <div className={`grid gap-5 ${columns}`}>
         {items.map(item => (
-          <div key={item.src}>
-            <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+          // Grid cells stretch to the tallest item, so the frame boxes match
+          // even when the exports do not share an aspect ratio. Each image is
+          // contained inside its box rather than cropped, and the labels sit on
+          // one line because the boxes end at the same place.
+          <div key={item.src} className={stacked ? undefined : 'flex h-full flex-col'}>
+            <div
+              className={`flex items-center justify-center overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm ${stacked ? '' : 'flex-1'}`}
+            >
               <Image
                 src={item.src}
                 alt={item.alt}
                 width={item.width ?? 1570}
                 height={item.height ?? 751}
-                className="h-auto w-full"
+                className={stacked ? 'h-auto w-full' : 'h-full w-full object-contain'}
                 sizes="(max-width: 640px) 100vw, 512px"
               />
             </div>
