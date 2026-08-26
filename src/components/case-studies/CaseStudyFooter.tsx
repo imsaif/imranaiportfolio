@@ -13,42 +13,29 @@ export default function CaseStudyFooter() {
   // unpublished — their URLs still work, but nothing should route readers there.
   const onCognition = pathname?.includes('/cognition');
   const otherCaseStudyLink = onCognition ? '/casestudy/uhg' : '/casestudy/cognition';
-  const otherCaseStudyTitle = onCognition ? 'Optum Bank Case Study' : 'Cognition Case Study';
+  const otherCaseStudyTitle = onCognition ? 'Optum Bank case study' : 'Cognition case study';
+
+  // Two plain links. The heading and the pill buttons were doing the work of a
+  // call to action at the end of a page nobody arrives at by accident.
+  const linkClass =
+    'text-[17px] text-text-primary underline decoration-border-secondary underline-offset-4 transition-colors hover:text-accent hover:decoration-accent';
 
   return (
     <motion.div
-      className="mt-24 py-10 border-t border-gray-200"
+      className="mx-auto w-full max-w-[820px] border-t border-gray-200 px-6 py-10"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="space-y-2">
-          <h3 className="text-lg font-semibold">Looking for more?</h3>
-          <p className="text-muted text-sm">Check out my other projects</p>
-        </div>
-
-        <div className="flex flex-wrap gap-4">
-          <div className="inline-flex rounded-xl bg-gradient-to-r from-slate-600 via-slate-500 to-slate-600 p-[1.5px] hover:from-slate-700 hover:via-slate-600 hover:to-slate-700 transition-all duration-300">
-            <Link
-              href="/"
-              className="px-6 py-3 bg-white text-gray-700 rounded-xl flex items-center transition-all duration-200 group hover:bg-gray-50"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-              <span className="font-medium">Back to Home</span>
-            </Link>
-          </div>
-
-          <div className="inline-flex rounded-xl bg-gradient-to-r from-slate-600 via-slate-500 to-slate-600 p-[1.5px] hover:from-slate-700 hover:via-slate-600 hover:to-slate-700 transition-all duration-300">
-            <Link
-              href={otherCaseStudyLink}
-              className="px-6 py-3 bg-white text-gray-700 rounded-xl flex items-center transition-all duration-200 hover:bg-gray-50"
-            >
-              <span className="font-medium">{otherCaseStudyTitle}</span>
-            </Link>
-          </div>
-        </div>
+      <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+        <Link href="/" className={`${linkClass} group inline-flex items-center gap-2`}>
+          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+          Back to home
+        </Link>
+        <Link href={otherCaseStudyLink} className={linkClass}>
+          {otherCaseStudyTitle}
+        </Link>
       </div>
     </motion.div>
   );
