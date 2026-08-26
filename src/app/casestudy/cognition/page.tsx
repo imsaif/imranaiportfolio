@@ -1,43 +1,55 @@
 'use client';
 
-import { Figure, Pull, Readers, Section, Shipped, Steps } from './sections';
+import { Figure, Pull, Readers, Section, Shipped, Steps, TwoUp } from './sections';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
 const META: { label: string; value: string }[] = [
-  { label: 'Role', value: 'Product designer' },
+  { label: 'Role', value: 'Design lead' },
   { label: 'Scope', value: 'Research, product design, design system' },
-  { label: 'Context', value: 'NewGlobe' },
-  { label: 'Team', value: 'PM, solution architect, engineers' },
+  { label: 'Timeline', value: 'Nov 2025 \u2013 May 2026' },
+  { label: 'Team', value: 'Product director, solution architect, engineers' },
 ];
 
 /**
  * Cognition: conversational AI for government education leaders at NewGlobe.
  *
  * The product is public: NewGlobe unveiled it at the Education World Forum in
- * May 2026. Screens are the real interface running on synthetic figures. The
+ * May 2026. Screens are the design files, running on synthetic figures. The
  * partner data behind it is not mine to publish.
  */
 export default function CognitionCaseStudy() {
   return (
     <main className="bg-white pb-8 pt-28 md:pt-32">
       {/* ---------- Opening ---------- */}
-      <header className="mx-auto w-full max-w-3xl px-6">
+      <header className="mx-auto w-full max-w-[820px] px-6">
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-gray-500">Cognition &middot; NewGlobe</p>
-        <h1 className="mt-5 text-4xl font-bold leading-[1.12] tracking-tight text-gray-900 md:text-5xl">
-          A quiet interface for asking hard questions of programme data.
+        <h1 className="mt-5 text-[40px] font-bold leading-[1.05] tracking-[-0.03em] text-text-primary md:text-[56px]">
+          A quiet interface for asking hard questions.
         </h1>
-        <p className="mt-6 text-xl leading-relaxed text-gray-600">
-          Conversational AI for the officials who run a national education programme, and answer to ministers for it. I
-          led the design from problem framing through to the shipped interface, working with a PM, a solution architect
-          and the engineering team.
+        <p className="mt-6 text-[20px] leading-[1.6] tracking-[-0.01em] text-text-secondary md:text-[22px]">
+          Conversational AI for the officials who run a national education programme, and answer to ministers for it. It
+          reports on Bayelsa State, Nigeria, covering 222 schools and 41,000 pupils. NewGlobe unveiled it at the{' '}
+          <a
+            href="https://www.theewf.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-b border-gray-400 text-text-primary transition-colors hover:border-gray-900"
+          >
+            Education World Forum
+          </a>{' '}
+          in London, where it drew applause from an audience of education ministers from more than 100 nations. I led
+          the design from problem framing through to the shipped interface, working with a product director, a solution
+          architect and the engineering team.
         </p>
 
-        <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-gray-200 pt-8 sm:grid-cols-4">
+        <dl className="mt-12 grid grid-cols-2 gap-x-10 gap-y-8 border-t border-gray-200 pt-10 sm:grid-cols-4">
           {META.map(({ label, value }) => (
             <div key={label}>
-              <dt className="font-mono text-[11px] uppercase tracking-wider text-gray-400">{label}</dt>
-              <dd className="mt-1 text-sm font-medium text-gray-900">{value}</dd>
+              <dt className="font-mono text-[12px] uppercase tracking-wider text-text-tertiary">{label}</dt>
+              <dd className="mt-2 text-[17px] font-medium leading-[1.45] tracking-[-0.01em] text-text-primary md:text-[18px]">
+                {value}
+              </dd>
             </div>
           ))}
         </dl>
@@ -45,9 +57,9 @@ export default function CognitionCaseStudy() {
 
       <div className="mt-14">
         <Figure
-          src="/images/casestudy/cognition/welcome.jpg"
-          alt="Cognition welcome screen with a greeting and six example questions about programme data"
-          caption="The opening screen. Six example questions do the work an empty text box cannot."
+          src="/images/casestudy/cognition/welcome-newglobe.png"
+          alt="Cognition welcome screen: a greeting and three example questions about programme data"
+          caption="The opening screen. Three example questions do the work an empty text box cannot. Cognition was designed for NewGlobe first, with programme branding applied on top: the same product, themed per state. These are the NewGlobe base screens."
           priority
         />
       </div>
@@ -68,10 +80,11 @@ export default function CognitionCaseStudy() {
           The people using them had a specific question, a meeting in an hour, and a phone in their hand. The gap was
           never access to the data. It was the distance between a chart and a sentence they could say out loud.
         </p>
-        <Pull cite="Field note from the commercial team">
-          A minister doesn&rsquo;t want a dashboard. They want an answer they can repeat in the next room.
-        </Pull>
       </Section>
+
+      <Pull cite="Field note from the commercial team">
+        A minister doesn&rsquo;t want a dashboard. They want an answer they can repeat in the next room.
+      </Pull>
 
       {/* ---------- 02 ---------- */}
       <Section index="02" title="Three readers, one accountability">
@@ -79,29 +92,72 @@ export default function CognitionCaseStudy() {
           Every design decision traced back to who was holding the phone. All three answer upward, none of them are
           analysts, and none of them have time to learn a tool.
         </p>
-        <Readers
+        <p>
+          They are senior people in their forties and fifties whose expertise is education policy, not software.
+          Conversational AI is not part of how they already work, and nothing about their job has required it to be.
+          The unfamiliarity sits with the tool, not with them.
+        </p>
+        <p>
+          NewGlobe held extensive persona research on this audience already, and I ran a further round of interviews on
+          top of it. The three below came out of that work, which is why the shape of the product was settled before
+          anything was built.
+        </p>
+      </Section>
+
+      <Readers
+        items={[
+          {
+            who: 'Ministry officials',
+            need: 'Speak about education to cabinet, parliament and the press. Need a short, defensible answer, not a spreadsheet.',
+            constraint: 'Speaks in public, not in software',
+          },
+          {
+            who: 'Regional directors',
+            need: 'Run schools at scale. Want their region compared to last term, before a 9am briefing.',
+            constraint: 'Patchy connectivity',
+          },
+          {
+            who: 'Programme leads',
+            need: 'The bridge between NewGlobe and the partner government. Brief upward, intervene downward, fast.',
+            constraint: 'Multi-stakeholder load',
+          },
+        ]}
+      />
+
+      {/* ---------- 03 ---------- */}
+      <Section index="03" title="What we tried before a conversation">
+        <p>
+          A conversation was not the obvious answer. Three other shapes were explored before it.
+        </p>
+        <Steps
           items={[
             {
-              who: 'Ministry officials',
-              need: 'Speak about education to cabinet, parliament and the press. Need a short, defensible answer, not a spreadsheet.',
-              constraint: 'Low technical literacy',
+              label: 'A smarter dashboard',
+              body: 'The cheapest thing to build on what already existed, and it kept the original problem intact: the numbers are still somewhere you have to go and find. A minister in a government office does not apply filters, and should not have to.',
             },
             {
-              who: 'Regional directors',
-              need: 'Run schools at scale. Want their region compared to last term, before a 9am briefing.',
-              constraint: 'Patchy connectivity',
+              label: 'A WhatsApp bot',
+              body: 'It met the audience where they already were, phone in hand, between visits. It also put a government system inside a teacher\u2019s personal WhatsApp. Neither the privacy exposure nor the question of who owned that thread had a good answer.',
             },
             {
-              who: 'Programme leads',
-              need: 'The bridge between NewGlobe and the partner government. Brief upward, intervene downward, fast.',
-              constraint: 'Multi-stakeholder load',
+              label: 'A desktop app built around a teacher\u2019s persona',
+              body: 'The closest to a product with a personality. It ran into a fear we could not design around: that anything installed and always running was NewGlobe, or the government, watching. Rather than try to mitigate a suspicion that was reasonable, we dropped the shape that provoked it.',
             },
           ]}
         />
+        <p>
+          What won was a chat at a URL. It sits behind a login on NewGlobe&rsquo;s own domain, carrying NewGlobe&rsquo;s
+          identity, which answers the ownership and surveillance questions the other three shapes could not.
+        </p>
       </Section>
 
-      {/* ---------- 03 ---------- */}
-      <Section index="03" title="The decision: a tool that says no">
+      <Pull>
+        A conversation was not a familiar form for this audience either. It is why the opening screen leads with
+        example questions instead of an empty box: the blank prompt is the part of chat they cannot use.
+      </Pull>
+
+      {/* ---------- 04 ---------- */}
+      <Section index="04" title="The decision: a tool that says no">
         <p>
           The obvious build was a capable assistant that answers whatever it is asked. I argued for the opposite, and it
           became the shape of the whole product: Cognition answers about programme data and declines everything else,
@@ -123,42 +179,54 @@ export default function CognitionCaseStudy() {
             },
             {
               label: 'Composure',
-              body: 'A decline that names what it can answer keeps the conversation moving. The user is never left holding a dead end.',
+              body: 'It refuses in plain language, with no apology and no hedging. An official reading the reply aloud in a meeting is not embarrassed by it.',
             },
           ]}
         />
       </Section>
 
       <Figure
-        src="/images/casestudy/cognition/refusal.jpg"
-        alt="Cognition declining a political question, citing its scope and offering three in-scope follow-up questions"
-        caption="Asked for a view on an opposition manifesto, it declines, says what it does cover, and offers three questions it can answer."
+        src="/images/casestudy/cognition/refusal-scope.png"
+        alt="Cognition declining an out-of-scope question, naming what it is for before refusing"
+        caption="Asked who someone is, it says what it is for, declines, and points elsewhere."
       />
 
-      {/* ---------- 04 ---------- */}
-      <Section index="04" title="What a good answer looks like">
+      {/* ---------- 05 ---------- */}
+      <Section index="05" title="What a good answer looks like">
         <p>
-          Answers are set as prose at a comfortable measure, with a table only where the content is genuinely tabular.
-          No chat bubbles, no gradients, no chrome signalling &ldquo;AI&rdquo;. The register borrows from a well-set
-          annual report, because that is the document this audience already trusts.
-        </p>
-        <p>
-          Every answer ends with three follow-up questions derived from the answer itself, so the conversation carries
-          itself forward without the user having to compose the next query.
+          Answers are set as prose at a comfortable measure. A chart where the question is about a trend, a table where
+          the content is genuinely tabular, and a sentence after either one saying what it means. No chat bubbles, no
+          gradients, no chrome signalling &ldquo;AI&rdquo;. The register borrows from a well-set annual report, because
+          that is the document this audience already trusts.
         </p>
       </Section>
 
       <Figure
-        src="/images/casestudy/cognition/answer-table.jpg"
-        alt="An answer showing literacy trends by district as a table, with observations and recommended actions"
-        caption="Prose, then a table, then what to do about it. Figures shown are synthetic."
+        src="/images/casestudy/cognition/answer-chart.png"
+        alt="A Lite answer: a sentence, a bar chart of lesson completion over four weeks, then a sentence interpreting it"
+        caption="Lite: a sentence, the shape of the data, then what the shape means. Figures shown are synthetic."
       />
 
-      {/* ---------- 05 ---------- */}
-      <Section index="05" title="Getting the reasoning disclosure right">
+      {/* ---------- 06 ---------- */}
+      <Section index="06" title="The second decision: two modes, not three">
         <p>
-          A Lite mode answers immediately. A Pro mode shows the working: what was compared, against which baseline, in
-          what order. Deciding how much of that to show, and when, took three attempts.
+          The solution architect&rsquo;s model was three modes of thinking: fast, medium and deep. It described the
+          system accurately. It told an official nothing, because how hard a model is working is not something a user
+          has any way to judge, or any reason to care about.
+        </p>
+        <p>
+          I argued for two, named for the question rather than the machine, and sat down with the product director and
+          the solution architect until we agreed on it. Lite answers immediately, because most of what this audience
+          asks is arithmetic: how many teachers, how many pupils, how many schools. Pro is for the questions that
+          arrive in a run, each one building on the last.
+        </p>
+        <p>
+          The system picks the mode itself, and we instrumented that switch so we would find out which one people
+          actually used. In real use it was Lite, by a wide margin.
+        </p>
+        <p>
+          Pro shows the working: what was compared, against which baseline, in what order. Deciding how much of that to
+          show, and when, took three attempts.
         </p>
         <Steps
           items={[
@@ -176,20 +244,85 @@ export default function CognitionCaseStudy() {
             },
           ]}
         />
+      </Section>
+
+      <Pull>Show the working when someone asks for it. Hide it when they don&rsquo;t.</Pull>
+
+      <Figure
+        src="/images/casestudy/cognition/reasoning-pro.png"
+        alt="Pro mode after answering: the reasoning folded to one line reading thought for 10 seconds, 3 steps, above a comparison table"
+        caption="Pro, once it has finished. The working is folded to a single line saying how long it thought and how many steps, above the comparison it was asked for."
+      />
+
+      {/* ---------- 07 ---------- */}
+      <Section index="07" title="Getting it used">
         <p>
-          The principle underneath: disclosure should be available on demand and invisible by default. Reasoning that
-          stays expanded is not transparency, it is clutter that happens to be true.
+          The officials work from Android tablets. For that audience an app is an icon on the home screen, not a URL in
+          a browser, so Cognition ships as an installable PWA rather than a native app or a plain responsive site.
+        </p>
+        <p>
+          It did not need inventing. NewGlobe already ran a PWA for Spotlight, the dashboard product this one answers
+          back to, so Cognition took the same shell. The work was everything around it: fifteen icon sizes, splash
+          screens held to a 3.0-second cold start and a 1.8-second warm start, breakpoints from 360 pixels up to
+          tablet, and a sidebar that becomes a drawer below 1024 rather than a rail.
+        </p>
+        <p>
+          It still needs a connection. Installed, it opens like an app; away from signal it does not work.
+        </p>
+        <p>
+          Voice input follows the same logic. Speech lands in the composer as editable text rather than firing off as a
+          query. Speech recognition is trained overwhelmingly on accents that are not these officials&rsquo;, and a
+          mis-heard question returns a confident answer about a district nobody asked about. Showing the transcript
+          first puts the correction in the user&rsquo;s hands instead of making them argue with the machine.
+        </p>
+        <p>
+          The tool had to be in officials&rsquo; hands quickly, and an in-product tour was the wrong instrument twice
+          over: it would have cost time we did not have, and this was not an audience likely to follow one. So we
+          taught it outside the product. Marketing ran live online training sessions for the officials on what
+          Cognition is, what it is not, and what to ask it. I made the material they taught from.
+        </p>
+        <p>
+          That framing came straight out of the scope decision. A tool defined as much by what it declines as by what
+          it answers is a tool you can teach in a single session, because the boundary is the lesson.
         </p>
       </Section>
 
-      <Figure
-        src="/images/casestudy/cognition/reasoning.jpg"
-        alt="Pro mode showing reasoning steps streaming live above the answer"
-        caption="Pro mode while the answer is still forming: the active step, a live timer, and the steps already taken. On completion the whole panel folds to one line."
+      {/* ---------- 08 ---------- */}
+      <Section index="08" title="Where the research ran out">
+        <p>
+          Two things about this audience were settled before any of it was built. The persona research inside NewGlobe,
+          and the interviews I ran on top of it, said these officials would not meet a blank chat box halfway. So the
+          opening screen was never a blank box. I proposed leading with example questions, and the team agreed there
+          should be handholding rather than an empty screen with no direction. That call held.
+        </p>
+        <p>
+          What the research did not catch was smaller and more ordinary. An early version put logout behind a click,
+          the way most current interfaces do. Watching officials use it, nobody found it: this is an audience whose
+          habits were formed when logout was always on screen. It is permanently visible now.
+        </p>
+        <p>
+          The parts I had reasoned about hardest held. What broke was the conventional furniture around them.
+        </p>
+      </Section>
+
+      <TwoUp
+        caption="The whole finding. Logout moved out of a menu and onto the sidebar, permanently visible, because that is where this audience learned to look for it."
+        items={[
+          {
+            src: '/images/casestudy/cognition/logout-before.png',
+            alt: 'Sidebar footer showing only the account avatar and a theme toggle',
+            label: 'Before: nobody found it',
+          },
+          {
+            src: '/images/casestudy/cognition/logout-after.png',
+            alt: 'Sidebar footer with a labelled Logout row above the account avatar',
+            label: 'After: always on screen',
+          },
+        ]}
       />
 
-      {/* ---------- 06 ---------- */}
-      <Section index="06" title="Where it landed">
+      {/* ---------- 09 ---------- */}
+      <Section index="09" title="Where it landed">
         <p>
           Cognition was unveiled at the{' '}
           <a
@@ -202,11 +335,6 @@ export default function CognitionCaseStudy() {
           </a>{' '}
           in London in May 2026, the largest annual gathering of education ministers in the world, as part of
           NewGlobe&rsquo;s enterprise AI suite. Their announcement page carries the film of the unveiling.
-        </p>
-        <p>
-          I designed two of the others in the same suite: Activation, which narrows a district officer&rsquo;s week down
-          to the single highest-impact school visit, and Reflexion, which turns classroom audio into daily coaching
-          notes for teachers.
         </p>
         <p>
           At the point it was shown, the interface, the streaming, the sessions and the design system were real and
@@ -223,18 +351,13 @@ export default function CognitionCaseStudy() {
             'Light and dark themes on a shared token set',
             'Published design system with an accessibility gate',
           ]}
-          notBuilt={[
-            'Live data integration',
-            'Staff review and approval of sensitive answers',
-            'Per-partner permissions and single-tenant deployment',
-          ]}
         />
       </Section>
 
-      <div className="mx-auto w-full max-w-3xl px-6 pb-8">
+      <div className="mx-auto w-full max-w-[820px] px-6 pb-8">
         <p className="border-t border-gray-200 pt-8 text-sm leading-relaxed text-gray-500">
-          Every figure in these screens is synthetic. The interface is the real product; the partner data behind it is
-          not mine to publish.
+          Every figure in these screens is synthetic, and the screens are the design files rather than a running
+          build. The partner data behind them is not mine to publish.
         </p>
       </div>
 
