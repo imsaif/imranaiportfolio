@@ -33,6 +33,8 @@ export interface Project {
   decisionsUrl?: string;
   /** Short factual number shown as a label on the card. Omit when there isn't one worth showing. */
   statLabel?: string;
+  /** Tools that cite this product, shown as small marks under the stat label. */
+  citedBy?: string[];
   /**
    * Shown when the card is expanded. Products carry problem + decision;
    * index cards carry `inside` instead, since inventing a "problem" for an
@@ -50,7 +52,17 @@ export interface Project {
    * When present the card lists these links instead of a description.
    * A card with its own links cannot also be one big click target.
    */
-  links?: { label: string; href: string }[];
+  links?: {
+    label: string;
+    href: string;
+    /**
+     * Medium engagement, read off each post and hardcoded. Medium blocks
+     * server-side fetches, so there is no live version of these — they are
+     * a snapshot and will drift low as posts keep collecting claps.
+     */
+    claps?: number;
+    responses?: number;
+  }[];
 }
 
 export const projects: Project[] = [
@@ -125,9 +137,9 @@ export const projects: Project[] = [
     description:
       'A free AI UX audit built on 38 patterns. Upload a screenshot, see what is missing, and take each gap away as a Claude skill.',
     statLabel: '3,000+ designers using',
+    citedBy: ['Claude', 'Perplexity'],
     detail: {
-      problem:
-        'Designers shipping AI features are still evaluating them with generic UX heuristics that were never written for AI. There is no fast way to check an AI interface against patterns specific to how AI actually behaves.',
+      problem: 'Designers shipping AI features still judge them with heuristics written before AI existed.',
       chose:
         'Free and no signup, with the audit as the front door: upload a screenshot of any AI interface and get it scored against 38 patterns.',
       over: 'An email gate, a Figma plugin install, or a paid cohort.',
@@ -170,10 +182,12 @@ export const projects: Project[] = [
     // No description: the four links below say what this is better than a line
     // introducing them would.
     description: '',
+    // All four lowercase. Two of these are brands written lowercase everywhere
+    // else on the site, so matching them beats capitalising them into line.
     links: [
-      { label: 'Cognition', href: '/casestudy/cognition' },
+      { label: 'cognition', href: '/casestudy/cognition' },
       { label: 'aiuxdesign.guide', href: '/casestudy/aiex' },
-      { label: 'Optum Bank', href: '/casestudy/uhg' },
+      { label: 'optum bank', href: '/casestudy/uhg' },
       { label: 'dwic design decisions', href: '/decisions/dwic' },
     ],
     fullDescription: '',
@@ -208,26 +222,38 @@ export const projects: Project[] = [
       {
         label: 'AI is finally learning to shut up',
         href: 'https://medium.com/design-bootcamp/ai-is-finally-learning-to-shut-up-62af1d2c01c8',
+        claps: 276,
+        responses: 9,
       },
       {
         label: 'AI learned to shut up. It forgot to say what it was doing',
         href: 'https://medium.com/design-bootcamp/ai-learned-to-shut-up-it-forgot-to-say-what-it-was-doing-91df21ad2742',
+        claps: 275,
+        responses: 8,
       },
       {
         label: "AI can't see your design, so it guesses",
         href: 'https://medium.com/design-bootcamp/ai-cant-see-your-design-so-it-guesses-c50e3695f01a',
+        claps: 114,
+        responses: 2,
       },
       {
         label: 'Who is designing the boundary for AI?',
         href: 'https://medium.com/design-bootcamp/who-is-designing-the-boundary-for-ai-3a51b18b5fc7',
+        claps: 132,
+        responses: 3,
       },
       {
         label: 'The AI you use for design feedback is guessing',
         href: 'https://medium.com/design-bootcamp/the-ai-you-use-for-design-feedback-is-guessing-b4b9cfeaf7ee',
+        claps: 105,
+        responses: 2,
       },
       {
         label: 'Most AIUX is just search with extra steps?',
         href: 'https://medium.com/design-bootcamp/most-aiux-is-just-search-with-extra-steps-3faaae035ab8',
+        claps: 215,
+        responses: 2,
       },
     ],
     ctaLabel: 'All writing',
