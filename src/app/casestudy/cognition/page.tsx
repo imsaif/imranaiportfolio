@@ -43,17 +43,18 @@ export default function CognitionCaseStudy() {
           architect and the engineering team.
         </p>
 
-        <dl className="mt-12 grid grid-cols-2 gap-x-10 gap-y-8 border-t border-gray-200 pt-10 sm:grid-cols-4">
-          {META.map(({ label, value }) => (
-            <div key={label}>
-              <dt className="font-mono text-[12px] uppercase tracking-wider text-text-tertiary">{label}</dt>
-              <dd className="mt-2 text-[17px] font-medium leading-[1.45] tracking-[-0.01em] text-text-primary md:text-[18px]">
-                {value}
-              </dd>
-            </div>
-          ))}
-        </dl>
       </header>
+
+      <dl className="mx-auto mt-14 grid w-full max-w-5xl grid-cols-2 gap-x-12 gap-y-10 border-t border-gray-200 px-6 pt-10 sm:grid-cols-4">
+        {META.map(({ label, value }) => (
+          <div key={label}>
+            <dt className="font-mono text-[12px] uppercase tracking-wider text-text-tertiary">{label}</dt>
+            <dd className="mt-2 text-[17px] font-medium leading-[1.45] tracking-[-0.01em] text-text-primary md:text-[18px]">
+              {value}
+            </dd>
+          </div>
+        ))}
+      </dl>
 
       <div className="mt-14">
         <Figure
