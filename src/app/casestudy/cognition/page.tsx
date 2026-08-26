@@ -289,7 +289,7 @@ export default function CognitionCaseStudy() {
       </Section>
 
       <TwoUp
-        caption="At tablet width the sidebar stops being a rail and becomes a drawer, and the install prompt is what turns a URL into something that sits on the home screen."
+        caption="The whole reason it is a PWA. These officials work from Android tablets, where an app means an icon on the home screen rather than a URL in a browser. Below tablet width the sidebar stops being a rail and becomes a drawer."
         items={[
           {
             src: '/images/casestudy/cognition/mobile-install.png',
@@ -297,6 +297,13 @@ export default function CognitionCaseStudy() {
             label: 'Install prompt',
             width: 876,
             height: 1356,
+          },
+          {
+            src: '/images/casestudy/cognition/mobile-homescreen.png',
+            alt: 'An Android tablet home screen with Cognition installed in the app grid and pinned to the dock',
+            label: 'Installed',
+            width: 1000,
+            height: 1408,
           },
           {
             src: '/images/casestudy/cognition/mobile-drawer.png',

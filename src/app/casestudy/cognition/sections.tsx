@@ -72,7 +72,7 @@ export function TwoUp({
 }) {
   return (
     <motion.figure {...rise} className="mx-auto w-full max-w-5xl px-6 py-10">
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className={`grid gap-5 ${items.length >= 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
         {items.map(item => (
           <div key={item.src}>
             <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
