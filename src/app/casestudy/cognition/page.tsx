@@ -288,6 +288,22 @@ export default function CognitionCaseStudy() {
         </p>
       </Section>
 
+      <TwoUp
+        caption="Speech lands in the composer as text the official can correct, not as a query already sent."
+        items={[
+          {
+            src: '/images/casestudy/cognition/voice-listening.png',
+            alt: 'The composer showing a live waveform and the word Listening while the official speaks',
+            label: 'Listening',
+          },
+          {
+            src: '/images/casestudy/cognition/voice-transcript.png',
+            alt: 'The same composer with the spoken question transcribed as editable text, ready to send',
+            label: 'Transcribed, not yet sent',
+          },
+        ]}
+      />
+
       {/* ---------- 08 ---------- */}
       <Section index="08" title="Where the research ran out">
         <p>
