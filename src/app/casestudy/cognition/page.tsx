@@ -310,14 +310,13 @@ export default function CognitionCaseStudy() {
         </p>
       </Section>
 
-      {/* No device bezel on this row: these are tablet captures and the CSS
-          bezel is a phone. Both exports are the same shape, so nothing needs
-          forcing to make the pair line up.
-          NOTE: the caption still refers to the icon on the home screen, which is
-          no longer shown here. */}
+      {/* No device bezel on this row: these are tablet captures and the CSS bezel
+          is a phone. The home screen is a slightly different shape from the other
+          two, so the cells share one ratio and contain rather than crop. */}
       <StagedTwoUp
+        aspect="876 / 1356"
         size="full"
-        sizes="(max-width: 640px) 100vw, 480px"
+        sizes="(max-width: 640px) 100vw, 340px"
         caption="The whole reason it is a PWA. These officials work from Android tablets, where an app means an icon on the home screen rather than a URL in a browser. Below tablet width the sidebar stops being a rail and becomes a drawer."
         items={[
           {
@@ -326,6 +325,13 @@ export default function CognitionCaseStudy() {
             label: 'Install prompt',
             width: 876,
             height: 1356,
+          },
+          {
+            src: '/images/casestudy/cognition/mobile-installed-screen.png',
+            alt: 'A tablet home screen with Cognition installed alongside the built-in apps',
+            label: 'Installed',
+            width: 896,
+            height: 1256,
           },
           {
             src: '/images/casestudy/cognition/mobile-drawer.png',
