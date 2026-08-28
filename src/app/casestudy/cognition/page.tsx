@@ -344,30 +344,16 @@ export default function CognitionCaseStudy() {
         ]}
       />
 
-      {/* The bezel is drawn in CSS rather than baked into the export, so the
-          screen keeps its full resolution inside it and the frame can change
-          without a re-export. */}
-      <StagedTwoUp
-        variant="phone"
-        size="full"
-        sizes="(max-width: 640px) 100vw, 360px"
+      {/* The voice interaction, running: the mic is tapped, speech lands in the
+          composer as editable text, and nothing is sent until send is pressed.
+          CAPTION IS THE ORIGINAL FIGURE'S — Imran to revise now that it moves. */}
+      <StagedEmbed
+        src="/mockups/cognition/voice/index.html"
+        title="Cognition on a phone: asking a question by voice"
+        ratio="488 / 991"
+        device="phone"
+        maxWidth="340px"
         caption="Speech lands in the composer as text the official can correct. The keyboard is up and nothing has been sent yet, which is the whole point: a mis-heard question gets fixed before it becomes an answer about the wrong district."
-        items={[
-          {
-            src: '/images/casestudy/cognition/voice-mobile-listening.png',
-            alt: 'Cognition on a phone with a live waveform and the word Listening in the composer',
-            label: 'Listening',
-            width: 488,
-            height: 991,
-          },
-          {
-            src: '/images/casestudy/cognition/voice-mobile-transcript.png',
-            alt: 'The same screen with the spoken question transcribed into the focused input, keyboard up, not yet sent',
-            label: 'Transcribed, editable, not sent',
-            width: 488,
-            height: 991,
-          },
-        ]}
       />
 
       {/* These are crops of the composer, not whole screens, so they get no

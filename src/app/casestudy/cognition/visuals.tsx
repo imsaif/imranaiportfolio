@@ -3,7 +3,7 @@
 import { Lightbox, type LightboxImage } from '@/components/case-studies/Lightbox';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 
 import { useRise } from './sections';
 
@@ -84,6 +84,32 @@ type Item = {
  * which wraps an iframe at a fixed 375x812. Fixing the screen height there would
  * letterbox these: 488/991 is 0.492 against that frame's 0.462.
  */
+function PhoneShell({
+  ratio,
+  maxWidth,
+  children,
+}: {
+  ratio: string;
+  maxWidth?: string | undefined;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      style={{ maxWidth: maxWidth ?? '300px' }}
+      className="relative mx-auto w-full rounded-[2rem] bg-gray-900 p-[10px] shadow-[0_2px_6px_rgba(16,24,40,0.10),0_18px_40px_-8px_rgba(16,24,40,0.22),0_40px_80px_-20px_rgba(16,24,40,0.18)]"
+    >
+      {/* Side buttons. Purely decorative, so they stay out of the accessibility tree. */}
+      <span aria-hidden className="absolute -left-[2px] top-[30%] h-8 w-[3px] rounded-l-md bg-gray-800" />
+      <span aria-hidden className="absolute -left-[2px] top-[42%] h-12 w-[3px] rounded-l-md bg-gray-800" />
+      <span aria-hidden className="absolute -right-[2px] top-[34%] h-14 w-[3px] rounded-r-md bg-gray-800" />
+
+      <div className="relative overflow-hidden rounded-[22px] bg-white" style={{ aspectRatio: ratio }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export function PhoneFrame({
   src,
   alt,
@@ -102,16 +128,9 @@ export function PhoneFrame({
   onOpen?: (() => void) | undefined;
 }) {
   const inner = (
-    <div className="relative mx-auto w-full max-w-[300px] rounded-[2rem] bg-gray-900 p-[10px] shadow-[0_2px_6px_rgba(16,24,40,0.10),0_18px_40px_-8px_rgba(16,24,40,0.22),0_40px_80px_-20px_rgba(16,24,40,0.18)]">
-      {/* Side buttons. Purely decorative, so they stay out of the accessibility tree. */}
-      <span aria-hidden className="absolute -left-[2px] top-[30%] h-8 w-[3px] rounded-l-md bg-gray-800" />
-      <span aria-hidden className="absolute -left-[2px] top-[42%] h-12 w-[3px] rounded-l-md bg-gray-800" />
-      <span aria-hidden className="absolute -right-[2px] top-[34%] h-14 w-[3px] rounded-r-md bg-gray-800" />
-
-      <div className="relative overflow-hidden rounded-[22px] bg-white" style={{ aspectRatio: `${width} / ${height}` }}>
-        <Image src={src} alt={alt} fill sizes={sizes ?? '(max-width: 640px) 100vw, 300px'} className="object-cover" />
-      </div>
-    </div>
+    <PhoneShell ratio={`${width} / ${height}`}>
+      <Image src={src} alt={alt} fill sizes={sizes ?? '(max-width: 640px) 100vw, 300px'} className="object-cover" />
+    </PhoneShell>
   );
 
   if (!onOpen) return inner;
@@ -142,6 +161,8 @@ export function StagedEmbed({
   ratio,
   size = 'full',
   eager = false,
+  device,
+  maxWidth,
 }: {
   src: string;
   title: string;
@@ -149,12 +170,20 @@ export function StagedEmbed({
   /** Shape of the frame, e.g. '1568 / 751' — matched to the figures around it. */
   ratio: string;
   size?: Size;
+  /** Wrap the running page in a device body rather than the flat card. */
+  device?: 'phone';
+  /** Only with `device`: how wide the device itself may get. */
+  maxWidth?: string;
   /** Set when this is the first thing on the page; lazy-loading it would leave
       the top of the case study empty while it fetches. */
   eager?: boolean;
 }) {
   const rise = useRise();
   const full = size === 'full';
+
+  const page = (
+    <iframe src={src} title={title} loading={eager ? 'eager' : 'lazy'} className="h-full w-full border-0" />
+  );
 
   return (
     <motion.figure {...rise} className={shell(size)}>
@@ -163,16 +192,17 @@ export function StagedEmbed({
             a thread and a composer all competing for width; at the 1024px the
             still images sit at, the whole thing reads cramped. */}
         <div className={full ? 'mx-auto max-w-[1400px]' : ''}>
-          <div className={FRAME}>
-            <div className={SCREEN} style={{ aspectRatio: ratio }}>
-              <iframe
-                src={src}
-                title={title}
-                loading={eager ? 'eager' : 'lazy'}
-                className="h-full w-full border-0"
-              />
+          {device === 'phone' ? (
+            <PhoneShell ratio={ratio} maxWidth={maxWidth}>
+              {page}
+            </PhoneShell>
+          ) : (
+            <div className={FRAME}>
+              <div className={SCREEN} style={{ aspectRatio: ratio }}>
+                {page}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
       <figcaption className={CAPTION}>{caption}</figcaption>

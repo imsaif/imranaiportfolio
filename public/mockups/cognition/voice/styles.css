@@ -1,0 +1,454 @@
+/*
+  Cognition on a phone — asking by voice.
+
+  Companion to the prompt-to-answer prototype next door, same rules: plain HTML,
+  CSS and JS, no framework, no build step, no network. Sized for the 488x991
+  screen the captured mobile screens use.
+
+  The point of the sequence is the correction step: speech lands in the composer
+  as editable text and nothing is sent until someone presses send.
+*/
+
+:root {
+  --primary: #1f3b90;
+  --accent: #00b7bd;
+
+  --text-primary: #101828;
+  --text-secondary: #475467;
+  --text-tertiary: #98a2b3;
+
+  --surface: #ffffff;
+  --surface-sunken: #f5f5f5;
+  --border: #e7eaee;
+  --border-strong: #d6dae1;
+
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text-primary);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+.phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* Scales with the frame it is embedded in; 488px wide is the captured screen. */
+  font-size: clamp(11px, 3.3vw, 17px);
+}
+
+/* ---------- App bar ---------- */
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  flex: none;
+  padding: 1.1em 1.3em 0.9em;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22em;
+  width: 1.15em;
+}
+
+.menu i {
+  height: 0.13em;
+  border-radius: 1px;
+  background: var(--text-primary);
+}
+
+.bar-title {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+/* ---------- Body ---------- */
+
+.canvas {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0.8em 1.3em 1em;
+  scrollbar-width: none;
+}
+
+.canvas::-webkit-scrollbar {
+  display: none;
+}
+
+.greeting {
+  margin: 0.6em 0 0;
+  font-size: 1.6em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.subgreeting {
+  margin: 0.7em 0 0;
+  font-size: 0.95em;
+  color: var(--text-secondary);
+}
+
+.try {
+  margin: 2.2em 0 0.7em;
+  font-size: 0.8em;
+  font-style: italic;
+  color: var(--text-tertiary);
+}
+
+.chips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+}
+
+.chip {
+  padding: 0.85em 0.95em;
+  font-size: 0.85em;
+  background: var(--surface-sunken);
+  border-radius: 0.55em;
+}
+
+/* ---------- Thread ---------- */
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+  padding-top: 0.6em;
+}
+
+.user-msg {
+  align-self: flex-end;
+  max-width: 85%;
+  padding: 0.6em 0.85em;
+  font-size: 0.88em;
+  background: var(--surface-sunken);
+  border-radius: 0.6em;
+}
+
+.ai-msg {
+  font-size: 0.88em;
+  line-height: 1.6;
+}
+
+.ai-msg p {
+  margin: 0 0 0.75em;
+}
+
+.ai-msg p:last-child {
+  margin-bottom: 0;
+}
+
+.is-streaming::after {
+  content: '▌';
+  margin-left: 0.1em;
+  color: var(--accent);
+  animation: blink 0.8s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.dots {
+  display: inline-flex;
+  gap: 0.3em;
+  padding: 0.3em 0;
+}
+
+.dots span {
+  width: 0.42em;
+  height: 0.42em;
+  background: var(--text-tertiary);
+  border-radius: 50%;
+  animation: bounce 1.1s infinite ease-in-out;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  35% {
+    transform: translateY(-0.35em);
+    opacity: 1;
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2em 0.55em;
+  font-size: 0.7em;
+  font-weight: 600;
+  color: var(--primary);
+  background: #eef2fb;
+  border-radius: 999px;
+}
+
+/* ---------- Composer ---------- */
+
+.composer-wrap {
+  flex: none;
+  padding: 0.4em 1.3em 1.3em;
+}
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  min-height: 3.2em;
+  padding: 0.7em 0.9em;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.65em;
+  transition: border-color 200ms ease;
+}
+
+/* Focused, the way it is once speech has landed and the text is editable. */
+.composer.is-focused {
+  border-color: var(--accent);
+}
+
+.composer-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.88em;
+  line-height: 1.45;
+  color: var(--text-tertiary);
+}
+
+.composer-text.is-filled {
+  color: var(--text-primary);
+}
+
+/* --- the waveform --- */
+
+.wave {
+  display: none;
+  align-items: center;
+  gap: 0.12em;
+  height: 1.4em;
+  flex: none;
+}
+
+.composer.is-listening .wave {
+  display: flex;
+}
+
+.wave i {
+  width: 0.16em;
+  min-height: 0.18em;
+  border-radius: 999px;
+  background: var(--accent);
+  transform-origin: center;
+  animation: pulse 900ms ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* --- controls under the field --- */
+
+.composer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8em;
+  margin-top: 0.7em;
+}
+
+.modes {
+  display: flex;
+  gap: 0.15em;
+  padding: 0.18em;
+  background: var(--surface-sunken);
+  border-radius: 999px;
+}
+
+.mode {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.35em 0.75em;
+  font-size: 0.8em;
+  color: var(--text-secondary);
+  border-radius: 999px;
+}
+
+.mode svg {
+  width: 0.85em;
+  height: 0.85em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mode.is-active {
+  color: var(--text-primary);
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.1);
+}
+
+.mode.is-active svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.composer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+}
+
+.mic,
+.send {
+  display: grid;
+  place-items: center;
+  width: 2.1em;
+  height: 2.1em;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: default;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.mic svg,
+.send svg {
+  width: 1.05em;
+  height: 1.05em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mic {
+  color: var(--text-secondary);
+}
+
+/* Listening: filled, with the halo the product shows. */
+.mic.is-listening {
+  color: #fff;
+  background: var(--primary);
+  box-shadow: 0 0 0 0.3em rgba(31, 59, 144, 0.22);
+}
+
+.send {
+  color: var(--text-tertiary);
+  border: 1px solid var(--border-strong);
+}
+
+/* Only once there is text to check does send become available. */
+.send.is-ready {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ---------- Pointer + replay ---------- */
+
+.pointer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.7em;
+  height: 1.7em;
+  margin: -0.85em 0 0 -0.85em;
+  border-radius: 50%;
+  background: rgba(31, 59, 144, 0.16);
+  border: 1.5px solid rgba(31, 59, 144, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 700ms cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 200ms ease;
+  z-index: 5;
+}
+
+.pointer.is-visible {
+  opacity: 1;
+}
+
+.pointer.is-tapping {
+  background: rgba(31, 59, 144, 0.34);
+}
+
+.replay {
+  position: absolute;
+  right: 0.9em;
+  top: 0.9em;
+  padding: 0.35em 0.75em;
+  font: inherit;
+  font-size: 0.75em;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 6;
+}
+
+.replay:hover {
+  color: var(--text-primary);
+  border-color: var(--text-tertiary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pointer {
+    display: none;
+  }
+
+  .wave i,
+  .dots span,
+  .is-streaming::after {
+    animation: none;
+  }
+
+  .wave i {
+    transform: scaleY(0.7);
+  }
+}
