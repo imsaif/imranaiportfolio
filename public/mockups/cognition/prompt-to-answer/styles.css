@@ -1,0 +1,899 @@
+/*
+  Cognition — "ask a question, watch the answer arrive".
+
+  A standalone prototype, served straight out of /public and embedded in an
+  iframe on the case study. No framework, no build step and no network: it
+  follows the same pattern as the Optum receipt prototype next door, which keeps
+  it independent of the portfolio's React and Tailwind versions.
+
+  Tokens below are lifted from the product's own themes.css.
+*/
+
+:root {
+  --primary: #1f3b90;
+  --accent: #00b7bd;
+  --success: #12b76a;
+
+  --text-primary: #101828;
+  --text-secondary: #475467;
+  --text-tertiary: #98a2b3;
+
+  --surface: #ffffff;
+  --surface-sunken: #f8f9fb;
+  --border: #e7eaee;
+  --border-strong: #d6dae1;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  /* The app is a fixed-height shell: the conversation scrolls inside it, the
+     page around it never does. Without this the growing thread pushes the
+     composer out of an embedded frame. */
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text-primary);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  position: relative;
+  display: grid;
+  grid-template-columns: 17.5% 1fr;
+  height: 100%;
+  min-height: 100%;
+  /* Type scales with the frame it is embedded in. 1.4vw keeps it readable at
+     the ~1000px the case study gives it, without overshooting full-screen. */
+  font-size: clamp(10px, 1.4vw, 15px);
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 1em;
+  padding: 1.4em 1em;
+  border-right: 1px solid var(--border);
+  background: var(--surface-sunken);
+  overflow: hidden;
+}
+
+/* Holds the lockup's slot open while the export is pending, so dropping the
+   real asset in does not shift the rest of the rail. */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.6em;
+  margin-bottom: 0.2em;
+}
+
+/* Sized by HEIGHT, not width. This lockup is the stacked version — the graph
+   sits above the wordmark — so it is far squarer than a horizontal one, and a
+   width that suits a wide mark makes a tall one tower over the rail. Height is
+   the dimension that governs how big a logo actually looks here; ~4.2em matches
+   the captured screens. */
+.brand-mark {
+  height: 4.2em;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.new-chat {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  height: 2.6em;
+  padding: 0 0.7em;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: default;
+}
+
+/* Drawn rather than typed. A "+" character sits on the text baseline and carries
+   the font's own stroke weight, so inside a small circle it reads thin and a
+   little low; two strokes centre properly and match the other icons. */
+.new-chat-icon {
+  display: grid;
+  place-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.new-chat-icon svg {
+  width: 0.85em;
+  height: 0.85em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  height: 2.4em;
+  padding: 0 0.7em;
+  color: var(--text-tertiary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+/* One line, always. Wrapped placeholder text doubles the field's height and the
+   whole rail stops lining up. */
+.search span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search svg {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.rail-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  margin: 0.4em 0 0;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.rail-label-icon {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.history {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.05em;
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: 0.92em;
+}
+
+.history li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding-top: 0.9em;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  font-size: 0.72em;
+  font-weight: 700;
+  color: var(--primary);
+  background: #e8edf9;
+  border-radius: 50%;
+}
+
+.account-name {
+  flex: 1;
+  font-size: 0.92em;
+}
+
+.moon {
+  width: 1.1em;
+  height: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+/* ---------- Main ---------- */
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Grid items default to min-height:auto, so without this the column grows to
+     fit the whole conversation, the composer is pushed past the bottom of the
+     frame, and the thread never becomes the thing that scrolls. */
+  min-height: 0;
+  overflow: hidden;
+  padding: 1.4em 2em 1.2em;
+}
+
+.thread-title {
+  font-size: 0.9em;
+  flex: none;
+  font-weight: 700;
+  padding-bottom: 1em;
+  border-bottom: 1px solid var(--border);
+}
+
+.canvas {
+  flex: 1;
+  min-height: 0;
+  padding: 1.6em 0;
+  overflow-y: auto;
+  /* The scrollbar is chrome the real product has too, but in a small embedded
+     frame it reads as a rendering fault. The thread keeps itself at the bottom
+     instead. */
+  scrollbar-width: none;
+}
+
+.canvas::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Welcome ---------- */
+
+/* Left-aligned against the rail, not centred in the pane. Centring opens a wide
+   dead band between the sidebar and the greeting that the product does not have. */
+.welcome {
+  max-width: 52em;
+}
+
+.greeting {
+  margin: 0;
+  font-size: 1.7em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.subgreeting {
+  margin: 0.55em 0 0;
+  font-size: 1.05em;
+  color: var(--text-secondary);
+}
+
+.try {
+  margin: 2.6em 0 0.9em;
+  font-size: 0.95em;
+  font-style: italic;
+  color: var(--text-tertiary);
+}
+
+.prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7em;
+}
+
+.prompt {
+  padding: 0.7em 1em;
+  font: inherit;
+  font-size: 0.92em;
+  text-align: left;
+  color: var(--text-primary);
+  background: #f4fbfb;
+  border: 1px solid #cdeced;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    background-color 140ms ease;
+}
+
+.prompt:hover,
+.prompt.is-focused {
+  background: #e8f6f7;
+  box-shadow: 0 6px 16px -6px rgba(0, 183, 189, 0.45);
+}
+
+.prompt.is-pressed {
+  transform: scale(0.97);
+  background: #d9f0f1;
+}
+
+/* ---------- Thread ---------- */
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: 1.9em;
+}
+
+.user-msg {
+  align-self: flex-end;
+  max-width: 70%;
+  padding: 0.6em 0.95em;
+  font-size: 0.95em;
+  background: #f2f3f5;
+  border-radius: var(--radius-md);
+}
+
+.ai-msg {
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.ai-msg p {
+  max-width: 64em;
+  margin: 0 0 0.9em;
+}
+
+.ai-msg p:last-child {
+  margin-bottom: 0;
+}
+
+/* The block cursor the product shows while a reply is still arriving. */
+.is-streaming::after {
+  content: '▌';
+  margin-left: 0.1em;
+  color: var(--accent);
+  animation: blink 0.8s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.dots {
+  display: inline-flex;
+  gap: 0.3em;
+  padding: 0.3em 0;
+}
+
+.dots span {
+  width: 0.42em;
+  height: 0.42em;
+  background: var(--text-tertiary);
+  border-radius: 50%;
+  animation: bounce 1.1s infinite ease-in-out;
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  35% {
+    transform: translateY(-0.35em);
+    opacity: 1;
+  }
+}
+
+/* ---------- Chart ---------- */
+
+.chart {
+  margin: 0.4em 0 1em;
+  max-width: 30em;
+}
+
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart .axis-line {
+  stroke: var(--border-strong);
+  stroke-width: 1;
+}
+
+.chart .grid-line {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.chart .tick {
+  font-size: 7px;
+  fill: var(--text-tertiary);
+}
+
+.chart .bar {
+  fill: var(--accent);
+  /* Bars grow from the baseline. transform-box keeps the origin on the rect
+     itself rather than the whole SVG. */
+  transform-box: fill-box;
+  transform-origin: bottom;
+  transform: scaleY(0);
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.chart.is-drawn .bar {
+  transform: scaleY(1);
+}
+
+.chart.is-drawn .bar:nth-of-type(2) {
+  transition-delay: 90ms;
+}
+.chart.is-drawn .bar:nth-of-type(3) {
+  transition-delay: 180ms;
+}
+.chart.is-drawn .bar:nth-of-type(4) {
+  transition-delay: 270ms;
+}
+
+.answer-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-top: -1.1em;
+  color: var(--text-tertiary);
+}
+
+.badge {
+  padding: 0.2em 0.55em;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: var(--primary);
+  background: #eef2fb;
+  border-radius: 999px;
+}
+
+.answer-meta svg {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+
+/* ---------- Composer ---------- */
+
+.composer-wrap {
+  padding-top: 0.8em;
+  border-top: 1px solid var(--border);
+}
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 0.65em 0.7em 0.65em 1em;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.composer-text {
+  flex: 1;
+  font-size: 0.95em;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.composer-text.is-filled {
+  color: var(--text-primary);
+}
+
+.composer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  padding: 0;
+  color: var(--text-tertiary);
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: default;
+}
+
+.icon-btn svg {
+  width: 1.05em;
+  height: 1.05em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-btn.send {
+  color: #fff;
+  background: var(--border-strong);
+  transition: background-color 200ms ease;
+}
+
+.icon-btn.send.is-active {
+  background: var(--primary);
+}
+
+.modes {
+  display: flex;
+  gap: 0.15em;
+  padding: 0.15em;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.mode {
+  padding: 0.25em 0.7em;
+  font-size: 0.82em;
+  color: var(--text-secondary);
+  border-radius: 999px;
+}
+
+.mode.is-active {
+  color: var(--text-primary);
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+}
+
+.disclaimer {
+  margin: 0.6em 0 0;
+  font-size: 0.75em;
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+/* ---------- Pointer + replay ---------- */
+
+.pointer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.5em;
+  height: 1.5em;
+  margin: -0.75em 0 0 -0.75em;
+  border-radius: 50%;
+  background: rgba(31, 59, 144, 0.16);
+  border: 1.5px solid rgba(31, 59, 144, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 700ms cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 200ms ease;
+  z-index: 5;
+}
+
+.pointer.is-visible {
+  opacity: 1;
+}
+
+.pointer.is-tapping {
+  background: rgba(31, 59, 144, 0.32);
+}
+
+.replay {
+  position: absolute;
+  right: 1.2em;
+  top: 1.1em;
+  padding: 0.4em 0.85em;
+  font: inherit;
+  font-size: 0.82em;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 6;
+}
+
+.replay:hover {
+  color: var(--text-primary);
+  border-color: var(--text-tertiary);
+}
+
+/* Anyone who has asked for less motion gets the finished state, not a faster
+   version of the animation. */
+@media (prefers-reduced-motion: reduce) {
+  .pointer {
+    display: none;
+  }
+
+  .chart .bar,
+  .answer-table,
+  .prompt {
+    transition: none;
+  }
+
+  .answer-table {
+    opacity: 1;
+    transform: none;
+  }
+
+  .dots span {
+    animation: none;
+  }
+
+  .is-streaming::after {
+    animation: none;
+  }
+}
+
+
+/* ---------- Reasoning (Pro) ---------- */
+
+/*
+  Rebuilt to match the component that actually shipped: a header that names the
+  step it is on and counts the seconds, a checklist of stages beneath it, and the
+  model's prose under a dashed rule. It folds itself away shortly after finishing,
+  leaving the one summary line.
+*/
+
+.reasoning {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.reasoning-head {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6em;
+  padding: 0.6em 0.85em;
+  font: inherit;
+  font-size: 0.85em;
+  font-weight: 500;
+  text-align: left;
+  color: var(--text-primary);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.reasoning-head:hover .reasoning-chevron {
+  stroke: var(--text-secondary);
+}
+
+.reasoning-head-left {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  min-width: 0;
+}
+
+.reasoning-label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.reasoning-chevron {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: none;
+  stroke: var(--text-tertiary);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 200ms ease;
+}
+
+.reasoning.is-collapsed .reasoning-chevron {
+  transform: rotate(-90deg);
+}
+
+.reasoning.is-collapsed .reasoning-body {
+  display: none;
+}
+
+.reasoning-body {
+  border-top: 1px solid var(--border);
+}
+
+/* --- the header's own state icon --- */
+
+.reasoning-mark {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+
+.reasoning-mark.spark {
+  color: var(--accent);
+  animation: spin 2.4s linear infinite;
+}
+
+.reasoning-mark.tick {
+  color: var(--success);
+}
+
+.reasoning-mark svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* --- the stage checklist --- */
+
+.reasoning-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  margin: 0;
+  padding: 0.7em 0.85em;
+  list-style: none;
+}
+
+.reasoning-step {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: 0.82em;
+  color: var(--text-tertiary);
+}
+
+.reasoning-step .dot {
+  width: 1.05em;
+  height: 1.05em;
+  flex: none;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+
+.reasoning-step.is-active {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* The active stage is a ring with one quarter missing, spinning. */
+.reasoning-step.is-active .dot {
+  background: none;
+  border: 2px solid var(--accent);
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+.reasoning-step.is-done {
+  color: var(--text-secondary);
+}
+
+.reasoning-step.is-done .dot {
+  background: none;
+  color: var(--success);
+}
+
+.reasoning-step.is-done .dot svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- the model's prose --- */
+
+.reasoning-prose {
+  max-height: 14em;
+  overflow-y: auto;
+  padding: 0.7em 0.85em;
+  border-top: 1px dashed var(--border-strong);
+  font-size: 0.85em;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  scrollbar-width: none;
+}
+
+.reasoning-prose::-webkit-scrollbar {
+  display: none;
+}
+
+.badge.pro {
+  color: var(--text-secondary);
+  background: #f2f3f5;
+}
+
+/* ---------- Table ---------- */
+
+/* Arrives rather than appears: without this the table lands the instant the
+   sentence above it finishes, which reads as a jump. */
+.answer-table {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 420ms ease-out,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.3em 0 0.6em;
+  font-size: 0.88em;
+}
+
+.answer-table.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.answer-table th {
+  padding: 0 0 0.6em;
+  font-weight: 600;
+  font-size: 0.85em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.answer-table td {
+  padding: 0.7em 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.answer-table td:not(:first-child),
+.answer-table th:not(:first-child) {
+  padding-left: 1.4em;
+}
+
+.answer-table tr:last-child td {
+  border-bottom: 0;
+}

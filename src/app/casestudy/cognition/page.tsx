@@ -1,6 +1,7 @@
 'use client';
 
-import { Figure, Pull, Readers, Section, Shipped, Steps, TwoUp } from './sections';
+import { Pull, Readers, Section, Shipped, Steps } from './sections';
+import { StagedEmbed, StagedFigure, StagedTwoUp } from './visuals';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
@@ -57,11 +58,17 @@ export default function CognitionCaseStudy() {
       </dl>
 
       <div className="mt-14">
-        <Figure
-          src="/images/casestudy/cognition/welcome-newglobe.png"
-          alt="Cognition welcome screen: a greeting and three example questions about programme data"
+        {/* The product itself, running, rather than a picture of it. It opens on
+            the welcome screen the case study goes on to describe, then plays one
+            question through both modes.
+            CAPTION IS THE ORIGINAL FIGURE'S — it describes the opening screen
+            only, while the demo now runs past it. Imran to revise. */}
+        <StagedEmbed
+          src="/mockups/cognition/prompt-to-answer/index.html"
+          title="Cognition: asking a question in Lite, then following up in Pro"
+          ratio="1400 / 720"
+          eager
           caption="The opening screen. Three example questions do the work an empty text box cannot. Cognition was designed for NewGlobe first, with programme branding applied on top: the same product, themed per state. These are the NewGlobe base screens."
-          priority
         />
       </div>
 
@@ -186,10 +193,14 @@ export default function CognitionCaseStudy() {
         />
       </Section>
 
-      <Figure
+      <StagedFigure
         src="/images/casestudy/cognition/refusal-scope.png"
         alt="Cognition declining an out-of-scope question, naming what it is for before refusing"
         caption="Asked who someone is, it says what it is for, declines, and points elsewhere."
+        width={1566}
+        height={751}
+        size="full"
+        sizes="100vw"
       />
 
       {/* ---------- 05 ---------- */}
@@ -202,10 +213,16 @@ export default function CognitionCaseStudy() {
         </p>
       </Section>
 
-      <Figure
+      {/* Set narrower than its neighbours so the run of wide screenshots has a
+          beat in it rather than reading as a contact sheet. */}
+      <StagedFigure
         src="/images/casestudy/cognition/answer-chart.png"
         alt="A Lite answer: a sentence, a bar chart of lesson completion over four weeks, then a sentence interpreting it"
         caption="Lite: a sentence, the shape of the data, then what the shape means. Figures shown are synthetic."
+        width={1568}
+        height={751}
+        size="full"
+        sizes="100vw"
       />
 
       {/* ---------- 06 ---------- */}
@@ -249,11 +266,16 @@ export default function CognitionCaseStudy() {
 
       <Pull>Show the working when someone asks for it. Hide it when they don&rsquo;t.</Pull>
 
-      <Figure
+      <StagedFigure
+        width={1567}
+        height={752}
+        size="full"
+        sizes="100vw"
         src="/images/casestudy/cognition/reasoning-pro.png"
         alt="Pro mode after answering: the reasoning folded to one line reading thought for 10 seconds, 3 steps, above a comparison table"
         caption="Pro, once it has finished. The working is folded to a single line saying how long it thought and how many steps, above the comparison it was asked for."
       />
+
 
       {/* ---------- 07 ---------- */}
       <Section index="07" title="Getting it used">
@@ -288,7 +310,14 @@ export default function CognitionCaseStudy() {
         </p>
       </Section>
 
-      <TwoUp
+      {/* No device bezel on this row. The middle capture is itself a photograph
+          of a tablet, chrome included, so a drawn frame puts a device inside a
+          device. They share one cell shape instead, which is what actually
+          makes the row line up. */}
+      <StagedTwoUp
+        aspect="876 / 1356"
+        size="full"
+        sizes="(max-width: 640px) 100vw, 340px"
         caption="The whole reason it is a PWA. These officials work from Android tablets, where an app means an icon on the home screen rather than a URL in a browser. Below tablet width the sidebar stops being a rail and becomes a drawer."
         items={[
           {
@@ -315,7 +344,13 @@ export default function CognitionCaseStudy() {
         ]}
       />
 
-      <TwoUp
+      {/* The bezel is drawn in CSS rather than baked into the export, so the
+          screen keeps its full resolution inside it and the frame can change
+          without a re-export. */}
+      <StagedTwoUp
+        variant="phone"
+        size="full"
+        sizes="(max-width: 640px) 100vw, 360px"
         caption="Speech lands in the composer as text the official can correct. The keyboard is up and nothing has been sent yet, which is the whole point: a mis-heard question gets fixed before it becomes an answer about the wrong district."
         items={[
           {
@@ -335,8 +370,14 @@ export default function CognitionCaseStudy() {
         ]}
       />
 
-      <TwoUp
+      {/* These are crops of the composer, not whole screens, so they get no
+          frame. They are also different widths natively, and StagedTwoUp scales
+          them to each other so the pair is compared at one magnification. */}
+      <StagedTwoUp
         stacked
+        variant="bare"
+        size="full"
+        sizes="(max-width: 1600px) 100vw, 1600px"
         caption="Closer in. While it is listening the send button is disabled, so the only thing the official can do is finish speaking and read back what was heard. It only becomes available once there is text to check."
         items={[
           {
@@ -374,18 +415,24 @@ export default function CognitionCaseStudy() {
         </p>
       </Section>
 
-      <TwoUp
+      <StagedTwoUp
+        size="full"
+        sizes="(max-width: 640px) 100vw, 800px"
         caption="The whole finding. Logout moved out of a menu and onto the sidebar, permanently visible, because that is where this audience learned to look for it."
         items={[
           {
             src: '/images/casestudy/cognition/logout-before.png',
             alt: 'Sidebar footer showing only the account avatar and a theme toggle',
             label: 'Before: nobody found it',
+            width: 1000,
+            height: 479,
           },
           {
             src: '/images/casestudy/cognition/logout-after.png',
             alt: 'Sidebar footer with a labelled Logout row above the account avatar',
             label: 'After: always on screen',
+            width: 1000,
+            height: 479,
           },
         ]}
       />

@@ -47,6 +47,8 @@ export default function AiexCaseStudy() {
           src="/images/casestudy/aiex/hero.jpg"
           alt="The aiuxdesign.guide homepage: Turn Your Design Into Claude Skills, with a free audit and no signup"
           caption="Where it is now. The audit is still the front door; skills are what you take away from it."
+          width={1145}
+          height={1064}
           priority
         />
       </div>
@@ -85,6 +87,8 @@ export default function AiexCaseStudy() {
         src="/images/casestudy/aiex/micro-app.jpg"
         alt="The Human-in-the-Loop pattern page showing a working content moderation queue you can interact with, plus a Preview and Code toggle"
         caption="The Human-in-the-Loop micro-app. Flag something, approve it, override the model, then read the code that does it."
+        width={1145}
+        height={1064}
       />
 
       {/* ---------- 03 ---------- */}
@@ -195,6 +199,8 @@ export default function AiexCaseStudy() {
         src="/images/casestudy/aiex/demo-pins.jpg"
         alt="The homepage interactive demo: a mock dashboard with numbered hotspots and a panel listing five audit findings"
         caption="The homepage demo. Only 14% of the people who saw it ever clicked a hotspot."
+        width={1145}
+        height={1064}
       />
 
       {/* ---------- 07 ---------- */}
