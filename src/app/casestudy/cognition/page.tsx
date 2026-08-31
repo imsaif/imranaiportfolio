@@ -482,8 +482,8 @@ export default function CognitionCaseStudy() {
       {/* ---------- 10 ---------- */}
       <Section index="10" title="How accurate it had to be">
         <p>
-          The target was 80% accuracy, measured against Spotlight, the dashboard product this audience
-          already treats as the record. The test was not whether an answer read well. It was whether it
+          The floor was 80% accuracy measured against Spotlight, the dashboard product this audience
+          already treats as the record, with 85% as the number we were aiming at. The test was not whether an answer read well. It was whether it
           matched the number the organisation had already agreed on.
         </p>
         <p>
@@ -491,7 +491,8 @@ export default function CognitionCaseStudy() {
           NewGlobe. 10 came from the executive and commercial side, asking the questions they would
           really ask. 15 came from the technology and Cognition teams, whose job was to check answers
           against Spotlight and file the ones that did not match. Staff attendance took the longest to
-          come up to standard.
+          come up to standard. Officials followed in a staged rollout, roughly 20 per programme across
+          BayelsaPRIME, JigawaUNITE and Bridge Liberia.
         </p>
         <p>
           80% also means 1 answer in 5 is wrong, and the interface has to carry that honestly. So every answer shows which mode produced it. Every answer can be marked useful or
@@ -509,6 +510,8 @@ export default function CognitionCaseStudy() {
           an interface wrapped around an answer that differs every run, so we ran it as a weekly loop
           instead. The group met each week, what they hit became tickets, and the fixes went into the
           next build. My job was to turn what came out of that hour into design fast enough to be in it.
+          Underneath that ran a daily conversation with the solution architect and the product director, where we
+          decided what went out next and what waited.
         </p>
         <p>
           Most of what the product became came out of those weeks rather than out of a document. Three
