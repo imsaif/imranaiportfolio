@@ -30,7 +30,16 @@ export default function CognitionCaseStudy() {
         </h1>
         <p className="mt-6 text-[20px] leading-[1.6] tracking-[-0.01em] text-text-secondary md:text-[22px]">
           Conversational AI for the officials who run a national education programme, and answer to ministers for it. The
-          screens here report on Bayelsa State, Nigeria, covering 222 schools and 41,000 pupils. NewGlobe unveiled it at the{' '}
+          screens here report on Bayelsa State, Nigeria, covering 222 schools and 41,000 pupils.{' '}
+          <a
+            href="https://newglobe.education/enterprise-ai.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-b border-gray-400 text-text-primary transition-colors hover:border-gray-900"
+          >
+            NewGlobe
+          </a>{' '}
+          unveiled it at the{' '}
           <a
             href="https://www.theewf.org/"
             target="_blank"
@@ -425,31 +434,15 @@ export default function CognitionCaseStudy() {
         caption="Speech lands in the composer as text the official can correct. The keyboard is up and nothing has been sent yet, which is the whole point: a mis-heard question gets fixed before it becomes an answer about the wrong district."
       />
 
-      {/* These are crops of the composer, not whole screens, so they get no
-          frame. They are also different widths natively, and StagedTwoUp scales
-          them to each other so the pair is compared at one magnification. */}
-      <StagedTwoUp
-        stacked
-        variant="bare"
+      {/* This block is making a point about a state change, which two still frames
+          make the reader reconstruct. It runs instead. Kept wide and short, the
+          shape of the crops it replaces. */}
+      <StagedEmbed
+        src="/mockups/cognition/send-state/index.html"
+        title="Cognition: the send button stays disabled until there is text to check"
+        ratio="1260 / 150"
         size="full"
-        sizes="(max-width: 1600px) 100vw, 1600px"
         caption="Closer in. While it is listening the send button is disabled, so the only thing the official can do is finish speaking and read back what was heard. It only becomes available once there is text to check."
-        items={[
-          {
-            src: '/images/casestudy/cognition/voice-send-disabled.png',
-            alt: 'The composer while listening: a live waveform, the word Listening, and a greyed-out send button',
-            label: 'Listening, send disabled',
-            width: 1260,
-            height: 108,
-          },
-          {
-            src: '/images/casestudy/cognition/voice-send-available.png',
-            alt: 'The same composer with the question transcribed as editable text and the send button now active',
-            label: 'Transcribed, send available',
-            width: 965,
-            height: 83,
-          },
-        ]}
       />
 
       {/* ---------- 08 ---------- */}
