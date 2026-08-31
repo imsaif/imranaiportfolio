@@ -474,33 +474,33 @@ export default function CognitionCaseStudy() {
       />
 
       {/* ---------- 10 ---------- */}
-      <Section index="10" title="Eighty per cent, said out loud">
+      <Section index="10" title="How accurate it had to be">
         <p>
-          The target for the first release was eighty per cent accuracy against Spotlight, the dashboard product whose
-          numbers this audience already treats as the record. That is the benchmark: not whether an answer reads well,
-          but whether it matches the figure the organisation already agrees on.
+          The target was eighty per cent. Spotlight, the dashboard product this audience already treats as
+          the record, was the benchmark: eight answers in ten had to match the number the organisation
+          had already agreed on. Not whether an answer read well. Whether it was right.
         </p>
         <p>
-          It was calibrated before it reached any official. The first release went to roughly twenty-five people inside
-          NewGlobe, about ten from the executive and commercial side asking the strategic questions they would really
-          ask, and about fifteen from the technology and Cognition teams whose job was to check answers against
-          Spotlight and file what did not match. Staff attendance was the figure that stayed short of target longest.
+          It was calibrated before any official saw it. The first release went to about twenty-five
+          people inside NewGlobe. Ten came from the executive and commercial side, asking the questions
+          they would really ask. Fifteen came from the technology and Cognition teams, whose job was to
+          check answers against Spotlight and file the ones that did not match. Staff attendance took the
+          longest to come up to standard.
         </p>
         <p>
-          The number matters less than what it forces you to design. Eighty per cent means one answer in five is wrong,
-          and the product has to hold that without pretending otherwise. So every response carries the mode that
-          produced it, every response carries a thumbs up and down with a comment field, and Pro exists for the
-          questions where being right matters more than being quick. The interface never expresses more confidence
-          than the system has earned.
+          Eighty per cent also means one answer in five is wrong, and the interface has to carry that
+          honestly. So every answer shows which mode produced it. Every answer can be marked useful or
+          not. Pro exists for the questions where being right matters more than being quick. Nothing on
+          screen claims more confidence than the system has earned.
         </p>
         <p>
-          The feedback control was the point of the calibration release rather than a courtesy. Without somewhere in
-          the product to flag a wrong answer, accuracy problems arrive as screenshots in chat threads and lose the one
-          thing that makes them fixable: which question, in which mode, in which session.
+          The feedback control was the whole point of that first release rather than a courtesy. Without
+          a way to flag a wrong answer inside the product, accuracy problems arrive as screenshots in
+          chat threads, stripped of the one thing that makes them fixable: which question, in which mode,
+          in which session.
         </p>
       </Section>
 
-      {/* ---------- 09 ---------- */}
       <Section index="11" title="Where it landed">
         <p>
           Cognition was unveiled at the{' '}
