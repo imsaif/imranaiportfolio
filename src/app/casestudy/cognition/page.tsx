@@ -291,7 +291,7 @@ export default function CognitionCaseStudy() {
         </p>
         <p>
           The system picks the mode itself, and we instrumented that switch so we would find out which one people
-          actually used. In real use it was Lite, by a wide margin.
+          actually used. Lite was the default in practice.
         </p>
         <p>
           Every answer carries the mode that produced it, so the reader knows which of the two they are holding. Pro
@@ -499,6 +499,37 @@ export default function CognitionCaseStudy() {
           chat threads, stripped of the one thing that makes them fixable: which question, in which mode,
           in which session.
         </p>
+        <p>
+          Those 25 people were also how the design got tested. There is no clean usability protocol for
+          an interface wrapped around an answer that differs every run, so we ran it as a weekly loop
+          instead. The group met each week, what they hit became tickets, and the fixes went into the
+          next build. My job was to turn what came out of that hour into design fast enough to be in it.
+        </p>
+        <p>
+          Most of what the product became came out of those weeks rather than out of a document. Three
+          of the larger ones:
+        </p>
+        <Steps
+          items={[
+            {
+              label: 'Search, and how history is grouped',
+              body: 'Whether past conversations should be grouped by day, week or month, and what search across them needed to match, were both settled by watching people fail to find something they had asked before.',
+            },
+            {
+              label: 'The programme selector, removed',
+              body: 'I had designed Cognition in every programme\u2019s brand colours, NewGlobe\u2019s included, and put a selector in a modal at the start. The loop killed it. The programme belongs in the URL, and each person is sent to the one they are assigned to, so most users never see a control at all.',
+            },
+            {
+              label: 'Dark mode, argued down',
+              body: 'The proposal was a dark theme built from NewGlobe\u2019s brand colours. I argued it would fail on contrast before it reached anyone, and we shipped a conventional dark theme instead. Every screen was redrawn for it.',
+            },
+          ]}
+        />
+        <p>
+          The same weeks produced the smaller things that make it usable: the feedback control itself, and
+          tooltips on the controls for people meeting these options for the first time. Starring and
+          renaming a conversation came out of the loop too, designed and not built before I left.
+        </p>
       </Section>
 
       <Section index="11" title="Where it landed">
@@ -537,6 +568,7 @@ export default function CognitionCaseStudy() {
             'Offline. It installs like an app but still needs a connection',
             'Citations on the face of an answer. Designed, not shipped',
             'Local languages. The interface is English, and speech recognition is the weaker half of that',
+            'Starring and renaming a conversation, so a piece of analysis can be found again',
           ]}
         />
       </Section>
