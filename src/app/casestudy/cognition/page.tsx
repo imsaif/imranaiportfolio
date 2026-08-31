@@ -274,8 +274,9 @@ export default function CognitionCaseStudy() {
           in your words and the answer arrives in them.
         </p>
         <p>
-          That is not a cosmetic nicety. An official who asks about arms and reads an answer about streams has been
-          told, quietly, that the tool was built for somebody else.
+          That mapping is doing real work. Without it, every official outside whichever programme happened to set the
+          canonical terms would be translating their own vocabulary into somebody else&rsquo;s before they could ask a
+          question, and reading the answer back the same way.
         </p>
       </Section>
 
