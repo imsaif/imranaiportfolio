@@ -29,8 +29,8 @@ export default function CognitionCaseStudy() {
           A quiet interface for asking hard questions.
         </h1>
         <p className="mt-6 text-[20px] leading-[1.6] tracking-[-0.01em] text-text-secondary md:text-[22px]">
-          Conversational AI for the officials who run a national education programme, and answer to ministers for it. It
-          reports on Bayelsa State, Nigeria, covering 222 schools and 41,000 pupils. NewGlobe unveiled it at the{' '}
+          Conversational AI for the officials who run a national education programme, and answer to ministers for it. The
+          screens here report on Bayelsa State, Nigeria, covering 222 schools and 41,000 pupils. NewGlobe unveiled it at the{' '}
           <a
             href="https://www.theewf.org/"
             target="_blank"
@@ -265,6 +265,18 @@ export default function CognitionCaseStudy() {
           wrote the guidelines the answers are held to: what it calls things, how much it hedges, how it declines,
           and how long an answer runs before it stops being useful.
         </p>
+        <p>
+          What it calls things is not one decision, though, because the same words do not mean the same thing across
+          programmes. Streams in one place are arms in another. Pupils in one are students in another. Head teacher,
+          head master and school leader are three names for a single role, and last term resolves against a different
+          calendar in each state. Cognition normalises what you type to a canonical term before it goes anywhere near
+          the data, then answers back in the vocabulary of your own programme. None of the mapping is visible: you ask
+          in your words and the answer arrives in them.
+        </p>
+        <p>
+          That is not a cosmetic nicety. An official who asks about arms and reads an answer about streams has been
+          told, quietly, that the tool was built for somebody else.
+        </p>
       </Section>
 
       {/* Set narrower than its neighbours so the run of wide screenshots has a
@@ -492,7 +504,7 @@ export default function CognitionCaseStudy() {
           really ask. 15 came from the technology and Cognition teams, whose job was to check answers
           against Spotlight and file the ones that did not match. Staff attendance took the longest to
           come up to standard. Officials followed in a staged rollout, roughly 20 per programme across
-          BayelsaPRIME, JigawaUNITE and Bridge Liberia.
+          Bayelsa and Jigawa states in Nigeria, and Liberia.
         </p>
         <p>
           80% also means 1 answer in 5 is wrong, and the interface has to carry that honestly. So every answer shows which mode produced it. Every answer can be marked useful or
