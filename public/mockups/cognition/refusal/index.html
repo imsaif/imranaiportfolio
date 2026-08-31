@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cognition: declining a question</title>
+    <!--
+      The refusal, running. A screenshot of a decline is the thing a sceptical
+      reader assumes was staged, so this plays it: an out-of-scope question is
+      asked and Cognition names what it is for, declines, and points elsewhere.
+
+      Shares the stylesheet with the prompt-to-answer prototype next door rather
+      than carrying a copy of it. Only the sequence differs.
+    -->
+    <link rel="stylesheet" href="../prompt-to-answer/styles.css" />
+    <style>
+      /* This scene is one short exchange rather than a session, so the rail
+         carries less and the thread starts higher. */
+      .history li:nth-child(n + 5) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app" id="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <img class="brand-mark" src="../prompt-to-answer/cognition-lockup.svg" alt="Cognition by NewGlobe" />
+        </div>
+
+        <button class="new-chat" type="button" tabindex="-1">
+          <span class="new-chat-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16">
+              <line x1="8" y1="3.5" x2="8" y2="12.5" />
+              <line x1="3.5" y1="8" x2="12.5" y2="8" />
+            </svg>
+          </span>
+          New chat
+        </button>
+
+        <div class="search">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="7" cy="7" r="4.5" />
+            <line x1="10.5" y1="10.5" x2="14" y2="14" />
+          </svg>
+          <span>Search conversations&hellip;</span>
+        </div>
+
+        <p class="rail-label">
+          <svg class="rail-label-icon" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="6" />
+            <polyline points="8,4.5 8,8 10.5,9.5" />
+          </svg>
+          History
+        </p>
+
+        <ul class="history">
+          <li>What is the student count&hellip;</li>
+          <li>How many teachers are the&hellip;</li>
+          <li>How does the student co&hellip;</li>
+          <li>Show me the gender distr&hellip;</li>
+        </ul>
+
+        <div class="account">
+          <span class="avatar">TD</span>
+          <span class="account-name">Tosin Dada Philips</span>
+          <svg class="moon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M13 9.5A5.5 5.5 0 0 1 6.5 3a5.5 5.5 0 1 0 6.5 6.5z" />
+          </svg>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="thread-title" id="threadTitle" hidden>Out of scope</header>
+
+        <div class="canvas" id="canvas">
+          <section class="welcome" id="welcome">
+            <h1 class="greeting">Hello, Tosin.</h1>
+            <p class="subgreeting">Ask anything about your JigawaUNITE data</p>
+          </section>
+
+          <section class="thread" id="thread" hidden></section>
+        </div>
+
+        <div class="composer-wrap">
+          <div class="composer">
+            <span class="composer-text" id="composerText">Ask about your education data&hellip;</span>
+            <div class="composer-actions">
+              <button class="icon-btn send" id="send" type="button" tabindex="-1" aria-hidden="true">
+                <svg viewBox="0 0 16 16"><polyline points="4,8 8,4 12,8" /><line x1="8" y1="4" x2="8" y2="12" /></svg>
+              </button>
+              <button class="icon-btn" type="button" tabindex="-1" aria-hidden="true">
+                <svg viewBox="0 0 16 16">
+                  <rect x="6" y="2.5" width="4" height="7" rx="2" />
+                  <path d="M4 8a4 4 0 0 0 8 0" />
+                  <line x1="8" y1="12" x2="8" y2="14" />
+                </svg>
+              </button>
+              <div class="modes">
+                <span class="mode is-active">Lite</span>
+                <span class="mode">Pro</span>
+              </div>
+            </div>
+          </div>
+          <p class="disclaimer">Cognition is an AI and can make mistakes. Please double check important information.</p>
+        </div>
+
+        <button class="replay" id="replay" type="button" hidden>Replay</button>
+      </main>
+
+      <span class="pointer" id="pointer" aria-hidden="true"></span>
+    </div>
+
+    <script>
+      (function () {
+        'use strict';
+
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Both lines are the product's own output, captured from the screen this
+        // replaces. The decline names what it is for before it says no.
+        var QUESTION = 'Who is Michael?';
+        var REFUSAL =
+          'I’m sorry, I’m Cognition, an AI assistant designed to help you navigate data-driven questions and answers. I’m unable to help with that request. Maybe you’d like to use Google for it?';
+
+        var app = document.getElementById('app');
+        var welcome = document.getElementById('welcome');
+        var thread = document.getElementById('thread');
+        var canvas = document.getElementById('canvas');
+        var threadTitle = document.getElementById('threadTitle');
+        var composerText = document.getElementById('composerText');
+        var send = document.getElementById('send');
+        var pointer = document.getElementById('pointer');
+        var replay = document.getElementById('replay');
+
+        var timers = [];
+        var token = 0;
+        var STALE = { stale: true };
+
+        function wait(ms) {
+          return new Promise(function (r) {
+            timers.push(setTimeout(r, reduce ? Math.min(ms, 80) : ms));
+          });
+        }
+
+        function guard(t) {
+          return function (v) {
+            if (t !== token) throw STALE;
+            return v;
+          };
+        }
+
+        function streamInto(el, text, base, jitter) {
+          if (reduce) {
+            el.textContent = text;
+            return Promise.resolve();
+          }
+          el.classList.add('is-streaming');
+          return (text.match(/\S+\s*/g) || [])
+            .reduce(function (chain, w) {
+              return chain.then(function () {
+                el.textContent += w;
+                canvas.scrollTop = canvas.scrollHeight;
+                return wait(base + Math.random() * jitter);
+              });
+            }, Promise.resolve())
+            .then(function () {
+              el.classList.remove('is-streaming');
+            });
+        }
+
+        function movePointerTo(el) {
+          if (reduce) return Promise.resolve();
+          var frame = app.getBoundingClientRect();
+          var box = el.getBoundingClientRect();
+          pointer.style.transform =
+            'translate(' + (box.left - frame.left + box.width / 2) + 'px,' + (box.top - frame.top + box.height / 2) + 'px)';
+          pointer.classList.add('is-visible');
+          return wait(700);
+        }
+
+        function reset() {
+          token += 1;
+          timers.forEach(clearTimeout);
+          timers = [];
+          thread.innerHTML = '';
+          thread.hidden = true;
+          threadTitle.hidden = true;
+          welcome.hidden = false;
+          composerText.textContent = 'Ask about your education data…';
+          composerText.classList.remove('is-filled');
+          send.classList.remove('is-active');
+          pointer.classList.remove('is-visible', 'is-tapping');
+          replay.hidden = true;
+        }
+
+        function run() {
+          reset();
+          var t = token;
+          var stop = guard(t);
+
+          return wait(800)
+            .then(stop)
+            .then(function () {
+              return movePointerTo(composerText);
+            })
+            .then(stop)
+            .then(function () {
+              // Typed rather than picked: this is not a question the product suggests.
+              composerText.textContent = '';
+              composerText.classList.add('is-filled');
+              return streamInto(composerText, QUESTION, 55, 70);
+            })
+            .then(stop)
+            .then(function () {
+              send.classList.add('is-active');
+              return wait(500);
+            })
+            .then(stop)
+            .then(function () {
+              return movePointerTo(send);
+            })
+            .then(stop)
+            .then(function () {
+              pointer.classList.add('is-tapping');
+              return wait(260);
+            })
+            .then(stop)
+            .then(function () {
+              pointer.classList.remove('is-tapping', 'is-visible');
+              welcome.hidden = true;
+              thread.hidden = false;
+              threadTitle.hidden = false;
+
+              var user = document.createElement('div');
+              user.className = 'user-msg';
+              user.textContent = QUESTION;
+              thread.appendChild(user);
+
+              composerText.textContent = 'Ask about your education data…';
+              composerText.classList.remove('is-filled');
+              send.classList.remove('is-active');
+              return wait(500);
+            })
+            .then(stop)
+            .then(function () {
+              var ai = document.createElement('div');
+              ai.className = 'ai-msg';
+              ai.innerHTML = '<span class="dots"><span></span><span></span><span></span></span>';
+              thread.appendChild(ai);
+              return wait(900).then(function () {
+                ai.innerHTML = '';
+                return ai;
+              });
+            })
+            .then(function (ai) {
+              stop();
+              var p = document.createElement('p');
+              ai.appendChild(p);
+              return streamInto(p, REFUSAL, 45, 60);
+            })
+            .then(stop)
+            .then(function () {
+              var meta = document.createElement('div');
+              meta.className = 'answer-meta';
+              meta.innerHTML = '<span class="badge">Lite</span>';
+              thread.appendChild(meta);
+              replay.hidden = false;
+            })
+            .catch(function (e) {
+              if (e !== STALE) throw e;
+            });
+        }
+
+        replay.addEventListener('click', run);
+
+        var started = false;
+        function start() {
+          if (started) return;
+          started = true;
+          run();
+        }
+
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                  start();
+                  io.disconnect();
+                }
+              });
+            },
+            { threshold: 0.35 }
+          );
+          io.observe(app);
+        } else {
+          start();
+        }
+      })();
+    </script>
+  </body>
+</html>

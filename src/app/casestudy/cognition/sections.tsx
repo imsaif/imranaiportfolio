@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
@@ -11,14 +11,33 @@ import { ReactNode } from 'react';
  * own design principle was "calm, editorial", and the write-up holds to it.
  */
 
-const rise = {
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-80px' },
-  transition: { duration: 0.5 },
-};
+/**
+ * The shared scroll-reveal. Exported so the staged visuals in `visuals.tsx` move
+ * on exactly the same contract as the prose sections rather than drifting into a
+ * second, slightly-different reveal.
+ *
+ * Under `prefers-reduced-motion` the translation is dropped entirely — not
+ * shortened. A 24px lurch is still a lurch at 0.2s.
+ */
+export function useRise() {
+  const reduce = useReducedMotion();
+  return reduce
+    ? {
+        initial: { opacity: 1, y: 0 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+        transition: { duration: 0 },
+      }
+    : {
+        initial: { opacity: 0, y: 24 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: '-80px' },
+        transition: { duration: 0.5 },
+      };
+}
 
 export function Section({ index, title, children }: { index: string; title: string; children: ReactNode }) {
+  const rise = useRise();
   return (
     <motion.section {...rise} className="mx-auto w-full max-w-[820px] px-6 py-16 md:py-24">
       <div className="mb-8 flex items-baseline gap-4">
@@ -35,20 +54,29 @@ export function Figure({
   alt,
   caption,
   priority = false,
+  width = 1459,
+  height = 812,
 }: {
   src: string;
   alt: string;
   caption: string;
   priority?: boolean;
+  // The dimensions reserve the layout box before the image loads. They default
+  // to the original exports' 1459x812, so existing callers are unchanged, but
+  // any caller whose asset is a different shape should pass its real size —
+  // otherwise the reserved box is wrong and the page shifts as it loads.
+  width?: number;
+  height?: number;
 }) {
+  const rise = useRise();
   return (
     <motion.figure {...rise} className="mx-auto w-full max-w-5xl px-6 py-10">
       <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
         <Image
           src={src}
           alt={alt}
-          width={1459}
-          height={812}
+          width={width}
+          height={height}
           priority={priority}
           className="h-auto w-full"
           sizes="(max-width: 1024px) 100vw, 1024px"
@@ -72,6 +100,7 @@ export function TwoUp({
   caption: string;
   stacked?: boolean;
 }) {
+  const rise = useRise();
   const columns = stacked ? '' : items.length >= 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2';
   return (
     <motion.figure {...rise} className="mx-auto w-full max-w-5xl px-6 py-10">
@@ -104,6 +133,7 @@ export function TwoUp({
 }
 
 export function Pull({ children, cite }: { children: ReactNode; cite?: string }) {
+  const rise = useRise();
   return (
     <motion.blockquote
       {...rise}
@@ -122,6 +152,7 @@ export function Pull({ children, cite }: { children: ReactNode; cite?: string })
 }
 
 export function Readers({ items }: { items: { who: string; need: string; constraint: string }[] }) {
+  const rise = useRise();
   return (
     <motion.ul
       {...rise}

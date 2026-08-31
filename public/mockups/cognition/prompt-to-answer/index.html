@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cognition: asking a question</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- ---------- Sidebar ---------- -->
+      <aside class="sidebar">
+        <div class="brand">
+          <!-- Vector, so it stays sharp at any size the frame ends up. -->
+          <img class="brand-mark" src="cognition-lockup.svg" alt="Cognition by NewGlobe" />
+        </div>
+
+        <button class="new-chat" type="button" tabindex="-1">
+          <span class="new-chat-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16">
+              <line x1="8" y1="3.5" x2="8" y2="12.5" />
+              <line x1="3.5" y1="8" x2="12.5" y2="8" />
+            </svg>
+          </span>
+          New chat
+        </button>
+
+        <div class="search">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="7" cy="7" r="4.5" />
+            <line x1="10.5" y1="10.5" x2="14" y2="14" />
+          </svg>
+          <span>Search conversations…</span>
+        </div>
+
+        <p class="rail-label">
+          <svg class="rail-label-icon" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="6" />
+            <polyline points="8,4.5 8,8 10.5,9.5" />
+          </svg>
+          History
+        </p>
+
+        <ul class="history">
+          <li>What is the student count…</li>
+          <li>How many teachers are the…</li>
+          <li>How does the student co…</li>
+          <li>Show me the gender distr…</li>
+          <li>Summarize student attend…</li>
+          <li>How many teachers are the…</li>
+          <li>Summarize student admiss…</li>
+        </ul>
+
+        <div class="account">
+          <span class="avatar">TD</span>
+          <span class="account-name">Tosin Dada Philips</span>
+          <svg class="moon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M13 9.5A5.5 5.5 0 0 1 6.5 3a5.5 5.5 0 1 0 6.5 6.5z" />
+          </svg>
+        </div>
+      </aside>
+
+      <!-- ---------- Main ---------- -->
+      <main class="main">
+        <header class="thread-title" id="threadTitle" hidden>Lesson Completion Comparison</header>
+
+        <div class="canvas" id="canvas">
+          <!-- Welcome -->
+          <section class="welcome" id="welcome">
+            <h1 class="greeting">Hello, Oluwatosin Dada Philips</h1>
+            <p class="subgreeting">Ask anything about your programmes</p>
+
+            <p class="try">Try one of these</p>
+            <div class="prompts" id="prompts">
+              <button class="prompt" type="button" data-answer="completion">
+                What was lesson completion last week in JigawaUNITE?
+              </button>
+              <button class="prompt" type="button" data-answer="attendance">
+                How is staff attendance trending in Jigawa this term?
+              </button>
+              <button class="prompt" type="button" data-answer="enrollment">
+                Show pupil enrollment by region in Jigawa?
+              </button>
+            </div>
+          </section>
+
+          <!-- Thread -->
+          <section class="thread" id="thread" hidden></section>
+        </div>
+
+        <!-- Composer -->
+        <div class="composer-wrap">
+          <div class="composer">
+            <span class="composer-text" id="composerText">Ask about your education data…</span>
+            <div class="composer-actions">
+              <button class="icon-btn send" type="button" tabindex="-1" aria-hidden="true">
+                <svg viewBox="0 0 16 16"><polyline points="4,8 8,4 12,8" /><line x1="8" y1="4" x2="8" y2="12" /></svg>
+              </button>
+              <button class="icon-btn" type="button" tabindex="-1" aria-hidden="true">
+                <svg viewBox="0 0 16 16">
+                  <rect x="6" y="2.5" width="4" height="7" rx="2" />
+                  <path d="M4 8a4 4 0 0 0 8 0" />
+                  <line x1="8" y1="12" x2="8" y2="14" />
+                </svg>
+              </button>
+              <div class="modes">
+                <span class="mode is-active">Lite</span>
+                <span class="mode">Pro</span>
+              </div>
+            </div>
+          </div>
+          <p class="disclaimer">Cognition is an AI and can make mistakes. Please double check important information.</p>
+        </div>
+
+        <!-- Replay -->
+        <button class="replay" id="replay" type="button" hidden>Replay</button>
+      </main>
+
+      <!-- The pointer that walks to the chosen prompt. Decorative. -->
+      <span class="pointer" id="pointer" aria-hidden="true"></span>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
