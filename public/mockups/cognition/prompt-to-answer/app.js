@@ -20,6 +20,22 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /*
+    Two scenes from one prototype, so the case study can show the Lite answer and
+    the Pro follow-up in different places without either repeating the other.
+
+      lite  a question is picked and answered, and it stops there
+      pro   the Lite exchange is already on screen when it starts, placed without
+            animation, and only the Pro follow-up plays
+      full  both, end to end
+
+    Read from the query string: index.html?scene=pro
+  */
+  var SCENE = (function () {
+    var m = /[?&]scene=(lite|pro|full)/.exec(window.location.search);
+    return m ? m[1] : 'full';
+  })();
+
   // Per-word pacing. Slower than the product's own 15-50ms: at reading distance
   // on a case study the point is to watch the answer arrive, not to receive it.
   var TOKEN_MS = 45;
@@ -315,6 +331,39 @@
     modes[1].classList.remove('is-active');
   }
 
+  /*
+    Places the Lite exchange without animating it, so the Pro scene opens with the
+    context it is a follow-up to. Reusing the same builders keeps the two scenes
+    from drifting apart visually.
+  */
+  function seedLite(answer) {
+    welcome.hidden = true;
+    thread.hidden = false;
+    threadTitle.textContent = answer.title;
+    threadTitle.hidden = false;
+
+    var user = d('div', 'user-msg');
+    user.textContent = answer.question;
+    thread.appendChild(user);
+
+    var ai = d('div', 'ai-msg');
+    thread.appendChild(ai);
+
+    answer.blocks.forEach(function (block) {
+      if (block.type === 'text') {
+        var p = document.createElement('p');
+        p.textContent = block.value;
+        ai.appendChild(p);
+        return;
+      }
+      var chart = buildChart(block);
+      chart.classList.add('is-drawn');
+      ai.appendChild(chart);
+    });
+
+    canvas.scrollTop = canvas.scrollHeight;
+  }
+
   function run(key) {
     var answer = ANSWERS[key];
     var chip = prompts.filter(function (p) {
@@ -327,6 +376,19 @@
     running = true;
     var token = runToken;
     var stop = guard(token);
+
+    if (SCENE === 'pro') {
+      seedLite(answer);
+      return proAct(token, stop)
+        .then(stop)
+        .then(function () {
+          replay.hidden = false;
+          running = false;
+        })
+        .catch(function (err) {
+          if (err !== STALE) throw err;
+        });
+    }
 
     var seq = wait(700)
       .then(stop)
@@ -410,6 +472,10 @@
       })
       .then(stop)
       .then(function () {
+        if (SCENE === 'lite') {
+          appendMeta('Lite');
+          return null;
+        }
         return proAct(token, stop);
       })
       .then(stop)
