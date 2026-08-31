@@ -379,35 +379,35 @@ export default function CognitionCaseStudy() {
         </p>
       </Section>
 
-      {/* No device bezel on this row: these are tablet captures and the CSS bezel
-          is a phone. The home screen is a slightly different shape from the other
-          two, so the cells share one ratio and contain rather than crop. */}
+      {/* These three exports carry their own tablet bodies, so they sit straight on
+          the stage. A white card behind them would be a frame around a frame. All
+          three are the same size, so nothing needs forcing to make the row align. */}
       <StagedTwoUp
-        aspect="876 / 1356"
+        variant="bare"
         size="full"
         sizes="(max-width: 640px) 100vw, 340px"
         caption="The whole reason it is a PWA. These officials work from Android tablets, where an app means an icon on the home screen rather than a URL in a browser. Below tablet width the sidebar stops being a rail and becomes a drawer."
         items={[
           {
-            src: '/images/casestudy/cognition/mobile-install.png',
+            src: '/images/casestudy/cognition/tablet-install-prompt.png',
             alt: 'Cognition on a tablet in portrait, with an Install Cognition prompt above the composer',
             label: 'Install prompt',
-            width: 876,
-            height: 1356,
+            width: 1200,
+            height: 1848,
           },
           {
-            src: '/images/casestudy/cognition/mobile-installed-screen.png',
+            src: '/images/casestudy/cognition/tablet-installed.png',
             alt: 'A tablet home screen with Cognition installed alongside the built-in apps',
             label: 'Installed',
-            width: 896,
-            height: 1256,
+            width: 1200,
+            height: 1848,
           },
           {
-            src: '/images/casestudy/cognition/mobile-drawer.png',
+            src: '/images/casestudy/cognition/tablet-drawer.png',
             alt: 'The sidebar opened as a full-height drawer with new chat, history, theme and logout',
             label: 'Sidebar as a drawer',
-            width: 876,
-            height: 1356,
+            width: 1200,
+            height: 1848,
           },
         ]}
       />
