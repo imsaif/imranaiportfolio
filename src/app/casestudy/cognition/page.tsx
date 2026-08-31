@@ -1,7 +1,7 @@
 'use client';
 
 import { Pull, Readers, Section, Shipped, Steps } from './sections';
-import { StagedEmbed, StagedFigure, StagedTwoUp } from './visuals';
+import { StagedEmbed, StagedTwoUp } from './visuals';
 import CaseStudyFooter from '@/components/case-studies/CaseStudyFooter';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
@@ -290,17 +290,10 @@ export default function CognitionCaseStudy() {
         </p>
       </Section>
 
-      {/* Set narrower than its neighbours so the run of wide screenshots has a
-          beat in it rather than reading as a contact sheet. */}
-      <StagedFigure
-        src="/images/casestudy/cognition/answer-chart.png"
-        alt="A Lite answer: a sentence, a bar chart of lesson completion over four weeks, then a sentence interpreting it"
-        caption="Lite: a sentence, the shape of the data, then what the shape means. Figures shown are synthetic."
-        width={1568}
-        height={751}
-        size="full"
-        sizes="100vw"
-      />
+      {/* No visual here on purpose. This section is about language: register, who
+          owned the voice, and the vocabulary mapping. A screenshot of an answer
+          evidences none of that, the hero already plays one, and section 07 shows
+          the table. The rest between two running demos is worth having. */}
 
       {/* ---------- 06 ---------- */}
       <Section index="07" title="The second decision: two modes, not three">
@@ -354,6 +347,95 @@ export default function CognitionCaseStudy() {
         title="Cognition in Pro: the working shown while it thinks, then folded away"
         ratio="1400 / 720"
         caption="Pro, once it has finished. The working is folded to a single line saying how long it thought and how many steps, above the comparison it was asked for."
+      />
+
+      {/* ---------- 08 ---------- */}
+      <Section index="08" title="Getting it used">
+        <p>
+          The officials work from Android tablets. For that audience an app is an icon on the home screen, not a URL in
+          a browser, so Cognition ships as an installable PWA rather than a native app or a plain responsive site.
+        </p>
+        <p>
+          It did not need inventing. NewGlobe already ran a PWA for Spotlight, the dashboard product this one answers
+          back to, so Cognition took the same shell. The work was everything around it: 15 icon sizes, splash
+          screens held to a 3.0-second cold start and a 1.8-second warm start, breakpoints from 360 pixels up to
+          tablet, and a sidebar that becomes a drawer below 1024 rather than a rail.
+        </p>
+        <p>
+          It still needs a connection. Installed, it opens like an app; away from signal it does not work.
+        </p>
+        <p>
+          Voice input follows the same logic. Speech lands in the composer as editable text rather than firing off as a
+          query. Speech recognition is trained overwhelmingly on accents that are not these officials&rsquo;, and a
+          mis-heard question returns a confident answer about a district nobody asked about. Showing the transcript
+          first puts the correction in the user&rsquo;s hands instead of making them argue with the machine.
+        </p>
+        <p>
+          The tool had to be in officials&rsquo; hands quickly, and an in-product tour was the wrong instrument twice
+          over: it would have cost time we did not have, and this was not an audience likely to follow one. So we
+          taught it outside the product. Marketing ran live online training sessions for the officials on what
+          Cognition is, what it is not, and what to ask it. I made the material they taught from.
+        </p>
+        <p>
+          That framing came straight out of the scope decision. A tool defined as much by what it declines as by what
+          it answers is a tool you can teach in a single session, because the boundary is the lesson.
+        </p>
+      </Section>
+
+      {/* These three exports carry their own tablet bodies, so they sit straight on
+          the stage. A white card behind them would be a frame around a frame. All
+          three are the same size, so nothing needs forcing to make the row align. */}
+      <StagedTwoUp
+        variant="bare"
+        size="full"
+        sizes="(max-width: 640px) 100vw, 340px"
+        caption="The whole reason it is a PWA. These officials work from Android tablets, where an app means an icon on the home screen rather than a URL in a browser. Below tablet width the sidebar stops being a rail and becomes a drawer."
+        items={[
+          {
+            src: '/images/casestudy/cognition/tablet-install-prompt.png',
+            alt: 'Cognition on a tablet in portrait, with an Install Cognition prompt above the composer',
+            label: 'Install prompt',
+            width: 1200,
+            height: 1848,
+          },
+          {
+            src: '/images/casestudy/cognition/tablet-installed.png',
+            alt: 'A tablet home screen with Cognition installed alongside the built-in apps',
+            label: 'Installed',
+            width: 1200,
+            height: 1848,
+          },
+          {
+            src: '/images/casestudy/cognition/tablet-drawer.png',
+            alt: 'The sidebar opened as a full-height drawer with new chat, history, theme and logout',
+            label: 'Sidebar as a drawer',
+            width: 1200,
+            height: 1848,
+          },
+        ]}
+      />
+
+      {/* The voice interaction, running: the mic is tapped, speech lands in the
+          composer as editable text, and nothing is sent until send is pressed.
+          CAPTION IS THE ORIGINAL FIGURE'S. Imran to revise now that it moves. */}
+      <StagedEmbed
+        src="/mockups/cognition/voice/index.html"
+        title="Cognition on a phone: asking a question by voice"
+        ratio="488 / 991"
+        device="phone"
+        maxWidth="340px"
+        caption="Speech lands in the composer as text the official can correct. The keyboard is up and nothing has been sent yet, which is the whole point: a mis-heard question gets fixed before it becomes an answer about the wrong district."
+      />
+
+      {/* This block is making a point about a state change, which two still frames
+          make the reader reconstruct. It runs instead. Kept wide and short, the
+          shape of the crops it replaces. */}
+      <StagedEmbed
+        src="/mockups/cognition/send-state/index.html"
+        title="Cognition: the send button stays disabled until there is text to check"
+        ratio="1260 / 150"
+        size="full"
+        caption="Closer in. While it is listening the send button is disabled, so the only thing the official can do is finish speaking and read back what was heard. It only becomes available once there is text to check."
       />
 
       {/* ---------- 08 ---------- */}
