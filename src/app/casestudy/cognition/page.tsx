@@ -260,6 +260,11 @@ export default function CognitionCaseStudy() {
           gradients, no chrome signalling &ldquo;AI&rdquo;. The register borrows from a well-set annual report, because
           that is the document this audience already trusts.
         </p>
+        <p>
+          The voice was mine to set. I read what good practice actually looked like for assistants of this kind, and
+          wrote the guidelines the answers are held to: what it calls things, how much it hedges, how it declines,
+          and how long an answer runs before it stops being useful.
+        </p>
       </Section>
 
       {/* Set narrower than its neighbours so the run of wide screenshots has a
@@ -284,10 +289,10 @@ export default function CognitionCaseStudy() {
         <p>
           I argued for two, named for the question rather than the machine, and sat down with the product director and
           the solution architect until we agreed on it. The difference between them is not how long the model thinks.
-          It is whether the answer is checked before anyone sees it. Lite returns what it generates, in up to 30
-          seconds, which suits the arithmetic most of this audience asks for: how many teachers, how many pupils, how
-          many schools. Pro takes a further pass to verify the answer before showing it, and takes 60 to 90 seconds
-          to do it. Lite is for a question you can sanity-check yourself. Pro is for one you intend to act on.
+          It is whether the answer is checked before anyone sees it. Lite returns what it generates, which suits
+          the arithmetic most of this audience asks for: how many teachers, how many pupils, how many schools. Pro
+          takes a further pass to verify the answer before showing it. The budgets we designed against were 30
+          seconds for Lite and 60 to 90 for Pro. Lite is for a question you can sanity-check yourself. Pro is for one you intend to act on.
         </p>
         <p>
           The system picks the mode itself, and we instrumented that switch so we would find out which one people
