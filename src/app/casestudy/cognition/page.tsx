@@ -370,28 +370,38 @@ export default function CognitionCaseStudy() {
           habits were formed when logout was always on screen. It is permanently visible now.
         </p>
         <p>
+          The same thing turned out to be true of two more controls in that corner of the screen. The theme switch was
+          a sun and a moon, which is the convention everywhere and meant nothing here, so it became the words Light and
+          Dark under a heading that says Theme. The control that collapses the sidebar was doing the same quiet
+          disappearing act, and was made explicit alongside them.
+        </p>
+        <p>
           The parts I had reasoned about hardest held. What broke was the conventional furniture around them.
         </p>
       </Section>
 
+      {/* Cropped to the corner where the changes are, at the same slice of the
+          screen in each, rather than two full screens where the difference is a
+          few pixels the reader has to hunt for. */}
       <StagedTwoUp
-        size="full"
-        sizes="(max-width: 640px) 100vw, 800px"
-        caption="The whole finding. Logout moved out of a menu and onto the sidebar, permanently visible, because that is where this audience learned to look for it."
+        size="inset"
+        aspect="167 / 144"
+        sizes="(max-width: 640px) 100vw, 380px"
+        caption="The whole finding, in one corner. Sign out moved out of a menu and onto the sidebar, and the theme switch stopped being a moon and started saying which theme you are in."
         items={[
           {
-            src: '/images/casestudy/cognition/logout-before.png',
-            alt: 'Sidebar footer showing only the account avatar and a theme toggle',
-            label: 'Before: nobody found it',
-            width: 1000,
-            height: 479,
+            src: '/images/casestudy/cognition/sidebar-footer-before.png',
+            alt: 'The old sidebar footer: an account name and a small moon icon, with no sign out',
+            label: 'Before: a moon, and no way out',
+            width: 167,
+            height: 144,
           },
           {
-            src: '/images/casestudy/cognition/logout-after.png',
-            alt: 'Sidebar footer with a labelled Logout row above the account avatar',
-            label: 'After: always on screen',
-            width: 1000,
-            height: 479,
+            src: '/images/casestudy/cognition/sidebar-footer-after.png',
+            alt: 'The same corner after: a theme control labelled Light and Dark, and a labelled Logout row',
+            label: 'After: both spelled out',
+            width: 262,
+            height: 226,
           },
         ]}
       />
