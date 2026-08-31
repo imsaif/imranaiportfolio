@@ -283,10 +283,10 @@ export default function CognitionCaseStudy() {
         <p>
           I argued for two, named for the question rather than the machine, and sat down with the product director and
           the solution architect until we agreed on it. The difference between them is not how long the model thinks.
-          It is whether the answer is checked before anyone sees it. Lite returns what it generates, in up to thirty
+          It is whether the answer is checked before anyone sees it. Lite returns what it generates, in up to 30
           seconds, which suits the arithmetic most of this audience asks for: how many teachers, how many pupils, how
-          many schools. Pro takes a further pass to verify the answer before showing it, and takes sixty to ninety
-          seconds to do it. Lite is for a question you can sanity-check yourself. Pro is for one you intend to act on.
+          many schools. Pro takes a further pass to verify the answer before showing it, and takes 60 to 90 seconds
+          to do it. Lite is for a question you can sanity-check yourself. Pro is for one you intend to act on.
         </p>
         <p>
           The system picks the mode itself, and we instrumented that switch so we would find out which one people
@@ -336,7 +336,7 @@ export default function CognitionCaseStudy() {
         </p>
         <p>
           It did not need inventing. NewGlobe already ran a PWA for Spotlight, the dashboard product this one answers
-          back to, so Cognition took the same shell. The work was everything around it: fifteen icon sizes, splash
+          back to, so Cognition took the same shell. The work was everything around it: 15 icon sizes, splash
           screens held to a 3.0-second cold start and a 1.8-second warm start, breakpoints from 360 pixels up to
           tablet, and a sidebar that becomes a drawer below 1024 rather than a rail.
         </p>
@@ -476,20 +476,19 @@ export default function CognitionCaseStudy() {
       {/* ---------- 10 ---------- */}
       <Section index="10" title="How accurate it had to be">
         <p>
-          The target was eighty per cent. Spotlight, the dashboard product this audience already treats as
-          the record, was the benchmark: eight answers in ten had to match the number the organisation
-          had already agreed on. Not whether an answer read well. Whether it was right.
+          The target was 80% accuracy, measured against Spotlight, the dashboard product this audience
+          already treats as the record. The test was not whether an answer read well. It was whether it
+          matched the number the organisation had already agreed on.
         </p>
         <p>
-          It was calibrated before any official saw it. The first release went to about twenty-five
-          people inside NewGlobe. Ten came from the executive and commercial side, asking the questions
-          they would really ask. Fifteen came from the technology and Cognition teams, whose job was to
-          check answers against Spotlight and file the ones that did not match. Staff attendance took the
-          longest to come up to standard.
+          It was calibrated before any official saw it. The first release went to about 25 people inside
+          NewGlobe. 10 came from the executive and commercial side, asking the questions they would
+          really ask. 15 came from the technology and Cognition teams, whose job was to check answers
+          against Spotlight and file the ones that did not match. Staff attendance took the longest to
+          come up to standard.
         </p>
         <p>
-          Eighty per cent also means one answer in five is wrong, and the interface has to carry that
-          honestly. So every answer shows which mode produced it. Every answer can be marked useful or
+          80% also means 1 answer in 5 is wrong, and the interface has to carry that honestly. So every answer shows which mode produced it. Every answer can be marked useful or
           not. Pro exists for the questions where being right matters more than being quick. Nothing on
           screen claims more confidence than the system has earned.
         </p>
