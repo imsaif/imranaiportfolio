@@ -549,7 +549,7 @@ export default function CognitionCaseStudy() {
         </p>
       </Section>
 
-      <Section index="11" title="Where it landed">
+      <Section index="11" title="What shipped, and what did not">
         <p>
           Cognition was unveiled at the{' '}
           <a
