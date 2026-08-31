@@ -61,7 +61,7 @@ export default function CognitionCaseStudy() {
         {/* The product itself, running, rather than a picture of it. It opens on
             the welcome screen the case study goes on to describe, then plays one
             question through both modes.
-            CAPTION IS THE ORIGINAL FIGURE'S — it describes the opening screen
+            CAPTION IS THE ORIGINAL FIGURE'S. It describes the opening screen
             only, while the demo now runs past it. Imran to revise. */}
         <StagedEmbed
           src="/mockups/cognition/prompt-to-answer/index.html"
@@ -213,8 +213,9 @@ export default function CognitionCaseStudy() {
       {/* ---------- 05 ---------- */}
       <Section index="05" title="When it does not know">
         <p>
-          Declining a question it was never for is the easy half. The harder half is an in-scope question it cannot
-          answer well, and that is where a data assistant earns or loses its standing.
+          Declining a question it was never for is the easy half. The harder half is a fair question it cannot
+          answer well, because that is the answer an official repeats to a minister without knowing anything went
+          wrong.
         </p>
         <p>
           The rule underneath the product is closed-loop grounding. Cognition does not search the open internet,
@@ -396,7 +397,7 @@ export default function CognitionCaseStudy() {
 
       {/* The voice interaction, running: the mic is tapped, speech lands in the
           composer as editable text, and nothing is sent until send is pressed.
-          CAPTION IS THE ORIGINAL FIGURE'S — Imran to revise now that it moves. */}
+          CAPTION IS THE ORIGINAL FIGURE'S. Imran to revise now that it moves. */}
       <StagedEmbed
         src="/mockups/cognition/voice/index.html"
         title="Cognition on a phone: asking a question by voice"
