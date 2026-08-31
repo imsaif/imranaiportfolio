@@ -531,7 +531,7 @@ export default function CognitionCaseStudy() {
             'Published design system with an accessibility gate: keyboard reachable, screen-reader labelled, never colour alone',
           ]}
           notBuilt={[
-            'Surfacing low confidence on a single answer, beyond the mode label. Open when I left it',
+            'Surfacing low confidence on a single answer, beyond the mode label',
             'Assessment and teacher observation data, switched off rather than answered badly',
             'Offline. It installs like an app but still needs a connection',
             'Citations on the face of an answer. Designed, not shipped',
