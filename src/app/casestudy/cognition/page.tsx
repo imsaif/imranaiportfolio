@@ -157,6 +157,13 @@ export default function CognitionCaseStudy() {
           What won was a chat at a URL. It sits behind a login on NewGlobe&rsquo;s own domain, carrying NewGlobe&rsquo;s
           identity, which answers the ownership and surveillance questions the other three shapes could not.
         </p>
+        <p>
+          That login carries the access rules with it. Programme isolation is absolute: a user cannot retrieve data for
+          a programme they are not cleared for, under any phrasing of any question, and asking sideways returns a
+          refusal that names the programmes they do have rather than hinting at ones they do not. An official in one
+          state never sees another state&rsquo;s numbers, and never sees a control suggesting they might. Chat history
+          is scoped to the individual, not the programme, so nobody browses a colleague&rsquo;s questions.
+        </p>
       </Section>
 
       <Pull>
@@ -204,7 +211,48 @@ export default function CognitionCaseStudy() {
       />
 
       {/* ---------- 05 ---------- */}
-      <Section index="05" title="What a good answer looks like">
+      <Section index="05" title="When it does not know">
+        <p>
+          Declining a question it was never for is the easy half. The harder half is an in-scope question it cannot
+          answer well, and that is where a data assistant earns or loses its standing.
+        </p>
+        <p>
+          The rule underneath the product is closed-loop grounding. Cognition does not search the open internet,
+          speculate or fabricate. Every answer is generated from authorised programme data, and where there is no data
+          to answer with, it says so plainly rather than guess. Internet access was ruled out of the release for exactly
+          this reason: an ungrounded answer is worse than no answer to someone who has to repeat it in a meeting.
+        </p>
+        <Steps
+          items={[
+            {
+              label: 'No data for the question',
+              body: 'It says what it checked and what it did not find, and it does not present an empty result as a meaningful zero. A period with no data is not a term where nothing happened.',
+            },
+            {
+              label: 'A question it cannot answer',
+              body: 'A plain explanation of why, and a suggestion for rephrasing or narrowing. No fabrication, and no half-answer that leaves the reader to work out which part to trust.',
+            },
+            {
+              label: 'Data outside the user\u2019s programme',
+              body: 'It declines and names the programmes the user does have. It never returns partial data, and never implies a figure exists but is being withheld.',
+            },
+            {
+              label: 'Something goes wrong on our side',
+              body: 'It says so and offers a retry on the same question. Errors do not arrive dressed as answers.',
+            },
+          ]}
+        />
+        <p>
+          The sharpest version of this was a decision to carry less. Assessment and teacher observation data existed,
+          but it had not been prepared in a form Cognition could answer accurately, and assessment is the highest-stakes
+          thing this audience asks about. Both were switched off before launch on the grounds that they were doing more
+          harm than good. Shipping a narrower product was cheaper than shipping a confident wrong answer about a
+          child&rsquo;s learning.
+        </p>
+      </Section>
+
+      {/* ---------- 06 ---------- */}
+      <Section index="06" title="What a good answer looks like">
         <p>
           Answers are set as prose at a comfortable measure. A chart where the question is about a trend, a table where
           the content is genuinely tabular, and a sentence after either one saying what it means. No chat bubbles, no
@@ -226,7 +274,7 @@ export default function CognitionCaseStudy() {
       />
 
       {/* ---------- 06 ---------- */}
-      <Section index="06" title="The second decision: two modes, not three">
+      <Section index="07" title="The second decision: two modes, not three">
         <p>
           The solution architect&rsquo;s model was three modes of thinking: fast, medium and deep. It described the
           system accurately. It told an official nothing, because how hard a model is working is not something a user
@@ -234,17 +282,20 @@ export default function CognitionCaseStudy() {
         </p>
         <p>
           I argued for two, named for the question rather than the machine, and sat down with the product director and
-          the solution architect until we agreed on it. Lite answers immediately, because most of what this audience
-          asks is arithmetic: how many teachers, how many pupils, how many schools. Pro is for the questions that
-          arrive in a run, each one building on the last.
+          the solution architect until we agreed on it. The difference between them is not how long the model thinks.
+          It is whether the answer is checked before anyone sees it. Lite returns what it generates, in up to thirty
+          seconds, which suits the arithmetic most of this audience asks for: how many teachers, how many pupils, how
+          many schools. Pro takes a further pass to verify the answer before showing it, and takes sixty to ninety
+          seconds to do it. Lite is for a question you can sanity-check yourself. Pro is for one you intend to act on.
         </p>
         <p>
           The system picks the mode itself, and we instrumented that switch so we would find out which one people
           actually used. In real use it was Lite, by a wide margin.
         </p>
         <p>
-          Pro shows the working: what was compared, against which baseline, in what order. Deciding how much of that to
-          show, and when, took three attempts.
+          Every answer carries the mode that produced it, so the reader knows which of the two they are holding. Pro
+          shows the working: what was compared, against which baseline, in what order, and the extra step where it
+          checks itself. Deciding how much of that to show, and when, took three attempts.
         </p>
         <Steps
           items={[
@@ -278,7 +329,7 @@ export default function CognitionCaseStudy() {
 
 
       {/* ---------- 07 ---------- */}
-      <Section index="07" title="Getting it used">
+      <Section index="08" title="Getting it used">
         <p>
           The officials work from Android tablets. For that audience an app is an icon on the home screen, not a URL in
           a browser, so Cognition ships as an installable PWA rather than a native app or a plain responsive site.
@@ -383,7 +434,7 @@ export default function CognitionCaseStudy() {
       />
 
       {/* ---------- 08 ---------- */}
-      <Section index="08" title="Where the research ran out">
+      <Section index="09" title="Where the research ran out">
         <p>
           Two things about this audience were settled before any of it was built. The persona research inside NewGlobe,
           and the interviews I ran on top of it, said these officials would not meet a blank chat box halfway. So the
@@ -422,8 +473,35 @@ export default function CognitionCaseStudy() {
         ]}
       />
 
+      {/* ---------- 10 ---------- */}
+      <Section index="10" title="Eighty per cent, said out loud">
+        <p>
+          The target for the first release was eighty per cent accuracy against Spotlight, the dashboard product whose
+          numbers this audience already treats as the record. That is the benchmark: not whether an answer reads well,
+          but whether it matches the figure the organisation already agrees on.
+        </p>
+        <p>
+          It was calibrated before it reached any official. The first release went to roughly twenty-five people inside
+          NewGlobe, about ten from the executive and commercial side asking the strategic questions they would really
+          ask, and about fifteen from the technology and Cognition teams whose job was to check answers against
+          Spotlight and file what did not match. Staff attendance was the figure that stayed short of target longest.
+        </p>
+        <p>
+          The number matters less than what it forces you to design. Eighty per cent means one answer in five is wrong,
+          and the product has to hold that without pretending otherwise. So every response carries the mode that
+          produced it, every response carries a thumbs up and down with a comment field, and Pro exists for the
+          questions where being right matters more than being quick. The interface never expresses more confidence
+          than the system has earned.
+        </p>
+        <p>
+          The feedback control was the point of the calibration release rather than a courtesy. Without somewhere in
+          the product to flag a wrong answer, accuracy problems arrive as screenshots in chat threads and lose the one
+          thing that makes them fixable: which question, in which mode, in which session.
+        </p>
+      </Section>
+
       {/* ---------- 09 ---------- */}
-      <Section index="09" title="Where it landed">
+      <Section index="11" title="Where it landed">
         <p>
           Cognition was unveiled at the{' '}
           <a
@@ -449,8 +527,16 @@ export default function CognitionCaseStudy() {
             'Scope guard: out-of-scope questions decline and redirect',
             'Voice input for use between school visits',
             'Self-generating follow-up suggestions',
-            'Light and dark themes on a shared token set',
-            'Published design system with an accessibility gate',
+            'Programme isolation: a user cannot reach data they are not cleared for, under any phrasing',
+            'Light and dark themes on a shared token set, WCAG AA contrast in both',
+            'Published design system with an accessibility gate: keyboard reachable, screen-reader labelled, never colour alone',
+          ]}
+          notBuilt={[
+            'Surfacing low confidence on a single answer, beyond the mode label. Open when I left it',
+            'Assessment and teacher observation data, switched off rather than answered badly',
+            'Offline. It installs like an app but still needs a connection',
+            'Citations on the face of an answer. Designed, not shipped',
+            'Local languages. The interface is English, and speech recognition is the weaker half of that',
           ]}
         />
       </Section>
