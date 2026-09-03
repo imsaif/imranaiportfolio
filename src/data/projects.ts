@@ -179,15 +179,14 @@ export const projects: Project[] = [
     id: 104,
     slug: 'projects',
     title: 'Case studies',
-    // No description: the four links below say what this is better than a line
+    // No description: the three links below say what this is better than a line
     // introducing them would.
     description: '',
-    // All four lowercase. Two of these are brands written lowercase everywhere
+    // All three lowercase. Two of these are brands written lowercase everywhere
     // else on the site, so matching them beats capitalising them into line.
     links: [
       { label: 'cognition', href: '/casestudy/cognition' },
       { label: 'aiuxdesign.guide', href: '/casestudy/aiex' },
-      { label: 'optum bank', href: '/casestudy/uhg' },
       { label: 'dwic design decisions', href: '/decisions/dwic' },
     ],
     fullDescription: '',
@@ -197,7 +196,7 @@ export const projects: Project[] = [
     images: [],
     featured: true,
     external: false,
-    // No summary line either. Four named links are the clearest thing this card
+    // No summary line either. Three named links are the clearest thing this card
     // can say about itself.
     detail: {},
     ctaLabel: 'All case studies',

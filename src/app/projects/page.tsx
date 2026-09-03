@@ -6,12 +6,12 @@ import { getProjectBySlug } from '@/data/projects';
 export const metadata: Metadata = {
   title: 'Case studies | Imran Mohammed',
   description:
-    'Longer write-ups of the work: AI tools at NewGlobe, enterprise healthcare at Optum, and the design decisions behind dwic.',
+    'Longer write-ups of the work: AI tools at NewGlobe, the aiuxdesign.guide audit, and the design decisions behind dwic.',
   alternates: { canonical: '/projects' },
 };
 
 /** Ordered deliberately: the AI work leads, then the strongest measured outcome. */
-const CASE_STUDY_SLUGS = ['cognition', 'aiex', 'uhg'] as const;
+const CASE_STUDY_SLUGS = ['cognition', 'aiex'] as const;
 
 interface Entry {
   title: string;
