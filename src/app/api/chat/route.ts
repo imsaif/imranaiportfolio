@@ -153,10 +153,10 @@ export async function POST(request: Request) {
         name: 'Cognition',
         url: 'https://imranai.design/casestudy/cognition',
       },
-      // Optum Bank case study
+      // aiuxdesign.guide case study
       {
-        name: 'Optum Bank',
-        url: 'https://imranai.design/casestudy/uhg',
+        name: 'aiuxdesign.guide',
+        url: 'https://imranai.design/casestudy/aiex',
       },
     ];
 
@@ -173,7 +173,7 @@ export async function POST(request: Request) {
 
     Note: Imran has two published case studies available:
     1. Cognition case study: https://imranai.design/casestudy/cognition
-    2. Optum Bank case study: https://imranai.design/casestudy/uhg
+    2. aiuxdesign.guide case study: https://imranai.design/casestudy/aiex
 
     Only ever link these two. Other case studies exist but are unpublished. Do
     not mention or link them.
@@ -185,8 +185,8 @@ export async function POST(request: Request) {
     **Cognition**
     Conversational AI for the government education leaders who run a national programme. It is scoped strictly to programme data and declines anything outside that, out loud, which is what makes it something an official can put in front of a minister. NewGlobe unveiled it at the Education World Forum in London in 2026.
 
-    **Optum Bank**
-    Receipt capture and claims substantiation for healthcare payments, designed against strict compliance requirements without making the everyday path harder for people just trying to submit a receipt.
+    **aiuxdesign.guide**
+    A free AI UX audit built on 38 patterns. Upload a screenshot, see what is missing, and take each gap away as a Claude skill.
 
     These projects showcase my expertise in AI design and user experience. If you have any more questions or need further details, feel free to ask!
 

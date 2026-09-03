@@ -19,11 +19,11 @@ const caseStudies = [
     url: '/casestudy/cognition',
   },
   {
-    id: 'uhg',
-    title: 'Optum Bank',
+    id: 'aiex',
+    title: 'aiuxdesign.guide',
     description:
-      'Receipt capture and claims substantiation for healthcare payments, designed against strict compliance constraints without making the everyday path harder.',
-    url: '/casestudy/uhg',
+      'A free AI UX audit built on 38 patterns. Upload a screenshot, see what is missing, and take each gap away as a Claude skill.',
+    url: '/casestudy/aiex',
   },
 ];
 

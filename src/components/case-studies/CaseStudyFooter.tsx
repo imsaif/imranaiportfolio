@@ -9,11 +9,12 @@ import { ArrowLeft } from '@/components/Icons';
 export default function CaseStudyFooter() {
   const pathname = usePathname();
 
-  // Point at another *published* case study. LessonLoom and EduScheduler are
-  // unpublished — their URLs still work, but nothing should route readers there.
+  // Point at another *published* case study. LessonLoom, EduScheduler and Optum
+  // Bank are unpublished — their URLs still work, but nothing should route
+  // readers there.
   const onCognition = pathname?.includes('/cognition');
-  const otherCaseStudyLink = onCognition ? '/casestudy/uhg' : '/casestudy/cognition';
-  const otherCaseStudyTitle = onCognition ? 'Optum Bank case study' : 'Cognition case study';
+  const otherCaseStudyLink = onCognition ? '/casestudy/aiex' : '/casestudy/cognition';
+  const otherCaseStudyTitle = onCognition ? 'aiuxdesign.guide case study' : 'Cognition case study';
 
   // Two plain links. The heading and the pill buttons were doing the work of a
   // call to action at the end of a page nobody arrives at by accident.
